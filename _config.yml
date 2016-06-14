@@ -1,0 +1,61 @@
+# Jykell configuration
+#markdown: redcarpet
+#highlighter: pygments
+markdown: kramdown
+highlighter: rouge
+paginate: 5
+language: 'en-uk'
+
+# Website info
+name: 'Offering Solutions'
+description: "Fabian Gosebrinks Blog"
+
+# Author's info
+author: 'Fabian Gosebrink'
+# edit 'categories' in the front matter of every post to match this username
+nickname: Fabian
+bio: 'Developing Software. Teaching. Consulting. Having fun.'
+bioextended: 'Fabian is a professional Software Developer in Switzerland. He specialised on web development with javascript frameworks like AngularJs and backend solutions with ASP.NET'
+location: 'St. Gallen, Switzerland'
+url: 'http://fabian-gosebrink.com'
+image: 'assets/images/pony.jpg'
+
+short_url: 'http://fabian-gosebrink.com'
+google_analytics: UA-69281367-1
+disqus: username
+# edit baseurl to simply '/' if using as your personal page (instead of a project page)
+baseurl: /
+
+# Permalinks
+permalink: /:title
+# permalink: /author/:username
+# permalink: /tag/:tag
+
+
+# gems and other configs
+gems: [jekyll-paginate]
+exclude: [vendor]
+
+# Additional settings available on the front-matter
+# Site logo in the index.html (as in demo.ghost.io)
+# Author's page cover in _layouts/author.html
+# The same for page.html and tag.html layouts
+# Post's page cover as a per-post basis _posts/...
+# Disqus comments as a per-post basis
+# ...
+
+
+# Settings for builing master branch with travis-ci
+# with jekyll-travis
+
+
+
+exclude:
+  - README.md
+  - Rakefile
+  - Gemfile
+  - Gemfile.lock
+  - changelog.md
+  - "*.Rmd"
+  - vendor
+  - .travis.yml
