@@ -4,12 +4,14 @@ title: 'Kurs: Frontend-Entwicklung mit AngularJS'
 date: 2016-05-25T18:30:41+00:00
 author: Fabian Gosebrink
 layout: post
+tags: angular coaching digicomp courses
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
-tags: angular coaching digicomp courses
 subclass: 'post tag-speeches'
 ---
+
+# Kurs: Frontend-Entwicklung mit AngularJS
 
 <center>
   <img src="{{site.baseurl}}assets/images/Angular_With_Digicomp.png" alt="AngularJsWithDigicomp" title="AngularJsWithDigicomp" />

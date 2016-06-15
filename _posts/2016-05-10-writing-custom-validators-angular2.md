@@ -4,12 +4,14 @@ title: Writing custom validators in Angular2
 date: 2016-05-10T17:42:23+00:00
 author: Fabian Gosebrink
 layout: post
+tags: angular2 custom validator 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
-tags: angular validators
 subclass: 'post tag-speeches'
 ---
+
+## Writing custom validators in Angular2
 
 Hey,
 
@@ -131,7 +133,7 @@ Now it would be nice to show specific error messages to the users. So we have to
 
 And that&#8217;s basically it.
 
-![Angular2CustomValidators]({{site.baseurl}}assets/images/9a051a40-6383-4695-bb72-15b5874bb58b.jpg)
+![Angular2CustomValidators]({{site.baseurl}}assets/images/blogs/2016-05/5eac1264-a787-43be-9144-58fc0fec9ef4.jpg)
 
 HTH
 

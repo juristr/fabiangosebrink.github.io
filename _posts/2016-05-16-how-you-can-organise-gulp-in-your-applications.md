@@ -4,10 +4,10 @@ title: How you can organise gulp in your applications
 date: 2016-05-16T08:30:34+00:00
 author: Fabian Gosebrink
 layout: post
+tags: gulp javascript 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
-tags: gulp
 subclass: 'post tag-speeches'
 ---
 

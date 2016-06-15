@@ -4,10 +4,10 @@ title: 'ASP.NET Core &#038; Angular2 with webpack and Visual Studio'
 date: 2016-06-12T22:10:24+00:00
 author: Fabian Gosebrink
 layout: post
+tags: angular2 asp.net core webpack
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
-tags: angular2 asp.net core webpack
 subclass: 'post tag-speeches'
 ---
 
