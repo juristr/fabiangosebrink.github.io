@@ -11,8 +11,6 @@ tags: angular coaching digicomp courses
 subclass: 'post tag-speeches'
 ---
 
-# Kurs: Frontend-Entwicklung mit AngularJS
-
 <center>
   <img src="{{site.baseurl}}assets/images/Angular_With_Digicomp.png" alt="AngularJsWithDigicomp" title="AngularJsWithDigicomp" />
 </center>
