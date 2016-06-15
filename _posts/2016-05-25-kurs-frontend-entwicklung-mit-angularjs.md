@@ -14,7 +14,7 @@ subclass: 'post tag-speeches'
 # Kurs: Frontend-Entwicklung mit AngularJS
 
 <center>
-  <img src="assets/images/Angular_With_Digicomp.png" alt="AngularJsWithDigicomp" title="AngularJsWithDigicomp" />
+  <img src="{{site.baseurl}}assets/images/Angular_With_Digicomp.png" alt="AngularJsWithDigicomp" title="AngularJsWithDigicomp" />
 </center>
 
 Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht &#8220;Nein&#8221; gesagt.
