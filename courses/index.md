@@ -11,7 +11,6 @@ tags: angular coaching digicomp asp.net
 subclass: 'post tag-speeches'
 ---
 
-
 This is a demo blog for Ghost, it contains dummy content which allows you to click around and see what a Ghost blog running the default theme looks like.
 
 We use this for testing and for reference!
