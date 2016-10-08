@@ -19,7 +19,7 @@ I just want to show you quickly how to tell ASP.NET WebAPI to send data only as 
 
 ASP.NET WebAPI is normally sending data as XML. The standard data-fomat in Javascript frameworks like Knockout.js or Angular.js is normally JSON. So to get ASP.NET WebAPI using only JSON can be configured in the Register-Method in WebApiConfig.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-02-26/d4dbd143-c0e4-461f-a874-903ff24b7e5b.png)
+![alttext]({{site.baseurl}}assets/articles/2014-02-26/d4dbd143-c0e4-461f-a874-903ff24b7e5b.png)
 
 Here in the first part you can see clearing all formatters first and then add the JsonMediaTypeFormatter as the only formatter WebApi knows for my application. This makes sure I am only using JSON-format.
 

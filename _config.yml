@@ -15,7 +15,7 @@ author: 'Fabian Gosebrink'
 # edit 'categories' in the front matter of every post to match this username
 nickname: Fabian
 bio: 'Developing Software. Teaching. Consulting. Having fun.'
-bioextended: 'Fabian is a professional Software Developer in Switzerland. He specialised on web development with javascript frameworks like AngularJs and backend solutions with ASP.NET'
+bioextended: 'Hi, I am a Professional Software Engineer, MVP, Microsoft Technology Ambassador in Switzerland and Microsoft Certified Specialist in Web application development and Trainer at Digicomp. I like developing web applications with AngularJs, Angular2, ASP.NET, ASP.NET Core and Webpack, Gulp and electron.'
 location: 'St. Gallen, Switzerland'
 url: 'http://blog.offering.solutions'
 image: 'assets/images/profile.jpg'
