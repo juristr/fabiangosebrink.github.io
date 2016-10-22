@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source "http://rubygems.org"
 
 gem "jekyll"
 #gem "rdiscount", "~> 2.1.7"
