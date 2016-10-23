@@ -1,6 +1,6 @@
 ---
 id: 79
-title: 'ASP.NET MVC &#8211; Generic Repositories and UnitOfWork'
+title: 'ASP.NET MVC - Generic Repositories and UnitOfWork'
 date: 2014-07-01T08:00:11+00:00
 author: Fabian Gosebrink
 layout: post
@@ -9,9 +9,9 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-## ASP.NET MVC Generic Repositories and UnitOfWork (Part 3)
 
 This is the third and the last blogpost regarding Asp.NET MVC Architecture.
 
@@ -43,7 +43,8 @@ But what is the Unit-Of-Work (UoW) and why another Unit-Of-Work-Abstraction?
 
 If you already dealed with the Entity-Framework (EF) you have used the UoW-Pattern all the time. The repository-pattern, too. And so you have already seen how it works: The UoW is tracking all your changes, gathering them together to get every information and changes on the database you need and sending them altogether into the database when you have finished your request. Like the DatabaseContext does. So the UoW with the repositories represents an abstraction of your database and it “reminds” all your changes.
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="DatabaseContext">public class DataBaseContext : DbContext
+<pre class="theme:vs2012-black lang:c# decode:true " title="DatabaseContext">
+public class DataBaseContext : DbContext
 {
     public DataBaseContext()
             : base("MyConnectionString")
@@ -57,7 +58,7 @@ If you already dealed with the Entity-Framework (EF) you have used the UoW-Patte
 }
 </pre>
 
-_Note: &#8220;Projects&#8221; is a normal DTO which is used for dealing with the Entity Framework. Could look like this_
+_Note: "Projects" is a normal DTO which is used for dealing with the Entity Framework. Could look like this_
 
 <pre class="lang:c# decode:true ">public class Project
 {
@@ -69,9 +70,9 @@ _Note: &#8220;Projects&#8221; is a normal DTO which is used for dealing with the
 
 You should have a normal DatabaseContext with all your entities on it and your model-creating-stuff using the FluentAPI.
   
-Nothing new until here. I am always hiding things in namespaces, so in my root-folder I am creating a &#8220;Repositories&#8221;-Folder which is hiding all my Repo-stuff.
+Nothing new until here. I am always hiding things in namespaces, so in my root-folder I am creating a "Repositories"-Folder which is hiding all my Repo-stuff.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-06/6adec83e-8229-463a-b109-96be6890e6da.png)
+![ASP.NET MVC - Generic Repositories and UnitOfWork]({{site.baseurl}}assets/articles/2014-07-01/6adec83e-8229-463a-b109-96be6890e6da.png)
 
 Let’s go into this in detail:
   
@@ -368,19 +369,19 @@ The `GetCustomRepository()` can give you back the custom repository which you ha
   
 You can also do extended interfaces, if you want to extend the CRUD-Methods because they are not enough.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-06/80e07df5-f8f7-42fc-bdda-4b88fd2c9feb.png)
+![ASP.NET MVC - Generic Repositories and UnitOfWork]({{site.baseurl}}assets/articles/2014-07-01/80e07df5-f8f7-42fc-bdda-4b88fd2c9feb.png)
 
 Just let the repository-interface inherit from your repositorybase-interface and the class from the repositorybase-implementation. Because the methods are virtual you can override them or just add new functions.
   
 You can provide it again with the normal UoW-Interface:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-06/8fd41063-a881-4509-9719-0201458ba573.png)
+![ASP.NET MVC - Generic Repositories and UnitOfWork]({{site.baseurl}}assets/articles/2014-07-01/8fd41063-a881-4509-9719-0201458ba573.png)
 
 Now you have a generic repository which you can user for every entity. Its extendable with very few steps and you are also free if you want to use own repositories.
   
 Wrapped in namespaces this it how it could look to you:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-06/551e3bb0-e8f0-4d84-b447-1d6935004e01.png)
+![ASP.NET MVC - Generic Repositories and UnitOfWork]({{site.baseurl}}assets/articles/2014-07-01/551e3bb0-e8f0-4d84-b447-1d6935004e01.png)
 
 You can use it now from the outside with
 

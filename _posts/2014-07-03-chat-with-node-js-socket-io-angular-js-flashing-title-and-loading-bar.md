@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Regarding to [Regarding to](http://blog.noser.com/node-js-chat-server/ "node.js – Chat Server") post I want to show you how you can set up a chat-client to a node.js-server via angular.js. We will take a look into the lightweight architecture angular is giving you and how to set up the services and controllers the right way. Additionally we will use the loading-bar-module to give the user information about what his message is doing after sending it and we will flash the homepage title if a new message arrives. The communication is done with socket-io.js and we use jQuery for the basic javascript-things. Enjoy!
@@ -29,11 +31,9 @@ Here we go:
 
 The folder structure in angular.js is, in my opinion, very important because it can give you a nice overview of what you are trying to seperate and is able to encapsulate files, such as services and controllers, etc. in a well regulated way.
 
-So I always make an app-folder which holds all my angular-logic in it and a views folder which encapsulated my views (surprise! 😉 ). Within my app folder I have folders for my services, controllers (which are important for the angular-stuff) and for css-files and 3rd-party scripts which is only called &#8220;scripts&#8221; here. I am trying to do like I would do the namespaces in C#, perhaps you recognized this 😉
+So I always make an app-folder which holds all my angular-logic in it and a views folder which encapsulated my views (surprise! 😉 ). Within my app folder I have folders for my services, controllers (which are important for the angular-stuff) and for css-files and 3rd-party scripts which is only called "scripts" here. I am trying to do like I would do the namespaces in C#, perhaps you recognized this 😉
 
-&nbsp;
-
-<a href="{{site.baseurl}}assets/images/blogs/2014-07/edac88ee-cb45-4851-881b-1ccb5a5b529b.jpg" rel="attachment wp-att-997"><img class="aligncenter size-full wp-image-997" src="{{site.baseurl}}assets/images/blogs/2014-07/edac88ee-cb45-4851-881b-1ccb5a5b529b.jpg" alt="1" width="225" height="150" /></a>
+![Chat with Node.js, socket.io, Angular.js, flashing title and loading bar]({{site.baseurl}}assets/articles/2014-07-03/edac88ee-cb45-4851-881b-1ccb5a5b529b.jpg)
 
 ### The View
 
@@ -41,15 +41,13 @@ Well, to build up a view for a chat client you can do everything you can think o
 
 Additionally to this you need to have all your scripts loaded. In the end this looks something like this:
 
-&nbsp;
-
-<a href="{{site.baseurl}}assets/images/blogs/2014-07/bf77aee4-1945-426d-8ac9-54a2090b6c97.png" rel="attachment wp-att-998"><img class="aligncenter size-full wp-image-998" src="{{site.baseurl}}assets/images/blogs/2014-07/bf77aee4-1945-426d-8ac9-54a2090b6c97.png" alt="2" width="849" height="865" srcset="{{site.baseurl}}assets/images/blogs/2014-07/bf77aee4-1945-426d-8ac9-54a2090b6c97.png 849w, http://offering.solutions/wp-content/uploads/2014/07/2-294x300.png 294w, http://offering.solutions/wp-content/uploads/2014/07/2-768x782.png 768w" sizes="(max-width: 849px) 100vw, 849px" /></a>
+![Chat with Node.js, socket.io, Angular.js, flashing title and loading bar]({{site.baseurl}}assets/articles/2014-07-03/53118513-5294-4273-a1b9-763dfe5d2b3b.png)
 
 &nbsp;
 
-So what we see here is the head-information which is including everything (dont worry, we will get through most of these files during this post) we need to get the things going and the body. The body is giving us a div where we specify the controller &#8220;DemoController&#8221; and bind the messages we have in a simple html-list &#8220;li&#8221; with a simple angular-statement &#8220;ng-repeat&#8221;.
+So what we see here is the head-information which is including everything (dont worry, we will get through most of these files during this post) we need to get the things going and the body. The body is giving us a div where we specify the controller"DemoController" and bind the messages we have in a simple html-list"li" with a simple angular-statement"ng-repeat".
 
-<span style="color: #999999;">Note: You need this &#8220;track by $index&#8221; as suffix because only with this the message-array can contain the same message multiple times. Without this the message itself would be a key and a key can not occur multiple times. See also <a href="https://docs.angularjs.org/error/ngRepeat/dupes"><span style="color: #999999;">here</span></a></span>
+<span style="color: #999999;">Note: You need this"track by $index" as suffix because only with this the message-array can contain the same message multiple times. Without this the message itself would be a key and a key can not occur multiple times. See also <a href="https://docs.angularjs.org/error/ngRepeat/dupes"><span style="color: #999999;">here</span></a></span>
 
 The form below has a normal submit-action to be called when it gets submitted and we only give the form two input boxes (one for the name and one for the text) including binding it to the (not yet shown) viewmodel. It contains, of course, a button to submit the form. And this is it. You are done with your view.
 
@@ -64,13 +62,13 @@ app.config(function ($routeProvider) {
     .otherwise({ redirectTo: "/" });
 });</pre>
 
-Here you can see that we define an app in a variable &#8220;app&#8221; making it an angular module and we call it &#8220;MessengerApp&#8221; (This is what you see in the html-opening-tag in the screenshot above). Into this we are including all the 3rd-party-libs I mentioned above (loading-bar and so on). The route provider is not that important because we just have one route to show. I wont go into detail here because for this example this would be more theory than practice.
+Here you can see that we define an app in a variable"app" making it an angular module and we call it"MessengerApp" (This is what you see in the html-opening-tag in the screenshot above). Into this we are including all the 3rd-party-libs I mentioned above (loading-bar and so on). The route provider is not that important because we just have one route to show. I wont go into detail here because for this example this would be more theory than practice.
 
 &nbsp;
 
 ### The Controller
 
-As mentioned in the view we have a controller called &#8220;DemoController&#8221;. And because we instantiated a variable called &#8220;app&#8221; we can now use it and define a controller on this app:
+As mentioned in the view we have a controller called"DemoController". And because we instantiated a variable called"app" we can now use it and define a controller on this app:
 
 <pre>app.controller('DemoController', function ($scope, chatService, cfpLoadingBar, flashService) {
 
@@ -105,13 +103,13 @@ As mentioned in the view we have a controller called &#8220;DemoController&#8221
 
 Lets take a look into this in detail: First we define a controller which we can call in the view. Because of the dependency injection angular gives us out of the box we can just get everything into our controller we want to use.
 
-Then we make an array of messages and connect to our socket via socket-io. &#8220;_sendMessage&#8221; is a private function here, which only calls the chatService. The controller further makes UI-Stuff like starting the loading bar and reset the messagetext to an empty string so that the user can enter a new string to send.
+Then we make an array of messages and connect to our socket via socket-io."_sendMessage" is a private function here, which only calls the chatService. The controller further makes UI-Stuff like starting the loading bar and reset the messagetext to an empty string so that the user can enter a new string to send.
 
-The &#8220;socket.on(&#8230;)&#8221;-Method is like an eventhandler from socket.js. It is called when a new message gets received from the server. So everything we do here is :
+The"socket.on(&#8230;)"-Method is like an eventhandler from socket.js. It is called when a new message gets received from the server. So everything we do here is :
 
   * Getting the object from the server
-  * throw this new message into the message array (&#8220;$scope.messages.push&#8221;)
-  * giving it to the viewmodel and notify the viewmodel that there is something new (&#8220;$scope.$apply();&#8221;)
+  * throw this new message into the message array (&#8220;$scope.messages.push")
+  * giving it to the viewmodel and notify the viewmodel that there is something new (&#8220;$scope.$apply();")
   * Flashing the window through a flashservice, we will get to know later
   * scroll the body to the bottom so that everytime the latest message is shown in the browser
 
@@ -122,7 +120,7 @@ $scope.messages = _messages;
 $scope.messageText = "";
 $scope.name = "";</pre>
 
-This is the whole controller which is stored under the &#8220;Controllers&#8221;-folder and included in the view.
+This is the whole controller which is stored under the"Controllers"-folder and included in the view.
 
 &nbsp;
 
@@ -158,11 +156,11 @@ app.factory('chatDataService', function ($http) {
 
 And here you can see the seperattion of concerns which I am a big fan of. I divided the data-service from the real service to have a better understanding and a better overview of whom is doing what. So the single-responsibility is used here.
   
-So we have the &#8220;ChatService&#8221; and a &#8220;ChatDataService&#8221;. We just want to look at the real work in the &#8220;ChatDataService&#8221; which is really sending the messages by calling the method:
+So we have the"ChatService" and a"ChatDataService". We just want to look at the real work in the"ChatDataService" which is really sending the messages by calling the method:
 
 <pre>socket.emit('chat', { name: name, text: stringToSend });</pre>
 
-This line is like doing all the magic using socket.io to send messages to the Server which is described [here](http://blog.noser.com/node-js-chat-server/ "node.js – Chat Server"). We are generating a new object with the properties &#8220;name&#8221; and &#8220;text&#8221; and are sending what the user entered.
+This line is like doing all the magic using socket.io to send messages to the Server which is described [here](http://blog.noser.com/node-js-chat-server/ "node.js – Chat Server"). We are generating a new object with the properties"name" and"text" and are sending what the user entered.
 
 Due to the fact that the FlashService is only a nice2have-thing I will not refer to it in detail but I want to mention it.
 
@@ -209,13 +207,6 @@ This service is offering us two methods
   * flashService.flashWindow = _flashWindow; //Flashes the window with a message and a number of how many times the title shall flash
   * flashService.cancelFlashWindow = _cancelFlashWindow; // is only cancelling the flash-progress
 
-To show you how this looks like in the file/folder-structure, see here:
-
-&nbsp;
-
-<a href="{{site.baseurl}}assets/images/blogs/2014-07/4e65bbba-f001-44d6-a966-3a45670a1d8b.jpg" rel="attachment wp-att-1000"><img class="aligncenter size-full wp-image-1000" src="{{site.baseurl}}assets/images/blogs/2014-07/4e65bbba-f001-44d6-a966-3a45670a1d8b.jpg" alt="4" width="329" height="124" srcset="{{site.baseurl}}assets/images/blogs/2014-07/4e65bbba-f001-44d6-a966-3a45670a1d8b.jpg 329w, http://offering.solutions/wp-content/uploads/2014/07/4-300x113.jpg 300w" sizes="(max-width: 329px) 100vw, 329px" /></a> <a href="http://offering.solutions/wp-content/uploads/2014/07/3.jpg" rel="attachment wp-att-999"><img class="aligncenter size-full wp-image-999" src="http://offering.solutions/wp-content/uploads/2014/07/3.jpg" alt="3" width="329" height="155" srcset="http://offering.solutions/wp-content/uploads/2014/07/3.jpg 329w, http://offering.solutions/wp-content/uploads/2014/07/3-300x141.jpg 300w" sizes="(max-width: 329px) 100vw, 329px" /></a>
-
-&nbsp;
 
 So this was it. This is all you need to get a chat client going. If you include all the angular-files and giving the client the correct IP I am sure you will get the chat going in a second. (Dont forget to load the [server](http://blog.noser.com/node-js-chat-server/ "node.js – Chat Server"))
   
