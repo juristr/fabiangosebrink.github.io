@@ -4,13 +4,13 @@ title: 'ASP.NET Core &#038; Angular2 with webpack and Visual Studio'
 date: 2016-06-12T22:10:24+00:00
 author: Fabian Gosebrink
 layout: post
-categories: articles
 tags: angular2 asp.net core webpack
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
 disqus: true
+categories: articles
 ---
 
 This article shows how <a href="http://webpack.github.io/docs/">Webpack </a>could be used together with <a href="https://www.visualstudio.com/">Visual Studio</a> ASP.NET Core and <a href="https://angular.io/docs/ts/latest/quickstart.html">Angular2</a>. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.
