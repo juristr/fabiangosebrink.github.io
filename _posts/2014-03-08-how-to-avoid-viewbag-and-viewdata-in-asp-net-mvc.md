@@ -67,7 +67,7 @@ public class MyViewModel
     ...
 }
 ```
-
+v
 
 And in the View you can simply pass the complete ViewModel to your View
 
