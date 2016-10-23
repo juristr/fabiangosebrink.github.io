@@ -10,6 +10,7 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
 ---
 
 Using Dependency-Injection is one of the most important things when I am implementing software. Code is much more testable and you have clearly ordered dependencies and an overview of what you injected where etc.

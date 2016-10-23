@@ -4,36 +4,48 @@ title: How to avoid ViewBag and ViewData in ASP.Net MVC
 date: 2014-03-08T13:24:01+00:00
 author: Fabian Gosebrink
 layout: post
+categories: articles
 tags: asp.netmvc viewbag viewdata 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
 ---
 
 # How to avoid ViewBag and ViewData in ASP.Net MVC
 
 It could be so easy: When passing data from the Controller to the View in MVC one can simply use
 
-<pre>ViewBag.MyProperty = “ThisIsTheContentOfMyProperty”;</pre>
+```cs
+ViewBag.MyProperty = “ThisIsTheContentOfMyProperty”;
+```
 
 or
 
-<pre>ViewData["MyProperty"] = MyProperty;</pre>
+```cs
+ViewData["MyProperty"] = MyProperty;
+```
 
 And in the view you can access the data with:
 
 <!--more-->
 
-<pre>@ViewBag.MyProperty</pre>
+```cs
+@ViewBag.MyProperty
+```
 
 or
 
-<pre>ViewData["MyProperty "] as ...</pre>
+```cs
+ViewData["MyProperty "] as ...
+```
 
 But what about spelling problems? _IntelliSense_ will not correct you if you would miss a character. Even the compiler does not give you any hint.
 
-<pre>@ViewBag.MProperty</pre>
+```cs
+@ViewBag.MProperty
+```
 
 would not be wrong but won’t show any data in your View. Also spelling problems in the ViewData-String would not be noticed in code.
 
@@ -45,37 +57,31 @@ The view knows its model and should not get any data from anything else. So to a
 
 This could look like this:
 
-<pre escaped="true">public class MyViewModel
-
+```cs
+public class MyViewModel
 {
 
-public List MyModels { get; set; }
+    public List MyModels { get; set; }
+    public string Rooms { get; set; }
+    public bool IsSomethingTrueOrNot { get; set; }
+    ...
+}
+```
 
-public string Rooms { get; set; }
-
-public bool IsSomethingTrueOrNot { get; set; }
-
-...
-
-}</pre>
-
-&nbsp;
 
 And in the View you can simply pass the complete ViewModel to your View
 
-<pre>public ActionResult MyMethod()
-
+```cs
+public ActionResult MyMethod()
 {
+    MyViewModel viewModel = new MyViewModel();
 
-MyViewModel viewModel = new MyViewModel();
+    // Do anything with the ViewModel like filling it, etc.
 
-// Do anything with the ViewModel like filling it, etc.
+    return View(viewModel);
+}
+```
 
-return View(viewModel);
-
-}</pre>
-
-&nbsp;
 
 With this simple technique you can keep all the data you need for creating a view separately from your MVC-Models.
 

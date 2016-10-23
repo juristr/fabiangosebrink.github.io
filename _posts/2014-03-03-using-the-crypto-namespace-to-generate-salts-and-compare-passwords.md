@@ -10,6 +10,7 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
 ---
 
 If you are implementing a custom membership- and/or roleprovider (I wont go into custom providers because beside pictures of cats (with or without money or guns) and porn this is one of the most mentioned topics in the web) you should always store passwords with a salt. With the crypted password and the salt you can compare the values during the login-process and set it during the registration process easily by using the Crypto-Namespace of Asp.Net.
