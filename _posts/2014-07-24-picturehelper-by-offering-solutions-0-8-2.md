@@ -1,6 +1,6 @@
 ---
 id: 297
-title: '[NuGet] &#8211; PictureHelper by Offering.Solutions 0.8.2'
+title: '[NuGet] PictureHelper by Offering.Solutions 0.8.2'
 date: 2014-07-24T20:12:54+00:00
 author: Fabian Gosebrink
 layout: post
@@ -15,46 +15,19 @@ categories: articles
 
 After dealing a bit with pictures in web-applications I decided to put the functionalities I used into a service. Then after using it again and again I decided to make a NuGet-Package out of it so that I can reuse it easier. Well, I got also tired of copy/paste 😉 And now I want to share this with you. Perhaps anybody else needs to have small basic picture functions, here you are:
 
-<div class="package-page-heading">
-  <h3>
-    <a href="https://www.nuget.org/packages/OfferingSolutions.PictureHelper/0.8.2">PictureHelper by Offering.Solutions 0.8.2</a>
-  </h3>
-  
-  <p>
-    &nbsp;
-  </p>
-  
-  <p>
-    Installing is very easy: Just copy/paste or type the line showed into you Package Manager Console in Visual Studio. Its just one dll and really, its very small. Its my first try for NugetPackages though. (Perhaps you will see more the next time 😉 )
-  </p>
-  
-![WPF Cleaning your viewmodel making a facade]({{site.baseurl}}assets/articles/2014-07-14/edf98c8e-0f63-428a-a928-26c1d1b247f6.jpg)
-  
-  <p>
-    Basic functions are:
-  </p>
-  
-  <ul>
-    <li>
-      Saving an image with different options
-    </li>
-    <li>
-      Changing opacity of an image (Png/Gif)
-    </li>
-    <li>
-      Resizing an image
-    </li>
-    <li>
-      Crop an image
-    </li>
-  </ul>
-</div>
+[PictureHelper by Offering.Solutions 0.8.2](https://www.nuget.org/packages/OfferingSolutions.PictureHelper/0.8.2)
+ 
+Installing is very easy: Just copy/paste or type the line showed into you Package Manager Console in Visual Studio. Its just one dll and really, its very small. Its my first try for NugetPackages though. (Perhaps you will see more the next time 😉 )
 
-<div class="package-page-heading">
-  Which can look like this:
-</div>
+![PictureHelper by Offering.Solutions 0.8.2]({{site.baseurl}}assets/articles/2014-07-24/edf98c8e-0f63-428a-a928-26c1d1b247f6.jpg)
 
-&nbsp;
+Basic functions are:
+* Saving an image with different options
+* Changing opacity of an image (Png/Gif)
+* Resizing an image
+* Crop an image
+
+Which can look like this:
 
 <pre class="lang:c# decode:true">static void Main(string[] args)
         {
@@ -90,18 +63,14 @@ After dealing a bit with pictures in web-applications I decided to put the funct
 
 I hope these functions are understandable and easy to use. If you have any improvements: Let me know! This is a beta status, the release number is set to 0.8.2. But all functions are manually tested and also covered with automatic unit-tests in a continuous integration environment.
 
-&nbsp;
+
 
 Sample solution is here:
 
 [Offering.Solutions.PictureHelperSample](http://offering.solutions/wp-content/uploads/2014/07/Offering.Solutions.PictureHelperSample.zip)
 
-&nbsp;
-
 Hope you enjoy it.
   
 Regards
-
-&nbsp;
 
 Fabian
