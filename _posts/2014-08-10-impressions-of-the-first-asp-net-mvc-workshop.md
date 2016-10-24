@@ -9,17 +9,15 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Even when I am not doing it in my current project at work I am very interested in ASP.NET and the ASP.NET MVC-Framework and everything which is needed to build modern web based applications.
 
 Last Saturday my preparation for a very special workshop for me ended and I was glad to give five students the first ASP.NET MVC-workshop at the university Albstadt-Sigmaringen. (One of them had to leave 5 minutes earlier, so do not be confused while seeing only four students on the picture 😉 )
   
-<!--more-->
-
-
-  
-<a href="{{site.baseurl}}assets/images/blogs/2014-08/1e871ab0-67e4-4352-be56-16645c5e8b53.png" rel="attachment wp-att-1132"><img class="aligncenter size-full wp-image-1132" src="{{site.baseurl}}assets/images/blogs/2014-08/1e871ab0-67e4-4352-be56-16645c5e8b53.png" alt="Workshop_1" width="800" height="600" srcset="{{site.baseurl}}assets/images/blogs/2014-08/1e871ab0-67e4-4352-be56-16645c5e8b53.png 800w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_1-300x225.png 300w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_1-768x576.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></a>
+![Impressions of the first ASP.NET MVC workshop]({{site.baseurl}}assets/articles/2014-08-10/1e871ab0-67e4-4352-be56-16645c5e8b53.png)
 
 We started shortly after ten o’clock (because I know that students can be late sometime ;)) and we were talking about Asp.NET MVC for four hours with a one hour break in the middle.
 
@@ -35,7 +33,7 @@ Also routing was a topic at this workshop and how it is connected to Asp.NET MVC
 
 One of the points which were most important to me getting into the students heads was the viewmodel-principle. So we made a lot of examples and the students finally did a practical work for themselves in groups. So they were getting to know what they just saw up in the front and could manifest the presented stuff.
 
-<a href="{{site.baseurl}}assets/images/blogs/2014-08/6bd31167-3c69-4851-8ef8-d6ac2ed94cc6.png" rel="attachment wp-att-1133"><img class="aligncenter size-full wp-image-1133" src="{{site.baseurl}}assets/images/blogs/2014-08/6bd31167-3c69-4851-8ef8-d6ac2ed94cc6.png" alt="Workshop_2" width="800" height="457" srcset="{{site.baseurl}}assets/images/blogs/2014-08/6bd31167-3c69-4851-8ef8-d6ac2ed94cc6.png 800w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_2-300x171.png 300w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_2-768x439.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></a>
+![Impressions of the first ASP.NET MVC workshop]({{site.baseurl}}assets/articles/2014-08-10/6bd31167-3c69-4851-8ef8-d6ac2ed94cc6.png)
 
 External libraries have also been a topic. So the entity Framework was mentioned with the code-first approach and the students learned how to create database without building complicated SQL statements and saving data into it with different software-patterns.
 
@@ -45,9 +43,7 @@ After the lunch-break we were digging deeper into Asp.NET MVC and created a blog
 
 We also touched the role-, and user-based authentication and authorization and exploring in which way we can use the Microsoft-given things. Also the advantages and disadvantages were mentioned and we discussed a way to solve the problems you can have sometimes while implementing a web application.
 
-&nbsp;
-
-<a href="{{site.baseurl}}assets/images/blogs/2014-08/40570b65-dc70-424f-a188-785293e7890e.png" rel="attachment wp-att-1134"><img class="aligncenter size-full wp-image-1134" src="{{site.baseurl}}assets/images/blogs/2014-08/40570b65-dc70-424f-a188-785293e7890e.png" alt="Workshop_3" width="800" height="600" srcset="{{site.baseurl}}assets/images/blogs/2014-08/40570b65-dc70-424f-a188-785293e7890e.png 800w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_3-300x225.png 300w, http://offering.solutions/wp-content/uploads/2014/08/Workshop_3-768x576.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></a>
+![Impressions of the first ASP.NET MVC workshop]({{site.baseurl}}assets/articles/2014-08-10/40570b65-dc70-424f-a188-785293e7890e.png)
 
 In the end our blog was completely ready with all Create-Read-Update and Delete-Actions (CRUD) which are needed for a modern internet application.
 
