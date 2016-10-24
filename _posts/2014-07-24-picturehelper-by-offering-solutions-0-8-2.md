@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 After dealing a bit with pictures in web-applications I decided to put the functionalities I used into a service. Then after using it again and again I decided to make a NuGet-Package out of it so that I can reuse it easier. Well, I got also tired of copy/paste 😉 And now I want to share this with you. Perhaps anybody else needs to have small basic picture functions, here you are:
@@ -26,9 +28,7 @@ After dealing a bit with pictures in web-applications I decided to put the funct
     Installing is very easy: Just copy/paste or type the line showed into you Package Manager Console in Visual Studio. Its just one dll and really, its very small. Its my first try for NugetPackages though. (Perhaps you will see more the next time 😉 )
   </p>
   
-  <p>
-    <a href="{{site.baseurl}}assets/images/blogs/2014-07/2b9208f3-0928-4471-9556-1deca17215cd.jpg"><img class="aligncenter size-full wp-image-303" src="{{site.baseurl}}assets/images/blogs/2014-07/2b9208f3-0928-4471-9556-1deca17215cd.jpg" alt="2" width="761" height="117" srcset="{{site.baseurl}}assets/images/blogs/2014-07/2b9208f3-0928-4471-9556-1deca17215cd.jpg 761w, http://offering.solutions/wp-content/uploads/2014/07/21-300x46.jpg 300w" sizes="(max-width: 761px) 100vw, 761px" /></a>
-  </p>
+![WPF Cleaning your viewmodel making a facade]({{site.baseurl}}assets/articles/2014-07-14/edf98c8e-0f63-428a-a928-26c1d1b247f6.jpg)
   
   <p>
     Basic functions are:

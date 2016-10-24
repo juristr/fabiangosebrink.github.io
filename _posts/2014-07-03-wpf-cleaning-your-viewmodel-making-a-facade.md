@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 In this post I want to show you how to use the facade-pattern to get your viewmodel in WPF nice and clean. I want to show you how to get along with the seperation of concerns and how to write simple and testable code with databinding and wpf.
@@ -63,7 +65,7 @@ of course you would give the viewmodel other values and it would grow like hell.
 
 So lets introduce a service to do some work (a normal calculation with the result of 23 in my example):
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-07/738a03ba-0a12-4ab1-b4e4-614d4c1625bf.jpg)
+![WPF Cleaning your viewmodel making a facade]({{site.baseurl}}assets/articles/2014-07-03/738a03ba-0a12-4ab1-b4e4-614d4c1625bf.jpg)
 
 <pre class="lang:c# decode:true ">namespace WpfViewModelAsFacade
 {
@@ -181,6 +183,4 @@ Note: Your viewmodel does not have to implement INotifypropertyChanged then. If 
 
 If you think further it would be better to seperate the service one again and getting a provider between the service, which is doing the real job and the class/interface, which is giving the data to the outside world. This provider (or however you call it) can then be offered in the viewmodel and you would bind first over this one. But for now this should be it, I think you got my point 😉 .
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-07/849fc8bb-736e-41d1-83e7-6713209c9f0c.jpg)![alttext](http://offering.solutions/wp-content/uploads/2014/07/Facade.jpg)
-
-[WpfViewModelAsFacade Solution](http://offering.solutions/wp-content/uploads/2014/07/WpfViewModelAsFacade.zip)
+![WPF Cleaning your viewmodel making a facade]({{site.baseurl}}assets/articles/2014-07-03/849fc8bb-736e-41d1-83e7-6713209c9f0c.jpg)
