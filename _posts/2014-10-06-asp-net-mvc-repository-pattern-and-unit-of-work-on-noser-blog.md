@@ -9,15 +9,13 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 See my newest Blogpost on blog.noser.com
 
-&nbsp;
-
 ## <a href="http://blog.noser.com/asp-net-mvc-repository-pattern-unit-work/" target="_blank">ASP.NET MVC: Repository Pattern and Unit of Work</a> {.gdl-page-title}
-
-&nbsp;
 
 Regards
 
