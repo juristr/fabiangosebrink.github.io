@@ -9,9 +9,9 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-## SCRUM Gestalten Sie unterhaltsame Meetings
 
 SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn man jedoch SCRUM in einer Firma einführt oder praktiziert sehen die Entwickler sehr schnell den angeblichen Nachteil dieser doch recht positiven Eigenschaften: Es gibt, zumindest am Anfang, sehr viele Meetings.
 
@@ -19,15 +19,11 @@ Entwickler mögen meist keine Meetings. Meetings halten sie von der Arbeit ab. D
 
 Im Folgenden möchte ich Tipps erläutern, die solche Meetings zwar nicht aus der Welt schaffen aber sie zumindest anders oder &#8220;saftiger&#8221; machen können. Ob (erfolgreich) getestet oder nur als Gedankenanstoss: Ich hoffe die folgenden Punkte bieten eine gute Grundlage zum Nachmachen und zum darauf aufbauen.
 
-&nbsp;
-
 > SCRUM ist keine One-Man-Show
 
-&nbsp;
+### Was lange währt...
 
-### Was lange währt&#8230;
-
-&#8230;wird irgendwann gut: SCRUM braucht Zeit. Geben Sie den Teilnehmern diese. Gerade wenn SCRUM neu ist, ist die Skepsis noch Herr in allen Meetings. Diese werden die Teilnehmer los. Aber es muss von den Teilnehmern selber kommen. Somit: Leisten Sie Überzeugungsarbeit und erläutern Sie, warum das Team Meeting xyz nutzen sollte. Die Menschen über die Logik und den Sinn abzuholen bringt oft mehr als sie in ein Meeting zu &#8220;zwingen&#8221;. SCRUM ist ein Team-Ding. Kein SCRUM-Master oder Product-Owner-Ding, keine One-Man-Show.
+....wird irgendwann gut: SCRUM braucht Zeit. Geben Sie den Teilnehmern diese. Gerade wenn SCRUM neu ist, ist die Skepsis noch Herr in allen Meetings. Diese werden die Teilnehmer los. Aber es muss von den Teilnehmern selber kommen. Somit: Leisten Sie Überzeugungsarbeit und erläutern Sie, warum das Team Meeting xyz nutzen sollte. Die Menschen über die Logik und den Sinn abzuholen bringt oft mehr als sie in ein Meeting zu &#8220;zwingen&#8221;. SCRUM ist ein Team-Ding. Kein SCRUM-Master oder Product-Owner-Ding, keine One-Man-Show.
 
 &nbsp;
 
@@ -37,11 +33,7 @@ Meetings gehören in Timeboxen. Das ist kein genereller Ansatz aber gerade bei d
 
 Beispiel: Das Grooming wird als Meeting eingeführt und das Team ist anfangs skeptisch. Nach einem Vorschlag das Grooming „nur“ 60 Minuten abzuhalten willigten alle ein. Natürlich ist dies zu wenig für einen langen Sprint. Dies wird deutlich wenn das Meeting penibel nach 60 Minuten zum Ende gebracht wird. Aber wenn das Meeting richtig genutzt (vorbereiten!) und durchgeführt wird (alle Teilnehmer anwesend, etc.), wird der Nutzen schnell klar. In einer folgenden Retro kam auf, dass das Grooming viel zu kurz ist: Das Team bespricht die Lösung und einigt sich selbstständig auf ein zwei Stunden dauerndes Meeting. Somit wurde der Sinn erkannt und die Initiative, das Meeting abzuhalten und den Product-Backlog zu pflegen, kam vom Team aus.
 
-&nbsp;
-
 > Ist die Familienpizza viel zu gross für den Sprint, muss sie eventuell aufgeteilt werden
-
-&nbsp;
 
 ### Abwechslung:
 
@@ -55,29 +47,19 @@ Ein Planungsmeeting dauert meistens sehr lange: Wieso nicht mit einem Rätsel st
 
 Das Daily-Standup-Meeting ist ein Meeting im Stehen: Investieren sie in ein billiges Mikrophon und machen sie eine Moderation draus. Derjenige, der spricht, muss in das Mikro sprechen. Das stärkt das Team und ist ausserdem lustig. Zumindest für die anderen 😉
 
-&nbsp;
-
 > Das Team organisiert sich selbst
-
-&nbsp;
 
 ### Ergebnisse:
 
 Schreiben Sie Ergebnisse auf. Aber lassen Sie es jemanden anderes machen als den Moderator selbst. Beispielsweise auf ein Flipchart. Nach dem Meeting ein Foto von dem Flipchart an alle Teilnehmer gesendet und schon haben sie ein Protokoll, das für alle gleich ist. Will es keiner machen: Machen sie ein Spiel draus: Der letzte, der in das Meeting kommt, ist der Protokollant. Hierbei auch keine Scheu vor Vorgesetzten: Kein Chef bricht sich einen Zacken aus der Krone den Stift zu schwingen und was auf das Papier zu bringen. Zumal sowieso alles, was festgehalten wird, besprochen werden sollte.
 
-&nbsp;
-
 ### Das Team organisiert sich selbst:
 
 Das Team steht bei SCRUM im Mittelpunkt. Es wird so gearbeitet, wie das Team sich organisiert. Wenn das Team beim Daily-Standup mit einem Witz starten will, dann machen sie es. Einen Sprint lang. Dann wird geschaut, ob die Änderungen den gewünschten Effekt bringen. Findet das Team es gut: behalten Sie es bei!
 
-&nbsp;
-
 ### Zusammenfassung:
 
 SCRUM-Meetings müssen nicht langweilig sein. Man kann solche Meetings durchaus &#8220;saftig&#8221; und abwechslungsreich gestalten. Wenn SCRUM dem Team Spass macht, ist es wesentlich einfach Offenheit, Transparenz und Fortschritt zu sehen, zu messen und damit zu arbeiten. Natürlich sollte neben aller Abwechslung das Sprint-Ziel verfolgt werden um es am Ende des Sprints möglichst zu Erfüllen. Jedoch kann man, mit den richtigen Mitteln, Teams für SCRUM begeistern. Ich hoffe mit den genannten Beispielen konnte ich einige Denkanstösse geben.
-
-&nbsp;
 
 Gruss
 
