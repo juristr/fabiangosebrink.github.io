@@ -9,77 +9,36 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Hey,
 
-&nbsp;
-
 I just created the third NuGet
 
-<div class="package-page-heading">
-  <h3 style="text-align: center;">
-    <a href="https://www.nuget.org/packages/OfferingSolutions.MvcHelpers/0.4.0">Nuget: MvcHelpers by Offering.Solutions 0.4.0</a>
-  </h3>
+[Nuget: MvcHelpers by Offering.Solutions 0.4.0](https://www.nuget.org/packages/OfferingSolutions.MvcHelpers/0.4.0">Nuget: MvcHelpers by Offering.Solutions 0.4.0)
+
+which gives you really really small helper functions (not only) for your mvc projects.
+
+Features are:
   
-  <p>
-    which gives you really really small helper functions (not only) for your mvc projects.
-  </p>
-  
-  <p>
-    Features are:
-  </p>
-  
-  <ul>
-    <li>
-      Nullcheck with Exception
-    </li>
-    <li>
-      Nullcheck with returning the type if not null, otherwise exception
-    </li>
-    <li>
-      Return bool value if something is null
-    </li>
-    <li>
-      Checking enumerable if its null or empty
-    </li>
-    <li>
-      Checks if a string is a timespan
-    </li>
-    <li>
-      Checks if a string is an email
-    </li>
-    <li>
-      Converts a string to datetime
-    </li>
-    <li>
-      Converts s tring to timespan
-    </li>
-    <li>
-      Checks a string for null, empty or a given lenght (e.g. for password purposes)
-    </li>
-    <li>
-      Checks if a HttpPostedFile has a specific format
-    </li>
-    <li>
-      Checks if a HttpPostedFile is an image
-    </li>
-    <li>
-      Checks if a string can be converted to double
-    </li>
-    <li>
-      Converts a string to double
-    </li>
-  </ul>
-  
-  <p>
+  * Nullcheck with Exception
+  * Nullcheck with returning the type if not null, otherwise exception
+  * Return bool value if something is null
+  * Checking enumerable if its null or empty
+  * Checks if a string is a timespan
+  * Checks if a string is an email
+  * Converts a string to datetime
+  * Converts s tring to timespan
+  * Checks a string for null, empty or a given lenght (e.g. for password purposes)
+  * Checks if a HttpPostedFile has a specific format
+  * Checks if a HttpPostedFile is an image
+  * Checks if a string can be converted to double
+  * Converts a string to double
+
     I think these little helpers can save you a lot of short but necessary work in your projects.
-  </p>
-  
-  <p>
-    &nbsp;
-  </p>
-  
+
   <pre class="lang:c# decode:true ">static void Main(string[] args)
 {
 	//Throws an exception
@@ -140,23 +99,8 @@ I just created the third NuGet
 	double doubleValue = doubleToCheck.ToDouble();
 }</pre>
   
-  <p>
-    &nbsp;
-  </p>
-  
-  <p>
-    If you encounter any mistakes, please feel free to leave a comment.
-  </p>
-  
-  <p>
-    Enjoy
-  </p>
-  
-  <p>
-    &nbsp;
-  </p>
-  
-  <p>
-    Fabian
-  </p>
-</div>
+If you encounter any mistakes, please feel free to leave a comment.
+
+Enjoy
+
+Fabian

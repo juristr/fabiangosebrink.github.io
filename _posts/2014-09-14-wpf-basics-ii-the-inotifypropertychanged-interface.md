@@ -9,33 +9,23 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-# Wpf Basics II &#8211; The INotifyPropertyChanged Interface
-
-&nbsp;
 
 UPDATE UPDATE UPDATE:
 
 Check the CallMemberName-Possibility [here](http://offering.solutions/2015/02/08/callmembername-for-inotifypropertychanged/ "CallMemberName for INotifyPropertyChanged")
 
-* * *
-
-&nbsp;
-
 In the first part I told something about the databinding [here](http://offering.solutions/2014/09/02/wpf-basics-how-to-make-first-steps-of-databinding/ "Wpf Basics I – How to make first steps of Databinding"). The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we&#8217;re done so far.
 
 Just to calm down the ones who expect a solution: Can be found in the third article [here](http://offering.solutions/2014/10/01/wpf-basics-iii-correct-implementation-of-commands/ "Wpf Basics III – Correct implementation of Commands")
 
-But what if the data underneath is changing. What if a service or anything else has new data and want to tell the UI &#8220;Hey there, I have something new!&#8221;
+But what if the data underneath is changing. What if a service or anything else has new data and want to tell the UI "Hey there, I have something new!"
 
-&nbsp;
-
-Therefore the binding has to be &#8220;refreshed&#8221; and we have the INotifyPropertyChanged-Interface to get this job done.
+Therefore the binding has to be "refreshed" and we have the INotifyPropertyChanged-Interface to get this job done.
 
 Lets take our code from before and give it a timer which sets the name we want to display after 3 seconds:
-
-&nbsp;
 
 <pre class="lang:c# decode:true ">&lt;Grid&gt;
 	&lt;StackPanel&gt;
@@ -109,7 +99,7 @@ Lets tune this:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-09/0797f3e5-c8c3-4ed4-ab00-889e2bd8c628.jpg)which looks like:
+![alttext]({{site.baseurl}}assets/articles/2014-09-14/0797f3e5-c8c3-4ed4-ab00-889e2bd8c628.jpg)which looks like:
 
 <pre class="lang:c# decode:true">public class NotifyPropertyChangedBase : INotifyPropertyChanged
 {
@@ -170,15 +160,13 @@ Remeber: In the elapsed-method we are setting the property (not the private vari
 
 Run it, it will show you the text after three seconds.
 
-&nbsp;
-
 If you want to, read further how you can get this cleaner with services and erase the NotifyPropertyChangedBase from the viewmodel.
 
 Lets tune this a little bit: The viewmodel does a lot of work. It does not have to do this, so lets extract this a bit and make it more clean.
 
 First we do a NameProvider, which gives us the name. In my case again with a timer to see the UI changing. Normally this could be a service or something else without a timer. Could be anything which triggers the UI to change (not only) after a piece of work.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-09/55c55993-75bd-4e1b-924b-50ae54555462.jpg)
+![alttext]({{site.baseurl}}assets/articles/2014-09-14/55c55993-75bd-4e1b-924b-50ae54555462.jpg)
 
 <pre class="lang:c# decode:true ">public class NameProviderImpl : NotifyPropertyChangedBase, INameProvider
     {
@@ -248,6 +236,6 @@ Now we have to change the binding a bit. Because now the viewmodel is giving us 
 
 Run this and you will see the result stays the same: After three seconds our string is displayed.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-09/3fa5c15f-bde9-4a8c-a970-6384d98850e0.jpg)So what we did now is: Getting our Viewmodel nice and clean. It gives us an overview of services and providers which the UI can use. It does not inherit from NotifyPropertyChangedBase. You saw how flexible databinding is. Not only with strings but you can bind also lists of objects etc.
+![alttext]({{site.baseurl}}assets/articles/2014-09-14/3fa5c15f-bde9-4a8c-a970-6384d98850e0.jpg)So what we did now is: Getting our Viewmodel nice and clean. It gives us an overview of services and providers which the UI can use. It does not inherit from NotifyPropertyChangedBase. You saw how flexible databinding is. Not only with strings but you can bind also lists of objects etc.
 
 &nbsp;
