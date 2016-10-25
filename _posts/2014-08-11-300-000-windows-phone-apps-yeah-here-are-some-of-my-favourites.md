@@ -1,6 +1,6 @@
 ---
 id: 309
-title: '300.000 Windows Phone Apps! &#8211; Yeah! Here are some of my favourites&#8230;'
+title: '300.000 Windows Phone Apps! Yeah! Here are some of my favourites'
 date: 2014-08-11T19:02:39+00:00
 author: Fabian Gosebrink
 layout: post
@@ -9,13 +9,15 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 I have just read on Winfuture ([Article](http://winfuture.de/news,83056.html)) that Microsoft (by the) Numbers just released the number 300.000 regarding to the apps in the Microsoft Store for Windows Phone.
 
 _Statista_ is saying something else [here](http://de.statista.com/statistik/daten/studie/208599/umfrage/anzahl-der-apps-in-den-top-app-stores/) at the timepoint of 11.08.2014:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/cf8bfa23-753f-4194-952f-8cd8519d2cd1.jpg)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/cf8bfa23-753f-4194-952f-8cd8519d2cd1.jpg)
 
 But this is taking the data from july and is perhaps not that reliable as Microsoft itself (or is it vice versa?)
 
@@ -31,7 +33,7 @@ Some of the maybe most important apps **for me** are:
 
 _Statista_ is saying something else [here](http://de.statista.com/statistik/daten/studie/208599/umfrage/anzahl-der-apps-in-den-top-app-stores/) at the timepoint of 11.08.2014:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/d3aea037-6713-4dff-b0b7-04b914fa2882.jpg)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/d3aea037-6713-4dff-b0b7-04b914fa2882.jpg)
 
 But this is taking the data from july and is perhaps not that reliable as Microsoft itself (or is it vice versa?)
 
@@ -49,7 +51,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/7f3bee8a-c4e2-4ae0-bf58-43083ec282e3.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/7f3bee8a-c4e2-4ae0-bf58-43083ec282e3.png)
 
 &nbsp;
 
@@ -57,7 +59,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/af0216aa-edb2-4796-8fbc-3a766c69594f.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/af0216aa-edb2-4796-8fbc-3a766c69594f.png)
 
 &nbsp;
 
@@ -65,7 +67,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/e16e9310-16af-4b3f-8074-88523536775b.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/e16e9310-16af-4b3f-8074-88523536775b.png)
 
 &nbsp;
 
@@ -73,7 +75,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/58c579d5-d19b-45fd-898f-f52f013953e1.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/58c579d5-d19b-45fd-898f-f52f013953e1.png)
 
 &nbsp;
 
@@ -81,7 +83,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/ed890319-c612-4012-aa7b-013870cbe18d.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/ed890319-c612-4012-aa7b-013870cbe18d.png)
 
 &nbsp;
 
@@ -91,7 +93,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/6143bf0f-c967-4184-8637-ad74a60682b3.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/6143bf0f-c967-4184-8637-ad74a60682b3.png)
 
 &nbsp;
 
@@ -99,7 +101,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/59c3ad11-5eb1-4004-b035-bd3f43d98b00.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/59c3ad11-5eb1-4004-b035-bd3f43d98b00.png)
 
 &nbsp;
 
@@ -107,7 +109,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/ce572854-099b-4fdc-ad71-690821d0018d.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/ce572854-099b-4fdc-ad71-690821d0018d.png)
 
 &nbsp;
 
@@ -115,7 +117,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/11f3f646-6a2b-4ece-b760-c19b234c7fb8.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/11f3f646-6a2b-4ece-b760-c19b234c7fb8.png)
 
 &nbsp;
 
@@ -123,7 +125,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/1a0fdb3f-23a0-47ea-8dd1-6eab101dae09.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/1a0fdb3f-23a0-47ea-8dd1-6eab101dae09.png)
 
 &nbsp;
 
@@ -131,7 +133,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/e6a04919-227b-4207-9c58-5098e87b9a4a.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/e6a04919-227b-4207-9c58-5098e87b9a4a.png)
 
 &nbsp;
 
@@ -143,7 +145,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/f24e7fcc-3491-4bda-a5ec-85a80653ecad.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/f24e7fcc-3491-4bda-a5ec-85a80653ecad.png)
 
 &nbsp;
 
@@ -151,7 +153,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/b259d9ed-4884-42f3-9d29-357cd6a31cd0.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/b259d9ed-4884-42f3-9d29-357cd6a31cd0.png)
 
 &nbsp;
 
@@ -159,7 +161,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/5cbf03d1-2476-464e-8478-3e8a1f390bb1.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/5cbf03d1-2476-464e-8478-3e8a1f390bb1.png)
 
 &nbsp;
 
@@ -167,7 +169,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/b671c862-2d95-43b8-b8b3-e419653749f1.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/b671c862-2d95-43b8-b8b3-e419653749f1.png)
 
 &nbsp;
 
@@ -175,7 +177,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/8d95924c-0cd2-4d11-8ebb-53b4f9c8586b.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/8d95924c-0cd2-4d11-8ebb-53b4f9c8586b.png)
 
 &nbsp;
 
@@ -183,7 +185,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/45ec8372-4ae7-49e5-a324-012d360754d8.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/45ec8372-4ae7-49e5-a324-012d360754d8.png)
 
 &nbsp;
 
@@ -191,7 +193,7 @@ Some of the maybe most important apps **for me** are:
 
 &nbsp;
 
-![alttext]({{site.baseurl}}assets/images/blogs/2014-08/02960e8a-2589-4d60-a041-a33694266005.png)
+![300.000 Windows Phone Apps! Yeah! Here are some of my favourites]({{site.baseurl}}assets/articles/2014-08-11/02960e8a-2589-4d60-a041-a33694266005.png)
 
 &nbsp;
 
