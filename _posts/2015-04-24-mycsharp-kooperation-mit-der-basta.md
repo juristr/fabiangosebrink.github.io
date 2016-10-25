@@ -9,13 +9,15 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Hallo zusammen,
 
 ich freue mich wirklich zu sagen, dass das Team von MyCSharp.de und die Basta! eine Kooperation eingegangen sind und MyCSharp.de Partner der Basta! wird.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-04/6cfbead1-f4a2-4436-926e-0adf433ea768.png)
+![MyCSharp-Kooperation mit der Basta!]({{site.baseurl}}assets/articles/2015-04-24/6cfbead1-f4a2-4436-926e-0adf433ea768.png)
 
 Was ist die BASTA!?
 
@@ -23,7 +25,7 @@ Die BASTA! ist die führende unabhängige Konferenz für Microsoft-Technologien 
 
 Siehe auch hier:
 
-<a href="http://www.mycsharp.de/wbb2/thread.php?postid=3771978" target="_blank">15% Rabatt &#8211; Kooperation mit der Basta! 2015</a>
+[15% Rabatt &#8211; Kooperation mit der Basta! 2015](http://www.mycsharp.de/wbb2/thread.php?postid=3771978)
 
 Gruss und viel Spass auf der Basta!
 

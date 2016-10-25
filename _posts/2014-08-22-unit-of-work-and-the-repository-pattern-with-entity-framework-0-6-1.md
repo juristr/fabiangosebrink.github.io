@@ -9,9 +9,9 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-## Unit of Work and the Repository Pattern with Entity Framework 0.6.1
 
 Update: Solution did not have the latest Version running. So the example-Solution has been updated! Enjoy.
 
@@ -19,15 +19,7 @@ Update: Solution did not have the latest Version running. So the example-Solutio
 
 I just tried to implement a solution to get the UnitOfWork for the EntityFramework generic (see [this](http://offering.solutions/2014/07/01/asp-net-mvc-architecture-part-iii-generic-repositories-and-unitofwork/ "ASP.NET MVC Architecture (Part III): Generic Repositories and UnitOfWork") post) and put all this into a NuGet-Package. And finally: Here it is!
 
-<div class="package-page-heading">
-  <h3>
-    <a href="https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/0.6.1">UnitOfWork by Offering.Solutions 0.6.1</a>
-  </h3>
-  
-  <p>
-    &nbsp;
-  </p>
-</div>
+[UnitOfWork by Offering.Solutions 0.6.1](https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/0.6.1)
 
 This blogpost has a sample-solution attached. Feel free to look into it. But before you do let me explain this package a bit. It will use the UnitOfWork, you will be able to use GenericRepositories and Customrepositories and everything is cached so that if you use the repositories in one using they only have to be created once.
 
@@ -35,12 +27,8 @@ I wont go into details about the sense of the UnitOfWork-thing but I want to giv
 
 If you want to work with the UnitOfWork in this NuGet-Package you will have two different possibilities:
 
-&nbsp;
-
   1. Use generic repositories
   2. Extend the generic repositories to use your own functions additional to the given CRUD-operations
-
-&nbsp;
 
 I want to handle both cases in this post:
 
@@ -146,21 +134,9 @@ You can then use it with
 	//...
 }</pre>
 
-&nbsp;
-
 With this you can build your own repositories and they are build up modular and are replacable in an easy way.
 
-&nbsp;
-
 Thats it. I think this is nice and smooth. I hope you can get along with it. Have fun.
-
-&nbsp;
-
-See <a href="http://www.asp.net/mvc/tutorials/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application" target="_blank">here</a> and <a href="http://codereview.stackexchange.com/questions/31822/unit-of-work-and-repository-design-pattern-implementation" target="_blank">here </a>for inspiration.
-
-See also <a title="ASP.NET MVC Architecture (Part III): Generic Repositories and UnitOfWork" href="http://offering.solutions/2014/07/01/asp-net-mvc-architecture-part-iii-generic-repositories-and-unitofwork/" target="_blank">here </a>for another related BlogEntry (when this Nuget was not released so far 😉 )
-
-&nbsp;
 
 Regards
 

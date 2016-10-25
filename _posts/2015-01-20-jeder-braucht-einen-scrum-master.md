@@ -9,11 +9,11 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Jeden Tag eine gute Tat. Dieses Gefühl abends ins Bett zu steigen und zu wissen: Ich habe etwas Gutes gemacht heute. Leuten helfen zum Beispiel. Bei Fragen zur Seite stehen. Hilfestellung geben. Man hilft ja gern. Warum auch nicht? Man ist ja Scrum-Master. Macht ja auch Spass.
-
-&nbsp;
 
 **Innerhalb des Teams**
 
@@ -21,15 +21,9 @@ Man sorgt dafür, dass SCRUM eingehalten wird und kontrolliert den Prozess. Wird
 
 Auch falls es Probleme gibt zeigt man vollen Einsatz und versucht diese zu beseitigen. Und wenn das gemacht wurde, ja dann ist man spätestens wieder direkt bei der guten Tat.
 
-&nbsp;
-
 > _Das Team braucht keinen Scrum-Master, wenn es Scrum richtig macht_
 
-&nbsp;
-
 „Das Team organisiert sich selbst“ ist wohl eine Überschrift, die Scrum ohne weiteres ebenfalls tragen könnte. Das Team steht für das gerade, was es Ende des Sprints liefert. Das ist wichtig! Und auch gut so! Lass sie mal machen. Das „Wie?“ soll das Team beantworten. Aber was, wenn sie das wirklich mal tun? Liebe Scrum-Master da draussen: Stellt euch mal vor, ihr werdet einfach nicht mehr gebraucht, geschweige denn gefragt! Das Team arbeitet reibungslos zusammen und hat keine Hindernisse. Alles läuft reibungslos, Scrum ist komplett verstanden worden und wird exakter umgesetzt als eine Operation am offenen Herzen. Eine &#8211; sagen wir einfach &#8211; ungewohnte Vorstellung. Und das ist nicht mal böse gemeint. Dass Scrum schwierig ist, ist allseits bekannt. Und es ist noch kein Meister vom Himmel gefallen.
-
-&nbsp;
 
 **Ausserhalb des Teams**
 
@@ -43,14 +37,6 @@ Völlig unabhängig welcher Teil nun beraten wird: Beispielsweise der Product-Ow
 
 Wenn ein Scrum-Master sich nicht mit dem Team beschäftigt, ist er manchmal auch mit gleichgesinnten zu finden. Der Austausch mit anderen Scrum-Mastern ist absolut wichtig und sinnvoll. Welche Methoden kommen an, warum kommen sie an? Welche sind eher schlechter geeignet, wofür? Wer hat was ausprobiert und gute oder schlechte Erfahrungen gemacht? All das sind Fragen, die direkt im Scrum nicht erwähnt werden. Aber dem Team, und damit meine ich das komplette Scrum-Team, zugutekommen. So kann Neues in den nächsten Sprint einfliessen oder zumindest in der Retrospektive besprochen werden. Das ist wichtig, sogar essentiell. Denn das ist Scrum.
 
-&nbsp;
-
 **Zusammenfassung**
 
 Scrum-Master helfen dem Team. Das ist soweit klar. Und sie machen ihre Arbeit gut, wenn das Team reibungslos funktioniert. Aber Scrum-Master sein ist so viel mehr als nur dem Team zu helfen. Es gibt noch so viele andere Faktoren im Scrum-Prozess, die eine Produktivitätssteigerung ausmachen können. Es geht auch darum ein gemeinsames Verständnis innerhalb einer Organisation zu schaffen, das das Produkt in den Mittelpunkt rückt. Das ist auch ein Fokus des Scrum-Masters. Und das hört beim Entwicklungs-Team noch lange nicht auf…
-
-&nbsp;
-
-&nbsp;
-
-This blogpost was first published on <a href="http://blog.noser.com/jeder-braucht-einen-scrum-master/" target="_blank">Noser-Blog</a>

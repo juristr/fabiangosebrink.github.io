@@ -9,9 +9,9 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-## Unit of Work and the Repository Pattern with Entity Framework 0.6.2
 
 Article to Version 0.6.1 with examples is [here](http://offering.solutions/2014/08/22/nuget-unitofwok-structure-by-offering-solutions/ "[Update] – [NuGet] – UnitOfWork-Structure by Offering.Solutions (with Example-Solution)")
 
@@ -19,20 +19,12 @@ Article to Version 0.6.1 with examples is [here](http://offering.solutions/2014/
 
 I just released the Unit of Work and the Repository Pattern with Entity Framework in Version 0.6.2.
 
-&nbsp;
-
-<h3 style="text-align: center;">
-  <a href="https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/0.6.2">Nuget: UnitOfWork by Offering.Solutions 0.6.2</a>
-</h3>
-
-&nbsp;
+[Nuget: UnitOfWork by Offering.Solutions 0.6.2](https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/0.6.2)
 
 Changes:
 
   * Added &#8220;DatabaseContext&#8221; insted of &#8220;DbContext&#8221; to the CustomRepositories in ExampleSolution &#8211;> No need to call &#8220;Set<T>&#8221;
   * Made basic CRUD methods virtual so you can overwrite them easier
-
-<!--more-->
 
 <pre class="lang:c# decode:true ">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
 {

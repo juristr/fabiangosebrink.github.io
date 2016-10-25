@@ -1,6 +1,6 @@
 ---
 id: 589
-title: WPF CallMemberName for INotifyPropertyChanged
+title: WPF CallMemberName for INotify Property Changed
 date: 2015-02-08T23:08:26+00:00
 author: Fabian Gosebrink
 layout: post
@@ -9,17 +9,15 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
-# WPF CallMemberName for INotifyPropertyChanged
-
-Regarding to this blogpost [# WPF CallMemberName for INotifyPropertyChanged
-
-Regarding to this blogpost](http://offering.solutions/2014/09/14/wpf-basics-ii-inotifypropertychanged/ "Wpf Basics II – INotifyPropertyChanged") I showed up how to implement the INotifyPropertyChanged.
+Regarding to this blogpost [# WPF CallMemberName for INotify Property Changed](http://offering.solutions/2014/09/14/wpf-basics-ii-inotifypropertychanged/) I showed up how to implement the INotifyPropertyChanged.
 
 Well with .Net-Framework 4.5 a new solution came up to make it even more simple:
 
-Instead of the &#8220;old&#8221; (but working) base-class
+Instead of the "old" (but working) base-class
 
 <pre class="lang:c# decode:true ">public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
@@ -77,7 +75,5 @@ See: You do not need to give a func. instead you are only calling the method whi
 Solution with a command-implementation can be found here: [DataBindingGettingStarted](http://offering.solutions/wp-content/uploads/2015/02/DataBindingGettingStarted.zip)
 
 Happy coding!
-
-&nbsp;
 
 Regards

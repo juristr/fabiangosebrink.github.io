@@ -4,14 +4,14 @@ title: Consuming a REST API with Angular2 Http-Service in Typescript
 date: 2016-02-01T12:23:46+00:00
 author: Fabian Gosebrink
 layout: post
-tags: angular2;typescript 
+tags: angular2 typescript 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
-
-# Consuming a REST API with Angular2 Http-Service in Typescript
 
 Hey,
 
@@ -21,11 +21,9 @@ In my recent blog post [How to start with Visual Studio (Code), Angular2 beta 0
 
 Now I want to show you an example dataservice to call your favourite API.
 
-### Configuration
+# Configuration
 
 Its always a good thing if you have your configuration seperated stored anywhere in your application. I always go for a file like &#8220;app.constants.ts&#8221; where I store all my values. If anything changes there, like a version of the api which is stored in the url or the endpoint/server whatever, I can do those changes immediatelly at one point.
-
-&nbsp;
 
 <pre class="lang:c# decode:true " title="app.constants.ts">import { Injectable } from 'angular2/core';
 
@@ -42,7 +40,7 @@ Notice the injectable attribute to generate the metadata to make the service ava
 
 Now we have this going we can generate our service:
 
-### The Service
+# The Service
 
 First of all you have to create a module which only contains a service which is only responsible for calling an API with a specific endpoint.
 
@@ -129,8 +127,6 @@ export class MyItemComponent implements OnInit {
     }
 }</pre>
 
-&nbsp;
-
 I think this should be basically it. Pay attention to the typed answer you get from the service
 
 <pre class="lang:c# decode:true">(data:MyTypedItem[]) =&gt;</pre>
@@ -139,8 +135,6 @@ and to the subsribe after calling the &#8220;GetAll&#8221;-Method from the servi
 
 Hope you enjoyed it and a lot more: I hope this helps.
 
-&nbsp;
-
 Bye
 
 Fabian
@@ -148,8 +142,6 @@ Fabian
 GitHub:
 
 [Angular 2 / ASP.NET CORE 1.0 Template With SignalR](https://github.com/FabianGosebrink/Angular2-ASPNETCore-SignalR-Demo)
-
-&nbsp;
 
 links:
 
