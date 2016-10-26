@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Hey,
@@ -24,28 +26,6 @@ which includes
   * ViewModelBase
   * SubmitModelBase
   * ModelValidator (for easier validation)
-
-&nbsp;
-
-Why ViewModels and Submitmodels you can read this [Hey,
-
-I just released a new version of the MvcHelpers.
-
-<h3 style="text-align: center;">
-  <a href="https://www.nuget.org/packages/OfferingSolutions.MvcHelpers/0.6.0">Nuget: MvcHelpers by Offering.Solutions 0.6.0</a>
-</h3>
-
-which includes
-
-  * ViewModelBase
-  * SubmitModelBase
-  * ModelValidator (for easier validation)
-
-&nbsp;
-
-Why ViewModels and Submitmodels you can read this ](http://blog.noser.com/what-are-submitmodels-and-how-to-use-them/) and [here](http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/)
-
-&nbsp;
 
 ViewModelBase and SubmitModelBase are two baseclasses for the introduced view-and submitmodels.
 
@@ -117,10 +97,6 @@ If you validate with the validator, your Errormessages are getting automatically
 
 So, this is it. Hope you enjoy!
 
-&nbsp;
-
 Regards
-
-&nbsp;
 
 Fabian
