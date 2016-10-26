@@ -9,14 +9,12 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
-See my newest Blogentry on Noser-Blog [here.](http://blog.noser.com/scrum-wege-zu-einer-erfolgreichen-retrospektive/)
-
-&nbsp;
+See my newest Blogentry on Noser-Blog [here](http://blog.noser.com/scrum-wege-zu-einer-erfolgreichen-retrospektive/)
 
 Regards
-
-&nbsp;
 
 Fabian
