@@ -1,6 +1,6 @@
 ---
 id: 446
-title: WPF How to make first steps of Databinding
+title: WPF - How to make first steps of Databinding
 date: 2014-09-02T03:24:54+00:00
 author: Fabian Gosebrink
 layout: post

@@ -1,6 +1,6 @@
 ---
 id: 621
-title: '[Update] [NuGet] – MvcHelpers by Offering.Solutions 0.6.0'
+title: 'MvcHelpers by Offering.Solutions'
 date: 2015-03-04T21:08:01+00:00
 author: Fabian Gosebrink
 layout: post

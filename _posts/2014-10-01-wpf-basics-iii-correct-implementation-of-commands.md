@@ -1,6 +1,6 @@
 ---
 id: 475
-title: 'WPF &#8211; Correct implementation of Commands'
+title: 'WPF - Correct Implementation of Commands'
 date: 2014-10-01T17:32:42+00:00
 author: Fabian Gosebrink
 layout: post

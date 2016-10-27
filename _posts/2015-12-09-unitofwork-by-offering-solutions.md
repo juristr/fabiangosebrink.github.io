@@ -1,6 +1,6 @@
 ---
 id: 861
-title: UnitOfWork-Structure 0.9.1 by Offering.Solutions
+title: UnitOfWork by Offering.Solutions
 date: 2015-12-09T21:37:58+00:00
 author: Fabian Gosebrink
 layout: post

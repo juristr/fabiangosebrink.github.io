@@ -1,6 +1,6 @@
 ---
 id: 463
-title: 'Wpf Basics II &#8211; The INotifyPropertyChanged Interface'
+title: 'Wpf - The INotifyPropertyChanged Interface'
 date: 2014-09-14T19:41:48+00:00
 author: Fabian Gosebrink
 layout: post
