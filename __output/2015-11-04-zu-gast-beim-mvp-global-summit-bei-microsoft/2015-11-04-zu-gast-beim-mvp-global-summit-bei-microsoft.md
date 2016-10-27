@@ -9,13 +9,15 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Hi,
 
 heute ist Halbzeit. Die Hälfte ist vorbei und ich hab gedacht, dass dies ein guter Zeitpunkt ist um mal das erste Fazit von meinem ersten MVP Global Summit zu ziehen.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/44b49704-639f-454c-ae9d-9db90bab1512.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-11/44b49704-639f-454c-ae9d-9db90bab1512.jpg)
 
 Was ich hier im Global Summit erleben und erfahren darf hätte ich mir so niemals ausgemalt. Der Flug war sehr lang, aber das Event ist es mehr als Wert.
 
@@ -50,7 +52,5 @@ Jetzt müssen wir nur noch hoffen, dass die Lufthansa am Samstag nicht streikt. 
 Alles in allem ist das Event bisher ein absolutes Highlight und man kann nur alles dafür tun nächstes Jahr wieder dabei zu sein.
 
 Gruss
-
-&nbsp;
 
 Fabian

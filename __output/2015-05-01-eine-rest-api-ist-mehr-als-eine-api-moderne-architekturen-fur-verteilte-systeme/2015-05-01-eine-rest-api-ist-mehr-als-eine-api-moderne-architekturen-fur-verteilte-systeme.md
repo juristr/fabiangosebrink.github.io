@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme
@@ -33,11 +35,7 @@ Nehmen wir als Beispiel den Kurznachrichtendienst Twitter. Twitter ist ein Unter
 
 Die Implementierung der API, auch im Twitter-Fall, erfolgt nach den Regeln von HTML. Das REST-Prinzip stellt hierbei alle Funktionen zur Verfügung, die ich brauche und ist ein Standard, den alle Endsysteme ausnahmslos sprechen. Ob Android, MVC, iOS, Windows: HTML bzw. die HTML-Verben sind Sprach, System und Plattformunabhängig.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-05/0f47f393-303c-492a-807d-3a973312a440.png)
-
-&nbsp;
+![alttext]({{site.baseurl}}assets/articles/2015-05/0f47f393-303c-492a-807d-3a973312a440.png)
 
 Somit ist eine modern entwickelte API das A und O einer modernen Architektur. Cloud-Systeme wie Microsofts Azure machen es einfacher denn je solche Systeme zu hosten. Um eine standardisierte Sprache zwischen den Clients und der API einzusetzen hat sich JSON durchgesetzt und hält auch in modernen Technologien (ASP.NET 5, Bower, …) auch als Konfigurationsmodell Einzug.
 
@@ -57,6 +55,6 @@ Die Clients könne vielfältig und in verschiedenen Sprachen entwickelt worden s
   <em>Desktop: WPF, AngularJS (Node WebKit)</em>
 </p>
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-05/4cae52dd-fca1-414f-ade4-96ca54b84977.png)
+![alttext]({{site.baseurl}}assets/articles/2015-05/4cae52dd-fca1-414f-ade4-96ca54b84977.png)
 
 Eine REST-Api kann also, unabhängig vom Client, Daten und Datenoperationen zur Verfügung stellen. Sie sollte heutzutage mehr bieten als nur GET und POST-Methoden, sondern auch Paging, Sorting, Datashaping etc. unterstützen um wirklich eine flexible und fähige API zu bieten. Mit solch einer REST-API im Hintergrund können für den Kunden individuelle Lösungen entwickelt werden, die alle letztendlich die gleiche Datensenke konsumieren.

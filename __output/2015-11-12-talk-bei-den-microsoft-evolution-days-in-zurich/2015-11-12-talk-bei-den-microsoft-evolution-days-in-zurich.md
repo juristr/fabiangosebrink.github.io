@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Talk bei den Microsoft Evolution Days in Zürich
@@ -39,40 +41,24 @@ Natürlich bedanke ich mich bei Digicomp und Microsoft, dass ich auf dem Event r
 
 Hier ein Auszug aus den Folien:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/f502e543-418a-4a9f-9d0d-14b2188a554b.png)
-
-&nbsp;
+![alttext]({{site.baseurl}}assets/articles/2015-11/f502e543-418a-4a9f-9d0d-14b2188a554b.png)
 
 Ich denke es ist wichtig klarzustellen, dass &#8220;REST&#8221; nicht gleich &#8220;WebAPI&#8221; ist. REST ist eine Form, die ein Web-Service erfüllen kann. ASP.NET WebAPI ist eine Technologie, mit der man solche Services umsetzen kann. Das ist ein fundamentaler Unterschied.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/1db18db9-1a0b-444f-9b8e-45aa287c1d26.png)
+![alttext]({{site.baseurl}}assets/articles/2015-11/1db18db9-1a0b-444f-9b8e-45aa287c1d26.png)
 
 Hier beschreibe ich eine klassische REST-API. Das PATCH-Attribut habe ich auf der nächsten Folie. Es ging also nicht vergessen. Jeder Link stellt eine eindeutige Aktion dar. Alle CRUDOperationen sind durch diese Links für eine Entität abgedeckt.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/94354840-eecb-4a60-a304-20466e95def1.png)
-
-&nbsp;
+![alttext]({{site.baseurl}}assets/articles/2015-11/94354840-eecb-4a60-a304-20466e95def1.png)
 
 Diese Folie beschreibt wohl das, was AngularJS so mächtig macht. Das Framework bietet einen clientseitige Architektur mit Javascript (oder Typescript), die es ermöglicht komplexe Web-Apllikationen zu bauen.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/397b01a3-83d9-4cc1-95bf-506ca0979654.png) ![alttext](http://offering.solutions/wp-content/uploads/2015/11/Folie44.png)
-
-&nbsp;
+![alttext]({{site.baseurl}}assets/articles/2015-11/397b01a3-83d9-4cc1-95bf-506ca0979654.png) ![alttext](http://offering.solutions/wp-content/uploads/2015/11/Folie44.png)
 
 &#8220;$scope&#8221; ist wohl das Wort, was bei vielen ein Erleichtern auslöst. Es entspricht etwa dem ViewModel, welches man schon von anderen Applikationsarten kennt. Hierauf kann man im AngularJS Funktionen und Werte definieren, die man dann von der View aus via DataBinding konsumieren kann.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-11/6397f920-336f-4f84-ba3b-8812a7be5c3e.png)
+![alttext]({{site.baseurl}}assets/articles/2015-11/6397f920-336f-4f84-ba3b-8812a7be5c3e.png)
 
 Bis dahin
-
-&nbsp;
 
 Fabian

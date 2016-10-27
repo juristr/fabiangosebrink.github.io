@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 ## Examples of ASP.Net WebAPI and ASP.Net Core 1.0 WebAPI
@@ -117,8 +119,6 @@ And last but not least the delete-method. See the fact that one has to return a 
 You can find it here:
 
 https://github.com/FabianGosebrink/ASPNET-WebAPI-Sample
-
-&nbsp;
 
 It supports the GET/POST/PUT/PATCH/DELETE, so the normal CRUD-Approach. OData is included.
 

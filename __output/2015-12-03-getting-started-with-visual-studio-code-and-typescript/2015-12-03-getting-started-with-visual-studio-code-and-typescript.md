@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 ## Getting started with Visual Studio Code and Typescript
@@ -103,13 +105,11 @@ Now you can write and compile Typescript files. 🙂
 
 In Visual Studio Code if you now press the CRTL-SHIFT-B-Buttons you should trigger Visual Studio Code to compile your written files. If you create a taskrunner Visual Studio Code generates a .vscode-folder with a &#8220;tasks.json&#8221; in it.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-12/fba19471-7e44-4025-8a81-8214275c2e6e.jpg)See that the &#8220;args&#8221; is not containing any files explicitly. That triggers the taskrunner to compile the whole code. Not only several files.
-
-&nbsp;
+![alttext]({{site.baseurl}}assets/articles/2015-12/fba19471-7e44-4025-8a81-8214275c2e6e.jpg)See that the &#8220;args&#8221; is not containing any files explicitly. That triggers the taskrunner to compile the whole code. Not only several files.
 
 If you now type Typescript-code in a *.ts file, save it and compile you will see a progress running in vs code for a short time. After this your file should be compiled into Typescript and appear in Visual Studio Code since Visual Studio Code is file based.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-12/18205430-f3c5-4907-b54f-6519c12b6fc8.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/12/tyepscript03.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-12/18205430-f3c5-4907-b54f-6519c12b6fc8.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/12/tyepscript03.jpg)
 
 > If you do NOT see any compiled js/ts-files checking your typescript version is always a good hint.
 
@@ -121,21 +121,15 @@ If you want to get also started with AngularJs (and have installed the tsd like 
 
 which causes the Typescript Definition Manager (tsd) to install the *.d.ts files for AngularJs. The resolve parameter resolves all dependencies angular has (like jQuery in this case).
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-12/3a833894-0569-4de1-909c-2a68f315018b.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-12/3a833894-0569-4de1-909c-2a68f315018b.jpg)
 
 As you can see the typings-folder was generated with a &#8220;tsd.d.ts&#8221; file which holds the references and a tsd.json on the root of the application which holds all installed plugins for our project. This gets updated every time you install a new typescript.d-reference.
-
-&nbsp;
 
 Thats it. You can now go ahead and implement Typescript with Visual Studio Code.
 
 Check out the github repository of this code [here](https://github.com/FabianGosebrink/AspNetWebApiAngularWithTypescript).
 
-&nbsp;
-
 Hope this helps.
-
-&nbsp;
 
 Regards
 

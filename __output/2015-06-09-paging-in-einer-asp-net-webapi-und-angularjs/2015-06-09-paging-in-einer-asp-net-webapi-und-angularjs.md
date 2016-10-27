@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Paging in einer ASP.Net WebAPI (mit AngularJS)
@@ -81,7 +83,7 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 
 Im Response-Header steht nun die Anzahl der kompletten Items:
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/80b7bcb0-d187-44ea-8d36-4bce4da4ab3a.png)
+![alttext]({{site.baseurl}}assets/articles/2015-06/80b7bcb0-d187-44ea-8d36-4bce4da4ab3a.png)
 
 Diese brauchen wir dann nur noch im Client parsen bzw. lesen.
 
@@ -129,7 +131,7 @@ Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items 
 
 Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable &#8220;totalItems&#8221; gesetzt, auf die dann gebunden wird.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/308ca04c-abb0-4292-ae94-45693b5f4832.png)
+![alttext]({{site.baseurl}}assets/articles/2015-06/308ca04c-abb0-4292-ae94-45693b5f4832.png)
 
 Grüsse
 

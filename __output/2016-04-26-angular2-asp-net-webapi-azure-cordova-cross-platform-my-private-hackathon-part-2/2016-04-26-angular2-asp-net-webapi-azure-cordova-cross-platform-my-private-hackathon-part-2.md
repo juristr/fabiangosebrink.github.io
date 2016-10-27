@@ -9,17 +9,19 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 ## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2
 
-&nbsp;
-
 In the last [## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2
 
-&nbsp;
-
-In the last](http://offering.solutions/articles/asp-net/angular2-asp-net-webapi-azure-my-private-hackathon/) I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed.
+In the last](http://offering.solutions/subclass: 'post tag-speeches'
+disqus: true
+categories: articles
+disqus: true
+categories: articles/asp-net/angular2-asp-net-webapi-azure-my-private-hackathon/) I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed.
 
 Well I started coding an AngularJs 1.x Client with Typecript which is available here
 
@@ -29,8 +31,6 @@ Of course I could not stop looking and digging into Angular2. So I wrote this cl
 
 <https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2>
 
-&nbsp;
-
 Inside this blog I want to loose a few words about how I wrote them what the pitfalls were and how I came up with this solution.
 
 > I will only show Angular2 examples here because it&#8217;s the only client which is still maintained
@@ -39,7 +39,7 @@ Inside this blog I want to loose a few words about how I wrote them what the pit
 
 The application is divieded into several components with its child components. Due to the fact that the application is not that big at all there is no huge hierarchy.
 
-![alttext]({{site.baseurl}}assets/images/blogs/2016-04/2c50b8f4-8132-46c4-b632-0488a049fef3.png)
+![alttext]({{site.baseurl}}assets/articles/2016-04/2c50b8f4-8132-46c4-b632-0488a049fef3.png)
 
 So the only interesting thing is the Food-Component which has two child Components &#8220;FoodForm&#8221; and &#8220;FoodList&#8221;.
 
@@ -182,8 +182,6 @@ With every request I have to prepare the header which I do in a wrapped Http ser
 
 Sneak peek:
 
-&nbsp;
-
 <pre class="lang:js decode:true ">private prepareOptions(options: RequestOptionsArgs): RequestOptionsArgs {
         let token: string = this._currentUserService.token;
 
@@ -204,8 +202,6 @@ Sneak peek:
     }</pre>
 
 So I check the headers, append a token if available, set the content-type and accept-properties and give the options back to use it in the REST-Call.
-
-&nbsp;
 
 ### Cross Platform with Gulp
 
@@ -231,8 +227,6 @@ gulp.task('build:all', function(done) {
 });</pre>
 
 For example here is the electron gulp file, which turns this application into an exe
-
-&nbsp;
 
 <pre class="lang:js decode:true ">gulp.task('build:electron:prod', function(done) {
     runSeq(
@@ -294,7 +288,3 @@ Fabian
 <https://github.com/thinktecture/boardz-cross-platform-sample>
 
 <https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/>
-
-&nbsp;
-
-&nbsp;

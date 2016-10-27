@@ -9,11 +9,13 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 ## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon &#8211; What you can code in 9 hours
 
-### ![alttext]({{site.baseurl}}assets/images/blogs/2016-04/a4f664ad-1a00-4812-8a00-c0814964bc7c.jpg)
+### ![alttext]({{site.baseurl}}assets/articles/2016-04/a4f664ad-1a00-4812-8a00-c0814964bc7c.jpg)
 
 ### Motivation
 
@@ -480,8 +482,6 @@ FoodListController:
         }
     }</pre>
 
-&nbsp;
-
 Next we will do the clients
 
 ### The Clients
@@ -497,5 +497,3 @@ The advantage of this is that you can maintain everything from VS like the API, 
 So we are building two clients. At this point I could not go for 9 hours anymore, so I build up one client during these 9 hours of coding and build the other one afterwards. Because it&#8217;s fun 🙂
 
 I will describe the clients in other blog posts after this one&#8230;
-
-&nbsp;

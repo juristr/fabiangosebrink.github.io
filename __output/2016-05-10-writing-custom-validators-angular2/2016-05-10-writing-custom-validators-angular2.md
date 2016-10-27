@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 ## Writing custom validators in Angular2
@@ -133,24 +135,16 @@ Now it would be nice to show specific error messages to the users. So we have to
 
 And that&#8217;s basically it.
 
-![Angular2CustomValidators]({{site.baseurl}}assets/images/blogs/2016-05/5eac1264-a787-43be-9144-58fc0fec9ef4.jpg)
+![Angular2CustomValidators]({{site.baseurl}}assets/articles/2016-05/5eac1264-a787-43be-9144-58fc0fec9ef4.jpg)
 
 HTH
 
 Regards
 
-&nbsp;
-
 <https://github.com/FabianGosebrink/Angular1-And-Angular2-Tutorials-With-Demo-App/tree/master/Angular2-Tutorial/05_Forms/end>
-
-&nbsp;
 
 <http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html>
 
-&nbsp;
-
 Thanks to [Jürgen Gutsch](http://www.gutsch-online.de/) for doing a review of this blogpost.
-
-&nbsp;
 
 Fabian

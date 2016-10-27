@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Start with VS Code, Angular2, Typescript & ASP.NET Core 1.0
@@ -25,9 +27,9 @@ So I want to have an environment where I can build an Angular 2 web application 
 
 First thing to do is setting up our Visual Studio. Create a new application and choose the ASP.NET 5 Templates. I guess they will be renamed later 😉
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/50f21617-631c-482b-9710-63b9b80944a5.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/50f21617-631c-482b-9710-63b9b80944a5.png)
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/af42a271-d958-42fa-875c-cef340fecdda.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/af42a271-d958-42fa-875c-cef340fecdda.png)
 
 You will get an empty solution with no dependencies so far. Lets go and add some: open up the &#8220;project.json&#8221; and add the dependencies like this:
 
@@ -45,17 +47,17 @@ What we are adding is MVC, because we will need it for setting up the API, some 
 
 Visual Studio should now go ahead and resolve, download and install these packages.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/9e2509d5-ec6d-4835-9d94-8aa8d350515b.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/9e2509d5-ec6d-4835-9d94-8aa8d350515b.png)
 
 Now go on and add an &#8220;app&#8221;-Folder, a &#8220;js&#8221;-folder and a &#8220;css&#8221;-folder to the wwwroot-folder.
 
 > Everything in the wwwroot-folder is going to be served to the client. This is where our app lives. You can also build your application outside this folder and copy the relevant files in it via gulp etc. I am not doing this in this case because its easier to debug in the when launching. If you have a better approach I would love to hear it 🙂
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/87964802-3a14-48e1-b9e4-40e023717e40.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/87964802-3a14-48e1-b9e4-40e023717e40.png)
 
 To get started with our web application we need an index.html. Lets add it and put nothing in it so far.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/d0dcd9be-e3f5-4899-ba50-be0f29372de8.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/d0dcd9be-e3f5-4899-ba50-be0f29372de8.png)
 
 ## The Serverside/API
 
@@ -110,9 +112,9 @@ Because at the beginning of this page we are consuming an &#8220;appsettings.jso
 
 Our application should now be able to start up. Just go to the commandline and type &#8220;dnx web&#8221; in it. This will start a webserver and serve all files in wwwroot.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/5872d413-ac2b-4561-9598-7c4b537a3af5.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/5872d413-ac2b-4561-9598-7c4b537a3af5.png)
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/7e6f8b76-7cb3-41e6-b220-fc8a2603a4f5.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/7e6f8b76-7cb3-41e6-b220-fc8a2603a4f5.png)
 
 Great so far! Now we can add a controller!
 
@@ -120,24 +122,24 @@ For this go ahead in the root of the project and add a folder &#8220;Controller&
 
 > I like to stay to IActionResult-Interface in my controllers. It just gives me a way I am used to and is clearer for me. You do not have to do this. The controller is just for demo purposes.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/eef224b8-ae35-45fa-94fd-7b57f036fd0c.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/eef224b8-ae35-45fa-94fd-7b57f036fd0c.png)
 If we now run the server again with &#8220;dnx web&#8221; it will start and via Postman we can check if everything works correctly:
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/4e0f0af8-1c9c-4551-ab7a-fe07446138f0.png)
-
-&nbsp;
+![Alttext]({{site.baseurl}}assets/articles/2016-01/4e0f0af8-1c9c-4551-ab7a-fe07446138f0.png)
 
 ## The Client
-
-&nbsp;
 
 Great. So lets start clientside. What we need is an AngularJs 2.0 environment. For the tooling I made the best experiences using [Visual Studio Code](https://code.visualstudio.com/).
 
 We already defined the wwwroot-Folder which holds every file which is transported to the client.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/748ca475-801b-45f3-ab14-525d0381e2f9.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/748ca475-801b-45f3-ab14-525d0381e2f9.png)
 
-As we start developing AngularJs 2.0 we have to prepare our environment for working with Typescript. I already have an instruction how to start in a previous Blogpost [Getting started with Visual Studio Code & Typescript](http://offering.solutions/articles/asp-net/getting-started-with-visual-studio-code-and-typescript/). But lets cover some thing in short to get it customised for this AngularJs 2.0 case.
+As we start developing AngularJs 2.0 we have to prepare our environment for working with Typescript. I already have an instruction how to start in a previous Blogpost [Getting started with Visual Studio Code & Typescript](http://offering.solutions/subclass: 'post tag-speeches'
+disqus: true
+categories: articles
+disqus: true
+categories: articles/asp-net/getting-started-with-visual-studio-code-and-typescript/). But lets cover some thing in short to get it customised for this AngularJs 2.0 case.
 
 Lets add a file for configuring the typescript-options for our project: tsconfig.json to the root of our project.
 
@@ -189,7 +191,7 @@ After this you can install AngularJs 2 and all other dependencies via &#8220;npm
 
 Last thing to do is copying all your needed files into the &#8220;js&#8221;-folder you created on clientside.
 
-![Alttext]({{site.baseurl}}assets/images/blogs/2016-01/99c6eae8-059e-428f-b715-bdbd5bb62ccb.png)
+![Alttext]({{site.baseurl}}assets/articles/2016-01/99c6eae8-059e-428f-b715-bdbd5bb62ccb.png)
 (Ignore the jquery and signalr files I had addinitonally in the example, its for the next blogpost 😉 )
 
 Now go ahead in you index.html and link to the files in the client js folder:
@@ -230,8 +232,6 @@ Now go ahead in you index.html and link to the files in the client js folder:
 
 &lt;/html&gt;</pre>
 
-&nbsp;
-
 ## Finally&#8230;
 
 We are done so far:
@@ -246,10 +246,6 @@ You could now start using gulp/grunt to copy files to the locations automaticall
 
 [Angular 2 Beta 0 Starter Template on GitHub](https://github.com/FabianGosebrink/Angular2Beta0StarterTemplate)
 
-&nbsp;
-
 Regards & HTH
 
 Fabian
-
-&nbsp;

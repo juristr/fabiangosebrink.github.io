@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 Hey,
@@ -30,7 +32,5 @@ Please report Bugs if you find some!!
 I updated the Github readme and the examples in the repo. Just clone it and let me know what you think 🙂
   
 Regards
-
-&nbsp;
 
 Fabian

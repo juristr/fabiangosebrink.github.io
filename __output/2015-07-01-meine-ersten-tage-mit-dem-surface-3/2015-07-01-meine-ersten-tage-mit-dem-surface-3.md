@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Der Anfang von etwas Gutem: Meine ersten Tage mit dem Surface Pro 3
@@ -37,9 +39,7 @@ und einen Stift zum Bedienen:
   
 [Stift im MSStore](http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-Stift/productID.314951700)
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/ea708c02-690e-4689-b4e6-f38a9fe34681.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/01.jpg)![alttext](http://offering.solutions/wp-content/uploads/2015/06/02.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/13.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/ea708c02-690e-4689-b4e6-f38a9fe34681.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/01.jpg)![alttext](http://offering.solutions/wp-content/uploads/2015/06/02.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/13.jpg)
 
 ## Äusserliche Erscheinung und Haptik
 
@@ -51,55 +51,39 @@ Als erstes fällt mir der Lüftungsschlitz positiv auf, der um das halbe Surface
 
 Als zweites fallen mir die dezent verarbeiteten Kameras an der Front- sowie der Rückseite des Geräts auf. Diese merkt man kaum beim darüber fühlen mit dem Finger und sie sind gut in das Gerät verarbeitet. An der Front verschwinden sie sogar unter der Oberfläche, so dass man sie gar nicht spürt. Beide haben 5 Megapixel, was mir im praktischen Betrieb nicht so wichtig ist. Denn alles, was ich damit machen würde, wäre skypen. Und dafür reicht es allemal. Auch wenn ich das Surface mag renne ich nicht damit rum und mache Urlaubsbilder direkt mit dem Tablet 😉
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/d468883e-8dc7-4bba-9398-79e6b6c47994.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/d468883e-8dc7-4bba-9398-79e6b6c47994.jpg)
 
 Die Touchoberfläche hat zwei kleine circa 3 cm lange Schlitze, die als Lautsprecher dienen. Sie sind zwischen der Oberfläche und dem Rahmen platziert. So dezent, dass sie mir erst gar nicht aufgefallen sind. Hier muss man aufpassen, dass das gerade während des mobilen Gebrauchs kein Dreckfänger wird. Allerdings hätte ich keinen Vorschlag dies besser zu verarbeiten. Meine „Kritik“ ist somit nicht sehr konstruktiv. Angegeben sind die Lautsprecher mit „Dolby-Sound“. Ich weiss nicht, ob Microsoft hier extra den Begriff „Dolby-Surround“ ausgelassen hat oder ob der Hersteller dies damit ausdrücken wollte. Wie dem auch sei: Ich bin Musik-Affin und mir ist von vornerein klar, dass die Lautsprecher keine Standboxen ersetzen können. Jeder Dolby-Surround wäre nur ansatzweise zu erahnen. Die Lautsprecher erweisen sich aber beim Musikhören als gut und nicht zu schwach auf der Brust. Selbst bei basslastigen Stücken vibriert nichts. Klangfülle ist kaum vorhanden, was aber bei solchen Lautsprechern aufgrund der Grösse etc. auch nicht zu erwarten war.
 
 Das Surface hat einen Standfuss hinten, den man stufenlos einstellen kann. Dieser wirkt in keiner Position klapprig oder „schwach auf den Beinen“. Im Gegenteil: Ich bin überrascht wie massiv das Gerät egal in welcher Lage steht. Wozu natürlich die tiefste Einstellung ist bleibt wohl Microsoft vorbehalten. Die einzige Gefahr, die man dann hat, ist, dass man die Halterung abbricht. Aber auf so ein teures Gerät sollte man eben aufpassen 😉 Draufsetzen war da noch nie eine gute Idee.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/24a1c935-ffc7-4a12-9ec9-676ad31eed28.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/08.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/07.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/24a1c935-ffc7-4a12-9ec9-676ad31eed28.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/08.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/07.jpg)
 
 Verglichen mit dem SurfaceRT ist das Gerät ein wenig grösser, was es aber auch sein darf. Ich empfinde das als sehr angenehm. Die Grösse des Displays ist keinesfalls zu gross für ein Tablet. Es ist minimal schwerer (Angaben laut Microsoft: Surface RT: 680 Gramm, Surface 3 Pro: 800 Gramm) was ich aber laut Gefühl eher als gleichschwer angegeben hätte. Das beeindruckt mich, denn für die Grösse des Surface 3 Pro wirkt das Gerät sehr leicht. Zum Mitnehmen und in der Tasche rumtragen absolut perfekt.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/e1322554-5955-4307-bf8c-2f5513fd428d.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/22.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/18.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/17.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/16.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/e1322554-5955-4307-bf8c-2f5513fd428d.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/22.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/18.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/17.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/16.jpg)
 
 Der mitgelieferte Stift ist gerade so schwer, dass man das Gefühl hat, etwas in der Hand zu haben. Es wirkt nicht wie billiges Plastik. Der Stift hat auf etwa einem Drittel der Länge zwei Knöpfe übereinander angebracht, die für meinen Geschmack zu viel Spiel haben. Sie lassen sich in ihrer Fassung minimal hin- und herschieben. Das ist nicht schlimm, geht aber sicher besser.
 
 Der Stift hat gerade Kanten, liegt aber gut in der Hand, was zum grossen Teil dem Gewicht zuzuschreiben ist.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/7add9f2d-6232-44a3-a47e-4958430d34c3.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/21.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/7add9f2d-6232-44a3-a47e-4958430d34c3.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/21.jpg)
 
 Das Type Cover ist dünner als seine Vorgänger und hat auf der Unterseite einen feinen Filzüberzug. Ich finde das sehr praktisch, da ich so die Wahl habe das Tablet auf die Metalloberfläche oder auf eine weiche Fläche zu legen. Dies war jedoch schon beim Touch Cover beim Surface RT nicht anders. Das anfügen und ablösen des Covers vom Tablet geht mit der Magnet-Lösung einwandfrei.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/11b48014-e059-4526-bbbf-7e11b3a19c43.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/14.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/11b48014-e059-4526-bbbf-7e11b3a19c43.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/14.jpg)
 
 Man kann das Cover so anbringen, dass zwischen der Stellfläche des Tablets und der Tastatur ein Hohlraum ist. Entgegen meinen Erwartungen wippt die Tastatur jedoch nicht mit sondern bietet genau den gleichen Druckpunkt als ob sie auf einem normalen Untergrund platziert wäre. Das überrascht mich wieder sehr positiv.
 
-&nbsp;
-
-![alttext]({{site.baseurl}}assets/images/blogs/2015-06/6dfaa60d-54b8-4911-af5a-600828eaa093.jpg)
+![alttext]({{site.baseurl}}assets/articles/2015-06/6dfaa60d-54b8-4911-af5a-600828eaa093.jpg)
 
 ## Display
 
 Das Display ist absolut überzeugend in allen Belangen. Es ist gross genug, dass alles wichtige angezeigt werden kann und mit der Auflösung von 2160&#215;1440 bei 12 Zoll ein echter „Hingucker“. Die Helligkeit lässt sich sehr granular einstellen und man kann auch draussen damit arbeiten. Man muss festhalten, dass das Surface ein 4:3-Display mitbringt und 16:9-Formate wie Serien oder Filme einen schwarzen Rand oben und unten nach sich ziehen. Das ist nicht weiter schlimm, man sieht es jedoch.
 
-&nbsp;
-
 ## Akkulaufzeit
 
 Die Akkulaufzeit ist mit 9 (!) Stunden angegeben. Das mag vielleicht auch realistisch sein, wenn man es fast gar nicht nutzt. Die Nutzung ist hier der entscheidende Faktor. In meinem normalen Gebrauch, was Surfen, Schreiben, YouTube mit Sound und „herumspielen“ mit dem Betriebssystem umfasst, hielt der Akku ca. sechs Stunden, was ein absolut akzeptabler Wert ist. Auffallend ist, dass das Gerät recht warm wird im oberen rechten Bereich. Das stört nicht, ob das nun Akku oder WLAN-Modul ist, habe ich nicht weiter überprüft.
-
-&nbsp;
 
 ## Bedienung
 
@@ -109,12 +93,10 @@ Der Windows-Button ist gegenüber dem SurfaceRT von der unten mittigen Position 
 
 Die Programme wie Browser, Word, Excel etc. starten so, wie man das von einem normalen Desktop-PC erwarten würde. Hier merkt man keinen Unterschied. Durch den Slogan, dass das Gerät einen Laptop durchaus ersetzen kann und soll, erwarte ich dies jedoch auch. Alles andere wäre eine Enttäuschung.
 
-** ![alttext]({{site.baseurl}}assets/images/blogs/2015-06/dff5e1ca-92c6-4039-8ee1-43a66cb55836.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/11.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/06.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/04.jpg)**
+** ![alttext]({{site.baseurl}}assets/articles/2015-06/dff5e1ca-92c6-4039-8ee1-43a66cb55836.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/11.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/06.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/04.jpg)**
 
 ## Fazit
 
 Ich habe das Surface drei nun ein paar Tage im Einsatz und ich bin absolut positiv überrascht. Natürlich ist der Sprung von einem SurfaceRT zu einem Pro 3 Gerät riesig, dennoch enttäuscht mich das Gerät in keinerlei Hinsicht. Es ist handlich wie ein Tablet mit einer Leistung, die wenige Wünsche offen lässt und sieht noch gut aus dabei. Das hat jedoch auch seinen Preis.
 
 Die Frage, ob es meinen Laptop ersetzen kann, muss ich klar positiv beantworten. Ich traue dem Gerät das absolut zu. Ob es in Kombination mit einer Dockingstation meinen Desktop-PC ersetzen kann? Meinen geliebten mühsam selbst zusammengebauten Desktop PC? Ich würde es gerne ausprobieren! Das heisst aber auch, dass ich dem Surface in der Ausstattung diese Hürde absolut zutraue! Ein Super-Gerät, welches Spass macht und ich nur schweren Herzens wieder hergeben würde.
-
-&nbsp;

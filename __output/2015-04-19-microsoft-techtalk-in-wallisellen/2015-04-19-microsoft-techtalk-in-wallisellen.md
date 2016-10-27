@@ -9,6 +9,8 @@ logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/download_edit_dark.jpg'
 subclass: 'post tag-speeches'
+disqus: true
+categories: articles
 ---
 
 # Microsoft TechTalk in Wallisellen
@@ -23,11 +25,7 @@ Hans Peter stellte in einer 50-minütigen Session ASP.NET vNext vor. Mit praktis
 
 Ich habe in einer vierzig-minütigen Session (wieso hatte ich nur 40?) Asp.Net WebApi mit AngularJS vorgestellt. AngularJS ist ein Single-Page-Application-Framework aus dem Hause Google. Clientseitige Programmierung ist nicht neu. Clientseitige Programmierung mit Struktur, mit Ordnung und Architektur jedoch schon. Javascript war vor Angular &#8220;Vogelwild&#8221; oder von Versuchen geprägt, dies zu ändern. Aus mittlerweile vielen Frameworks hat sich Angular herauskristallisiert und sich als State-of-the-Art etabliert. Out of the Box bringt Angular Features wie Dependency-Injection, Two-Way Databinding, SoC, Ui-Templating etc. mit.
 
-&nbsp;
-
 Somit ist es möglich, verteilte Applikationen mit einer API als Backend zu erstellen. Im Frontend kann ein Client mit Angular zum Einsatz kommen. Richtig implementiert lassen sich hieraus IOS/Android und Windows-Phone Implementierungen erstellen. Alles mit einer Code-Basis.
-
-&nbsp;
 
 Mit SignalR dreht man sprichwörtlich den Spiess um: Was, wenn der Server dem Client initiativ mal etwas mitteilen möchte? Das kann er tun. Mit SignalR kann der Server dem Client Push-Notifications senden. Das geht auch in einem WPF-Client!
 
@@ -42,5 +40,3 @@ Nächste Station ist der TechTalk am 23. April 2015 in Basel. Wir freuen uns!!!
 Gruss
 
 Fabian
-
-&nbsp;
