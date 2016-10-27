@@ -29,7 +29,7 @@ Changes:
 
 Please report Bugs if you find some!!
 
-I updated the Github readme and the examples in the repo. Just clone it and let me know what you think 🙂
+I updated the Github readme and the examples in the repo. Just clone it and let me know what you think.
   
 Regards
 

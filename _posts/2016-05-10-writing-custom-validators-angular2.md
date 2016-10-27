@@ -13,8 +13,6 @@ disqus: true
 categories: articles
 ---
 
-## Writing custom validators in Angular2
-
 Hey,
 
 in this blogpost I want to show you how to write custom validators for forms in Angular2.
@@ -133,9 +131,9 @@ Now it would be nice to show specific error messages to the users. So we have to
     &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</pre>
 
-And that&#8217;s basically it.
+And that's basically it.
 
-![Angular2CustomValidators]({{site.baseurl}}assets/articles/2016-05/5eac1264-a787-43be-9144-58fc0fec9ef4.jpg)
+![Angular2CustomValidators]({{site.baseurl}}assets/articles/2016-05-10/5eac1264-a787-43be-9144-58fc0fec9ef4.jpg)
 
 HTH
 

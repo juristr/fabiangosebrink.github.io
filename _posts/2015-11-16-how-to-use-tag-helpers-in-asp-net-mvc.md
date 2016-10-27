@@ -1,7 +1,7 @@
 ---
 id: 817
 title: How to use tag helpers in ASP.NET MVC
-date: 2015-11-16T20:18:34+00:00
+date: 2015-11-16-16T20:18:34+00:00
 author: Fabian Gosebrink
 layout: post
 tags: asp.net asp.netmvc 
@@ -35,11 +35,12 @@ Getting started:
 
 First make sure you included a reference to the tag helpers in your project.json
 
-![alttext]({{site.baseurl}}assets/articles/2015-11/bc1c8d13-1a2a-4e9c-b8c9-4d21ae512b93.png)
+![How to use tag helpers in ASP.NET MVC]({{site.baseurl}}assets/articles/2015-11-16/bc1c8d13-1a2a-4e9c-b8c9-4d21ae512b93.png)
 
 And Because tag helpers do not throw an exception if you use them and they do not work you should also include a _ViewImports.cshtml which is responsible to load all extra functionality to your views. You can simply add it via the context menu Add &#8211;> New Item.
 
-![alttext]({{site.baseurl}}assets/articles/2015-11/7ef2ff9d-2743-4bbd-8c80-74f734df4dbb.png) ![alttext](http://offering.solutions/wp-content/uploads/2015/11/TagHelpers_3.png)
+![How to use tag helpers in ASP.NET MVC]({{site.baseurl}}assets/articles/2015-11-16/7ef2ff9d-2743-4bbd-8c80-74f734df4dbb.png) 
+![How to use tag helpers in ASP.NET MVC]({{site.baseurl}}assets/articles/2015-11-16/dbbe329a-4671-4e15-84c9-f417e79a8741.png)
 
 Now all the cshtml files are able to handle Asp.Net-TagHelpers which get easily in your html like this:
 
@@ -79,7 +80,7 @@ You can also write forms in this Html-Tag-Helper-Syntax which is really nice to 
 
 instead of using the "ugly" @-like Sytax before.
 
-Hope to make you curious about tag helpers. Go and use them in your next ASP.NET-Project 🙂
+Hope to make you curious about tag helpers. Go and use them in your next ASP.NET-Project
 
 Regards
 

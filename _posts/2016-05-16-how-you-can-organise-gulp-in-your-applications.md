@@ -163,11 +163,11 @@ So here we are building a small architecture and get some order in our tasks-, f
 
 Often I see that the default task is executing logic. It does something. And when the default task is doing something it&#8217;s most likely something like a main task. Like "build-all" or something?
 
-Let&#8217;s picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: "Let me see what you have got for me".
+Let's picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: "Let me see what you have got for me".
 
 If you run `gulp` which executes the default task and something starts to run and I as a developer have NO IDEA what exactly runs there &#8211; that scares me.
 
-Wouldn&#8217;t it be better to have a kind of more defensive behaviour? This is why I prefer to list all the tasks the repo offers to the delevoper. And the developer can then decide which one he wants to execute.
+Wouldn't it be better to have a kind of more defensive behaviour? This is why I prefer to list all the tasks the repo offers to the delevoper. And the developer can then decide which one he wants to execute.
 
 But with this option I mentioned above we have **many** small tasks which can be executed.
 
@@ -177,7 +177,7 @@ All main tasks are divided with a ":", all child tasks with "-".
 
 For the task-listing feature there is also an npm package available [here](https://www.npmjs.com/package/gulp-task-listing).
 
-"gulp-task-listing &#8211; Adds the ability to provide a task listing for your gulpfile"
+"gulp-task-listing" Adds the ability to provide a task listing for your gulpfile"
 
 You can define filters to define which one is a main task and which one is a child task.
 
