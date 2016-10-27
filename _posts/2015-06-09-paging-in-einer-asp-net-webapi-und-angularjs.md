@@ -13,8 +13,6 @@ disqus: true
 categories: articles
 ---
 
-# Paging in einer ASP.Net WebAPI (mit AngularJS)
-
 Eine gute API sollte mehrere Features anbieten. Eins davon ist Paging. In diesem Beispiel zeige ich Paging mit AngularJS und wie man es auf dem Client konsumieren kann.
 
 Als erstes sollte man dem Client anbieten per Parameter nur eine bestimmte Anzahl von Einträgen abzurufen.
@@ -83,7 +81,7 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 
 Im Response-Header steht nun die Anzahl der kompletten Items:
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/80b7bcb0-d187-44ea-8d36-4bce4da4ab3a.png)
+![Paging in einer ASP.Net WebAPI und AngularJS]({{site.baseurl}}assets/articles/2015-06-09/80b7bcb0-d187-44ea-8d36-4bce4da4ab3a.png)
 
 Diese brauchen wir dann nur noch im Client parsen bzw. lesen.
 
@@ -131,10 +129,8 @@ Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items 
 
 Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable "totalItems" gesetzt, auf die dann gebunden wird.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/308ca04c-abb0-4292-ae94-45693b5f4832.png)
+![Paging in einer ASP.Net WebAPI und AngularJS]({{site.baseurl}}assets/articles/2015-06-09/308ca04c-abb0-4292-ae94-45693b5f4832.png)
 
 Grüsse
 
 Fabian
-
-This post was first published on [Noser-Blog](http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/)

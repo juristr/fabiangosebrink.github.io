@@ -13,7 +13,7 @@ disqus: true
 categories: articles
 ---
 
-The idea for thing blogpost came after I spent a whole [The idea for thing blogpost came after I spent a whole](http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/) about implementing paging in a web API. Paging is a very important feature a REST API should offer. However, there are a lot more. Here I want to mention a few of them hoping to cover as much as you need to build great API’s 😉
+The idea for thing blogpost came after I spent a whole [The idea for thing blogpost came after I spent a whole](http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/) about implementing paging in a web API. Paging is a very important feature a REST API should offer. However, there are a lot more. Here I want to mention a few of them hoping to cover as much as you need to build great API.
 
 Before we dive deeper into what an API can do you may think that all this stuff can also be done on the client. But you do not know which kind of client in the future will consume your web API. This can be an intelligent client that can do all the stuff on client side. So why do you have to offer those features then? Because instead of an intelligent client this can also be a “stupid” client which does not support any features at all. And if it only supports simple http-calls it has to use the features you offer with your API. The more you offer, the better it is for those clients. Keep this in your mind during coding your API’s.
 
@@ -86,5 +86,3 @@ Finally yet importantly it has to be mentioned to always use https to communicat
 **Summing-up**
 
 In the end building REST-APIs is great. You are very flexible choosing your clients. But always consider giving the client every possible mechanism to get, create, update and delete the data it neds. Thinking about this during the development of a RESTful-API may save you a lot of work later.
-
-This blogpost was first published on Noser-Blog

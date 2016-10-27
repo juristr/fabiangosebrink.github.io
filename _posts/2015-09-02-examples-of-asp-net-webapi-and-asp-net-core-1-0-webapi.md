@@ -13,8 +13,6 @@ disqus: true
 categories: articles
 ---
 
-## Examples of ASP.Net WebAPI and ASP.Net Core 1.0 WebAPI
-
 Hey folks,
 
 I just released two sample APIs on Github.
@@ -133,5 +131,3 @@ Comment if you have suggestions to make these examples better! Let me know.
 HTH
 
 Fabian
-
-This post was also released on the [Noser-Blog](http://blog.noser.com/author/gosebrink/)

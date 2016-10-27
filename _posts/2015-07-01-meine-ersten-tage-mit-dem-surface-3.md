@@ -13,8 +13,6 @@ disqus: true
 categories: articles
 ---
 
-# Der Anfang von etwas Gutem: Meine ersten Tage mit dem Surface Pro 3
-
 Nun ist es endlich da. Das Surface der dritten Generation. Ich habe mich ja schon drauf gefreut aber wenn es dann da ist, ist es natürlich nochmal was ganz anderes. Man hört ja so viel, man liest noch mehr und am Ende schimpfen alle auf die Kacheln. Mir völlig unverständlich, aber trotzdem habe ich gedacht, dass ich das Surface mal einem Review unterziehen kann. Die Ergebnisse davon will ich in diesem Beitrag beschreiben.
 
 <p style="padding-left: 30px;">
@@ -27,7 +25,7 @@ Nun ist es endlich da. Das Surface der dritten Generation. Ich habe mich ja scho
 
 ## Grundlegendes
 
-In meinem „Test“ habe ich ein Surface Pro 3 &#8211; 128 GB mit einem Intel i5 und 4GB RAM vorliegen
+In meinem „Test“ habe ich ein Surface Pro 3 / 128 GB mit einem Intel i5 und 4GB RAM vorliegen
   
 [Surface Pro 3 im MSStore](http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-Pro-3/productID.300223100?WT.mc_id=SurfaceBG=Surface-Pro-3)
   
@@ -39,7 +37,7 @@ und einen Stift zum Bedienen:
   
 [Stift im MSStore](http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-Stift/productID.314951700)
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/ea708c02-690e-4689-b4e6-f38a9fe34681.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/01.jpg)![alttext](http://offering.solutions/wp-content/uploads/2015/06/02.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/13.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/ea708c02-690e-4689-b4e6-f38a9fe34681.jpg)
 
 ## Äusserliche Erscheinung und Haptik
 
@@ -51,31 +49,31 @@ Als erstes fällt mir der Lüftungsschlitz positiv auf, der um das halbe Surface
 
 Als zweites fallen mir die dezent verarbeiteten Kameras an der Front- sowie der Rückseite des Geräts auf. Diese merkt man kaum beim darüber fühlen mit dem Finger und sie sind gut in das Gerät verarbeitet. An der Front verschwinden sie sogar unter der Oberfläche, so dass man sie gar nicht spürt. Beide haben 5 Megapixel, was mir im praktischen Betrieb nicht so wichtig ist. Denn alles, was ich damit machen würde, wäre skypen. Und dafür reicht es allemal. Auch wenn ich das Surface mag renne ich nicht damit rum und mache Urlaubsbilder direkt mit dem Tablet 😉
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/d468883e-8dc7-4bba-9398-79e6b6c47994.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/d468883e-8dc7-4bba-9398-79e6b6c47994.jpg)
 
 Die Touchoberfläche hat zwei kleine circa 3 cm lange Schlitze, die als Lautsprecher dienen. Sie sind zwischen der Oberfläche und dem Rahmen platziert. So dezent, dass sie mir erst gar nicht aufgefallen sind. Hier muss man aufpassen, dass das gerade während des mobilen Gebrauchs kein Dreckfänger wird. Allerdings hätte ich keinen Vorschlag dies besser zu verarbeiten. Meine „Kritik“ ist somit nicht sehr konstruktiv. Angegeben sind die Lautsprecher mit „Dolby-Sound“. Ich weiss nicht, ob Microsoft hier extra den Begriff „Dolby-Surround“ ausgelassen hat oder ob der Hersteller dies damit ausdrücken wollte. Wie dem auch sei: Ich bin Musik-Affin und mir ist von vornerein klar, dass die Lautsprecher keine Standboxen ersetzen können. Jeder Dolby-Surround wäre nur ansatzweise zu erahnen. Die Lautsprecher erweisen sich aber beim Musikhören als gut und nicht zu schwach auf der Brust. Selbst bei basslastigen Stücken vibriert nichts. Klangfülle ist kaum vorhanden, was aber bei solchen Lautsprechern aufgrund der Grösse etc. auch nicht zu erwarten war.
 
 Das Surface hat einen Standfuss hinten, den man stufenlos einstellen kann. Dieser wirkt in keiner Position klapprig oder „schwach auf den Beinen“. Im Gegenteil: Ich bin überrascht wie massiv das Gerät egal in welcher Lage steht. Wozu natürlich die tiefste Einstellung ist bleibt wohl Microsoft vorbehalten. Die einzige Gefahr, die man dann hat, ist, dass man die Halterung abbricht. Aber auf so ein teures Gerät sollte man eben aufpassen 😉 Draufsetzen war da noch nie eine gute Idee.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/24a1c935-ffc7-4a12-9ec9-676ad31eed28.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/08.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/07.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/24a1c935-ffc7-4a12-9ec9-676ad31eed28.jpg)
 
 Verglichen mit dem SurfaceRT ist das Gerät ein wenig grösser, was es aber auch sein darf. Ich empfinde das als sehr angenehm. Die Grösse des Displays ist keinesfalls zu gross für ein Tablet. Es ist minimal schwerer (Angaben laut Microsoft: Surface RT: 680 Gramm, Surface 3 Pro: 800 Gramm) was ich aber laut Gefühl eher als gleichschwer angegeben hätte. Das beeindruckt mich, denn für die Grösse des Surface 3 Pro wirkt das Gerät sehr leicht. Zum Mitnehmen und in der Tasche rumtragen absolut perfekt.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/e1322554-5955-4307-bf8c-2f5513fd428d.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/22.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/18.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/17.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/16.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/e1322554-5955-4307-bf8c-2f5513fd428d.jpg)
 
 Der mitgelieferte Stift ist gerade so schwer, dass man das Gefühl hat, etwas in der Hand zu haben. Es wirkt nicht wie billiges Plastik. Der Stift hat auf etwa einem Drittel der Länge zwei Knöpfe übereinander angebracht, die für meinen Geschmack zu viel Spiel haben. Sie lassen sich in ihrer Fassung minimal hin- und herschieben. Das ist nicht schlimm, geht aber sicher besser.
 
 Der Stift hat gerade Kanten, liegt aber gut in der Hand, was zum grossen Teil dem Gewicht zuzuschreiben ist.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/7add9f2d-6232-44a3-a47e-4958430d34c3.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/21.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/7add9f2d-6232-44a3-a47e-4958430d34c3.jpg)
 
 Das Type Cover ist dünner als seine Vorgänger und hat auf der Unterseite einen feinen Filzüberzug. Ich finde das sehr praktisch, da ich so die Wahl habe das Tablet auf die Metalloberfläche oder auf eine weiche Fläche zu legen. Dies war jedoch schon beim Touch Cover beim Surface RT nicht anders. Das anfügen und ablösen des Covers vom Tablet geht mit der Magnet-Lösung einwandfrei.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/11b48014-e059-4526-bbbf-7e11b3a19c43.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/14.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/11b48014-e059-4526-bbbf-7e11b3a19c43.jpg)
 
 Man kann das Cover so anbringen, dass zwischen der Stellfläche des Tablets und der Tastatur ein Hohlraum ist. Entgegen meinen Erwartungen wippt die Tastatur jedoch nicht mit sondern bietet genau den gleichen Druckpunkt als ob sie auf einem normalen Untergrund platziert wäre. Das überrascht mich wieder sehr positiv.
 
-![alttext]({{site.baseurl}}assets/articles/2015-06/6dfaa60d-54b8-4911-af5a-600828eaa093.jpg)
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/6dfaa60d-54b8-4911-af5a-600828eaa093.jpg)
 
 ## Display
 
@@ -93,7 +91,7 @@ Der Windows-Button ist gegenüber dem SurfaceRT von der unten mittigen Position 
 
 Die Programme wie Browser, Word, Excel etc. starten so, wie man das von einem normalen Desktop-PC erwarten würde. Hier merkt man keinen Unterschied. Durch den Slogan, dass das Gerät einen Laptop durchaus ersetzen kann und soll, erwarte ich dies jedoch auch. Alles andere wäre eine Enttäuschung.
 
-** ![alttext]({{site.baseurl}}assets/articles/2015-06/dff5e1ca-92c6-4039-8ee1-43a66cb55836.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/11.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/06.jpg) ![alttext](http://offering.solutions/wp-content/uploads/2015/06/04.jpg)**
+![Meine ersten Tage mit dem Surface Pro 3]({{site.baseurl}}assets/articles/2015-07-01/dff5e1ca-92c6-4039-8ee1-43a66cb55836.jpg)
 
 ## Fazit
 
