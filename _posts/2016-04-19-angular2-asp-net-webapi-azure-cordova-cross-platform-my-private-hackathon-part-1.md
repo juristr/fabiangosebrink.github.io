@@ -1,6 +1,6 @@
 ---
 id: 906
-title: 'Angular2, ASP.NET WebAPI, Azure &#038; Cordova, Cross Platform – My Private Hackathon Part 1'
+title: 'Angular2, ASP.NET WebAPI, Azure, Cordova, Cross Platform – My Private Hackathon Part 1'
 date: 2016-04-19T17:34:15+00:00
 author: Fabian Gosebrink
 layout: post
@@ -13,15 +13,13 @@ disqus: true
 categories: articles
 ---
 
-## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon &#8211; What you can code in 9 hours
-
-### ![alttext]({{site.baseurl}}assets/articles/2016-04/a4f664ad-1a00-4812-8a00-c0814964bc7c.jpg)
+### ![Angular2, ASP.NET WebAPI, Azure, Cordova, Cross Platform – My Private Hackathon]({{site.baseurl}}assets/articles/2016-04-19/a4f664ad-1a00-4812-8a00-c0814964bc7c.jpg)
 
 ### Motivation
 
 I had a few free hours and was curious and wanted to know what you can achieve in 9 hours of coding. Due to the fact that I am very into ASP.NET development with Angular I coded a small application which is based on ASP.NET Web API, AngularJs/Angular2 with Typescript & co. So the question is: How far will I go in 9 hours? This is my private Hackathon!!
 
-### Goal &#8211; The FoodChooser
+### Goal : The FoodChooser
 
 When I am not coding I love to stand in the kitchen but I do always have the problem of know knowing what I should cook. I know there are tons of cooking websites out there with a lot of inspiration but my problem is not getting a recipe for the meals but instead I got no idea what to search for. So my idea was to develop a small application where I can manage my food ideas without recipes. Because everybody is doing the meals the way they want to because every taste is different. However: A small application where I can manage my food should be the application I wanted to write: The FoodChooser
 

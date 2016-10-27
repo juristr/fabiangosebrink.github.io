@@ -1,6 +1,6 @@
 ---
 id: 1234
-title: 'Angular2, ASP.NET WebAPI, Azure &#038; Cordova, Cross Platform – My Private Hackathon Part 2'
+title: 'Angular2, ASP.NET WebAPI, Azure, Cordova, Cross Platform – My Private Hackathon Part 2'
 date: 2016-04-26T10:05:19+00:00
 author: Fabian Gosebrink
 layout: post
@@ -13,15 +13,9 @@ disqus: true
 categories: articles
 ---
 
-## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2
+In the last 
 
-In the last [## Angular2, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2
-
-In the last](http://offering.solutions/subclass: 'post tag-speeches'
-disqus: true
-categories: articles
-disqus: true
-categories: articles/asp-net/angular2-asp-net-webapi-azure-my-private-hackathon/) I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed.
+In the last blogpost I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed.
 
 Well I started coding an AngularJs 1.x Client with Typecript which is available here
 
@@ -39,7 +33,7 @@ Inside this blog I want to loose a few words about how I wrote them what the pit
 
 The application is divieded into several components with its child components. Due to the fact that the application is not that big at all there is no huge hierarchy.
 
-![alttext]({{site.baseurl}}assets/articles/2016-04/2c50b8f4-8132-46c4-b632-0488a049fef3.png)
+![Angular2, ASP.NET WebAPI, Azure, Cordova, Cross Platform – My Private Hackathon]({{site.baseurl}}assets/articles/2016-04-26/2c50b8f4-8132-46c4-b632-0488a049fef3.png)
 
 So the only interesting thing is the Food-Component which has two child Components "FoodForm" and "FoodList".
 
