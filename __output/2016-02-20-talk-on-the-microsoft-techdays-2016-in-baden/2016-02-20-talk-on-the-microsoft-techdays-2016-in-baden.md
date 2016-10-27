@@ -33,7 +33,7 @@ I am so happy to announce that I will speak on the TechDays 2016 in Baden for th
 
 The talks is about Web development with Angular2 in combination with SignalR and we will have a demo working on ASP.NET Core 1.0. I will hold it in german.
 
-> I know the title shows &#8220;<span class="fontColorNormal headline">ASP.NET 5&#8243; but the ASP.NET-Team did the renaming just after I gave Microsoft my title. I will mention that in my talk but just to know: We will of course work with ASP.NET Core 1.0</span>
+> I know the title shows "<span class="fontColorNormal headline">ASP.NET 5&#8243; but the ASP.NET-Team did the renaming just after I gave Microsoft my title. I will mention that in my talk but just to know: We will of course work with ASP.NET Core 1.0</span>
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-02/839424f1-65a8-46e4-ac39-7c106a764948.png)
 

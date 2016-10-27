@@ -129,7 +129,7 @@ Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items 
 ]);
 </pre>
 
-Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable &#8220;totalItems&#8221; gesetzt, auf die dann gebunden wird.
+Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable "totalItems" gesetzt, auf die dann gebunden wird.
 
 ![alttext]({{site.baseurl}}assets/articles/2015-06/308ca04c-abb0-4292-ae94-45693b5f4832.png)
 

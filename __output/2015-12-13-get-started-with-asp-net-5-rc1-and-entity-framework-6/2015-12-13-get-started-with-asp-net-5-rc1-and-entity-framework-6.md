@@ -39,11 +39,11 @@ at the end of you dependencies section like this:
 
 <a href="{{site.baseurl}}assets/articles/2015-12/e207c26b-8bc0-4746-aeab-3776b98405e2.jpg" rel="attachment wp-att-873"><img class="aligncenter size-full wp-image-873" src="{{site.baseurl}}assets/articles/2015-12/e207c26b-8bc0-4746-aeab-3776b98405e2.jpg" alt="Ef6Example_02" width="623" height="222" srcset="{{site.baseurl}}assets/articles/2015-12/e207c26b-8bc0-4746-aeab-3776b98405e2.jpg 623w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_02-300x107.jpg 300w" sizes="(max-width: 623px) 100vw, 623px" /></a>This will get Visual Studio 2015 to update your dependencies including the Entity Framework.
 
-Now you can create a new class named like your Context. in this case this will be &#8220;MyEf6EntityFrameworkContext&#8221;.
+Now you can create a new class named like your Context. in this case this will be "MyEf6EntityFrameworkContext".
 
-<a href="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg" rel="attachment wp-att-874"><img class="aligncenter size-full wp-image-874" src="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg" alt="Ef6Example_03" width="548" height="236" srcset="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg 548w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_03-300x129.jpg 300w" sizes="(max-width: 548px) 100vw, 548px" /></a>Be sure to use the &#8220;base&#8221;-functionality, because we will need it when passing the connectionstring to the context reading it out of the *.json file.
+<a href="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg" rel="attachment wp-att-874"><img class="aligncenter size-full wp-image-874" src="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg" alt="Ef6Example_03" width="548" height="236" srcset="{{site.baseurl}}assets/articles/2015-12/ca264317-b4e3-4e88-bb98-f2d401fa06c1.jpg 548w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_03-300x129.jpg 300w" sizes="(max-width: 548px) 100vw, 548px" /></a>Be sure to use the "base"-functionality, because we will need it when passing the connectionstring to the context reading it out of the *.json file.
 
-Back in our Startup.cs-File we are including a file called &#8220;appsettings.json&#8221;. Lets go and add our Connectionstring to this file:
+Back in our Startup.cs-File we are including a file called "appsettings.json". Lets go and add our Connectionstring to this file:
 
 <a href="{{site.baseurl}}assets/articles/2015-12/bb036de1-b860-42d5-8d1c-c646453b5be9.jpg" rel="attachment wp-att-875"><img class="aligncenter size-full wp-image-875" src="{{site.baseurl}}assets/articles/2015-12/bb036de1-b860-42d5-8d1c-c646453b5be9.jpg" alt="Ef6Example_04" width="1056" height="229" srcset="{{site.baseurl}}assets/articles/2015-12/bb036de1-b860-42d5-8d1c-c646453b5be9.jpg 1056w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_04-300x65.jpg 300w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_04-768x167.jpg 768w, http://offering.solutions/wp-content/uploads/2015/12/Ef6Example_04-1024x222.jpg 1024w" sizes="(max-width: 1056px) 100vw, 1056px" /></a>This should look quite familiar because of the connectionstring you knew from the web.config in the previous asp.net-versions.
 
@@ -55,13 +55,13 @@ At this point we added the connectionstring to the config file we will consume i
 
 Next thing we have to do is getting the config and our databasecontext married 🙂
 
-This can be done putting a single line in our &#8220;Startup.cs&#8221;-File.
+This can be done putting a single line in our "Startup.cs"-File.
 
 Just add
 
 <pre class="lang:c# decode:true ">services.AddScoped&lt;MyEf6EntityFrameworkContext&gt;((s) =&gt; new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));</pre>
 
-in the method &#8220;ConfigureServices&#8221; in your Startup.cs.
+in the method "ConfigureServices" in your Startup.cs.
 
 <pre class="lang:c# decode:true">public void ConfigureServices(IServiceCollection services)
         {

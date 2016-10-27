@@ -104,7 +104,7 @@ This makes the gulp tasks more generic.
 
 ### Tasks in folders
 
-I&#8217;ve seen many ways how people organise the gulp tasks but it turned out for me it was the best way to have a folder called &#8220;gulpTasks&#8221; (or similar) where I put all my gulptasks in. I&#8217;ve seen this on many other repositories and also on conferences etc. It&#8217;s always good to have a folder encapsulating all your gulpTasks like this:
+I&#8217;ve seen many ways how people organise the gulp tasks but it turned out for me it was the best way to have a folder called "gulpTasks" (or similar) where I put all my gulptasks in. I&#8217;ve seen this on many other repositories and also on conferences etc. It&#8217;s always good to have a folder encapsulating all your gulpTasks like this:
 
 ![alt text]({{site.baseurl}}assets/images/folderGulpTasks.png "gulptask folder")
 
@@ -112,7 +112,7 @@ Here I seperate all the different systems I want to have an output for.
 
 But that also means, that the task seen above is moving to the `web.js` file.
 
-How do I build up the &#8220;architecture&#8221; for my gulp-tasks now?
+How do I build up the "architecture" for my gulp-tasks now?
 
 ## Manage your tasks
 
@@ -139,7 +139,7 @@ var runSeq = require('run-sequence');
 
 I think this is a very good and clear documentation of what is done if I call the main task.
 
-> As a tip: I do also use this for &#8220;debugging&#8221; when something is going wrong. I can easily comment out the single tasks and the which one is causing trouble 
+> As a tip: I do also use this for "debugging" when something is going wrong. I can easily comment out the single tasks and the which one is causing trouble 
 
 What we also did in this step is: We defined a _main task_! This task can be referenced and executed from the main gulp file.
 
@@ -161,9 +161,9 @@ So here we are building a small architecture and get some order in our tasks-, f
 
 ### The default tasks
 
-Often I see that the default task is executing logic. It does something. And when the default task is doing something it&#8217;s most likely something like a main task. Like &#8220;build-all&#8221; or something?
+Often I see that the default task is executing logic. It does something. And when the default task is doing something it&#8217;s most likely something like a main task. Like "build-all" or something?
 
-Let&#8217;s picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: &#8220;Let me see what you have got for me&#8221;.
+Let&#8217;s picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: "Let me see what you have got for me".
 
 If you run `gulp` which executes the default task and something starts to run and I as a developer have NO IDEA what exactly runs there &#8211; that scares me.
 
@@ -173,11 +173,11 @@ But with this option I mentioned above we have **many** small tasks which can be
 
 This is why I do name the tasks in a special way:
 
-All main tasks are divided with a &#8220;:&#8221;, all child tasks with &#8220;-&#8220;.
+All main tasks are divided with a ":", all child tasks with "-".
 
 For the task-listing feature there is also an npm package available [here](https://www.npmjs.com/package/gulp-task-listing).
 
-&#8220;gulp-task-listing &#8211; Adds the ability to provide a task listing for your gulpfile&#8221;
+"gulp-task-listing &#8211; Adds the ability to provide a task listing for your gulpfile"
 
 You can define filters to define which one is a main task and which one is a child task.
 
@@ -202,7 +202,7 @@ Which brings the following output:
 
 ### common.js
 
-One possibility would be going along and define some &#8220;main&#8221;-tasks and be more generic which can be executed from the `web.js` and other files. Like a `common.js` containing generic tasks like:
+One possibility would be going along and define some "main"-tasks and be more generic which can be executed from the `web.js` and other files. Like a `common.js` containing generic tasks like:
 
 <pre><code class="javascript">function copySourcesTo(targetFolder) {
     return gulp.src(getSourceFiles(buildConfig.source.folder), {
@@ -230,7 +230,7 @@ For tasks which are all the same in every step. Perhaps this can be useful
 
 ### prefixes
 
-You could also prefix your private tasks with a &#8220;[private]-&#8230;&#8221; tag or something to clearify in the task overview that this task should be private.
+You could also prefix your private tasks with a "[private]-&#8230;" tag or something to clearify in the task overview that this task should be private.
 
 ## Conclusion
 

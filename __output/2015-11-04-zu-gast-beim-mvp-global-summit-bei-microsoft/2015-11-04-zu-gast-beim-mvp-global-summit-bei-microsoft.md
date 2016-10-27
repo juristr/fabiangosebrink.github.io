@@ -21,7 +21,7 @@ heute ist Halbzeit. Die Hälfte ist vorbei und ich hab gedacht, dass dies ein gu
 
 Was ich hier im Global Summit erleben und erfahren darf hätte ich mir so niemals ausgemalt. Der Flug war sehr lang, aber das Event ist es mehr als Wert.
 
-Es gibt sehr viele Sessions, die während der Woche parallel laufen. Aufgrund seiner Expertise (bei mir vormals _&#8220;ASP.NET/IIS&#8221;_, jetzt _&#8220;Visual Studio & Development Categories&#8221;_) wird man Sessions zugeteilt die über die 5 Tage gehen, kann den Plan aber verändern.
+Es gibt sehr viele Sessions, die während der Woche parallel laufen. Aufgrund seiner Expertise (bei mir vormals _"ASP.NET/IIS"_, jetzt _"Visual Studio & Development Categories"_) wird man Sessions zugeteilt die über die 5 Tage gehen, kann den Plan aber verändern.
 
 So entstehen den ganzen Tag von 0800 Uhr morgens bis 1700 Uhr Nachmittags Vorträge über die verschiedensten Themen rund um seine Expertise.
 

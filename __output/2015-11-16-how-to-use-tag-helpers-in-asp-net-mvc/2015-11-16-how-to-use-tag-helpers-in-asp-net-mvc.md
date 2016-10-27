@@ -25,7 +25,7 @@ Razor in previous versions had this
 
 <pre class="lang:c# decode:true ">Url.Action("MyAction", "MyController", new { id = "123" })</pre>
 
-which returned an url like &#8220;MyController/MyAction/123&#8221;
+which returned an url like "MyController/MyAction/123"
 
 MVC 6 is now introducing a new more readable way to achieve the same result called TagHelpers.
 
@@ -77,7 +77,7 @@ You can also write forms in this Html-Tag-Helper-Syntax which is really nice to 
     &lt;/div&gt;
 &lt;/form&gt;</pre>
 
-instead of using the &#8220;ugly&#8221; @-like Sytax before.
+instead of using the "ugly" @-like Sytax before.
 
 Hope to make you curious about tag helpers. Go and use them in your next ASP.NET-Project 🙂
 

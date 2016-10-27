@@ -19,13 +19,13 @@ Hey folks,
 
 I just released two sample APIs on Github.
 
-One of them is done with the &#8220;old&#8221; approach but heads in the direction of my understanding of a modern WebAPI using OData and having DTOs instead of delivering the plain entitites down to the client.
+One of them is done with the "old" approach but heads in the direction of my understanding of a modern WebAPI using OData and having DTOs instead of delivering the plain entitites down to the client.
 
 I will cover the most important information now:
 
-The get method includes odata and is restricting the page-size to 50 to prevent anyone from getting \_all\_ entries which can cause problems. I also added a paginationheader to enable paging and give the information included in the header &#8220;X-Pagination&#8221; value. Here you can add more stuff like link to the next page, link ot the previous page etc.
+The get method includes odata and is restricting the page-size to 50 to prevent anyone from getting \_all\_ entries which can cause problems. I also added a paginationheader to enable paging and give the information included in the header "X-Pagination" value. Here you can add more stuff like link to the next page, link ot the previous page etc.
 
-I am also using mapper to get a DataTransferObject (DTO) to send it to the client instead of my plain &#8220;entity&#8221;.
+I am also using mapper to get a DataTransferObject (DTO) to send it to the client instead of my plain "entity".
 
 <pre class="lang:c# decode:true ">[HttpGet]
         [EnableQuery(PageSize = 50)]

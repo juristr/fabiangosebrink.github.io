@@ -19,7 +19,7 @@ categories: articles
   <img src="{{site.baseurl}}assets/images/Angular_With_Digicomp.png" alt="AngularJsWithDigicomp" title="AngularJsWithDigicomp" />
 </center>
 
-Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht &#8220;Nein&#8221; gesagt.
+Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht "Nein" gesagt.
 
 Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.
 
@@ -27,17 +27,17 @@ Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJ
 
 Im Feedback wurde der Kurs insgesamt mit 96/100 Punkten bewertet!
 
-> &#8220;AngularJs-Wissen vom Feinsten&#8221;
+> "AngularJs-Wissen vom Feinsten"
 > 
-> &#8220;Sehr guter Trainer&#8221;
+> "Sehr guter Trainer"
 > 
-> &#8220;Der Kurs hat viel Spass gemacht&#8221;
+> "Der Kurs hat viel Spass gemacht"
 > 
-> &#8220;Das Wissen wurde ausführlich vermittelt&#8221;
+> "Das Wissen wurde ausführlich vermittelt"
 > 
-> &#8220;Viel gelernt in zwei Tagen&#8221; 
+> "Viel gelernt in zwei Tagen" 
 
-In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns den Task-Runner &#8220;Gulp&#8221;. _Bower_ und _NPM_ sind natürlich auch mit dabei und ein Review einer Beispielapplikation bildet das Ende dieses Kurses. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.
+In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns den Task-Runner "Gulp". _Bower_ und _NPM_ sind natürlich auch mit dabei und ein Review einer Beispielapplikation bildet das Ende dieses Kurses. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.
 
 [GitHub: Kursbeispiele](https://github.com/FabianGosebrink/Angular1-And-Angular2-Tutorials-With-Demo-App)
 

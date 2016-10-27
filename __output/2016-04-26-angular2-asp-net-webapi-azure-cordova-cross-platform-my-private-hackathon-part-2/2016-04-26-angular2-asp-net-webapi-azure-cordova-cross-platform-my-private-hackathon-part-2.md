@@ -41,7 +41,7 @@ The application is divieded into several components with its child components. D
 
 ![alttext]({{site.baseurl}}assets/articles/2016-04/2c50b8f4-8132-46c4-b632-0488a049fef3.png)
 
-So the only interesting thing is the Food-Component which has two child Components &#8220;FoodForm&#8221; and &#8220;FoodList&#8221;.
+So the only interesting thing is the Food-Component which has two child Components "FoodForm" and "FoodList".
 
 <pre class="lang:js decode:true ">@Component({
     selector: 'food-component',
@@ -128,7 +128,7 @@ and the template
 
 ### Authentication
 
-The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a &#8220;CurrentUserService&#8221; to save this token in the storage and read it again.
+The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a "CurrentUserService" to save this token in the storage and read it again.
 
 <pre class="lang:js decode:true ">import { Injectable } from 'angular2/core';
 import { StorageService } from './storage.service';
@@ -207,7 +207,7 @@ So I check the headers, append a token if available, set the content-type and ac
 
 To give this whole thing a go as an exe and as an app on mobile devices I used cordova and electron with gulp as a taskrunner.
 
-I seperated all the files in the tasks for &#8220;electron&#8221;, &#8220;cordova&#8221; and &#8220;web&#8221;. In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types &#8220;gulp&#8221; without a specific command.
+I seperated all the files in the tasks for "electron", "cordova" and "web". In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types "gulp" without a specific command.
 
 <pre class="lang:js decode:true ">var buildConfig = require('./gulp.config');
 

@@ -31,7 +31,7 @@ First thing to do is setting up our Visual Studio. Create a new application and 
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/af42a271-d958-42fa-875c-cef340fecdda.png)
 
-You will get an empty solution with no dependencies so far. Lets go and add some: open up the &#8220;project.json&#8221; and add the dependencies like this:
+You will get an empty solution with no dependencies so far. Lets go and add some: open up the "project.json" and add the dependencies like this:
 
 <pre class="lang:js decode:true">"dependencies": {
         "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
@@ -49,7 +49,7 @@ Visual Studio should now go ahead and resolve, download and install these packag
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/9e2509d5-ec6d-4835-9d94-8aa8d350515b.png)
 
-Now go on and add an &#8220;app&#8221;-Folder, a &#8220;js&#8221;-folder and a &#8220;css&#8221;-folder to the wwwroot-folder.
+Now go on and add an "app"-Folder, a "js"-folder and a "css"-folder to the wwwroot-folder.
 
 > Everything in the wwwroot-folder is going to be served to the client. This is where our app lives. You can also build your application outside this folder and copy the relevant files in it via gulp etc. I am not doing this in this case because its easier to debug in the when launching. If you have a better approach I would love to hear it 🙂
 
@@ -96,7 +96,7 @@ Lets get started with the serverside: To wire up everything we need to configure
 	public static void Main(string[] args) =&gt; WebApplication.Run&lt;Startup&gt;(args);
 }</pre>
 
-Because at the beginning of this page we are consuming an &#8220;appsettings.json&#8221; we should also create it. Create a new file called like this beside the Startup.cs and paste some logging information to it. You can add some informations you want to have in there later if you want. For the start, this should be okay.
+Because at the beginning of this page we are consuming an "appsettings.json" we should also create it. Create a new file called like this beside the Startup.cs and paste some logging information to it. You can add some informations you want to have in there later if you want. For the start, this should be okay.
 
 <pre class="lang:js decode:true ">{
   "Logging": {
@@ -110,7 +110,7 @@ Because at the beginning of this page we are consuming an &#8220;appsettings.jso
 }
 </pre>
 
-Our application should now be able to start up. Just go to the commandline and type &#8220;dnx web&#8221; in it. This will start a webserver and serve all files in wwwroot.
+Our application should now be able to start up. Just go to the commandline and type "dnx web" in it. This will start a webserver and serve all files in wwwroot.
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/5872d413-ac2b-4561-9598-7c4b537a3af5.png)
 
@@ -118,12 +118,12 @@ Our application should now be able to start up. Just go to the commandline and t
 
 Great so far! Now we can add a controller!
 
-For this go ahead in the root of the project and add a folder &#8220;Controller&#8221; which wil hold all the controllers for us. Then you can add an standardcontroller for the first run.
+For this go ahead in the root of the project and add a folder "Controller" which wil hold all the controllers for us. Then you can add an standardcontroller for the first run.
 
 > I like to stay to IActionResult-Interface in my controllers. It just gives me a way I am used to and is clearer for me. You do not have to do this. The controller is just for demo purposes.
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/eef224b8-ae35-45fa-94fd-7b57f036fd0c.png)
-If we now run the server again with &#8220;dnx web&#8221; it will start and via Postman we can check if everything works correctly:
+If we now run the server again with "dnx web" it will start and via Postman we can check if everything works correctly:
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/4e0f0af8-1c9c-4551-ab7a-fe07446138f0.png)
 
@@ -185,11 +185,11 @@ Normally you would add AngularJs 2 via the tsd-command. But in this case Angular
     }
 }</pre>
 
-or just type &#8220;npm init&#8221; to answer all questions and get an project.json file generated.
+or just type "npm init" to answer all questions and get an project.json file generated.
 
-After this you can install AngularJs 2 and all other dependencies via &#8220;npm install&#8221; or visual Studio will do this for you automatically. Just just have to wait a few seconds. It will add a node_modules folder to your root application and copy all files, also the *.d.ts-files you need to develop with typescript.
+After this you can install AngularJs 2 and all other dependencies via "npm install" or visual Studio will do this for you automatically. Just just have to wait a few seconds. It will add a node_modules folder to your root application and copy all files, also the *.d.ts-files you need to develop with typescript.
 
-Last thing to do is copying all your needed files into the &#8220;js&#8221;-folder you created on clientside.
+Last thing to do is copying all your needed files into the "js"-folder you created on clientside.
 
 ![Alttext]({{site.baseurl}}assets/articles/2016-01/99c6eae8-059e-428f-b715-bdbd5bb62ccb.png)
 (Ignore the jquery and signalr files I had addinitonally in the example, its for the next blogpost 😉 )
@@ -238,7 +238,7 @@ We are done so far:
 
 You can now go ahead and develop you application in Typescript and Angular2. You could start with the [AngularJs 2](https://angular.io/docs/ts/latest/quickstart.html) quickstart. All files you need should be there. Its important to add the boot.ts and application.ts to get an entry point and bootstrapping your application.
 
-> If you, like me, always forget to compile the typescript files: open a cmd in the app folder and just type &#8220;tsc -w&#8221;. This activates a typescript watcher using the tsconfig in the root of the project and will always compile the \*.ts files into \*.js files if there are some changes
+> If you, like me, always forget to compile the typescript files: open a cmd in the app folder and just type "tsc -w". This activates a typescript watcher using the tsconfig in the root of the project and will always compile the \*.ts files into \*.js files if there are some changes
 
 ### Further steps:
 

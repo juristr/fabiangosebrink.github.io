@@ -13,8 +13,6 @@ disqus: true
 categories: articles
 ---
 
-## User Stories vs. Bugs vs. Product Backlog Items
-
 Der Product-Backlog ist eines der wichtigsten Artefakte im Scrum-Prozess und wohl eines der am meisten unterschätzten zugleich.
 
 In ihm sammeln sich alle Ideen, alle Anforderungen und Gedankenblitze, die der Kunde oder auch der Entwickler beim Arbeiten mit einem Produkt haben. Egal ob ausgereift oder fern in der Zukunft: Der Product-Backlog bietet zukünftigen Arbeiten an einem Produkt ein Zuhause.
@@ -62,5 +60,3 @@ Einflüsse:
 <https://social.msdn.microsoft.com/Forums/vstudio/en-US/f8ec9ec0-95c2-4cfa-8bdb-f9f4220d6698/whats-the-different-between-product-backlog-item-and-user-stories?forum=tfsworkitemtracking>
 
 <http://blogs.adobe.com/agile/2012/06/20/does-every-item-in-the-product-backlog-require-a-user-story/>
-
-This post was first published on [Noser-Blog](http://blog.noser.com/user-stories-vs-bugs-vs-product-backlog-items)

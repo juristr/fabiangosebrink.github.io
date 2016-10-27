@@ -25,7 +25,7 @@ I just released the UnitOfWork by Offering.Solutions in Version 0.9.1
 
 Changes:
 
-  * Beside the &#8220;GetAll&#8221; method is now a &#8220;GetSingle&#8221; instead of &#8220;FindBy&#8221; or something. I wanted the naming to be more consistent because I was confused by myself like all the time.
+  * Beside the "GetAll" method is now a "GetSingle" instead of "FindBy" or something. I wanted the naming to be more consistent because I was confused by myself like all the time.
 
 Please report Bugs if you find some!!
 

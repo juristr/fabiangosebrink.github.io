@@ -585,7 +585,7 @@ After creating this new app we are interested in the details of this app. Click 
 
 ![alttext]({{site.baseurl}}assets/articles/2015-10/4dd9bf06-5183-481e-b29d-2f1471985014.jpg)We are interested in the secret for your app and in the link we define for the target of our WebHooks.
 
-> I will take the placeholder &#8220;_[MyDropBoxAppKey]_&#8221; as the key for this blogpost. You will have to replace this with your own secret yu get when you click on &#8220;show&#8221; above.
+> I will take the placeholder "_[MyDropBoxAppKey]_" as the key for this blogpost. You will have to replace this with your own secret yu get when you click on "show" above.
 
 Once we have the secret we can go back to our Visual Studio and select the both WebHook receivers we want to create: GitHub and DropBox.
 
@@ -1220,7 +1220,7 @@ After creating this new app we are interested in the details of this app. Click 
 
 ![alttext]({{site.baseurl}}assets/articles/2015-10/6b59215f-e0a7-40e0-a4a1-8e47e0edc4ab.jpg)We are interested in the secret for your app and in the link we define for the target of our WebHooks.
 
-> I will take the placeholder &#8220;_[MyDropBoxAppKey]_&#8221; as the key for this blogpost. You will have to replace this with your own secret yu get when you click on &#8220;show&#8221; above.
+> I will take the placeholder "_[MyDropBoxAppKey]_" as the key for this blogpost. You will have to replace this with your own secret yu get when you click on "show" above.
 
 Once we have the secret we can go back to our Visual Studio and select the both WebHook receivers we want to create: GitHub and DropBox.
 
@@ -1291,11 +1291,11 @@ is the form. So in our case this is:
 
 <pre class="" data-wpview-marker="https%3A%2F%2F%3Chost%3E%2Fapi%2Fwebhooks%2Fincoming%2F%3Creceiver%3E">https://[host]/api/webhooks/incoming/dropbox</pre>
 
-![alttext]({{site.baseurl}}assets/articles/2015-10/329b979b-a3fc-40cd-8814-54af3589a863.jpg)After a short check this should be working and get the state &#8220;Enabled&#8221; from DropBox.
+![alttext]({{site.baseurl}}assets/articles/2015-10/329b979b-a3fc-40cd-8814-54af3589a863.jpg)After a short check this should be working and get the state "Enabled" from DropBox.
 
 If you now change something in your entire dropbox-space the webhook should be triggered like this:
 
-![alttext]({{site.baseurl}}assets/articles/2015-10/e022f537-0322-4f17-8601-9e6563807336.jpg)If you only want to watch a specific part of your dropbox you have to spcify this in your app. Above we selected &#8220;Full Dropbox&#8221;.
+![alttext]({{site.baseurl}}assets/articles/2015-10/e022f537-0322-4f17-8601-9e6563807336.jpg)If you only want to watch a specific part of your dropbox you have to spcify this in your app. Above we selected "Full Dropbox".
 
 In the WebHookHandler itself you can now do what you want with the POST-request from dropbox. Sending an Email, notify your apge with SignalR etc. Same applies for github. Any change should trigger a webhook and you can work with in on your website in a way you want to.
 

@@ -488,9 +488,9 @@ Next we will do the clients
 
 Concerning the clients I was torn between Angular 1.x with Typescript in Visual Studio and Angular 2. Because I could not make a descision whats better I made both. (You can find them in two different approaches in two different GitHub Repositories)
 
-The first approach was the Visual Studio approach with making everything inside VS to be able to make this &#8220;right-click &#8211;> Publish&#8221;-thing in the end.
+The first approach was the Visual Studio approach with making everything inside VS to be able to make this "right-click &#8211;> Publish"-thing in the end.
 
-The advantage of this is that you can maintain everything from VS like the API, the client code etc. But with this approach you do not have the sexy client- and serverside code separated. We are developing a RESTApi to develop client and server separate. You can handle the client like you want and modify it without touching the server. This is why I tried Angular2 in the second approach making a &#8220;client&#8221; and &#8220;server&#8221; folder where the client contains all \*.ts, \*.js and other files and the server contains (the same) REST API we build.
+The advantage of this is that you can maintain everything from VS like the API, the client code etc. But with this approach you do not have the sexy client- and serverside code separated. We are developing a RESTApi to develop client and server separate. You can handle the client like you want and modify it without touching the server. This is why I tried Angular2 in the second approach making a "client" and "server" folder where the client contains all \*.ts, \*.js and other files and the server contains (the same) REST API we build.
 
 > The GitHub repos are both full functional examples with these different approaches. Choose the one you want. Both do not rely on each other.
 

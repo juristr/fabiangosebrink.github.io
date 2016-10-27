@@ -13,17 +13,13 @@ disqus: true
 categories: articles
 ---
 
-# Microsoft TechTalk in Wallisellen
-
 Hallo zusammen,
 
 am 19.03.2015 waren Hans Peter Bornhauser und ich Guestspeaker beim Microsoft Techtalk in Wallisellen. Dass Ereignis war mit mehr als 100 Leuten komplett ausverkauft und drehte sich innerhalb von 3 Vorträgen rund um das Thema Asp.Net und Azure.
 
-<!--more-->
-
 Hans Peter stellte in einer 50-minütigen Session ASP.NET vNext vor. Mit praktischen Beispielen zeigte er, was alles auf Entwickler zukommt mit dem neuen ASP.NET vNext und Visual Studio 2015. Neben dem Zusammenschluss von WebAPI und Mvc-Controllern und dem Wegfallen der web.config ist hierbei sicher das Live-Editieren interessant, bei dem Änderungen in Dateien ohne Rebuild direkt in den Browser übernommen werden.
 
-Ich habe in einer vierzig-minütigen Session (wieso hatte ich nur 40?) Asp.Net WebApi mit AngularJS vorgestellt. AngularJS ist ein Single-Page-Application-Framework aus dem Hause Google. Clientseitige Programmierung ist nicht neu. Clientseitige Programmierung mit Struktur, mit Ordnung und Architektur jedoch schon. Javascript war vor Angular &#8220;Vogelwild&#8221; oder von Versuchen geprägt, dies zu ändern. Aus mittlerweile vielen Frameworks hat sich Angular herauskristallisiert und sich als State-of-the-Art etabliert. Out of the Box bringt Angular Features wie Dependency-Injection, Two-Way Databinding, SoC, Ui-Templating etc. mit.
+Ich habe in einer vierzig-minütigen Session (wieso hatte ich nur 40?) Asp.Net WebApi mit AngularJS vorgestellt. AngularJS ist ein Single-Page-Application-Framework aus dem Hause Google. Clientseitige Programmierung ist nicht neu. Clientseitige Programmierung mit Struktur, mit Ordnung und Architektur jedoch schon. Javascript war vor Angular "Vogelwild" oder von Versuchen geprägt, dies zu ändern. Aus mittlerweile vielen Frameworks hat sich Angular herauskristallisiert und sich als State-of-the-Art etabliert. Out of the Box bringt Angular Features wie Dependency-Injection, Two-Way Databinding, SoC, Ui-Templating etc. mit.
 
 Somit ist es möglich, verteilte Applikationen mit einer API als Backend zu erstellen. Im Frontend kann ein Client mit Angular zum Einsatz kommen. Richtig implementiert lassen sich hieraus IOS/Android und Windows-Phone Implementierungen erstellen. Alles mit einer Code-Basis.
 
