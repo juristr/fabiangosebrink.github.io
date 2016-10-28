@@ -15,17 +15,17 @@ categories: articles
 
 SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn man jedoch SCRUM in einer Firma einführt oder praktiziert sehen die Entwickler sehr schnell den angeblichen Nachteil dieser doch recht positiven Eigenschaften: Es gibt, zumindest am Anfang, sehr viele Meetings.
 
-Entwickler mögen meist keine Meetings. Meetings halten sie von der Arbeit ab. Das ist keine Vermutung meinerseits, das sage ich aus persönlicher Erfahrung. Es gibt das Daily-Standup, es gibt das Grooming, wenn es nicht als Prozess angesehen wird, und es gibt das Planungsmeeting, was oftmals sehr lange dauern kann. Ist man nun vor Ort um SCRUM einzuführen oder sogar SCRUM-Master und &#8220;leitet&#8221; die Meetings liegt es an einer guten Moderation, einer guten Vorbereitung und viel Geschick ein angenehmes Meeting zu gestalten.
+Entwickler mögen meist keine Meetings. Meetings halten sie von der Arbeit ab. Das ist keine Vermutung meinerseits, das sage ich aus persönlicher Erfahrung. Es gibt das Daily-Standup, es gibt das Grooming, wenn es nicht als Prozess angesehen wird, und es gibt das Planungsmeeting, was oftmals sehr lange dauern kann. Ist man nun vor Ort um SCRUM einzuführen oder sogar SCRUM-Master und "leitet" die Meetings liegt es an einer guten Moderation, einer guten Vorbereitung und viel Geschick ein angenehmes Meeting zu gestalten.
 
-Im Folgenden möchte ich Tipps erläutern, die solche Meetings zwar nicht aus der Welt schaffen aber sie zumindest anders oder &#8220;saftiger&#8221; machen können. Ob (erfolgreich) getestet oder nur als Gedankenanstoss: Ich hoffe die folgenden Punkte bieten eine gute Grundlage zum Nachmachen und zum darauf aufbauen.
+Im Folgenden möchte ich Tipps erläutern, die solche Meetings zwar nicht aus der Welt schaffen aber sie zumindest anders oder "saftiger" machen können. Ob (erfolgreich) getestet oder nur als Gedankenanstoss: Ich hoffe die folgenden Punkte bieten eine gute Grundlage zum Nachmachen und zum darauf aufbauen.
 
 > SCRUM ist keine One-Man-Show
 
 ### Was lange währt...
 
-....wird irgendwann gut: SCRUM braucht Zeit. Geben Sie den Teilnehmern diese. Gerade wenn SCRUM neu ist, ist die Skepsis noch Herr in allen Meetings. Diese werden die Teilnehmer los. Aber es muss von den Teilnehmern selber kommen. Somit: Leisten Sie Überzeugungsarbeit und erläutern Sie, warum das Team Meeting xyz nutzen sollte. Die Menschen über die Logik und den Sinn abzuholen bringt oft mehr als sie in ein Meeting zu &#8220;zwingen&#8221;. SCRUM ist ein Team-Ding. Kein SCRUM-Master oder Product-Owner-Ding, keine One-Man-Show.
+....wird irgendwann gut: SCRUM braucht Zeit. Geben Sie den Teilnehmern diese. Gerade wenn SCRUM neu ist, ist die Skepsis noch Herr in allen Meetings. Diese werden die Teilnehmer los. Aber es muss von den Teilnehmern selber kommen. Somit: Leisten Sie Überzeugungsarbeit und erläutern Sie, warum das Team Meeting xyz nutzen sollte. Die Menschen über die Logik und den Sinn abzuholen bringt oft mehr als sie in ein Meeting zu "zwingen". SCRUM ist ein Team-Ding. Kein SCRUM-Master oder Product-Owner-Ding, keine One-Man-Show.
 
-&nbsp;
+
 
 ### Timeboxing:
 
@@ -39,7 +39,7 @@ Beispiel: Das Grooming wird als Meeting eingeführt und das Team ist anfangs ske
 
 Bringen Sie Abwechslung in die Meetings. Es gibt recht viele Meetings, die SCRUM mit sich bringt. bei kürzeren Sprints wirken diese noch mehr, auch wenn die Meetings dann natürlich kürzer sind.
 
-Die Präsentation, wenn Sie eine haben, muss nicht immer dieselbe sein. Verändern Sie ihre Folien optisch. Inhaltlich sollte die Agenda jedoch schon einen geregelten Ablauf haben. Eine gewisse Routine gibt auch Sicherheit. Aber wieso nicht mal eine Retrospektive bei einem Kaffee? Im Stehen? Eventuell in der Cafeteria. Leute sind aktiver wenn sie nicht sitzen. Sie können auch nicht in ihren Monitor schauen wenn sie stehen. Wieso nicht Plus- und Minuspunkte eines Sprints auf Karten schreiben und an die Wand pinnen? Schieben Sie mal die Tische beiseite, schaffen Sie Raum. Nutzen Sie die komplette Wand um Plus und Minus anzuprangern. So haben Sie auf x Metern Wand auf einmal neben Plus und Minus als &#8220;schwarz&#8221; und &#8220;weiss&#8221; auf einmal &#8220;eher schwarz und eher weiss&#8221;. Das facht eine Konversation respektive eine Diskussion an. Und nichts ist schlimmer als eine Retro, die totgeschwiegen wird. Ist ihr Team träge und verunsichert: Stellen Sie die Frage, was gut war, statt, was schlecht war. &#8220;Was sollten wir NOCH besser machen?&#8221;. So kommt man leicht in die Diskussion die auch Dinge anspricht, die nicht so gut gelaufen sind.
+Die Präsentation, wenn Sie eine haben, muss nicht immer dieselbe sein. Verändern Sie ihre Folien optisch. Inhaltlich sollte die Agenda jedoch schon einen geregelten Ablauf haben. Eine gewisse Routine gibt auch Sicherheit. Aber wieso nicht mal eine Retrospektive bei einem Kaffee? Im Stehen? Eventuell in der Cafeteria. Leute sind aktiver wenn sie nicht sitzen. Sie können auch nicht in ihren Monitor schauen wenn sie stehen. Wieso nicht Plus- und Minuspunkte eines Sprints auf Karten schreiben und an die Wand pinnen? Schieben Sie mal die Tische beiseite, schaffen Sie Raum. Nutzen Sie die komplette Wand um Plus und Minus anzuprangern. So haben Sie auf x Metern Wand auf einmal neben Plus und Minus als "schwarz" und "weiss" auf einmal "eher schwarz und eher weiss". Das facht eine Konversation respektive eine Diskussion an. Und nichts ist schlimmer als eine Retro, die totgeschwiegen wird. Ist ihr Team träge und verunsichert: Stellen Sie die Frage, was gut war, statt, was schlecht war. "Was sollten wir NOCH besser machen?". So kommt man leicht in die Diskussion die auch Dinge anspricht, die nicht so gut gelaufen sind.
 
 Backlog-Items schätzen ist ebenfalls langweilig: Wieso die Grösse von Items nicht mit Pizzaschachteln darstellen? XS, S, M, L, XL? Ist die Familienpizza viel zu gross für den Sprint, muss sie eventuell aufgeteilt werden. Sie werden sich wundern wie lange solche Assoziationen hängenbleiben!
 
@@ -59,7 +59,7 @@ Das Team steht bei SCRUM im Mittelpunkt. Es wird so gearbeitet, wie das Team sic
 
 ### Zusammenfassung:
 
-SCRUM-Meetings müssen nicht langweilig sein. Man kann solche Meetings durchaus &#8220;saftig&#8221; und abwechslungsreich gestalten. Wenn SCRUM dem Team Spass macht, ist es wesentlich einfach Offenheit, Transparenz und Fortschritt zu sehen, zu messen und damit zu arbeiten. Natürlich sollte neben aller Abwechslung das Sprint-Ziel verfolgt werden um es am Ende des Sprints möglichst zu Erfüllen. Jedoch kann man, mit den richtigen Mitteln, Teams für SCRUM begeistern. Ich hoffe mit den genannten Beispielen konnte ich einige Denkanstösse geben.
+SCRUM-Meetings müssen nicht langweilig sein. Man kann solche Meetings durchaus "saftig" und abwechslungsreich gestalten. Wenn SCRUM dem Team Spass macht, ist es wesentlich einfach Offenheit, Transparenz und Fortschritt zu sehen, zu messen und damit zu arbeiten. Natürlich sollte neben aller Abwechslung das Sprint-Ziel verfolgt werden um es am Ende des Sprints möglichst zu Erfüllen. Jedoch kann man, mit den richtigen Mitteln, Teams für SCRUM begeistern. Ich hoffe mit den genannten Beispielen konnte ich einige Denkanstösse geben.
 
 Gruss
 

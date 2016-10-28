@@ -35,13 +35,13 @@ If you went to your accounts administration page, do NOT go into a projects-admi
 
 ![Deleting a Team Project on Visual Studio Online / TFS]({{site.baseurl}}assets/articles/2014-04-14/97e130d0-5477-4745-a409-cd53bc3e8c1a.png)
 
-&nbsp;
+
 
 There you can easily delete your project:
 
 ![Deleting a Team Project on Visual Studio Online / TFS]({{site.baseurl}}assets/articles/2014-04-14/ed78b714-3ef0-400a-8f41-b253cfd3f925.png)
 
-&nbsp;
+
 
 Hope it helps.
 

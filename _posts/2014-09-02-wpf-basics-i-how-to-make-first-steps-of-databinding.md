@@ -25,7 +25,7 @@ In the last time the MV*-Pattern was really getting pushed and was established b
 
 Advantages are:
 
-  * Changing the UI without changing the logic: The UI changes more often than the logic. What if green is more &#8220;stylish&#8221; than the good old &#8220;blue&#8221;? It has to be changed, but all the things you show stay the same. Just because something looks different you are not showing different information.
+  * Changing the UI without changing the logic: The UI changes more often than the logic. What if green is more "stylish" than the good old "blue"? It has to be changed, but all the things you show stay the same. Just because something looks different you are not showing different information.
 
   * Testability of the logic: Because logic gets more modular it can be well tested. You do not need to know about your view or how it looks like. The only thing your tests are interested in are the output-information.
 
@@ -43,7 +43,7 @@ The code-behind of a window stays empty. No matter what. There are cases to real
 
 Well if you only add a xaml-file or open a new wpf project in visual studio you can add a normal textblock to your xaml like this.
 
-<pre class="lang:xhtml decode:true">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
+<pre><code class="xml">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525"&gt;
@@ -51,11 +51,11 @@ Well if you only add a xaml-file or open a new wpf project in visual studio you 
         &lt;TextBlock&gt;&lt;/TextBlock&gt;
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre>
+</code></pre>
 
 Now add a binding to it. Want we want to do is bind the Text-Property of the TextBlock to a value from the viewmodel. Lets prepare our XAML:
 
-<pre class="lang:c# decode:true">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
+<pre><code class="cs">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525"&gt;
@@ -63,11 +63,11 @@ Now add a binding to it. Want we want to do is bind the Text-Property of the Tex
         &lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
     &lt;/Grid&gt;
 &lt;/Window&gt;
-</pre>
+</code></pre>
 
 Now lets do the viewmodel. This is the base for our databinding. Its a normal class. Remember to name it like the view to associate it easier for other developers.
 
-<pre class="lang:c# decode:true ">public class MainViewModel
+<pre><code class="cs">public class MainViewModel
 {
 	public string NameToDisplay { get; set; }
 
@@ -75,9 +75,9 @@ Now lets do the viewmodel. This is the base for our databinding. Its a normal cl
 	{
 		NameToDisplay = "Hello World";
 	}
-}</pre>
+}</code></pre>
 
-Remeber: This is an external class. It has &#8220;nothing&#8221; to do (yet) with the UI. There is no connection until here. In a project this could look like this:
+Remeber: This is an external class. It has "nothing" to do (yet) with the UI. There is no connection until here. In a project this could look like this:
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-02/52b86250-4f28-40c0-91a5-3a332263db1c.jpg)
 
@@ -87,16 +87,16 @@ The viewmodel offers all data it wants to show to the view (and perhaps some mor
 
 You see that the MainWindow.xaml which we edited above and the viewmodel. We just have no connection until here.
 
-In the last part you have to let the view know about its datacontext. This property can be set to nearly every viewmodel but its the source for the view where to get their data from. So the &#8220;Text&#8221;-Property in XAML gets its value from&#8230;what? You can set the datacontext in XAML but I think its easier to set this in the codebehind. **<span style="text-decoration: underline;">This is the only thing you should set there!</span>**
+In the last part you have to let the view know about its datacontext. This property can be set to nearly every viewmodel but its the source for the view where to get their data from. So the "Text"-Property in XAML gets its value from&#8230;what? You can set the datacontext in XAML but I think its easier to set this in the codebehind. **<span style="text-decoration: underline;">This is the only thing you should set there!</span>**
 
-<pre class="lang:c# decode:true ">public partial class MainWindow : Window
+<pre><code class="cs">public partial class MainWindow : Window
 {
 	public MainWindow()
 	{
 		InitializeComponent();
 		DataContext = new MainViewModel();
 	}
-}</pre>
+}</code></pre>
 
 And there you go. Now the view does know about the datacontext which is completely seperated. It is offering the information about properties and if you press F5 to run the solution you should see something like this:
 
@@ -110,7 +110,7 @@ Regards
 
 Fabian
 
-&nbsp;
+
 
 [UPDATE]
 
@@ -118,7 +118,7 @@ I decided to go on and show you how to bind a list of any objects you want. In m
 
 First lets expand the viewmodel with a Person-class which has two properties: Name and Age.
 
-<pre class="lang:c# decode:true ">public class MainViewModel
+<pre><code class="cs">public class MainViewModel
 {
 	public string NameToDisplay { get; set; }
 	public List&lt;Person&gt; ListOfPersons { get; set; }
@@ -152,28 +152,28 @@ public class Person
 		Name = name;
 		Age = age;
 	}
-}</pre>
+}</code></pre>
 
 So right like the plain name we are offering a list of persons at the viewmodel.
 
 Now that the viewmodel is our Datacontext it can access every property on it. So lets access this in XAML:
 
-<pre class="lang:xhtml decode:true ">&lt;Grid&gt;
+<pre><code class="xml">&lt;Grid&gt;
 	&lt;StackPanel&gt;
 		&lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
 		&lt;ItemsControl ItemsSource="{Binding ListOfPersons}"&gt;
 			
 		&lt;/ItemsControl&gt;
 	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</pre>
+&lt;/Grid&gt;</code></pre>
 
-But if you run this you only see the namespace and the name of the classes. Why this? Because the only thing you give to the ItemsControl is the list of persons. From where should it know what to do with it? It just calls the &#8220;ToString()&#8221;-Extension on &#8220;object&#8221; and gets the Namespace and the name of the class.
+But if you run this you only see the namespace and the name of the classes. Why this? Because the only thing you give to the ItemsControl is the list of persons. From where should it know what to do with it? It just calls the "ToString()"-Extension on "object" and gets the Namespace and the name of the class.
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-02/97a186ff-619e-42bc-bd54-1cfae6dd1b1c.jpg)
 
 So lets tell the UI how to treat the objects. This can be done with an Itemtemplate.
 
-<pre class="lang:xhtml decode:true ">&lt;Window.Resources&gt;
+<pre><code class="xml">&lt;Window.Resources&gt;
 	&lt;DataTemplate x:Key="MyItemTemplate"&gt;
 		&lt;StackPanel Orientation="Horizontal"&gt;
 			&lt;Label Content="{Binding Name}"&gt;&lt;/Label&gt;
@@ -188,11 +188,11 @@ So lets tell the UI how to treat the objects. This can be done with an Itemtempl
 			
 		&lt;/ItemsControl&gt;
 	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</pre>
+&lt;/Grid&gt;</code></pre>
 
 The Itemtemplate now tells the object how to appear. In my case these are just two labels showing the two properties name and age.
 
-> <span style="color: #000000;">I dont know why but this is a heavy thing every beginner stumbles upon: The Datacontext of your <strong>view</strong> is what we have set it to: The MainViewModel. Now you give the collection to the ItemsControl and make an <strong>Item</strong>Template for each object in the list. So in the <strong>Item</strong>Template the &#8220;datacontext&#8221; is the object &#8220;Person&#8221; itself and NOT the MainViewModel anymore! This is why you can access &#8220;Name&#8221; and &#8220;Age&#8221; in the DataTemplate directly. Because every Item (which the <strong>Item</strong>Template is for) is a Person and a Person has got the mentioned properties.</span>
+> <span style="color: #000000;">I dont know why but this is a heavy thing every beginner stumbles upon: The Datacontext of your <strong>view</strong> is what we have set it to: The MainViewModel. Now you give the collection to the ItemsControl and make an <strong>Item</strong>Template for each object in the list. So in the <strong>Item</strong>Template the "datacontext" is the object "Person" itself and NOT the MainViewModel anymore! This is why you can access "Name" and "Age" in the DataTemplate directly. Because every Item (which the <strong>Item</strong>Template is for) is a Person and a Person has got the mentioned properties.</span>
 
 Great. After telling this let this thing run and see the result:
 

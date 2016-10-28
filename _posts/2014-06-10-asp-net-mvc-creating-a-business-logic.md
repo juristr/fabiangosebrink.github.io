@@ -29,7 +29,7 @@ Further you probably want to give your controller-service functions which have a
 
 So these are only three reasons why you should work with services behind your controller service.
 
-&nbsp;
+
 
 **Area Services**
 
@@ -41,7 +41,7 @@ Concrete example: You have a service which is giving you Chart-Data to display a
 
 <span style="color: #808080;">Note. How to get along with DotNet Highcharts I am describing <a title="How to include DotNet.HighCharts in ASP.Net MVC with ViewModels" href="http://fabiangosebrink.wordpress.com/2014/05/09/how-to-include-dotnet-highcharts-in-asp-net-mvc-with-viewmodels/" target="_blank"><span style="color: #808080;">here</span></a>.</span>
 
-&nbsp;
+
 
 ![ASP.NET MVC - Creating a business logic]({{site.baseurl}}assets/articles/2014-06-10/42abe410-8ef5-44a4-9794-ab531b8b3751.png)
 

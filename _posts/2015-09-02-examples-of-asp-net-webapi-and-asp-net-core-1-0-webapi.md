@@ -25,7 +25,7 @@ The get method includes odata and is restricting the page-size to 50 to prevent 
 
 I am also using mapper to get a DataTransferObject (DTO) to send it to the client instead of my plain "entity".
 
-<pre class="lang:c# decode:true ">[HttpGet]
+<pre><code class="cs">[HttpGet]
         [EnableQuery(PageSize = 50)]
         public IHttpActionResult Get()
         {
@@ -38,13 +38,13 @@ I am also using mapper to get a DataTransferObject (DTO) to send it to the clien
             HttpContext.Current.Response.AppendHeader("X-Pagination", JsonConvert.SerializeObject(paginationHeader));
 
             return Ok(Singleton.Instance.Houses.Select(x =&gt; _houseMapper.MapToDto(x)));
-        }</pre>
+        }</code></pre>
 
 The only important thing to mention about the Create-Method is that we are returning a CreatedAtRoute-Actionresult. This causes, that we have a link to the created resource in the header so we can either redirect on the client directly to it, provide the link to the user or work with it in another way.
   
 Also take care about sending back the Modelstate in case of an invalid dto.
 
-<pre class="lang:c# decode:true ">[HttpPost]
+<pre><code class="cs">[HttpPost]
         public IHttpActionResult Create([FromBody] HouseDto houseDto)
         {
             if (houseDto == null)
@@ -62,11 +62,11 @@ Also take care about sending back the Modelstate in case of an invalid dto.
             Singleton.Instance.Houses.Add(houseEntity);
 
             return CreatedAtRoute("DefaultApi", new { id = houseEntity.Id }, _houseMapper.MapToDto(houseEntity));
-        }</pre>
+        }</code></pre>
 
 Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object which can be applied to an existing entity and then can be updated.
 
-<pre class="lang:c# decode:true ">[HttpPatch]
+<pre><code class="cs">[HttpPatch]
         [Route("{id:int}")]
         public IHttpActionResult Patch(int id, Delta&lt;HouseDto&gt; houseDto)
         {
@@ -94,11 +94,11 @@ Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object whic
             Singleton.Instance.Houses[index] = _houseMapper.MapToEntity(existingHouse);
 
             return Ok(existingHouse);
-        }</pre>
+        }</code></pre>
 
 And last but not least the delete-method. See the fact that one has to return a nocontent (204) which tells the client that the delete was successful.
 
-<pre class="lang:c# decode:true ">[HttpDelete]
+<pre><code class="cs">[HttpDelete]
         [Route("{id:int}")]
         public IHttpActionResult Delete(int id)
         {
@@ -112,7 +112,7 @@ And last but not least the delete-method. See the fact that one has to return a 
             Singleton.Instance.Houses.Remove(houseEntityToDelete);
 
             return StatusCode(HttpStatusCode.NoContent);
-        }</pre>
+        }</code></pre>
 
 You can find it here:
 

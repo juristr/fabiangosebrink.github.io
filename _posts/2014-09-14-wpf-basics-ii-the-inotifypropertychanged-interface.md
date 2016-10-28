@@ -17,7 +17,7 @@ UPDATE UPDATE UPDATE:
 
 Check the CallMemberName-Possibility [here](http://offering.solutions/2015/02/08/callmembername-for-inotifypropertychanged/ "CallMemberName for INotifyPropertyChanged")
 
-In the first part I told something about the databinding [here](http://offering.solutions/2014/09/02/wpf-basics-how-to-make-first-steps-of-databinding/ "Wpf Basics I – How to make first steps of Databinding"). The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we&#8217;re done so far.
+In the first part I told something about the databinding [here](http://offering.solutions/2014/09/02/wpf-basics-how-to-make-first-steps-of-databinding/ "Wpf Basics I – How to make first steps of Databinding"). The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we're done so far.
 
 Just to calm down the ones who expect a solution: Can be found in the third article [here](http://offering.solutions/2014/10/01/wpf-basics-iii-correct-implementation-of-commands/ "Wpf Basics III – Correct implementation of Commands")
 
@@ -27,15 +27,15 @@ Therefore the binding has to be "refreshed" and we have the INotifyPropertyChang
 
 Lets take our code from before and give it a timer which sets the name we want to display after 3 seconds:
 
-<pre class="lang:c# decode:true ">&lt;Grid&gt;
+<pre><code class="cs">&lt;Grid&gt;
 	&lt;StackPanel&gt;
 		&lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
 	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</pre>
+&lt;/Grid&gt;</code></pre>
 
-&nbsp;
 
-<pre class="lang:c# decode:true ">public class MainViewModel
+
+<pre><code class="cs">public class MainViewModel
 {
 	public string NameToDisplay { get; set; }
 	Timer _timer;
@@ -52,13 +52,13 @@ Lets take our code from before and give it a timer which sets the name we want t
 		NameToDisplay = "Hallelujah";
 		_timer.Enabled = false;
 	}
-}</pre>
+}</code></pre>
 
->  &#8220;Hallelujah&#8221; is always my testword because im pretty sure it occurs nowhere else in a solution 😉 So if you see this, its mine
+>  "Hallelujah" is always my testword because im pretty sure it occurs nowhere else in a solution 😉 So if you see this, its mine
 
 So, if you debug this you will see that the timer gets into the timer_elapsed-function and sets the name but the UI does not change. So lets implement a way to refresh the UI! Only implement the INotifyPropertyChanged-interface:
 
-<pre class="lang:c# decode:true">public class MainViewModel : INotifyPropertyChanged
+<pre><code class="cs">public class MainViewModel : INotifyPropertyChanged
 {
 	public string NameToDisplay { get; set; }
 	readonly Timer _timer;
@@ -83,9 +83,9 @@ So, if you debug this you will see that the timer gets into the timer_elapsed-fu
 	}
 
 	public event PropertyChangedEventHandler PropertyChanged;
-}</pre>
+}</code></pre>
 
-So everthing we do is throwing the event that something has changed with the name of the property as a string. If you let this run you will see that the UI refreshes and after 3 seconds the &#8220;hallelujah&#8221; is displayed. But this has some disadvantages:
+So everthing we do is throwing the event that something has changed with the name of the property as a string. If you let this run you will see that the UI refreshes and after 3 seconds the "hallelujah" is displayed. But this has some disadvantages:
 
   * We are throwing the event in the timer_elapsed. So only when **this** is done the property is refreshed
   * We are having the name of the property as a string in it. So renaming the property will mostly NOT rename the string. (Magic String). And the refresh does not work again.
@@ -93,15 +93,15 @@ So everthing we do is throwing the event that something has changed with the nam
 
 Lets tune this:
 
-  1. First we will make a namespace for this (I love namespaces) called &#8220;Common&#8221; and make a basefile in there.
+  1. First we will make a namespace for this (I love namespaces) called "Common" and make a basefile in there.
   2. We will make this function generic expecting a lambda-Expression to erase the magic string
   3. We will call the refreshing thing in the setter of the property itself. Then its getting refreshed everytime someone in the code sets it.
 
-&nbsp;
+
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-14/0797f3e5-c8c3-4ed4-ab00-889e2bd8c628.jpg)which looks like:
 
-<pre class="lang:c# decode:true">public class NotifyPropertyChangedBase : INotifyPropertyChanged
+<pre><code class="cs">public class NotifyPropertyChangedBase : INotifyPropertyChanged
 {
 	public event PropertyChangedEventHandler PropertyChanged;
 
@@ -119,13 +119,13 @@ Lets tune this:
 			handler(this, new PropertyChangedEventArgs(memberExpr.Member.Name));
 		}
 	}
-}</pre>
+}</code></pre>
 
 This is taking the member and throwing the event for us on this member. That was Point 1 and 2. Let it be (three)!
 
 We do inherit from the just created class and can access the event with the lambda-expression, which is more generic:
 
-<pre class="lang:c# decode:true">public class MainViewModel : NotifyPropertyChangedBase
+<pre><code class="cs">public class MainViewModel : NotifyPropertyChangedBase
 {
 	readonly Timer _timer;
 	private string _nameToDisplay;
@@ -152,7 +152,7 @@ We do inherit from the just created class and can access the event with the lamb
 		NameToDisplay = "Hallelujah";
 		_timer.Enabled = false;
 	}
-}</pre>
+}</code></pre>
 
 Remeber: In the elapsed-method we are setting the property (not the private variable) directly that the setter is called and the event is thrown.
 
@@ -168,7 +168,7 @@ First we do a NameProvider, which gives us the name. In my case again with a tim
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-14/55c55993-75bd-4e1b-924b-50ae54555462.jpg)
 
-<pre class="lang:c# decode:true ">public class NameProviderImpl : NotifyPropertyChangedBase, INameProvider
+<pre><code class="cs">public class NameProviderImpl : NotifyPropertyChangedBase, INameProvider
     {
         private readonly Timer _timer;
         private string _nameToDisplay;
@@ -203,18 +203,18 @@ First we do a NameProvider, which gives us the name. In my case again with a tim
             NameToDisplay = "Hallelujah";
             _timer.Enabled = false;
         }
-    }</pre>
+    }</code></pre>
 
-<pre class="lang:c# decode:true ">public interface INameProvider
+<pre><code class="cs">public interface INameProvider
 {
 	string NameToDisplay { get; }
-}</pre>
+}</code></pre>
 
 Everything we did here is moving the timer-logic into a provider and offering the property through an interface to the outside.
 
 Our viewmodel now has nearly no logic anymore:
 
-<pre class="lang:c# decode:true ">public class MainViewModel
+<pre><code class="cs">public class MainViewModel
 {
 	public INameProvider NameProvider { get; set; }
 
@@ -222,20 +222,20 @@ Our viewmodel now has nearly no logic anymore:
 	{
 		NameProvider = new NameProviderImpl();
 	}
-}</pre>
+}</code></pre>
 
 This principle I am also describing [here](http://offering.solutions/2014/07/03/wpf-introducing-services-in-the-viewmodel-viewmodel-as-facade/ "WPF – Introducing services in the viewmodel (viewmodel as facade)").
 
-Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property &#8220;NameProvider&#8221;. So the Binding looks like this:
+Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property "NameProvider". So the Binding looks like this:
 
-<pre class="lang:c# decode:true">&lt;Grid&gt;
+<pre><code class="cs">&lt;Grid&gt;
 	&lt;StackPanel&gt;
 		&lt;TextBlock Text="{Binding NameProvider.NameToDisplay}"&gt;&lt;/TextBlock&gt;
 	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</pre>
+&lt;/Grid&gt;</code></pre>
 
 Run this and you will see the result stays the same: After three seconds our string is displayed.
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-14/3fa5c15f-bde9-4a8c-a970-6384d98850e0.jpg)So what we did now is: Getting our Viewmodel nice and clean. It gives us an overview of services and providers which the UI can use. It does not inherit from NotifyPropertyChangedBase. You saw how flexible databinding is. Not only with strings but you can bind also lists of objects etc.
 
-&nbsp;
+

@@ -18,10 +18,10 @@ Due to the fact that angular.js gets more and more important you are forced to t
 Well one of the killer features for me in angular is its modularization. Even when you are starting an app you realize that the whole app is nothing else than a module.
 
 
-<pre class="lang:js decode:true ">var app = angular.module('TestApp',
+<pre><code class="javascript">var app = angular.module('TestApp',
     [
        //...
-    ]);</pre>
+    ]);</code></pre>
 
 Now we could add all our services, and controllers to our defined app. Which would make them all accessable. Behind the scenes angularJS uses dependency injection to offer us our parts of our software and these services are singletons, so they are accessable everywhere out of the box.
 
@@ -33,7 +33,7 @@ Go and build a folder for every Module you want to create:
 
 ![How to modulize your angular application]({{site.baseurl}}assets/articles/2015-03-17/95b7dcaf-644a-43cf-920b-45786520bae6.png)And register your services on these modules.
 
-<pre class="lang:js decode:true ">var homeModule = angular.module('home.homeModule', ['ngRoute']);
+<pre><code class="javascript">var homeModule = angular.module('home.homeModule', ['ngRoute']);
 
 homeModule.config(function($routeProvider) {
     $routeProvider
@@ -42,10 +42,10 @@ homeModule.config(function($routeProvider) {
             templateUrl: "/app/Home/Templates/overview.html"
         })
         .otherwise({ redirectTo: "/" });
-});</pre>
+});</code></pre>
 
 
-<pre class="lang:js decode:true ">"use strict";
+<pre><code class="javascript">"use strict";
 homeModule.controller('home.controllers.homeController', [
     '$scope', 'home.services.peopleService', 'toaster', 'cfpLoadingBar',
     function ($scope, peopleService, toaster, cfpLoadingBar) {
@@ -54,11 +54,11 @@ homeModule.controller('home.controllers.homeController', [
     }
 ]);
 
-</pre>
+</code></pre>
 
 Then you have to load your modules in your app like this:
 
-<pre class="lang:js decode:true">var app = angular.module('TestApp',
+<pre><code class="javascript">var app = angular.module('TestApp',
     [
         'ngRoute',
         'ngResource',
@@ -68,7 +68,7 @@ Then you have to load your modules in your app like this:
         'home.homeModule',
         'contact.contactModule'
     ]);
-</pre>
+</code></pre>
 
 ![How to modulize your angular application]({{site.baseurl}}assets/articles/2015-03-17/10f82ac7-1f0c-43c6-bb4f-b387928aafe6.jpg)
 

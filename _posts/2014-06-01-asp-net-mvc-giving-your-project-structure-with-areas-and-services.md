@@ -41,11 +41,11 @@ Areas are adding a separate “room” for a special part of your website with i
 
 ![ASP.NET MVC Project structure with areas and services (Part 1)]({{site.baseurl}}assets/articles/2014-06-01/518fb795-0f60-47a8-8312-5edebe28335b.png)
 
-&nbsp;
+
 
 Note: You can of course add areas and name them as you want. But I think it’s always good to have a first point where the user first “sees” your application. So remind to have an Area which is giving you this information on the first sight. So name it like “Home” (which is standard). But also “Start” or anything like this would be okay.
 
-&nbsp;
+
 
 **3)     ** **Area-Models**
 
@@ -63,7 +63,7 @@ So you are hiding all information here for someone who is looking at your soluti
 
 _Conclusion so far: Keep your models in the given “models”-folder the area is offering to you. Do add namespaces to actions you can to and summarize all view- and submitmodels in these folders. This gets a perfect overview of what your controller offers and you can find immediately what you are searching for, if you are searching for it. And \*only\* this. Nothing confusing._
 
-&nbsp;
+
 
 **4)     ** **Area-Views**
 
@@ -79,11 +79,11 @@ Here you can see again the clean folder structure which fits perfectly to the vi
 
 _Conclusion so far: We have now a clean models-folder and views which represent the models and the functionality of the application in this area part. You know the connections between them because of a clean naming and concern-separation.But their relations is also clear because of a clean naming._
 
-&nbsp;
+
 
 So now we have touched areas, views and models inside an area. Okay…the controller is missing. But before I go into this I have to get a step back:
 
-&nbsp;
+
 
 **5)     ** **Controller Services and the controller**
 

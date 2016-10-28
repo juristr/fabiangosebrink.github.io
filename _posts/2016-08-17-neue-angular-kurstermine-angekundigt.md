@@ -26,7 +26,7 @@ Zu Beginn werde ich wie beim letzten Mal die Erwartungen der Teilnehmer abholen,
 
 Wir werden in dem Kurs erstmal die Javascript-Basics anschauen um danach die Grundlagen von AngularJS zu lernen. Dabei schauen wir uns natürlich Module, Factories, Services, HTTP-Kommunikation etc. an. Alles, was drumherung passiert (Bower, npm, etc.) ist natürlich auch mit dabei.
 
-Am Ende schliessen wir den Kurs mit dem Testing und einem Review einer Beispielapplikation ab, so dass man neben den Hands-On-Übungen, die es nach jedem Kapitel gibt, auch mal das &#8220;Grosse Ganze&#8221; sieht und ein Gefühl bekommt, wie AngularJS sich in einer etwas grösseren Umgebung präsentiert.
+Am Ende schliessen wir den Kurs mit dem Testing und einem Review einer Beispielapplikation ab, so dass man neben den Hands-On-Übungen, die es nach jedem Kapitel gibt, auch mal das "Grosse Ganze" sieht und ein Gefühl bekommt, wie AngularJS sich in einer etwas grösseren Umgebung präsentiert.
 
 Der Kurs beinhaltet also (nicht nur)
 

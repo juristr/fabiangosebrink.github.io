@@ -23,16 +23,16 @@ Now I want to show you an example dataservice to call your favourite API.
 
 # Configuration
 
-Its always a good thing if you have your configuration seperated stored anywhere in your application. I always go for a file like &#8220;app.constants.ts&#8221; where I store all my values. If anything changes there, like a version of the api which is stored in the url or the endpoint/server whatever, I can do those changes immediatelly at one point.
+Its always a good thing if you have your configuration seperated stored anywhere in your application. I always go for a file like "app.constants.ts" where I store all my values. If anything changes there, like a version of the api which is stored in the url or the endpoint/server whatever, I can do those changes immediatelly at one point.
 
-<pre class="lang:c# decode:true " title="app.constants.ts">import { Injectable } from 'angular2/core';
+<pre><code class="cs">import { Injectable } from 'angular2/core';
 
 @Injectable()
 export class Configuration {
     public Server: string = "http://localhost:5000/";
     public ApiUrl: string = "api/";
     public ServerWithApiUrl = this.Server + this.ApiUrl;
-}</pre>
+}</code></pre>
 
 Notice the injectable attribute to generate the metadata to make the service available through DI in other modules.
 
@@ -44,7 +44,7 @@ Now we have this going we can generate our service:
 
 First of all you have to create a module which only contains a service which is only responsible for calling an API with a specific endpoint.
 
-<pre class="lang:c# decode:true ">import { Injectable } from 'angular2/core';
+<pre><code class="cs">import { Injectable } from 'angular2/core';
 import { Http, Response, Headers } from 'angular2/http';
 import 'rxjs/add/operator/map'
 import { Observable } from 'rxjs/Observable';
@@ -87,15 +87,15 @@ export class DataService {
     public Delete = (id: number): Observable&lt;Response&gt; =&gt; {
         return this._http.delete(this.actionUrl + id);
     }
-}</pre>
+}</code></pre>
 
 This dataservice gets the configuration we just did and the HTTP-Service via DI. We included it over the new module-loading-syntax. Also notice the typed items we included and the configuration we have to pull in to make it available.
 
-It is also important to tell the http-calls which header to use. &#8220;Application/Json&#8221; in this case.
+It is also important to tell the http-calls which header to use. "Application/Json" in this case.
 
 Now you can include, inject and use this service to make http-calls to your API like this:
 
-<pre class="lang:c# decode:true">import { Component, OnInit } from 'angular2/core';
+<pre><code class="cs">import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { DataService } from '../services/dataService';
 import { MyTypedItem } from '../models/MyTypedItem ';
@@ -125,13 +125,13 @@ export class MyItemComponent implements OnInit {
                 error =&gt; console.log(error),
                 () =&gt; console.log('Get all Items complete'));
     }
-}</pre>
+}</code></pre>
 
 I think this should be basically it. Pay attention to the typed answer you get from the service
 
-<pre class="lang:c# decode:true">(data:MyTypedItem[]) =&gt;</pre>
+<pre><code class="cs">(data:MyTypedItem[]) =&gt;</code></pre>
 
-and to the subsribe after calling the &#8220;GetAll&#8221;-Method from the service.
+and to the subsribe after calling the "GetAll"-Method from the service.
 
 Hope you enjoyed it and a lot more: I hope this helps.
 

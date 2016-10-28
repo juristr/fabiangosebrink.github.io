@@ -27,7 +27,7 @@ Of course I could not stop looking and digging into Angular2. So I wrote this cl
 
 Inside this blog I want to loose a few words about how I wrote them what the pitfalls were and how I came up with this solution.
 
-> I will only show Angular2 examples here because it&#8217;s the only client which is still maintained
+> I will only show Angular2 examples here because it's the only client which is still maintained
 
 ### Architecture
 
@@ -37,14 +37,14 @@ The application is divieded into several components with its child components. D
 
 So the only interesting thing is the Food-Component which has two child Components "FoodForm" and "FoodList".
 
-<pre class="lang:js decode:true ">@Component({
+<pre><code class="javascript">@Component({
     selector: 'food-component',
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FoodListComponent, FoodListFormComponent],
     providers: [FoodDataService, FoodListDataService],
     templateUrl: 'app/components/food/food.component.html'
-})</pre>
+})</code></pre>
 
-<pre class="lang:xhtml decode:true ">&lt;!-- Page Content --&gt;
+<pre><code class="xml">&lt;!-- Page Content --&gt;
 &lt;div class="container"&gt;
     &lt;!-- Introduction Row --&gt;
     &lt;div class="row"&gt;
@@ -59,11 +59,11 @@ So the only interesting thing is the Food-Component which has two child Componen
     &lt;foodlists-component&gt;&lt;/foodlists-component&gt;
 
 &lt;/div&gt;
-&lt;!-- /.container --&gt;</pre>
+&lt;!-- /.container --&gt;</code></pre>
 
 The list component itself is not containing the details-view but redirecting to it while iterating through all the foodItems:
 
-<pre class="lang:js decode:true ">import { Component, OnInit } from 'angular2/core';
+<pre><code class="javascript">import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { FoodDataService } from '../../shared/services/food.dataService';
@@ -102,11 +102,11 @@ export class FoodListComponent implements OnInit {
                 this.errorMessage = error;
             });
     }
-}</pre>
+}</code></pre>
 
 and the template
 
-<pre class="lang:js decode:true ">&lt;div class="row"&gt;
+<pre><code class="javascript">&lt;div class="row"&gt;
     &lt;div class="col-lg-12"&gt;
         &lt;h2 class="page-header"&gt;Your Lists  &lt;small&gt;{{allLists?.length}}&lt;/small&gt;&lt;/h2&gt;
     &lt;/div&gt;
@@ -118,13 +118,13 @@ and the template
             &lt;/a&gt;
         &lt;/ul&gt;
     &lt;/div&gt;
-&lt;/div&gt;</pre>
+&lt;/div&gt;</code></pre>
 
 ### Authentication
 
 The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a "CurrentUserService" to save this token in the storage and read it again.
 
-<pre class="lang:js decode:true ">import { Injectable } from 'angular2/core';
+<pre><code class="javascript">import { Injectable } from 'angular2/core';
 import { StorageService } from './storage.service';
 
 @Injectable()
@@ -143,13 +143,13 @@ export class CurrentUserService {
     public set token(token: string) {
         this._storageService.setItem('auth', token);
     }
-}</pre>
+}</code></pre>
 
 With this I can read if the user is authenticated in a very basic way.
 
 Further I took a decorator to hook into the creation of components to check if the user is authenticated or not. If not the decorator will redirect to the login page:
 
-<pre class="lang:js decode:true ">import { CanActivate, ComponentInstruction, Router} from 'angular2/router';
+<pre><code class="javascript">import { CanActivate, ComponentInstruction, Router} from 'angular2/router';
 import { Injector } from 'angular2/core';
 import { appInjector } from '../shared/services/appInjector';
 import { StorageService } from '../shared/services/storage.service';
@@ -168,7 +168,7 @@ export const NeedsAuthentication = () =&gt; {
 
         return false;
     });
-}</pre>
+}</code></pre>
 
 With every request I have to prepare the header which I do in a wrapped Http service.
 
@@ -176,7 +176,7 @@ With every request I have to prepare the header which I do in a wrapped Http ser
 
 Sneak peek:
 
-<pre class="lang:js decode:true ">private prepareOptions(options: RequestOptionsArgs): RequestOptionsArgs {
+<pre><code class="javascript">private prepareOptions(options: RequestOptionsArgs): RequestOptionsArgs {
         let token: string = this._currentUserService.token;
 
         options = options || {};
@@ -193,7 +193,7 @@ Sneak peek:
         options.headers.append('Accept', 'application/json');
 
         return options;
-    }</pre>
+    }</code></pre>
 
 So I check the headers, append a token if available, set the content-type and accept-properties and give the options back to use it in the REST-Call.
 
@@ -203,7 +203,7 @@ To give this whole thing a go as an exe and as an app on mobile devices I used 
 
 I seperated all the files in the tasks for "electron", "cordova" and "web". In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types "gulp" without a specific command.
 
-<pre class="lang:js decode:true ">var buildConfig = require('./gulp.config');
+<pre><code class="javascript">var buildConfig = require('./gulp.config');
 
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
@@ -218,11 +218,11 @@ gulp.task('build:all', function(done) {
         'build:electron:prod',
         'build:apps',
         done);
-});</pre>
+});</code></pre>
 
 For example here is the electron gulp file, which turns this application into an exe
 
-<pre class="lang:js decode:true ">gulp.task('build:electron:prod', function(done) {
+<pre><code class="javascript">gulp.task('build:electron:prod', function(done) {
     runSeq(
         'electron-clean-temp',
         'electron-copy-index-to-temp-folder',
@@ -237,11 +237,11 @@ For example here is the electron gulp file, which turns this application into an
         'electron-copy-assets-to-temp-folder',
         'electron-build-win',
         done);
-});</pre>
+});</code></pre>
 
 For cordova
 
-<pre class="lang:js decode:true ">gulp.task('build:apps', function(done) {
+<pre><code class="javascript">gulp.task('build:apps', function(done) {
     runSeq(
         'cordova-clean-temp',
         'cordova-copy-config-to-temp',
@@ -257,7 +257,7 @@ For cordova
         'cordova-build-android',
         'cordova-copy-to-dist',
         done);
-});</pre>
+});</code></pre>
 
 ### 
 

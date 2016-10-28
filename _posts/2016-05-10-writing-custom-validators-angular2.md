@@ -21,9 +21,9 @@ in this blogpost I want to show you how to write custom validators for forms in 
 
 When dealing with forms in Angular2 you can use the build-in validators like: required, minLength or maxLength, pattern&#8230; . Sooner or later you need a custom validator fulfilling a special validation.
 
-Let&#8217;s have a form first:
+Let's have a form first:
 
-<pre class="lang:c# decode:true">&lt;form #myForm="ngForm"&gt;
+<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
     &lt;div class="form-group"&gt;
         &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
         &lt;input type="number" 
@@ -34,13 +34,13 @@ Let&#8217;s have a form first:
             [(ngModel)]="foodItem.Calories"&gt;
     &lt;/div&gt;
     &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
+&lt;/form&gt;</code></pre>
 
 We see a form which has a variable "myForm" with which we can ask for the current state of the form.
 
 Now we want to write a custom validator checking if the entered number is in a specific range for example.
 
-<pre class="lang:c# decode:true ">import { Control } from '@angular/common';
+<pre><code class="cs">import { Control } from '@angular/common';
 
 export class IntegerValidator {
 
@@ -51,13 +51,13 @@ export class IntegerValidator {
         }
         return null;
     }
-}</pre>
+}</code></pre>
 
-This validator is named "IntegerValidator" and has a function with a control as a parameter. It returns null if everything is okay and not null if the entered number is not in integer range. You can access the control&#8217;s value via [control].value.
+This validator is named "IntegerValidator" and has a function with a control as a parameter. It returns null if everything is okay and not null if the entered number is not in integer range. You can access the control's value via [control].value.
 
 If we want to use it in the form like
 
-<pre class="lang:c# decode:true ">&lt;form #myForm="ngForm"&gt;
+<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
     &lt;div class="form-group"&gt;
         &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
         &lt;input type="number" 
@@ -69,11 +69,11 @@ If we want to use it in the form like
             isInRange&gt;
     &lt;/div&gt;
     &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
+&lt;/form&gt;</code></pre>
 
-We need a directive to access the validator this way. Let&#8217;s write one:
+We need a directive to access the validator this way. Let's write one:
 
-<pre class="lang:js decode:true ">import { Directive, provide } from '@angular/core';
+<pre><code class="javascript">import { Directive, provide } from '@angular/core';
 import { IntegerValidator } from './integer.validator';
 import { NG_VALIDATORS } from '@angular/common';
 
@@ -83,13 +83,13 @@ import { NG_VALIDATORS } from '@angular/common';
 })
 
 export class IsInRangeValidatorDirective {
-}</pre>
+}</code></pre>
 
 Here we make the Range-validator accessible to the form by naming it "isInRange". THen we use the angular given NG_Validators and "extend" it with our custom validator.
 
 Now we have to tell our form component to provide this validator to our form:
 
-<pre class="lang:c# decode:true">import { Component } from '@angular/core';
+<pre><code class="cs">import { Component } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
 import { FoodItem } from './model';
 import { IsInRangeValidatorDirective } from './integer.range.validator.directive';
@@ -111,13 +111,13 @@ export class FoodFormComponent {
     private AddFood = (): void =&gt; {
         alert("Added " + JSON.stringify(this.foodItem));
     }
-}</pre>
+}</code></pre>
 
 In our Formcomponent we use the directive "IsInRangeValidatorDirective" we just created.
 
 Now it would be nice to show specific error messages to the users. So we have to ask through the form-variable we introduced and through the control name for the state and if there is a range error.
 
-<pre class="lang:c# decode:true">&lt;form #myForm="ngForm"&gt;
+<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
     &lt;div class="form-group"&gt;
         &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
         &lt;input type="number" class="form-control" id="inputCalories" ngControl="calories" placeholder="Calories" [(ngModel)]="foodItem.Calories"
@@ -129,7 +129,7 @@ Now it would be nice to show specific error messages to the users. So we have to
 
     &lt;/div&gt;
     &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</pre>
+&lt;/form&gt;</code></pre>
 
 And that's basically it.
 

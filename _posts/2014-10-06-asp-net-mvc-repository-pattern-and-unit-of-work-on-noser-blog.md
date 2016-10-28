@@ -1,6 +1,6 @@
 ---
 id: 544
-title: '&#8220;ASP.NET MVC: Repository Pattern and Unit of Work&#8221; on Noser-Blog'
+title: '"ASP.NET MVC: Repository Pattern and Unit of Work" on Noser-Blog'
 date: 2014-10-06T20:39:03+00:00
 author: Fabian Gosebrink
 layout: post

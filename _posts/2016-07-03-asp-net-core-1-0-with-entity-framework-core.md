@@ -16,7 +16,7 @@ categories: articles
 
 In this repository I want to show the first steps with Entity Framework Core and ASP.NET Core 1.0.
 
-The Repository contains a sample WebAPI with CRUD-Operations that you can Get/Read/Update and Delete &#8220;MyModel&#8221; objects through HTTP-calls.
+The Repository contains a sample WebAPI with CRUD-Operations that you can Get/Read/Update and Delete "MyModel" objects through HTTP-calls.
 
 Here is the code: <https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core>
 
@@ -32,9 +32,9 @@ The database should now be visible inside your SQL Server Management Studio.
 
 ## Project.json
 
-The project.json file includes tha Entity Framework SQLServer package as well as the EF Core itself and the EF Core Tools. The tools are mentioned twice: Once in the &#8220;dependencies&#8221;-section and once in the &#8220;tools&#8221;-section
+The project.json file includes tha Entity Framework SQLServer package as well as the EF Core itself and the EF Core Tools. The tools are mentioned twice: Once in the "dependencies"-section and once in the "tools"-section
 
-<pre class="lang:js decode:true ">{
+<pre><code class="javascript">{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -100,13 +100,13 @@ The project.json file includes tha Entity Framework SQLServer package as well as
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
-</pre>
+</code></pre>
 
 ## Appsettings
 
 The appsettings contain beside the well known logging section the connectionstring to target the database:
 
-<pre class="lang:js decode:true ">{
+<pre><code class="javascript">{
   "Logging": {
     "IncludeScopes": false,
     "LogLevel": {
@@ -119,7 +119,7 @@ The appsettings contain beside the well known logging section the connectionstri
     "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=AspnetCoreEF7Example;Trusted_Connection=True;MultipleActiveResultSets=true;"
   }
 }
-</pre>
+</code></pre>
 
 This connectionstring is consumed in &#8230;
 
@@ -127,21 +127,21 @@ This connectionstring is consumed in &#8230;
 
 &#8230;the startup-file. With
 
-<pre class="lang:c# decode:true ">var configurationSection = Configuration.GetSection("ConnectionStrings:DefaultConnection");
-services.AddDbContext(options =&gt; options.UseSqlServer(configurationSection.Value));</pre>
+<pre><code class="cs">var configurationSection = Configuration.GetSection("ConnectionStrings:DefaultConnection");
+services.AddDbContext(options =&gt; options.UseSqlServer(configurationSection.Value));</code></pre>
 
-we can read the connectionstring and pass it to the &#8220;UseSQLServer&#8221;-Method.
+we can read the connectionstring and pass it to the "UseSQLServer"-Method.
 
 ## The Database Context
 
-<pre class="lang:c# decode:true ">public class DataBaseContext : DbContext
+<pre><code class="cs">public class DataBaseContext : DbContext
     {
         public DbSet&lt;MyModel&gt; MyModels { get; set; }
 
         public DataBaseContext(DbContextOptions&lt;DataBaseContext&gt; options)
             : base(options)
         { }
-    }</pre>
+    }</code></pre>
 
 In the DbContext you pass the DbSet of your Entites as you are used to it when working with the Entity Framework also in previous versions. But see the new constructor EF Core introduces.
 

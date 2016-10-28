@@ -23,10 +23,10 @@ I just released the Unit of Work and the Repository Pattern with Entity Framewor
 
 Changes:
 
-  * Added &#8220;DatabaseContext&#8221; insted of &#8220;DbContext&#8221; to the CustomRepositories in ExampleSolution &#8211;> No need to call &#8220;Set<T>&#8221;
+  * Added "DatabaseContext" insted of "DbContext" to the CustomRepositories in ExampleSolution &#8211;> No need to call "Set<T>"
   * Made basic CRUD methods virtual so you can overwrite them easier
 
-<pre class="lang:c# decode:true ">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
+<pre><code class="cs">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
 {
 	public PersonRepository(DatabaseContext dbContext)
 		: base(dbContext)
@@ -49,7 +49,7 @@ Changes:
 	{
 		//Do something else...
 	}
-}</pre>
+}</code></pre>
 
 Download [OfferingSolutions.UnitOfWork.Sample.0.6.2](http://offering.solutions/wp-content/uploads/2014/09/OfferingSolutions.UnitOfWork.Sample.0.6.2.zip)
 

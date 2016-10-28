@@ -14,22 +14,23 @@ categories: articles
 ---
 
 
-In this blogpost I want to show you how to create an ASP.NET Core 1.0 WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the &#8220;database&#8221; here.
+In this blogpost I want to show you how to create an ASP.NET Core 1.0 WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the "database" here.
 
-&nbsp;
+
 
 Code here <https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample>
 
 ### Visual Studio
 
 ![How to create an ASP.NET Core 1.0 WebAPI]({{site.baseurl}}assets/articles/2016-07-29/AspNetCoreWebApi0.jpg)
-![How to create an ASP.NET Core 1.0 WebAPI]({{site.baseurl}}assets/articles/2016-07-29/AspNetCoreWebApi2.jpg)
+![How to create an ASP.NET Core 1.0 WebAPI]({{site.baseurl}}assets/articles/2016-07-29/AspNetCoreWebApi02.jpg)
 
 We will start with the ASP.NET Startup-File
 
 ### ASP.NET Core Startup
 
-<pre class="lang:c# decode:true ">public class Startup
+<pre><code class="cs">
+public class Startup
 {
     public Startup(IHostingEnvironment env)
     {
@@ -62,17 +63,16 @@ We will start with the ASP.NET Startup-File
 
         app.UseMvc();
     }
-}</pre>
+}
+</code></pre>
 
 No magic here so far. We are creating a configuration in the first step (constructor) of the FIle and then add and use MVC with its defaultfiles (e.g. index.html) and add the ability to server static files in general (app.useStaticFiles).
-
-&nbsp;
 
 ### The models
 
 First lets build some entities we want to send to the client and back. We will create a DTO and an Entity and map everything before it gets send to the client.
 
-<pre class="lang:c# decode:true ">public class HouseDto
+<pre><code class="cs">public class HouseDto
     {
         public int Id { get; set; }
 
@@ -85,15 +85,17 @@ First lets build some entities we want to send to the client and back. We will c
         [Required]
         [DataType(DataType.PostalCode)]
         public int ZipCode { get; set; }
-}</pre>
+}
+</code></pre>
 
-<pre class="lang:c# decode:true ">public class HouseEntity
+<pre><code class="cs">public class HouseEntity
     {
         public int Id { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public int ZipCode { get; set; }
-}</pre>
+}
+</code></pre>
 
 So the DTO is an exact duplicate from the entity in this case.
 
@@ -101,13 +103,15 @@ Lets create the Mapper next (which is really obvious):
 
 ### The mapper
 
-<pre class="lang:c# decode:true ">public interface IHouseMapper
+<pre><code class="cs">
+public interface IHouseMapper
     {
         HouseDto MapToDto(HouseEntity houseEntity);
         HouseEntity MapToEntity(HouseDto houseDto);
-}</pre>
+}
+</code></pre>
 
-<pre class="lang:c# decode:true ">public class HouseMapper : IHouseMapper
+<pre><code class="cs">public class HouseMapper : IHouseMapper
     {
         public HouseDto MapToDto(HouseEntity houseEntity)
         {
@@ -130,29 +134,28 @@ Lets create the Mapper next (which is really obvious):
                 Street = houseDto.Street
             };
         }
-}</pre>
+}
+</code></pre>
 
 So here we are just mapping from one to another. Simple case. This can get more complex but it should do it for this time.
 
-&nbsp;
 
 After we created the mapper we want to have this mapper instanciated **every time a request comes in**. For this we use the build in DI-container in ASP.NET Core.
 
 So go to Startup.cs and add the line
 
-<pre class="lang:c# decode:true ">services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();
-</pre>
+`services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();`
 
-in the &#8220;ConfigureServices&#8221;-Method. It should look like this then:
+in the "ConfigureServices"-Method. It should look like this then:
 
-<pre class="lang:c# decode:true">public void ConfigureServices(IServiceCollection services)
+<pre><code class="cs">
+public void ConfigureServices(IServiceCollection services)
 {
             services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();
             // Add framework services.
             services.AddMvc();
-}</pre>
-
-&nbsp;
+}
+</code></pre>
 
 ### The repository
 
@@ -166,16 +169,16 @@ Like:
 
 But for this time we will use like a static list where objects are added and removed.
 
-<pre class="lang:c# decode:true ">public interface IHouseRepository
+<pre><code class="cs">public interface IHouseRepository
     {
         List&lt;HouseEntity&gt; GetAll();
         HouseEntity GetSingle(int id);
         HouseEntity Add(HouseEntity toAdd);
         HouseEntity Update(HouseEntity toUpdate);
         void Delete(int id);
-}</pre>
+}</code></pre>
 
-<pre class="lang:c# decode:true">public class HouseRepository : IHouseRepository
+<pre><code class="cs">public class HouseRepository : IHouseRepository
     {
         readonly Dictionary&lt;int, HouseEntity&gt; _houses = new Dictionary&lt;int, HouseEntity&gt;();
 
@@ -222,13 +225,13 @@ But for this time we will use like a static list where objects are added and rem
         {
             _houses.Remove(id);
         }
-}</pre>
+}</code></pre>
 
-&nbsp;
+
 
 > <span style="color: #808080;">A normal interface using Entity Framwork could look like this btw:</span>
 > 
-> <pre class="lang:c# decode:true "><span style="color: #808080;">public interface IExampleRepository
+> <pre><code class="cs"><span style="color: #808080;">public interface IExampleRepository
     {
         IEnumerable&lt;MyModel&gt; GetAll();
         MyModel GetSingle(int id);
@@ -236,13 +239,13 @@ But for this time we will use like a static list where objects are added and rem
         MyModel Update(MyModel toUpdate);
         void Delete(MyModel toDelete);
         int Save();
-}</span></pre>
+}</span></code></pre>
 > 
 > <span style="color: #808080;">taken from <a style="color: #808080;" href="https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs">https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs</a></span>
 > 
-> <span style="color: #808080;">See the &#8220;Save()&#8221;-Method here. But for this time it should be good with the list. We are not focussing on the Database here.</span>
+> <span style="color: #808080;">See the "Save()"-Method here. But for this time it should be good with the list. We are not focussing on the Database here.</span>
 
-So we do have the repository to save the data. Let&#8217;s make it available through DI in the Startup. This time we do NOT want to have a new repo every request, so we will add a singleton this time.
+So we do have the repository to save the data. Let's make it available through DI in the Startup. This time we do NOT want to have a new repo every request, so we will add a singleton this time.
 
 > <span style="color: #999999;">In a normal case with a real DB you would not do that</span>
 > 
@@ -254,26 +257,26 @@ So we do have the repository to save the data. Let&#8217;s make it available thr
 > 
 > <https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Startup.cs#L32>
 
-&nbsp;
+
 
 But this time we will use a singleton. Shame on me so far.
 
-<pre class="lang:c# decode:true ">services.AddSingleton&lt;IHouseRepository, HouseRepository&gt;();</pre>
+<pre><code class="cs">services.AddSingleton&lt;IHouseRepository, HouseRepository&gt;();</code></pre>
 
 So the whole Startup.cs is now like:
 
-<pre class="lang:c# decode:true ">public void ConfigureServices(IServiceCollection services)
+<pre><code class="cs">public void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton&lt;IHouseRepository, HouseRepository&gt;();
 
     services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();
     // Add framework services.
     services.AddMvc();
-}</pre>
+}</code></pre>
 
 With this we can start using the whole construct in a controller like this:
 
-<pre class="lang:c# decode:true ">[Route("api/[controller]")]
+<pre><code class="cs">[Route("api/[controller]")]
 public class HouseController : Controller
 {
     private readonly IHouseMapper _houseMapper;
@@ -449,7 +452,7 @@ public class HouseController : Controller
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
-}</pre>
+}</code></pre>
 
 Now we can go ahead and test this with a tool like postman or whatever:
 

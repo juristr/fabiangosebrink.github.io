@@ -42,7 +42,7 @@ It will add you the needed dll you can work with.
 
 The common case is that you have a DatabaseContext and DbSets of you entities stored in it. After adding the package you can use the OsUnitOfWorkContext as follows
 
-<pre class="lang:c# decode:true ">using (IOsUnitOfWorkContext unitOfWorkContext = new OsUnitOfWorkContext(DatabaseContext))
+<pre><code class="cs">using (IOsUnitOfWorkContext unitOfWorkContext = new OsUnitOfWorkContext(DatabaseContext))
 {
 	Person person = new Person() { Age = 28, Name = "Fabian" };
 
@@ -88,26 +88,26 @@ The common case is that you have a DatabaseContext and DbSets of you entities st
 	//Deleting a Person by Id or by entity
 	unitOfWorkContext.Delete&lt;Person&gt;(6);
 	unitOfWorkContext.Delete(person);
-}</pre>
+}</code></pre>
 
 ### 2) Use extended repositories
 
 If you want the normal repository to extend a bit with your own functions this is also possible. Everything you have to do is writing your own repository. You can even overwrite the normal CRUD-Methods to do whateer you like in there.
 
-Attention to inherit it from the &#8220;IRepositoryContext<YourEntity>&#8221; respectively the &#8220;RepositoryContextImpl<YourEntity>&#8221;. The code should look like this:
+Attention to inherit it from the "IRepositoryContext<YourEntity>" respectively the "RepositoryContextImpl<YourEntity>". The code should look like this:
 
 Interface:
 
-<pre class="lang:c# decode:true">public interface IPersonRepository : IRepositoryContext&lt;Person&gt;
+<pre><code class="cs">public interface IPersonRepository : IRepositoryContext&lt;Person&gt;
 {
 	void MyNewFunction(int id);
-}</pre>
+}</code></pre>
 
-&nbsp;
+
 
 Implementation:
 
-<pre class="lang:c# decode:true">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
+<pre><code class="cs">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
 {
 	public PersonRepository(DbContext dbContext)
 		: base(dbContext)
@@ -119,20 +119,20 @@ Implementation:
 	{
 		//Do Something
 	}
-}</pre>
+}</code></pre>
 
 You can then use it with
 
-&nbsp;
 
-<pre class="lang:c# decode:true ">using (IPersonRepository personRepository = new PersonRepository(new DatabaseContext()))
+
+<pre><code class="cs">using (IPersonRepository personRepository = new PersonRepository(new DatabaseContext()))
 {
 	personRepository.Add(new Person());
 	personRepository.Save();
 	List&lt;Person&gt; persons = personRepository.GetAll();
 	personRepository.MyNewFunction(6);
 	//...
-}</pre>
+}</code></pre>
 
 With this you can build your own repositories and they are build up modular and are replacable in an easy way.
 

@@ -25,7 +25,7 @@ When I am not coding I love to stand in the kitchen but I do always have the pro
 
 ### Backlog for first Version
 
-So I wanted to make it basically usable for everyone. So I need a user account or a login for users. The users should add their food items, update and delete them. This is handled the best way in categories or lists. So the users should also create, add, update and delete those lists. The idea is getting random food immediately when getting onto the page without a user account. But every mentioned managing feature should only be available when logged in. But perhaps not every user wants his food items to be public. So users have to switch between publish and unpublishing their food. If you want to get random food only from a list of food items there should also be a button available for this. Because its your food and you don&#8217;t care about public or not: You just want to have a random item out of your food list.
+So I wanted to make it basically usable for everyone. So I need a user account or a login for users. The users should add their food items, update and delete them. This is handled the best way in categories or lists. So the users should also create, add, update and delete those lists. The idea is getting random food immediately when getting onto the page without a user account. But every mentioned managing feature should only be available when logged in. But perhaps not every user wants his food items to be public. So users have to switch between publish and unpublishing their food. If you want to get random food only from a list of food items there should also be a button available for this. Because its your food and you don't care about public or not: You just want to have a random item out of your food list.
 
 In the end it should also be available for mobile devices. So I need a responsive design which concentrates on the things I need. Basic things. Because I am really not a UI-designer. 😉
 
@@ -58,7 +58,7 @@ So my timebox was 9 hours. Not a minute more. I know some of the technologies me
 
 We have CRUD operations for food items, and food lists. And we are going to map them with Automapper. So we need ViewModels for every model.
 
-<pre class="lang:c# decode:true ">public class FoodItem
+<pre><code class="cs">public class FoodItem
     {
         [Key]
         public int Id { get; set; }
@@ -67,17 +67,17 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         public int FoodListId { get; set; }
         public DateTime Created { get; set; }
         public bool IsPublic { get; set; }
-    }</pre>
+    }</code></pre>
 
-<pre class="lang:c# decode:true ">public class FoodList
+<pre><code class="cs">public class FoodList
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string UserId { get; set; }
         public ICollection&lt;FoodItem&gt; Foods { get; set; }
-    }</pre>
+    }</code></pre>
 
-<pre class="lang:c# decode:true ">public class FoodItemViewModel
+<pre><code class="cs">public class FoodItemViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -86,24 +86,24 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         public int FoodListId { get; set; }
         public DateTime Created { get; set; }
         public bool IsPublic { get; set; }
-    }</pre>
+    }</code></pre>
 
-<pre class="lang:c# decode:true ">public class FoodListViewModel
+<pre><code class="cs">public class FoodListViewModel
     {
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         public string UserId { get; set; }
         public ICollection&lt;FoodItem&gt; Foods { get; set; }
-    }</pre>
+    }</code></pre>
 
 in the OWIN-Configuration we can go ahead and initialize the mappings:
 
-<pre class="lang:c# decode:true">Mapper.Initialize(mapper =&gt;
+<pre><code class="cs">Mapper.Initialize(mapper =&gt;
             {
                 mapper.CreateMap&lt;FoodItem, FoodItemViewModel&gt;().ReverseMap();
                 mapper.CreateMap&lt;FoodList, FoodListViewModel&gt;().ReverseMap();
-            });</pre>
+            });</code></pre>
 
 Of course you need to add Automapper to your project which I did via [Nuget](https://www.nuget.org/packages/AutoMapper/4.1.1).
 
@@ -123,7 +123,7 @@ Food:
 
 Beside the whole authorization features this is basically it. The API is quite small but I think it clarifies the principle.
 
-<pre class="lang:c# decode:true ">[Authorize]
+<pre><code class="cs">[Authorize]
     [RoutePrefix("api")]
     public class FoodsController : BaseController
     {
@@ -330,11 +330,11 @@ Beside the whole authorization features this is basically it. The API is quite s
                 return InternalServerError(exception);
             }
         }
-    }</pre>
+    }</code></pre>
 
 FoodListController:
 
-<pre class="lang:c# decode:true ">[Authorize]
+<pre><code class="cs">[Authorize]
     [RoutePrefix("api")]
     public class FoodListsController : BaseController
     {
@@ -478,7 +478,7 @@ FoodListController:
                 return InternalServerError(exception);
             }
         }
-    }</pre>
+    }</code></pre>
 
 Next we will do the clients
 
@@ -492,6 +492,6 @@ The advantage of this is that you can maintain everything from VS like the API, 
 
 > The GitHub repos are both full functional examples with these different approaches. Choose the one you want. Both do not rely on each other.
 
-So we are building two clients. At this point I could not go for 9 hours anymore, so I build up one client during these 9 hours of coding and build the other one afterwards. Because it&#8217;s fun 🙂
+So we are building two clients. At this point I could not go for 9 hours anymore, so I build up one client during these 9 hours of coding and build the other one afterwards. Because it's fun 🙂
 
 I will describe the clients in other blog posts after this one&#8230;

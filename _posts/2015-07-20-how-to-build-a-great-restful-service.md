@@ -31,12 +31,12 @@ On this point I want to refer to the blogpost I have already written. In additio
 
 Yes, you can solve this in a modern client like the one I did in the blogpost with AngularJS. However, for clients which do not support those features: These links are essential to get paging working! So do include them and thank me later. 😉
 
-<pre class="lang:c# decode:true">var paginationHeader = new
+<pre><code class="cs">var paginationHeader = new
 {
 totalCount = myItems.Count(),
 //other Items here…
 };
-</pre>
+</code></pre>
 
 **
   
@@ -64,10 +64,10 @@ The client should also have the possibility to request the items he wants in a s
 
 Api:
 
-<pre class="lang:c# decode:true ">public IHttpActionResult Get(…, string sort = "Id")
+<pre><code class="cs">public IHttpActionResult Get(…, string sort = "Id")
 {
 //use the Sort-string
-}</pre>
+}</code></pre>
 
 _Example: <https://myurl.com/api/test?sort=Added>_
 

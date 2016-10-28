@@ -21,7 +21,7 @@ The code in this example will be available on <a href="https://github.com/Fabian
 
 You can find a great summary <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">here </a>and <a href="http://www.hanselman.com/blog/IntroducingASPNETWebHooksReceiversWebHooksMadeEasy.aspx">here </a>of what WebHooks exactly are. In short: You can receive updates from Websites and catch them with your own staying always up to date and seeing what is happening to your subscribed websites like Instagram, DropBox, GitHub etc. (We will only cover <a href="https://github.com/">GitHub </a>and <a href="https://www.dropbox.com/">DropBox </a>here)
 
-&nbsp;
+
 
 WebHooks on GitHub: <a href="https://github.com/aspnet/WebHooks">Gogogo!</a>
 <blockquote>You really should take a look at this repository. Its providing you a nice overview of which services are supported out-of-the-box. That is making the stuff nice and easy.</blockquote>
@@ -64,7 +64,7 @@ If everything worked fine the extension created everything for you: The handlers
 
 ![WebHooks with Asp.Net on Azure - DropBox and GitHub]({{site.baseurl}}assets/articles/2015-10-18/8.jpg)
 
-<pre class="lang:c# decode:true " title="WebHookConfig.cs">namespace WebHooksExample
+<pre><code class="cs">namespace WebHooksExample
 {
     public static class WebHookConfig
     {
@@ -75,17 +75,17 @@ If everything worked fine the extension created everything for you: The handlers
         }
     }
 }
-</pre>
+</code></pre>
 Be sure to call this register method from your app start. In this case I use Owin-Startup class. In your case this can be global.asax etc.
-<pre class="lang:xhtml decode:true " title="Web.config">&lt;configuration&gt;
+<pre><code class="xml">&lt;configuration&gt;
   &lt;appSettings&gt;
     &lt;add key="MS_WebHookReceiverSecret_GitHub" value="[MyGitHubKey]" /&gt;
     &lt;add key="MS_WebHookReceiverSecret_Dropbox" value="[MyDropBoxAppKey]" /&gt;
   &lt;/appSettings&gt;
  ...
-&lt;/configuration&gt;</pre>
+&lt;/configuration&gt;</code></pre>
 The handlers itself are self explaining. Note that you are only deriving a class from the the WebHookHandler-Class. You have to decide in the class itself whether this call is the one you want or not.
-<pre class="lang:c# decode:true " title="DropboxWebHookHandler">public class DropboxWebHookHandler : WebHookHandler
+<pre><code class="cs">public class DropboxWebHookHandler : WebHookHandler
     {
         public override Task ExecuteAsync(string receiver, WebHookHandlerContext context)
         {
@@ -99,15 +99,15 @@ The handlers itself are self explaining. Note that you are only deriving a class
             
             return Task.FromResult(true);
         }
-    }</pre>
+    }</code></pre>
 Once you have done this your app is ready for deploying it to Azure. Deploy it (Right-clikc your project in Visual Studio and deploy) and check the values in the application settings using portal.azure.com:
 
 ![WebHooks with Asp.Net on Azure - DropBox and GitHub]({{site.baseurl}}assets/articles/2015-10-18/9.jpg)
 
 There your two secrets should appear now. If not: Get them in there manually. The keys are
-<pre class="">MS_WebHookReceiverSecret_GitHub</pre>
+<pre class="">MS_WebHookReceiverSecret_GitHub</code></pre>
 and
-<pre class="">MS_WebHookReceiverSecret_Dropbox</pre>
+<pre class="">MS_WebHookReceiverSecret_Dropbox</code></pre>
 Now your app is ready to receive WebHooks. But how do we connect DropBox to fire againt our application? Well, the github case mentioned in the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">link above </a>is valid for dropbox, too! So lets enter the page in the dropbox-app we have been creating a few minutes before:
 https://[host]/api/webhooks/incoming/[receiver]
 is the form. So in our case this is:

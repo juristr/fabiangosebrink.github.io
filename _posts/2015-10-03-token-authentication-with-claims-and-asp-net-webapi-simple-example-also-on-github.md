@@ -27,7 +27,7 @@ The "problem" is that we do want to use all build in things Asp.Net WebAPI provi
 
 First of all we configure our WebAPI to create a "controller" which is taking our requests. Here is the first unusual thing: The controller we create is kind of a virtual controller. We only provide it as a string.
 
-<pre class="lang:c# decode:true">OAuthOptions = new OAuthAuthorizationServerOptions
+<pre><code class="cs">OAuthOptions = new OAuthAuthorizationServerOptions
             {
                 TokenEndpointPath = new PathString("/Token"),
                 Provider = new ApplicationOAuthProvider(),
@@ -38,13 +38,13 @@ First of all we configure our WebAPI to create a "controller" which is taking ou
             };
 
             // Enable the application to use bearer tokens to authenticate users
-            app.UseOAuthBearerTokens(OAuthOptions);</pre>
+            app.UseOAuthBearerTokens(OAuthOptions);</code></pre>
 
 The "TokenEndpointPath" can be treated like a controller without really having one in your project. You will not find such a class there, so stop looking :) Other Properties speak for themselves. Well, now we have to take a look at the ApplicationOAuthProvider, we mentioned in the code, because this is a class which consumes the token request and gives us the token in the end.
 
 Lets have a look at this.
 
-<pre class="lang:c# decode:true ">public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
+<pre><code class="cs">public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -68,7 +68,7 @@ Lets have a look at this.
             context.Validated(identity);
 
         }
-    }</pre>
+    }</code></pre>
 
 The first line is a CORS-Line. You can get information about CORS looking [here](http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api) or [here](http://enable-cors.org/server_aspnet.html).
 
@@ -86,7 +86,7 @@ So we have created the enpoint&#8230;lets request it with a POST-Request. (I am 
 
 ![alttext]({{site.baseurl}}assets/articles/2015-10-03/ff1f9b2d-f77d-4ed9-abf5-c34c19749537.jpg)There you go. if we now copy this token and send it to a controller we tagged with the [authorize]-Attribute like this:
 
-<pre class="lang:c# decode:true">[Authorize]
+<pre><code class="cs">[Authorize]
     public class ValuesController : ApiController
     {
         // GET api/&lt;controller&gt;
@@ -98,7 +98,7 @@ So we have created the enpoint&#8230;lets request it with a POST-Request. (I am 
 
             return Ok(claims);
         }
-    }</pre>
+    }</code></pre>
 
 ![alttext]({{site.baseurl}}assets/articles/2015-10-03/c1a37c15-9d52-4312-bd5d-9ee61810a6d5.jpg)
 
@@ -108,7 +108,7 @@ Thats it :)
 
 You can also check the roles you added in the claims by just mentioning the roles in your Autorize-Attribute:
 
-<pre class="lang:c# decode:true ">[Authorize(Roles = "user")]
+<pre><code class="cs">[Authorize(Roles = "user")]
     public class ValuesController : ApiController
     {
         // GET api/&lt;controller&gt;
@@ -120,7 +120,7 @@ You can also check the roles you added in the claims by just mentioning the role
 
             return Ok(claims);
         }
-    }</pre>
+    }</code></pre>
 
 The roles are added via claims in your OAuthProvider.
 

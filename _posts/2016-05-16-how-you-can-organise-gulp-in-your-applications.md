@@ -40,7 +40,7 @@ The `gulpfile.js` only contains the tasks whereas a file named like `gulp.config
 You can include your config file in the gulpfile like this:
 
 <pre><code class="javascript">var buildConfig = require('./gulp.config');
-</code></pre>
+</code></code></pre>
 
 If the files are on the same level.
 
@@ -88,7 +88,7 @@ The `gulp.config.js` can look like this:
         cordovaOutputPath: "../.dist/cordova/",
 };
 
-</code></pre>
+</code></code></pre>
 
 It is only containing all the files, paths and general information you want to use.
 
@@ -98,13 +98,13 @@ The gulp-file itself is now only containing the tasks and is consuming the confi
     return gulp.src(buildConfig.general.indexHtml)
         .pipe(gulp.dest(buildConfig.targets.webAppOutputPath));
 });
-</code></pre>
+</code></code></pre>
 
 This makes the gulp tasks more generic.
 
 ### Tasks in folders
 
-I&#8217;ve seen many ways how people organise the gulp tasks but it turned out for me it was the best way to have a folder called "gulpTasks" (or similar) where I put all my gulptasks in. I&#8217;ve seen this on many other repositories and also on conferences etc. It&#8217;s always good to have a folder encapsulating all your gulpTasks like this:
+I've seen many ways how people organise the gulp tasks but it turned out for me it was the best way to have a folder called "gulpTasks" (or similar) where I put all my gulptasks in. I've seen this on many other repositories and also on conferences etc. It's always good to have a folder encapsulating all your gulpTasks like this:
 
 ![alt text]({{site.baseurl}}assets/images/folderGulpTasks.png "gulptask folder")
 
@@ -118,7 +118,7 @@ How do I build up the "architecture" for my gulp-tasks now?
 
 Well we have to go one step back before clarifying how to solve this:
 
-Getting an app ready for distribution or even for development purposes is more than one task. Although I know the task-dependency-system in gulp where all the dependent tasks are executed in parallel before the called task is going to run I think it&#8217;s easier to run the things in sequence. It&#8217;s easier to read and easier to maintain IMHO.
+Getting an app ready for distribution or even for development purposes is more than one task. Although I know the task-dependency-system in gulp where all the dependent tasks are executed in parallel before the called task is going to run I think it's easier to run the things in sequence. It's easier to read and easier to maintain IMHO.
 
 Therefore you need to install a `run-sequence`-plugin available [here](https://www.npmjs.com/package/run-sequence). With this you can divide your tasks and seperate the responsibilities in your web gulpfile (e.g.) like this:
 
@@ -135,7 +135,7 @@ var runSeq = require('run-sequence');
         // all the other tasks
         done);
 });
-</code></pre>
+</code></code></pre>
 
 I think this is a very good and clear documentation of what is done if I call the main task.
 
@@ -151,7 +151,7 @@ gulp.task('build:all', function(done) {
         // maybe other main build tasks
         done);
 });
-</code></pre>
+</code></code></pre>
 
 You can repeat that for all your files and main tasks.
 
@@ -161,7 +161,7 @@ So here we are building a small architecture and get some order in our tasks-, f
 
 ### The default tasks
 
-Often I see that the default task is executing logic. It does something. And when the default task is doing something it&#8217;s most likely something like a main task. Like "build-all" or something?
+Often I see that the default task is executing logic. It does something. And when the default task is doing something it's most likely something like a main task. Like "build-all" or something?
 
 Let's picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: "Let me see what you have got for me".
 
@@ -184,7 +184,7 @@ You can define filters to define which one is a main task and which one is a chi
 <pre><code class="javascript">var taskListing = require('gulp-task-listing');
 //...
 gulp.task('help', taskListing.withFilters(/-/));
-</code></pre>
+</code></code></pre>
 
 Everything we need to do now is to point the default task on this help task to list all the tasks:
 
@@ -192,7 +192,7 @@ Everything we need to do now is to point the default task on this help task to l
 //...
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
-</code></pre>
+</code></code></pre>
 
 Which brings the following output:
 
@@ -222,7 +222,7 @@ function cleanTemp(done) {
     });
 }
 //...
-</code></pre>
+</code></code></pre>
 
 For tasks which are all the same in every step. Perhaps this can be useful
 

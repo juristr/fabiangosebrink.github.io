@@ -21,13 +21,13 @@ Well for me as a software developer it gets interesting every time I hear anothe
 
 This time I laid my focus on everything which was connected to the web and in eight hours of workshop and a lot of tracks the other day I learned a lot!
 
-&nbsp;
+
 
 **History**
 
 Let me get historical for a moment: .Net in its first version was released in 2002. This is 12 years ago! 12 years are more than a lifetime in computer-science. So you feel that there is something moving. Something growing. Internet-Applications are getting bigger and bigger and: It’s getting a lot more mobile focus. Having the same application on smartphone, tablet and your desktop-PC (Do you still have one? 😉 ) is something like essential to everyone. It also solves a lot of business-issues as I heard on the conference. "Oh if we would have known that before. It would have saved us a lot of trouble!&"
 
-&nbsp;
+
 
 **Why SPAs?**
 
@@ -65,7 +65,7 @@ The last piece which fits everything together to get a real feeling of client-ba
 
 With this angular.js-concept and WebAPI in the back you can get your information online, take it to your client and work with it. Navigation is client-based. Every behavior but the source of information is based on the client.
 
-&nbsp;
+
 
 **Conclusion**
 
@@ -75,4 +75,4 @@ On the mentioned historically view every C#-Developer has to face the new age wi
 
 Personally I think now that JavaScript is not a language without structure etc. It’s not like your good old C# with namespaces and classes and stuff but the frameworks in this direction are growing and getting better and better. So here is something moving. There is something growing. Let’s grow with it!
 
-&nbsp;
+

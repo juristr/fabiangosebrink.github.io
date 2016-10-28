@@ -21,7 +21,7 @@ A charting component is always very cool to see on your page and makes normal pl
   
 Highcharts are available on Codeplex: <a title="DotNet-Highcharts" href="https://dotnethighcharts.codeplex.com/" target="_blank">DotNet.HighCharts</a>
 
-I will not dive into this whole VIewModel thing. This is something very common in ASP.net MVC and can also bee seen in the second blog I am working on: <a href="http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/" target="_blank">How to avoid ViewBag and ViewData</a>
+I will not dive into this whole ViewModel thing. This is something very common in ASP.net MVC and can also bee seen in the second blog I am working on: <a href="http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/" target="_blank">How to avoid ViewBag and ViewData</a>
 
 So, lets start:
 

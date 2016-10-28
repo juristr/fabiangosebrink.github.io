@@ -17,17 +17,17 @@ Eine gute API sollte mehrere Features anbieten. Eins davon ist Paging. In diesem
 
 Als erstes sollte man dem Client anbieten per Parameter nur eine bestimmte Anzahl von Einträgen abzurufen.
 
-<pre class="lang:c# decode:true">[Route("myRoute")]
+<pre><code class="cs">[Route("myRoute")]
 public IHttpActionResult Get(int start = 0, int count = 10)
 {
      //...
-}</pre>
+}</code></pre>
 
 Man definiert ein Start und eine Anzahl von Items, die abgerufen werden. Per default weisen wir hier zehn Items zu (Range 0-10).
 
 Somit geben wir als Ergebnis per LINQ nur die Anzahl der Items zurück, die der Client angefordert hat.
 
-<pre class="lang:default decode:true">[Route("schedules")]
+<pre><code class="xml">[Route("schedules")]
 public IHttpActionResult Get(int start = 0, int count = 10)
 {
 	try
@@ -45,13 +45,13 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 	{
 		return InternalServerError();
 	}
-}</pre>
+}</code></pre>
 
 Das Problem an der Stelle ist nun, dass der Client wissen muss, wieviele Items es insgesamt gibt, damit er die richtige Anzahl der Seiten darstellen kann.
 
 Um dem Client die komplette Anzahl der Items mitzuteilen erweitern wir den ResponseHeader um Informationen.
 
-<pre class="lang:default decode:true">[Route("schedules")]
+<pre><code class="xml">[Route("schedules")]
 public IHttpActionResult Get(int start = 0, int count = 10)
 {
 	try
@@ -77,7 +77,7 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 	{
 		return InternalServerError();
 	}
-}</pre>
+}</code></pre>
 
 Im Response-Header steht nun die Anzahl der kompletten Items:
 
@@ -89,16 +89,16 @@ Ich benutze die Pagination-Komponente der [Bootstrap-Direktiven](https://angular
 
 Html:
 
-<pre class="lang:xhtml decode:true">&lt;pagination 
+<pre><code class="xml">&lt;pagination 
 ng-show="totalItems &gt; maximalItemsPerPage" 
 items-per-page="maximalItemsPerPage" 
 total-items="totalItems" 
 ng-model="currentPage" 
-ng-change="pageChanged()"&gt;&lt;/pagination&gt;</pre>
+ng-change="pageChanged()"&gt;&lt;/pagination&gt;</code></pre>
 
 Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items grösser ist als die, die maximal auf einer Seite angezeigt werden sollen.
 
-<pre class="lang:js decode:true ">myModule.controller('myController', [
+<pre><code class="javascript">myModule.controller('myController', [
     '$scope', "myRepository",
     function ($scope, myRepository) {
 
@@ -125,7 +125,7 @@ Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items 
         };
     }
 ]);
-</pre>
+</code></pre>
 
 Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable "totalItems" gesetzt, auf die dann gebunden wird.
 

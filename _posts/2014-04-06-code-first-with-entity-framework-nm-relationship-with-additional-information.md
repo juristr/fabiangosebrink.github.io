@@ -19,22 +19,22 @@ a few days ago I faced the problem of having a normal N:M Relationship in EF wit
 
 Well, without having these additional information this is easy:
 
-<pre>public class User
+<pre><code class="cs">public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
         //... everything else
         public virtual ICollection Groups{ get; set; }
     }
-</pre>
+</code></pre>
 
-<pre>public class Group
+<pre><code class="cs">public class Group
     {
         public int Id { get; set; }
         //... everything else
         public virtual ICollection Users { get; set; }
     }
-</pre>
+</code></pre>
 
 EF is now going to make the right decisions for you while creating the database. A third table is created (due to EF-magic) and shows you the right relation-table. Great things so far. But what if you want to have more information on the relation table which EF created for you? Well, the answer ist easy: EF is not able to do this without your help.
 
@@ -46,7 +46,7 @@ You have to create a third entity representing the relationship you want. I will
 
 So first, please create your third entity:
 
-<pre>public class Groups2Users
+<pre><code class="cs">public class Groups2Users
     {
         public int UserId { get; set; }
         public int GroupId { get; set; }
@@ -56,30 +56,30 @@ So first, please create your third entity:
 
         public MyAdditionalInformationType MyAdditionalInformation { get; set; }
     }
-</pre>
+</code></pre>
 
 and extend your existing entities like the following:
 
-<pre>public class User
+<pre><code class="cs">public class User
     {
         public int Id { get; set; }
         public string Username { get; set; }
         //... everything else
         public virtual ICollection Groups2Users { get; set; }
     }
-</pre>
+</code></pre>
 
-<pre>public class Group
+<pre><code class="cs">public class Group
     {
         public int Id { get; set; }
         //... everything else
         public virtual ICollection Groups2Users { get; set; }
     }
-</pre>
+</code></pre>
 
 Right now, you have made the three entities. Now, we have to wire everything together:
 
-<pre>public class DataBaseContext : DbContext
+<pre><code class="cs">public class DataBaseContext : DbContext
     {
         public DataBaseContext()
             : base("MyConnectionString")
@@ -110,7 +110,7 @@ Right now, you have made the three entities. Now, we have to wire everything tog
         public DbSet Groups { get; set; }
         public DbSet Groups2Users { get; set; }
     }
-</pre>
+</code></pre>
 
 When you now run your application with the right code-first configuration your database should hold those 3 three tables.
 
@@ -118,12 +118,12 @@ Note: Now you have to think exactly about what you want to do (Well you should d
 
 When you for example want to have all Groups of a user just call:
 
-<pre>context.Groups2Users.Where(x =&gt; x.UserId == userId, includeProperties: "Group").ToList();
-</pre>
+<pre><code class="cs">context.Groups2Users.Where(x =&gt; x.UserId == userId, includeProperties: "Group").ToList();
+</code></pre>
 
 Adding a new group xould be like
 
-<pre>Groups2Users groups2Users = new Groups2Users
+<pre><code class="cs">Groups2Users groups2Users = new Groups2Users
             {
                 Group = //Define your group here or above,
                 User = //your user here,
@@ -131,7 +131,7 @@ Adding a new group xould be like
             };
 
             context.Groups2Users.Add(groups2Users);
-</pre>
+</code></pre>
 
 Hope this helps,
 

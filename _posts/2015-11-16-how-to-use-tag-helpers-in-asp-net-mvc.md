@@ -23,7 +23,7 @@ If you are coding your links in your MVC-Views with normal strings its really ha
 
 Razor in previous versions had this
 
-<pre class="lang:c# decode:true ">Url.Action("MyAction", "MyController", new { id = "123" })</pre>
+<pre><code class="cs">Url.Action("MyAction", "MyController", new { id = "123" })</code></pre>
 
 which returned an url like "MyController/MyAction/123"
 
@@ -44,18 +44,18 @@ And Because tag helpers do not throw an exception if you use them and they do no
 
 Now all the cshtml files are able to handle Asp.Net-TagHelpers which get easily in your html like this:
 
-<pre class="lang:xhtml decode:true ">&lt;li&gt;&lt;a asp-controller="Home" asp-action="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;</pre>
+<pre><code class="xml">&lt;li&gt;&lt;a asp-controller="Home" asp-action="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></pre>
 
 which is rendered to
 
-<pre class="lang:xhtml decode:true ">&lt;li&gt;&lt;a href="/Home/Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
-</pre>
+<pre><code class="xml">&lt;li&gt;&lt;a href="/Home/Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+</code></pre>
 
 That is great because you do not have to use a non-html-syntax anymore and it it easier to understand and to read.
 
 You can also write forms in this Html-Tag-Helper-Syntax which is really nice to understand
 
-<pre class="lang:xhtml decode:true ">&lt;form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form"&gt;
+<pre><code class="xml">&lt;form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form"&gt;
     &lt;div asp-validation-summary="ValidationSummary.All" class="text-danger"&gt;&lt;/div&gt;
     &lt;div class="form-group"&gt;
         &lt;label asp-for="Name" class="col-md-2 control-label"&gt;&lt;/label&gt;
@@ -76,7 +76,7 @@ You can also write forms in this Html-Tag-Helper-Syntax which is really nice to 
             &lt;button type="submit" class="btn btn-default"&gt;Send person&lt;/button&gt;
         &lt;/div&gt;
     &lt;/div&gt;
-&lt;/form&gt;</pre>
+&lt;/form&gt;</code></pre>
 
 instead of using the "ugly" @-like Sytax before.
 

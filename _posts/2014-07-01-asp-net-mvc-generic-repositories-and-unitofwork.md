@@ -56,17 +56,17 @@ public class DataBaseContext : DbContext
     public DbSet&lt;Project&gt; Projects { get; set; }
         // Your entities here...
 }
-</pre>
+</code></pre>
 
 _Note: "Projects" is a normal DTO which is used for dealing with the Entity Framework. Could look like this_
 
-<pre class="lang:c# decode:true ">public class Project
+<pre><code class="cs">public class Project
 {
 	public int Id { get; set; }
 	public DateTime EntryDate { get; set; }
 	public DateTime LastChangedDate { get; set; }
 	public string Name { get; set; }
-}</pre>
+}</code></pre>
 
 You should have a normal DatabaseContext with all your entities on it and your model-creating-stuff using the FluentAPI.
   
@@ -105,7 +105,7 @@ This is the RepositoryBase. With its interface IRepositoryBase.
         void Delete(int id);
 
         void Delete(T entity);
-    }</pre>
+    }</code></pre>
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryBaseImpl">public class RepositoryBaseImpl&lt;T&gt; : IRepositoryBase&lt;T&gt; where T : class
     {
@@ -175,7 +175,7 @@ This is the RepositoryBase. With its interface IRepositoryBase.
         {
             _dataBaseContext.Set&lt;T&gt;().Remove(entity);
         }
-    }</pre>
+    }</code></pre>
 
 So here right in the beginning we see the heart of the thing we want to take a look at with this blogpost.
   
@@ -190,7 +190,7 @@ But let’s put this interface into a more flexible context. I added, like shown
         IRepositoryBase&lt;T&gt; GetGenericRepository&lt;T&gt;() where T : class;
 
         T GetCustomRepository&lt;T&gt;(Func&lt;DataBaseContext, object&gt; factory = null) where T : class;
-    }</pre>
+    }</code></pre>
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryProviderImpl">internal class RepositoryProviderImpl : IRepositoryProvider
     {
@@ -242,7 +242,7 @@ But let’s put this interface into a more flexible context. I added, like shown
             Repositories[typeof(T)] = repository;
             return repository;
         }
-    }</pre>
+    }</code></pre>
 
 And the factory looks like:
 
@@ -286,7 +286,7 @@ And the factory looks like:
         {
             return dbContext =&gt; new RepositoryBaseImpl&lt;T&gt;(dbContext);
         }
-    }</pre>
+    }</code></pre>
 
 So the factory is creating all the repositories you want to have including caching them. While creating it checks the cache first and if not available it creates a new one (RepositoryProviderImpl).
 
@@ -305,7 +305,7 @@ Now you need a UnitOfWork to use in your application to access these repositorie
         IMembershipRepository MembershipRepository { get; }
 
         int Save();
-    }</pre>
+    }</code></pre>
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="UnitOfWork">public class UnitOfWorkImpl : IUnitOfWork
     {
@@ -359,7 +359,7 @@ Now you need a UnitOfWork to use in your application to access these repositorie
         {
             return _repositoryProvider.GetCustomRepository&lt;T&gt;();
         }
-    }</pre>
+    }</code></pre>
 
 _Notice the IDisposable-Interface which the implementation of the UoW is implementing. This is why you can use it with a “using” in the end._
 
@@ -388,7 +388,7 @@ You can use it now from the outside with
 <pre class="theme:vs2012-black lang:c# decode:true " title="Using UnitofWork">using (IUnitOfWork unitOfWork = new UnitOfWorkImpl())
 {
     unitOfWork.MembershipRepository...
-}</pre>
+}</code></pre>
 
 And you are done 🙂
   
@@ -398,22 +398,22 @@ _Note:
   
 If you are using Ninject to inject your stuff and for IoC you can simply make your UnitOfWork present in the NinjectWebCommon.cs as InRequestScope. So it is injected once per request and you can Use DI_
 
-<pre class="lang:c# decode:true ">private static void RegisterServices(IKernel kernel)
+<pre><code class="cs">private static void RegisterServices(IKernel kernel)
 {
     kernel.Bind(typeof(IUnitOfWork)).To(typeof(UnitOfWorkImpl)).InRequestScope();
-}</pre>
+}</code></pre>
 
-<pre class="lang:c# decode:true ">private readonly IUnitOfWork _unitOfWork;
+<pre><code class="cs">private readonly IUnitOfWork _unitOfWork;
       
 public MyCtor(IUnitOfWork unitOfWork)
 {
 	_unitOfWork = unitOfWork.IsNotNull("unitOfWork");
-}</pre>
+}</code></pre>
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="Using UnitofWork">using (_unitOfWork)
 {
     unitOfWork.MembershipRepository...
-}</pre>
+}</code></pre>
 
 I hope I could give you a view into the UoW-Thing with generic repositories. But, like I said in the beginning, I only gathered information and put them together in one scope. And, of course, this is only one of soooo many articles in the web concerning UnitOfWork and Generic-Repos.
 

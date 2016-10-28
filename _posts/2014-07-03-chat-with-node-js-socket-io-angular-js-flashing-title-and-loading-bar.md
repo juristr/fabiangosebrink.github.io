@@ -23,7 +23,7 @@ Check these links to get all these libs:
   2. [Loading-bar](https://github.com/chieffancypants/angular-loading-bar)
   3. [jQuery](http://jquery.com/)
 
-&nbsp;
+
 
 Here we go:
 
@@ -43,7 +43,7 @@ Additionally to this you need to have all your scripts loaded. In the end this l
 
 ![Chat with Node.js, socket.io, Angular.js, flashing title and loading bar]({{site.baseurl}}assets/articles/2014-07-03/53118513-5294-4273-a1b9-763dfe5d2b3b.png)
 
-&nbsp;
+
 
 So what we see here is the head-information which is including everything (dont worry, we will get through most of these files during this post) we need to get the things going and the body. The body is giving us a div where we specify the controller"DemoController" and bind the messages we have in a simple html-list"li" with a simple angular-statement"ng-repeat".
 
@@ -55,22 +55,22 @@ Lets digg deeper and see the underlying controller. but before we do this, we ha
 
 ### App.js
 
-<pre>var app = angular.module('MessengerApp', ['ngRoute', 'ngResource', 'ui.bootstrap','chieffancypants.loadingBar']);
+<pre><code class="javscript">var app = angular.module('MessengerApp', ['ngRoute', 'ngResource', 'ui.bootstrap','chieffancypants.loadingBar']);
 app.config(function ($routeProvider) {
     $routeProvider
     .when("", { controller: "DemoController", templateUrl: "./views/index.html" })
     .otherwise({ redirectTo: "/" });
-});</pre>
+});</code></pre>
 
 Here you can see that we define an app in a variable"app" making it an angular module and we call it"MessengerApp" (This is what you see in the html-opening-tag in the screenshot above). Into this we are including all the 3rd-party-libs I mentioned above (loading-bar and so on). The route provider is not that important because we just have one route to show. I wont go into detail here because for this example this would be more theory than practice.
 
-&nbsp;
+
 
 ### The Controller
 
 As mentioned in the view we have a controller called"DemoController". And because we instantiated a variable called"app" we can now use it and define a controller on this app:
 
-<pre>app.controller('DemoController', function ($scope, chatService, cfpLoadingBar, flashService) {
+<pre><code class="javscript">app.controller('DemoController', function ($scope, chatService, cfpLoadingBar, flashService) {
 
     var _messages = [];
     
@@ -99,7 +99,7 @@ As mentioned in the view we have a controller called"DemoController". And becaus
     $scope.name = "";
 });
 
-</pre>
+</code></pre>
 
 Lets take a look into this in detail: First we define a controller which we can call in the view. Because of the dependency injection angular gives us out of the box we can just get everything into our controller we want to use.
 
@@ -108,8 +108,8 @@ Then we make an array of messages and connect to our socket via socket-io."_send
 The"socket.on(&#8230;)"-Method is like an eventhandler from socket.js. It is called when a new message gets received from the server. So everything we do here is :
 
   * Getting the object from the server
-  * throw this new message into the message array (&#8220;$scope.messages.push")
-  * giving it to the viewmodel and notify the viewmodel that there is something new (&#8220;$scope.$apply();")
+  * throw this new message into the message array ("$scope.messages.push")
+  * giving it to the viewmodel and notify the viewmodel that there is something new ("$scope.$apply();")
   * Flashing the window through a flashservice, we will get to know later
   * scroll the body to the bottom so that everytime the latest message is shown in the browser
 
@@ -118,17 +118,17 @@ After we created all our stuf we are ready to fill the scope-object which is giv
 <pre style="padding-left: 60px;">$scope.sendMessage = _sendMessage;
 $scope.messages = _messages;
 $scope.messageText = "";
-$scope.name = "";</pre>
+$scope.name = "";</code></pre>
 
 This is the whole controller which is stored under the"Controllers"-folder and included in the view.
 
-&nbsp;
+
 
 ### The Services
 
 The services are like the base of our application because they are doing the real hard work. Lets take a closer look what these services we just included are really doing:
 
-<pre>'use strict';
+<pre><code class="javscript">'use strict';
 app.factory('chatService', function (chatDataService) {
     var chatService = {};
 
@@ -152,19 +152,19 @@ app.factory('chatDataService', function ($http) {
     chatDataService.sendMessage = _sendMessage;
 	
     return chatDataService;
-});</pre>
+});</code></pre>
 
 And here you can see the seperattion of concerns which I am a big fan of. I divided the data-service from the real service to have a better understanding and a better overview of whom is doing what. So the single-responsibility is used here.
   
 So we have the"ChatService" and a"ChatDataService". We just want to look at the real work in the"ChatDataService" which is really sending the messages by calling the method:
 
-<pre>socket.emit('chat', { name: name, text: stringToSend });</pre>
+<pre><code class="javscript">socket.emit('chat', { name: name, text: stringToSend });</code></pre>
 
 This line is like doing all the magic using socket.io to send messages to the Server which is described [here](http://blog.noser.com/node-js-chat-server/ "node.js – Chat Server"). We are generating a new object with the properties"name" and"text" and are sending what the user entered.
 
 Due to the fact that the FlashService is only a nice2have-thing I will not refer to it in detail but I want to mention it.
 
-<pre>'use strict';
+<pre><code class="javscript">'use strict';
 app.factory('flashService', function () {
     
 	var flashService = {};
@@ -200,7 +200,7 @@ app.factory('flashService', function () {
 	
     return flashService;
 });
-</pre>
+</code></pre>
 
 This service is offering us two methods
 
@@ -216,4 +216,4 @@ Fabian
 
 [chatclient_angular](http://blog.noser.com/wp-content/uploads/2014/07/chatclient_angular.zip)
 
-&nbsp;
+

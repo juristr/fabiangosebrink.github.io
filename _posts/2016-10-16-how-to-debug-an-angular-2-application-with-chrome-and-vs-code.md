@@ -31,9 +31,9 @@ After installing you probably have to enable the plugin and restart VS Code but 
 
 After doing this the extension created a new folder (if you do not have it already) called ".vscode" and a "launch.json" in it initially looking like this:
 
-&nbsp;
 
-<pre class="lang:js decode:true ">{
+
+<pre><code class="javascript">{
     "version": "0.2.0",
     "configurations": [
         {
@@ -53,7 +53,7 @@ After doing this the extension created a new folder (if you do not have it alrea
             "webRoot": "${workspaceRoot}"
         }
     ]
-}</pre>
+}</code></pre>
 
 Our folder strucutre tells us that the files are served from the root.
 
@@ -63,7 +63,7 @@ So the ""webRoot": "${workspaceRoot}"" -setting is good to go for us. We will op
 
 So replace the port in the config file with the port from your lite-server. In my cae thats "3000". This is how your config look like then:
 
-<pre class="lang:js decode:true ">{
+<pre><code class="javascript">{
     "version": "0.2.0",
     "configurations": [
         {
@@ -83,7 +83,7 @@ So replace the port in the config file with the port from your lite-server. In m
             "webRoot": "${workspaceRoot}"
         }
     ]
-}</pre>
+}</code></pre>
 
 Then start the lite server and just hit "play"
 

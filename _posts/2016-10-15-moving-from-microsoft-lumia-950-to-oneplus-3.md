@@ -29,27 +29,17 @@ This was done via app and this app was not available for windows mobile. This wa
 
 I have had this feelings almost everytime you could do something really easy via your mobile phone. Well, as a Windows user you could not. And even if there was an app for this it was not well implemented.
 
-Don&#8217;t get me wrong: I could do almost everything I wanted with my phone. Through the normal websites you can do a lot of stuff without an app, the rest of the things you wanted to do were not really necessary or you could not even do them because your phone was not able to. And this last this was really offending me more and more.
-
-&nbsp;
+Don't get me wrong: I could do almost everything I wanted with my phone. Through the normal websites you can do a lot of stuff without an app, the rest of the things you wanted to do were not really necessary or you could not even do them because your phone was not able to. And this last this was really offending me more and more.
 
 Another story: I was in a project at a customers place and they were discussing about getting their angular application to mobile via cordova and stuff. They wanted to participate from my knowledge so I was consulting them and joined the discussion. As I said that you are able to build for every platform their eyes really got bigger and bigger and they were really interested. As I started naming all the platforms and mentioned "Windows Mobile" they suddenly interrupted me and said "Nobody cares about Windows Mobile". This was not to offend me. It was just said in the room like a statement. Standing there. I was quiet for a little time and went on.
 
 But this showed me that also customers do not care about Windows Mobile.
 
-&nbsp;
-
 Another one of the many problems was that the first move to a "one windows on all devices" was kind of shaky on the phone. Yes the 950 has power, a great display etc. but it was not stable and normal apps you wanted to use acted not stable. Also there have been no updates very often.
-
-&nbsp;
 
 So all of this and a lot stories more (like the percentage of people using it is decreasing and decreasing etc.) brought me to the fact that I had to switch phones. Period.
 
-&nbsp;
-
 Well and here is my first confession: I was lying to you. Right in your face because I have not ever had _only_ Windows Phones and Lumias. There was a short period (about two weeks) where I had a really small and not powerful and cheap Android Phone. And I hated it. I could not do anything with it.
-
-&nbsp;
 
 But I wanted to give another OS a chance without spending tons of money on it. An iPhone is interesting for sure. But its very expensive and for the "first try" after switching platform? Pheew, thats a lot of money.
 
@@ -57,12 +47,10 @@ Then I came to the OnePlus3. Which is still at 399 EUR which IS a lot of money b
 
 <https://oneplus.net/at/3/specs>
 
-&nbsp;
-
 After a short talk with a friend of mine who already has the phone ([Benjamin Abt / Schwabencode](https://schwabencode.com/)) I ordered the OnePlus 3 over their store online.
 
 <p style="padding-left: 30px;">
-  <span style="color: #999999;">I had to order to Germany because I am living in Switzerland where the OnePlus-Team did not ship at that point of time. Don&#8217;t know if this has changed. </span>
+  <span style="color: #999999;">I had to order to Germany because I am living in Switzerland where the OnePlus-Team did not ship at that point of time. Don't know if this has changed. </span>
 </p>
 
 It arrived and the first impression was good. It was not overwhelming and not bad. Again: Do not get me wrong, the phone looked awesome! But so did the Lumia 950. There was no "WOW WHAT A PHONE"-Moment there. The 950 set the standard very very high especially looking at the outward appearance.

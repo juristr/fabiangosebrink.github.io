@@ -39,9 +39,9 @@ Die Services bieten eine Abstrahierung von etwaigen Aufgaben. Hier können Busin
 
 App.js bietet uns den Start unserer Anwendung. Hier wird die App erstellt und einer Variable zugewiesen, auf der die Controller, Services etc. in Zukunft registriert werden.
 
-<pre class="lang:js decode:true ">var firstApp = angular.module('firstApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);</pre>
+<pre><code class="javascript">var firstApp = angular.module('firstApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);</code></pre>
 
-&nbsp;
+
 
 Welche Module hier noch hinzugefügt wurden ist im Moment völlig irrelevant. Wichtig ist die Variable „firstApp“, die uns noch weiter begegnen wird im Laufe dieses Blogposts.
 
@@ -59,7 +59,7 @@ Hierbei kommen die oben genannten Aufgaben zum Tragen.
 
 Der Todo-Service beispielsweise bietet die Funktionen zum Abrufen, Löschen und Hinzufügen an:
 
-<pre class="lang:js decode:true">'use strict';
+<pre><code class="javascript">'use strict';
 firstApp.factory('todoService', function ($http) {
  
     var todoService = {};
@@ -91,13 +91,13 @@ firstApp.factory('todoService', function ($http) {
  
     return todoService;
 });
-</pre>
+</code></pre>
 
-&nbsp;
+
 
 Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Dependency Injection zur Verfügung, die es möglich macht, den Service im Controller zu injecten. Der Controller kann nun die Methoden in Anspruch nehmen.
 
-<pre class="lang:js decode:true ">firstApp.controller('todoController', function ($scope, todoService) {
+<pre><code class="javascript">firstApp.controller('todoController', function ($scope, todoService) {
  
     var _addTodo = function () {
         todoService.addTodo($scope.TodoItem).then(
@@ -127,27 +127,27 @@ Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Depend
     $scope.AddTodo = _addTodo;
     $scope.DeleteTodo = _deleteTodo;
 });
-</pre>
+</code></pre>
 
-&nbsp;
+
 
 Er setzt die Informationen auf dem scope und gibt diese zurück an die View. Diese bekommt per
 
-<pre class="lang:js decode:true ">ng-controller="todoController"</pre>
+<pre><code class="javascript">ng-controller="todoController"</code></pre>
 
-&nbsp;
+
 
 den Controller mitgeteilt und kann so das konsumieren, was der Controller auf dem Scope setzt. Beispielsweise:
 
-<pre class="lang:js decode:true ">&lt;tbody ng-repeat="item in todoItems"&gt;</pre>
+<pre><code class="javascript">&lt;tbody ng-repeat="item in todoItems"&gt;</code></pre>
 
-&nbsp;
+
 
 Hierbei ist „todoItems“ eine Liste aller vorhandenen Items.
 
 Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die Action direkt mit. Das ist aber nur eine Vorliebe meinerseits. Dies muss nicht so gelöst werden. Es kann auch mit Attributen der ActionName verändert werden, so dass dies „on-the-fly“ passiert.
 
-<pre class="lang:c# decode:true ">public static class WebApiConfig
+<pre><code class="cs">public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
@@ -164,13 +164,13 @@ Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die
                 defaults: new { id = RouteParameter.Optional }
             );
         }
-    }</pre>
+    }</code></pre>
 
-&nbsp;
+
 
 Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine richtige Konfiguration des MSSQL-Servers voraussetzt.
 
-<pre class="lang:c# decode:true ">public class TodoController : ApiController
+<pre><code class="cs">public class TodoController : ApiController
     {
         private readonly ITodoRepository _todoRepository;
 
@@ -213,21 +213,21 @@ Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine ric
                 }
             }
         }
-    }</pre>
+    }</code></pre>
 
 Und das dazugehörige Repository:
 
-<pre class="lang:c# decode:true ">namespace AngularJsTemplate.Repositories.TodoRepository
+<pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository
 {
     public interface ITodoRepository : IRepositoryContext&lt;TodoItem&gt;
     {
          
     }
-}</pre>
+}</code></pre>
 
-&nbsp;
 
-<pre class="lang:c# decode:true ">namespace AngularJsTemplate.Repositories.TodoRepository.Impl
+
+<pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository.Impl
 {
     public class TodoRepositoryImpl : RepositoryContextImpl&lt;TodoItem&gt;, ITodoRepository
     {
@@ -236,15 +236,15 @@ Und das dazugehörige Repository:
         {
         }
     }
-}</pre>
+}</code></pre>
 
 Benutzt wurde hier mein Repository und UnitOfWork-Paket, was auch auf <a href="http://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/" target="_blank">NuGet </a>zu finden ist.
 
-&nbsp;
+
 
 Gruss
 
-&nbsp;
+
 
 Fabian
 
