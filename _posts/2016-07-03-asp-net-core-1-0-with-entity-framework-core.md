@@ -34,7 +34,8 @@ The database should now be visible inside your SQL Server Management Studio.
 
 The project.json file includes tha Entity Framework SQLServer package as well as the EF Core itself and the EF Core Tools. The tools are mentioned twice: Once in the "dependencies"-section and once in the "tools"-section
 
-<pre><code class="javascript">{
+```
+{
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -100,13 +101,14 @@ The project.json file includes tha Entity Framework SQLServer package as well as
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }
-</code></pre>
+```
 
 ## Appsettings
 
 The appsettings contain beside the well known logging section the connectionstring to target the database:
 
-<pre><code class="javascript">{
+```
+{
   "Logging": {
     "IncludeScopes": false,
     "LogLevel": {
@@ -119,7 +121,7 @@ The appsettings contain beside the well known logging section the connectionstri
     "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=AspnetCoreEF7Example;Trusted_Connection=True;MultipleActiveResultSets=true;"
   }
 }
-</code></pre>
+```
 
 This connectionstring is consumed in &#8230;
 
@@ -127,21 +129,25 @@ This connectionstring is consumed in &#8230;
 
 &#8230;the startup-file. With
 
-<pre><code class="cs">var configurationSection = Configuration.GetSection("ConnectionStrings:DefaultConnection");
-services.AddDbContext(options => options.UseSqlServer(configurationSection.Value));</code></pre>
+```
+var configurationSection = Configuration.GetSection("ConnectionStrings:DefaultConnection");
+services.AddDbContext(options => options.UseSqlServer(configurationSection.Value));
+```
 
 we can read the connectionstring and pass it to the "UseSQLServer"-Method.
 
 ## The Database Context
 
-<pre><code class="cs">public class DataBaseContext : DbContext
+```
+public class DataBaseContext : DbContext
     {
         public DbSet<MyModel> MyModels { get; set; }
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)
         { }
-    }</code></pre>
+    }
+```
 
 In the DbContext you pass the DbSet of your Entites as you are used to it when working with the Entity Framework also in previous versions. But see the new constructor EF Core introduces.
 

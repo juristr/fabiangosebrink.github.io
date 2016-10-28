@@ -29,7 +29,8 @@ which includes
 
 ViewModelBase and SubmitModelBase are two baseclasses for the introduced view-and submitmodels.
 
-<pre><code class="cs">public class AccountRegisterViewModel : ViewModelBase
+```
+public class AccountRegisterViewModel : ViewModelBase
     {
         public AccountRegisterSubmitModel SubmitModel { get; set; }
 
@@ -37,13 +38,15 @@ ViewModelBase and SubmitModelBase are two baseclasses for the introduced view-an
         {
             Url = "~/Here/Goes/My/Url.cshtml";
         }
-    }</code></pre>
+    }
+```
 
 And you can access InfoMessages, SuccessMessages and  ErrorMessages now from your ViewModel.
 
 In your view you are filling up your submitmodel and sending it again to your Server. There you can now validate it:
 
-<pre><code class="cs">public AccountRegisterViewModel RegisterUser(AccountRegisterSubmitModel submitModel)
+```
+public AccountRegisterViewModel RegisterUser(AccountRegisterSubmitModel submitModel)
         {
             AccountRegisterViewModel viewModel = GetAccountRegisterViewMmodel(submitModel);
 
@@ -62,17 +65,21 @@ In your view you are filling up your submitmodel and sending it again to your Se
             }
 
             return viewModel;
-        }</code></pre>
+        }
+```
 
 In this exampe the ModelValidator in the NuGet above is used which you can simply register
 
 with Ninject for example like this:
 
-<pre><code class="cs">kernel.Bind(typeof(IModelValidator)).To(typeof(ModelValidatorImpl));</code></pre>
+```
+kernel.Bind(typeof(IModelValidator)).To(typeof(ModelValidatorImpl));
+```
 
 If you validate with the validator, your Errormessages are getting automatically filled with those defined in your submitmodel and you can easily return it. Of course you can do it the long way like this:
 
-<pre><code class="cs">ublic AccountRegisterViewModel RegisterUser(AccountRegisterSubmitModel submitModel)
+```
+ublic AccountRegisterViewModel RegisterUser(AccountRegisterSubmitModel submitModel)
         {
             AccountRegisterViewModel viewModel = GetAccountRegisterViewMmodel(submitModel);
 
@@ -93,7 +100,8 @@ If you validate with the validator, your Errormessages are getting automatically
             }
 
             return viewModel;
-        }</code></pre>
+        }
+```
 
 So, this is it. Hope you enjoy!
 

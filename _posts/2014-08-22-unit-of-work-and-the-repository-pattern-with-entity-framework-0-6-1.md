@@ -42,7 +42,8 @@ It will add you the needed dll you can work with.
 
 The common case is that you have a DatabaseContext and DbSets of you entities stored in it. After adding the package you can use the OsUnitOfWorkContext as follows
 
-<pre><code class="cs">using (IOsUnitOfWorkContext unitOfWorkContext = new OsUnitOfWorkContext(DatabaseContext))
+```
+using (IOsUnitOfWorkContext unitOfWorkContext = new OsUnitOfWorkContext(DatabaseContext))
 {
 	Person person = new Person() { Age = 28, Name = "Fabian" };
 
@@ -88,7 +89,8 @@ The common case is that you have a DatabaseContext and DbSets of you entities st
 	//Deleting a Person by Id or by entity
 	unitOfWorkContext.Delete<Person>(6);
 	unitOfWorkContext.Delete(person);
-}</code></pre>
+}
+```
 
 ### 2) Use extended repositories
 
@@ -98,16 +100,19 @@ Attention to inherit it from the "IRepositoryContext<YourEntity>" respectively t
 
 Interface:
 
-<pre><code class="cs">public interface IPersonRepository : IRepositoryContext<Person>
+```
+public interface IPersonRepository : IRepositoryContext<Person>
 {
 	void MyNewFunction(int id);
-}</code></pre>
+}
+```
 
 
 
 Implementation:
 
-<pre><code class="cs">public class PersonRepository : RepositoryContextImpl<Person>, IPersonRepository
+```
+public class PersonRepository : RepositoryContextImpl<Person>, IPersonRepository
 {
 	public PersonRepository(DbContext dbContext)
 		: base(dbContext)
@@ -119,20 +124,23 @@ Implementation:
 	{
 		//Do Something
 	}
-}</code></pre>
+}
+```
 
 You can then use it with
 
 
 
-<pre><code class="cs">using (IPersonRepository personRepository = new PersonRepository(new DatabaseContext()))
+```
+using (IPersonRepository personRepository = new PersonRepository(new DatabaseContext()))
 {
 	personRepository.Add(new Person());
 	personRepository.Save();
 	List<Person> persons = personRepository.GetAll();
 	personRepository.MyNewFunction(6);
 	//...
-}</code></pre>
+}
+```
 
 With this you can build your own repositories and they are build up modular and are replacable in an easy way.
 

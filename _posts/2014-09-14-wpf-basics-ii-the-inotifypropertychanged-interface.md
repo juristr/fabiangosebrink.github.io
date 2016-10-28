@@ -27,15 +27,18 @@ Therefore the binding has to be "refreshed" and we have the INotifyPropertyChang
 
 Lets take our code from before and give it a timer which sets the name we want to display after 3 seconds:
 
-<pre><code class="cs"><Grid>
+```
+<Grid>
 	<StackPanel>
 		<TextBlock Text="{Binding NameToDisplay}"></TextBlock>
 	</StackPanel>
-</Grid></code></pre>
+</Grid>
+```
 
 
 
-<pre><code class="cs">public class MainViewModel
+```
+public class MainViewModel
 {
 	public string NameToDisplay { get; set; }
 	Timer _timer;
@@ -52,13 +55,15 @@ Lets take our code from before and give it a timer which sets the name we want t
 		NameToDisplay = "Hallelujah";
 		_timer.Enabled = false;
 	}
-}</code></pre>
+}
+```
 
 >  "Hallelujah" is always my testword because im pretty sure it occurs nowhere else in a solution 😉 So if you see this, its mine
 
 So, if you debug this you will see that the timer gets into the timer_elapsed-function and sets the name but the UI does not change. So lets implement a way to refresh the UI! Only implement the INotifyPropertyChanged-interface:
 
-<pre><code class="cs">public class MainViewModel : INotifyPropertyChanged
+```
+public class MainViewModel : INotifyPropertyChanged
 {
 	public string NameToDisplay { get; set; }
 	readonly Timer _timer;
@@ -83,7 +88,8 @@ So, if you debug this you will see that the timer gets into the timer_elapsed-fu
 	}
 
 	public event PropertyChangedEventHandler PropertyChanged;
-}</code></pre>
+}
+```
 
 So everthing we do is throwing the event that something has changed with the name of the property as a string. If you let this run you will see that the UI refreshes and after 3 seconds the "hallelujah" is displayed. But this has some disadvantages:
 
@@ -101,7 +107,8 @@ Lets tune this:
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-14/0797f3e5-c8c3-4ed4-ab00-889e2bd8c628.jpg)which looks like:
 
-<pre><code class="cs">public class NotifyPropertyChangedBase : INotifyPropertyChanged
+```
+public class NotifyPropertyChangedBase : INotifyPropertyChanged
 {
 	public event PropertyChangedEventHandler PropertyChanged;
 
@@ -119,13 +126,15 @@ Lets tune this:
 			handler(this, new PropertyChangedEventArgs(memberExpr.Member.Name));
 		}
 	}
-}</code></pre>
+}
+```
 
 This is taking the member and throwing the event for us on this member. That was Point 1 and 2. Let it be (three)!
 
 We do inherit from the just created class and can access the event with the lambda-expression, which is more generic:
 
-<pre><code class="cs">public class MainViewModel : NotifyPropertyChangedBase
+```
+public class MainViewModel : NotifyPropertyChangedBase
 {
 	readonly Timer _timer;
 	private string _nameToDisplay;
@@ -152,7 +161,8 @@ We do inherit from the just created class and can access the event with the lamb
 		NameToDisplay = "Hallelujah";
 		_timer.Enabled = false;
 	}
-}</code></pre>
+}
+```
 
 Remeber: In the elapsed-method we are setting the property (not the private variable) directly that the setter is called and the event is thrown.
 
@@ -168,7 +178,8 @@ First we do a NameProvider, which gives us the name. In my case again with a tim
 
 ![alttext]({{site.baseurl}}assets/articles/2014-09-14/55c55993-75bd-4e1b-924b-50ae54555462.jpg)
 
-<pre><code class="cs">public class NameProviderImpl : NotifyPropertyChangedBase, INameProvider
+```
+public class NameProviderImpl : NotifyPropertyChangedBase, INameProvider
     {
         private readonly Timer _timer;
         private string _nameToDisplay;
@@ -203,18 +214,22 @@ First we do a NameProvider, which gives us the name. In my case again with a tim
             NameToDisplay = "Hallelujah";
             _timer.Enabled = false;
         }
-    }</code></pre>
+    }
+```
 
-<pre><code class="cs">public interface INameProvider
+```
+public interface INameProvider
 {
 	string NameToDisplay { get; }
-}</code></pre>
+}
+```
 
 Everything we did here is moving the timer-logic into a provider and offering the property through an interface to the outside.
 
 Our viewmodel now has nearly no logic anymore:
 
-<pre><code class="cs">public class MainViewModel
+```
+public class MainViewModel
 {
 	public INameProvider NameProvider { get; set; }
 
@@ -222,17 +237,20 @@ Our viewmodel now has nearly no logic anymore:
 	{
 		NameProvider = new NameProviderImpl();
 	}
-}</code></pre>
+}
+```
 
 This principle I am also describing [here](http://offering.solutions/2014/07/03/wpf-introducing-services-in-the-viewmodel-viewmodel-as-facade/ "WPF – Introducing services in the viewmodel (viewmodel as facade)").
 
 Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property "NameProvider". So the Binding looks like this:
 
-<pre><code class="cs"><Grid>
+```
+<Grid>
 	<StackPanel>
 		<TextBlock Text="{Binding NameProvider.NameToDisplay}"></TextBlock>
 	</StackPanel>
-</Grid></code></pre>
+</Grid>
+```
 
 Run this and you will see the result stays the same: After three seconds our string is displayed.
 

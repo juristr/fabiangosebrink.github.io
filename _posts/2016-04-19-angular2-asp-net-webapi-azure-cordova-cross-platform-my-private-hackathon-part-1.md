@@ -58,7 +58,8 @@ So my timebox was 9 hours. Not a minute more. I know some of the technologies me
 
 We have CRUD operations for food items, and food lists. And we are going to map them with Automapper. So we need ViewModels for every model.
 
-<pre><code class="cs">public class FoodItem
+```
+public class FoodItem
     {
         [Key]
         public int Id { get; set; }
@@ -67,17 +68,21 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         public int FoodListId { get; set; }
         public DateTime Created { get; set; }
         public bool IsPublic { get; set; }
-    }</code></pre>
+    }
+```
 
-<pre><code class="cs">public class FoodList
+```
+public class FoodList
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string UserId { get; set; }
         public ICollection<FoodItem> Foods { get; set; }
-    }</code></pre>
+    }
+```
 
-<pre><code class="cs">public class FoodItemViewModel
+```
+public class FoodItemViewModel
     {
         public int Id { get; set; }
         [Required]
@@ -86,24 +91,29 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         public int FoodListId { get; set; }
         public DateTime Created { get; set; }
         public bool IsPublic { get; set; }
-    }</code></pre>
+    }
+```
 
-<pre><code class="cs">public class FoodListViewModel
+```
+public class FoodListViewModel
     {
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
         public string UserId { get; set; }
         public ICollection<FoodItem> Foods { get; set; }
-    }</code></pre>
+    }
+```
 
 in the OWIN-Configuration we can go ahead and initialize the mappings:
 
-<pre><code class="cs">Mapper.Initialize(mapper =>
+```
+Mapper.Initialize(mapper =>
             {
                 mapper.CreateMap<FoodItem, FoodItemViewModel>().ReverseMap();
                 mapper.CreateMap<FoodList, FoodListViewModel>().ReverseMap();
-            });</code></pre>
+            });
+            ```
 
 Of course you need to add Automapper to your project which I did via [Nuget](https://www.nuget.org/packages/AutoMapper/4.1.1).
 
@@ -123,7 +133,8 @@ Food:
 
 Beside the whole authorization features this is basically it. The API is quite small but I think it clarifies the principle.
 
-<pre><code class="cs">[Authorize]
+```
+[Authorize]
     [RoutePrefix("api")]
     public class FoodsController : BaseController
     {
@@ -330,11 +341,13 @@ Beside the whole authorization features this is basically it. The API is quite s
                 return InternalServerError(exception);
             }
         }
-    }</code></pre>
+    }
+```
 
 FoodListController:
 
-<pre><code class="cs">[Authorize]
+```
+[Authorize]
     [RoutePrefix("api")]
     public class FoodListsController : BaseController
     {
@@ -478,7 +491,8 @@ FoodListController:
                 return InternalServerError(exception);
             }
         }
-    }</code></pre>
+    }
+```
 
 Next we will do the clients
 

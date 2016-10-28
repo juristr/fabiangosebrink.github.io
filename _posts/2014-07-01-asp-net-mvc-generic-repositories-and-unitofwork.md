@@ -43,7 +43,7 @@ But what is the Unit-Of-Work (UoW) and why another Unit-Of-Work-Abstraction?
 
 If you already dealed with the Entity-Framework (EF) you have used the UoW-Pattern all the time. The repository-pattern, too. And so you have already seen how it works: The UoW is tracking all your changes, gathering them together to get every information and changes on the database you need and sending them altogether into the database when you have finished your request. Like the DatabaseContext does. So the UoW with the repositories represents an abstraction of your database and it “reminds” all your changes.
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="DatabaseContext">
+```
 public class DataBaseContext : DbContext
 {
     public DataBaseContext()
@@ -56,17 +56,19 @@ public class DataBaseContext : DbContext
     public DbSet<Project> Projects { get; set; }
         // Your entities here...
 }
-</code></pre>
+```
 
 _Note: "Projects" is a normal DTO which is used for dealing with the Entity Framework. Could look like this_
 
-<pre><code class="cs">public class Project
+```
+public class Project
 {
 	public int Id { get; set; }
 	public DateTime EntryDate { get; set; }
 	public DateTime LastChangedDate { get; set; }
 	public string Name { get; set; }
-}</code></pre>
+}
+```
 
 You should have a normal DatabaseContext with all your entities on it and your model-creating-stuff using the FluentAPI.
   
@@ -88,26 +90,29 @@ So I combined them and just put in a little effort then.
 
 This is the RepositoryBase. With its interface IRepositoryBase.
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="IRepositoryBase">public interface IRepositoryBase<T> where T : class
-    {
-        List<T> GetAll(Expression<Func<T, bool>> filter = null,
-                       Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy = null,
-                       string includeProperties = "");
+```
+public interface IRepositoryBase<T> where T : class
+{
+    List<T> GetAll(Expression<Func<T, bool>> filter = null,
+                    Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy = null,
+                    string includeProperties = "");
 
-        T FindSingle(int id);
+    T FindSingle(int id);
 
-        T FindBy(Expression<Func<T, bool>> predicate, string includeProperties = "");
+    T FindBy(Expression<Func<T, bool>> predicate, string includeProperties = "");
 
-        void Add(T toAdd);
+    void Add(T toAdd);
 
-        void Update(T toUpdate);
+    void Update(T toUpdate);
 
-        void Delete(int id);
+    void Delete(int id);
 
-        void Delete(T entity);
-    }</code></pre>
+    void Delete(T entity);
+}
+```
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryBaseImpl">public class RepositoryBaseImpl<T> : IRepositoryBase<T> where T : class
+```
+public class RepositoryBaseImpl<T> : IRepositoryBase<T> where T : class
     {
         private readonly DataBaseContext _dataBaseContext;
 
@@ -175,7 +180,8 @@ This is the RepositoryBase. With its interface IRepositoryBase.
         {
             _dataBaseContext.Set<T>().Remove(entity);
         }
-    }</code></pre>
+    }
+```
 
 So here right in the beginning we see the heart of the thing we want to take a look at with this blogpost.
   
@@ -183,70 +189,75 @@ In this generic repository we are able to perform every operation we want with a
   
 But let’s put this interface into a more flexible context. I added, like shown in the links above, a repository-provider which is caching the repositories and creating them with a factory (factory-pattern).
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="IRepositoryProvider">internal interface IRepositoryProvider
+```
+internal interface IRepositoryProvider
+{
+    DataBaseContext DbContext { get; set; }
+
+    IRepositoryBase<T> GetGenericRepository<T>() where T : class;
+
+    T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null) where T : class;
+}
+```
+
+```
+internal class RepositoryProviderImpl : IRepositoryProvider
+{
+    public DataBaseContext DbContext { get; set; }
+
+    private readonly Factory _factory;
+    protected Dictionary<Type, object> Repositories { get; private set; }
+
+    public RepositoryProviderImpl()
     {
-        DataBaseContext DbContext { get; set; }
+        _factory = new Factory();
+        Repositories = new Dictionary<Type, object>();
+    }
 
-        IRepositoryBase<T> GetGenericRepository<T>() where T : class;
-
-        T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null) where T : class;
-    }</code></pre>
-
-<pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryProviderImpl">internal class RepositoryProviderImpl : IRepositoryProvider
+    public IRepositoryBase<T> GetGenericRepository<T>() where T : class
     {
-        public DataBaseContext DbContext { get; set; }
+        Func<DataBaseContext, object> repositoryFactoryForEntityTypeDelegate = _factory.GetRepositoryFactoryForEntityType<T>();
+        return GetCustomRepository<IRepositoryBase<T>>(repositoryFactoryForEntityTypeDelegate);
+    }
 
-        private readonly Factory _factory;
-        protected Dictionary<Type, object> Repositories { get; private set; }
-
-        public RepositoryProviderImpl()
+    public virtual T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null)
+        where T : class
+    {
+        object repository;
+        Repositories.TryGetValue(typeof(T), out repository);
+        if (repository != null)
         {
-            _factory = new Factory();
-            Repositories = new Dictionary<Type, object>();
+            return (T)repository;
         }
+        return CreateRepository<T>(factory, DbContext);
+    }
 
-        public IRepositoryBase<T> GetGenericRepository<T>() where T : class
+    private T CreateRepository<T>(Func<DataBaseContext, object> factory, DataBaseContext dbContext)
+    {
+        Func<DataBaseContext, object> repositoryFactory;
+        if (factory != null)
         {
-            Func<DataBaseContext, object> repositoryFactoryForEntityTypeDelegate = _factory.GetRepositoryFactoryForEntityType<T>();
-            return GetCustomRepository<IRepositoryBase<T>>(repositoryFactoryForEntityTypeDelegate);
+            repositoryFactory = factory;
         }
-
-        public virtual T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null)
-            where T : class
+        else
         {
-            object repository;
-            Repositories.TryGetValue(typeof(T), out repository);
-            if (repository != null)
-            {
-                return (T)repository;
-            }
-            return CreateRepository<T>(factory, DbContext);
+            repositoryFactory = _factory.GetRepositoryFactoryFromCache<T>();
         }
-
-        private T CreateRepository<T>(Func<DataBaseContext, object> factory, DataBaseContext dbContext)
+        if (repositoryFactory == null)
         {
-            Func<DataBaseContext, object> repositoryFactory;
-            if (factory != null)
-            {
-                repositoryFactory = factory;
-            }
-            else
-            {
-                repositoryFactory = _factory.GetRepositoryFactoryFromCache<T>();
-            }
-            if (repositoryFactory == null)
-            {
-                throw new NotSupportedException(typeof(T).FullName);
-            }
-            T repository = (T)repositoryFactory(dbContext);
-            Repositories[typeof(T)] = repository;
-            return repository;
+            throw new NotSupportedException(typeof(T).FullName);
         }
-    }</code></pre>
+        T repository = (T)repositoryFactory(dbContext);
+        Repositories[typeof(T)] = repository;
+        return repository;
+    }
+}
+```
 
 And the factory looks like:
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="Factory">internal class Factory
+```
+internal class Factory
     {
         private readonly IDictionary<Type, Func<DataBaseContext, object>> _factoryCache;
 
@@ -286,28 +297,30 @@ And the factory looks like:
         {
             return dbContext => new RepositoryBaseImpl<T>(dbContext);
         }
-    }</code></pre>
+    }
+    ```
 
 So the factory is creating all the repositories you want to have including caching them. While creating it checks the cache first and if not available it creates a new one (RepositoryProviderImpl).
 
-_I will go into this later, but while looking into this code: Not every Repository has to follow the CRUD-Things in the repository-base like shown above. You can also build up extended repositories and custom ones you complete implemented on your own way.
-  
-_ 
+I will go into this later, but while looking into this code: Not every Repository has to follow the CRUD-Things in the repository-base like shown above. You can also build up extended repositories and custom ones you complete implemented on your own way.
   
 So at this point you have implemented the repository for each entity and you are able to give these things to the outside world through your provider who creates the repositories as implemented.
   
 Now you need a UnitOfWork to use in your application to access these repositories and use them. This could look like this:
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="IUnitOfWork">public interface IUnitOfWork : IDisposable
+```
+public interface IUnitOfWork : IDisposable
     {
         IRepositoryBase<Project> ProjectRepository { get; }
 
         IMembershipRepository MembershipRepository { get; }
 
         int Save();
-    }</code></pre>
+    }
+    ```
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="UnitOfWork">public class UnitOfWorkImpl : IUnitOfWork
+```
+public class UnitOfWorkImpl : IUnitOfWork
     {
         private readonly DataBaseContext _context;
         private readonly IRepositoryProvider _repositoryProvider;
@@ -359,7 +372,8 @@ Now you need a UnitOfWork to use in your application to access these repositorie
         {
             return _repositoryProvider.GetCustomRepository<T>();
         }
-    }</code></pre>
+    }
+    ```
 
 _Notice the IDisposable-Interface which the implementation of the UoW is implementing. This is why you can use it with a “using” in the end._
 
@@ -385,10 +399,12 @@ Wrapped in namespaces this it how it could look to you:
 
 You can use it now from the outside with
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="Using UnitofWork">using (IUnitOfWork unitOfWork = new UnitOfWorkImpl())
+```
+using (IUnitOfWork unitOfWork = new UnitOfWorkImpl())
 {
     unitOfWork.MembershipRepository...
-}</code></pre>
+}
+```
 
 And you are done 🙂
   
@@ -398,22 +414,28 @@ _Note:
   
 If you are using Ninject to inject your stuff and for IoC you can simply make your UnitOfWork present in the NinjectWebCommon.cs as InRequestScope. So it is injected once per request and you can Use DI_
 
-<pre><code class="cs">private static void RegisterServices(IKernel kernel)
+```
+private static void RegisterServices(IKernel kernel)
 {
     kernel.Bind(typeof(IUnitOfWork)).To(typeof(UnitOfWorkImpl)).InRequestScope();
-}</code></pre>
+}
+```
 
-<pre><code class="cs">private readonly IUnitOfWork _unitOfWork;
+```
+private readonly IUnitOfWork _unitOfWork;
       
 public MyCtor(IUnitOfWork unitOfWork)
 {
 	_unitOfWork = unitOfWork.IsNotNull("unitOfWork");
-}</code></pre>
+}
+```
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="Using UnitofWork">using (_unitOfWork)
+```
+using (_unitOfWork)
 {
     unitOfWork.MembershipRepository...
-}</code></pre>
+}
+```
 
 I hope I could give you a view into the UoW-Thing with generic repositories. But, like I said in the beginning, I only gathered information and put them together in one scope. And, of course, this is only one of soooo many articles in the web concerning UnitOfWork and Generic-Repos.
 

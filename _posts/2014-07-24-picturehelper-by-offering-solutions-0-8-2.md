@@ -29,7 +29,8 @@ Basic functions are:
 
 Which can look like this:
 
-<pre><code class="cs">static void Main(string[] args)
+```
+static void Main(string[] args)
         {
             string directoryName = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string pathToImage = Path.Combine(directoryName, "BasicPicture.png");
@@ -59,7 +60,8 @@ Which can look like this:
             osPictureHelper.SaveImage(resizeImageWithSize, directoryName, "resizeImageWithSize.png", ImageFormat.Jpeg);
 
             Console.ReadLine();
-        }</code></pre>
+        }
+        ```
 
 I hope these functions are understandable and easy to use. If you have any improvements: Let me know! This is a beta status, the release number is set to 0.8.2. But all functions are manually tested and also covered with automatic unit-tests in a continuous integration environment.
 

@@ -31,7 +31,8 @@ First thing to do is setting up our Visual Studio. Create a new application and 
 
 You will get an empty solution with no dependencies so far. Lets go and add some: open up the "project.json" and add the dependencies like this:
 
-<pre><code class="javascript">"dependencies": {
+```
+"dependencies": {
         "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
         "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
         "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
@@ -39,7 +40,8 @@ You will get an empty solution with no dependencies so far. Lets go and add some
         "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final",
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
         "AutoMapper": "4.1.1"
-    },</code></pre>
+    }
+    ```
 
 What we are adding is MVC, because we will need it for setting up the API, some logging things and AutoMappers to map between our DTOs and our real Entities. We wont use it in this tutorial, but for a kickstart its good to have them.
 
@@ -61,7 +63,8 @@ To get started with our web application we need an index.html. Lets add it and p
 
 Lets get started with the serverside: To wire up everything we need to configure our application in the Startup.cs.
 
-<pre><code class="cs">public class Startup
+```
+public class Startup
 {
 	public Startup(IHostingEnvironment env)
 	{
@@ -92,11 +95,13 @@ Lets get started with the serverside: To wire up everything we need to configure
 	}
 
 	public static void Main(string[] args) => WebApplication.Run<Startup>(args);
-}</code></pre>
+}
+```
 
 Because at the beginning of this page we are consuming an "appsettings.json" we should also create it. Create a new file called like this beside the Startup.cs and paste some logging information to it. You can add some informations you want to have in there later if you want. For the start, this should be okay.
 
-<pre><code class="javascript">{
+```
+{
   "Logging": {
     "IncludeScopes": false,
     "LogLevel": {
@@ -106,7 +111,7 @@ Because at the beginning of this page we are consuming an "appsettings.json" we 
     }
   }
 }
-</code></pre>
+```
 
 Our application should now be able to start up. Just go to the commandline and type "dnx web" in it. This will start a webserver and serve all files in wwwroot.
 
@@ -141,7 +146,8 @@ categories: articles/asp-net/getting-started-with-visual-studio-code-and-typescr
 
 Lets add a file for configuring the typescript-options for our project: tsconfig.json to the root of our project.
 
-<pre><code class="javascript">{
+```
+{
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
@@ -156,13 +162,15 @@ Lets add a file for configuring the typescript-options for our project: tsconfig
     ],
     "compileOnSave": false,
     "buildOnSave": false
-}</code></pre>
+}
+```
 
 ### Adding Angular2
 
 Normally you would add AngularJs 2 via the tsd-command. But in this case AngularJs 2 is served via npm. To get Angular2 we have to add a package.json to the root of our project.
 
-<pre><code class="cs">{
+```
+{
     "name": "AspNet5Angular2Demo",
     "version": "1.0.0",
     "description": "",
@@ -181,7 +189,8 @@ Normally you would add AngularJs 2 via the tsd-command. But in this case Angular
     "devDependencies": {
         "typescript": "^1.7.3"
     }
-}</code></pre>
+}
+```
 
 or just type "npm init" to answer all questions and get an project.json file generated.
 
@@ -194,7 +203,8 @@ Last thing to do is copying all your needed files into the "js"-folder you creat
 
 Now go ahead in you index.html and link to the files in the client js folder:
 
-<pre><code class="xml"><html>
+```
+<html>
 
   <head>
     <title>ASPNET5Angular2Demo</title>
@@ -228,7 +238,8 @@ Now go ahead in you index.html and link to the files in the client js folder:
     </script>
   </body>
 
-</html></code></pre>
+</html>
+```
 
 ## Finally&#8230;
 

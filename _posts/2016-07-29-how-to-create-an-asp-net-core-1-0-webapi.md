@@ -29,7 +29,8 @@ We will start with the ASP.NET Startup-File
 
 ### ASP.NET Core Startup
 
-<pre><code class="cs">
+```
+
 public class Startup
 {
     public Startup(IHostingEnvironment env)
@@ -64,7 +65,7 @@ public class Startup
         app.UseMvc();
     }
 }
-</code></pre>
+```
 
 No magic here so far. We are creating a configuration in the first step (constructor) of the FIle and then add and use MVC with its defaultfiles (e.g. index.html) and add the ability to server static files in general (app.useStaticFiles).
 
@@ -72,7 +73,8 @@ No magic here so far. We are creating a configuration in the first step (constru
 
 First lets build some entities we want to send to the client and back. We will create a DTO and an Entity and map everything before it gets send to the client.
 
-<pre><code class="cs">public class HouseDto
+```
+public class HouseDto
     {
         public int Id { get; set; }
 
@@ -86,16 +88,17 @@ First lets build some entities we want to send to the client and back. We will c
         [DataType(DataType.PostalCode)]
         public int ZipCode { get; set; }
 }
-</code></pre>
+```
 
-<pre><code class="cs">public class HouseEntity
+```
+public class HouseEntity
     {
         public int Id { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
         public int ZipCode { get; set; }
 }
-</code></pre>
+```
 
 So the DTO is an exact duplicate from the entity in this case.
 
@@ -103,15 +106,17 @@ Lets create the Mapper next (which is really obvious):
 
 ### The mapper
 
-<pre><code class="cs">
+```
+
 public interface IHouseMapper
     {
         HouseDto MapToDto(HouseEntity houseEntity);
         HouseEntity MapToEntity(HouseDto houseDto);
 }
-</code></pre>
+```
 
-<pre><code class="cs">public class HouseMapper : IHouseMapper
+```
+public class HouseMapper : IHouseMapper
     {
         public HouseDto MapToDto(HouseEntity houseEntity)
         {
@@ -135,7 +140,7 @@ public interface IHouseMapper
             };
         }
 }
-</code></pre>
+```
 
 So here we are just mapping from one to another. Simple case. This can get more complex but it should do it for this time.
 
@@ -148,14 +153,14 @@ So go to Startup.cs and add the line
 
 in the "ConfigureServices"-Method. It should look like this then:
 
-<pre><code class="cs">
+```
 public void ConfigureServices(IServiceCollection services)
 {
             services.AddTransient<IHouseMapper, HouseMapper>();
             // Add framework services.
             services.AddMvc();
 }
-</code></pre>
+```
 
 ### The repository
 
@@ -169,16 +174,22 @@ Like:
 
 But for this time we will use like a static list where objects are added and removed.
 
-<pre><code class="cs">public interface IHouseRepository
+```
+
+public interface IHouseRepository
     {
         List<HouseEntity> GetAll();
         HouseEntity GetSingle(int id);
         HouseEntity Add(HouseEntity toAdd);
         HouseEntity Update(HouseEntity toUpdate);
         void Delete(int id);
-}</code></pre>
+}
+```
 
-<pre><code class="cs">public class HouseRepository : IHouseRepository
+
+```
+
+public class HouseRepository : IHouseRepository
     {
         readonly Dictionary<int, HouseEntity> _houses = new Dictionary<int, HouseEntity>();
 
@@ -225,13 +236,17 @@ But for this time we will use like a static list where objects are added and rem
         {
             _houses.Remove(id);
         }
-}</code></pre>
+}
+```
+
 
 
 
 > <span style="color: #808080;">A normal interface using Entity Framwork could look like this btw:</span>
 > 
-> <pre><code class="cs"><span style="color: #808080;">public interface IExampleRepository
+> 
+```
+<span style="color: #808080;">public interface IExampleRepository
     {
         IEnumerable<MyModel> GetAll();
         MyModel GetSingle(int id);
@@ -239,7 +254,8 @@ But for this time we will use like a static list where objects are added and rem
         MyModel Update(MyModel toUpdate);
         void Delete(MyModel toDelete);
         int Save();
-}</span></code></pre>
+}</span>
+```
 > 
 > <span style="color: #808080;">taken from <a style="color: #808080;" href="https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs">https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs</a></span>
 > 
@@ -261,22 +277,27 @@ So we do have the repository to save the data. Let's make it available through D
 
 But this time we will use a singleton. Shame on me so far.
 
-<pre><code class="cs">services.AddSingleton<IHouseRepository, HouseRepository>();</code></pre>
+```
+services.AddSingleton<IHouseRepository, HouseRepository>();
+```
 
 So the whole Startup.cs is now like:
 
-<pre><code class="cs">public void ConfigureServices(IServiceCollection services)
+```
+public void ConfigureServices(IServiceCollection services)
 {
     services.AddSingleton<IHouseRepository, HouseRepository>();
 
     services.AddTransient<IHouseMapper, HouseMapper>();
     // Add framework services.
     services.AddMvc();
-}</code></pre>
+}
+```
 
 With this we can start using the whole construct in a controller like this:
 
-<pre><code class="cs">[Route("api/[controller]")]
+```
+[Route("api/[controller]")]
 public class HouseController : Controller
 {
     private readonly IHouseMapper _houseMapper;
@@ -452,7 +473,8 @@ public class HouseController : Controller
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
     }
-}</code></pre>
+}
+```
 
 Now we can go ahead and test this with a tool like postman or whatever:
 

@@ -57,7 +57,8 @@ Next, add these files to your project and fill it with this data:
   
 Your npm file related to your project. It keeps als dependencies and everything for your client.
 
-<pre><code class="javascript">{
+```
+{
   "name": "aspnetcoreangular2webpackstarter",
   "version": "0.0.0",
   "license": "MIT",
@@ -103,7 +104,8 @@ Your npm file related to your project. It keeps als dependencies and everything 
     "typescript": "^2.0.2",
     "typings": "^1.3.2"
   }
-}</code></pre>
+}
+```
 
 
 
@@ -111,7 +113,8 @@ Your npm file related to your project. It keeps als dependencies and everything 
 
 Is configuring your tsc compiler. Whenever your run the “tsc” command from the commandline it will be taken as configuration for the typescript-compiler.
 
-<pre><code class="javascript">{
+```
+{
  "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
@@ -129,19 +132,22 @@ Is configuring your tsc compiler. Whenever your run the “tsc” command from t
     "typings/main",
     "typings/main.d.ts"
   ]
-}</code></pre>
+}
+```
 
 **typings.json**
 
 Gets your global typing dependencies needed for angular2
 
-<pre><code class="javascript">{
+```
+{
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160725163759",
     "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
     "node": "registry:dt/node#6.0.0+20160909174046"
   }
-}</code></pre>
+}
+```
 
 So your solution should look something like this:
 
@@ -157,7 +163,8 @@ But to start we need an index.html. And for webpack to be prepared we need an en
 
 index.html
 
-<pre><code class="xml"><html>
+```
+<html>
 <head>
     <title>Angular2WebpackStarter</title>
     <meta charset=UTF-8>
@@ -166,7 +173,8 @@ index.html
 <body>
     <my-app>Loading...</my-app>
 </body>
-</html></code></pre>
+</html>
+```
 
 > Note that we include **nothing** here yet. This is on purpose. Read further&#8230; 🙂
 
@@ -174,13 +182,16 @@ I reduced the vendor.ts and polyfills.ts to store only the things we need
 
 polyfills.ts
 
-<pre><code class="javascript">import "core-js/es6";
+```
+import "core-js/es6";
 import "core-js/es7/reflect";
-require("zone.js/dist/zone");</code></pre>
+require("zone.js/dist/zone");
+```
 
 vendor.ts
 
-<pre><code class="javascript">// RxJS.
+```
+// RxJS.
 import "rxjs";
 
 // Angular 2.
@@ -202,7 +213,8 @@ import "jquery";
 import "bootstrap/dist/js/bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "angular2-toaster/lib/toaster.css";
-import "angular2-toaster/angular2-toaster";</code></pre>
+import "angular2-toaster/angular2-toaster";
+```
 
 
 
@@ -222,7 +234,8 @@ This is where webpack comes into play. We will configure webpack now to build ou
   So&#8230;you added the file: Paste the following content:
 </p>
 
-<pre><code class="javascript">var ExtractTextPlugin = require("extract-text-webpack-plugin");
+```
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
 var CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -279,7 +292,8 @@ module.exports = {
         historyApiFallback: true,
         stats: "minimal"
     }
-};</code></pre>
+};
+```
 
 
 
@@ -299,7 +313,8 @@ Loaders are telling webpack **how** to handle such file endings. So: If you enco
 
 Add the webpack-things we need to the "DevDependencies"-section in the package.json:
 
-<pre><code class="javascript">"ts-loader": "^0.8.1",
+```
+"ts-loader": "^0.8.1",
         "extract-text-webpack-plugin": "^1.0.1",
         "file-loader": "^0.8.5",
         "webpack": "^1.12.14",
@@ -307,7 +322,8 @@ Add the webpack-things we need to the "DevDependencies"-section in the package.j
         "webpack-merge": "^0.9.0",
         "webpack-stream": "^3.2.0",
         "html-loader": "^0.4.3",
-        "html-webpack-plugin": "^2.15.0"</code></pre>
+        "html-webpack-plugin": "^2.15.0"
+        ```
 
 Run npm install or let VS do this for you.
 
@@ -323,7 +339,8 @@ Et voila: our wwwroot-folder got filled with our entire app (or with what we hav
 
 Lets tell webpack to take our index.html we already have got and inject the sources into it and copy it too. To do this extend the "plugins"-section like this:
 
-<pre><code class="javascript">plugins: [
+```
+plugins: [
         new ExtractTextPlugin("[name].bundle.css"),
         new webpack.optimize.CommonsChunkPlugin({
             name: ["app", "vendor", "polyfills"]
@@ -334,11 +351,14 @@ Lets tell webpack to take our index.html we already have got and inject the sour
             template: "./angular2App/index.html",
             inject: "body"
         })
-    ],</code></pre>
+    ],
+    ```
 
 and add the
 
-<pre><code class="javascript">var HtmlWebpackPlugin = require("html-webpack-plugin");</code></pre>
+```
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+```
 
 at the top of the page. We need to include what we want to use 😉
 
@@ -348,7 +368,8 @@ let it run again:
 
 Lets take a look into this index.html:
 
-<pre><code class="xml"><html>
+```
+<html>
 <head>
     <title>Angular2WebpackStarter</title>
     <meta charset=UTF-8>
@@ -360,7 +381,8 @@ Lets take a look into this index.html:
     <script type="text/javascript" src="vendor-54447aaf.bundle.js"></script>
     <script type="text/javascript" src="app-54447aaf.bundle.js"></script>
 </body>
-</html></code></pre>
+</html>
+```
 
 our files got injected!
 
@@ -368,12 +390,15 @@ Before we actually see our application we have to modify the Startup.cs to behav
 
 Add
 
-<pre><code class="javascript">"Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Microsoft.AspNetCore.StaticFiles": "1.0.0"</code></pre>
+```
+"Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.0"
+    ```
 
 to your project.json and in the Startup write:
 
-<pre><code class="cs">public class Startup
+```
+public class Startup
     {
         public IConfigurationRoot Configuration { get; }
 
@@ -413,7 +438,8 @@ to your project.json and in the Startup write:
 
             app.UseMvc();
         }
-    }</code></pre>
+    }
+```
 
 Now we have an index.html and we can press the play-button in Visual Studio:
 
@@ -429,7 +455,9 @@ Wouldn't it be nice to get the files refreshed as soon as I start working on the
 
 You can now change the "npm start" command but we will simply make another one like "startWebpackDevServer". So add the following line into the scripts section of package.json:
 
-<pre><code class="javascript">"startWebpackDevServer": "webpack-dev-server --inline --progress --port 8080",</code></pre>
+```
+"startWebpackDevServer": "webpack-dev-server --inline --progress --port 8080",
+```
 
 Now open a commandline to the level of your package.json and type "npm run startWebpackDevServer":
 
@@ -461,13 +489,15 @@ rename the "webpack.config.js" to "webpack.dev.js". Create a new webpack.config.
 
 All we need to do now is creating a switch which says "if you are development, use a (new) file (we will create) which takes the dev-thing, otherwise take the production ones"
 
-<pre><code class="javascript">var environment = (process.env.NODE_ENV || "development").trim();
+```
+var environment = (process.env.NODE_ENV || "development").trim();
 
 if (environment === "development") {
     module.exports = require('./webpack.dev.js');
 } else {
     module.exports = require('./webpack.prod.js');
-}</code></pre>
+}
+```
 
 So THIS is our new entrypoint for webpack, the new webpack.config.json!!
 
@@ -477,7 +507,9 @@ Create a file which is called "webpack.prod.js" which will be our production fil
 
 To test this put a simple console.log in the production file like:
 
-<pre><code class="javascript">console.log("----> Production");</code></pre>
+```
+console.log("----> Production");
+```
 
 and let it run:
 
@@ -487,7 +519,8 @@ So now lets pimp the production a bit. Its mostly the same we have so far for de
 
 Copy the whole content from the webpack.dev.json to the prod.json and simply add the uglifyjs-plugin like this:
 
-<pre><code class="javascript">plugins: [
+```
+plugins: [
        new ExtractTextPlugin("[name].bundle.css"),
        new webpack.optimize.CommonsChunkPlugin({
            name: ["app", "vendor", "polyfills"]
@@ -504,17 +537,21 @@ Copy the whole content from the webpack.dev.json to the prod.json and simply add
            template: "./angular2App/index.html",
            inject: "body"
        })
-    ],</code></pre>
+    ],
+    ```
 
 If you now let the prod-task run the files will be treated as ever but they are uglified as well.
 
 To clean the wwwroot-folder first we need to install another plugin "Clean for webpack" and use it:
 
-<pre><code class="javascript">npm install clean-webpack-plugin --save-dev</code></pre>
+```
+npm install clean-webpack-plugin --save-dev
+```
 
 and in both webpack-files
 
-<pre><code class="javascript">var CleanWebpackPlugin = require('clean-webpack-plugin');
+```
+var CleanWebpackPlugin = require('clean-webpack-plugin');
  //....
 
 plugins: [
@@ -538,7 +575,8 @@ plugins: [
            template: "./angular2App/index.html",
            inject: "body"
        })
-    ],</code></pre>
+    ],
+    ```
 
 Now our folder gets cleaned. You can add this into dev, too.
 

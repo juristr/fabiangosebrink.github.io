@@ -19,7 +19,8 @@ Well with .Net-Framework 4.5 a new solution came up to make it even more simple:
 
 Instead of the "old" (but working) base-class
 
-<pre><code class="cs">public class NotifyPropertyChangedBase : INotifyPropertyChanged
+```
+public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -37,11 +38,13 @@ Instead of the "old" (but working) base-class
                 handler(this, new PropertyChangedEventArgs(memberExpr.Member.Name));
             }
         }
-    }</code></pre>
+    }
+```
 
 The OnPropertyChaned can be replaced with:
 
-<pre><code class="cs">public class NotifyPropertyChangedBase : INotifyPropertyChanged
+```
+public class NotifyPropertyChangedBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -53,11 +56,13 @@ The OnPropertyChaned can be replaced with:
                 propChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
-    }</code></pre>
+    }
+```
 
 The CallMemberName-Attribute is automatically set to the PropertyName which calls it. So the usage in the ViewModel (or whereever you throw the event) is now a simple:
 
-<pre><code class="cs">public string NameToDisplay
+```
+public string NameToDisplay
         {
             get
             {
@@ -68,7 +73,8 @@ The CallMemberName-Attribute is automatically set to the PropertyName which call
                 _nameToDisplay = value;
                 NotifyPropertyChanged();
             }
-        }</code></pre>
+        }
+```
 
 See: You do not need to give a func. instead you are only calling the method whithout any paramters.
 

@@ -31,7 +31,7 @@ The "Start()"-Method is called while Bootstraping your application and your serv
 
 This was the first part. The second part means enjoying the service Ninject offers to you:
 
-```cs
+```
 public class MySuperService
 {
     private readonly IConfigurationService _configurationService;
@@ -46,15 +46,17 @@ public class MySuperService
         //speak to every method/property etc. which _configurationService gives you
     }
 }
-
 ```
+
 
 While looking into this short piece of code you will notice, that your "SuperService" has no connection to your implementation of "ConfigurationService" (no matter where it is) which describes the implementation of your ConfigurationService. And this is exactly one of the biggest advantages of Dependency Injection. You can change the implementation of your services like you want, without touching the parts which are connected because they only know the interface.
 
 Also one great advantage (but like an anti-pattern, is that Ninject is automatically assigned to the DependencyResolver-Class provided by the Asp.Net-Mvc-Framework:
+
 ```
 DependencyResolver.Current.GetService<IMembershipRepository>();
 ```
+
 also gives you the interface to your registered service without knowing the implementation. But be careful: Dependency **Injection** means that you **give** the services you create everything they need to live. Usually you do this in a constructor. So letting services **take** what they need, when they are currently needing it is way against the usual DI-Pattern!
 
 For me one of the fastest and most clean ways to get Dependency Injection into my MVC-Projects.

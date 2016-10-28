@@ -30,7 +30,8 @@ The ASP.NET Core application contains both the server side API services and also
 
 The npm package.json configuration loads all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A "npm build" script and also a "npm buildProduction" are also configured, so that the client application can be built using Webpack from the cmd line using "npm build" or "npm buildProduction". These two scripts just call the same cmd as the Webpack task runner.
 
-```javascript
+```
+javascript
 {
   "version": "1.0.0",
   "description": "",
@@ -89,11 +90,13 @@ The npm package.json configuration loads all the required packages for Angular 2
 
 ```
 
+
 <strong>typings configuration</strong>
 
 The typings are configured for webpack builds.
 
-```javascript
+```
+javascript
 
   "globalDependencies": {
     "core-js": "registry:dt/core-js#0.0.0+20160317120654", 
@@ -102,11 +105,13 @@ The typings are configured for webpack builds.
 }
 ```
 
+
 <strong>tsconfig configuration</strong>
 
 The tsconfig is configured to use commonjs as the module.
 
-```javascript
+```
+javascript
 {
     "compilerOptions": {
         "target": "es5",
@@ -126,6 +131,7 @@ The tsconfig is configured to use commonjs as the module.
 }
 ```
 
+
 <strong>Webpack build</strong>
 
 The Webpack development build <em>>webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d --watch</em> can be used to automatically build the dist files if a source file is changed.
@@ -134,7 +140,8 @@ The Webpack config file was created using the excellent gihub repository https:/
 
 Full webpack.config file
 
-```javascript
+```
+javascript
 /// <binding ProjectOpened='Run - Development' />
 var path = require('path');
 var webpack = require('webpack');
@@ -338,12 +345,14 @@ function packageSort(packages) {
 
 ```
 
+
 Lets dive into this a bit:
 
 Firstly, all plugins are loaded which are required to process all the js, ts, ... files which are included, or used in the project.
 
 
-```javascript
+```
+javascript
 var path = require('path');
 var webpack = require('webpack');
 
@@ -357,9 +366,11 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 var isProd = (process.env.NODE_ENV === 'production');
 ```
 
+
 The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.
 
-```javascript
+```
+javascript
     config.entry = {
         'polyfills': './angular2App/polyfills.ts',
         'vendor': './angular2App/vendor.ts',
@@ -367,10 +378,12 @@ The npm environment variable NODE_ENV is used to define the type of build, eithe
     };
 ```
 
+
 The entries provide Webpack with the required information, where to start from, or where to hook in to. Three entry points are defined in this configuration. These strings point to the files required in the solution. The starting point for the app itself is provided in one of these files, boot.ts as a starting-point and also all vendor scripts minified in one file, the vendor.ts. 
 
 
-```typescript
+```
+typescript
 // Polyfill(s) for older browsers.
 import 'core-js/client/core';
 
@@ -399,6 +412,7 @@ import './css/bootstrap.css';
 import './css/bootstrap-theme.css';
 ```
 
+
 Webpack knows which paths to run and includes the corresponding files and packages.
 
 The "loaders" section and the "modules" section in the configuration provides Webpack with the following information: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.
@@ -410,7 +424,8 @@ In this project configuration, if a production node parameter is set, different 
 The index.html contains all the references required for the Angular 2 client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.
 
 Source index.html file in the angular2App/public folder:
-```javascript
+```
+javascript
 <!doctype html>
 <html>
 <head>
@@ -433,9 +448,11 @@ Source index.html file in the angular2App/public folder:
 
 ```
 
+
 And the produced build file in the wwwroot folder. The scripts for the app, vendor and boot have been added using Webpack. Hashes are used in a production build for cache busting.
 
-```javascript
+```
+javascript
 <!doctype html>
 <html>
 <head>
@@ -459,6 +476,7 @@ And the produced build file in the wwwroot folder. The scripts for the app, vend
 ```
 
 
+
 <strong>Visual Studio tools</strong>
 
 <a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">Webpack task runner </a> from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production". 
@@ -472,20 +490,24 @@ The Webpack task runner can also be used by double clicking the task. The execut
 This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config.js file.
 
 ```
+
 /// <binding ProjectOpened='Run - Development' />
 ```
+
 
 <strong>Webpack SASS</strong>
 
 <a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS loader. Webpack can build all the styles inline or as an external file, depending on your Webpack config.
 
-```javascript
+```
+javascript
 {
   test: /\.scss$/,
   exclude: root('angular2App', 'app'),
   loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass')
 },
 ```
+
 
 <strong>Webpack Clean</strong>
 
@@ -494,22 +516,27 @@ This runner provides a number of useful commands which can be activated automati
 
 The clean task can be configured as follows:
 
-```javascript
+```
+javascript
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 ```
 
+
 And used in Webpack.
 
-```javascript
+```
+javascript
   new CleanWebpackPlugin(['./wwwroot/dist']),
 ```
+
 
 <strong>Angular 2 component files</strong>
 
 The Angular 2 components are slightly different to the standard example components. The templates and the styles use require, which adds the html or the css, scss to the file directly using Webpack, or as an external link depending on the Webpack config.
 
-```javascript
+```
+javascript
 import { Observable } from 'rxjs/Observable';
 import { Component, OnInit } from '@angular/core';
 import { CORE_DIRECTIVES } from '@angular/common';
@@ -543,12 +570,14 @@ export class HomeComponent implements OnInit {
 }
 ```
 
+
 <strong>The ASP.NET Core API</strong>
 
 The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD service.
 
 
 ```
+
  [Route("api/[controller]")]
     public class ValuesController : Microsoft.AspNetCore.Mvc.Controller
     {
@@ -589,12 +618,14 @@ The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD servi
     }
 ```
 
+
 <strong>The Angular2 Http-Service</strong>
 
 Note that in a normal environment, you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.
 
 
 ```
+
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map'
@@ -641,6 +672,7 @@ export class DataService {
     }
 }
 ```
+
 
 
 <strong>Notes:</strong>

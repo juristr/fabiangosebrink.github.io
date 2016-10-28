@@ -39,7 +39,9 @@ Die Services bieten eine Abstrahierung von etwaigen Aufgaben. Hier können Busin
 
 App.js bietet uns den Start unserer Anwendung. Hier wird die App erstellt und einer Variable zugewiesen, auf der die Controller, Services etc. in Zukunft registriert werden.
 
-<pre><code class="javascript">var firstApp = angular.module('firstApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);</code></pre>
+```
+var firstApp = angular.module('firstApp', ['ngRoute', 'ngResource', 'ui.bootstrap']);
+```
 
 
 
@@ -59,7 +61,8 @@ Hierbei kommen die oben genannten Aufgaben zum Tragen.
 
 Der Todo-Service beispielsweise bietet die Funktionen zum Abrufen, Löschen und Hinzufügen an:
 
-<pre><code class="javascript">'use strict';
+```
+'use strict';
 firstApp.factory('todoService', function ($http) {
  
     var todoService = {};
@@ -91,13 +94,14 @@ firstApp.factory('todoService', function ($http) {
  
     return todoService;
 });
-</code></pre>
+```
 
 
 
 Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Dependency Injection zur Verfügung, die es möglich macht, den Service im Controller zu injecten. Der Controller kann nun die Methoden in Anspruch nehmen.
 
-<pre><code class="javascript">firstApp.controller('todoController', function ($scope, todoService) {
+```
+firstApp.controller('todoController', function ($scope, todoService) {
  
     var _addTodo = function () {
         todoService.addTodo($scope.TodoItem).then(
@@ -127,19 +131,23 @@ Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Depend
     $scope.AddTodo = _addTodo;
     $scope.DeleteTodo = _deleteTodo;
 });
-</code></pre>
+```
 
 
 
 Er setzt die Informationen auf dem scope und gibt diese zurück an die View. Diese bekommt per
 
-<pre><code class="javascript">ng-controller="todoController"</code></pre>
+```
+ng-controller="todoController"
+```
 
 
 
 den Controller mitgeteilt und kann so das konsumieren, was der Controller auf dem Scope setzt. Beispielsweise:
 
-<pre><code class="javascript"><tbody ng-repeat="item in todoItems"></code></pre>
+```
+<tbody ng-repeat="item in todoItems">
+```
 
 
 
@@ -147,7 +155,8 @@ Hierbei ist „todoItems“ eine Liste aller vorhandenen Items.
 
 Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die Action direkt mit. Das ist aber nur eine Vorliebe meinerseits. Dies muss nicht so gelöst werden. Es kann auch mit Attributen der ActionName verändert werden, so dass dies „on-the-fly“ passiert.
 
-<pre><code class="cs">public static class WebApiConfig
+```
+public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)
         {
@@ -164,13 +173,15 @@ Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die
                 defaults: new { id = RouteParameter.Optional }
             );
         }
-    }</code></pre>
+    }
+```
 
 
 
 Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine richtige Konfiguration des MSSQL-Servers voraussetzt.
 
-<pre><code class="cs">public class TodoController : ApiController
+```
+public class TodoController : ApiController
     {
         private readonly ITodoRepository _todoRepository;
 
@@ -213,21 +224,25 @@ Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine ric
                 }
             }
         }
-    }</code></pre>
+    }
+```
 
 Und das dazugehörige Repository:
 
-<pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository
+```
+namespace AngularJsTemplate.Repositories.TodoRepository
 {
     public interface ITodoRepository : IRepositoryContext<TodoItem>
     {
          
     }
-}</code></pre>
+}
+```
 
 
 
-<pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository.Impl
+```
+namespace AngularJsTemplate.Repositories.TodoRepository.Impl
 {
     public class TodoRepositoryImpl : RepositoryContextImpl<TodoItem>, ITodoRepository
     {
@@ -236,7 +251,8 @@ Und das dazugehörige Repository:
         {
         }
     }
-}</code></pre>
+}
+```
 
 Benutzt wurde hier mein Repository und UnitOfWork-Paket, was auch auf <a href="http://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/" target="_blank">NuGet </a>zu finden ist.
 

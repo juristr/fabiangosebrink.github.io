@@ -33,7 +33,9 @@ This will create you a new nearly empty solution following the new standards wit
 
 The first step we a re going to do is adding the dependency of the Entity Framework to our solution via the project.json file. For this only put the line
 
-<pre><code class="javascript">"EntityFramework": "6.1.3"</code></pre>
+```
+"EntityFramework": "6.1.3"
+```
 
 at the end of you dependencies section like this:
 
@@ -65,16 +67,20 @@ This can be done putting a single line in our "Startup.cs"-File.
 
 Just add
 
-<pre><code class="cs">services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));</code></pre>
+```
+services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
+```
 
 in the method "ConfigureServices" in your Startup.cs.
 
-<pre><code class="cs">public void ConfigureServices(IServiceCollection services)
+```
+public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
             services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
-        }</code></pre>
+        }
+```
 
 This line will read the configuration and get the connection-string out of it and use it for establishing the connection. pay attention to the scoped adding. This is because the context should be generated for every single request. You can grab an overview of all lifestyles here, even it's a bit outdated: [Dependency Injection in ASP.NET vNext](http://blogs.msdn.com/b/webdev/archive/2014/06/17/dependency-injection-in-asp-net-vnext.aspx)
 
@@ -82,48 +88,59 @@ This line will read the configuration and get the connection-string out of it an
 
 You can now go ahead and install my [Unit of Work](https://github.com/FabianGosebrink/OfferingSolutions-UnitOfWork) via nuget and create a repository like this:
 
-<pre><code class="cs">public interface IExampleRepository : IRepositoryContext<MyModel>
+```
+public interface IExampleRepository : IRepositoryContext<MyModel>
     {
-    }</code></pre>
+    }
+```
 
-<pre><code class="cs">public class ExampleRepository : RepositoryContextImpl<MyModel>, IExampleRepository
+```
+public class ExampleRepository : RepositoryContextImpl<MyModel>, IExampleRepository
     {
         public ExampleRepository(MyEf6EntityFrameworkContext databaseContext) : base(databaseContext)
         {
         }
-    }</code></pre>
+    }
+```
 
 With a model like this (for example):
 
-<pre><code class="cs">public class MyModel
+```
+public class MyModel
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-    }</code></pre>
+    }
+```
 
 Meanwhile I also added [Automappers](https://github.com/AutoMapper/AutoMapper/wiki/Getting-started) and a ViewModel to map between those two:
 
-<pre><code class="cs">public class MyModelViewModel
+```
+public class MyModelViewModel
     {
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-    }</code></pre>
+    }
+```
 
 Now we have to bring it to the build in DI in ASP.NET:
 
-<pre><code class="cs">public void ConfigureServices(IServiceCollection services)
+```
+public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
             services.AddMvc();
             services.AddScoped<IExampleRepository, ExampleRepository>();
             services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
-        }</code></pre>
+        }
+```
 
 and the automapping:
 
-<pre><code class="cs">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+```
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             Mapper.Initialize(config =>
             {
@@ -131,11 +148,13 @@ and the automapping:
             });
 
             //...
-        }</code></pre>
+        }
+```
 
 In the end you only have to build up a controller which gives and takes the values as your API:
 
-<pre><code class="cs">[Route("api/[controller]")]
+```
+[Route("api/[controller]")]
     public class MyModelController
     {
         private readonly IExampleRepository _exampleRepository;
@@ -274,7 +293,8 @@ In the end you only have to build up a controller which gives and takes the valu
                 return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
             }
         }
-    }</code></pre>
+    }
+```
 
 Thats it. If you now going to use the DatabaseContext it will create the database for you with the new ASP.NET Core.
 

@@ -23,7 +23,9 @@ If you are coding your links in your MVC-Views with normal strings its really ha
 
 Razor in previous versions had this
 
-<pre><code class="cs">Url.Action("MyAction", "MyController", new { id = "123" })</code></pre>
+```
+Url.Action("MyAction", "MyController", new { id = "123" })
+```
 
 which returned an url like "MyController/MyAction/123"
 
@@ -44,18 +46,22 @@ And Because tag helpers do not throw an exception if you use them and they do no
 
 Now all the cshtml files are able to handle Asp.Net-TagHelpers which get easily in your html like this:
 
-<pre><code class="xml"><li><a asp-controller="Home" asp-action="Contact">Contact</a></li></code></pre>
+```
+<li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+```
 
 which is rendered to
 
-<pre><code class="xml"><li><a href="/Home/Contact">Contact</a></li>
-</code></pre>
+```
+<li><a href="/Home/Contact">Contact</a></li>
+```
 
 That is great because you do not have to use a non-html-syntax anymore and it it easier to understand and to read.
 
 You can also write forms in this Html-Tag-Helper-Syntax which is really nice to understand
 
-<pre><code class="xml"><form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form">
+```
+<form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form">
     <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
     <div class="form-group">
         <label asp-for="Name" class="col-md-2 control-label"></label>
@@ -76,7 +82,8 @@ You can also write forms in this Html-Tag-Helper-Syntax which is really nice to 
             <button type="submit" class="btn btn-default">Send person</button>
         </div>
     </div>
-</form></code></pre>
+</form>
+```
 
 instead of using the "ugly" @-like Sytax before.
 

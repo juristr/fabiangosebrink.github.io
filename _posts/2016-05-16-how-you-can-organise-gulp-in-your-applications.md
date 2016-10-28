@@ -39,14 +39,17 @@ The `gulpfile.js` only contains the tasks whereas a file named like `gulp.config
 
 You can include your config file in the gulpfile like this:
 
-<pre><code class="javascript">var buildConfig = require('./gulp.config');
-</code></code></pre>
+```
+var buildConfig = require('./gulp.config');
+</code>
+```
 
 If the files are on the same level.
 
 The `gulp.config.js` can look like this:
 
-<pre><code class="javascript">module.exports = {
+```
+module.exports = {
     general: {
         appName: "FoodChooserAppAngular2",
         rootFolder: "app/",
@@ -88,17 +91,20 @@ The `gulp.config.js` can look like this:
         cordovaOutputPath: "../.dist/cordova/",
 };
 
-</code></code></pre>
+</code>
+```
 
 It is only containing all the files, paths and general information you want to use.
 
 The gulp-file itself is now only containing the tasks and is consuming the config file.
 
-<pre><code class="javascript">gulp.task('web-copy-index-to-webapp-folder', function (done) {
+```
+gulp.task('web-copy-index-to-webapp-folder', function (done) {
     return gulp.src(buildConfig.general.indexHtml)
         .pipe(gulp.dest(buildConfig.targets.webAppOutputPath));
 });
-</code></code></pre>
+</code>
+```
 
 This makes the gulp tasks more generic.
 
@@ -122,7 +128,8 @@ Getting an app ready for distribution or even for development purposes is more t
 
 Therefore you need to install a `run-sequence`-plugin available [here](https://www.npmjs.com/package/run-sequence). With this you can divide your tasks and seperate the responsibilities in your web gulpfile (e.g.) like this:
 
-<pre><code class="javascript">var gulp = require('gulp');
+```
+var gulp = require('gulp');
 var runSeq = require('run-sequence');
 
  gulp.task('build:web:prod', function (done) {
@@ -135,7 +142,8 @@ var runSeq = require('run-sequence');
         // all the other tasks
         done);
 });
-</code></code></pre>
+</code>
+```
 
 I think this is a very good and clear documentation of what is done if I call the main task.
 
@@ -143,7 +151,8 @@ I think this is a very good and clear documentation of what is done if I call th
 
 What we also did in this step is: We defined a _main task_! This task can be referenced and executed from the main gulp file.
 
-<pre><code class="javascript">require('./gulpTasks/web');
+```
+require('./gulpTasks/web');
 //...
 gulp.task('build:all', function(done) {
     runSeq(
@@ -151,7 +160,8 @@ gulp.task('build:all', function(done) {
         // maybe other main build tasks
         done);
 });
-</code></code></pre>
+</code>
+```
 
 You can repeat that for all your files and main tasks.
 
@@ -181,18 +191,22 @@ For the task-listing feature there is also an npm package available [here](https
 
 You can define filters to define which one is a main task and which one is a child task.
 
-<pre><code class="javascript">var taskListing = require('gulp-task-listing');
+```
+var taskListing = require('gulp-task-listing');
 //...
 gulp.task('help', taskListing.withFilters(/-/));
-</code></code></pre>
+</code>
+```
 
 Everything we need to do now is to point the default task on this help task to list all the tasks:
 
-<pre><code class="javascript">var taskListing = require('gulp-task-listing');
+```
+var taskListing = require('gulp-task-listing');
 //...
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
-</code></code></pre>
+</code>
+```
 
 Which brings the following output:
 
@@ -204,7 +218,8 @@ Which brings the following output:
 
 One possibility would be going along and define some "main"-tasks and be more generic which can be executed from the `web.js` and other files. Like a `common.js` containing generic tasks like:
 
-<pre><code class="javascript">function copySourcesTo(targetFolder) {
+```
+function copySourcesTo(targetFolder) {
     return gulp.src(getSourceFiles(buildConfig.source.folder), {
         base: buildConfig.source.folder
     })
@@ -222,7 +237,8 @@ function cleanTemp(done) {
     });
 }
 //...
-</code></code></pre>
+</code>
+```
 
 For tasks which are all the same in every step. Perhaps this can be useful
 

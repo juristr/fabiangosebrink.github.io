@@ -17,35 +17,35 @@ disqus: true
 
 It could be so easy: When passing data from the Controller to the View in MVC one can simply use
 
-```cs
+```
 ViewBag.MyProperty = “ThisIsTheContentOfMyProperty”;
 ```
 
 or
 
-```cs
+```
 ViewData["MyProperty"] = MyProperty;
 ```
 
+
 And in the view you can access the data with:
 
-<!--more-->
-
-```cs
+```
 @ViewBag.MyProperty
 ```
 
 or
 
-```cs
+```
 ViewData["MyProperty "] as ...
 ```
 
 But what about spelling problems? _IntelliSense_ will not correct you if you would miss a character. Even the compiler does not give you any hint.
 
-```cs
+```
 @ViewBag.MProperty
 ```
+
 
 would not be wrong but won’t show any data in your View. Also spelling problems in the ViewData-String would not be noticed in code.
 
@@ -57,7 +57,7 @@ The view knows its model and should not get any data from anything else. So to a
 
 This could look like this:
 
-```cs
+```
 public class MyViewModel
 {
 
@@ -67,11 +67,10 @@ public class MyViewModel
     ...
 }
 ```
-v
 
 And in the View you can simply pass the complete ViewModel to your View
 
-```cs
+```
 public ActionResult MyMethod()
 {
     MyViewModel viewModel = new MyViewModel();
@@ -81,7 +80,6 @@ public ActionResult MyMethod()
     return View(viewModel);
 }
 ```
-
 
 With this simple technique you can keep all the data you need for creating a view separately from your MVC-Models.
 

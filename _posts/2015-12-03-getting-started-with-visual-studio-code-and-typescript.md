@@ -27,19 +27,20 @@ Fist of all you need to install npm/nodejs from the installers](https://nodejs.o
 
 If you have npm installed you can install typescript with the command
 
-> <pre class="">npm install -g typescript</code></pre>
+> `npm install -g typescript`
 
 which will install typescript globally. With this installed you can run the typescript compiler "tsc" and compile typescript.
 
 With
 
-> <pre class="">npm install tsd -g</code></pre>
+> `npm install tsd -g`
 
 You can install the [TypeScript Definition manager for DefinitelyTyped](http://definitelytyped.org/tsd/) to get the strong typed advantages from Typescript going.
 
 In Visual Studio Code the first file you need when working with Typescript is the "tsconfig.json" which sets the basic behaviour of your typescript compiler.
 
-<pre><code class="javascript">{
+```
+{
 	"compilerOptions": {
 		"target": "ES5"
 	},
@@ -47,7 +48,8 @@ In Visual Studio Code the first file you need when working with Typescript is th
         "node_modules",
         "wwwroot"
     ]
-}</code></pre>
+}
+```
 
 The "compilerOptions" tell typescript in which language the typescript code should be compiled. The exclude-block, you guessed it, excluded several folders from being checked by the compiler.
 
@@ -68,7 +70,7 @@ If you now type Typescript-code in a *.ts file, save it and compile you will see
 
 If you want to get also started with AngularJs (and have installed the tsd like mentioned above) you can go to the root of your application, open the console and simply type
 
-> <pre class="">tsd install angular --resolve --save</code></pre>
+> `tsd install angular --resolve --save`
 
 which causes the Typescript Definition Manager (tsd) to install the *.d.ts files for AngularJs. The resolve parameter resolves all dependencies angular has (like jQuery in this case).
 

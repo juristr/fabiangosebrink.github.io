@@ -37,14 +37,17 @@ The application is divieded into several components with its child components. D
 
 So the only interesting thing is the Food-Component which has two child Components "FoodForm" and "FoodList".
 
-<pre><code class="javascript">@Component({
+```
+@Component({
     selector: 'food-component',
     directives: [ROUTER_DIRECTIVES, CORE_DIRECTIVES, FoodListComponent, FoodListFormComponent],
     providers: [FoodDataService, FoodListDataService],
     templateUrl: 'app/components/food/food.component.html'
-})</code></pre>
+})
+```
 
-<pre><code class="xml"><!-- Page Content -->
+```
+<!-- Page Content -->
 <div class="container">
     <!-- Introduction Row -->
     <div class="row">
@@ -59,11 +62,12 @@ So the only interesting thing is the Food-Component which has two child Componen
     <foodlists-component></foodlists-component>
 
 </div>
-<!-- /.container --></code></pre>
+```
 
 The list component itself is not containing the details-view but redirecting to it while iterating through all the foodItems:
 
-<pre><code class="javascript">import { Component, OnInit } from 'angular2/core';
+```
+import { Component, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 import { FoodDataService } from '../../shared/services/food.dataService';
@@ -102,11 +106,13 @@ export class FoodListComponent implements OnInit {
                 this.errorMessage = error;
             });
     }
-}</code></pre>
+}
+```
 
 and the template
 
-<pre><code class="javascript"><div class="row">
+```
+<div class="row">
     <div class="col-lg-12">
         <h2 class="page-header">Your Lists  <small>{{allLists?.length}}</small></h2>
     </div>
@@ -118,13 +124,15 @@ and the template
             </a>
         </ul>
     </div>
-</div></code></pre>
+</div>
+```
 
 ### Authentication
 
 The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a "CurrentUserService" to save this token in the storage and read it again.
 
-<pre><code class="javascript">import { Injectable } from 'angular2/core';
+```
+import { Injectable } from 'angular2/core';
 import { StorageService } from './storage.service';
 
 @Injectable()
@@ -143,13 +151,15 @@ export class CurrentUserService {
     public set token(token: string) {
         this._storageService.setItem('auth', token);
     }
-}</code></pre>
+}
+```
 
 With this I can read if the user is authenticated in a very basic way.
 
 Further I took a decorator to hook into the creation of components to check if the user is authenticated or not. If not the decorator will redirect to the login page:
 
-<pre><code class="javascript">import { CanActivate, ComponentInstruction, Router} from 'angular2/router';
+```
+import { CanActivate, ComponentInstruction, Router} from 'angular2/router';
 import { Injector } from 'angular2/core';
 import { appInjector } from '../shared/services/appInjector';
 import { StorageService } from '../shared/services/storage.service';
@@ -168,7 +178,8 @@ export const NeedsAuthentication = () => {
 
         return false;
     });
-}</code></pre>
+}
+```
 
 With every request I have to prepare the header which I do in a wrapped Http service.
 
@@ -176,7 +187,8 @@ With every request I have to prepare the header which I do in a wrapped Http ser
 
 Sneak peek:
 
-<pre><code class="javascript">private prepareOptions(options: RequestOptionsArgs): RequestOptionsArgs {
+```
+private prepareOptions(options: RequestOptionsArgs): RequestOptionsArgs {
         let token: string = this._currentUserService.token;
 
         options = options || {};
@@ -193,7 +205,8 @@ Sneak peek:
         options.headers.append('Accept', 'application/json');
 
         return options;
-    }</code></pre>
+    }
+```
 
 So I check the headers, append a token if available, set the content-type and accept-properties and give the options back to use it in the REST-Call.
 
@@ -203,7 +216,8 @@ To give this whole thing a go as an exe and as an app on mobile devices I used 
 
 I seperated all the files in the tasks for "electron", "cordova" and "web". In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types "gulp" without a specific command.
 
-<pre><code class="javascript">var buildConfig = require('./gulp.config');
+```
+var buildConfig = require('./gulp.config');
 
 gulp.task('default', ['help']);
 gulp.task('help', taskListing.withFilters(/-/));
@@ -218,11 +232,13 @@ gulp.task('build:all', function(done) {
         'build:electron:prod',
         'build:apps',
         done);
-});</code></pre>
+});
+```
 
 For example here is the electron gulp file, which turns this application into an exe
 
-<pre><code class="javascript">gulp.task('build:electron:prod', function(done) {
+```
+gulp.task('build:electron:prod', function(done) {
     runSeq(
         'electron-clean-temp',
         'electron-copy-index-to-temp-folder',
@@ -237,11 +253,13 @@ For example here is the electron gulp file, which turns this application into an
         'electron-copy-assets-to-temp-folder',
         'electron-build-win',
         done);
-});</code></pre>
+});
+```
 
 For cordova
 
-<pre><code class="javascript">gulp.task('build:apps', function(done) {
+```
+gulp.task('build:apps', function(done) {
     runSeq(
         'cordova-clean-temp',
         'cordova-copy-config-to-temp',
@@ -257,9 +275,8 @@ For cordova
         'cordova-build-android',
         'cordova-copy-to-dist',
         done);
-});</code></pre>
-
-### 
+});
+```
 
 ### Conclusion:
 
@@ -272,8 +289,6 @@ HTH
 Regards
 
 Fabian
-
-### 
 
 ### Links
 

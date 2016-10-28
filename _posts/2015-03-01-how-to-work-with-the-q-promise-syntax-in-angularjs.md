@@ -19,13 +19,15 @@ If you are developing with **AngularJS** you have to work with promises angular
 
 Very cool, hm?
 
-<pre><code class="javascript">$http.get("/here/goes/my/Api")
+```
+$http.get("/here/goes/my/Api")
           .then(function (result) {
               // Success
           },
           function () {
               // Error
-          });</code></pre>
+          });
+          ```
 
 #### Structure which tiers that have no clue!
 
@@ -37,7 +39,8 @@ An example:
 
 Repository:
 
-<pre><code class="javascript">$http.get("/here/goes/my/Api")
+```
+$http.get("/here/goes/my/Api")
           .then(function (result) {
               // Success
               return "good";
@@ -45,11 +48,13 @@ Repository:
           function () {
               // Error
               return "bad";
-          });</code></pre>
+          });
+          ```
 
 and your controller could be like:
 
-<pre><code class="javascript">function loadMyData() {
+```
+function loadMyData() {
             var result = myRepository.getSomeData($routeParams.id);
 
             if (result == "good") {
@@ -58,7 +63,8 @@ and your controller could be like:
             if (result == "bad") {
                 //Error
             }
-        };</code></pre>
+        };
+        ```
 
 So the controller does not have an idea about the promise anymore. It only has the variables to work with. And this is ugly. In fact: We are losing our promise as soon as we return something else. Here this is in the repository (or (data)service)
 
@@ -66,7 +72,8 @@ So the controller does not have an idea about the promise anymore. It only has 
 
 The solutions for this brings us the q-syntax. With this syntax we are able to keep our promise to the upcoming layers. So we are calling our webAPI, angular gives us a promise via the http-syntax (seen above). And we do not reject hardcoded data, but we keep the promise and make it returning either good or bad depending on which case it has.
 
-<pre><code class="javascript">app.factory("myRepository", ["$http", "$q", function ($http, $q) { 
+```
+app.factory("myRepository", ["$http", "$q", function ($http, $q) { 
 ...
 var _getMyData = function () {
         var deferred = $q.defer();
@@ -85,13 +92,14 @@ var _getMyData = function () {
     };
 ...
 }
-</code></pre>
+```
 
 So the $q-sign gives us the possibility to access our promise and store it in a variable called "deferred" here. And in case of an error, we keep this promise alive, resolving it positively and on top of that we are passing our data in it which shall be available to whoever is going to resolve this promise from the outside. This is what "deferred.resolve(result);" does. But in case of an error we reject the promise. So again: We are keeping it, but we are telling the caller "This promise was not resolved positive". In the last line we are returning our promise.
 
 The advantage now is that an outside caller can react on it with the same syntax he already knows, the "then(success/error)"-thing. Because this function shown above returns a normal promise!
 
-<pre><code class="javascript">function getMyData() {
+```
+function getMyData() {
             myRepository.getMyData(...)
                 .then(function(result) {
                         // success
@@ -101,7 +109,8 @@ The advantage now is that an outside caller can react on it with the same syntax
                         //error
                         $scope.errorMessage = "Bad bad bad";
                     });
-        };</code></pre>
+        };
+        ```
 
 So this is way better than the error handling with any strings or bools or whatever.
 

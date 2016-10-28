@@ -17,29 +17,34 @@ In this post I want to show you how to use the facade-pattern to get your viewmo
 
 When you want to use a viewmodel for databinding you normally get your public properties on your viewmodel an do a normal binding on your xaml like this:
 
-<pre><code class="xml"><Window x:Class="WpfViewModelAsFacade.MainWindow"
+```
+<Window x:Class="WpfViewModelAsFacade.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
         <TextBlock Text="{Binding MyCalculatedNumber}"></TextBlock>
     </Grid>
-</Window></code></pre>
+</Window>
+```
 
 Setting the datacontext:
 
-<pre><code class="cs">public partial class MainWindow : Window
+```
+public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new MainViewModel();
         }
-    }</code></pre>
+    }
+    ```
 
 and your viewmodel something like:
 
-<pre><code class="cs">public class MainViewModel
+```
+public class MainViewModel
     {
         private int _myCalculatedNumber;
 
@@ -55,7 +60,8 @@ and your viewmodel something like:
         {
             _myCalculatedNumber = 23;
         }
-    }</code></pre>
+    }
+    ```
 
 of course you would give the viewmodel other values and it would grow like hell. Also when you do calculations or CRUD-operations etc. But when your application grows and gets bigger it would be necessary to move some thing into services, providers etc. to get into the seperation of concerns.
 
@@ -67,15 +73,18 @@ So lets introduce a service to do some work (a normal calculation with the resul
 
 ![WPF Cleaning your viewmodel making a facade]({{site.baseurl}}assets/articles/2014-07-03/738a03ba-0a12-4ab1-b4e4-614d4c1625bf.jpg)
 
-<pre><code class="cs">namespace WpfViewModelAsFacade
+```
+namespace WpfViewModelAsFacade
 {
     public interface ICalculationService
     {
         int CalculateNumber();
     }
-}</code></pre>
+}
+```
 
-<pre><code class="cs">namespace WpfViewModelAsFacade
+```
+namespace WpfViewModelAsFacade
 {
     public class CalculationService : ICalculationService
     {
@@ -87,11 +96,12 @@ So lets introduce a service to do some work (a normal calculation with the resul
         }
     }
 }
-</code></pre>
+```
 
 And your viewmodel could look like this
 
-<pre><code class="cs">namespace WpfViewModelAsFacade
+```
+namespace WpfViewModelAsFacade
 {
     public class MainViewModel
     {
@@ -112,7 +122,7 @@ And your viewmodel could look like this
         }
     }
 }
-</code></pre>
+```
 
 <span style="color: #999999;">Note: Normally you would use dependency injection here to avoid this "new &#8230;" call and a link to the direct implementation of the service.</span>
 
@@ -124,15 +134,18 @@ So: Now we have outsourced the calculation and introduced a new service which is
 
 The viewmodel should now get a real facade and only offer the service which is doing the calculation. This makes you more flexible and the viewmodel is like only an interface for the view. Its like a provider for every service (or providers) which contain the information the view needs.
 
-<pre><code class="cs">namespace WpfViewModelAsFacade
+```
+namespace WpfViewModelAsFacade
 {
     public interface ICalculationService
     {
         int CalculatedNumber { get; }
     }
-}</code></pre>
+}
+```
 
-<pre><code class="cs">namespace WpfViewModelAsFacade
+```
+namespace WpfViewModelAsFacade
 {
     public class CalculationService : ICalculationService
     {
@@ -145,9 +158,10 @@ The viewmodel should now get a real facade and only offer the service which is d
         }
     }
 }
-</code></pre>
+```
 
-<pre><code class="cs">public class MainViewModel
+```
+public class MainViewModel
 {
 	private readonly ICalculationService _calculationService;
 	//other Properties here...
@@ -161,11 +175,13 @@ The viewmodel should now get a real facade and only offer the service which is d
 	{
 		_calculationService = new CalculationService();
 	}
-}</code></pre>
+}
+```
 
 So far until here. What we did is: We are only offering the service through our viewmodel and our viewmodel is not interested in what happens behind anymore. The service can do his work and only give back his results. But you have to correct you binding now because your number is not in the viewmodel anymore but in the service behind.
 
-<pre><code class="xml"><Window x:Class="WpfViewModelAsFacade.MainWindow"
+```
+<Window x:Class="WpfViewModelAsFacade.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="350" Width="525">
@@ -173,7 +189,7 @@ So far until here. What we did is: We are only offering the service through our 
         <TextBlock Text="{Binding CalculationService.CalculatedNumber}"></TextBlock>
     </Grid>
 </Window>
-</code></pre>
+```
 
 We are now bind on our service "." our property. Its the same with Commands. Commands should be seperate classes (in a seperated namespace) and you be offered through the viewmodel.
 
