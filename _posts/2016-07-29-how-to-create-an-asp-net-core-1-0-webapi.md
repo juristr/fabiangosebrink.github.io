@@ -144,14 +144,14 @@ After we created the mapper we want to have this mapper instanciated **every tim
 
 So go to Startup.cs and add the line
 
-`services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();`
+`services.AddTransient<IHouseMapper, HouseMapper>();`
 
 in the "ConfigureServices"-Method. It should look like this then:
 
 <pre><code class="cs">
 public void ConfigureServices(IServiceCollection services)
 {
-            services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();
+            services.AddTransient<IHouseMapper, HouseMapper>();
             // Add framework services.
             services.AddMvc();
 }
@@ -171,7 +171,7 @@ But for this time we will use like a static list where objects are added and rem
 
 <pre><code class="cs">public interface IHouseRepository
     {
-        List&lt;HouseEntity&gt; GetAll();
+        List<HouseEntity> GetAll();
         HouseEntity GetSingle(int id);
         HouseEntity Add(HouseEntity toAdd);
         HouseEntity Update(HouseEntity toUpdate);
@@ -180,7 +180,7 @@ But for this time we will use like a static list where objects are added and rem
 
 <pre><code class="cs">public class HouseRepository : IHouseRepository
     {
-        readonly Dictionary&lt;int, HouseEntity&gt; _houses = new Dictionary&lt;int, HouseEntity&gt;();
+        readonly Dictionary<int, HouseEntity> _houses = new Dictionary<int, HouseEntity>();
 
         public HouseRepository()
         {
@@ -190,19 +190,19 @@ But for this time we will use like a static list where objects are added and rem
             _houses.Add(4, new HouseEntity() { City = "Town4", Id = 4, Street = "Street4", ZipCode = 1234 });
         }
 
-        public List&lt;HouseEntity&gt; GetAll()
+        public List<HouseEntity> GetAll()
         {
-            return _houses.Select(x =&gt; x.Value).ToList();
+            return _houses.Select(x => x.Value).ToList();
         }
 
         public HouseEntity GetSingle(int id)
         {
-            return _houses.FirstOrDefault(x =&gt; x.Key == id).Value;
+            return _houses.FirstOrDefault(x => x.Key == id).Value;
         }
 
         public HouseEntity Add(HouseEntity toAdd)
         {
-            int newId = !GetAll().Any() ? 1 : GetAll().Max(x =&gt; x.Id) + 1;
+            int newId = !GetAll().Any() ? 1 : GetAll().Max(x => x.Id) + 1;
             toAdd.Id = newId;
             _houses.Add(newId, toAdd);
             return toAdd;
@@ -233,7 +233,7 @@ But for this time we will use like a static list where objects are added and rem
 > 
 > <pre><code class="cs"><span style="color: #808080;">public interface IExampleRepository
     {
-        IEnumerable&lt;MyModel&gt; GetAll();
+        IEnumerable<MyModel> GetAll();
         MyModel GetSingle(int id);
         MyModel Add(MyModel toAdd);
         MyModel Update(MyModel toUpdate);
@@ -261,15 +261,15 @@ So we do have the repository to save the data. Let's make it available through D
 
 But this time we will use a singleton. Shame on me so far.
 
-<pre><code class="cs">services.AddSingleton&lt;IHouseRepository, HouseRepository&gt;();</code></pre>
+<pre><code class="cs">services.AddSingleton<IHouseRepository, HouseRepository>();</code></pre>
 
 So the whole Startup.cs is now like:
 
 <pre><code class="cs">public void ConfigureServices(IServiceCollection services)
 {
-    services.AddSingleton&lt;IHouseRepository, HouseRepository&gt;();
+    services.AddSingleton<IHouseRepository, HouseRepository>();
 
-    services.AddTransient&lt;IHouseMapper, HouseMapper&gt;();
+    services.AddTransient<IHouseMapper, HouseMapper>();
     // Add framework services.
     services.AddMvc();
 }</code></pre>
@@ -293,7 +293,7 @@ public class HouseController : Controller
     {
         try
         {
-            return Ok(_houseRepository.GetAll().Select(x =&gt; _houseMapper.MapToDto(x)));
+            return Ok(_houseRepository.GetAll().Select(x => _houseMapper.MapToDto(x)));
         }
         catch (Exception exception)
         {
@@ -324,7 +324,7 @@ public class HouseController : Controller
     }
 
     [HttpPatch("{id:int}")]
-    public IActionResult Patch(int id, [FromBody] JsonPatchDocument&lt;HouseDto&gt; housePatchDocument)
+    public IActionResult Patch(int id, [FromBody] JsonPatchDocument<HouseDto> housePatchDocument)
     {
         try
         {

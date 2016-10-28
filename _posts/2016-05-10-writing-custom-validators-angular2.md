@@ -23,18 +23,18 @@ When dealing with forms in Angular2 you can use the build-in validators like: re
 
 Let's have a form first:
 
-<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
-        &lt;input type="number" 
+<pre><code class="cs"><form #myForm="ngForm">
+    <div class="form-group">
+        <label for="inputCalories">Calories</label>
+        <input type="number" 
             class="form-control" 
             id="inputCalories" 
             ngControl="calories" 
             placeholder="Calories" 
-            [(ngModel)]="foodItem.Calories"&gt;
-    &lt;/div&gt;
-    &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre>
+            [(ngModel)]="foodItem.Calories">
+    </div>
+    <button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid">Submit</button>
+</form></code></pre>
 
 We see a form which has a variable "myForm" with which we can ask for the current state of the form.
 
@@ -46,7 +46,7 @@ export class IntegerValidator {
 
     static range(c: Control): any {
 
-        if (c.value &gt; 2147483647 || c.value &lt; 0) {
+        if (c.value > 2147483647 || c.value < 0) {
             return { 'isInRange': false };
         }
         return null;
@@ -57,19 +57,19 @@ This validator is named "IntegerValidator" and has a function with a control as 
 
 If we want to use it in the form like
 
-<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
-        &lt;input type="number" 
+<pre><code class="cs"><form #myForm="ngForm">
+    <div class="form-group">
+        <label for="inputCalories">Calories</label>
+        <input type="number" 
             class="form-control" 
             id="inputCalories" 
             ngControl="calories" 
             placeholder="Calories" 
             [(ngModel)]="foodItem.Calories"
-            isInRange&gt;
-    &lt;/div&gt;
-    &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre>
+            isInRange>
+    </div>
+    <button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid">Submit</button>
+</form></code></pre>
 
 We need a directive to access the validator this way. Let's write one:
 
@@ -108,7 +108,7 @@ export class FoodFormComponent {
         this.foodItem = new FoodItem();
     }
 
-    private AddFood = (): void =&gt; {
+    private AddFood = (): void => {
         alert("Added " + JSON.stringify(this.foodItem));
     }
 }</code></pre>
@@ -117,19 +117,19 @@ In our Formcomponent we use the directive "IsInRangeValidatorDirective" we just 
 
 Now it would be nice to show specific error messages to the users. So we have to ask through the form-variable we introduced and through the control name for the state and if there is a range error.
 
-<pre><code class="cs">&lt;form #myForm="ngForm"&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label for="inputCalories"&gt;Calories&lt;/label&gt;
-        &lt;input type="number" class="form-control" id="inputCalories" ngControl="calories" placeholder="Calories" [(ngModel)]="foodItem.Calories"
-            isInRange&gt;
+<pre><code class="cs"><form #myForm="ngForm">
+    <div class="form-group">
+        <label for="inputCalories">Calories</label>
+        <input type="number" class="form-control" id="inputCalories" ngControl="calories" placeholder="Calories" [(ngModel)]="foodItem.Calories"
+            isInRange>
 
-        &lt;div *ngIf="myForm?.controls?.calories?.hasError('isInRange') && myForm?.controls?.calories?.touched"&gt;
+        <div *ngIf="myForm?.controls?.calories?.hasError('isInRange') && myForm?.controls?.calories?.touched">
             Please enter a number in a valid range
-        &lt;/div&gt;
+        </div>
 
-    &lt;/div&gt;
-    &lt;button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;</code></pre>
+    </div>
+    <button type="button" class="btn btn-default" (click)="AddFood()" [disabled]="!myForm?.form.valid">Submit</button>
+</form></code></pre>
 
 And that's basically it.
 

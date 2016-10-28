@@ -52,8 +52,8 @@ public class DataBaseContext : DbContext
 
     }
 
-    public DbSet&lt;User&gt; User { get; set; }
-    public DbSet&lt;Project&gt; Projects { get; set; }
+    public DbSet<User> User { get; set; }
+    public DbSet<Project> Projects { get; set; }
         // Your entities here...
 }
 </code></pre>
@@ -88,15 +88,15 @@ So I combined them and just put in a little effort then.
 
 This is the RepositoryBase. With its interface IRepositoryBase.
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="IRepositoryBase">public interface IRepositoryBase&lt;T&gt; where T : class
+<pre class="theme:vs2012-black lang:c# decode:true " title="IRepositoryBase">public interface IRepositoryBase<T> where T : class
     {
-        List&lt;T&gt; GetAll(Expression&lt;Func&lt;T, bool&gt;&gt; filter = null,
-                       Func&lt;IQueryable&lt;T&gt;, IOrderedEnumerable&lt;T&gt;&gt; orderBy = null,
+        List<T> GetAll(Expression<Func<T, bool>> filter = null,
+                       Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy = null,
                        string includeProperties = "");
 
         T FindSingle(int id);
 
-        T FindBy(Expression&lt;Func&lt;T, bool&gt;&gt; predicate, string includeProperties = "");
+        T FindBy(Expression<Func<T, bool>> predicate, string includeProperties = "");
 
         void Add(T toAdd);
 
@@ -107,7 +107,7 @@ This is the RepositoryBase. With its interface IRepositoryBase.
         void Delete(T entity);
     }</code></pre>
 
-<pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryBaseImpl">public class RepositoryBaseImpl&lt;T&gt; : IRepositoryBase&lt;T&gt; where T : class
+<pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryBaseImpl">public class RepositoryBaseImpl<T> : IRepositoryBase<T> where T : class
     {
         private readonly DataBaseContext _dataBaseContext;
 
@@ -116,11 +116,11 @@ This is the RepositoryBase. With its interface IRepositoryBase.
             _dataBaseContext = context.IsNotNull("context");
         }
 
-        public virtual List&lt;T&gt; GetAll(Expression&lt;Func&lt;T, bool&gt;&gt; filter = null,
-            Func&lt;IQueryable&lt;T&gt;, IOrderedEnumerable&lt;T&gt;&gt; orderBy = null,
+        public virtual List<T> GetAll(Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedEnumerable<T>> orderBy = null,
             string includeProperties = "")
         {
-            IQueryable&lt;T&gt; query = _dataBaseContext.Set&lt;T&gt;();
+            IQueryable<T> query = _dataBaseContext.Set<T>();
 
             if (filter != null)
             {
@@ -142,12 +142,12 @@ This is the RepositoryBase. With its interface IRepositoryBase.
 
         public virtual T FindSingle(int id)
         {
-            return _dataBaseContext.Set&lt;T&gt;().Find(id);
+            return _dataBaseContext.Set<T>().Find(id);
         }
 
-        public virtual T FindBy(Expression&lt;Func&lt;T, bool&gt;&gt; predicate, string includeProperties = "")
+        public virtual T FindBy(Expression<Func<T, bool>> predicate, string includeProperties = "")
         {
-            IQueryable&lt;T&gt; query = _dataBaseContext.Set&lt;T&gt;();
+            IQueryable<T> query = _dataBaseContext.Set<T>();
             foreach (string includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 query = query.Include(includeProperty);
@@ -157,7 +157,7 @@ This is the RepositoryBase. With its interface IRepositoryBase.
 
         public virtual void Add(T toAdd)
         {
-            _dataBaseContext.Set&lt;T&gt;().Add(toAdd);
+            _dataBaseContext.Set<T>().Add(toAdd);
         }
 
         public virtual void Update(T toUpdate)
@@ -168,12 +168,12 @@ This is the RepositoryBase. With its interface IRepositoryBase.
         public virtual void Delete(int id)
         {
             T entity = FindSingle(id);
-            _dataBaseContext.Set&lt;T&gt;().Remove(entity);
+            _dataBaseContext.Set<T>().Remove(entity);
         }
 
         public virtual void Delete(T entity)
         {
-            _dataBaseContext.Set&lt;T&gt;().Remove(entity);
+            _dataBaseContext.Set<T>().Remove(entity);
         }
     }</code></pre>
 
@@ -187,9 +187,9 @@ But let’s put this interface into a more flexible context. I added, like shown
     {
         DataBaseContext DbContext { get; set; }
 
-        IRepositoryBase&lt;T&gt; GetGenericRepository&lt;T&gt;() where T : class;
+        IRepositoryBase<T> GetGenericRepository<T>() where T : class;
 
-        T GetCustomRepository&lt;T&gt;(Func&lt;DataBaseContext, object&gt; factory = null) where T : class;
+        T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null) where T : class;
     }</code></pre>
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="RepositoryProviderImpl">internal class RepositoryProviderImpl : IRepositoryProvider
@@ -197,21 +197,21 @@ But let’s put this interface into a more flexible context. I added, like shown
         public DataBaseContext DbContext { get; set; }
 
         private readonly Factory _factory;
-        protected Dictionary&lt;Type, object&gt; Repositories { get; private set; }
+        protected Dictionary<Type, object> Repositories { get; private set; }
 
         public RepositoryProviderImpl()
         {
             _factory = new Factory();
-            Repositories = new Dictionary&lt;Type, object&gt;();
+            Repositories = new Dictionary<Type, object>();
         }
 
-        public IRepositoryBase&lt;T&gt; GetGenericRepository&lt;T&gt;() where T : class
+        public IRepositoryBase<T> GetGenericRepository<T>() where T : class
         {
-            Func&lt;DataBaseContext, object&gt; repositoryFactoryForEntityTypeDelegate = _factory.GetRepositoryFactoryForEntityType&lt;T&gt;();
-            return GetCustomRepository&lt;IRepositoryBase&lt;T&gt;&gt;(repositoryFactoryForEntityTypeDelegate);
+            Func<DataBaseContext, object> repositoryFactoryForEntityTypeDelegate = _factory.GetRepositoryFactoryForEntityType<T>();
+            return GetCustomRepository<IRepositoryBase<T>>(repositoryFactoryForEntityTypeDelegate);
         }
 
-        public virtual T GetCustomRepository&lt;T&gt;(Func&lt;DataBaseContext, object&gt; factory = null)
+        public virtual T GetCustomRepository<T>(Func<DataBaseContext, object> factory = null)
             where T : class
         {
             object repository;
@@ -220,19 +220,19 @@ But let’s put this interface into a more flexible context. I added, like shown
             {
                 return (T)repository;
             }
-            return CreateRepository&lt;T&gt;(factory, DbContext);
+            return CreateRepository<T>(factory, DbContext);
         }
 
-        private T CreateRepository&lt;T&gt;(Func&lt;DataBaseContext, object&gt; factory, DataBaseContext dbContext)
+        private T CreateRepository<T>(Func<DataBaseContext, object> factory, DataBaseContext dbContext)
         {
-            Func&lt;DataBaseContext, object&gt; repositoryFactory;
+            Func<DataBaseContext, object> repositoryFactory;
             if (factory != null)
             {
                 repositoryFactory = factory;
             }
             else
             {
-                repositoryFactory = _factory.GetRepositoryFactoryFromCache&lt;T&gt;();
+                repositoryFactory = _factory.GetRepositoryFactoryFromCache<T>();
             }
             if (repositoryFactory == null)
             {
@@ -248,43 +248,43 @@ And the factory looks like:
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="Factory">internal class Factory
     {
-        private readonly IDictionary&lt;Type, Func&lt;DataBaseContext, object&gt;&gt; _factoryCache;
+        private readonly IDictionary<Type, Func<DataBaseContext, object>> _factoryCache;
 
         public Factory()
         {
             _factoryCache = GetFactories();
         }
 
-        public Func&lt;DataBaseContext, object&gt; GetRepositoryFactoryForEntityType&lt;T&gt;()
+        public Func<DataBaseContext, object> GetRepositoryFactoryForEntityType<T>()
             where T : class
         {
-            Func&lt;DataBaseContext, object&gt; factory = GetRepositoryFactoryFromCache&lt;T&gt;();
+            Func<DataBaseContext, object> factory = GetRepositoryFactoryFromCache<T>();
             if (factory != null)
             {
                 return factory;
             }
 
-            return DefaultEntityRepositoryFactory&lt;T&gt;();
+            return DefaultEntityRepositoryFactory<T>();
         }
 
-        public Func&lt;DataBaseContext, object&gt; GetRepositoryFactoryFromCache&lt;T&gt;()
+        public Func<DataBaseContext, object> GetRepositoryFactoryFromCache<T>()
         {
-            Func&lt;DataBaseContext, object&gt; factory;
+            Func<DataBaseContext, object> factory;
             _factoryCache.TryGetValue(typeof(T), out factory);
             return factory;
         }
 
-        private IDictionary&lt;Type, Func&lt;DataBaseContext, object&gt;&gt; GetFactories()
+        private IDictionary<Type, Func<DataBaseContext, object>> GetFactories()
         {
-            Dictionary&lt;Type, Func&lt;DataBaseContext, object&gt;&gt; dic = new Dictionary&lt;Type, Func&lt;DataBaseContext, object&gt;&gt;();
-            dic.Add(typeof(IMembershipRepository), context =&gt; new MembershipRepositoryImpl(context));
+            Dictionary<Type, Func<DataBaseContext, object>> dic = new Dictionary<Type, Func<DataBaseContext, object>>();
+            dic.Add(typeof(IMembershipRepository), context => new MembershipRepositoryImpl(context));
             //Add Extended and Custom Repositories here
             return dic;
         }
 
-        private Func&lt;DataBaseContext, object&gt; DefaultEntityRepositoryFactory&lt;T&gt;() where T : class
+        private Func<DataBaseContext, object> DefaultEntityRepositoryFactory<T>() where T : class
         {
-            return dbContext =&gt; new RepositoryBaseImpl&lt;T&gt;(dbContext);
+            return dbContext => new RepositoryBaseImpl<T>(dbContext);
         }
     }</code></pre>
 
@@ -300,7 +300,7 @@ Now you need a UnitOfWork to use in your application to access these repositorie
 
 <pre class="theme:vs2012-black lang:c# decode:true " title="IUnitOfWork">public interface IUnitOfWork : IDisposable
     {
-        IRepositoryBase&lt;Project&gt; ProjectRepository { get; }
+        IRepositoryBase<Project> ProjectRepository { get; }
 
         IMembershipRepository MembershipRepository { get; }
 
@@ -324,11 +324,11 @@ Now you need a UnitOfWork to use in your application to access these repositorie
             _repositoryProvider.DbContext = _context;
         }
 
-        public IRepositoryBase&lt;Project&gt; ProjectRepository
+        public IRepositoryBase<Project> ProjectRepository
         {
             get
             {
-                return GetGenericRepository&lt;Project&gt;();
+                return GetGenericRepository<Project>();
             }
         }
 
@@ -336,7 +336,7 @@ Now you need a UnitOfWork to use in your application to access these repositorie
         {
             get
             {
-                return GetCustomRepository&lt;IMembershipRepository&gt;();
+                return GetCustomRepository<IMembershipRepository>();
             }
         }
 
@@ -350,14 +350,14 @@ Now you need a UnitOfWork to use in your application to access these repositorie
             _context.Dispose();
         }
 
-        private IRepositoryBase&lt;T&gt; GetGenericRepository&lt;T&gt;() where T : class
+        private IRepositoryBase<T> GetGenericRepository<T>() where T : class
         {
-            return _repositoryProvider.GetGenericRepository&lt;T&gt;();
+            return _repositoryProvider.GetGenericRepository<T>();
         }
 
-        private T GetCustomRepository&lt;T&gt;() where T : class
+        private T GetCustomRepository<T>() where T : class
         {
-            return _repositoryProvider.GetCustomRepository&lt;T&gt;();
+            return _repositoryProvider.GetCustomRepository<T>();
         }
     }</code></pre>
 

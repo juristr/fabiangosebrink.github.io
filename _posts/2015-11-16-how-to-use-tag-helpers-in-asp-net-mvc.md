@@ -44,39 +44,39 @@ And Because tag helpers do not throw an exception if you use them and they do no
 
 Now all the cshtml files are able to handle Asp.Net-TagHelpers which get easily in your html like this:
 
-<pre><code class="xml">&lt;li&gt;&lt;a asp-controller="Home" asp-action="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></pre>
+<pre><code class="xml"><li><a asp-controller="Home" asp-action="Contact">Contact</a></li></code></pre>
 
 which is rendered to
 
-<pre><code class="xml">&lt;li&gt;&lt;a href="/Home/Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+<pre><code class="xml"><li><a href="/Home/Contact">Contact</a></li>
 </code></pre>
 
 That is great because you do not have to use a non-html-syntax anymore and it it easier to understand and to read.
 
 You can also write forms in this Html-Tag-Helper-Syntax which is really nice to understand
 
-<pre><code class="xml">&lt;form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form"&gt;
-    &lt;div asp-validation-summary="ValidationSummary.All" class="text-danger"&gt;&lt;/div&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label asp-for="Name" class="col-md-2 control-label"&gt;&lt;/label&gt;
-        &lt;div class="col-md-10"&gt;
-            &lt;input asp-for="Name" class="form-control" /&gt;
-            &lt;span asp-validation-for="Name" class="text-danger"&gt;&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="form-group"&gt;
-        &lt;label asp-for="Age" class="col-md-2 control-label"&gt;&lt;/label&gt;
-        &lt;div class="col-md-10"&gt;
-            &lt;input asp-for="Age" class="form-control" /&gt;
-            &lt;span asp-validation-for="Age" class="text-danger"&gt;&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="form-group"&gt;
-        &lt;div class="col-md-offset-2 col-md-10"&gt;
-            &lt;button type="submit" class="btn btn-default"&gt;Send person&lt;/button&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/form&gt;</code></pre>
+<pre><code class="xml"><form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form">
+    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Age" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Age" class="form-control" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button type="submit" class="btn btn-default">Send person</button>
+        </div>
+    </div>
+</form></code></pre>
 
 instead of using the "ugly" @-like Sytax before.
 

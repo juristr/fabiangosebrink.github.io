@@ -77,13 +77,13 @@ If everything worked fine the extension created everything for you: The handlers
 }
 </code></pre>
 Be sure to call this register method from your app start. In this case I use Owin-Startup class. In your case this can be global.asax etc.
-<pre><code class="xml">&lt;configuration&gt;
-  &lt;appSettings&gt;
-    &lt;add key="MS_WebHookReceiverSecret_GitHub" value="[MyGitHubKey]" /&gt;
-    &lt;add key="MS_WebHookReceiverSecret_Dropbox" value="[MyDropBoxAppKey]" /&gt;
-  &lt;/appSettings&gt;
+<pre><code class="xml"><configuration>
+  <appSettings>
+    <add key="MS_WebHookReceiverSecret_GitHub" value="[MyGitHubKey]" />
+    <add key="MS_WebHookReceiverSecret_Dropbox" value="[MyDropBoxAppKey]" />
+  </appSettings>
  ...
-&lt;/configuration&gt;</code></pre>
+</configuration></code></pre>
 The handlers itself are self explaining. Note that you are only deriving a class from the the WebHookHandler-Class. You have to decide in the class itself whether this call is the one you want or not.
 <pre><code class="cs">public class DropboxWebHookHandler : WebHookHandler
     {
@@ -94,7 +94,7 @@ The handlers itself are self explaining. Note that you are only deriving a class
 			{
 				// todo: replace this placeholder functionality with your own code
 				string action = context.Actions.First();
-				JObject incoming = context.GetDataOrDefault&lt;JObject&gt;();
+				JObject incoming = context.GetDataOrDefault<JObject>();
 			}
             
             return Task.FromResult(true);

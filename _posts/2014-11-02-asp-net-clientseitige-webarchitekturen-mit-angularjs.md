@@ -139,7 +139,7 @@ Er setzt die Informationen auf dem scope und gibt diese zurück an die View. Die
 
 den Controller mitgeteilt und kann so das konsumieren, was der Controller auf dem Scope setzt. Beispielsweise:
 
-<pre><code class="javascript">&lt;tbody ng-repeat="item in todoItems"&gt;</code></pre>
+<pre><code class="javascript"><tbody ng-repeat="item in todoItems"></code></pre>
 
 
 
@@ -191,7 +191,7 @@ Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine ric
         }
 
         [HttpGet]
-        public List&lt;TodoItem&gt; GetAllTodoItems()
+        public List<TodoItem> GetAllTodoItems()
         {
             using (_todoRepository)
             {
@@ -219,7 +219,7 @@ Und das dazugehörige Repository:
 
 <pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository
 {
-    public interface ITodoRepository : IRepositoryContext&lt;TodoItem&gt;
+    public interface ITodoRepository : IRepositoryContext<TodoItem>
     {
          
     }
@@ -229,7 +229,7 @@ Und das dazugehörige Repository:
 
 <pre><code class="cs">namespace AngularJsTemplate.Repositories.TodoRepository.Impl
 {
-    public class TodoRepositoryImpl : RepositoryContextImpl&lt;TodoItem&gt;, ITodoRepository
+    public class TodoRepositoryImpl : RepositoryContextImpl<TodoItem>, ITodoRepository
     {
         public TodoRepositoryImpl(DbContext databaseContext) 
             : base(databaseContext)

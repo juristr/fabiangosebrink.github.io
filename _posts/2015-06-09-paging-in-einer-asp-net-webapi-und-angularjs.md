@@ -32,7 +32,7 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 {
 	try
 	{
-		IQueryable&lt;MyItem&gt; myItems = _repository.getMyItems();
+		IQueryable<MyItem> myItems = _repository.getMyItems();
 
 		var result = myItems
 			.Skip(start)
@@ -56,7 +56,7 @@ public IHttpActionResult Get(int start = 0, int count = 10)
 {
 	try
 	{
-		IQueryable&lt;MyItem&gt; myItems = _repository.getMyItems();
+		IQueryable<MyItem> myItems = _repository.getMyItems();
 	
 		var paginationHeader = new
 		{
@@ -89,12 +89,12 @@ Ich benutze die Pagination-Komponente der [Bootstrap-Direktiven](https://angular
 
 Html:
 
-<pre><code class="xml">&lt;pagination 
-ng-show="totalItems &gt; maximalItemsPerPage" 
+<pre><code class="xml"><pagination 
+ng-show="totalItems > maximalItemsPerPage" 
 items-per-page="maximalItemsPerPage" 
 total-items="totalItems" 
 ng-model="currentPage" 
-ng-change="pageChanged()"&gt;&lt;/pagination&gt;</code></pre>
+ng-change="pageChanged()"></pagination></code></pre>
 
 Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items grösser ist als die, die maximal auf einer Seite angezeigt werden sollen.
 

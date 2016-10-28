@@ -44,22 +44,22 @@ So the only interesting thing is the Food-Component which has two child Componen
     templateUrl: 'app/components/food/food.component.html'
 })</code></pre>
 
-<pre><code class="xml">&lt;!-- Page Content --&gt;
-&lt;div class="container"&gt;
-    &lt;!-- Introduction Row --&gt;
-    &lt;div class="row"&gt;
-        &lt;div class="col-lg-12"&gt;
-            &lt;h1 class="page-header"&gt;Foodlists
-                    &lt;small&gt;See all your food lists&lt;/small&gt;
-                &lt;/h1&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+<pre><code class="xml"><!-- Page Content -->
+<div class="container">
+    <!-- Introduction Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Foodlists
+                    <small>See all your food lists</small>
+                </h1>
+        </div>
+    </div>
 
-    &lt;foodListForm-component&gt;&lt;/foodListForm-component&gt;
-    &lt;foodlists-component&gt;&lt;/foodlists-component&gt;
+    <foodListForm-component></foodListForm-component>
+    <foodlists-component></foodlists-component>
 
-&lt;/div&gt;
-&lt;!-- /.container --&gt;</code></pre>
+</div>
+<!-- /.container --></code></pre>
 
 The list component itself is not containing the details-view but redirecting to it while iterating through all the foodItems:
 
@@ -83,7 +83,7 @@ export class FoodListComponent implements OnInit {
     allLists: FoodList[];
 
     constructor(private _foodListDataService: FoodListDataService) {
-        _foodListDataService.foodListAdded.subscribe((foodList: FoodList) =&gt; {
+        _foodListDataService.foodListAdded.subscribe((foodList: FoodList) => {
             this.getAllLists();
         });
     }
@@ -95,10 +95,10 @@ export class FoodListComponent implements OnInit {
     private getAllLists() {
         this._foodListDataService
             .GetAllLists()
-            .subscribe((response: FoodList[]) =&gt; {
+            .subscribe((response: FoodList[]) => {
                 this.allLists = response;
                 console.log(response.length);
-            }, error =&gt; {
+            }, error => {
                 this.errorMessage = error;
             });
     }
@@ -106,19 +106,19 @@ export class FoodListComponent implements OnInit {
 
 and the template
 
-<pre><code class="javascript">&lt;div class="row"&gt;
-    &lt;div class="col-lg-12"&gt;
-        &lt;h2 class="page-header"&gt;Your Lists  &lt;small&gt;{{allLists?.length}}&lt;/small&gt;&lt;/h2&gt;
-    &lt;/div&gt;
+<pre><code class="javascript"><div class="row">
+    <div class="col-lg-12">
+        <h2 class="page-header">Your Lists  <small>{{allLists?.length}}</small></h2>
+    </div>
 
-    &lt;div class="col-lg-12"&gt;
-        &lt;ul class="list-group"&gt;
-            &lt;a *ngFor="#item of allLists; #i = index" [routerLink]="['/FoodListDetails', {id: item.Id}]"&gt;
-                &lt;li class="list-group-item"&gt;{{item?.Name}}&lt;/li&gt;
-            &lt;/a&gt;
-        &lt;/ul&gt;
-    &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    <div class="col-lg-12">
+        <ul class="list-group">
+            <a *ngFor="#item of allLists; #i = index" [routerLink]="['/FoodListDetails', {id: item.Id}]">
+                <li class="list-group-item">{{item?.Name}}</li>
+            </a>
+        </ul>
+    </div>
+</div></code></pre>
 
 ### Authentication
 
@@ -154,8 +154,8 @@ import { Injector } from 'angular2/core';
 import { appInjector } from '../shared/services/appInjector';
 import { StorageService } from '../shared/services/storage.service';
 
-export const NeedsAuthentication = () =&gt; {
-    return CanActivate((to: ComponentInstruction, from: ComponentInstruction, target = ['/']) =&gt; {
+export const NeedsAuthentication = () => {
+    return CanActivate((to: ComponentInstruction, from: ComponentInstruction, target = ['/']) => {
         let injector: Injector = appInjector();
         let router: Router = injector.get(Router);
         let storageService: StorageService = injector.get(StorageService);

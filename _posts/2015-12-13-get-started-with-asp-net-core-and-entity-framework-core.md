@@ -65,7 +65,7 @@ This can be done putting a single line in our "Startup.cs"-File.
 
 Just add
 
-<pre><code class="cs">services.AddScoped&lt;MyEf6EntityFrameworkContext&gt;((s) =&gt; new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));</code></pre>
+<pre><code class="cs">services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));</code></pre>
 
 in the method "ConfigureServices" in your Startup.cs.
 
@@ -73,7 +73,7 @@ in the method "ConfigureServices" in your Startup.cs.
         {
             // Add framework services.
             services.AddMvc();
-            services.AddScoped&lt;MyEf6EntityFrameworkContext&gt;((s) =&gt; new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
+            services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
         }</code></pre>
 
 This line will read the configuration and get the connection-string out of it and use it for establishing the connection. pay attention to the scoped adding. This is because the context should be generated for every single request. You can grab an overview of all lifestyles here, even it's a bit outdated: [Dependency Injection in ASP.NET vNext](http://blogs.msdn.com/b/webdev/archive/2014/06/17/dependency-injection-in-asp-net-vnext.aspx)
@@ -82,11 +82,11 @@ This line will read the configuration and get the connection-string out of it an
 
 You can now go ahead and install my [Unit of Work](https://github.com/FabianGosebrink/OfferingSolutions-UnitOfWork) via nuget and create a repository like this:
 
-<pre><code class="cs">public interface IExampleRepository : IRepositoryContext&lt;MyModel&gt;
+<pre><code class="cs">public interface IExampleRepository : IRepositoryContext<MyModel>
     {
     }</code></pre>
 
-<pre><code class="cs">public class ExampleRepository : RepositoryContextImpl&lt;MyModel&gt;, IExampleRepository
+<pre><code class="cs">public class ExampleRepository : RepositoryContextImpl<MyModel>, IExampleRepository
     {
         public ExampleRepository(MyEf6EntityFrameworkContext databaseContext) : base(databaseContext)
         {
@@ -117,17 +117,17 @@ Now we have to bring it to the build in DI in ASP.NET:
         {
             // Add framework services.
             services.AddMvc();
-            services.AddScoped&lt;IExampleRepository, ExampleRepository&gt;();
-            services.AddScoped&lt;MyEf6EntityFrameworkContext&gt;((s) =&gt; new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
+            services.AddScoped<IExampleRepository, ExampleRepository>();
+            services.AddScoped<MyEf6EntityFrameworkContext>((s) => new MyEf6EntityFrameworkContext(Configuration["Data:Ef6ExampleConnectionString"]));
         }</code></pre>
 
 and the automapping:
 
 <pre><code class="cs">public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            Mapper.Initialize(config =&gt;
+            Mapper.Initialize(config =>
             {
-                config.CreateMap&lt;MyModel, MyModelViewModel&gt;().ReverseMap();
+                config.CreateMap<MyModel, MyModelViewModel>().ReverseMap();
             });
 
             //...
@@ -151,8 +151,8 @@ In the end you only have to build up a controller which gives and takes the valu
         {
             try
             {
-                List&lt;MyModel&gt; MyModels = _exampleRepository.GetAll().ToList();
-                return new JsonResult(MyModels.Select(x =&gt; Mapper.Map&lt;MyModelViewModel&gt;(x)));
+                List<MyModel> MyModels = _exampleRepository.GetAll().ToList();
+                return new JsonResult(MyModels.Select(x => Mapper.Map<MyModelViewModel>(x)));
             }
             catch (Exception)
             {
@@ -174,7 +174,7 @@ In the end you only have to build up a controller which gives and takes the valu
                     return new HttpNotFoundResult();
                 }
 
-                return new HttpOkObjectResult(Mapper.Map&lt;MyModelViewModel&gt;(MyModel));
+                return new HttpOkObjectResult(Mapper.Map<MyModelViewModel>(MyModel));
             }
             catch (Exception ex)
             {
@@ -194,7 +194,7 @@ In the end you only have to build up a controller which gives and takes the valu
                     return new BadRequestResult();
                 }
 
-                MyModel item = Mapper.Map&lt;MyModel&gt;(viewModel);
+                MyModel item = Mapper.Map<MyModel>(viewModel);
 
                 _exampleRepository.Add(item);
                 int save = _exampleRepository.Save();
@@ -231,9 +231,9 @@ In the end you only have to build up a controller which gives and takes the valu
                 _exampleRepository.Update(singleById);
                 int save = _exampleRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
-                    return new HttpOkObjectResult(Mapper.Map&lt;MyModelViewModel&gt;(singleById));
+                    return new HttpOkObjectResult(Mapper.Map<MyModelViewModel>(singleById));
                 }
 
                 return new BadRequestResult();
@@ -261,7 +261,7 @@ In the end you only have to build up a controller which gives and takes the valu
                 _exampleRepository.Delete(id);
                 int save = _exampleRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
                     return new NoContentResult();
                 }

@@ -89,21 +89,21 @@ Right now, you have made the three entities. Now, we have to wire everything tog
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity().HasKey(q =&gt; new
+            modelBuilder.Entity().HasKey(q => new
                                                                 {
                                                                     q.GroupId,
                                                                     q.UserId
                                                                 });
 
             modelBuilder.Entity()
-                .HasRequired(t =&gt; t.Group)
-                .WithMany(t =&gt; t.Groups2Users)
-                .HasForeignKey(t =&gt; t.GroupId);
+                .HasRequired(t => t.Group)
+                .WithMany(t => t.Groups2Users)
+                .HasForeignKey(t => t.GroupId);
 
             modelBuilder.Entity()
-                .HasRequired(t =&gt; t.User)
-                .WithMany(t =&gt; t.Groups2Users)
-                .HasForeignKey(t =&gt; t.UserId);
+                .HasRequired(t => t.User)
+                .WithMany(t => t.Groups2Users)
+                .HasForeignKey(t => t.UserId);
         }
 
         public DbSet User { get; set; }
@@ -118,7 +118,7 @@ Note: Now you have to think exactly about what you want to do (Well you should d
 
 When you for example want to have all Groups of a user just call:
 
-<pre><code class="cs">context.Groups2Users.Where(x =&gt; x.UserId == userId, includeProperties: "Group").ToList();
+<pre><code class="cs">context.Groups2Users.Where(x => x.UserId == userId, includeProperties: "Group").ToList();
 </code></pre>
 
 Adding a new group xould be like

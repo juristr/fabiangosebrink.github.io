@@ -53,40 +53,40 @@ The common case is that you have a DatabaseContext and DbSets of you entities st
 	unitOfWorkContext.Save();
 
 	// Get all Persons
-	List&lt;Person&gt; allPersons = unitOfWorkContext.GetAll&lt;Person&gt;();
+	List<Person> allPersons = unitOfWorkContext.GetAll<Person>();
 
 	// Get all Persons with the age of 35
-	List&lt;Person&gt; allPersonsOnAge35 = unitOfWorkContext.GetAll&lt;Person&gt;(x =&gt; x.Age == 35);
+	List<Person> allPersonsOnAge35 = unitOfWorkContext.GetAll<Person>(x => x.Age == 35);
 
 	// Get all Persons with the age of 35 ordered by Name
-	List&lt;Person&gt; allPersonsOnAge35Ordered = unitOfWorkContext.GetAll&lt;Person&gt;(x =&gt; x.Age == 35, orderBy: q =&gt; q.OrderBy(d =&gt; d.Name));
+	List<Person> allPersonsOnAge35Ordered = unitOfWorkContext.GetAll<Person>(x => x.Age == 35, orderBy: q => q.OrderBy(d => d.Name));
 
 	// Get all Persons with the age of 35 ordered by Name and include its properties
-	List&lt;Person&gt; allPersonsOnAge35OrderedAndWithSiblings = unitOfWorkContext.GetAll&lt;Person&gt;(
-		x =&gt; x.Age == 35,
-		orderBy: q =&gt; q.OrderBy(d =&gt; d.Name),
+	List<Person> allPersonsOnAge35OrderedAndWithSiblings = unitOfWorkContext.GetAll<Person>(
+		x => x.Age == 35,
+		orderBy: q => q.OrderBy(d => d.Name),
 		includeProperties: "Siblings");
 
 	// Get all Persons and include its properties
-	List&lt;Person&gt; allPersonsWithSiblings = unitOfWorkContext.GetAll&lt;Person&gt;(includeProperties: "Siblings");
+	List<Person> allPersonsWithSiblings = unitOfWorkContext.GetAll<Person>(includeProperties: "Siblings");
 
 	// Find a single Person with a specific name
-	Person findBy = unitOfWorkContext.FindBy&lt;Person&gt;(x =&gt; x.Name == "Fabian");
+	Person findBy = unitOfWorkContext.FindBy<Person>(x => x.Name == "Fabian");
 
 	// Find a single Person with a specific name and include its siblings
-	Person findByWithSiblings = unitOfWorkContext.FindBy&lt;Person&gt;(x =&gt; x.Name == "Fabian", includeProperties: "Siblings");
+	Person findByWithSiblings = unitOfWorkContext.FindBy<Person>(x => x.Name == "Fabian", includeProperties: "Siblings");
 
 	// Find a person by id 
-	unitOfWorkContext.FindSingle&lt;Person&gt;(6);
+	unitOfWorkContext.FindSingle<Person>(6);
 
 	//Update an existing person
 	unitOfWorkContext.Update(person);
 
 	//Add or Update a Person
-	unitOfWorkContext.AddOrUpdate&lt;Person&gt;(person);
+	unitOfWorkContext.AddOrUpdate<Person>(person);
 
 	//Deleting a Person by Id or by entity
-	unitOfWorkContext.Delete&lt;Person&gt;(6);
+	unitOfWorkContext.Delete<Person>(6);
 	unitOfWorkContext.Delete(person);
 }</code></pre>
 
@@ -98,7 +98,7 @@ Attention to inherit it from the "IRepositoryContext<YourEntity>" respectively t
 
 Interface:
 
-<pre><code class="cs">public interface IPersonRepository : IRepositoryContext&lt;Person&gt;
+<pre><code class="cs">public interface IPersonRepository : IRepositoryContext<Person>
 {
 	void MyNewFunction(int id);
 }</code></pre>
@@ -107,7 +107,7 @@ Interface:
 
 Implementation:
 
-<pre><code class="cs">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
+<pre><code class="cs">public class PersonRepository : RepositoryContextImpl<Person>, IPersonRepository
 {
 	public PersonRepository(DbContext dbContext)
 		: base(dbContext)
@@ -129,7 +129,7 @@ You can then use it with
 {
 	personRepository.Add(new Person());
 	personRepository.Save();
-	List&lt;Person&gt; persons = personRepository.GetAll();
+	List<Person> persons = personRepository.GetAll();
 	personRepository.MyNewFunction(6);
 	//...
 }</code></pre>

@@ -32,7 +32,7 @@ So first we get rid of our timer in the NameProvider:
 		set
 		{
 			_nameToDisplay = value;
-			OnPropertyChanged(() =&gt; NameToDisplay);
+			OnPropertyChanged(() => NameToDisplay);
 		}
 	}
 }</code></pre>
@@ -94,12 +94,12 @@ So now let the viewmodel offer the command that it can be triggered from the out
 
 Now we offer the UI a NameProvider to bind on and a Command to bind on. The only thing we now have to do is bind this button to the command:
 
-<pre><code class="cs">&lt;Grid&gt;
-	&lt;StackPanel&gt;
-		&lt;TextBlock Text="{Binding NameProvider.NameToDisplay}"&gt;&lt;/TextBlock&gt;
-		&lt;Button Command="{Binding MyCommand}" Height="20"&gt;&lt;/Button&gt;
-	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</code></pre>
+<pre><code class="cs"><Grid>
+	<StackPanel>
+		<TextBlock Text="{Binding NameProvider.NameToDisplay}"></TextBlock>
+		<Button Command="{Binding MyCommand}" Height="20"></Button>
+	</StackPanel>
+</Grid></code></pre>
 
 Now the command is getting executed from the button. It sets the name in the nameprovider and fires the event, that something has changed and the UI gets updated.
 

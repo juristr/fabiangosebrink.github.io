@@ -180,7 +180,7 @@ app.factory('flashService', function () {
 		function step() {
 			document.title = (document.title == original) ? newMsg : original;
 
-			if (--howManyTimes &gt; 0) {
+			if (--howManyTimes > 0) {
 				timeout = setTimeout(step, 1000);
 			};
 		};

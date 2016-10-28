@@ -128,7 +128,7 @@ This connectionstring is consumed in &#8230;
 &#8230;the startup-file. With
 
 <pre><code class="cs">var configurationSection = Configuration.GetSection("ConnectionStrings:DefaultConnection");
-services.AddDbContext(options =&gt; options.UseSqlServer(configurationSection.Value));</code></pre>
+services.AddDbContext(options => options.UseSqlServer(configurationSection.Value));</code></pre>
 
 we can read the connectionstring and pass it to the "UseSQLServer"-Method.
 
@@ -136,9 +136,9 @@ we can read the connectionstring and pass it to the "UseSQLServer"-Method.
 
 <pre><code class="cs">public class DataBaseContext : DbContext
     {
-        public DbSet&lt;MyModel&gt; MyModels { get; set; }
+        public DbSet<MyModel> MyModels { get; set; }
 
-        public DataBaseContext(DbContextOptions&lt;DataBaseContext&gt; options)
+        public DataBaseContext(DbContextOptions<DataBaseContext> options)
             : base(options)
         { }
     }</code></pre>

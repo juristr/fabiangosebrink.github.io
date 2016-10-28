@@ -23,7 +23,7 @@ Instead of the "old" (but working) base-class
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt; propertyExpression)
+        protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
         {
             MemberExpression memberExpr = propertyExpression.Body as MemberExpression;
             if (memberExpr == null)

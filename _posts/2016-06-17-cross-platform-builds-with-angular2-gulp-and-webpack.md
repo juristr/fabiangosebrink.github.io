@@ -151,46 +151,46 @@ After we did this we can go ahead like normal.
 
 Because we also have a dev-server from webpack in the repository above we will have a index.html fully loaded to execute everything. The gulp-html-comments make sure that everything in between those comments gets overwritten when we inject sources with gulp.
 
-<pre><code class="xml">&lt;html&gt;
+<pre><code class="xml"><html>
 
-&lt;head&gt;
-    &lt;title&gt;FoodChooser Angular 2&lt;/title&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+<head>
+    <title>FoodChooser Angular 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    &lt;!-- inject:css --&gt;
-    &lt;link rel="stylesheet" href="vendor.bundle.css"&gt;
-    &lt;link rel="stylesheet" href="app.bundle.css"&gt;
-    &lt;!-- endinject --&gt;
+    <!-- inject:css -->
+    <link rel="stylesheet" href="vendor.bundle.css">
+    <link rel="stylesheet" href="app.bundle.css">
+    <!-- endinject -->
 
-&lt;/head&gt;
+</head>
 
-&lt;!-- 3. Display the application --&gt;
+<!-- 3. Display the application -->
 
-&lt;body&gt;
-    &lt;foodChooser-app&gt;Loading...&lt;/foodChooser-app&gt;
-&lt;/body&gt;
+<body>
+    <foodChooser-app>Loading...</foodChooser-app>
+</body>
 
-&lt;script src="cordova.js"&gt;&lt;/script&gt;
+<script src="cordova.js"></script>
 
-&lt;!-- inject:js --&gt;
-&lt;script src="polyfills.bundle.js"&gt;&lt;/script&gt;
+<!-- inject:js -->
+<script src="polyfills.bundle.js"></script>
 
-&lt;script src="vendor.bundle.js"&gt;&lt;/script&gt;
+<script src="vendor.bundle.js"></script>
 
-&lt;script src="app.bundle.js"&gt;&lt;/script&gt;
-&lt;!-- endinject --&gt;
+<script src="app.bundle.js"></script>
+<!-- endinject -->
 
-&lt;script&gt;
-    &lt;!-- Toggle Hamburger Menu on mobile --&gt;
+<script>
+    <!-- Toggle Hamburger Menu on mobile -->
     $(document).on('click','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
         $(this).collapse('hide');
     }
 });
 
-&lt;/script&gt;
+</script>
 
-&lt;/html&gt;</code></pre>
+</html></code></pre>
 
 
 
@@ -215,44 +215,44 @@ After we run this the index.html looks quite the same:
 
 
 
-<pre><code class="xml">&lt;html&gt;
+<pre><code class="xml"><html>
 
-&lt;head&gt;
-    &lt;title&gt;FoodChooser Angular 2&lt;/title&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+<head>
+    <title>FoodChooser Angular 2</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    &lt;!-- inject:css --&gt;
-    &lt;link rel="stylesheet" href="vendor.bundle.css"&gt;
-    &lt;link rel="stylesheet" href="app.bundle.css"&gt;
-    &lt;!-- endinject --&gt;
+    <!-- inject:css -->
+    <link rel="stylesheet" href="vendor.bundle.css">
+    <link rel="stylesheet" href="app.bundle.css">
+    <!-- endinject -->
 
-&lt;/head&gt;
+</head>
 
-&lt;!-- 3. Display the application --&gt;
+<!-- 3. Display the application -->
 
-&lt;body&gt;
-    &lt;foodChooser-app&gt;Loading...&lt;/foodChooser-app&gt;
+<body>
+    <foodChooser-app>Loading...</foodChooser-app>
 
 
-&lt;script src="cordova.js"&gt;&lt;/script&gt;
+<script src="cordova.js"></script>
 
-&lt;!-- inject:js --&gt;
-&lt;script src="polyfills.bundle.js"&gt;&lt;/script&gt;
-&lt;script src="vendor.bundle.js"&gt;&lt;/script&gt;
-&lt;script src="app.bundle.js"&gt;&lt;/script&gt;
-&lt;!-- endinject --&gt;
+<!-- inject:js -->
+<script src="polyfills.bundle.js"></script>
+<script src="vendor.bundle.js"></script>
+<script src="app.bundle.js"></script>
+<!-- endinject -->
 
-&lt;script&gt;
-    &lt;!-- Toggle Hamburger Menu on mobile --&gt;
+<script>
+    <!-- Toggle Hamburger Menu on mobile -->
     $(document).on('click','.navbar-collapse.in',function(e) {
     if( $(e.target).is('a') && $(e.target).attr('class') != 'dropdown-toggle' ) {
         $(this).collapse('hide');
     }
 });
 
-&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+</script>
+</body>
+</html></code></pre>
 
 But this time the sources got injected. See the dist folder here:
 

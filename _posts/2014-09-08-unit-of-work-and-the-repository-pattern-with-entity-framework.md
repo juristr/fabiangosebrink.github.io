@@ -26,7 +26,7 @@ Changes:
   * Added "DatabaseContext" insted of "DbContext" to the CustomRepositories in ExampleSolution &#8211;> No need to call "Set<T>"
   * Made basic CRUD methods virtual so you can overwrite them easier
 
-<pre><code class="cs">public class PersonRepository : RepositoryContextImpl&lt;Person&gt;, IPersonRepository
+<pre><code class="cs">public class PersonRepository : RepositoryContextImpl<Person>, IPersonRepository
 {
 	public PersonRepository(DatabaseContext dbContext)
 		: base(dbContext)

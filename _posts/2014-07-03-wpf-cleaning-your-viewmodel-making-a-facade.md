@@ -17,14 +17,14 @@ In this post I want to show you how to use the facade-pattern to get your viewmo
 
 When you want to use a viewmodel for databinding you normally get your public properties on your viewmodel an do a normal binding on your xaml like this:
 
-<pre><code class="xml">&lt;Window x:Class="WpfViewModelAsFacade.MainWindow"
+<pre><code class="xml"><Window x:Class="WpfViewModelAsFacade.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"&gt;
-    &lt;Grid&gt;
-        &lt;TextBlock Text="{Binding MyCalculatedNumber}"&gt;&lt;/TextBlock&gt;
-    &lt;/Grid&gt;
-&lt;/Window&gt;</code></pre>
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock Text="{Binding MyCalculatedNumber}"></TextBlock>
+    </Grid>
+</Window></code></pre>
 
 Setting the datacontext:
 
@@ -165,14 +165,14 @@ The viewmodel should now get a real facade and only offer the service which is d
 
 So far until here. What we did is: We are only offering the service through our viewmodel and our viewmodel is not interested in what happens behind anymore. The service can do his work and only give back his results. But you have to correct you binding now because your number is not in the viewmodel anymore but in the service behind.
 
-<pre><code class="xml">&lt;Window x:Class="WpfViewModelAsFacade.MainWindow"
+<pre><code class="xml"><Window x:Class="WpfViewModelAsFacade.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"&gt;
-    &lt;Grid&gt;
-        &lt;TextBlock Text="{Binding CalculationService.CalculatedNumber}"&gt;&lt;/TextBlock&gt;
-    &lt;/Grid&gt;
-&lt;/Window&gt;
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock Text="{Binding CalculationService.CalculatedNumber}"></TextBlock>
+    </Grid>
+</Window>
 </code></pre>
 
 We are now bind on our service "." our property. Its the same with Commands. Commands should be seperate classes (in a seperated namespace) and you be offered through the viewmodel.

@@ -66,25 +66,25 @@ export class DataService {
         this.headers.append('Accept', 'application/json');
     }
 
-    public GetAll = (): Observable&lt;Response&gt; =&gt; {
-        return this._http.get(this.actionUrl).map(res =&gt; res.json());
+    public GetAll = (): Observable<Response> => {
+        return this._http.get(this.actionUrl).map(res => res.json());
     }
 
-    public GetSingle = (id: number): Observable&lt;Response&gt; =&gt; {
-        return this._http.get(this.actionUrl + id).map(res =&gt; res.json());
+    public GetSingle = (id: number): Observable<Response> => {
+        return this._http.get(this.actionUrl + id).map(res => res.json());
     }
 
-    public Add = (itemName: string): Observable&lt;Response&gt; =&gt; {
+    public Add = (itemName: string): Observable<Response> => {
         var toAdd = JSON.stringify({ ItemName: itemName });
 
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res =&gt; res.json());
+        return this._http.post(this.actionUrl, toAdd, { headers: this.headers }).map(res => res.json());
     }
 
-    public Update = (id: number, itemToUpdate: MyTypedItem): Observable&lt;Response&gt; =&gt; {
-        return this._http.put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers }).map(res =&gt; res.json());
+    public Update = (id: number, itemToUpdate: MyTypedItem): Observable<Response> => {
+        return this._http.put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers }).map(res => res.json());
     }
 
-    public Delete = (id: number): Observable&lt;Response&gt; =&gt; {
+    public Delete = (id: number): Observable<Response> => {
         return this._http.delete(this.actionUrl + id);
     }
 }</code></pre>
@@ -121,15 +121,15 @@ export class MyItemComponent implements OnInit {
     private getAllItems(): void {
         this._dataService
             .GetAll()
-            .subscribe((data:MyTypedItem[]) =&gt; this.myItems = data,
-                error =&gt; console.log(error),
-                () =&gt; console.log('Get all Items complete'));
+            .subscribe((data:MyTypedItem[]) => this.myItems = data,
+                error => console.log(error),
+                () => console.log('Get all Items complete'));
     }
 }</code></pre>
 
 I think this should be basically it. Pay attention to the typed answer you get from the service
 
-<pre><code class="cs">(data:MyTypedItem[]) =&gt;</code></pre>
+<pre><code class="cs">(data:MyTypedItem[]) =></code></pre>
 
 and to the subsribe after calling the "GetAll"-Method from the service.
 

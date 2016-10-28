@@ -74,7 +74,7 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         public int Id { get; set; }
         public string Name { get; set; }
         public string UserId { get; set; }
-        public ICollection&lt;FoodItem&gt; Foods { get; set; }
+        public ICollection<FoodItem> Foods { get; set; }
     }</code></pre>
 
 <pre><code class="cs">public class FoodItemViewModel
@@ -94,15 +94,15 @@ We have CRUD operations for food items, and food lists. And we are going to map 
         [Required]
         public string Name { get; set; }
         public string UserId { get; set; }
-        public ICollection&lt;FoodItem&gt; Foods { get; set; }
+        public ICollection<FoodItem> Foods { get; set; }
     }</code></pre>
 
 in the OWIN-Configuration we can go ahead and initialize the mappings:
 
-<pre><code class="cs">Mapper.Initialize(mapper =&gt;
+<pre><code class="cs">Mapper.Initialize(mapper =>
             {
-                mapper.CreateMap&lt;FoodItem, FoodItemViewModel&gt;().ReverseMap();
-                mapper.CreateMap&lt;FoodList, FoodListViewModel&gt;().ReverseMap();
+                mapper.CreateMap<FoodItem, FoodItemViewModel>().ReverseMap();
+                mapper.CreateMap<FoodList, FoodListViewModel>().ReverseMap();
             });</code></pre>
 
 Of course you need to add Automapper to your project which I did via [Nuget](https://www.nuget.org/packages/AutoMapper/4.1.1).
@@ -146,8 +146,8 @@ Beside the whole authorization features this is basically it. The API is quite s
         {
             try
             {
-                FoodList foodList = _foodListRepository.GetSingle(x =&gt; x.Id == id, "Foods");
-                return Ok(foodList.Foods.Select(x =&gt; Mapper.Map&lt;FoodItemViewModel&gt;(x)));
+                FoodList foodList = _foodListRepository.GetSingle(x => x.Id == id, "Foods");
+                return Ok(foodList.Foods.Select(x => Mapper.Map<FoodItemViewModel>(x)));
             }
             catch (Exception exception)
             {
@@ -165,12 +165,12 @@ Beside the whole authorization features this is basically it. The API is quite s
                 FoodItem foodItem;
                 if (listId.HasValue)
                 {
-                    foodItem = _foodRepository.GetSingle(x =&gt; x.Id == foodItemId && x.FoodList.Id == listId.Value,
+                    foodItem = _foodRepository.GetSingle(x => x.Id == foodItemId && x.FoodList.Id == listId.Value,
                         includeProperties: "FoodList");
                 }
                 else
                 {
-                    foodItem = _foodRepository.GetSingle(x =&gt; x.Id == foodItemId, "FoodList");
+                    foodItem = _foodRepository.GetSingle(x => x.Id == foodItemId, "FoodList");
                 }
 
                 if (foodItem == null)
@@ -183,7 +183,7 @@ Beside the whole authorization features this is basically it. The API is quite s
                     return StatusCode(HttpStatusCode.Forbidden);
                 }
 
-                return Ok(Mapper.Map&lt;FoodItemViewModel&gt;(foodItem));
+                return Ok(Mapper.Map<FoodItemViewModel>(foodItem));
             }
             catch (Exception exception)
             {
@@ -199,14 +199,14 @@ Beside the whole authorization features this is basically it. The API is quite s
             try
             {
 
-                IEnumerable&lt;FoodItem&gt; foodItems = _foodRepository.GetAll(x =&gt; x.IsPublic, includeProperties: "FoodList").AsEnumerable();
+                IEnumerable<FoodItem> foodItems = _foodRepository.GetAll(x => x.IsPublic, includeProperties: "FoodList").AsEnumerable();
 
                 if (!foodItems.Any())
                 {
                     return NotFound();
                 }
 
-                IEnumerable&lt;FoodItem&gt; enumerable = foodItems as IList&lt;FoodItem&gt; ?? foodItems.ToList();
+                IEnumerable<FoodItem> enumerable = foodItems as IList<FoodItem> ?? foodItems.ToList();
                 FoodItem elementAt = enumerable.ElementAt(_randomNumberGenerator.GetRandomNumber(enumerable.Count()));
 
                 if (elementAt == null)
@@ -214,7 +214,7 @@ Beside the whole authorization features this is basically it. The API is quite s
                     return NotFound();
                 }
 
-                return Ok(Mapper.Map&lt;FoodItemViewModel&gt;(elementAt));
+                return Ok(Mapper.Map<FoodItemViewModel>(elementAt));
             }
             catch (Exception exception)
             {
@@ -238,17 +238,17 @@ Beside the whole authorization features this is basically it. The API is quite s
                     return BadRequest(ModelState);
                 }
 
-                FoodList singleFoodList = _foodListRepository.GetSingle(x =&gt; x.Id == viewModel.FoodListId, "Foods");
-                FoodItem item = Mapper.Map&lt;FoodItem&gt;(viewModel);
+                FoodList singleFoodList = _foodListRepository.GetSingle(x => x.Id == viewModel.FoodListId, "Foods");
+                FoodItem item = Mapper.Map<FoodItem>(viewModel);
                 item.Created = DateTime.Now;
                 singleFoodList.Foods.Add(item);
                 _foodListRepository.Update(singleFoodList);
 
                 int save = _foodListRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
-                    return CreatedAtRoute("GetSingleFood", new { foodItemId = item.Id }, Mapper.Map&lt;FoodItemViewModel&gt;(item));
+                    return CreatedAtRoute("GetSingleFood", new { foodItemId = item.Id }, Mapper.Map<FoodItemViewModel>(item));
                 }
 
                 return BadRequest();
@@ -289,9 +289,9 @@ Beside the whole authorization features this is basically it. The API is quite s
                 _foodRepository.Update(singleById);
                 int save = _foodRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
-                    return Ok(Mapper.Map&lt;FoodItemViewModel&gt;(singleById));
+                    return Ok(Mapper.Map<FoodItemViewModel>(singleById));
                 }
 
                 return BadRequest();
@@ -318,7 +318,7 @@ Beside the whole authorization features this is basically it. The API is quite s
                 _foodRepository.Delete(foodItemId);
                 int save = _foodRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
                     return StatusCode(HttpStatusCode.NoContent);
                 }
@@ -352,14 +352,14 @@ FoodListController:
         {
             try
             {
-                if (pageSize &gt; MaxPageSize)
+                if (pageSize > MaxPageSize)
                 {
                     pageSize = MaxPageSize;
                 }
 
-                IQueryable&lt;FoodList&gt; foodLists = _foodListRepository
+                IQueryable<FoodList> foodLists = _foodListRepository
                     .GetAll()
-                    .Where(x =&gt; x.UserId == CurrentUserId);
+                    .Where(x => x.UserId == CurrentUserId);
 
                 var paginationHeader = new
                 {
@@ -370,14 +370,14 @@ FoodListController:
                 };
 
                 var result = foodLists
-                    .OrderBy(x =&gt; x.Id)
+                    .OrderBy(x => x.Id)
                     .Skip(pageSize * (page - 1))
                     .Take(pageSize)
                     .ToList();
 
                 HttpContext.Current.Response.AppendHeader("X-Pagination", JsonConvert.SerializeObject(paginationHeader));
 
-                return Ok(result.Select(x =&gt; Mapper.Map&lt;FoodListViewModel&gt;(x)));
+                return Ok(result.Select(x => Mapper.Map<FoodListViewModel>(x)));
             }
             catch (Exception exception)
             {
@@ -391,7 +391,7 @@ FoodListController:
         {
             try
             {
-                FoodList singleFoodList = _foodListRepository.GetSingle(x =&gt; x.Id == id);
+                FoodList singleFoodList = _foodListRepository.GetSingle(x => x.Id == id);
 
                 if (singleFoodList == null)
                 {
@@ -403,7 +403,7 @@ FoodListController:
                     return StatusCode(HttpStatusCode.Forbidden);
                 }
 
-                return Ok(Mapper.Map&lt;FoodListViewModel&gt;(singleFoodList));
+                return Ok(Mapper.Map<FoodListViewModel>(singleFoodList));
             }
             catch (Exception exception)
             {
@@ -427,12 +427,12 @@ FoodListController:
                     return BadRequest(ModelState);
                 }
 
-                FoodList item = Mapper.Map&lt;FoodList&gt;(viewModel);
+                FoodList item = Mapper.Map<FoodList>(viewModel);
                 item.UserId = CurrentUserId;
                 _foodListRepository.Add(item);
                 int save = _foodListRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
                     return CreatedAtRoute("GetSingleList", new { id = item.Id }, item);
                 }
@@ -451,7 +451,7 @@ FoodListController:
         {
             try
             {
-                FoodList singleFoodList = _foodListRepository.GetSingle(x =&gt; x.Id == id, "Foods");
+                FoodList singleFoodList = _foodListRepository.GetSingle(x => x.Id == id, "Foods");
 
                 if (singleFoodList == null)
                 {
@@ -466,7 +466,7 @@ FoodListController:
                 _foodListRepository.Delete(singleFoodList);
                 int save = _foodListRepository.Save();
 
-                if (save &gt; 0)
+                if (save > 0)
                 {
                     return StatusCode(HttpStatusCode.NoContent);
                 }

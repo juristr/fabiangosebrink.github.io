@@ -43,26 +43,26 @@ The code-behind of a window stays empty. No matter what. There are cases to real
 
 Well if you only add a xaml-file or open a new wpf project in visual studio you can add a normal textblock to your xaml like this.
 
-<pre><code class="xml">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
+<pre><code class="xml"><Window x:Class="DataBindingGettingStarted.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"&gt;
-    &lt;Grid&gt;
-        &lt;TextBlock&gt;&lt;/TextBlock&gt;
-    &lt;/Grid&gt;
-&lt;/Window&gt;
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock></TextBlock>
+    </Grid>
+</Window>
 </code></pre>
 
 Now add a binding to it. Want we want to do is bind the Text-Property of the TextBlock to a value from the viewmodel. Lets prepare our XAML:
 
-<pre><code class="cs">&lt;Window x:Class="DataBindingGettingStarted.MainWindow"
+<pre><code class="cs"><Window x:Class="DataBindingGettingStarted.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"&gt;
-    &lt;Grid&gt;
-        &lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
-    &lt;/Grid&gt;
-&lt;/Window&gt;
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBlock Text="{Binding NameToDisplay}"></TextBlock>
+    </Grid>
+</Window>
 </code></pre>
 
 Now lets do the viewmodel. This is the base for our databinding. Its a normal class. Remember to name it like the view to associate it easier for other developers.
@@ -121,7 +121,7 @@ First lets expand the viewmodel with a Person-class which has two properties: Na
 <pre><code class="cs">public class MainViewModel
 {
 	public string NameToDisplay { get; set; }
-	public List&lt;Person&gt; ListOfPersons { get; set; }
+	public List<Person> ListOfPersons { get; set; }
 
 	public MainViewModel()
 	{
@@ -129,11 +129,11 @@ First lets expand the viewmodel with a Person-class which has two properties: Na
 		ListOfPersons = GetListOfPersons();
 	}
 
-	private List&lt;Person&gt; GetListOfPersons()
+	private List<Person> GetListOfPersons()
 	{
 		Person fabianPerson = GetPerson("Fabian", 29);
 		Person evePerson = GetPerson("Eve", 100);
-		return new List&lt;Person&gt; {fabianPerson, evePerson};
+		return new List<Person> {fabianPerson, evePerson};
 	}
 
 	private Person GetPerson(string name, int age)
@@ -158,14 +158,14 @@ So right like the plain name we are offering a list of persons at the viewmodel.
 
 Now that the viewmodel is our Datacontext it can access every property on it. So lets access this in XAML:
 
-<pre><code class="xml">&lt;Grid&gt;
-	&lt;StackPanel&gt;
-		&lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
-		&lt;ItemsControl ItemsSource="{Binding ListOfPersons}"&gt;
+<pre><code class="xml"><Grid>
+	<StackPanel>
+		<TextBlock Text="{Binding NameToDisplay}"></TextBlock>
+		<ItemsControl ItemsSource="{Binding ListOfPersons}">
 			
-		&lt;/ItemsControl&gt;
-	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</code></pre>
+		</ItemsControl>
+	</StackPanel>
+</Grid></code></pre>
 
 But if you run this you only see the namespace and the name of the classes. Why this? Because the only thing you give to the ItemsControl is the list of persons. From where should it know what to do with it? It just calls the "ToString()"-Extension on "object" and gets the Namespace and the name of the class.
 
@@ -173,22 +173,22 @@ But if you run this you only see the namespace and the name of the classes. Why 
 
 So lets tell the UI how to treat the objects. This can be done with an Itemtemplate.
 
-<pre><code class="xml">&lt;Window.Resources&gt;
-	&lt;DataTemplate x:Key="MyItemTemplate"&gt;
-		&lt;StackPanel Orientation="Horizontal"&gt;
-			&lt;Label Content="{Binding Name}"&gt;&lt;/Label&gt;
-			&lt;Label Content="{Binding Age}"&gt;&lt;/Label&gt;
-		&lt;/StackPanel&gt;
-	&lt;/DataTemplate&gt;
-&lt;/Window.Resources&gt;
-&lt;Grid&gt;
-	&lt;StackPanel&gt;
-		&lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
-		&lt;ItemsControl ItemsSource="{Binding ListOfPersons}" ItemTemplate="{StaticResource MyItemTemplate}"&gt;
+<pre><code class="xml"><Window.Resources>
+	<DataTemplate x:Key="MyItemTemplate">
+		<StackPanel Orientation="Horizontal">
+			<Label Content="{Binding Name}"></Label>
+			<Label Content="{Binding Age}"></Label>
+		</StackPanel>
+	</DataTemplate>
+</Window.Resources>
+<Grid>
+	<StackPanel>
+		<TextBlock Text="{Binding NameToDisplay}"></TextBlock>
+		<ItemsControl ItemsSource="{Binding ListOfPersons}" ItemTemplate="{StaticResource MyItemTemplate}">
 			
-		&lt;/ItemsControl&gt;
-	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</code></pre>
+		</ItemsControl>
+	</StackPanel>
+</Grid></code></pre>
 
 The Itemtemplate now tells the object how to appear. In my case these are just two labels showing the two properties name and age.
 

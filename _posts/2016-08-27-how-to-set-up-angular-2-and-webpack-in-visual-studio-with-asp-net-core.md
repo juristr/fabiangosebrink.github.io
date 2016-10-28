@@ -157,16 +157,16 @@ But to start we need an index.html. And for webpack to be prepared we need an en
 
 index.html
 
-<pre><code class="xml">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Angular2WebpackStarter&lt;/title&gt;
-    &lt;meta charset=UTF-8&gt;
-    &lt;meta name=viewport content="width=device-width,initial-scale=1"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;my-app&gt;Loading...&lt;/my-app&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<pre><code class="xml"><html>
+<head>
+    <title>Angular2WebpackStarter</title>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+</head>
+<body>
+    <my-app>Loading...</my-app>
+</body>
+</html></code></pre>
 
 > Note that we include **nothing** here yet. This is on purpose. Read further&#8230; 🙂
 
@@ -348,19 +348,19 @@ let it run again:
 
 Lets take a look into this index.html:
 
-<pre><code class="xml">&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;Angular2WebpackStarter&lt;/title&gt;
-    &lt;meta charset=UTF-8&gt;
-    &lt;meta name=viewport content="width=device-width,initial-scale=1"&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;my-app&gt;Loading...&lt;/my-app&gt;
-    &lt;script type="text/javascript" src="polyfills-54447aaf.bundle.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" src="vendor-54447aaf.bundle.js"&gt;&lt;/script&gt;
-    &lt;script type="text/javascript" src="app-54447aaf.bundle.js"&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
+<pre><code class="xml"><html>
+<head>
+    <title>Angular2WebpackStarter</title>
+    <meta charset=UTF-8>
+    <meta name=viewport content="width=device-width,initial-scale=1">
+</head>
+<body>
+    <my-app>Loading...</my-app>
+    <script type="text/javascript" src="polyfills-54447aaf.bundle.js"></script>
+    <script type="text/javascript" src="vendor-54447aaf.bundle.js"></script>
+    <script type="text/javascript" src="app-54447aaf.bundle.js"></script>
+</body>
+</html></code></pre>
 
 our files got injected!
 
@@ -403,7 +403,7 @@ to your project.json and in the Startup write:
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-             app.UseCors(config =&gt;
+             app.UseCors(config =>
                 config.AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowAnyOrigin());
@@ -477,7 +477,7 @@ Create a file which is called "webpack.prod.js" which will be our production fil
 
 To test this put a simple console.log in the production file like:
 
-<pre><code class="javascript">console.log("----&gt; Production");</code></pre>
+<pre><code class="javascript">console.log("----> Production");</code></pre>
 
 and let it run:
 

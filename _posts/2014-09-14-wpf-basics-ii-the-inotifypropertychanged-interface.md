@@ -27,11 +27,11 @@ Therefore the binding has to be "refreshed" and we have the INotifyPropertyChang
 
 Lets take our code from before and give it a timer which sets the name we want to display after 3 seconds:
 
-<pre><code class="cs">&lt;Grid&gt;
-	&lt;StackPanel&gt;
-		&lt;TextBlock Text="{Binding NameToDisplay}"&gt;&lt;/TextBlock&gt;
-	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</code></pre>
+<pre><code class="cs"><Grid>
+	<StackPanel>
+		<TextBlock Text="{Binding NameToDisplay}"></TextBlock>
+	</StackPanel>
+</Grid></code></pre>
 
 
 
@@ -105,7 +105,7 @@ Lets tune this:
 {
 	public event PropertyChangedEventHandler PropertyChanged;
 
-	protected virtual void OnPropertyChanged&lt;T&gt;(Expression&lt;Func&lt;T&gt;&gt; propertyExpression)
+	protected virtual void OnPropertyChanged<T>(Expression<Func<T>> propertyExpression)
 	{
 		MemberExpression memberExpr = propertyExpression.Body as MemberExpression;
 		if (memberExpr == null)
@@ -136,7 +136,7 @@ We do inherit from the just created class and can access the event with the lamb
 		set
 		{
 			_nameToDisplay = value;
-			OnPropertyChanged(() =&gt; NameToDisplay);
+			OnPropertyChanged(() => NameToDisplay);
 		}
 	}
 
@@ -187,7 +187,7 @@ First we do a NameProvider, which gives us the name. In my case again with a tim
                 }
 
                 _nameToDisplay = value;
-                OnPropertyChanged(() =&gt; NameToDisplay);
+                OnPropertyChanged(() => NameToDisplay);
             }
         }
 
@@ -228,11 +228,11 @@ This principle I am also describing [here](http://offering.solutions/2014/07/03/
 
 Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property "NameProvider". So the Binding looks like this:
 
-<pre><code class="cs">&lt;Grid&gt;
-	&lt;StackPanel&gt;
-		&lt;TextBlock Text="{Binding NameProvider.NameToDisplay}"&gt;&lt;/TextBlock&gt;
-	&lt;/StackPanel&gt;
-&lt;/Grid&gt;</code></pre>
+<pre><code class="cs"><Grid>
+	<StackPanel>
+		<TextBlock Text="{Binding NameProvider.NameToDisplay}"></TextBlock>
+	</StackPanel>
+</Grid></code></pre>
 
 Run this and you will see the result stays the same: After three seconds our string is displayed.
 

@@ -78,7 +78,7 @@ If you validate with the validator, your Errormessages are getting automatically
 
             try
             {
-                ReadOnlyCollection&lt;string&gt; errors;
+                ReadOnlyCollection<string> errors;
                 if (!submitModel.IsValid(out errors))
                 {
                     viewModel.ErrorMessages.AddRange(errors);

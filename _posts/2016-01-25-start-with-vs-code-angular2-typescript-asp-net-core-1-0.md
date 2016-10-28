@@ -91,7 +91,7 @@ Lets get started with the serverside: To wire up everything we need to configure
 		app.UseMvc();
 	}
 
-	public static void Main(string[] args) =&gt; WebApplication.Run&lt;Startup&gt;(args);
+	public static void Main(string[] args) => WebApplication.Run<Startup>(args);
 }</code></pre>
 
 Because at the beginning of this page we are consuming an "appsettings.json" we should also create it. Create a new file called like this beside the Startup.cs and paste some logging information to it. You can add some informations you want to have in there later if you want. For the start, this should be okay.
@@ -194,28 +194,28 @@ Last thing to do is copying all your needed files into the "js"-folder you creat
 
 Now go ahead in you index.html and link to the files in the client js folder:
 
-<pre><code class="xml">&lt;html&gt;
+<pre><code class="xml"><html>
 
-  &lt;head&gt;
-    &lt;title&gt;ASPNET5Angular2Demo&lt;/title&gt;
-  &lt;/head&gt;
+  <head>
+    <title>ASPNET5Angular2Demo</title>
+  </head>
 
-  &lt;!-- 3. Display the application --&gt;
-  &lt;body&gt;
-    &lt;my-app&gt;Loading...&lt;/my-app&gt;
+  <!-- 3. Display the application -->
+  <body>
+    <my-app>Loading...</my-app>
 	
-	  &lt;!-- 1. Load libraries --&gt;
-    &lt;!-- IE required polyfills, in this exact order --&gt;
-    &lt;script src="js/es6-shim.min.js"&gt;&lt;/script&gt;
-    &lt;script src="js/system-polyfills.js"&gt;&lt;/script&gt;
+	  <!-- 1. Load libraries -->
+    <!-- IE required polyfills, in this exact order -->
+    <script src="js/es6-shim.min.js"></script>
+    <script src="js/system-polyfills.js"></script>
 
-    &lt;script src="js/angular2-polyfills.js"&gt;&lt;/script&gt;
-    &lt;script src="js/system.src.js"&gt;&lt;/script&gt;
-    &lt;script src="js/Rx.js"&gt;&lt;/script&gt;
-    &lt;script src="js/angular2.dev.js"&gt;&lt;/script&gt;
+    <script src="js/angular2-polyfills.js"></script>
+    <script src="js/system.src.js"></script>
+    <script src="js/Rx.js"></script>
+    <script src="js/angular2.dev.js"></script>
 
-    &lt;!-- 2. Configure SystemJS --&gt;
-    &lt;script&gt;
+    <!-- 2. Configure SystemJS -->
+    <script>
       System.config({
         packages: {        
           app: {
@@ -225,10 +225,10 @@ Now go ahead in you index.html and link to the files in the client js folder:
       });
       System.import('app/boot')
             .then(null, console.error.bind(console));
-    &lt;/script&gt;
-  &lt;/body&gt;
+    </script>
+  </body>
 
-&lt;/html&gt;</code></pre>
+</html></code></pre>
 
 ## Finally&#8230;
 

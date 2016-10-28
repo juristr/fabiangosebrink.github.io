@@ -89,12 +89,12 @@ So we have created the enpoint&#8230;lets request it with a POST-Request. (I am 
 <pre><code class="cs">[Authorize]
     public class ValuesController : ApiController
     {
-        // GET api/&lt;controller&gt;
+        // GET api/<controller>
         public IHttpActionResult Get()
         {
             ClaimsIdentity claimsIdentity = User.Identity as ClaimsIdentity;
 
-            var claims = claimsIdentity.Claims.Select(x =&gt; new { type = x.Type, value = x.Value });
+            var claims = claimsIdentity.Claims.Select(x => new { type = x.Type, value = x.Value });
 
             return Ok(claims);
         }
@@ -111,12 +111,12 @@ You can also check the roles you added in the claims by just mentioning the role
 <pre><code class="cs">[Authorize(Roles = "user")]
     public class ValuesController : ApiController
     {
-        // GET api/&lt;controller&gt;
+        // GET api/<controller>
         public IHttpActionResult Get()
         {
             ClaimsIdentity claimsIdentity = User.Identity as ClaimsIdentity;
 
-            var claims = claimsIdentity.Claims.Select(x =&gt; new { type = x.Type, value = x.Value });
+            var claims = claimsIdentity.Claims.Select(x => new { type = x.Type, value = x.Value });
 
             return Ok(claims);
         }

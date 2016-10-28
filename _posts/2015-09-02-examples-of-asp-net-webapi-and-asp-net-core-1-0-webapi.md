@@ -37,7 +37,7 @@ I am also using mapper to get a DataTransferObject (DTO) to send it to the clien
 
             HttpContext.Current.Response.AppendHeader("X-Pagination", JsonConvert.SerializeObject(paginationHeader));
 
-            return Ok(Singleton.Instance.Houses.Select(x =&gt; _houseMapper.MapToDto(x)));
+            return Ok(Singleton.Instance.Houses.Select(x => _houseMapper.MapToDto(x)));
         }</code></pre>
 
 The only important thing to mention about the Create-Method is that we are returning a CreatedAtRoute-Actionresult. This causes, that we have a link to the created resource in the header so we can either redirect on the client directly to it, provide the link to the user or work with it in another way.
@@ -68,7 +68,7 @@ Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object whic
 
 <pre><code class="cs">[HttpPatch]
         [Route("{id:int}")]
-        public IHttpActionResult Patch(int id, Delta&lt;HouseDto&gt; houseDto)
+        public IHttpActionResult Patch(int id, Delta<HouseDto> houseDto)
         {
             if (houseDto == null)
             {
@@ -80,7 +80,7 @@ Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object whic
                 return BadRequest(ModelState);
             }
 
-            HouseEntity houseEntityToUpdate = Singleton.Instance.Houses.FirstOrDefault(x =&gt; x.Id == id);
+            HouseEntity houseEntityToUpdate = Singleton.Instance.Houses.FirstOrDefault(x => x.Id == id);
 
             if (houseEntityToUpdate == null)
             {
@@ -90,7 +90,7 @@ Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object whic
             HouseDto existingHouse = _houseMapper.MapToDto(houseEntityToUpdate);
             houseDto.Patch(existingHouse);
 
-            int index = Singleton.Instance.Houses.FindIndex(x =&gt; x.Id == id);
+            int index = Singleton.Instance.Houses.FindIndex(x => x.Id == id);
             Singleton.Instance.Houses[index] = _houseMapper.MapToEntity(existingHouse);
 
             return Ok(existingHouse);
@@ -102,7 +102,7 @@ And last but not least the delete-method. See the fact that one has to return a 
         [Route("{id:int}")]
         public IHttpActionResult Delete(int id)
         {
-            HouseEntity houseEntityToDelete = Singleton.Instance.Houses.FirstOrDefault(x =&gt; x.Id == id);
+            HouseEntity houseEntityToDelete = Singleton.Instance.Houses.FirstOrDefault(x => x.Id == id);
 
             if (houseEntityToDelete == null)
             {
