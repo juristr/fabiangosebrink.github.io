@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In diesem Blogpost möchte ich mal herausstellen, wie wichtig Scrum-Master sind: Jeder braucht einen Scrum-Master!
+
 Jeden Tag eine gute Tat. Dieses Gefühl abends ins Bett zu steigen und zu wissen: Ich habe etwas Gutes gemacht heute. Leuten helfen zum Beispiel. Bei Fragen zur Seite stehen. Hilfestellung geben. Man hilft ja gern. Warum auch nicht? Man ist ja Scrum-Master. Macht ja auch Spass.
 
 **Innerhalb des Teams**

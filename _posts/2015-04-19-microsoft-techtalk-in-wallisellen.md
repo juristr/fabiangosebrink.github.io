@@ -13,7 +13,7 @@ disqus: true
 categories: articles
 ---
 
-Hallo zusammen,
+Hallo zusammen, in diesem Blog will ich kurz den Microsoft TechTalk in Wallisellen zusammenfassen.
 
 am 19.03.2015 waren Hans Peter Bornhauser und ich Guestspeaker beim Microsoft Techtalk in Wallisellen. Dass Ereignis war mit mehr als 100 Leuten komplett ausverkauft und drehte sich innerhalb von 3 Vorträgen rund um das Thema Asp.Net und Azure.
 

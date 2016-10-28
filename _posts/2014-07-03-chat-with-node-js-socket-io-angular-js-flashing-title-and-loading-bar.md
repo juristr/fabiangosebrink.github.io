@@ -224,6 +224,6 @@ Thanks for reading.
 
 Fabian
 
-[chatclient_angular](http://blog.noser.com/wp-content/uploads/2014/07/chatclient_angular.zip)
+[chatclient_angular]({{site.baseurl}}assets/articles/2014-07-03/chatclient_angular.zip)
 
 

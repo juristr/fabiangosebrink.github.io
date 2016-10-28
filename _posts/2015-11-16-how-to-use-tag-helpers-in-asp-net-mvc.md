@@ -13,9 +13,7 @@ disqus: true
 categories: articles
 ---
 
-Hey,
-
-in this post I want to show you how to use tag helpers in ASP.NET MVC 6.
+In this post I want to show you how to use tag helpers in ASP.NET MVC 6.
 
 First of all: What are the tag helpers good for?
 

@@ -1,6 +1,6 @@
 ---
 id: 79
-title: 'ASP.NET MVC - Generic Repositories and UnitOfWork'
+title: ASP.NET MVC - Generic Repositories and UnitOfWork
 date: 2014-07-01T08:00:11+00:00
 author: Fabian Gosebrink
 layout: post

@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In this blogpost I am doing a small recap to give you impressions of the first ASP.NET MVC workshop.
+
 Even when I am not doing it in my current project at work I am very interested in ASP.NET and the ASP.NET MVC-Framework and everything which is needed to build modern web based applications.
 
 Last Saturday my preparation for a very special workshop for me ended and I was glad to give five students the first ASP.NET MVC-workshop at the university Albstadt-Sigmaringen. (One of them had to leave 5 minutes earlier, so do not be confused while seeing only four students on the picture 😉 )

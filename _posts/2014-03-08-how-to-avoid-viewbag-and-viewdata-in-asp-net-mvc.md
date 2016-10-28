@@ -13,7 +13,7 @@ subclass: 'post tag-speeches'
 disqus: true
 ---
 
-# How to avoid ViewBag and ViewData in ASP.Net MVC
+In this blogpost I want to show you How to avoid ViewBag and ViewData in ASP.Net MVC.
 
 It could be so easy: When passing data from the Controller to the View in MVC one can simply use
 

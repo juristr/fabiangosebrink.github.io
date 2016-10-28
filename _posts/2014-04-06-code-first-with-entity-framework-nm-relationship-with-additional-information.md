@@ -13,7 +13,7 @@ disqus: true
 categories: articles
 ---
 
-Hey,
+In this blogpost I want to show you a way to realize code First with Entity Framework n:m relationship with additional information.
 
 a few days ago I faced the problem of having a normal N:M Relationship in EF with additional information in the table which keeps the two entities together.
 
@@ -128,17 +128,17 @@ When you for example want to have all Groups of a user just call:
 context.Groups2Users.Where(x => x.UserId == userId, includeProperties: "Group").ToList();
 ```
 
-Adding a new group xould be like
+Adding a new group would be like
 
 ```
 Groups2Users groups2Users = new Groups2Users
-            {
-                Group = //Define your group here or above,
-                User = //your user here,
-                MyAdditionalInformation = myAdditionalInformation 
-            };
+{
+    Group = //Define your group here or above,
+    User = //your user here,
+    MyAdditionalInformation = myAdditionalInformation 
+};
 
-            context.Groups2Users.Add(groups2Users);
+context.Groups2Users.Add(groups2Users);
 ```
 
 Hope this helps,

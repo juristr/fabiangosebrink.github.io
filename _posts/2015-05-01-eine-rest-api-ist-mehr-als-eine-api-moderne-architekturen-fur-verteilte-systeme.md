@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In diesem Blogpost möchte ich zeigen, wie wichtig eine API heutzutage ist. Frei nach dem Motto: Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme.
+
 In der heutigen Zeit ist es absolut unabdingbar eine Software, die man für internen oder externen Gebrauch schreibt, auf mehreren Wegen verfügbar bzw. konsumierbar zu machen. Wichtig sind hierbei sicherlich Desktop-PCs, Smartphones und Tablets.
 
 Völlig unabhängig der eingesetzten Technologie (ASP.NET WebAPI, AngularJS, Xamarin, ASP.NET MVC, etc.) möchte ich mit diesem Blog einen Schritt zurückgehen und den Blick auf die Architektur lenken, die moderne Software-Lösungen voranbringen können. Hierbei werde ich zwar auch Technologien als Beispiel erwähnen, diese sind aber nur als Beispiel zu betrachten. Die Lösungen in dieser Hinsicht sind sicherlich vielfältiger als das hier geschriebene.

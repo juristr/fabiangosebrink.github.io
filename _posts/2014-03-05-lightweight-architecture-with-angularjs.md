@@ -15,13 +15,9 @@ disqus: true
 
 During the last past days I have been to a conference in Germany and brought back several interesting things I want to share with you this time. (Here I have to say that my hotel did not have a spa. So everybody who wanted to get the latest hotel and spa tips is wrong here&#8230;so in case stop reading)
 
-<!--more-->
-
 Well for me as a software developer it gets interesting every time I hear another company talking about their way of doing work, their kind of projects and their behavior in the market. It’s always refreshing to see how they behave. And, indeed, personally, if the topic "ASP.NET&", "Internet&" with all its Buzzwords is connected you can be sure to have my attention.
 
 This time I laid my focus on everything which was connected to the web and in eight hours of workshop and a lot of tracks the other day I learned a lot!
-
-
 
 **History**
 

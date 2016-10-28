@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In this blogpost I want to show you how to work with the q promise syntax in AngularJS
+
 #### The "Then(success/error)"-Syntax
 
 If you are developing with **AngularJS** you have to work with promises angular gives to you. Its the syntax you have when you can react with a "then(success/error)" on it. And if you work with this syntax you will notice that its very mighty because it is one very clean way to react to your server responses or whatever in case of an error. So the "then(success/error)"-syntax is giving you error handling out of the box. You get the promise and react on it in case of a good or an error result.

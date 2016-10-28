@@ -253,7 +253,7 @@ You can now go ahead and develop you application in Typescript and Angular2. You
 
 You could now start using gulp/grunt to copy files to the locations automatically instead of doing it manually. Or you could start consuming the api using the http-Service like shown [here](https://auth0.com/blog/2015/10/15/angular-2-series-part-3-using-http/) or wait for one of my next blog-posts 😉
 
-[Angular 2 Beta 0 Starter Template on GitHub](https://github.com/FabianGosebrink/Angular2Beta0StarterTemplate)
+[Angular 2 Starter Template on GitHub](https://github.com/FabianGosebrink/Angular2Beta0StarterTemplate)
 
 Regards & HTH
 

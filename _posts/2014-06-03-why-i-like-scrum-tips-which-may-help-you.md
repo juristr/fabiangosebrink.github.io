@@ -13,23 +13,19 @@ disqus: true
 categories: articles
 ---
 
+Hi, in this post I want to tell you why I like SCRUM - Tips which may help you
+
 ![Why I like SCRUM - Tips which may help you]({{site.baseurl}}assets/articles/2014-06-03/08570960-945a-48e4-980d-ef95447107ea.png)
 
 After I started to be interested in agile management processes, SCRUM took nearly all of my attention and I often hear that people do not understand it or do not know how to get along with it. If your company wants to work with SCRUM you should get an idea of it and learn it. If you do so, this seems quite all right here and you can stop reading. But if you have any doubts about it please read further. If you are not into it and asking yourself the question “Why should I get along with this thing? Processes come and go. It will pass. With or without me”: Read this post. I will try to give you tips for your SCRUM experience and tell you why I like SCRUM. No, let me push this: I love it. There you go:
-
-
 
 **Reason 1: Teamwork**
 
 I like teamwork. I really do. You often hear the question: “Are you a team player?” maybe in a job interview and how fast you are telling “Yes!” Without knowing in which team you perhaps will come and without knowing with which people and characters you will work together in the future. But beside of that in general: Your team will always have so many different characters no matter how long you are into this team. They will come and go. You will have many types in your team and to deal with this is strenuous but also interesting and fascinating.
 
-<!--more-->
-
-If your team does SCRUM it’s very important they stand together as a team. Which means: Everybody could overtake the work of another one if he will drop out for a specific reason. It’s not like “Everybody can do everyone’s work at 100 percent”! But every team-member has to have the **will** to do work of his neighbor and save the SCRUM -sprint and reduce the risk of not missing the sprint-goal. The work is of course groomed and defined, so that everybody could do it in more or less time ;).
+If your team does SCRUM it’s very important they stand together as a team. Which means: Everybody could overtake the work of another one if he will drop out for a specific reason. It’s not like “Everybody can do everyone’s work at 100 percent”! But every team-member has to have the <strong>will</strong> to do work of his neighbor and save the SCRUM -sprint and reduce the risk of not missing the sprint-goal. The work is of course groomed and defined, so that everybody could do it in more or less time ;).
 
 Teamwork also means being interested in work which you did not care about before SCRUM. Concrete in your everyday SCRUM-work: Do pair programming with perhaps one experienced and one not experienced guy. Do show interests: “Can we do this together?” “Can you give me a briefing about what you did exactly to solve this problem?” This is sharing of knowledge, this shows how much interested you are (or you should be) and in the end this makes a great team working perfectly together. So doing teamwork is one of the greatest things about SCRUM. But if you want to introduce it you have to have absolutely everybody behind you who has to work with it. SCRUMis team-oriented. So the team has to be convinced that this is a good thing. And this mostly is the hardest part.
-
-
 
 **Reason 2: Transparency**
 

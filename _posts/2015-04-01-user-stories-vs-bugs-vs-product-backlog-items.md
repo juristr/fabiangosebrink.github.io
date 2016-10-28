@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In diesem Blog greife ich eine ewig brennende Diskussion auf: User Stories vs Bugs vs Product Backlog Items!
+
 Der Product-Backlog ist eines der wichtigsten Artefakte im Scrum-Prozess und wohl eines der am meisten unterschätzten zugleich.
 
 In ihm sammeln sich alle Ideen, alle Anforderungen und Gedankenblitze, die der Kunde oder auch der Entwickler beim Arbeiten mit einem Produkt haben. Egal ob ausgereift oder fern in der Zukunft: Der Product-Backlog bietet zukünftigen Arbeiten an einem Produkt ein Zuhause.

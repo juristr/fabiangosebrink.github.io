@@ -13,6 +13,8 @@ disqus: true
 categories: articles
 ---
 
+In diesem Blogpost will ich zeigen, wie man paging in einer ASP.Net WebAPI und AngularJS realisieren kann.
+
 Eine gute API sollte mehrere Features anbieten. Eins davon ist Paging. In diesem Beispiel zeige ich Paging mit AngularJS und wie man es auf dem Client konsumieren kann.
 
 Als erstes sollte man dem Client anbieten per Parameter nur eine bestimmte Anzahl von Einträgen abzurufen.

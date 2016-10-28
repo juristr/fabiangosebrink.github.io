@@ -256,12 +256,6 @@ namespace AngularJsTemplate.Repositories.TodoRepository.Impl
 
 Benutzt wurde hier mein Repository und UnitOfWork-Paket, was auch auf <a href="http://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/" target="_blank">NuGet </a>zu finden ist.
 
-
-
 Gruss
 
-
-
 Fabian
-
-[AngularJsTemplate](http://offering.solutions/wp-content/uploads/2014/10/AngularJsTemplate.zip)
