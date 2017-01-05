@@ -1604,6 +1604,11 @@ body:not(.post-template) .post-title {
     float: left;
 }
 
+.social-icon {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .site-footer social-centered {
     margin: auto;
     width: 60%;
