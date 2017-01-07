@@ -1,6 +1,6 @@
 ---
 id: 998
-title: Chat with Node.js, socket.io, Angular.js, flashing title and loading bar
+title: Chat with Node.js, socket.io, AngularJS, flashing title and loading bar
 date: 2014-07-03 11:54
 author: Fabian Gosebrink
 layout: post

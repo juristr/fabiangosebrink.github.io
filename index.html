@@ -19,12 +19,14 @@ current: home
 </nav>
 <div class="vertical">
     <div class="main-header-content inner">
+           
         <h1 class="page-title">{{ site.shortname }}</h1>
+       <img src="{{ site.baseurl }}{{ site.image }}" align="middle" style="border-radius: 50%; border: 5px solid white;">
         <h2 class="page-description">{{ site.description }}</h2>
         <div align="center">
             <a href="{{site.social.twitter}}" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @FabianGosebrink</a>
             <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script>
-</div>
+        </div>
 </div>
 </div>
 <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
@@ -35,22 +37,24 @@ current: home
 
     <div align="center">
         <p>
-                   <img src="{{ site.baseurl }}assets/images/MVPlogo.png" align="middle"></img>
-            <br/><br/>
+            
+            <img src="{{ site.baseurl }}assets/images/MVPlogo.png" align="middle">
+            <br/>
+             <h4>{{site.bio}}</h4>
+             <br/>
             <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square fa-3x" aria-hidden="true"></i></a>
             <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
             <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github fa-3x" aria-hidden="true"></i></a>
             <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows fa-3x" aria-hidden="true"></i></a>
             <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing fa-3x" aria-hidden="true"></i></a>
             <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter fa-3x" aria-hidden="true"></i></a>
-
         </p>
     </div>
 
     <div align="center">
         <!-- Html Elements for Search -->
         <div id="search-container">
-        <input type="text" id="search-input" placeholder="search..." style="max-width:50%;font-family: sans-serif;">
+        <input type="text" id="search-input" placeholder="Search article..." style="max-width:50%;font-family: sans-serif;">
         <ul id="results-container" style="list-style: none;"></ul>
         </div>
     </div>
