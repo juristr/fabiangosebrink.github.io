@@ -18,8 +18,8 @@ Code here [https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample](https:/
 
 ### Visual Studio
 
-![AspNetCoreWebApi0](http://offering.solutions/wp-content/uploads/2016/07/AspNetCoreWebApi0.jpg)
-![AspNetCoreWebApi02](http://offering.solutions/wp-content/uploads/2016/07/AspNetCoreWebApi02.jpg)
+![AspNetCoreWebApi0]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi0.jpg)
+![AspNetCoreWebApi02]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi02.jpg)
 
 We will start with the ASP.NET Startup-File
 
@@ -460,6 +460,6 @@ public class HouseController : Controller
 
 Now we can go ahead and test this with a tool like postman or whatever:
 
-![Create an ASP.NET Core 1.0 WebAPI](http://offering.solutions/wp-content/uploads/2016/07/AspNetCoreWebApi1.jpg)
+![Create an ASP.NET Core 1.0 WebAPI]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi1.jpg)
 
-![AspNetCoreWebApi3](http://offering.solutions/wp-content/uploads/2016/07/AspNetCoreWebApi3.jpg)
+![AspNetCoreWebApi3]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi3.jpg)

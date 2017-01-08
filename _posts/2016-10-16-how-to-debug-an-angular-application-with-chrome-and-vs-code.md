@@ -22,11 +22,11 @@ You can find it here
 
 or search in the extensions tab for the plugin directly:
 
-![How to debug an Angular application with Chrome and VS Code](https://offering.solutions/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_01.jpg)
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_01.jpg)
 
 After installing you probably have to enable the plugin and restart VS Code but in the end you will see your folder structure like normal. Then head over to the debug tab and press the button for creating you an new configuration and select the "Chrome" environment.
 
-![How to debug an Angular application with Chrome and VS Code](https://offering.solutions/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_02-1024x276.jpg)
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_02-1024x276.jpg)
 
 After doing this the extension created a new folder (if you do not have it already) called ".vscode" and a "launch.json" in it initially looking like this:
 
@@ -87,9 +87,9 @@ So replace the port in the config file with the port from your lite-server. In m
 
 Then start the lite server and just hit "play"
 
-![How to debug an Angular application with Chrome and VS Code](https://offering.solutions/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_04.jpg)</a>
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_04.jpg)</a>
 
-![How to debug an Angular application with Chrome and VS Code](https://offering.solutions/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode-1024x608.gif)</a>
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode-1024x608.gif)</a>
 
 Chrome starts and you can debug your page in VS Code. Of course you can also confugre Chrome to attach directly. See here for examples:
 

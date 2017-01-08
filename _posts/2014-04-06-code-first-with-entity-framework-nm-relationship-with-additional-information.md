@@ -96,10 +96,10 @@ public class DataBaseContext : DbContext
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity().HasKey(q => new
-                                                                {
-                                                                    q.GroupId,
-                                                                    q.UserId
-                                                                });
+                                        {
+                                            q.GroupId,
+                                            q.UserId
+                                        });
 
             modelBuilder.Entity()
                 .HasRequired(t => t.Group)

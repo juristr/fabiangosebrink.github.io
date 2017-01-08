@@ -152,4 +152,4 @@ Regards
 
 Fabian
 
-Download [OfferingSolutions.UnitOfWork.Sample.0.6.1](http://offering.solutions/wp-content/uploads/2014/08/OfferingSolutions.UnitOfWork.Sample.0.6.1.zip)
+Download [OfferingSolutions.UnitOfWork.Sample.0.6.1]({{site.baseurl}}assets/articles/wp-content/uploads/2014/08/OfferingSolutions.UnitOfWork.Sample.0.6.1.zip)

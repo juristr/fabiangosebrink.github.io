@@ -14,7 +14,7 @@ categories: articles
 
 This article shows how to use ASP.NET Core and Angular with webpack and Visual Studio. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.
 
-![vs_webpack_angular2](http://offering.solutions/wp-content/uploads/2016/06/vs_webpack_angular2.png)
+![vs_webpack_angular2]({{site.baseurl}}assets/articles/wp-content/uploads/2016/06/vs_webpack_angular2.png)
 
 **Code:** [https://github.com/damienbod/Angular2WebpackVisualStudio](https://github.com/damienbod/Angular2WebpackVisualStudio)
 
@@ -548,11 +548,11 @@ And the produced build file in the wwwroot folder. The scripts for the app, vend
 
 [Webpack task runner ](https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a) from Mads Kristensen can be downloaded and used to send Webpack commands using the webpack.config.js file. The node NODE_ENV parameter is used to define the build type. The parameter can be set to "development", or "production".
 
-![vs_webpack_angular2_02](http://offering.solutions/wp-content/uploads/2016/06/vs_webpack_angular2_02.png)
+![vs_webpack_angular2_02]({{site.baseurl}}assets/articles/wp-content/uploads/2016/06/vs_webpack_angular2_02.png)
 
 The Webpack task runner can also be used by double clicking the task. The execution results are then displayed in the task runner console.
 
-![vs_webpack_angular2_03](http://offering.solutions/wp-content/uploads/2016/06/vs_webpack_angular2_03.png)
+![vs_webpack_angular2_03]({{site.baseurl}}assets/articles/wp-content/uploads/2016/06/vs_webpack_angular2_03.png)
 
 This runner provides a number of useful commands which can be activated automatically. These tasks can be attached to Visual Studio events by right clicking the task and selecting a binding. This adds a binding tag to the webpack.config.js file.
 

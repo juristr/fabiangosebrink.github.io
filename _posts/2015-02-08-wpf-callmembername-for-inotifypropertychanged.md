@@ -80,7 +80,7 @@ public string NameToDisplay
 
 See: You do not need to give a func. instead you are only calling the method whithout any paramters.
 
-Solution with a command-implementation can be found here: [DataBindingGettingStarted](http://offering.solutions/wp-content/uploads/2015/02/DataBindingGettingStarted.zip)
+Solution with a command-implementation can be found here: [DataBindingGettingStarted]({{site.baseurl}}assets/articles/wp-content/uploads/2015/02/DataBindingGettingStarted.zip)
 
 Happy coding!
 

@@ -23,7 +23,7 @@ NgResource: [https://docs.AngularJS.org/api/ngResource/service/$resource](https
 
 The application follows the "normal" way of seperating the data access also on client side into services.
 
-![AngularJS NgResource Demo with ASP.NET WebAPI](http://offering.solutions/wp-content/uploads/2015/08/folders.png)
+![AngularJS NgResource Demo with ASP.NET WebAPI]({{site.baseurl}}assets/articles/wp-content/uploads/2015/08/folders.png)
 
 #### Preparation:
 
