@@ -1,1 +1,3 @@
-### Upcoming source of blog offering.solutions
+### source of blog.offering.solutions
+
+[https://blog.offering.solutions/](blog.offering.solutions)
