@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this blogpost I want to show you how to create an ASP.NET Core 1.0 WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the "database" here.

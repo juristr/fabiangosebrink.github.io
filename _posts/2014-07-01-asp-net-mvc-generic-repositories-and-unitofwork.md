@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 This is the third and the last blogpost regarding ASP.NET MVC Architecture.

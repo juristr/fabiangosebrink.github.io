@@ -6,7 +6,7 @@ author: Fabian Gosebrink
 layout: post
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/download_edit_dark.jpg'
+cover: 'assets/images/man-working-on-computer.jpg'
 tags: 
 subclass: 'post tag-speeches'
 ---

@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this bogpost I want to show you one possible way creating a business logic in ASP.NET MVC.

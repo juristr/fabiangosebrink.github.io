@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this blogpost I want to show one possibility of organising your gulp tasks in a way that you as a developer can find them quickly and print them to the console in an ordered way.

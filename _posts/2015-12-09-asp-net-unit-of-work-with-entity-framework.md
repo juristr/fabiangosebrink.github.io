@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 I just implemented a solution for the ASP.NET Unit Of Work with Entity Framework (see [this](http://offering.solutions/2014/07/01/asp-net-mvc-architecture-part-iii-generic-repositories-and-unitofwork/) post) and put all this into a NuGet-Package. And finally: Here it is!

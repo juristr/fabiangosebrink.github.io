@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this blog I want to show you how to build and debug a WebAPI with the Dotnet CLI and VSCode.

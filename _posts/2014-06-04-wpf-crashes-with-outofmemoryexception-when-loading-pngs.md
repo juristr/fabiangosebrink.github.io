@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this blogpost I want to show you the solution for an error I had today which I spent a lot of time on solving it. it was the case that WPF crashes with OutOfMemoryException when loading PNGs.

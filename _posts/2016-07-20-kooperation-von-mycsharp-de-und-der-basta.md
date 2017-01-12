@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 Ich freue mich wieder sehr anzukündigen, dass es erneut zu einer Kooperation von MyCSharp.de und der BASTA! gekommen ist. Die zweite dieses Jahr :)

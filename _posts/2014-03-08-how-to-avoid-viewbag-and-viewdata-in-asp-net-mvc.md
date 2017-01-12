@@ -4,7 +4,7 @@ title: How to avoid ViewBag and ViewData in ASP.NET MVC
 date: 2014-03-08T13:24:01+00:00
 author: Fabian Gosebrink
 layout: post
-categories: articles
+categories: blog articles
 tags: ASP.NETmvc viewbag viewdata 
 logo: 'assets/images/logo_small.png'
 navigation: True

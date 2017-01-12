@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 This article shows how to use ASP.NET Core and Angular with webpack and Visual Studio. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.

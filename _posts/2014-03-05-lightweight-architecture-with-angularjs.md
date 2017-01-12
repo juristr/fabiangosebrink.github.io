@@ -4,7 +4,7 @@ title: Lightweight architecture with AngularJS
 date: 2014-03-05T17:17:51+00:00
 author: Fabian Gosebrink
 layout: post
-categories: articles
+categories: blog articles
 tags: angularjs javascript webarchitecture 
 logo: 'assets/images/logo_small.png'
 navigation: True

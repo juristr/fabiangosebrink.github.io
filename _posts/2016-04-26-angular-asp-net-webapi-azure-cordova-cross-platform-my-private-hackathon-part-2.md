@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In the last [blogpost](http://offering.solutions/articles/asp-net/angular2-asp-net-webapi-azure-my-private-hackathon/)I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2.
