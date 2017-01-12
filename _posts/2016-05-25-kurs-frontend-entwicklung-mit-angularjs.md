@@ -3,10 +3,10 @@ title: Kurs - Frontend-Entwicklung mit AngularJS
 date: 2016-05-25 18:30
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Course Training
+tags: AngularJS Course Training Speaking Talks
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles

@@ -3,10 +3,10 @@ title: Microsoft TechDays 2016
 date: 2016-02-20 11:30
 author: Fabian Gosebrink
 layout: post
-tags: Talks TechDays Microsoft
+tags: Talks TechDays Microsoft Speaking
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles

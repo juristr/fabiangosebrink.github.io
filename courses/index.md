@@ -7,7 +7,7 @@ layout: post
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/man-working-on-computer.jpg'
-tags: teaching, speaking, training
+tags: teaching speaking training
 subclass: 'post tag-speeches'
 ---
 

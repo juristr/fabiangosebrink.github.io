@@ -7,7 +7,7 @@ layout: post
 tags: Github REST WebAPI ASP.NET
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles

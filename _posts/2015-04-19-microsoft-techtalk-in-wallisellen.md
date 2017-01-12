@@ -4,10 +4,10 @@ title: Microsoft TechTalk in Wallisellen
 date: 2015-04-19 17:52
 author: Fabian Gosebrink
 layout: post
-tags: Microsoft Techtalk Wallisellen Talks
+tags: Microsoft Techtalk Wallisellen Talks Speaking
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles

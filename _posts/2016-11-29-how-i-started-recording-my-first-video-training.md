@@ -3,10 +3,10 @@ title: How I started recording my first Video training
 date: 2016-11-29 14:07
 author: Fabian Gosebrink
 layout: post
-tags: channel9 microphone recording screenrecording
+tags: channel9 microphone recording screenrecording Talk Speaking
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/aerial-view-of-laptop-notebook-mobile-phone-and-coffee-cup-on-wooden-table.jpg'
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles
