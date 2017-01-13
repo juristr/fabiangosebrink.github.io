@@ -56,7 +56,8 @@ After doing this the extension created a new folder (if you do not have it alrea
 
 Our folder strucutre tells us that the files are served from the root.
 
-[lite-server](https://github.com/johnpapa/lite-server)" you can easily type "lite-server" at the root of your webapplication or place it in your npm command chain in the "npm start" command. This is what I did. But before we go we need to sdjust the urls where the server is running on and the url where the Chrome instance is starting.
+So, the "webRoot”: “${workspaceRoot}”” setting is good to go for us. We will open a new Chrome instance but it needs an existing running server. So, if you use something like lite-server, you can easily type “lite-server” at the root of your web application or place it in your NPM command chain in the “NPM Start” command. This is what I did.
+But before we go we need to adjust the urls where the server is running on and the url where the Chrome instance is starting.
 
 So replace the port in the config file with the port from your lite-server. In my cae thats "3000". This is how your config look like then:
 
