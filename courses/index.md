@@ -6,7 +6,7 @@ author: Fabian Gosebrink
 layout: post
 logo: 'assets/images/logo_small.png'
 navigation: True
-cover: 'assets/images/man-working-on-computer.jpg'
+cover: 'assets/images/background.jpg'
 tags: teaching speaking training
 subclass: 'post tag-speeches'
 ---
