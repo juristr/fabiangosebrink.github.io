@@ -1,5 +1,5 @@
 ---
-title: Angular Template Driven Forms demystified
+title: Working with Angular Template Forms
 date: 2017-01-14 13:49
 author: Fabian Gosebrink
 layout: post
@@ -12,7 +12,7 @@ disqus: true
 categories: blog articles
 ---
 
-In this blog I want to demystify Angular's template driven forms.
+In this blog I want explain and show you how to work with Angular's template driven forms.
 
 ### The Problem
 
