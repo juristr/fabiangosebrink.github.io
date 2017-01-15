@@ -38,7 +38,7 @@ styles.css
 package.json
 ```
 
-this is the most simple way to start with angular. 
+this is an easy way to start with angular and form. 
 
 > I did not mention files like favicon etc. They do not really impact our work here
 
@@ -59,12 +59,14 @@ Now we add the bootstrap cdn to our ```index.html```.
 Out app.component.html simply looks like this:
 
 {% highlight html %}
+{% raw %}
 
 <div class="container">
     <h1>{{title}}</h1>
     <form-component></form-component>
 </div>
 
+{% endraw %}
 {% endhighlight %}
 
 ### Introducing the Form
@@ -190,7 +192,7 @@ What we want is to see the state of our form. We achieve that by adding the ngMo
 
 {% endhighlight %}
 
-With those three things we can asks the form about its state with
+With those three things we can ask the form about its state with
 
 ` myform.value `
 
@@ -312,9 +314,7 @@ So we can go ahead and for example disable the submit button and show a message 
 
 So this gives us the possibility to ask the form for some variables angular gives us.
 
-We can also do this whole template variable thing on a control itself and ask the simple control for its state. The same properties which are valid for the form apply also on the control:
-
-Therefore we have to grab our ngModel-directive again and assign it to a tamplate variable to make the control or the model assigned to this control accessible.
+We can also do this whole template variable thing on a control itself and ask the simple control for its state. The same properties which are valid for the form apply also on the control. Therefore we have to grab our ngModel-directive again and assign it to a template variable to make the control, or better: the model assigned to this control, accessible.
 
 {% highlight html %}
 
