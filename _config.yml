@@ -63,5 +63,4 @@ exclude:
   - changelog.md
   - "*.Rmd"
   - vendor
-  - .travis.yml
-  - assets/images/**/*.*
+# - assets/images/**/*.*
