@@ -4,19 +4,19 @@
 markdown: kramdown
 highlighter: rouge
 paginate: 5
-language: 'en-uk'
+language: 'en-us'
 
 # Website info
 name: 'Offering Solutions'
 shortname: 'Offering Solutions'
-description: "Fabian Gosebrinks Blog"
+description: "Articles about Angular & ASP.NET"
 
 # Author's info
 author: 'Fabian Gosebrink'
 # edit 'categories' in the front matter of every post to match this username
 nickname: Fabian
-bio: 'Developing Software. Speaking. Teaching. Having fun.'
-bioextended: 'Hi, I am a Professional Software Engineer, MVP, Microsoft Technology Ambassador in Switzerland and Microsoft Certified Specialist in Web application development and Trainer at Digicomp. I like developing web applications with AngularJS, Angular2, ASP.NET, ASP.NET Core.'
+bio: 'Developing Software, Speaking & Teaching about ASP.NET & Angular'
+bioextended: 'Hi, I am a Professional Software Engineer, MVP, Microsoft Technology Ambassador in Switzerland and Microsoft Certified Specialist in Web application development and Trainer at Digicomp. I like developing web applications with AngularJS, Angular, ASP.NET, ASP.NET Core.'
 location: 'St. Gallen, Switzerland'
 url: 'http://offering.solutions'
 image: 'assets/images/profile.jpg'
