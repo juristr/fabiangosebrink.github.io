@@ -1,5 +1,5 @@
 ---
-title: How to create an ASP.NET Core 1.0 WebAPI
+title: How to create an ASP.NET Core WebAPI
 date: 2016-07-29 18:31
 author: Fabian Gosebrink
 layout: post
@@ -12,7 +12,7 @@ disqus: true
 categories: blog articles
 ---
 
-In this blogpost I want to show you how to create an ASP.NET Core 1.0 WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the "database" here.
+In this blogpost I want to show you how to create an ASP.NET Core WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the "database" here.
 
 Code here [https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample](https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample)
 
@@ -460,6 +460,6 @@ public class HouseController : Controller
 
 Now we can go ahead and test this with a tool like postman or whatever:
 
-![Create an ASP.NET Core 1.0 WebAPI]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi1.jpg)
+![Create an ASP.NET Core 1.1 WebAPI]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi1.jpg)
 
 ![AspNetCoreWebApi3]({{site.baseurl}}assets/articles/wp-content/uploads/2016/07/AspNetCoreWebApi3.jpg)
