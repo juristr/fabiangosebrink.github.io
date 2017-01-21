@@ -48,50 +48,78 @@ Your npm file related to your project. It keeps als dependencies and everything 
 
 {% highlight js %}
 {
-  "name": "aspnetcoreangular2webpackstarter",
+  "name": "aspnetcoreangularwebpackstarter",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "tsc &amp;&amp; npm install &amp;&amp; npm run build &amp;&amp; \"dotnet run\" ",
+    "ngc": "ngc -p ./tsconfig-aot.json",
+    "start": "tsc && npm run startWebpackDevServer",
     "startWebpackDevServer": "webpack-dev-server --inline --progress --port 8080",
-    "build": "SET NODE_ENV=development &amp;&amp; webpack -d --color &amp;&amp; dotnet run",
-    "buildProduction": "SET NODE_ENV=production &amp;&amp; webpack -d --color",
+    "build": "SET NODE_ENV=development && webpack -d --color && dotnet run",
+    "buildProduction": "npm run ngc && SET NODE_ENV=production && webpack -d --color && dotnet run",
     "lint": "tslint ./angular2app/**/*.ts -t verbose",
-    "postinstall": "typings install",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
+    "tsc:w": "tsc -w"
   },
   "keywords": [],
   "author": "Fabian Gosebrink",
   "dependencies": {
-    "@angular/common": "2.0.0",
-    "@angular/compiler": "2.0.0",
-    "@angular/core": "2.0.0",
-    "@angular/forms": "2.0.0",
-    "@angular/http": "2.0.0",
-    "@angular/platform-browser": "2.0.0",
-    "@angular/platform-browser-dynamic": "2.0.0",
-    "@angular/router": "3.0.0",
-    "@angular/upgrade": "2.0.0",
-    "angular2-toaster": "^1.0.1",
-    "bootstrap": "^3.3.6",
+    "@angular/common": "~2.4.0",
+    "@angular/compiler": "~2.4.0",
+    "@angular/core": "~2.4.0",
+    "@angular/forms": "~2.4.0",
+    "@angular/http": "~2.4.0",
+    "@angular/platform-browser": "~2.4.0",
+    "@angular/platform-browser-dynamic": "~2.4.0",
+    "@angular/router": "~3.4.0",
+    "angular-in-memory-web-api": "~0.2.2",
+    "@angular/compiler-cli": "~2.4.3",
+    "@angular/platform-server": "~2.4.3",
+    "systemjs": "0.19.40",
     "core-js": "^2.4.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.4",
+    "bootstrap": "^3.3.7",
+    "angular2-toaster": "^1.0.1",
     "jquery": "2.2.4",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.12",
-    "systemjs": "0.19.27",
-    "zone.js": "^0.6.23"
+    "ng2-slim-loading-bar": "^2.0.4"
   },
   "devDependencies": {
-    "tslint": "^3.7.4",
-    "lodash": "^4.11.1",
-    "rimraf": "^2.5.2",
-    "node-sass": "3.8.0",
-    "concurrently": "^2.2.0",
+    "@types/jasmine": "^2.5.36",
+    "@types/node": "7.0.0",
+    "angular-router-loader": "^0.5.0",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^2.2.4",
+    "canonical-path": "0.0.2",
+    "clean-webpack-plugin": "^0.1.15",
+    "concurrently": "^3.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.26.0",
+    "http-server": "^0.9.0",
+    "ie-shim": "^0.1.0",
+    "jquery": "^2.2.0",
+    "json-loader": "^0.5.4",
     "lite-server": "^2.2.2",
-    "typescript": "^2.0.2",
-    "typings": "^1.3.2"
+    "lodash": "^4.16.4",
+    "node-sass": "^4.3.0",
+    "protractor": "~4.0.14",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "source-map-loader": "^0.1.6",
+    "style-loader": "^0.13.1",
+    "ts-helpers": "^1.1.2",
+    "tslint": "^4.3.1",
+    "tslint-loader": "^3.3.0",
+    "typescript": "~2.0.10",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }
 {% endhighlight %}
@@ -102,45 +130,22 @@ Is configuring your tsc compiler. Whenever your run the “tsc” command from t
 
 {% highlight js %}
 {
- "compilerOptions": {
+  "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false
-  },
-  "compileOnSave": true,
-  "exclude": [
-    "node_modules",
-    "wwwroot/js",
-    "typings/main",
-    "typings/main.d.ts"
-  ]
-}
-{% endhighlight %}
-
-**typings.json**
-
-Gets your global typing dependencies needed for angular2
-
-{% highlight js %}
-{
-  "globalDependencies": {
-    "core-js": "registry:dt/core-js#0.0.0+20160725163759",
-    "jasmine": "registry:dt/jasmine#2.2.0+20160621224255",
-    "node": "registry:dt/node#6.0.0+20160909174046"
+    "lib": [
+      "es2015",
+      "dom"
+    ],
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
   }
 }
 {% endhighlight %}
-
-So your solution should look something like this:
-
-![Zwischenablage01]({{site.baseurl}}assets/articles/wp-content/uploads/2016/08/Zwischenablage01.jpg)
-
-I just added a tslint.json file to lint my typescript but this is not necessary.
 
 ### Fill the angular2app-folder
 
@@ -172,99 +177,120 @@ I reduced the vendor.ts and polyfills.ts to store only the things we need
 polyfills.ts
 
 {% highlight js %}
-import "core-js/es6";
-import "core-js/es7/reflect";
-require("zone.js/dist/zone");
+
+import 'ie-shim'; // Internet Explorer 9 support.
+
+import 'core-js/es6/symbol';
+import 'core-js/es6/object';
+import 'core-js/es6/function';
+import 'core-js/es6/parse-int';
+import 'core-js/es6/parse-float';
+import 'core-js/es6/number';
+import 'core-js/es6/math';
+import 'core-js/es6/string';
+import 'core-js/es6/date';
+import 'core-js/es6/array';
+import 'core-js/es6/regexp';
+import 'core-js/es6/map';
+import 'core-js/es6/set';
+import 'core-js/es6/weak-map';
+import 'core-js/es6/weak-set';
+import 'core-js/es6/typed';
+import 'core-js/es6/reflect';
+import 'core-js/es7/reflect';
+
+import 'zone.js/dist/zone';
+
 {% endhighlight %}
 
 vendor.ts
 
 {% highlight js %}
-// RxJS.
-import "rxjs";
 
-// Angular 2.
-import "@angular/common";
-import "@angular/compiler";
-import "@angular/core";
-import "@angular/http";
-import "@angular/platform-browser";
-import "@angular/platform-browser-dynamic";
-import "@angular/router";
+import 'jquery';
+import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Reflect Metadata.
-import "reflect-metadata";
+import 'angular2-toaster/lib/toaster.css';
+import 'angular2-toaster/angular2-toaster';
 
-// Other vendors for example jQuery, Lodash or Bootstrap
-// You can import js, ts, css, sass, ...
+import 'ng2-slim-loading-bar';
+import 'ng2-slim-loading-bar/style.css';
 
-import "jquery";
-import "bootstrap/dist/js/bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "angular2-toaster/lib/toaster.css";
-import "angular2-toaster/angular2-toaster";
 {% endhighlight %}
-
-So you solution should now look a little something like this:
-
-![Zwischenablage03]({{site.baseurl}}assets/articles/wp-content/uploads/2016/08/Zwischenablage03.jpg)
 
 Why did we all this and if the wwwroot-folder is the one to be served to the client...why are we doing all this?
 
 This is where webpack comes into play. We will configure webpack now to build our application into the wwwroot folder. Let's do this...
 
 Lets add a webpack.config.js file to the root of the project. (Make sure you have the [WebPack Task Runner Extension](https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a) installed) .
-    
+
 So...you added the file: Paste the following content:
     
 {% highlight js %}
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var webpack = require("webpack");
-var HtmlWebpackPlugin = require("html-webpack-plugin");
+
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
-        "polyfills": "./angular2App/polyfills.ts",
-        "vendor": "./angular2App/vendor.ts",
-        "app": "./angular2App/app/main.ts"
+        'app': './angular2app/app/main.ts'
+    },
+    devtool: 'source-map',
+    performance: {
+        hints: false
     },
     resolve: {
-        extensions: ['', '.ts', '.js', '.json', '.css', '.scss', '.html']
+        extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
     },
     output: {
-        path: "./wwwroot",
-        filename: "js/[name]-[hash:8].bundle.js"
+        path: './wwwroot',
+        filename: 'js/[name].bundle.js'
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loader: "ts"
+                loaders: [
+                    'awesome-typescript-loader',
+                    'angular2-template-loader'
+                ]
             },
             {
                 test: /\.html$/,
-                loader: "html"
+                loader: 'html-loader'
             },
             {
                 test: /\.(png|jpg|gif|ico|woff|woff2|ttf|svg|eot)$/,
-                loader: "file?name=assets/[name]-[hash:6].[ext]",
+                loader: 'file-loader?name=assets/[name].[ext]',
             },
 
             // Load css files which are required in vendor.ts
             {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract('style', 'css')
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: "style-loader",
+                    loader: "css-loader"
+                })
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin("css/[name]-[hash:8].bundle.css"),
+        new ExtractTextPlugin('css/[name].bundle.css'),
         new webpack.optimize.CommonsChunkPlugin({
-            name: ["app", "vendor", "polyfills"]
+            name: ['app', 'vendor', 'polyfills']
         }),
-       
+        new CleanWebpackPlugin(
+            [
+                './wwwroot/js/',
+                './wwwroot/css/',
+                './wwwroot/assets/',
+                './wwwroot/index.html'
+            ]
+        ),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             $: 'jquery',
@@ -273,11 +299,11 @@ module.exports = {
     ],
     devServer: {
         historyApiFallback: true,
-        stats: "minimal"
+        stats: 'minimal'
     }
 };
-{% endhighlight %}
 
+{% endhighlight %}
 
 This file is no magic, don't be scared:
 
@@ -285,22 +311,49 @@ First we require everything we need to use to kick off webpack. Then we will exp
 
 The "resolve"-array tells webpack to look for those file endings. The "output" is what we all were looking for. Here we tell webpack "Hey, what no matter what you are doing and how you are doing it, put it in the ./wwwroot-Folder and please be gentle and name the files like I will tell you later on ([name]) and please put a hash on it at the end, but only 8 digits ([hash:8])". This is it.
 
-Loaders are telling webpack **how** to handle such file endings. So: If you encounter such a file, so this and that. The plugins are telling webpack how to behave generally, to point which files out etc. And this is alle the magic.
+Rules and Loaders are telling webpack **how** to handle such file endings. So: If you encounter such a file, so this and that. The plugins are telling webpack how to behave generally, to point which files out etc. And this is alle the magic.
 
 **package.json**
 
 Add the webpack-things we need to the "DevDependencies"-section in the package.json:
 
 {% highlight js %}
-"ts-loader": "^0.8.1",
-        "extract-text-webpack-plugin": "^1.0.1",
-        "file-loader": "^0.8.5",
-        "webpack": "^1.12.14",
-        "webpack-dev-server": "^1.14.1",
-        "webpack-merge": "^0.9.0",
-        "webpack-stream": "^3.2.0",
-        "html-loader": "^0.4.3",
-        "html-webpack-plugin": "^2.15.0"
+"devDependencies": {
+    "@types/jasmine": "^2.5.36",
+    "@types/node": "7.0.0",
+    "angular-router-loader": "^0.5.0",
+    "angular2-template-loader": "^0.6.0",
+    "awesome-typescript-loader": "^2.2.4",
+    "canonical-path": "0.0.2",
+    "clean-webpack-plugin": "^0.1.15",
+    "concurrently": "^3.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "2.0.0-beta.5",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.26.0",
+    "http-server": "^0.9.0",
+    "ie-shim": "^0.1.0",
+    "jquery": "^2.2.0",
+    "json-loader": "^0.5.4",
+    "lite-server": "^2.2.2",
+    "lodash": "^4.16.4",
+    "node-sass": "^4.3.0",
+    "protractor": "~4.0.14",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.4",
+    "sass-loader": "^4.1.1",
+    "source-map-loader": "^0.1.6",
+    "style-loader": "^0.13.1",
+    "ts-helpers": "^1.1.2",
+    "tslint": "^4.3.1",
+    "tslint-loader": "^3.3.0",
+    "typescript": "~2.0.10",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.0",
+    "webpack-dev-server": "^1.16.2"
+  }
 {% endhighlight %}
 
 Run npm install or let VS do this for you.
@@ -322,9 +375,9 @@ plugins: [
 
         // inject in index.html
         new HtmlWebpackPlugin({
-            template: "./angular2App/index.html",
-            inject: "body"
-        })
+            template: './angular2app/index.html',
+            inject: 'body'
+        }),
     ],
 {% endhighlight %}
 
@@ -363,8 +416,8 @@ Before we actually see our application we have to modify the Startup.cs to behav
 Add
 
 {% highlight xml %}
-"Microsoft.AspNetCore.Mvc": "1.0.0",
-"Microsoft.AspNetCore.StaticFiles": "1.0.0"
+"Microsoft.AspNetCore.Mvc": "1.1.0",
+"Microsoft.AspNetCore.StaticFiles": "1.1.0"
 {% endhighlight %}
 
 to your project.json and in the Startup write:
@@ -491,22 +544,29 @@ Copy the whole content from the webpack.dev.json to the prod.json and simply add
 
 {% highlight js %}
 plugins: [
-       new ExtractTextPlugin("[name].bundle.css"),
-       new webpack.optimize.CommonsChunkPlugin({
-           name: ["app", "vendor", "polyfills"]
-       }),
-       
-       new webpack.optimize.UglifyJsPlugin({
-           compress: {
-               warnings: false
-           }
-       }),
-
-       // inject in index.html
-       new HtmlWebpackPlugin({
-           template: "./angular2App/index.html",
-           inject: "body"
-       })
+        new ExtractTextPlugin('css/[name]-[hash:6].bundle.css'),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['vendor', 'polyfills']
+        }),
+        // inject in index.html
+        new HtmlWebpackPlugin({
+            template: './angular2app/index.html',
+            inject: 'body'
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: false
+        }),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery',
+            $: 'jquery',
+            jquery: 'jquery'
+        })
     ],
 {% endhighlight %}
 
