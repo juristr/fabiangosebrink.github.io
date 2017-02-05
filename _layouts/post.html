@@ -48,7 +48,8 @@ class: 'post-template'
                        <a href='{{ site.baseurl }}tag/{{ tag }}'>{{ tag | capitalize }}</a>,
                     {% endif %}   
                 {% endfor %}
-                {% endif %}
+                {% endif %} - 
+                {% include read_time.html %}
             </section>
         </header>
 
