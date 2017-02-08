@@ -7,8 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
-    <title>Offering Solutions Software GmbH - Blog</title>
+    <title>Offering Solutions Software GmbH - {{ site.description }}</title>
+
+    {% if page.description %}
+    <meta name="description" content="{{ page.description }}" />
+    {% elsif page.title %} 
+    <meta name="description" content="{{ page.title }}" />
+    {% else %}
     <meta name="description" content="{{ site.name }} - {{ site.description }}" />
+    {% endif %}
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
