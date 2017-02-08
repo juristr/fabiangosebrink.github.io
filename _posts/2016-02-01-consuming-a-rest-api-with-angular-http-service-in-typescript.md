@@ -32,15 +32,15 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Configuration {
-    public Server: string = "http://localhost:5000/";
-    public ApiUrl: string = "api/";
+    public Server: string = 'http://localhost:5000/';
+    public ApiUrl: string = 'api/';
     public ServerWithApiUrl = this.Server + this.ApiUrl;
 }
 {% endhighlight %}
 
 Notice the injectable attribute to generate the metadata to make the service available through DI in other modules.
 
->You can read more about DI in anuglar 2 in this blog post [Dependency Injection in Angular 2](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
+>You can read more about DI in anuglar 2 in this blog post [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
 
 Now we have this going we can generate our service:
 
@@ -117,7 +117,6 @@ Now you can include, inject and use this service to make http-calls to your API 
 
 {% highlight ts %}
 import { Component, OnInit } from '@angular/core';
-import { CORE_DIRECTIVES } from '@angular/common';
 import { DataService } from '../services/dataService';
 import { MyTypedItem } from '../models/MyTypedItem ';
 
