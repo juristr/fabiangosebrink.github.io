@@ -1,9 +1,9 @@
 ---
-title: Angular Ahead Of Time (AoT) Compilation and lazy loading with Webpack
+title: Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack
 date: 2017-02-06 19:42
 author: Fabian Gosebrink
 layout: post
-tags: Angular webpack lazy loading treeshaking aot
+tags: Angular webpack lazyloading treeshaking aot
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -16,7 +16,7 @@ In this blogpost I want to show you how to get Ahead Of Time compilation enabled
 
 ### Code 
 
-[Github - ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack
+[Github - ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
 
 ### The Router
 
@@ -252,7 +252,6 @@ Fabian
 
 #### Links
 
-[Ahead of time compilation - Angular.io
-](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
+[Ahead of time compilation - Angular.io](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
 
-[ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack
+[ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
