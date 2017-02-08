@@ -1,3 +1,7 @@
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)/$ /$1 [L,R=301]
+
 Redirect 301 /articles/asp-net/configure-asp-net-webapi-to-send-data-as-json/ https://offering.solutions/blog/articles/2014/02/26/configure-asp-net-webapi-to-send-data-as-json/
 Redirect 301 /articles/angular/chat-with-node-js-socket-io-angular-js-flashing-title-and-loading-bar/ https://offering.solutions/blog/articles/2014/07/03/chat-with-node-js-socket-io-angular-js-flashing-title-and-loading-bar/
 Redirect 301 /articles/asp-net/using-crypto-namespace-to-generate-salts-and-compare-passwords/ https://offering.solutions/blog/articles/2014/03/03/using-crypto-namespace-to-generate-salts-and-compare-passwords/
