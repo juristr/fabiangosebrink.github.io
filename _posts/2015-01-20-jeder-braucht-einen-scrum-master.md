@@ -4,7 +4,7 @@ title: Jeder braucht einen Scrum-Master!
 date: 2015-01-20 08:00
 author: Fabian Gosebrink
 layout: post
-tags: Scrum Scrum Master
+tags: scrum master
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

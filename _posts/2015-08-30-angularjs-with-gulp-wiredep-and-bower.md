@@ -4,7 +4,7 @@ title: AngularJS with gulp, wiredep and bower
 date: 2015-08-30 11:18
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS bower Github Gulp wiredep
+tags: angularjs bower github gulp wiredep
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -17,7 +17,7 @@ With this blogpost I want to show you how to use AngularJS with gulp, wiredep an
 
 I just introduced Gulp in my AngularJSDemoApp on GitHub.
 
-Check it out [here](https://github.com/FabianGosebrink/AngularJSDemoApp).
+Check it out [here](https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs).
 
 ### AngularJS with gulp wiredep and bower
 

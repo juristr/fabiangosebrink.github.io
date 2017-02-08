@@ -4,7 +4,7 @@ title: How to work with the q promise syntax in AngularJS
 date: 2015-03-01 03:27
 author: Fabian Gosebrink
 layout: post
-tags: Angular AngularJS Architecture Promises SPA
+tags: angularjs architecture promises spa
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

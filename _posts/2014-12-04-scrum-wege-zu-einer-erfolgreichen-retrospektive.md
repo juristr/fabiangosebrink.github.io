@@ -4,7 +4,7 @@ title: SCRUM - Wege zu einer erfolgreichen Retrospektive
 date: 2014-12-04 07:05
 author: Fabian Gosebrink
 layout: post
-tags: Retrospektive Scrum
+tags: retrospektive scrum
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

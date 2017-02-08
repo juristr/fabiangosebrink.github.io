@@ -3,7 +3,7 @@ title: Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private H
 date: 2016-04-26 10:05
 author: Fabian Gosebrink
 layout: post
-tags: Angular ASP.NET Azure Cordova Cross Platform Gulp WebAPI
+tags: angular aspnet azure cordova crossplatform gulp webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -12,15 +12,15 @@ disqus: true
 categories: blog articles
 ---
 
-In the last [blogpost](http://offering.solutions/articles/asp-net/angular2-asp-net-webapi-azure-my-private-hackathon/)I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2.
+In the last [blogpost](http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/)I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2.
 
 Well I started coding an AngularJs 1.x Client with Typecript which is available here
 
-[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular1](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular1)
+[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS)
 
 Of course I could not stop looking and digging into Angular. So I wrote this client too which is available here:
 
-[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2)
+[https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform)
 
 Inside this blog I want to loose a few words about how I wrote them what the pitfalls were and how I came up with this solution.
 
@@ -181,7 +181,7 @@ export const NeedsAuthentication = () => {
 
 With every request I have to prepare the header which I do in a wrapped Http service.
 
-[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2/blob/master/Client/app/shared/services/httpWrapper.service.ts](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2/blob/master/Client/app/shared/services/httpWrapper.service.ts)
+[https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts)
 
 Sneak peek:
 

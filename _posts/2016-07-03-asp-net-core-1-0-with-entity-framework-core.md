@@ -3,7 +3,7 @@ title: ASP.NET Core 1.0 with Entity Framework Core
 date: 2016-07-03 22:32
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Core Entity Framework Core
+tags: aspnet core entityframeworkcore
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -16,7 +16,7 @@ In this repository I want to show the first steps with Entity Framework Core and
 
 The Repository contains a sample WebAPI with CRUD-Operations that you can Get/Read/Update and Delete "MyModel" objects through HTTP-calls.
 
-Here is the code: [https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core)
+Here is the code: [https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core)
 
 ## Before starting...
 

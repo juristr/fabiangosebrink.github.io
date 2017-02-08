@@ -4,7 +4,7 @@ title: ASP.NET Helpers by Offering Solutions
 date: 2015-03-04 21:08
 author: Fabian Gosebrink
 layout: post
-tags: MvcHelper Nuget Submitmodel ViewModel
+tags: mvchelper nuget submitmodel viewmodel
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

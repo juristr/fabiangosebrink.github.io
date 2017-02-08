@@ -4,7 +4,7 @@ title: Paging in einer ASP.Net WebAPI und AngularJS
 date: 2015-06-09 12:14
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS ASP.NET
+tags: angularjs aspnet
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

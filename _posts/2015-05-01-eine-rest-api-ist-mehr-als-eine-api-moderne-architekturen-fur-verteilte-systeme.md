@@ -4,7 +4,7 @@ title: Eine REST API ist mehr als eine API – Moderne Architekturen für vertei
 date: 2015-05-01 17:35
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Architecture ASP.NET Development SPA
+tags: angularjs architecture aspnet development spa
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

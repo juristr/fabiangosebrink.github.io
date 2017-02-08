@@ -4,7 +4,7 @@ title: Chat with Node.js, socket.io, AngularJS, flashing title and loading bar
 date: 2014-07-03 11:54
 author: Fabian Gosebrink
 layout: post
-tags: AngularJs NodeJs SocketIo
+tags: angularjs nodejs socketio
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

@@ -4,7 +4,7 @@ title: How to modularize your angular application
 date: 2015-03-17 04:43
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Modules
+tags: angularjs modules
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

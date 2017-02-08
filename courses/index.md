@@ -7,8 +7,8 @@ layout: post
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/background.jpg'
-tags: teaching speaking training
 subclass: 'post tag-speeches'
+categories: blog articles
 ---
 
 I will mention all my courses here directly. All courses are in german.

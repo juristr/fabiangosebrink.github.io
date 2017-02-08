@@ -4,7 +4,7 @@ title: Deleting a Team Project on Visual Studio Team Services
 date: 2014-04-14T06:37:53+00:00
 author: Fabian Gosebrink
 layout: post
-tags: delete deleteproject online studio team tfs visual visualstudio visualstudio.com 
+tags: tfs visualstudio
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

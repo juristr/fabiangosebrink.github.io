@@ -4,7 +4,7 @@ title: ASP.NET WebAPI Datashaper to strip your json data
 date: 2015-05-30 18:23
 author: Fabian Gosebrink
 layout: post
-tags: Datashaping Github REST WebAPI
+tags: datashaping github restapi webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

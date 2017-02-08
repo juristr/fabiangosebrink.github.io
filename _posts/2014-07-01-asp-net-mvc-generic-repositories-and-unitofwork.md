@@ -4,7 +4,7 @@ title: ASP.NET MVC - Generic Repositories and UnitOfWork
 date: 2014-07-01 08:00
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET ASP.NET mvc mvc4 webarchitecture 
+tags: aspnet mvc web architecture 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -21,9 +21,9 @@ This is the third and the last blogpost regarding ASP.NET MVC Architecture.
 
 ### Previous Posts
 
-[ASP.NET MVC Architecture (Part I): Structurize your project with areas and services in ASP.NET MVC]({{site.baseurl}}articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/)
+[ASP.NET MVC Architecture (Part I): Structurize your project with areas and services in ASP.NET MVC](http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/)
 
-[ASP.NET MVC Architecture (Part II): Creating a business logic in ASP.NET MVC]({{site.baseurl}}articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/)
+[ASP.NET MVC Architecture (Part II): Creating a business logic in ASP.NET MVC](http://offering.solutions/blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/)
 
 ### Lets go
 

@@ -3,7 +3,7 @@ title: Cross Platform Builds with Angular, Gulp and Webpack
 date: 2016-06-17 19:09
 author: Fabian Gosebrink
 layout: post
-tags: Angular Gulp webpack
+tags: angular gulp webpack
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -20,7 +20,7 @@ In this blogpost I want to show how to create Cross Platform Builds with Angular
 
 <a href="http://angular.io/" title="Angular2">Angular</a>
 
-Code can be found here: [https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2)
+Code can be found here: [https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform)
 
 ### Setting up the folder structure
 
@@ -284,7 +284,7 @@ the only difference here is that we have to copy assets for electron into the te
 
 Find the gulp-tasks here:
 
-[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2/tree/master/Client/gulpTasks](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2/tree/master/Client/gulpTasks)
+[https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/tree/master/Client/gulpTasks](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/tree/master/Client/gulpTasks)
 
 I hope this helps to get out confusion and reduces the complexity of the topic "Cross platform".
 

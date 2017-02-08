@@ -3,7 +3,7 @@ title: How to debug an Angular application with Chrome and VS Code
 date: 2016-10-16 17:50
 author: Fabian Gosebrink
 layout: post
-tags: Microsoft Lumia mobile OnePlus phones
+tags: debug angular chrome vscode
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

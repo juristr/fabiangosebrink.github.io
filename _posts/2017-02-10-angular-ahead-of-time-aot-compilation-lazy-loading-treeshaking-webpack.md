@@ -3,7 +3,7 @@ title: Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking wit
 date: 2017-02-06 19:42
 author: Fabian Gosebrink
 layout: post
-tags: Angular webpack lazyloading treeshaking aot
+tags: angular webpack lazyloading treeshaking aot
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

@@ -4,7 +4,7 @@ title: WPF Basics II - The INotifyPropertyChanged Interface
 date: 2014-09-14 19:41
 author: Fabian Gosebrink
 layout: post
-tags: Basics Databinding Tutorial WPF
+tags: basics databinding tutorial wpf
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -13,12 +13,12 @@ disqus: true
 categories: blog articles
 ---
 
->UPDATE
->Check the CallMemberName-Possibility [here](http://offering.solutions/2015/02/08/callmembername-for-inotifypropertychanged/)
+> UPDATE
+> Check the CallMemberName-Possibility [here](http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/)
 
-In the first part I told something about the databinding [here](http://offering.solutions/2014/09/02/WPF-basics-how-to-make-first-steps-of-databinding/). The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we're done so far.
+In the first part I told something about the databinding [here](http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/). The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we're done so far.
 
-Just to calm down the ones who expect a solution: Can be found in the third article [here](http://offering.solutions/2014/10/01/WPF-basics-iii-correct-implementation-of-commands/)
+Just to calm down the ones who expect a solution: Can be found in the third article [here](http://offering.solutions/blog/articles/2014/10/01/correct-implementation-of-commands-in-wpf/)
 
 But what if the data underneath is changing. What if a service or anything else has new data and want to tell the UI "Hey there, I have something new!"
 
@@ -237,7 +237,7 @@ public class MainViewModel
 }
 {% endhighlight %}
 
-This principle I am also describing [here](http://offering.solutions/2014/07/03/WPF-introducing-services-in-the-viewmodel-viewmodel-as-facade/).
+This principle I am also describing [here](http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/).
 
 Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property "NameProvider". So the Binding looks like this:
 

@@ -4,7 +4,7 @@ title: Find me on GitHub
 date: 2015-04-22 17:53
 author: Fabian Gosebrink
 layout: post
-tags: Github
+tags: github
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

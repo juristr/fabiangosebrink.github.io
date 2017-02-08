@@ -4,7 +4,7 @@ title: Unterhaltsame Meetings in SCRUM
 date: 2014-09-18 19:00
 author: Fabian Gosebrink
 layout: post
-tags: Agile agile development Scrum team teamwork
+tags: agile development scrum team teamwork
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

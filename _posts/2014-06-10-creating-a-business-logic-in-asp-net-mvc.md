@@ -4,7 +4,7 @@ title: Creating a business logic in ASP.NET MVC
 date: 2014-06-10T16:00:13+00:00
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET ASP.NET mvc mvc4 webarchitecture 
+tags: aspnet mvc web architecture 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

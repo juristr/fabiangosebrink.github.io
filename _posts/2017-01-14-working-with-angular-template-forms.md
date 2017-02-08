@@ -3,7 +3,7 @@ title: Working with Angular Template Forms
 date: 2017-01-14 13:49
 author: Fabian Gosebrink
 layout: post
-tags: Angular Forms
+tags: angular forms templatedriven
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

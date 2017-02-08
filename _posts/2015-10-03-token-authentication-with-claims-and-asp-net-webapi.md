@@ -4,7 +4,7 @@ title: Token Authentication with Claims and ASP.NET WebAPI
 date: 2015-10-03T12:20:52+00:00
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Authentication Authorization Claims OAuthProvider Roles
+tags: aspnet authentication authorization claims oauthprovider roles
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -141,6 +141,6 @@ Hope this helps anybody.
 
 Happy coding :)
 
-[Github repository here](https://github.com/FabianGosebrink/AspNetSimpleWebApiTokenAuthentication)
+[Github repository here](https://github.com/FabianGosebrink/ASPNET-WebAPI-TokenAuthentication)
 
 Fabian

@@ -5,7 +5,7 @@ date: 2014-03-08T13:24:01+00:00
 author: Fabian Gosebrink
 layout: post
 categories: blog articles
-tags: ASP.NETmvc viewbag viewdata 
+tags: aspnet mvc viewbag viewdata 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

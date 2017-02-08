@@ -3,7 +3,7 @@ title: Writing custom validators in Angular
 date:  2016-05-10 17:42
 author: Fabian Gosebrink
 layout: post
-tags: Angular custom validator
+tags: angular customvalidation
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -14,9 +14,9 @@ categories: blog articles
 
 In this blogpost I want to show you how you are writing custom validators in Angular.
 
-[https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Workshop/tree/master/end/Client/app/validators](https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Workshop/tree/master/end/Client/app/validators)
+[https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators](https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators)
 
->Updated to new Syntax
+> Updated to new Syntax
 
 When dealing with forms in Angular you can use the build-in validators like: required, minLength or maxLength, pattern... . Sooner or later you need a custom validator fulfilling a special validation.
 
@@ -206,7 +206,7 @@ And that's basically it.
 HTH
 
 Regards
-[https://github.com/FabianGosebrink/ASPNET-ASPNET-Core-Angular1-Angular2-Demo/tree/master/Angular2-Client/app/validators](https://github.com/FabianGosebrink/ASPNET-ASPNET-Core-Angular1-Angular2-Demo/tree/master/Angular2-Client/app/validators)
+[https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators](https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators)
 
 [http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html](http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html)
 

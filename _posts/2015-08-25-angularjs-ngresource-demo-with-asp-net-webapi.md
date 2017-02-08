@@ -4,7 +4,7 @@ title: AngularJS NgResource Demo with ASP.NET WebAPI
 date: 2015-08-25 11:45
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Github JSON ngresource WebAPI ASP.NET
+tags: angularjs github json ngresource webapi aspnet
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -15,7 +15,7 @@ categories: blog articles
 
 In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI querying data as JSON.
 
-Code: [https://github.com/FabianGosebrink/NgResourceDemoApp](https://github.com/FabianGosebrink/NgResourceDemoApp)
+Code: [https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo](https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo)
 
 NgResource: [https://docs.AngularJS.org/api/ngResource/service/$resource](https://docs.AngularJS.org/api/ngResource/service/$resource)
 

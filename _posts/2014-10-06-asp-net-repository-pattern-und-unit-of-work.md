@@ -4,7 +4,7 @@ title: ASP.NET Repository Pattern und Unit of Work
 date: 2014-10-06 20:39
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Unit of Work
+tags: aspnet unitofwork
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

@@ -4,7 +4,7 @@ title: WebAPI with ASP.NET Core 1.0 and ASP.NET
 date: 2015-09-02 17:04
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET web architecture WebAPI
+tags: aspnet web architecture webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

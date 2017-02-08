@@ -4,7 +4,7 @@ title: How to make first steps of Databinding in WPF
 date: 2014-09-02 03:24
 author: Fabian Gosebrink
 layout: post
-tags: Basics Databinding Tutorial WPF
+tags: basics databinding tutorial wpf
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -35,7 +35,7 @@ Advantages are:
 
 ### Theoretically: What are we doing?
 
-In Wpf and C# the UI-files are described as *.xaml-files. The viewmodels are normal classes which are *.cs-files. You can connect them via the DataContext-property. This shall point on the ViewModel we are creating for it. (Also described <a title="WPF – Introducing services in the viewmodel (viewmodel as facade)" href="{{site.url}}/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/" target="_blank">here</a>)
+In Wpf and C# the UI-files are described as *.xaml-files. The viewmodels are normal classes which are *.cs-files. You can connect them via the DataContext-property. This shall point on the ViewModel we are creating for it. (Also described <a title="WPF – Introducing services in the viewmodel (viewmodel as facade)" href="http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/" target="_blank">here</a>)
 
 The code-behind of a window stays empty. No matter what. There are cases to really do some work there but these are very rare!
 

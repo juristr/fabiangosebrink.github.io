@@ -3,7 +3,7 @@ title: How to set up Angular and Webpack in Visual Studio with ASP.NET Core
 date: 2016-08-27 16:58
 author: Fabian Gosebrink
 layout: post
-tags: aspnet aspnetcore Visual Studio 2015 webpack dev server
+tags: aspnet aspnetcore visualstudio webpack devserver
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -17,7 +17,7 @@ With this blogpost I want to show an example of how to set up Angular and Webpac
 If you read this until the end you will have a picture how to enable webpack and webpack-dev-server with npm and how to use webpack to bundle your angular application and inject files into index.html for your web application.
 
 I had this topic already with my colleague [DamienBod](https://github.com/damienbod)
-[here ](https://github.com/damienbod/Angular2WebpackVisualStudio)and a StarterTemplate [here](https://github.com/FabianGosebrink/ASPNET-Core-Angular2-StarterTemplate) (which is using system.js as bootstrapper for your application), but this post is more to show how we get there and which steps you should take to get things going. For Damien and me this was a bit confusing in the beginning so this is the guide how we started actually. I hope you like reading it as much as I liked writing it.
+[here ](https://github.com/damienbod/Angular2WebpackVisualStudio)and a StarterTemplate [here](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate) (which is using system.js as bootstrapper for your application), but this post is more to show how we get there and which steps you should take to get things going. For Damien and me this was a bit confusing in the beginning so this is the guide how we started actually. I hope you like reading it as much as I liked writing it.
 
 Find the code here:
 
@@ -149,7 +149,7 @@ Is configuring your tsc compiler. Whenever your run the “tsc” command from t
 
 ### Fill the angular2app-folder
 
-Next we are going to fill the angular2 app folder. Here we are going to be lazy. We are taking the [quickstart repo from angular.io](https://github.com/angular/quickstart) and copy the files we need form there. For the sake of simplicity we will only take the [app.module](https://github.com/angular/quickstart/tree/master/app) to get things going. To be structured its best you create an app folder inside to place your code there.
+Next we are going to fill the angular2 app folder. Here we are going to be lazy. We are taking the [quickstart repo from angular.io](https://github.com/angular/quickstart) and copy the files we need form there. For the sake of simplicity we will only take the [app.module](https://github.com/angular/quickstart/blob/master/src/app/) to get things going. To be structured its best you create an app folder inside to place your code there.
 
 ![Zwischenablage02]({{site.baseurl}}assets/articles/wp-content/uploads/2016/08/Zwischenablage02.jpg)
 

@@ -4,7 +4,7 @@ title: WPF CallMemberName for INotifyPropertyChanged
 date: 2015-02-08 23:08
 author: Fabian Gosebrink
 layout: post
-tags: CallMemberName INotifyPropertyChanged WPF
+tags: callMemberName inotifypropertychanged wpf
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -15,7 +15,7 @@ categories: blog articles
 
 In this blogpost I want to show you how to use WPF CallMemberName for INotifyPropertyChanged.
 
-Regarding to this blogpost [here](http://offering.solutions/2014/09/14/WPF-basics-ii-inotifypropertychanged/) I showed up how to implement the INotifyPropertyChanged.
+Regarding to this blogpost [here](http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/) I showed up how to implement the INotifyPropertyChanged.
 
 Well with .Net-Framework 4.5 a new solution came up to make it even more simple:
 

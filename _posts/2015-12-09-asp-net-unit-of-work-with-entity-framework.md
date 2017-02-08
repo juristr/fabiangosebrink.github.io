@@ -3,7 +3,7 @@ title: ASP.NET Unit Of Work with Entity Framework
 date: 2015-12-09 21:37
 author: Fabian Gosebrink
 layout: post
-tags: Entity Framework Nuget Unit of Work ASP.NET
+tags: entityframework nuget unitofwork aspnet
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -12,7 +12,7 @@ disqus: true
 categories: blog articles
 ---
 
-I just implemented a solution for the ASP.NET Unit Of Work with Entity Framework (see [this](http://offering.solutions/2014/07/01/asp-net-mvc-architecture-part-iii-generic-repositories-and-unitofwork/) post) and put all this into a NuGet-Package. And finally: Here it is!
+I just implemented a solution for the ASP.NET Unit Of Work with Entity Framework (see [this](http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/) post) and put all this into a NuGet-Package. And finally: Here it is!
 
 ### Code
 
@@ -146,7 +146,7 @@ Thats it. I think this is nice and smooth. I hope you can get along with it. Hav
 
 See <a href="http://www.asp.net/mvc/tutorials/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application" target="_blank">here</a> and <a href="http://codereview.stackexchange.com/questions/31822/unit-of-work-and-repository-design-pattern-implementation" target="_blank">here </a>for inspiration.
 
-See also <a title="ASP.NET MVC Architecture (Part III): Generic Repositories and UnitOfWork" href="http://offering.solutions/2014/07/01/asp-net-mvc-architecture-part-iii-generic-repositories-and-unitofwork/" target="_blank">here </a>for another related BlogEntry (when this Nuget was not released so far ;) )
+See also <a title="ASP.NET MVC Architecture (Part III): Generic Repositories and UnitOfWork" href="http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/" target="_blank">here </a>for another related BlogEntry (when this Nuget was not released so far ;) )
 
 Regards
 

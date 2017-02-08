@@ -3,7 +3,7 @@ title: How you can organise gulp in your applications
 date: 2016-05-16 08:30
 author: Fabian Gosebrink
 layout: post
-tags: Gulp Javascript
+tags: gulp javascript
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -14,7 +14,7 @@ categories: blog articles
 
 In this blogpost I want to show one possibility of organising your gulp tasks in a way that you as a developer can find them quickly and print them to the console in an ordered way.
 
-> I have taken all these examples from my cross platform examples on [GitHub](https://github.com/FabianGosebrink?tab=repositories). Especially from [Foodchooser](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2).
+> I have taken all these examples from my cross platform examples on [GitHub](https://github.com/FabianGosebrink?tab=repositories). Especially from [Foodchooser](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform).
 
 ## Motivation
 
@@ -230,7 +230,7 @@ function cleanTemp(done) {
 
 For tasks which are all the same in every step. Perhaps this can be useful
 
-> I did this in this repository [here](https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-XPlatform-Example/tree/master/XPlatformExample/gulpTasks)
+> I did this in this repository [here](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform)
 
 ### Prefixes
 

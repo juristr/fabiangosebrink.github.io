@@ -4,7 +4,7 @@ title: Meine ersten Tage mit dem Surface Pro 3
 date: 2015-07-01 06:00
 author: Fabian Gosebrink
 layout: post
-tags: Microsoft Surface Surface3 Surface Pro 3
+tags: microsoft surface3 pro
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

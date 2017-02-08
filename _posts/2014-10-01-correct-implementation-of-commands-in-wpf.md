@@ -4,7 +4,7 @@ title: Correct implementation of Commands in WPF
 date: 2014-10-01 17:32
 author: Fabian Gosebrink
 layout: post
-tags: architecture Commands wpf
+tags: architecture commands wpf
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -15,7 +15,7 @@ categories: blog articles
 
 In this blogost I want to show you the IMHO correct implementation of Commands in WPF. Feel free to discuss :)
 
-Again we will take the code from the posts before ([Wpf Basics I](http://offering.solutions/2014/09/02/wpf-basics-how-to-make-first-steps-of-databinding/) and [Wpf Basics II](http://offering.solutions/2014/09/14/wpf-basics-ii-inotifypropertychanged/)) and make it nicer. Well: What we did was databind a string to the UI. Then we implemented a solution for notify the UI that something changed. Everything triggered with a small timer which was doing the work for "I have something new". But what if the user himself wants to trigger the event for "I want something to be changed"?
+Again we will take the code from the posts before ([Wpf Basics I](http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/) and [Wpf Basics II](http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/)) and make it nicer. Well: What we did was databind a string to the UI. Then we implemented a solution for notify the UI that something changed. Everything triggered with a small timer which was doing the work for "I have something new". But what if the user himself wants to trigger the event for "I want something to be changed"?
 
 Therefore we have commands. Commands can maybe triggered from Buttons and are doing some work. In our case we will now remove the timer and give our UI a button to trigger the changes.
 

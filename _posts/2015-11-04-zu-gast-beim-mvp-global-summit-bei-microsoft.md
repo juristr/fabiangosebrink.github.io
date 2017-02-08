@@ -4,7 +4,7 @@ title: Zu Gast beim MVP Global Summit bei Microsoft
 date: 2015-11-04 17:36
 author: Fabian Gosebrink
 layout: post
-tags: Global MVP Summit Microsoft
+tags: global mvp summit microsoft
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

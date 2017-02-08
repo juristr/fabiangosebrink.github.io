@@ -3,7 +3,7 @@ title: Build and debug a WebAPI with the Dotnet CLI and VSCode
 date: 2016-11-02 09:30
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET dotnet cli WebAPI
+tags: aspnet dotnet cli webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -16,7 +16,7 @@ In this blog I want to show you how to build and debug a WebAPI with the Dotnet 
 
 Code is here:
 
-[https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-With-VSCode-Dotnet-CLI](https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-With-VSCode-Dotnet-CLI)
+[https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI](https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI)
 
 ### Why should we do a WebAPI with VSCode and the DotNet CLI?
 
@@ -174,7 +174,7 @@ Add the folders and files:
 
 The repository can be found here:
 
-[https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-With-VSCode-Dotnet-CLI](https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-With-VSCode-Dotnet-CLI)
+[https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI](https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI)
 
 Please add the showed files to your project, you can copy them from the repo.
 

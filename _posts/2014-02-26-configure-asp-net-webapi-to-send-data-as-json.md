@@ -5,7 +5,7 @@ date: 2014-02-26T19:51:54+00:00
 author: Fabian Gosebrink
 categories: blog articles
 layout: post
-tags: asp.net configuration json 
+tags: aspnet configuration json 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

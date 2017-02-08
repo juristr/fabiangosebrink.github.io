@@ -3,7 +3,7 @@ title: Consuming a REST API with Angular Http-Service in Typescript
 date: 2016-02-01 12:23
 author: Fabian Gosebrink
 layout: post
-tags: Angular REST Typescript
+tags: angular restapi typescript
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -18,7 +18,7 @@ Hey,
 
 with this blog pot I want to show you how to create a Dataservice to consume (not only) an ASP.NET REST API with the angular2 http module.
 
-In my recent blog post [How to start with Visual Studio (Code), Angular2 beta 0, Typescript &amp; ASP.NET Core 1.0](http://offering.solutions/articles/asp-net/how-to-start-with-visual-studio-code-angular2-beta-0-typescript-asp-net-core-1-0/) I have already mentioned how to start and to install the complete angular2 environment with corresponding tools.
+In my recent blog post [Getting started with Visual Studio Code, AngularJS and Typescript](http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/) I have already mentioned how to start and to install the complete angular2 environment with corresponding tools.
 
 Now I want to show you an example dataservice to call your favourite API.
 
@@ -162,11 +162,11 @@ Fabian
 
 ### GitHub:
 
-[Angular 2 / ASP.NET CORE 1.0 Template With SignalR](https://github.com/FabianGosebrink/Angular2-ASPNETCore-SignalR-Demo)
+[Angular ASP.NET CORE Template With SignalR](https://github.com/FabianGosebrink/ASPNETCore-Angular-SignalR-Typescript)
 
 or
 
-[https://github.com/FabianGosebrink/ASPNET-ASPNET-Core-Angular1-Angular2-Demo/tree/master/Angular2-Client](https://github.com/FabianGosebrink/ASPNET-ASPNET-Core-Angular1-Angular2-Demo/tree/master/Angular2-Client)
+[https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
 
 ### Links:
 

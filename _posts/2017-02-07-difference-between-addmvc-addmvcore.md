@@ -3,7 +3,7 @@ title: The difference between AddMvc() and AddMvcCore()
 date: 2017-02-07 20:49
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Mvc
+tags: aspnet aspnetcore
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

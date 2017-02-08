@@ -3,7 +3,7 @@ title: Get started with ASP.NET Core and Entity Framework 6
 date: 2015-12-13 20:20
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET MVC Automapper Code First Database Context Entity Framework JSON project.json WebAPI
+tags: aspnet mvc automapper codefirst database context entityframework json webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -83,7 +83,7 @@ This line will read the configuration and get the connection-string out of it an
 
 ## The Model
 
-You can now go ahead and install my [Unit of Work](https://github.com/FabianGosebrink/OfferingSolutions-UnitOfWork) via nuget and create a repository like this:
+You can now go ahead and install my [Unit of Work](https://github.com/OfferingSolutions/OfferingSolutions-RepositoryPattern-UnitOfWork) via nuget and create a repository like this:
 
 {% highlight cs %}
 public interface IExampleRepository : IRepositoryContext<MyModel>

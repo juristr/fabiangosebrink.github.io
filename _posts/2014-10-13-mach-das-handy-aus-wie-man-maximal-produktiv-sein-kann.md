@@ -4,7 +4,7 @@ title: Mach das Handy aus! Wie man maximal produktiv sein kann
 date: 2014-10-13 19:32
 author: Fabian Gosebrink
 layout: post
-tags: Life
+tags: life
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

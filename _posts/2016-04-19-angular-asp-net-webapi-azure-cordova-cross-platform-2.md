@@ -3,7 +3,7 @@ title: Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private H
 date: 2016-04-19 17:34
 author: Fabian Gosebrink
 layout: post
-tags: Angular ASP.NET Azure Cordova Cross Platform Gulp WebAPI
+tags: angular aspnet azure cordova crossplatform gulp webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -20,7 +20,7 @@ I had a few free hours and was curious and wanted to know what you can achieve 
 
 ### Code
 
-[https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2](https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2)
+[https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform)
 
 ### Goal - The FoodChooser
 

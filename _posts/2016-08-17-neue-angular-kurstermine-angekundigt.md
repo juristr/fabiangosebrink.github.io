@@ -3,7 +3,7 @@ title: Neue Angular-Kurstermine angekündigt
 date: 2016-08-17 19:14
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Courses Digicomp
+tags: angularjs courses digicomp
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -14,9 +14,9 @@ categories: blog articles
 
 In diesem Blogpost möchte ich bekanntgeben, dass [Digicomp](https://www.digicomp.ch/) neue Kurstermine angekündigt hat, die ich als Trainer betreuen und durchführen darf :) . Die Kurse finden in Bern statt, je nach Teilnehmern auch in Basel und Zürich.
 
-<a href="http://offering.solutions/wp-content/uploads/2016/05/Angular_With_Digicomp.png" target="_blank" rel="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/frontend-entwicklung-mit-angularjs">![Neue Angular-Kurstermine angekündigt]({{site.baseurl}}assets/articles/wp-content/uploads/2016/05/Angular_With_Digicomp.png)</a>
+<a href="http://offering.solutions/wp-content/uploads/2016/05/Angular_With_Digicomp.png" target="_blank" rel="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">![Neue Angular-Kurstermine angekündigt]({{site.baseurl}}assets/articles/wp-content/uploads/2016/05/Angular_With_Digicomp.png)</a>
 
-[Zu den Kursterminen](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/frontend-entwicklung-mit-angularjs)
+[Zu den Kursterminen](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs)
 
 Zu Beginn werde ich wie beim letzten Mal die Erwartungen der Teilnehmer abholen, eventuell habt ihr ja Punkte, die euch unter den Nägeln brennen. Im Laufe des Kurses werde ich versuchen alle Punkte zu klären, dass euch möglichst gut geholfen werden kann.
 

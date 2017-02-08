@@ -4,7 +4,7 @@ title: User Stories vs Bugs vs Product Backlog Items
 date: 2015-04-01 04:00
 author: Fabian Gosebrink
 layout: post
-tags: Bug PB, Product Backlog Product Backlog Item Productbacklog Scrum User Story
+tags: bug productbacklog item scrum userstory
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

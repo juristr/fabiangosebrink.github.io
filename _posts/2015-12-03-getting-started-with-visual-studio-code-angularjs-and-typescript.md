@@ -3,7 +3,7 @@ title: Getting started with Visual Studio Code, AngularJS and Typescript
 date: 2015-12-03 14:17
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Typescript Visual Studio Code
+tags: angularjs typescript vscode
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -80,7 +80,7 @@ As you can see the typings-folder was generated with a "tsd.d.ts" file which hol
 
 Thats it. You can now go ahead and implement Typescript with Visual Studio Code.
 
-Check out the github repository of this code [here](https://github.com/FabianGosebrink/AspNetWebApiAngularWithTypescript).
+Check out the github repository of this code [here](https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-Typescript).
 
 Hope this helps.
 

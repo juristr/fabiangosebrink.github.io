@@ -3,7 +3,7 @@ title: Kurs - Frontend-Entwicklung mit AngularJS
 date: 2016-05-25 18:30
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Course Training Speaking Talks
+tags: angularjs courses training speaking talks
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -20,13 +20,13 @@ Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben 
 
 Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.
 
-[Digicomp Kurs](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/frontend-entwicklung-mit-angularjs)
+[Digicomp Kurs](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs)
 
-In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner *Gulp* an. *Bower* und *NPM* sind natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.
+In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner *Gulp* an. *NPM* ist natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.
 
 Am Ende des Kurses habe ich mir als Ziel gesetzt mit den Teilnehmern ein Review einer kleinen Beispielapplikation zu machen, die all das behandelt, was zuvor im Kurs gelernt und behandelt wurde.
 
-[GitHub: Kursbeispiele](https://github.com/FabianGosebrink/ASPNET-ASPNET-Core-Angular1-Angular2-Demo)
+[GitHub: Beispielapplikation](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular)
 
 Zum Schluss können die Teilnehmer Feedback geben und den Kurs bewerten.
 

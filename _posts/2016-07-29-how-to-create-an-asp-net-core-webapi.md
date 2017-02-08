@@ -3,7 +3,7 @@ title: How to create an ASP.NET Core WebAPI
 date: 2016-07-29 18:31
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Core WebAPI
+tags: aspnet core webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -14,7 +14,7 @@ categories: blog articles
 
 In this blogpost I want to show you how to create an ASP.NET Core WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the "database" here.
 
-Code here [https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample](https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample)
+Code here [https://github.com/FabianGosebrink/ASPNETCore-WebAPI-Sample](https://github.com/FabianGosebrink/ASPNETCore-WebAPI-Sample)
 
 ### Visual Studio
 
@@ -162,9 +162,9 @@ The repository is responsible for providing and saving the data. Normally you wo
 
 Like:
 
-[https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-6](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-6)
+[https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-6](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-6)
 
-[https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core)
+[https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core)
 
 But for this time we will use like a static list where objects are added and removed.
 
@@ -244,7 +244,7 @@ public interface IExampleRepository
 }
 {% endhighlight %}
 
-taken from [https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs)
+taken from [https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Repositories/IExampleRepository.cs)
 
 See the "Save()"-Method here. But for this time it should be good with the list. We are not focussing on the Database here.
 
@@ -254,9 +254,9 @@ In a normal case with a real DB you would not do that
 
 Example for EF 6 is here
 
-[https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-6/blob/master/src/AspnetCoreEF6Example/Startup.cs#L32](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-6/blob/master/src/AspnetCoreEF6Example/Startup.cs#L32)
+[https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-6/blob/master/src/AspnetCoreEF6Example/Startup.cs#L32](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-6/blob/master/src/AspnetCoreEF6Example/Startup.cs#L32)
 
-[https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Startup.cs#L32](https://github.com/FabianGosebrink/ASPNET-Core-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Startup.cs#L32)
+[https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Startup.cs#L32](https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core/blob/master/src/AspnetCoreEFCoreExample/Startup.cs#L32)
     
     
 But this time we will use a singleton. Shame on me so far.

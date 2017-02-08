@@ -4,7 +4,7 @@ title: WebHooks with ASP.NET on Azure - DropBox and GitHub
 date: 2015-10-18 19:50
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Azure DropBox Github VisualStudio2015 WebHooks
+tags: aspnet azure dropbox github visualstudio webhooks
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -17,7 +17,7 @@ Hi,
 
 in this post I want to show you how to use ASP.NET-WebHooks with an example of DropBox and Github. This app will be hostet on Windows-Azure and we'll be using Visual Studio 2015.
 
-The code in this example will be available on [GitHub](https://github.com/FabianGosebrink/AspNetWebHooksExample).
+The code in this example will be available on [GitHub](https://github.com/FabianGosebrink/ASPNET-WebHooks).
 
 You can find a great summary [here](http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx) and [here](http://www.hanselman.com/blog/IntroducingASPNETWebHooksReceiversWebHooksMadeEasy.aspx) of what WebHooks exactly are. In short: You can receive updates from Websites and catch them with your own staying always up to date and seeing what is happening to your subscribed websites like Instagram, DropBox, GitHub etc. (We will only cover [GitHub](https://github.com/)and [DropBox](https://www.dropbox.com/) here)
 

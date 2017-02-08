@@ -4,7 +4,7 @@ title: ASP.NET - Clientseitige Webarchitekturen mit AngularJS
 date: 2014-11-02 07:05
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS Entity Framework solution web architecture
+tags: angularjs entityframework solution web architecture
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

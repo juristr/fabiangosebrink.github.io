@@ -4,7 +4,7 @@ title: Code-First with Entity Framework n:m relationship with additional informa
 date: 2014-04-06T17:18:15+00:00
 author: Fabian Gosebrink
 layout: post
-tags: additionalinformation ASP.NET codefirst ef entityframework fluentapi relationships 
+tags: aspnet codefirst ef entityframework fluentapi relationships 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

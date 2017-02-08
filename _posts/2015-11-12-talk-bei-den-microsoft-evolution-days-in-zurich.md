@@ -3,7 +3,7 @@ title: Talk bei den Microsoft Evolution Days in Zürich
 date: 2015-11-12 21:42
 author: Fabian Gosebrink
 layout: post
-tags: AngularJS REST Rest-Api Talks Speaking
+tags: angularjs restapi talks speaking
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

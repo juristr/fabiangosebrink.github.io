@@ -4,7 +4,7 @@ title: How to build a great RESTful Service
 date: 2015-07-20 21:13
 author: Fabian Gosebrink
 layout: post
-tags: Github REST WebAPI ASP.NET
+tags: github restapi webapi aspnet
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

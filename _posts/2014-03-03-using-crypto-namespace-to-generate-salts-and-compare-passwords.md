@@ -5,7 +5,7 @@ date: 2014-03-03T21:02:40+00:00
 author: Fabian Gosebrink
 layout: post
 categories: blog articles
-tags: ASP.NET crypto hash salt 
+tags: aspnet crypto hash salt 
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

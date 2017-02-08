@@ -4,7 +4,7 @@ title: Impressions of the first ASP.NET MVC workshop
 date: 2014-08-10 16:38
 author: Fabian Gosebrink
 layout: post
-tags: ASP.NET Workshop
+tags: aspnet workshop
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
