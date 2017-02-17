@@ -177,7 +177,7 @@ Now that we know the difference between those two methods: How can we get our we
 We can fix that by simply telling ASP.NET that it should use JsonFormatters like
 
 {% highlight cs %}
- public void ConfigureServices(IServiceCollection services)
+public void ConfigureServices(IServiceCollection services)
 {
 	// ...
 	
