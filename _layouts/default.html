@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head> 
     <!-- [[! Document Settings ]] -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- [[! Page Meta ]] -->
+    {% if page.description %}
+    <title>{{ page.description }}</title>
+    {% elsif page.title %} 
+    <title>{{ page.title }}</title>
+    {% else %}
     <title>Offering Solutions Software GmbH - {{ site.description }}</title>
+    {% endif %}
 
     {% if page.description %}
     <meta name="description" content="{{ page.description }}" />
