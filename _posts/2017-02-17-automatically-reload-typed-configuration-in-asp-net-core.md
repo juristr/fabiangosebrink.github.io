@@ -1,5 +1,5 @@
 ---
-title: Automatic reload typed configuration in ASP.NET Core
+title: Automatically reload typed configuration in ASP.NET Core
 date: 2017-02-17 22:31
 author: Fabian Gosebrink
 layout: post

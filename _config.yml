@@ -22,7 +22,7 @@ url: 'http://offering.solutions'
 image: 'assets/images/profile.jpg'
 
 short_url: 'http://fabian-gosebrink.com'
-google_analytics: UA-69281367-1
+google_analytics: UA-91830658-1
 disqus: offeringsolutions
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: '/'
