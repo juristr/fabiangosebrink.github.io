@@ -14,12 +14,14 @@ categories: blog articles
 
 With this blogpost I want to show an example of how to set up Angular and Webpack in Visual Studio with ASP.NET Core ready for dev and production builds.
 
+> See also my latest article [Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack](http://offering.solutions/blog/articles/2017/02/08/angular-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/)
+
 If you read this until the end you will have a picture how to enable webpack and webpack-dev-server with npm and how to use webpack to bundle your angular application and inject files into index.html for your web application.
 
 I had this topic already with my colleague [DamienBod](https://github.com/damienbod)
-[here ](https://github.com/damienbod/Angular2WebpackVisualStudio)and a StarterTemplate [here](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate) (which is using system.js as bootstrapper for your application), but this post is more to show how we get there and which steps you should take to get things going. For Damien and me this was a bit confusing in the beginning so this is the guide how we started actually. I hope you like reading it as much as I liked writing it.
+[here](https://github.com/damienbod/Angular2WebpackVisualStudio) and a StarterTemplate [here](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate) (which is using system.js as bootstrapper for your application), but this post is more to show how we get there and which steps you should take to get things going. For Damien and me this was a bit confusing in the beginning so this is the guide how we started actually. I hope you like reading it as much as I liked writing it.
 
-Find the code here:
+Find the code here: 
 
 [https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Webpack-StarterTemplate](https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Webpack-StarterTemplate)
 
@@ -33,7 +35,7 @@ And create a new project. In this case we name it “Angular2WebpackStarter”. 
 
 ![How to set up Angular 2 and Webpack in Visual Studio with ASP.NET Core]({{site.baseurl}}assets/articles/wp-content/uploads/2016/08/Clipboard02.jpg)
 
-Make sure you have installed the latest typescript nuget package because we will need it later to work with angular2 and visual studio 2015. A Resharper in the latest version also cannot be a mistake J
+Make sure you have installed the latest typescript nuget package because we will need it later to work with angular2 and visual studio 2015. A Resharper in the latest version also cannot be a mistake ;)
 
 ### Add the necessary files and folders
 
