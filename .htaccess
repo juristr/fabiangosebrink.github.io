@@ -121,3 +121,4 @@ Redirect 301 /articles/asp-net/how-to-set-up-angular-and-webpack-in-visual-studi
 Redirect 301 /articles/asp-net/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/ http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/
 Redirect 301 /articles/2016/08/27/how-to-set-up-angular-and-webpack-in-visual-studio-with-asp-net-core/ http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/
 Redirect 301 /blog/articles/2016/08/27/how-to-set-up-angular-and-webpack-in-visual-studio-with-asp-net-core/ http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/
+Redirect 301 /blog/articles/2016/01/25/angular-and-asp-net-core-starter/ http://offering.solutions/blog/articles/2016/01/25/angular-2-and-asp-net-core-starter/

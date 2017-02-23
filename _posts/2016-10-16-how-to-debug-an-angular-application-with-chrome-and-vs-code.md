@@ -88,9 +88,9 @@ So replace the port in the config file with the port from your lite-server. In m
 
 Then start the lite server and just hit "play"
 
-![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_04.jpg)</a>
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode_04.jpg)
 
-![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode-1024x608.gif)</a>
+![How to debug an Angular application with Chrome and VS Code]({{site.baseurl}}assets/articles/wp-content/uploads/2016/10/HowtodebuganAngular2applicationwithChromeandVSCode-1024x608.gif)
 
 Chrome starts and you can debug your page in VS Code. Of course you can also confugre Chrome to attach directly. See here for examples:
 

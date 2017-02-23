@@ -40,7 +40,7 @@ export class Configuration {
 
 Notice the injectable attribute to generate the metadata to make the service available through DI in other modules.
 
->You can read more about DI in anuglar 2 in this blog post [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
+>You can read more about DI in Angular in this blog post [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
 
 Now we have this going we can generate our service:
 
