@@ -75,7 +75,7 @@ public IHttpActionResult Get(…, string sort = "Id")
 }
 {% endhighlight %}
 
-*Example: [https://myurl.com/api/test?sort=Added](https://myurl.com/api/test?sort=Added)*
+*Example: ´https://myurl.com/api/test?sort=Added´
 
 Where “Added” is a Property of the receiving DTOs.
 

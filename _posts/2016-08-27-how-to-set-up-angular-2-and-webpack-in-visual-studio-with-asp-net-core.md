@@ -14,7 +14,7 @@ categories: blog articles
 
 With this blogpost I want to show an example of how to set up Angular and Webpack in Visual Studio with ASP.NET Core ready for dev and production builds.
 
-> See also my latest article [Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack](http://offering.solutions/blog/articles/2017/02/08/angular-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/)
+> See also my latest article [Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack](http://offering.solutions/blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/)
 
 If you read this until the end you will have a picture how to enable webpack and webpack-dev-server with npm and how to use webpack to bundle your angular application and inject files into index.html for your web application.
 
