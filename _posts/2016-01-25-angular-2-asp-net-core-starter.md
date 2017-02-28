@@ -10,6 +10,8 @@ cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
 categories: blog articles
+redirect_from:
+  - /blog/articles/2016/01/25/angular-and-asp-net-core-starter/
 ---
 
 With this bIog I want to give you an Angular and ASP.NET Core Starter.

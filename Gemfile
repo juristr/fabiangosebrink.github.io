@@ -8,3 +8,4 @@ gem "jekyll"
 gem "github-pages"
 gem "rake"
 gem 'jekyll-paginate'
+gem 'jekyll-redirect-from'

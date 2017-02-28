@@ -137,6 +137,7 @@ DEPENDENCIES
   github-pages
   jekyll
   jekyll-paginate
+  jekyll-redirect-from
   rake
 
 BUNDLED WITH
