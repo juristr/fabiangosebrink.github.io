@@ -3,7 +3,7 @@ title: Moving your Angular application from SystemJS to Webpack
 date: 2017-02-26 16:46
 author: Fabian Gosebrink
 layout: post
-tags: angular forms templatedriven
+tags: angular systemjs webpack
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
