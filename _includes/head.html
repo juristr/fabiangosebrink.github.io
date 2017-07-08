@@ -1,18 +1,59 @@
     <link rel="canonical" href="{{ site.baseurl }}" />
     <meta name="referrer" content="origin" />
 
+    {% if page.description %}
+    <meta property="og:site_name" content="{{ page.description }}" />
+    {% elsif page.title %} 
+    <meta property="og:site_name" content="{{ page.title }}" />
+    {% else %}
     <meta property="og:site_name" content="{{ site.name }}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ site.name }}" />
+    {% endif %}
+    
+    {% if page.title %}
+    <meta property="og:title" content="{{ page.title }}" />
+    {% else %}
+    <meta property="og:title" content="{{ site.title }}" />
+    {% endif %}
+
+    {% if page.url %}
+     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | remove_first:'/'}}" />
+    {% else %}
+     <meta property="og:url" content="{{ site.url }}{{ site.baseurl }}" />
+    {% endif %}
+    
+
+    <meta property="og:type" content="article" />
+
     <meta property="og:description" content="{{ site.description }}" />
-    <meta property="og:url" content="{{ site.baseurl }}" />
-    <meta property="og:image" content="assets/images/background.jpg" />
+   
+    <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{page.cover}}" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="{{ site.name }}" />
+     {% if page.title %}
+    <meta property="twitter:title" content="{{ page.title }}" />
+    {% else %}
+    <meta property="twitter:title" content="{{ site.title }}" />
+    {% endif %}
     <meta name="twitter:description" content="{{ site.description }}" />
-    <meta name="twitter:url" content="{{ site.baseurl }}" />
-    <meta name="twitter:image:src" content="assets/images/background.jpg" />
+
+    {% if page.url %}
+     <meta property="twitter:url" content="{{ site.url }}{{ site.baseurl }}{{ page.url | remove_first:'/'}}" />
+    {% else %}
+     <meta property="twitter:url" content="{{ site.url }}{{ site.baseurl }}" />
+    {% endif %}
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{page.cover}}" />
+
+{% if page.categories %}
+  {% for category in page.categories limit:1 %}
+  <meta content="{{ category }}" property="article:section">
+  {% endfor %}
+{% endif %}
+{% if page.tags %}
+  {% for tag in page.tags %}
+  <meta content="{{ tag }}" property="article:tag">
+  {% endfor %}
+{% endif %}
 
     <script type="application/ld+json">
 {
@@ -20,7 +61,7 @@
     "@type": "Website",
     "publisher": "{{ site.name }}",
     "url": "{{ site.baseurl }}",
-    "image": "assets/images/background.jpg",
+    "image": "{{ site.baseurl }}assets/images/background.jpg",
     "description": "{{ site.description }}"
 }
     </script>

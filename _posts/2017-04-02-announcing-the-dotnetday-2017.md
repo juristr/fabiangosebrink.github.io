@@ -50,7 +50,7 @@ I think it is all prepared for a good day.
 
 ### Things to say more important than anything else
 
-T H A N K S to everybody who was involved in this so far. Thank you Manuel, I could not have done this that far without you, thanks to all speakers and everyone I had to regret because the agenda was full, thank you for every retweet, for every email, every phone call! You are amazing. We will try to give everything back making this day a great great conference.
+T H A N K S to everybody who was involved in this so far. Thank you Manuel, I could not have done this that far without you, thanks to all speakers and everyone I had to reject because the agenda was full, thank you for every retweet, for every email, every phone call! You are amazing. We will try to give everything back making this day a great great conference.
 
 See you soon.
 
