@@ -9,7 +9,7 @@ navigation: true
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 ---
 
 It has been quiet here for a while... :-) 
