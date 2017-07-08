@@ -9,7 +9,7 @@ navigation: true
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 ---
 
 I am very happy to announce the .NET Day 2017 in Switzerland! In this blogpost I want to give you a small background information on this, how this idea came up and about the current status.

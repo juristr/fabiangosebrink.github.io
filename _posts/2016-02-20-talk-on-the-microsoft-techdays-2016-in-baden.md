@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 ---
 
 [TechDays 2016 Baden](https://www.microsoft.com/de-ch/events/techdays)

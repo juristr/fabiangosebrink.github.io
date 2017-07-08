@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 ---
 
 In this blogpost I am doing a small recap to give you impressions of the first ASP.NET MVC workshop.
