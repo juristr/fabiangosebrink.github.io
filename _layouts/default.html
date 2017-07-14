@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head> 
+<head>
     <!-- [[! Document Settings ]] -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,29 +9,25 @@
     <!-- [[! Page Meta ]] -->
     {% if page.description %}
     <title>{{ page.description }}</title>
-    {% elsif page.title %} 
+    {% elsif page.title %}
     <title>{{ page.title }}</title>
     {% else %}
     <title>{{ site.description }}</title>
-    {% endif %}
-
-    {% if page.description %}
-    <meta name="description" content="{{ page.description }}" />
-    {% elsif page.title %} 
-    <meta name="description" content="{{ page.title }}" />
-    {% else %}
-    <meta name="description" content="{{ site.name }} - {{ site.description }}" />
-    {% endif %}
+    {% endif %} {% if page.description %}
+    <meta name="description" content="{{ page.description }}" /> {% elsif page.title %}
+    <meta name="description" content="{{ page.title }}" /> {% else %}
+    <meta name="description" content="{{ site.name }} - {{ site.description }}" /> {% endif %}
 
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="shortcut icon" href="{{ site.baseurl }}assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{site.baseurl}}assets/images/favicon.ico">
 
     <!-- [[! Styles'n'Scripts ]] -->
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/screen.css" />
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"/>
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="{{site.baseurl}}assets/css/syntax.css" />
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
@@ -53,26 +49,26 @@
             <section class="copyright"><a href="{{ site.baseurl }}">{{ site.name }}</a> &copy; {{ site.time | date: '%Y' }}</section>
             <section class="social-centered">&copy; Fabian Gosebrink
                 <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-            <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
-            <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
-            <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
-            <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
-            <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </section>
         </footer>
     </div>
     <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <!-- [[! The main JavaScript file for Casper ]] -->
-    <script type="text/javascript" src="{{ site.baseurl }}assets/js/jquery.fitvids.js"></script>
-    <script type="text/javascript" src="{{ site.baseurl }}assets/js/index.js"></script>
-    <script type="text/javascript" src="{{ site.baseurl }}assets/js/jekyll-search.js"></script>
+    <script type="text/javascript" src="{{site.baseurl}}assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="{{site.baseurl}}assets/js/index.js"></script>
+    <script type="text/javascript" src="{{site.baseurl}}assets/js/jekyll-search.js"></script>
 
     <script>
         SimpleJekyllSearch({
             searchInput: document.getElementById('search-input'),
             resultsContainer: document.getElementById('results-container'),
-            json: '/search.json',
+            json: '{{site.baseurl}}search.json',
         })
     </script>
 

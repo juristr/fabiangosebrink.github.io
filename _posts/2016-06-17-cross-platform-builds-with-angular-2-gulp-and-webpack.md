@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 redirect_from:
   - /blog/articles/2016/06/17/cross-platform-builds-with-angular-gulp-and-webpack/
 

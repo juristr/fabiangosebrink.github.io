@@ -3,7 +3,7 @@ id: 11
 title: Configure ASP.NET WebAPI to send data as JSON
 date: 2014-02-26T19:51:54+00:00
 author: Fabian Gosebrink
-categories: blog articles
+categories: articles
 layout: post
 tags: aspnet configuration json 
 logo: 'assets/images/logo_small.png'

@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: blog articles
+categories: articles
 ---
 
 So gut das Handy im Alltag auch sein kann, es gibt durchaus Momente, in denen es stört: Kino, Konversationen, etc.
