@@ -14,14 +14,14 @@ categories: articles
 
 It has been quiet here for a while... :-) 
 
-You may have noticed that I organised my first conference ".NET Day" about one month ago. Well, that is not true. The organising itself took place long before that but the event took place approximately one month ago. With this distance of time I want to gather up what I learned from organising this event, what I take with me and what will influence the next conference if I will do this again some time :-)
+You may have noticed that I organised my first conference ".NET Day" about two months ago. Well, that is not true. The organisation itself took place long before that but the event took place approximately two months ago. With this distance of time I want to gather up what I learned from organising this event, what I take with me and what will influence the next conference if I will do this again some time :-)
 
 I needed some time to really figure out all the thoughts & things which were going on and break them down to the following points. If you made similar experiences or want to add new ones feel free to comment :)
 
 
-## Be prepared and have a plan b
+## Be prepared and have a plan B
 
-On the event you are planning things will happen you never thought of. This can be good or bad things, but you will _not_ be prepared of them. So what you can do is starting early (!) and thinking of any possible event which may happen. This can be that a speaker is not coming because the night before he got sick or something, a microphone does not work, the food can not be served etc. You should always think of those things and play with that thought in your head. "What am I doing if xyz happens?" is the question you have to ask for youself. Have backup speakers. Have saved the telephone numbers of all pizza delivery services in your area to be prepared if food can not be served. Have a car there which you can use to get something which you not have thought of etc. If you re-think your event over and over again you will possibly come to a point where you can say to yourself that you are prepared for every single thing which can happen. (Which you can't, but you did your best here :) 
+On the event you are planning things will happen you never thought of. This can be good or bad things, but you will _not_ be prepared of them. So what you can do is starting early (!) and thinking of any possible situation which may happen. This can be that a speaker is not coming because the night before he got sick or something, a microphone does not work, the food can not be served etc. You should always think of those things and play with that thought in your head. "What am I doing if xyz happens?" is the question you have to ask for youself. Have backup speakers. Have saved the telephone numbers of all pizza delivery services in your area to be prepared if food can not be served. Have a car there which you can use to get something which you not have thought of etc. If you re-think your event over and over again you will possibly come to a point where you can say to yourself that you are prepared for every single thing which can happen. (Which you can't, but you did your best here :) 
 
 So make that a little easier and taking this thought of being prepared further we can take a look at the next point...
 
