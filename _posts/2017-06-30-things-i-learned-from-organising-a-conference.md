@@ -1,6 +1,6 @@
 ---
 title: Lessons I learnt from organising a conference
-date: 2017-06-30 06:20
+date: 2017-07-18 19:55
 author: Fabian Gosebrink
 layout: post
 tags: angular azure conference angular dotnet
