@@ -1,0 +1,8 @@
+deploy:
+  provider: FTP
+  protocol: ftp
+  host: ftp.offering.solutions
+  username: offering.solutions
+  password:
+    secure: WycUE2s6choDGteQhq0Wed3TCKQtfb9+HYXtASiQzt0=
+  folder: /

@@ -165,7 +165,7 @@ Fabian
 
 or
 
-[https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
+[https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master/AngularCLI](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master/AngularCLI)
 
 ### Links:
 
