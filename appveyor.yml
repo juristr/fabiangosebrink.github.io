@@ -1,3 +1,6 @@
+branches:
+  only:
+    - os-old
 deploy:
   provider: FTP
   protocol: ftp
