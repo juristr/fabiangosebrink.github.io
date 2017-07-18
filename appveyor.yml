@@ -10,4 +10,4 @@ deploy:
   password:
     secure: WycUE2s6choDGteQhq0Wed3TCKQtfb9+HYXtASiQzt0=
   folder: /
-  artifact: /_site/
+  application: _site
