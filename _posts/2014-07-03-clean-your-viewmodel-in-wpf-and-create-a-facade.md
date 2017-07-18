@@ -204,4 +204,4 @@ If you think further it would be better to seperate the service one again and ge
 ![clean your viewmodel in WPF and create a facade]({{site.baseurl}}assets/articles/2014-07-03/2.jpg)
 ![clean your viewmodel in WPF and create a facade]({{site.baseurl}}assets/articles/2014-07-03/Facade.jpg)
 
-[WPFViewModelAsFacade Solution]({{site.baseurl}}assets/articles/2014-07-03/WPFViewModelAsFacade.zip)
+[WPFViewModelAsFacade Solution]({{site.baseurl}}assets/articles/2014-07-03/WpfViewModelAsFacade.zip)
