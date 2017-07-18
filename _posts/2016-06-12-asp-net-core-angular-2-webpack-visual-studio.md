@@ -379,8 +379,6 @@ module.exports = {
 ## Webpack Production build
 
 The production build has to be run from the command line. At present ngc, the angular compiler, can only be used from the command line. 
-[https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli](https://github.com/angular/angular/tree/master/modules/%40angular/compiler-cli)
-
 
 See also (Using ngc) [http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/](http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/) 
 
@@ -698,7 +696,7 @@ export class HomeComponent implements OnInit {
 
 ## tslint file
 
-[https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/src/Angular2WebpackVisualStudio/tslint.json](https://github.com/damienbod/Angular2WebpackVisualStudio/blob/master/src/Angular2WebpackVisualStudio/tslint.json)
+[https://github.com/damienbod/AngularWebpackVisualStudio/blob/master/src/AngularWebpackVisualStudio/tslint.json](https://github.com/damienbod/AngularWebpackVisualStudio/blob/master/src/AngularWebpackVisualStudio/tslint.json)
 
 ## The ASP.NET Core API
 

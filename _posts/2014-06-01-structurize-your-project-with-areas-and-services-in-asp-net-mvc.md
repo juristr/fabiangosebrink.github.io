@@ -23,7 +23,7 @@ After some tries I came up with a solution of using some patterns and stuff. So 
 
 **1)     ** **Viewmodels and Submitmodels**
 
-I don’t want to get into this further because I already did a blog post on this (<a href="http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/" target="_blank">here </a>and <a href="http://blog.noser.com/what-are-submitmodels-and-how-to-use-them/" target="_blank">here</a>). Also <a href="http://benjamin-abt.com/blog/asp-net-mvc-arbeiten-mit-view-und-submitmodels/" target="_blank">here </a>you can see an example of how to get along with viewmodels and submitmodels.
+I don’t want to get into this further because I already did a blog post on this (<a href="http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/" target="_blank">here </a>and <a href="http://blog.noser.com/what-are-submitmodels-and-how-to-use-them/" target="_blank">here</a>). You can see an example of how to get along with viewmodels and submitmodels.
 
 VMs and SMs are one essential part (of many 😉 ) of your mvc-application. They give you more control and they help you to figure out what’s going on. Not only in case of an error.
 

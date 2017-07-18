@@ -15,7 +15,7 @@ categories: blog articles
 
 In this post I want to show you how to implement a table filter in Angular.
 
-Code: [https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client/app](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client/app)
+Code: [https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/AngularCLI/src/app/food/pipes/filter.pipe.ts](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/AngularCLI/src/app/food/pipes/filter.pipe.ts)
 
 A table in your application is maybe one of the most used controls. So is a filter for the table.
 

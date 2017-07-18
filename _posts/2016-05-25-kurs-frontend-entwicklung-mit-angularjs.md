@@ -14,7 +14,7 @@ categories: blog articles
 
 In diesem Blogpost stelle ich meinen Kurs: *Frontend-Entwicklung mit AngularJS* vor.
 
-![Angular_With_Digicomp]({{site.baseurl}}assets/articles/wp-content/uploads/2016/05/Angular_With_Digicomp.png)
+![Angular_With_Digicomp]({{site.baseurl}}assets/images/Angular_With_Digicomp.png)
 
 Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht "Nein" gesagt.
 

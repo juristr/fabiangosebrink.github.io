@@ -14,7 +14,7 @@ categories: blog articles
 
 In this blogpost I want to show you how you are writing custom validators in Angular.
 
-[https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators](https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators)
+[https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators](https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators)
 
 > Updated to new Syntax
 
@@ -206,7 +206,7 @@ And that's basically it.
 HTH
 
 Regards
-[https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators](https://github.com/FabianGosebrink/AngularJS-Angular-Tutorial-Examples/tree/master/Angular-Tutorial/08_Forms/end/app/validators)
+[https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators](https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators)
 
 [http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html](http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html)
 
