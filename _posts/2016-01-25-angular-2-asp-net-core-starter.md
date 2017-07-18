@@ -399,7 +399,7 @@ Now go ahead in you index.html and link to the files in the client js folder:
 
 We are done so far:
 
-You can now go ahead and develop you application in Typescript and Angular. You could start with the [Angular](https://angular.io/docs/ts/latest/quickstart.html) quickstart. All files you need should be there. Its important to add the [main.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate/blob/master/src/ASPNETCoreAngular2Demo/angularApp/main.ts) , the [app.component.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate/blob/master/src/ASPNETCoreAngular2Demo/angularApp/app.component.ts) and [app.module.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate/blob/master/src/ASPNETCoreAngular2Demo/angularApp/app.module.ts) to get an entry point and bootstrapping your application.
+You can now go ahead and develop you application in Typescript and Angular. You could start with the [Angular](https://angular.io/docs/ts/latest/quickstart.html) quickstart. All files you need should be there. Its important to add the [main.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-SystemJS-StarterTemplate/blob/master/src/ASPNETCoreAngularDemo/angularApp/main.ts) , the [app.component.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-SystemJS-StarterTemplate/blob/master/src/ASPNETCoreAngularDemo/angularApp/app.component.ts) and [app.module.ts](https://github.com/FabianGosebrink/ASPNETCore-Angular-SystemJS-StarterTemplate/blob/master/src/ASPNETCoreAngularDemo/angularApp/app.module.ts) to get an entry point and bootstrapping your application.
 
 >If you, like me, always forget to compile the typescript files: open a cmd in the app folder and just type "npm run tsc:w". This activates a typescript watcher using the tsconfig in the root of the project and will always compile the *.ts files into *.js files if there are some changes
 
@@ -407,7 +407,7 @@ You can now go ahead and develop you application in Typescript and Angular. You 
 
 You could now start using gulp/grunt to copy files to the locations automatically instead of doing it manually. Or you could start consuming the api using the http-Service like shown [here](https://auth0.com/blog/2015/10/15/angular-2-series-part-3-using-http/). I have done that all in my example repository here on Github. Hope you like it.
 
-[https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate](https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate)
+[https://github.com/FabianGosebrink/ASPNETCore-Angular-SystemJS-StarterTemplate](https://github.com/FabianGosebrink/ASPNETCore-Angular-SystemJS-StarterTemplate)
 
 Regards & HTH
 
