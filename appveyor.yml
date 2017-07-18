@@ -2,6 +2,9 @@ branches:
   only:
     - os-old
 build: off
+artifacts:
+  - path: _site
+    name: OSBlog
 deploy:
   provider: FTP
   protocol: ftp
@@ -10,4 +13,4 @@ deploy:
   password:
     secure: WycUE2s6choDGteQhq0Wed3TCKQtfb9+HYXtASiQzt0=
   folder: /
-  application: _site
+  application: OSBlog
