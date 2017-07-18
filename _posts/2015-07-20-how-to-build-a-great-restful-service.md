@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In this blogpost I want to get you an idea of how to build a great RESTful Service. The idea for this blogpost came after I spent a whole [post](http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/) about implementing paging in a web API. Paging is a very important feature a REST API should offer. However, there are a lot more. Here I want to mention a few of them hoping to cover as much as you need to build great API’s ;-)

@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 ASP.NET MVC hat, wie der Name schon sagt, die MVC-Struktur auf dem Server etabliert und es ist somit möglich saubere Architekturen auf dem Server zu erstellen.

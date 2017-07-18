@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In diesem Blogpost möchte ich bekanntgeben, dass [Digicomp](https://www.digicomp.ch/) neue Kurstermine angekündigt hat, die ich als Trainer betreuen und durchführen darf :) . Die Kurse finden in Bern statt, je nach Teilnehmern auch in Basel und Zürich.

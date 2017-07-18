@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In diesem Blogpost will ich zeigen, wie man paging in einer ASP.Net WebAPI und AngularJS realisieren kann.

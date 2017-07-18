@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 Nun ist es endlich da. Das Surface der dritten Generation. Ich habe mich ja schon drauf gefreut aber wenn es dann da ist, ist es natürlich nochmal was ganz anderes. Man hört ja so viel, man liest noch mehr und am Ende schimpfen alle auf die Kacheln. Mir völlig unverständlich, aber trotzdem habe ich gedacht, dass ich das Surface mal einem Review unterziehen kann. Die Ergebnisse davon will ich in diesem Beitrag beschreiben.

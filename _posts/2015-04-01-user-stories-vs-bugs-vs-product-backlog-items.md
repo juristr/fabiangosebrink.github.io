@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 In diesem Blog greife ich eine ewig brennende Diskussion auf: User Stories vs Bugs vs Product Backlog Items!

@@ -9,7 +9,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen <span id="snippet_meta" class="desc" contenteditable="true">Talk bei den Microsoft Evolution Days in Zürich</span> über AngularJs &amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei [Digicomp](http://news.digicomp.ch/de/2015/11/10/microsoft-evolution-day-2015-rueckblick-und-slides-zum-download/). Oder direkt [hier](http://static.news.digicomp.ch/1447166270/track-development.zip). Alle Beispiele gibts auch auf [Github](https://github.com/FabianGosebrink).

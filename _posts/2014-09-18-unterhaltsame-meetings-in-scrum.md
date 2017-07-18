@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn man jedoch SCRUM in einer Firma einführt oder praktiziert sehen die Entwickler sehr schnell den angeblichen Nachteil dieser doch recht positiven Eigenschaften: Es gibt, zumindest am Anfang, sehr viele Meetings.

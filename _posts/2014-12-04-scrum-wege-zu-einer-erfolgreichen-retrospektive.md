@@ -10,7 +10,7 @@ navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
 subclass: 'post tag-speeches'
 disqus: true
-categories: articles
+categories: blog articles
 ---
 
 Die Retrospektive sollte immer am Ende des Sprints stattfinden und der Ort sein, an dem die Weichen gestellt werden für den nächsten Sprint. Nicht, was den Inhalt des Sprints angeht, also die Frage beantwortet wird, *was* gemacht werden soll, sondern *wie* man es besser tun kann.

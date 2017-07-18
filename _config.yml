@@ -26,7 +26,7 @@ google_analytics: UA-91830658-1
 disqus: offeringsolutions
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 # baseurl: '/'
-baseurl: '/blog/'
+baseurl: '/'
 
 # Permalinks
 # permalink: /:title
