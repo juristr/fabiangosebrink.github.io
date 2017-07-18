@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Clean your viewmodel in WPF and create a facade</title>
+	  <link>//blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-07-03T17:51:00+02:00</pubDate>
+	  <guid>//blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/</guid>
+	  <description><![CDATA[
+	     <p>In this post I want to show you how to Clean your viewmodel in WPF and create a facade.</p>
+
+<p>We use a facade to get your viewmodel in WPF nice and clean. I want to show you how to get along with the seperation of concerns and how to write simple and testable code with databinding and WPF.</p>
+
+<p>When you want to use a viewmodel for databinding you normally get your public properties on your viewmodel an do a normal binding on your xaml like this:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"WPFViewModelAsFacade.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"350"</span> <span class="na">Width=</span><span class="s">"525"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding MyCalculatedNumber}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span></code></pre></figure>
+
+<p>Setting the datacontext:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="nf">InitializeComponent</span><span class="p">();</span>
+            <span class="n">DataContext</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MainViewModel</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>and your viewmodel something like:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="kt">int</span> <span class="n">_myCalculatedNumber</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">MyCalculatedNumber</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_myCalculatedNumber</span><span class="p">;</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="n">_myCalculatedNumber</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">//other Properties here...
+</span>
+        <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_myCalculatedNumber</span> <span class="p">=</span> <span class="m">23</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>of course you would give the viewmodel other values and it would grow like hell. Also when you do calculations or CRUD-operations etc. But when your application grows and gets bigger it would be necessary to move some thing into services, providers etc. to get into the seperation of concerns.</p>
+
+<h3 id="solution-i---services">Solution I -  Services</h3>
+
+<p>So lets introduce a service to do some work (a normal calculation with the result of 23 in my example):</p>
+
+<p><img src="/assets/articles/2014-07-03/1.jpg" alt="clean your viewmodel in WPF and create a facade" /></p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WPFViewModelAsFacade</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ICalculationService</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="nf">CalculateNumber</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WPFViewModelAsFacade</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">CalculationService</span> <span class="p">:</span> <span class="n">ICalculationService</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="nf">CalculateNumber</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">//do some calculation/work
+</span>            <span class="c1">//return result...
+</span>            <span class="k">return</span> <span class="m">23</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And your viewmodel could look like this</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WPFViewModelAsFacade</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="kt">int</span> <span class="n">_myCalculatedNumber</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">MyCalculatedNumber</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_myCalculatedNumber</span><span class="p">;</span> <span class="p">}</span>
+            <span class="k">set</span> <span class="p">{</span> <span class="n">_myCalculatedNumber</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">//other Properties here...
+</span>
+        <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">ICalculationService</span> <span class="n">calculationService</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CalculationService</span><span class="p">();</span>
+            <span class="n">_myCalculatedNumber</span> <span class="p">=</span> <span class="n">calculationService</span><span class="p">.</span><span class="nf">CalculateNumber</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><span style="color: #999999;">Note: Normally you would use dependency injection here to avoid this “new …” call and a link to the direct implementation of the service.</span></p>
+
+<p>So: Now we have outsourced the calculation and introduced a new service which is doing the work. But this is not a facade. Our viewmodel is still very big (image it bigger than it looks here: There are a lot more properties on it in a real application).</p>
+
+<h3 id="solution-ii---facade">Solution II - Facade</h3>
+
+<p>The viewmodel should now get a real facade and only offer the service which is doing the calculation. This makes you more flexible and the viewmodel is like only an interface for the view. Its like a provider for every service (or providers) which contain the information the view needs.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WPFViewModelAsFacade</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ICalculationService</span>
+    <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">CalculatedNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WPFViewModelAsFacade</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">CalculationService</span> <span class="p">:</span> <span class="n">ICalculationService</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">CalculatedNumber</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">CalculationService</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// Do some stuff here and get the result in the defined property
+</span>            <span class="n">CalculatedNumber</span> <span class="p">=</span> <span class="m">25</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ICalculationService</span> <span class="n">_calculationService</span><span class="p">;</span>
+    <span class="c1">//other Properties here...
+</span>
+    <span class="k">public</span> <span class="n">ICalculationService</span> <span class="n">CalculationService</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_calculationService</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_calculationService</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">CalculationService</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So far until here. What we did is: We are only offering the service through our viewmodel and our viewmodel is not interested in what happens behind anymore. The service can do his work and only give back his results. But you have to correct you binding now because your number is not in the viewmodel anymore but in the service behind.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"WPFViewModelAsFacade.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"350"</span> <span class="na">Width=</span><span class="s">"525"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding CalculationService.CalculatedNumber}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span></code></pre></figure>
+
+<p>We are now bind on our service “.” our property. Its the same with Commands. Commands should be seperate classes (in a seperated namespace) and you be offered through the viewmodel.</p>
+
+<p>If you do this your viewmodel gets a complete facade and you can change the services underneath without touching the viewmodel. So every testcase you write for the viewmodel would be untouched :)</p>
+
+<p>Note: Your viewmodel does not have to implement INotifypropertyChanged then. If you make classes/interfaces which are providing informations to the UI these classes are the only ones who have to implement INotifyPropertyChanged.</p>
+
+<p>If you think further it would be better to seperate the service one again and getting a provider between the service, which is doing the real job and the class/interface, which is giving the data to the outside world. This provider (or however you call it) can then be offered in the viewmodel and you would bind first over this one. But for now this should be it, I think you got my point ;) .</p>
+
+<p><img src="/assets/articles/2014-07-03/2.jpg" alt="clean your viewmodel in WPF and create a facade" />
+<img src="/assets/articles/2014-07-03/Facade.jpg" alt="clean your viewmodel in WPF and create a facade" /></p>
+
+<p><a href="/assets/articles/2014-07-03/WPFViewModelAsFacade.zip">WPFViewModelAsFacade Solution</a></p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

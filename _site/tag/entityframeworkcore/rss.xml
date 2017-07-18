@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>ASP.NET Core 1.0 with Entity Framework Core</title>
+	  <link>//blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-07-03T22:32:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/</guid>
+	  <description><![CDATA[
+	     <p>In this repository I want to show the first steps with Entity Framework Core and ASP.NET Core 1.0.</p>
+
+<p>The Repository contains a sample WebAPI with CRUD-Operations that you can Get/Read/Update and Delete “MyModel” objects through HTTP-calls.</p>
+
+<p>Here is the code: <a href="https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core">https://github.com/FabianGosebrink/ASPNETCore-Entity-Framework-Core</a></p>
+
+<h2 id="before-starting">Before starting…</h2>
+
+<p>Please read this readme and think of executing <code class="highlighter-rouge">Add-Migration [MyMigrationName]</code> and <code class="highlighter-rouge">update-database</code> in the Package Manager Console first.</p>
+
+<p>The database should now be visible inside your SQL Server Management Studio.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/07/database.jpg" alt="ASP.NET CORE 1.0 with Entity Framework Core" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/07/folderstructure.jpg" alt="ASP.NET CORE 1.0 with Entity Framework Core" /></p>
+
+<h2 id="projectjson">Project.json</h2>
+
+<p>The project.json file includes tha Entity Framework SQLServer package as well as the EF Core itself and the EF Core Tools. The tools are mentioned twice: Once in the “dependencies”-section and once in the “tools”-section</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"Microsoft.NETCore.App"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="err">:</span> <span class="s2">"platform"</span>
+    <span class="p">},</span>
+    <span class="s2">"Microsoft.ApplicationInsights.AspNetCore"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Mvc"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.IISIntegration"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.Kestrel"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Configuration.EnvironmentVariables"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Configuration.FileExtensions"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Configuration.Json"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Logging"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Logging.Console"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Logging.Debug"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Options.ConfigurationExtensions"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.StaticFiles"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.EntityFrameworkCore"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.EntityFrameworkCore.SqlServer"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.EntityFrameworkCore.Tools"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0-preview2-final"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="err">:</span> <span class="s2">"build"</span>
+    <span class="p">},</span>
+    <span class="s2">"AutoMapper"</span><span class="err">:</span> <span class="s2">"5.0.0"</span>
+  <span class="p">},</span>
+
+  <span class="s2">"tools"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.IISIntegration.Tools"</span><span class="err">:</span> <span class="s2">"1.0.0-preview2-final"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.EntityFrameworkCore.Tools"</span><span class="err">:</span> <span class="s2">"1.0.0-preview2-final"</span>
+  <span class="p">},</span>
+
+  <span class="s2">"frameworks"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"netcoreapp1.0"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"imports"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"dotnet5.6"</span><span class="p">,</span>
+        <span class="s2">"portable-net45+win8"</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="s2">"buildOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"emitEntryPoint"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"preserveCompilationContext"</span><span class="err">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+
+  <span class="s2">"runtimeOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"configProperties"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"System.GC.Server"</span><span class="err">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="s2">"publishOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"include"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"wwwroot"</span><span class="p">,</span>
+      <span class="s2">"Views"</span><span class="p">,</span>
+      <span class="s2">"Areas/**/Views"</span><span class="p">,</span>
+      <span class="s2">"appsettings.json"</span><span class="p">,</span>
+      <span class="s2">"web.config"</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+
+  <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"postpublish"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"</span> <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="appsettings">Appsettings</h2>
+
+<p>The appsettings contain beside the well known logging section the connectionstring to target the database:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"Logging"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"IncludeScopes"</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"LogLevel"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"Default"</span><span class="err">:</span> <span class="s2">"Debug"</span><span class="p">,</span>
+      <span class="s2">"System"</span><span class="err">:</span> <span class="s2">"Information"</span><span class="p">,</span>
+      <span class="s2">"Microsoft"</span><span class="err">:</span> <span class="s2">"Information"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"ConnectionStrings"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"DefaultConnection"</span><span class="err">:</span> <span class="s2">"Server=localhost\\SQLEXPRESS;Database=AspnetCoreEF7Example;Trusted_Connection=True;MultipleActiveResultSets=true;"</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This connectionstring is consumed in …</p>
+
+<h2 id="startup">Startup</h2>
+
+<p>…the startup-file. With</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="kt">var</span> <span class="n">configurationSection</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"ConnectionStrings:DefaultConnection"</span><span class="p">);</span>
+<span class="n">services</span><span class="p">.</span><span class="nf">AddDbContext</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span> <span class="n">options</span><span class="p">.</span><span class="nf">UseSqlServer</span><span class="p">(</span><span class="n">configurationSection</span><span class="p">.</span><span class="n">Value</span><span class="p">));</span></code></pre></figure>
+
+<p>we can read the connectionstring and pass it to the “UseSQLServer”-Method.</p>
+
+<h2 id="the-database-context">The Database Context</h2>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">DataBaseContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">&gt;</span> <span class="n">MyModels</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">DataBaseContext</span><span class="p">(</span><span class="n">DbContextOptions</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">&gt;</span> <span class="n">options</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+    <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In the DbContext you pass the DbSet of your Entites as you are used to it when working with the Entity Framework also in previous versions. But see the new constructor EF Core introduces.</p>
+
+<h2 id="run-it">Run it…</h2>
+
+<p>If you now run the solution you can perform CRUD operations for example via postman, angular etc…</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/07/postmandatabase.jpg" alt="ASP.NET CORE 1.0 with Entity Framework Core" /></p>
+
+<h2 id="links">Links</h2>
+
+<p><a href="https://ef.readthedocs.io/en/latest/platforms/aspnetcore/new-db.html">ASP.NET Core Application to New Database</a></p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

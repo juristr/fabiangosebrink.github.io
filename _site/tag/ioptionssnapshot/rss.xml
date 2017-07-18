@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Automatically reload typed configuration in ASP.NET Core</title>
+	  <link>//blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-02-17T22:31:00+01:00</pubDate>
+	  <guid>//blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/</guid>
+	  <description><![CDATA[
+	     <p>In this article I want to explore IOptionsSnapshot and show how to work with IOptionsSnapshot in ASP.NET Core 1.1.</p>
+
+<p>We will use the dotnet cli to create a new project and configure it using the reload technique in combination with IOptionsSnapshot.</p>
+
+<blockquote>
+  <p>Make sure you are using at least ASP.NET Core 1.1</p>
+</blockquote>
+
+<p>Get started by creating a new folder where you want to work in, opening a console there and typing</p>
+
+<p><code class="highlighter-rouge">dotnet new mvc</code> and <code class="highlighter-rouge">dotnet restore</code> to get the project in a starting position.</p>
+
+<p>Then open up a console and type <code class="highlighter-rouge">code .</code> to start Visual Studio Code on the current level.</p>
+
+<p>You should now see all the files and folders of your project. We can now go ahead and create a typed class which represents the configuration we want to work with. In this case this is just a file with a name property.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Config
+└── myConfig.json
+Controllers
+└── ...
+Views
+└── ...
+wwwroot
+└── ...
+...
+Program.cs
+Startup.cs
+</code></pre>
+</div>
+
+<p>myConfig.json</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"Person"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"Firstname"</span> <span class="err">:</span> <span class="s2">"John Doe"</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This leads us to the class</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>  
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Firstname</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Config
+└── myConfig.json
+ConfigModels
+└── Person.cs
+Controllers
+└── ...
+Views
+└── ...
+wwwroot
+└── ...
+...
+Program.cs
+Startup.cs
+</code></pre>
+</div>
+
+<p>which represents our configuration in our application.</p>
+
+<p>We have to modify our constructor of the Startup.cs file a bit to load this new file:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ConfigurationBuilder</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">"appsettings.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="err">$</span><span class="s">"appsettings.{env.EnvironmentName}.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>becomes to</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ConfigurationBuilder</span><span class="p">()</span>
+        <span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">"appsettings.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="err">$</span><span class="s">"appsettings.{env.EnvironmentName}.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="err">$</span><span class="s">"config/myConfig.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">false</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+        <span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+    <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>Pay attention to the <code class="highlighter-rouge">realoadOnChange: true</code> because that is what we are reaching out for</p>
+</blockquote>
+
+<p>So now that we loaded the file we need to add it to our configuration which is used in our app.</p>
+
+<p>Lets do this by adding the statement in the <code class="highlighter-rouge">ConfigureServices</code>-Method:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...
+</span>    <span class="n">services</span><span class="p">.</span><span class="n">Configure</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;(</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"Person"</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Here we are mapping our values in JSON to a typed class called “Person”.</p>
+
+<p>Now this configuration is available through dependency injection and we can use it in our controllers!</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>  
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">Person</span> <span class="n">_person</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nf">HomeController</span><span class="p">(</span><span class="n">IOptionsSnapshot</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">person</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_person</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>Pay attention to the “IOptionsSnapshot” we injected here which is different from the previous ASP.NET Core versions.</p>
+</blockquote>
+
+<p>Be sure to have the <code class="highlighter-rouge">"Microsoft.Extensions.Options": "1.1.0"</code> package installed and you are using ASP.NET Core 1.1.</p>
+
+<p>We can now inject the <code class="highlighter-rouge">IOptionsSnapshot&lt;T&gt;</code> in our controller and use its value. For testing we save the Firstname in the ViewData displaying it afterwards.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WebApplication6.Controllers</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">HomeController</span> <span class="p">:</span> <span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">Person</span> <span class="n">_person</span><span class="p">;</span>
+        <span class="k">public</span> <span class="nf">HomeController</span><span class="p">(</span><span class="n">IOptionsSnapshot</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">person</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_person</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="n">Value</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Index</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">ViewData</span><span class="p">[</span><span class="s">"FirstName"</span><span class="p">]</span> <span class="p">=</span> <span class="n">_person</span><span class="p">.</span><span class="n">Firstname</span><span class="p">;</span>
+            <span class="k">return</span> <span class="nf">View</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Index.cshtml</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="p">&lt;</span><span class="n">h3</span><span class="p">&gt;</span><span class="err">@</span><span class="p">(</span><span class="n">ViewData</span><span class="p">[</span><span class="s">"FirstName"</span><span class="p">])&lt;/</span><span class="n">h3</span><span class="p">&gt;</span></code></pre></figure>
+
+<p>If you now start the web application via <code class="highlighter-rouge">dotnet run</code> and you change the configuration without restarting the application, hit F5 to refresh the browser you see the new values.</p>
+
+<p>Hope this helps anybody :-)</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

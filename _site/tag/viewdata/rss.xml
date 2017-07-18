@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>How to avoid ViewBag and ViewData in ASP.NET MVC</title>
+	  <link>//blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-03-08T14:24:01+01:00</pubDate>
+	  <guid>//blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you How to avoid ViewBag and ViewData in ASP.NET MVC.</p>
+
+<p>It could be so easy: When passing data from the Controller to the View in MVC one can simply use</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">ViewBag</span><span class="p">.</span><span class="n">MyProperty</span> <span class="p">=</span> <span class="err">“</span><span class="n">ThisIsTheContentOfMyProperty</span><span class="err">”</span><span class="p">;</span></code></pre></figure>
+
+<p>or</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">ViewData</span><span class="p">[</span><span class="s">"MyProperty"</span><span class="p">]</span> <span class="p">=</span> <span class="n">MyProperty</span><span class="p">;</span></code></pre></figure>
+
+<p>And in the view you can access the data with:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">@ViewBag</span><span class="p">.</span><span class="n">MyProperty</span></code></pre></figure>
+
+<p>or</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">ViewData</span><span class="p">[</span><span class="s">"MyProperty "</span><span class="p">]</span> <span class="k">as</span> <span class="p">...</span></code></pre></figure>
+
+<p>But what about spelling problems? <em>IntelliSense</em> will not correct you if you would miss a character. Even the compiler does not give you any hint.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">@ViewBag</span><span class="p">.</span><span class="n">MProperty</span></code></pre></figure>
+
+<p>would not be wrong but won’t show any data in your View. Also spelling problems in the ViewData-String would not be noticed in code.</p>
+
+<p>In general: Using the MVC-Pattern is great. So when ASP.NET <strong>MVC</strong> gives us the possibility to use this pattern: Do so!</p>
+
+<p>A Viewbag (also Viewdata, Viewbag is only a wrapper around Viewdata) can be used like a bucket for your data. But this is not nice and it’s harming the Mvc-Pattern!</p>
+
+<p>The view knows its model and should not get any data from anything else. So to avoid using any pails for your data, use ViewModels to pass your data into the View.</p>
+
+<p>This could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">List</span> <span class="n">MyModels</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Rooms</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsSomethingTrueOrNot</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And in the View you can simply pass the complete ViewModel to your View</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="n">ActionResult</span> <span class="nf">MyMethod</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">MyViewModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MyViewModel</span><span class="p">();</span>
+
+    <span class="c1">// Do anything with the ViewModel like filling it, etc.
+</span>
+    <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="n">viewModel</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With this simple technique you can keep all the data you need for creating a view separately from your MVC-Models.</p>
+
+<p>This can be tested well; it can be simply used and gives you more structure arrangement to your MVC-Projects.</p>
+
+<p>It’s so easy, isn’t it?</p>
+
+<p>Happy coding!</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

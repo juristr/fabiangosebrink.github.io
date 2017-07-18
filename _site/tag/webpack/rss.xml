@@ -1,0 +1,2239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Moving your Angular application from SystemJS to Webpack</title>
+	  <link>//blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-02-26T16:46:00+01:00</pubDate>
+	  <guid>//blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you how you can move from an existing Angular application using systemjs to an application with webpack.</p>
+
+<p>Imagine the following application.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+└── main.ts
+...
+systemjs.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Because we want to get away from systemjs here we will first introduce a webpack.config.js which holds your configuration and which can handle all you files and stuff.</p>
+
+<p>But before we do please install webpack and the webpack-dev-server first:</p>
+
+<p><code class="highlighter-rouge">npm install webpack-dev-server webpack --save-dev</code></p>
+
+<p>So now we can add a webpack.config.js. This is the file webpack is searching per default.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js // &lt;---
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Of course you have to modify the config that it fits to your application. A structure of this could be useful:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Here all your entry points from </span>
+        <span class="c1">// your application are mentioned</span>
+    <span class="p">},</span>
+
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Here we can specify the output</span>
+    <span class="p">},</span>
+
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="c1">// mention the extensions webpack should take care of</span>
+    <span class="p">},</span>
+
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="c1">// tell webpack HOW to react when a file is included in your application</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+		<span class="c1">// finetune the behaviour of specific plugins</span>
+    <span class="p">]</span>
+<span class="p">};</span> </code></pre></figure>
+
+<p>You can see an example here <a href="https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.dev.js">webpack.dev.js</a></p>
+
+<h2 id="adding-polyfills">Adding Polyfills</h2>
+
+<p>To have your Angular application ready for handling polyfills you have to introduce another file <code class="highlighter-rouge">polyfills.ts</code> where you import all polyfills your application needs.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts // &lt;---
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>The file could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'ie-shim'</span><span class="p">;</span> <span class="c1">// Internet Explorer 9 support.</span>
+
+<span class="kr">import</span> <span class="s1">'core-js/es6/symbol'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/object'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/function'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-int'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-float'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/number'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/math'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/string'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/date'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/array'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/regexp'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/typed'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/reflect'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es7/reflect'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'zone.js/dist/zone'</span><span class="p">;</span></code></pre></figure>
+
+<blockquote>
+  <p>Notice that when you import things you also have to install them via npm which also should be reflected in you package.json</p>
+</blockquote>
+
+<h2 id="adding-third-party-dependencies">Adding Third-Party dependencies</h2>
+
+<p>If you have to include external libs like jquery or bootstrap you can manage them in a seperate file called <code class="highlighter-rouge">vendor.ts</code>. After installing them via npm you can consume them here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts
+├── vendor.ts // &lt;---
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Which could look like this</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'jquery/dist/jquery'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/js/bootstrap'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/css/bootstrap.css'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'../css/custom.css'</span><span class="p">;</span>
+
+<span class="c1">// import everything else here!!!</span></code></pre></figure>
+
+<blockquote>
+  <p>You should include all your custom files here</p>
+</blockquote>
+
+<h2 id="delete-systemjsconfigjs">Delete systemjs.config.js</h2>
+
+<p>You can now delete the systemjs.config.js because you do not need it anymore.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts
+├── vendor.ts
+└── main.ts
+...
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<h2 id="entrypoints">Entrypoints</h2>
+
+<p>Note that you now have three entrypoint for your application: <code class="highlighter-rouge">main.ts</code>, <code class="highlighter-rouge">vendor.ts</code> and <code class="highlighter-rouge">polyfills.ts</code>. Due to the fact that webpack is reading all you files and going through all imports importing what is included you have the possibility to:</p>
+
+<p>give your webpack config all three entrypoint like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>or you import the two files in you main.ts like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'./polyfills'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'./vendor'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">platformBrowserDynamic</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser-dynamic'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.module'</span><span class="p">;</span>
+
+<span class="nx">platformBrowserDynamic</span><span class="p">().</span><span class="nx">bootstrapModule</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span></code></pre></figure>
+
+<p>and in your webpack.config.ts you only need one entrypoint then:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span>
+    <span class="p">},</span></code></pre></figure>
+
+<h2 id="asking-for-the-environment-devprod">Asking for the environment (dev/prod)</h2>
+
+<p>We will set the environment from the outside later. To consume it in your application we can simply ask for a variable like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">env</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">require</span><span class="p">(</span><span class="err">`</span><span class="p">.</span><span class="o">/</span><span class="nx">webpack</span><span class="p">.</span><span class="nx">$</span><span class="p">{</span><span class="nx">env</span><span class="p">}.</span><span class="nx">js</span><span class="err">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With this you can apply multiple ways of generating your output based on the given environment asking for the variable “NODE_ENV” which we will set up later in our scripts.</p>
+
+<p>You can see an example here <a href="https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.config.js">webpack.config.js</a></p>
+
+<h2 id="triggering-it-from-the-npm-scripts">Triggering it from the npm scripts</h2>
+
+<p>Now that we introduced webpack we can add the commands to our package.json like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"tsc &amp;&amp; webpack-dev-server --open"</span><span class="p">,</span>
+        <span class="c1">// other scripts</span>
+        <span class="s2">"build:dev"</span><span class="err">:</span> <span class="s2">"webpack --env=dev --progress --profile --colors"</span><span class="p">,</span>
+        <span class="s2">"build:dist"</span><span class="err">:</span> <span class="s2">"webpack --env=prod --progress --profile --colors"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="c1">//...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Here we are setting the environment variable accordingly and start webpack with the <code class="highlighter-rouge">webpack</code> command</p>
+
+<p>When you run <code class="highlighter-rouge">npm start</code> and have the correct configuration in your webpack &amp; package.json a browser should open up displaying your page while reloading if you change something.</p>
+
+<p>Feel free to comment if I missed something.</p>
+
+<p>Hope this helps and happy coding.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack</title>
+	  <link>//blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-02-08T16:42:00+01:00</pubDate>
+	  <guid>//blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you how to get Ahead Of Time compilation enabled with lazy loading in combination with webpack 2.</p>
+
+<h3 id="code">Code</h3>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master">Github - ASPNET-ASPNETCore-AngularJS-Angular</a></p>
+
+<h3 id="the-router">The Router</h3>
+
+<p>If you want to enable lazy loading in your application with aot you first have to configure your router to load the module lazy - when it gets requested. You can do that with the loadChildren-attribute.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">export</span> <span class="kd">const</span> <span class="nx">AppRoutes</span><span class="err">:</span> <span class="nx">Routes</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="c1">// normal routes</span>
+  <span class="p">{</span> <span class="na">path</span><span class="p">:</span> <span class="s1">'food'</span><span class="p">,</span> <span class="na">loadChildren</span><span class="p">:</span> <span class="s1">'./path/to/module.file#ModuleName'</span> <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="na">path</span><span class="p">:</span> <span class="s1">'**'</span><span class="p">,</span>
+    <span class="na">redirectTo</span><span class="p">:</span> <span class="s1">'home'</span>
+  <span class="p">}</span>
+<span class="p">];</span></code></pre></figure>
+
+<p>The syntax is <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">path:</span><span class="w"> </span><span class="err">'myPath',</span><span class="w"> </span><span class="err">loadChildren:</span><span class="w"> </span><span class="err">'./path/to/module.file#ModuleName'</span><span class="w"> </span><span class="p">}</span><span class="err">,</span></code></p>
+
+<h3 id="the-module">The Module</h3>
+
+<p>If you did this you have to remove the module import from the module import array where you explicitly imported it in the first place!</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="c1">// imports</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">BrowserModule</span><span class="p">,</span>
+        <span class="c1">// other imports but NOT your lazy loaded module anymore</span>
+        <span class="nx">HomeModule</span>
+    <span class="p">],</span>
+
+    <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">AppComponent</span>
+    <span class="p">],</span>
+
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">],</span>
+
+    <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+
+<h3 id="the-ngc-compiler">The ngc compiler</h3>
+
+<p>If done so you can install the needed packages to get started with the ngc compiler:</p>
+
+<p><code class="highlighter-rouge">npm install @angular/compiler-cli @angular/platform-server --save</code></p>
+
+<p>After this you have to configure a seperate tsconfig-aot.json for Ahead Of Time Compilation:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+  </span><span class="nt">"compilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"target"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es5"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"module"</span><span class="p">:</span><span class="w"> </span><span class="s2">"es2015"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"moduleResolution"</span><span class="p">:</span><span class="w"> </span><span class="s2">"node"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sourceMap"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"emitDecoratorMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"experimentalDecorators"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lib"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"es2015"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"dom"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"noImplicitAny"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"suppressImplicitAnyIndexErrors"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"files"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"app/app.module.ts"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"path/to/module.file"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"app/main.ts"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"angularCompilerOptions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"genDir"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aot"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"skipMetadataEmit"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p>Please pay special attention to the “files” array. Because the module is not imported in your application via the <code class="highlighter-rouge">import</code> statement anymore the compiler will not include it in the aot-folder (which is fixed in the “genDir”-attribute). So here you have to add it by yourself but only the path to the module.</p>
+</blockquote>
+
+<p>If you now run</p>
+
+<p><code class="highlighter-rouge">node_modules/.bin/ngc -p tsconfig-aot.json</code></p>
+
+<p>an “aot” folder is created which should contain all your compilated files.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── app.component.ts
+├── app.component.html
+├── ...
+├── app.module.ts
+└── main.ts
+aot
+└── app
+    ├── module1
+    ├── module2
+    ├── module...
+    └── ....ngfactory.ts
+index.html
+systemjs.config.js
+tsconfig.json
+tslint.json
+styles.css
+package.json
+</code></pre>
+</div>
+
+<h3 id="the-new-entrypoint">The (new) entrypoint</h3>
+
+<p>Also as an entry point we specify the file(s) we have but the main file is different. Because we created an output in the aot folder we need to point our entrypoint to that compilated files!</p>
+
+<p>We can do that by adding a new main.ts file called “main-aot.ts” and add the following into it:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">platformBrowser</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">enableProdMode</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AppModuleNgFactory</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../aot/app/app.module.ngfactory'</span><span class="p">;</span>
+
+<span class="nx">enableProdMode</span><span class="p">();</span>
+
+<span class="nx">platformBrowser</span><span class="p">().</span><span class="nx">bootstrapModuleFactory</span><span class="p">(</span><span class="nx">AppModuleNgFactory</span><span class="p">);</span></code></pre></figure>
+
+<p>Here we are consuming the generated files in the aot folder.</p>
+
+<blockquote>
+  <p>If this file causes problems because of not finding any files it may be that the aot folder does not exist yet. This is normal. What does not exist cant be imported. Just create the folder and the errors should go away.</p>
+</blockquote>
+
+<h3 id="webpack-comsuming-the-aot-output">Webpack: Comsuming the AoT output</h3>
+
+<p>After that output is created you can go along and consume this files via webpack.</p>
+
+<p>Here it is very important to use the <code class="highlighter-rouge">angular-router-loader</code> which enables loading modules through the string we mentioned in the routes.</p>
+
+<p>So if a route ts file comes along we want to send it through the <code class="highlighter-rouge">angular2-template-loader</code>, <code class="highlighter-rouge">angular-router-loader</code> and the <code class="highlighter-rouge">awesome-typescript-loader</code> to proceed with our files.</p>
+
+<p>The rule for this looks like the following:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">{</span><span class="w">
+    </span><span class="err">test:</span><span class="w"> </span><span class="err">/\.ts$/,</span><span class="w">
+    </span><span class="err">use:</span><span class="w"> </span><span class="err">[</span><span class="w">
+        </span><span class="err">'awesome-typescript-loader',</span><span class="w">
+        </span><span class="err">'angular-router-loader?aot=true&amp;genDir=aot/',</span><span class="w">
+        </span><span class="err">'angular2-template-loader',</span><span class="w">
+    </span><span class="err">]</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span></code></pre></figure>
+
+<blockquote>
+  <p>Pay attention to the parameters we give to the <code class="highlighter-rouge">angular-router-loader</code>. the <code class="highlighter-rouge">genDir</code> has to match our directory containing our aot compiled output.</p>
+</blockquote>
+
+<p>and as an entrypoint we are pointing to the new file we created:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">entry:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">'app':</span><span class="w"> </span><span class="err">'./app/main-aot.ts'</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span></code></pre></figure>
+
+<p>With this webpack uses our aot-file as an entrypoint and follows all imports in this file.</p>
+
+<p>We also have to tell webpack how to name the files which are recognized as lazy loaded. We can do this by adding a “chunkFilename” in the output-settings:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">output:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="err">path:</span><span class="w"> </span><span class="err">'./.dist/web/aot/',</span><span class="w">
+    </span><span class="err">filename:</span><span class="w"> </span><span class="err">'js/[name]-[hash:8].bundle.js',</span><span class="w">
+    </span><span class="err">chunkFilename:</span><span class="w"> </span><span class="err">'js/[id].-[hash:8].chunk.js',</span><span class="w">
+</span><span class="p">}</span><span class="err">,</span></code></pre></figure>
+
+<h3 id="webpack-adding-tree-shaking">Webpack: Adding tree shaking</h3>
+
+<p>To add tree shaking we have to use the <code class="highlighter-rouge">UglifyJsPlugin</code> from webpack which we can configure like this:</p>
+
+<figure class="highlight"><pre><code class="language-json" data-lang="json"><span class="err">var</span><span class="w"> </span><span class="err">CompressionPlugin</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">require(</span><span class="s2">"compression-webpack-plugin"</span><span class="err">);</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+</span><span class="err">plugins:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+    </span><span class="err">new</span><span class="w"> </span><span class="err">webpack.optimize.UglifyJsPlugin(</span><span class="p">{</span><span class="w">
+        </span><span class="err">compress:</span><span class="w"> </span><span class="err">{</span><span class="w">
+            </span><span class="err">warnings:</span><span class="w"> </span><span class="err">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">output:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="err">comments:</span><span class="w"> </span><span class="err">false</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">sourceMap:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="err">})</span><span class="p">,</span><span class="w">
+    </span><span class="err">new</span><span class="w"> </span><span class="err">CompressionPlugin(</span><span class="p">{</span><span class="w">
+        </span><span class="err">asset:</span><span class="w"> </span><span class="nt">"[path].gz[query]"</span><span class="err">,</span><span class="w">
+        </span><span class="err">algorithm</span><span class="p">:</span><span class="w"> </span><span class="s2">"gzip"</span><span class="p">,</span><span class="w">
+        </span><span class="err">test</span><span class="p">:</span><span class="w"> </span><span class="err">/\.js$|\.html$/</span><span class="p">,</span><span class="w">
+        </span><span class="err">threshold</span><span class="p">:</span><span class="w"> </span><span class="mi">10240</span><span class="p">,</span><span class="w">
+        </span><span class="err">minRatio</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="w">
+    </span><span class="p">}</span><span class="err">)</span><span class="p">,</span><span class="w">
+    </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span></code></pre></figure>
+
+<blockquote>
+  <p>Here we also added the CompressionPlugin to get the compressed output too.</p>
+</blockquote>
+
+<h3 id="wrapping-it-up--beautify-it">Wrapping it up &amp; beautify it</h3>
+
+<p>Ahead of Time compilation and treeshaking are two different things often used together. AoT is done via a different compiler. Treeshaking <em>can</em> be done via webpack but also rollup.js is a way to go.</p>
+
+<p>So we need to have two steps:</p>
+
+<ol>
+  <li>compile our files via the ngc compiler</li>
+  <li>use the output of that and consume it via webpack</li>
+</ol>
+
+<h4 id="beautify-it">beautify it</h4>
+
+<p>You can now “hide” those two commands in the <code class="highlighter-rouge">package.json</code> “scripts” section like this:</p>
+
+<p><code class="highlighter-rouge">"webpack-prod": "npm run ngc &amp;&amp; webpack",</code></p>
+
+<p>which you can run via</p>
+
+<p><code class="highlighter-rouge">npm run webpack-prod</code></p>
+
+<blockquote>
+  <p>Be sure to have the ngc command globally installed then…</p>
+</blockquote>
+
+<p>I hope i could clarify a bit how aot and treeshaking work with webpack 2 and angular.</p>
+
+<p>Best regards</p>
+
+<p>Fabian</p>
+
+<h4 id="links">Links</h4>
+
+<p><a href="https://angular.io/docs/ts/latest/cookbook/aot-compiler.html">Ahead of time compilation - Angular.io</a></p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master">ASPNET-ASPNETCore-AngularJS-Angular</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How to set up Angular and Webpack in Visual Studio with ASP.NET Core</title>
+	  <link>//blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-08-27T16:58:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to show an example of how to set up Angular and Webpack in Visual Studio with ASP.NET Core ready for dev and production builds.</p>
+
+<blockquote>
+  <p>See also my latest article <a href="http://offering.solutions/blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/">Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack</a></p>
+</blockquote>
+
+<p>If you read this until the end you will have a picture how to enable webpack and webpack-dev-server with npm and how to use webpack to bundle your angular application and inject files into index.html for your web application.</p>
+
+<p>I had this topic already with my colleague <a href="https://github.com/damienbod">DamienBod</a>
+<a href="https://github.com/damienbod/Angular2WebpackVisualStudio">here</a> and a StarterTemplate <a href="https://github.com/FabianGosebrink/ASPNETCore-Angular-StarterTemplate">here</a> (which is using system.js as bootstrapper for your application), but this post is more to show how we get there and which steps you should take to get things going. For Damien and me this was a bit confusing in the beginning so this is the guide how we started actually. I hope you like reading it as much as I liked writing it.</p>
+
+<p>Find the code here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Webpack-StarterTemplate">https://github.com/FabianGosebrink/ASPNET-Core-Angular2-Webpack-StarterTemplate</a></p>
+
+<h3 id="the-new-project">The new project</h3>
+
+<p>Select “File” –&gt; “New Project”</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Clipboard01.jpg" alt="How to set up Angular 2 and Webpack in Visual Studio with ASP.NET Core" /></p>
+
+<p>And create a new project. In this case we name it “Angular2WebpackStarter”. After creating you can take the empty template like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Clipboard02.jpg" alt="How to set up Angular 2 and Webpack in Visual Studio with ASP.NET Core" /></p>
+
+<p>Make sure you have installed the latest typescript nuget package because we will need it later to work with angular2 and visual studio 2015. A Resharper in the latest version also cannot be a mistake ;)</p>
+
+<h3 id="add-the-necessary-files-and-folders">Add the necessary files and folders</h3>
+
+<p>The next step is to add the files and folders which are needed to keep your application structured and organized.</p>
+
+<p>Add a new folder in your solution and call it “Angular2app”. This where all the client related dependencies are stored and being “compiled” and transferred to the wwwroot folder later on.</p>
+
+<p>Next, add these files to your project and fill it with this data:</p>
+
+<p><strong>package.json</strong>
+Your npm file related to your project. It keeps als dependencies and everything for your client.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"aspnetcoreangularwebpackstarter"</span><span class="p">,</span>
+  <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"0.0.0"</span><span class="p">,</span>
+  <span class="s2">"license"</span><span class="err">:</span> <span class="s2">"MIT"</span><span class="p">,</span>
+  <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"ngc"</span><span class="err">:</span> <span class="s2">"ngc -p ./tsconfig-aot.json"</span><span class="p">,</span>
+    <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"tsc &amp;&amp; npm run startWebpackDevServer"</span><span class="p">,</span>
+    <span class="s2">"startWebpackDevServer"</span><span class="err">:</span> <span class="s2">"webpack-dev-server --inline --progress --port 8080"</span><span class="p">,</span>
+    <span class="s2">"build"</span><span class="err">:</span> <span class="s2">"SET NODE_ENV=development &amp;&amp; webpack -d --color &amp;&amp; dotnet run"</span><span class="p">,</span>
+    <span class="s2">"buildProduction"</span><span class="err">:</span> <span class="s2">"npm run ngc &amp;&amp; SET NODE_ENV=production &amp;&amp; webpack -d --color"</span><span class="p">,</span>
+    <span class="s2">"lint"</span><span class="err">:</span> <span class="s2">"tslint ./angularApp/**/*.ts -t verbose"</span><span class="p">,</span>
+    <span class="s2">"tsc"</span><span class="err">:</span> <span class="s2">"tsc"</span><span class="p">,</span>
+    <span class="s2">"tsc:w"</span><span class="err">:</span> <span class="s2">"tsc -w"</span>
+  <span class="p">},</span>
+  <span class="s2">"keywords"</span><span class="err">:</span> <span class="p">[],</span>
+  <span class="s2">"author"</span><span class="err">:</span> <span class="s2">"Fabian Gosebrink"</span><span class="p">,</span>
+  <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"@angular/common"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/compiler"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/core"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/forms"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/http"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-browser"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-browser-dynamic"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/router"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/upgrade"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"angular-in-memory-web-api"</span><span class="err">:</span> <span class="s2">"0.3.1"</span><span class="p">,</span>
+    <span class="s2">"core-js"</span><span class="err">:</span> <span class="s2">"2.4.1"</span><span class="p">,</span>
+    <span class="s2">"reflect-metadata"</span><span class="err">:</span> <span class="s2">"0.1.10"</span><span class="p">,</span>
+    <span class="s2">"rxjs"</span><span class="err">:</span> <span class="s2">"5.2.1-smooth"</span><span class="p">,</span>
+    <span class="s2">"zone.js"</span><span class="err">:</span> <span class="s2">"0.8.5"</span><span class="p">,</span>
+    <span class="s2">"@angular/compiler-cli"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-server"</span><span class="err">:</span> <span class="s2">"~4.0.1"</span><span class="p">,</span>
+    <span class="s2">"bootstrap"</span><span class="err">:</span> <span class="s2">"^3.3.7"</span><span class="p">,</span>
+    <span class="s2">"ie-shim"</span><span class="err">:</span> <span class="s2">"~0.1.0"</span><span class="p">,</span>
+    <span class="s2">"jquery"</span><span class="err">:</span> <span class="s2">"^3.1.1"</span><span class="p">,</span>
+    <span class="s2">"angular2-toaster"</span><span class="err">:</span> <span class="s2">"^3.0.1"</span><span class="p">,</span>
+    <span class="s2">"ng2-slim-loading-bar"</span><span class="err">:</span> <span class="s2">"^2.4.0"</span>
+  <span class="p">},</span>
+  <span class="s2">"devDependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"@types/jasmine"</span><span class="err">:</span> <span class="s2">"^2.5.47"</span><span class="p">,</span>
+    <span class="s2">"@types/node"</span><span class="err">:</span> <span class="s2">"7.0.12"</span><span class="p">,</span>
+    <span class="s2">"angular-router-loader"</span><span class="err">:</span> <span class="s2">"^0.6.0"</span><span class="p">,</span>
+    <span class="s2">"angular2-template-loader"</span><span class="err">:</span> <span class="s2">"^0.6.2"</span><span class="p">,</span>
+    <span class="s2">"awesome-typescript-loader"</span><span class="err">:</span> <span class="s2">"^3.1.2"</span><span class="p">,</span>
+    <span class="s2">"canonical-path"</span><span class="err">:</span> <span class="s2">"0.0.2"</span><span class="p">,</span>
+    <span class="s2">"concurrently"</span><span class="err">:</span> <span class="s2">"^3.4.0"</span><span class="p">,</span>
+    <span class="s2">"http-server"</span><span class="err">:</span> <span class="s2">"^0.9.0"</span><span class="p">,</span>
+    <span class="s2">"ie-shim"</span><span class="err">:</span> <span class="s2">"^0.1.0"</span><span class="p">,</span>
+    <span class="s2">"jquery"</span><span class="err">:</span> <span class="s2">"^3.2.1"</span><span class="p">,</span>
+    <span class="s2">"json-loader"</span><span class="err">:</span> <span class="s2">"^0.5.4"</span><span class="p">,</span>
+    <span class="s2">"lite-server"</span><span class="err">:</span> <span class="s2">"^2.3.0"</span><span class="p">,</span>
+    <span class="s2">"lodash"</span><span class="err">:</span> <span class="s2">"^4.17.4"</span><span class="p">,</span>
+    <span class="s2">"node-sass"</span><span class="err">:</span> <span class="s2">"^4.5.2"</span><span class="p">,</span>
+    <span class="s2">"protractor"</span><span class="err">:</span> <span class="s2">"~5.1.1"</span><span class="p">,</span>
+    <span class="s2">"raw-loader"</span><span class="err">:</span> <span class="s2">"^0.5.1"</span><span class="p">,</span>
+    <span class="s2">"rimraf"</span><span class="err">:</span> <span class="s2">"^2.6.1"</span><span class="p">,</span>
+    <span class="s2">"source-map-loader"</span><span class="err">:</span> <span class="s2">"^0.2.1"</span><span class="p">,</span>
+    <span class="s2">"style-loader"</span><span class="err">:</span> <span class="s2">"^0.16.1"</span><span class="p">,</span>
+    <span class="s2">"ts-helpers"</span><span class="err">:</span> <span class="s2">"^1.1.2"</span><span class="p">,</span>
+    <span class="s2">"tslint"</span><span class="err">:</span> <span class="s2">"^5.0.0"</span><span class="p">,</span>
+    <span class="s2">"typescript"</span><span class="err">:</span> <span class="s2">"~2.2.2"</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">,</span> <span class="s2">"-vs-binding"</span><span class="err">:</span><span class="p">{</span><span class="s2">"BeforeBuild"</span><span class="err">:</span><span class="p">[</span><span class="s2">"buildProduction"</span><span class="p">]}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>tsconfig.json</strong></p>
+
+<p>Is configuring your tsc compiler. Whenever your run the “tsc” command from the commandline it will be taken as configuration for the typescript-compiler.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"compilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"target"</span><span class="err">:</span> <span class="s2">"es5"</span><span class="p">,</span>
+    <span class="s2">"module"</span><span class="err">:</span> <span class="s2">"es2015"</span><span class="p">,</span>
+    <span class="s2">"moduleResolution"</span><span class="err">:</span> <span class="s2">"node"</span><span class="p">,</span>
+    <span class="s2">"sourceMap"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"emitDecoratorMetadata"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"experimentalDecorators"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"lib"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"es2015"</span><span class="p">,</span>
+      <span class="s2">"dom"</span>
+    <span class="p">],</span>
+    <span class="s2">"noImplicitAny"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"suppressImplicitAnyIndexErrors"</span><span class="err">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="fill-the-angular2app-folder">Fill the angular2app-folder</h3>
+
+<p>Next we are going to fill the angular2 app folder. Here we are going to be lazy. We are taking the <a href="https://github.com/angular/quickstart">quickstart repo from angular.io</a> and copy the files we need form there. For the sake of simplicity we will only take the <a href="https://github.com/angular/quickstart/blob/master/src/app/">app.module</a> to get things going. To be structured its best you create an app folder inside to place your code there.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage02.jpg" alt="Zwischenablage02" /></p>
+
+<p>But to start we need an index.html. And for webpack to be prepared we need an entrypoint for the polyfills and the vendor files we need for our app. Lets add these files.</p>
+
+<p>index.html</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">ASP</span><span class="p">.</span><span class="nx">NET</span> <span class="nx">Core</span> <span class="nx">Angular</span> <span class="nx">Webpack</span> <span class="nx">Demo</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">charset</span><span class="o">=</span><span class="nx">UTF</span><span class="o">-</span><span class="mi">8</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">name</span><span class="o">=</span><span class="nx">viewport</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"width=device-width,initial-scale=1"</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">my</span><span class="o">-</span><span class="nx">app</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/my-app</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html&gt;</span></code></pre></figure>
+
+<blockquote>
+  <p>Note that we include <strong>nothing</strong> here yet. This is on purpose. Read further… :)</p>
+</blockquote>
+
+<p>I reduced the vendor.ts and polyfills.ts to store only the things we need</p>
+
+<p>polyfills.ts</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'ie-shim'</span><span class="p">;</span> <span class="c1">// Internet Explorer 9 support.</span>
+<span class="kr">import</span> <span class="s1">'zone.js/dist/zone'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'reflect-metadata'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/symbol'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/object'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/function'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-int'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-float'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/number'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/math'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/string'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/date'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/array'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/regexp'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/typed'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/reflect'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es7/reflect'</span><span class="p">;</span></code></pre></figure>
+
+<p>vendor.ts</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'jquery/dist/jquery'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/js/bootstrap'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/css/bootstrap.css'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'angular2-toaster/toaster.css'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'angular2-toaster/angular2-toaster'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'ng2-slim-loading-bar'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'ng2-slim-loading-bar/style.css'</span><span class="p">;</span></code></pre></figure>
+
+<p>Why did we all this and if the wwwroot-folder is the one to be served to the client…why are we doing all this?</p>
+
+<p>This is where webpack comes into play. We will configure webpack now to build our application into the wwwroot folder. Let’s do this…</p>
+
+<p>Lets add a webpack.config.js file to the root of the project. (Make sure you have the <a href="https://visualstudiogallery.msdn.microsoft.com/5497fd10-b1ba-474c-8991-1438ae47012a">WebPack Task Runner Extension</a> installed) .</p>
+
+<p>So…you added the file: Paste the following content:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ExtractTextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'extract-text-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./angularApp/app/main.ts'</span>
+    <span class="p">},</span>
+    <span class="na">devtool</span><span class="p">:</span> <span class="s1">'source-map'</span><span class="p">,</span>
+    <span class="na">performance</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">hints</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.scss'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'wwwroot'</span><span class="p">),</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'js/[name].bundle.js'</span>
+    <span class="p">},</span>
+
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">'awesome-typescript-loader'</span><span class="p">,</span>
+                    <span class="s1">'angular2-template-loader'</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'html-loader'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpg|gif|ico|woff|woff2|ttf|svg|eot</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=assets/[name].[ext]'</span><span class="p">,</span>
+            <span class="p">},</span>
+
+            <span class="c1">// Load css files which are required in vendor.ts</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">({</span>
+                    <span class="na">fallbackLoader</span><span class="p">:</span> <span class="s2">"style-loader"</span><span class="p">,</span>
+                    <span class="na">loader</span><span class="p">:</span> <span class="s2">"css-loader"</span>
+                <span class="p">})</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'css/[name].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">'./wwwroot/js/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/css/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/assets/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/index.html'</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProvidePlugin</span><span class="p">({</span>
+            <span class="na">jQuery</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">,</span>
+            <span class="na">$</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">,</span>
+            <span class="na">jquery</span><span class="p">:</span> <span class="s1">'jquery'</span>
+        <span class="p">})</span>
+    <span class="p">],</span>
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">stats</span><span class="p">:</span> <span class="s1">'minimal'</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>This file is no magic, don’t be scared:</p>
+
+<p>First we require everything we need to use to kick off webpack. Then we will export our complete configuration. Our entrypoints are pointing to the files we just created (remember?) and of course our entrypoint of our application.</p>
+
+<p>The “resolve”-array tells webpack to look for those file endings. The “output” is what we all were looking for. Here we tell webpack “Hey, what no matter what you are doing and how you are doing it, put it in the ./wwwroot-Folder and please be gentle and name the files like I will tell you later on ([name]) and please put a hash on it at the end, but only 8 digits ([hash:8])”. This is it.</p>
+
+<p>Rules and Loaders are telling webpack <strong>how</strong> to handle such file endings. So: If you encounter such a file, so this and that. The plugins are telling webpack how to behave generally, to point which files out etc. And this is alle the magic.</p>
+
+<p><strong>package.json</strong></p>
+
+<p>Add the webpack-things we need to the “DevDependencies”-section in the package.json:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">"devDependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"@types/jasmine"</span><span class="err">:</span> <span class="s2">"^2.5.36"</span><span class="p">,</span>
+    <span class="s2">"@types/node"</span><span class="err">:</span> <span class="s2">"7.0.0"</span><span class="p">,</span>
+    <span class="s2">"angular-router-loader"</span><span class="err">:</span> <span class="s2">"^0.5.0"</span><span class="p">,</span>
+    <span class="s2">"angular2-template-loader"</span><span class="err">:</span> <span class="s2">"^0.6.0"</span><span class="p">,</span>
+    <span class="s2">"awesome-typescript-loader"</span><span class="err">:</span> <span class="s2">"^2.2.4"</span><span class="p">,</span>
+    <span class="s2">"canonical-path"</span><span class="err">:</span> <span class="s2">"0.0.2"</span><span class="p">,</span>
+    <span class="s2">"clean-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^0.1.15"</span><span class="p">,</span>
+    <span class="s2">"concurrently"</span><span class="err">:</span> <span class="s2">"^3.1.0"</span><span class="p">,</span>
+    <span class="s2">"copy-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^4.0.1"</span><span class="p">,</span>
+    <span class="s2">"css-loader"</span><span class="err">:</span> <span class="s2">"^0.26.1"</span><span class="p">,</span>
+    <span class="s2">"extract-text-webpack-plugin"</span><span class="err">:</span> <span class="s2">"2.0.0-beta.5"</span><span class="p">,</span>
+    <span class="s2">"file-loader"</span><span class="err">:</span> <span class="s2">"^0.9.0"</span><span class="p">,</span>
+    <span class="s2">"html-loader"</span><span class="err">:</span> <span class="s2">"^0.4.4"</span><span class="p">,</span>
+    <span class="s2">"html-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^2.26.0"</span><span class="p">,</span>
+    <span class="s2">"http-server"</span><span class="err">:</span> <span class="s2">"^0.9.0"</span><span class="p">,</span>
+    <span class="s2">"ie-shim"</span><span class="err">:</span> <span class="s2">"^0.1.0"</span><span class="p">,</span>
+    <span class="s2">"jquery"</span><span class="err">:</span> <span class="s2">"^2.2.0"</span><span class="p">,</span>
+    <span class="s2">"json-loader"</span><span class="err">:</span> <span class="s2">"^0.5.4"</span><span class="p">,</span>
+    <span class="s2">"lite-server"</span><span class="err">:</span> <span class="s2">"^2.2.2"</span><span class="p">,</span>
+    <span class="s2">"lodash"</span><span class="err">:</span> <span class="s2">"^4.16.4"</span><span class="p">,</span>
+    <span class="s2">"node-sass"</span><span class="err">:</span> <span class="s2">"^4.3.0"</span><span class="p">,</span>
+    <span class="s2">"protractor"</span><span class="err">:</span> <span class="s2">"~4.0.14"</span><span class="p">,</span>
+    <span class="s2">"raw-loader"</span><span class="err">:</span> <span class="s2">"^0.5.1"</span><span class="p">,</span>
+    <span class="s2">"rimraf"</span><span class="err">:</span> <span class="s2">"^2.5.4"</span><span class="p">,</span>
+    <span class="s2">"sass-loader"</span><span class="err">:</span> <span class="s2">"^4.1.1"</span><span class="p">,</span>
+    <span class="s2">"source-map-loader"</span><span class="err">:</span> <span class="s2">"^0.1.6"</span><span class="p">,</span>
+    <span class="s2">"style-loader"</span><span class="err">:</span> <span class="s2">"^0.13.1"</span><span class="p">,</span>
+    <span class="s2">"ts-helpers"</span><span class="err">:</span> <span class="s2">"^1.1.2"</span><span class="p">,</span>
+    <span class="s2">"tslint"</span><span class="err">:</span> <span class="s2">"^4.3.1"</span><span class="p">,</span>
+    <span class="s2">"tslint-loader"</span><span class="err">:</span> <span class="s2">"^3.3.0"</span><span class="p">,</span>
+    <span class="s2">"typescript"</span><span class="err">:</span> <span class="s2">"~2.0.10"</span><span class="p">,</span>
+    <span class="s2">"url-loader"</span><span class="err">:</span> <span class="s2">"^0.5.7"</span><span class="p">,</span>
+    <span class="s2">"webpack"</span><span class="err">:</span> <span class="s2">"^2.2.0"</span><span class="p">,</span>
+    <span class="s2">"webpack-dev-server"</span><span class="err">:</span> <span class="s2">"^1.16.2"</span>
+  <span class="p">}</span></code></pre></figure>
+
+<p>Run npm install or let VS do this for you.</p>
+
+<p>Now that you’ve done this open up the Task Runner Explorer in Visual Studio and let the “Run - Development” go:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage04.jpg" alt="Zwischenablage04" /></p>
+
+<p>Et voila: our wwwroot-folder got filled with our entire app (or with what we have got so far). But there is one thing missing: The index.html!</p>
+
+<p>Lets tell webpack to take our index.html we already have got and inject the sources into it and copy it too. To do this extend the “plugins”-section like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"> <span class="nx">plugins</span><span class="err">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'css/[name].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">'./wwwroot/js/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/css/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/assets/'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/index.html'</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+        <span class="c1">// inject in index.html</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./angularApp/index.html'</span><span class="p">,</span>
+            <span class="na">inject</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.html'</span>
+        <span class="p">}),</span>
+    <span class="p">],</span></code></pre></figure>
+
+<p>and add the</p>
+
+<p><code class="highlighter-rouge">var HtmlWebpackPlugin = require("html-webpack-plugin");</code></p>
+
+<p>at the top of the page. We need to include what we want to use ;)</p>
+
+<p>let it run again:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage05.jpg" alt="Zwischenablage05" /></p>
+
+<p>Lets take a look into this index.html:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;base</span> <span class="na">href=</span><span class="s">"/"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>ASP.NET Core Angular Webpack Demo<span class="nt">&lt;/title&gt;</span>
+<span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"css/app.bundle.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;&lt;/head&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;my-app&gt;</span>Loading...<span class="nt">&lt;/my-app&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"js/polyfills.bundle.js"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"js/app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;&lt;/body&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>our files got injected!</p>
+
+<p>Before we actually see our application we have to modify the Startup.cs to behave like we want it to:</p>
+
+<p>Add</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml">"Microsoft.AspNetCore.Mvc": "1.1.0",
+"Microsoft.AspNetCore.StaticFiles": "1.1.0"</code></pre></figure>
+
+<p>to your project.json and in the Startup write:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">IConfigurationRoot</span> <span class="n">Configuration</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// This method gets called by the runtime. Use this method to add services to the container.
+</span>    <span class="c1">// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+</span>    <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">services</span><span class="p">.</span><span class="nf">AddCors</span><span class="p">();</span>
+        <span class="n">services</span><span class="p">.</span><span class="nf">AddMvc</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">Startup</span><span class="p">(</span><span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="kt">var</span> <span class="n">builder</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ConfigurationBuilder</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">SetBasePath</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">ContentRootPath</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="s">"appsettings.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">,</span> <span class="n">reloadOnChange</span><span class="p">:</span> <span class="k">true</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">AddJsonFile</span><span class="p">(</span><span class="err">$</span><span class="s">"appsettings.{env.EnvironmentName}.json"</span><span class="p">,</span> <span class="n">optional</span><span class="p">:</span> <span class="k">true</span><span class="p">);</span>
+
+        <span class="n">builder</span><span class="p">.</span><span class="nf">AddEnvironmentVariables</span><span class="p">();</span>
+        <span class="n">Configuration</span> <span class="p">=</span> <span class="n">builder</span><span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+    <span class="p">}</span>
+
+
+    <span class="c1">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+</span>    <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">loggerFactory</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">(</span><span class="n">Configuration</span><span class="p">.</span><span class="nf">GetSection</span><span class="p">(</span><span class="s">"Logging"</span><span class="p">));</span>
+        <span class="n">loggerFactory</span><span class="p">.</span><span class="nf">AddDebug</span><span class="p">();</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseCors</span><span class="p">(</span><span class="n">config</span> <span class="p">=&gt;</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">AllowAnyHeader</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">AllowAnyMethod</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">AllowAnyOrigin</span><span class="p">());</span>
+                
+        <span class="n">app</span><span class="p">.</span><span class="nf">UseDefaultFiles</span><span class="p">();</span>
+        <span class="n">app</span><span class="p">.</span><span class="nf">UseStaticFiles</span><span class="p">();</span>
+
+        <span class="n">app</span><span class="p">.</span><span class="nf">UseMvc</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now we have an index.html and we can press the play-button in Visual Studio:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage06.jpg" alt="Zwischenablage06" /></p>
+
+<p>So it is working!!</p>
+
+<p>Great so far.</p>
+
+<h3 id="adding-webpack-dev-server">Adding webpack dev server:</h3>
+
+<p>Wouldn’t it be nice to get the files refreshed as soon as I start working on them with this webpack construction? Well we already added the webpack dev-server in the package.json as dependency and in the web.config we already configured it in a basic way. So now lets use it:</p>
+
+<p>You can now change the “npm start” command but we will simply make another one like “startWebpackDevServer”. So add the following line into the scripts section of package.json:</p>
+
+<p><code class="highlighter-rouge">"startWebpackDevServer": "webpack-dev-server --inline --progress --port 8080",</code></p>
+
+<p>Now open a commandline to the level of your package.json and type “npm run startWebpackDevServer”:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage07.jpg" alt="Zwischenablage07" /></p>
+
+<p>Let it open and browse to “localhost:8080”</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage08.jpg" alt="Zwischenablage08" /></p>
+
+<p>There your app appears!</p>
+
+<p>So lets take a look how this behaves if we change a file…</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Animation.gif" alt="Animation" /></p>
+
+<p>Okay great.</p>
+
+<p>Now lets go ahead and build this thing up to use development and production builds, which is our last step:</p>
+
+<h3 id="development-and-production-builds">Development and Production builds</h3>
+
+<p>Lets take a closer look to what we did when we first ran our webpack:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage09.jpg" alt="How to set up Angular and Webpack in Visual Studio with ASP.NET Core" /></p>
+
+<p>There webpack is setting the variable “NODE_ENV” to “development”. Lets use that!!!</p>
+
+<p>rename the “webpack.config.js” to “webpack.dev.js”. Create a new webpack.config.js.</p>
+
+<p>All we need to do now is creating a switch which says “if you are development, use a (new) file (we will create) which takes the dev-thing, otherwise take the production ones”</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">environment</span> <span class="o">=</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="s2">"development"</span><span class="p">).</span><span class="nx">trim</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">environment</span> <span class="o">===</span> <span class="s2">"development"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.dev.js'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.prod.js'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So THIS is our new entrypoint for webpack, the new webpack.config.json!!</p>
+
+<p>Create a file which is called “webpack.prod.js” which will be our production file in the future. You should now have something like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage10.jpg" alt="How to set up Angular and Webpack in Visual Studio with ASP.NET Core" /></p>
+
+<p>To test this put a simple console.log in the production file like:</p>
+
+<p><code class="highlighter-rouge">console.log("----&gt; Production");</code></p>
+
+<p>and let it run:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/08/Zwischenablage11.jpg" alt="Zwischenablage11" /></p>
+
+<p>So now lets pimp the production a bit. Its mostly the same we have so far for dev, but we need a little more plugins. Maybe the one to uglify the js <a href="http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin">UglifyJsPlugin</a> and to delete the files in the wwwroot first “<a href="https://github.com/johnagan/clean-webpack-plugin">Clean for webpack</a>”.</p>
+
+<p>Copy the whole content from the webpack.dev.json to the prod.json and simply add the uglifyjs-plugin like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">plugins</span><span class="err">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'css/[name]-[hash:6].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="c1">// inject in index.html</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./angularApp/index.html'</span><span class="p">,</span>
+            <span class="na">inject</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.html'</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">UglifyJsPlugin</span><span class="p">({</span>
+            <span class="na">compress</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">warnings</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">comments</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="na">sourceMap</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">ProvidePlugin</span><span class="p">({</span>
+            <span class="na">jQuery</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">,</span>
+            <span class="na">$</span><span class="p">:</span> <span class="s1">'jquery'</span><span class="p">,</span>
+            <span class="na">jquery</span><span class="p">:</span> <span class="s1">'jquery'</span>
+        <span class="p">})</span>
+    <span class="p">],</span></code></pre></figure>
+
+<p>If you now let the prod-task run the files will be treated as ever but they are uglified as well.</p>
+
+<p>To clean the wwwroot-folder first we need to install another plugin “Clean for webpack” and use it:</p>
+
+<p><code class="highlighter-rouge">npm install clean-webpack-plugin --save-dev</code></p>
+
+<p>and in both webpack-files</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span>
+ <span class="c1">//....</span>
+
+<span class="nl">plugins</span><span class="p">:</span> <span class="p">[</span>
+       <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s2">"[name].bundle.css"</span><span class="p">),</span>
+       <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+           <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s2">"app"</span><span class="p">,</span> <span class="s2">"vendor"</span><span class="p">,</span> <span class="s2">"polyfills"</span><span class="p">]</span>
+       <span class="p">}),</span>
+
+       <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">UglifyJsPlugin</span><span class="p">({</span>
+           <span class="na">compress</span><span class="p">:</span> <span class="p">{</span>
+               <span class="na">warnings</span><span class="p">:</span> <span class="kc">false</span>
+           <span class="p">}</span>
+       <span class="p">}),</span>
+         <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">"./wwwroot/"</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+       <span class="c1">// inject in index.html</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./angularApp/index.html'</span><span class="p">,</span>
+            <span class="na">inject</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.html'</span>
+        <span class="p">}),</span>
+    <span class="p">],</span></code></pre></figure>
+
+<p>Now our folder gets cleaned. You can add this into dev, too.</p>
+
+<p>This is it. This is how you can treat Angular with webpack in Visual Studio with an ASPNET Core application. I hope you liked and enjoyed reading.</p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Cross Platform Builds with Angular, Gulp and Webpack</title>
+	  <link>//blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-06-17T19:09:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show how to create Cross Platform Builds with Angular, Gulp and Webpack</p>
+
+<p><a href="https://webpack.github.io/" title="Webpack">Webpack</a></p>
+
+<p><a href="http://gulpjs.com/" title="Gulp">Gulp</a></p>
+
+<p><a href="http://angular.io/" title="Angular2">Angular</a></p>
+
+<p>Code can be found here: <a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<h3 id="setting-up-the-folder-structure">Setting up the folder structure</h3>
+
+<p>The folder structure is very important but also one of the most discussed in the internet I think ;). Mine looks like the following:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/folderStructure.png" alt="Angular2 webpack" /></p>
+
+<p>Whereas “app” contains my Angular 2 application and the other files and folders speak for theirselves.</p>
+
+<h2 id="the-goal">The goal</h2>
+
+<p>The sense of this blogpost is now to get a build with webpack AND gulp combined to have the same cross platform functionality we are used from a “gulp-only” build.</p>
+
+<h3 id="the-past">The past</h3>
+
+<p>In the past the problem with Angular 2 and gulp was the bundling and the minification of the application. Gulp works with streams and files whereas angular 2 is build with related components which are imported and then used. We can not concat every file anymore in the correct order and minify it to distribute an application.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>The solution (or at least one of them) is webpack. Webpack is slightly different from gulp, where it can resolve the dependencies and use your “import” and “require” statements to see when which file is used and has to be included.</p>
+
+<h2 id="the-files">The files</h2>
+
+<p>Now I want to show you the files which can make this whole thing possible. See the “gulptasks”-folder to divide the responsibilities of building each target platform.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/gulpFiles.png" alt="angular2 webpack" /></p>
+
+<h3 id="webpackconfigjs">webpack.config.js</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ExtractTextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'extract-text-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span>
+    <span class="p">},</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'ts'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'html'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpe</span><span class="se">?</span><span class="sr">g|gif|svg|woff|woff2|ttf|eot|ico</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file?name=fonts/[name].[hash].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">(</span><span class="s1">'style'</span><span class="p">,</span> <span class="s1">'css?sourceMap'</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">include</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw'</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'[name].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./index.html'</span>
+        <span class="p">})</span>
+    <span class="p">],</span>
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">stats</span><span class="p">:</span> <span class="s1">'minimal'</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>This file is plain simple:</p>
+
+<p>First we tell webpack that we have three entry-points (three files to start) in our application which are “app”, “vendor” and “polyfills”</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">entry</span><span class="err">:</span> <span class="p">{</span>
+<span class="s1">'polyfills'</span><span class="err">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+<span class="s1">'vendor'</span><span class="err">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+<span class="s1">'app'</span><span class="err">:</span> <span class="s1">'./app/main.ts'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>Then we tell webpack which files to look for…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">resolve</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>…how the js-files should be named on output…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">output</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>… and in the modules part we define how to treat the several file types.</p>
+
+<p>The plugins section then sticks together every operation we do with the files. So this is normal webpack as you can see in several repositories as well.</p>
+
+<p>But how to deal with gulp? Well…there is an npm package…;) It’s called <code class="highlighter-rouge">webpack-stream</code> and allows us to do tasks like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'web-compile-with-webpack'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'./app/main.js'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">webpack</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'../webpack.config.js'</span><span class="p">)))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">"../.temp/webapp/"</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>So if we trigger this gulp-tasks our application is build an bundles and so on and will be copied to the specified folder with gulp.</p>
+
+<p>After we did this we can go ahead like normal.</p>
+
+<p>Because we also have a dev-server from webpack in the repository above we will have a index.html fully loaded to execute everything. The gulp-html-comments make sure that everything in between those comments gets overwritten when we inject sources with gulp.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>FoodChooser Angular 2<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- inject:css --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"vendor.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"app.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="c">&lt;!-- 3. Display the application --&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;foodChooser-app&gt;</span>Loading...<span class="nt">&lt;/foodChooser-app&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"polyfills.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"vendor.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>The complete tasks for the web solution are:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:web:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'web-clean-temp-folder'</span><span class="p">,</span>        <span class="c1">// cleans the temp folder</span>
+        <span class="s1">'web-compile-with-webpack'</span><span class="p">,</span>     <span class="c1">// compiles the sources with webpack</span>
+        <span class="s1">'web-copy-index-to-webapp-temp-folder'</span><span class="p">,</span>     <span class="c1">// copies the index.html to the temp folder</span>
+        <span class="s1">'web-inject-in-html'</span><span class="p">,</span>        <span class="c1">// injects the webpack-output into the index.html with gulp</span>
+        <span class="s1">'web-clean-dist-folder'</span><span class="p">,</span>    <span class="c1">// clean the dist folder first...</span>
+        <span class="s1">'web-copy-to-dist'</span><span class="p">,</span> <span class="c1">// copy it</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>After we run this the index.html looks quite the same:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">FoodChooser</span> <span class="nx">Angular</span> <span class="mi">2</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"viewport"</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"width=device-width, initial-scale=1"</span><span class="o">&gt;</span>
+
+    <span class="c">&lt;!--</span> <span class="nx">inject</span><span class="err">:</span><span class="nx">css</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"vendor.bundle.css"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"app.bundle.css"</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="mi">3</span><span class="p">.</span> <span class="nx">Display</span> <span class="nx">the</span> <span class="nx">application</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">foodChooser</span><span class="o">-</span><span class="nx">app</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/foodChooser-app</span><span class="err">&gt;
+</span>
+
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"cordova.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nl">inject</span><span class="p">:</span><span class="nx">js</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"polyfills.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"vendor.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"app.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html&gt;</span></code></pre></figure>
+
+<p>But this time the sources got injected. See the dist folder here:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/dist.png" alt="dist" /></p>
+
+<p>With this approach we can go ahead as usual when building electron or cordova-things with gulp.</p>
+
+<p>See the required steps fo r e.g. a cordova-build here:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:electron:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'electron-clean-temp'</span><span class="p">,</span>
+        <span class="s1">'electron-compile-with-webpack'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-index-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-inject-in-html'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-assets-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-build-win'</span><span class="p">,</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>the only difference here is that we have to copy assets for electron into the temp folder. The whole procedure before is like we know it from the web solution.</p>
+
+<p>I hope this helps to get out confusion and reduces the complexity of the topic “Cross platform”.</p>
+
+<p>HTH</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h1 id="links">Links</h1>
+
+<p><a href="https://angular.io/docs/ts/latest/guide/webpack.html">https://angular.io/docs/ts/latest/guide/webpack.html</a></p>
+
+<p><a href="https://webpack.github.io/docs/usage-with-gulp.html">https://webpack.github.io/docs/usage-with-gulp.html</a></p>
+
+<p><a href="https://www.npmjs.com/package/webpack-stream">https://www.npmjs.com/package/webpack-stream</a></p>
+
+<p><a href="https://github.com/shama/webpack-stream">https://github.com/shama/webpack-stream</a></p>
+
+<p><a href="https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/">https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET Core and Angular with Webpack and Visual Studio</title>
+	  <link>//blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-06-12T22:10:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/</guid>
+	  <description><![CDATA[
+	     <p>This article shows how to use ASP.NET Core and Angular with webpack and Visual Studio. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/vs_webpack_angular2.png" alt="vs_webpack_angular2" /></p>
+
+<p><strong>Code:</strong> <a href="https://github.com/damienbod/Angular2WebpackVisualStudio">https://github.com/damienbod/Angular2WebpackVisualStudio</a></p>
+
+<p><strong>Authors</strong> <em>Fabian Gosebrink, Damien Bowden</em>.
+This post is hosted on both <a href="http://damienbod.com">http://damienbod.com</a> and <a href="http://offering.solutions/">http://offering.solutions/</a>.</p>
+
+<p><strong>Setting up the application</strong></p>
+
+<p>The ASP.NET Core application contains both the server side API services and also hosts the Angular 2 client application. The source code for the Angular 2 application is implemented in the angular2App folder. Webpack is then used to deploy the application, using the development build or a production build, which deploys the application to the wwwroot folder. This makes it easy to deploy the application using the standard tools from Visual Studio with the standard configurations.</p>
+
+<p><strong>npm configuration</strong></p>
+
+<p>The npm package.json configuration loads all the required packages for Angular 2 and Webpack. The Webpack packages are all added to the devDependencies. A “npm build” script and also a “npm buildProduction” are also configured, so that the client application can be built using Webpack from the cmd line using “npm build” or “npm buildProduction”. These two scripts just call the same cmd as the Webpack task runner.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"angular2-webpack-visualstudio"</span><span class="p">,</span>
+  <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+  <span class="s2">"description"</span><span class="err">:</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"main"</span><span class="err">:</span> <span class="s2">"wwwroot/index.html"</span><span class="p">,</span>
+  <span class="s2">"author"</span><span class="err">:</span> <span class="s2">""</span><span class="p">,</span>
+  <span class="s2">"license"</span><span class="err">:</span> <span class="s2">"ISC"</span><span class="p">,</span>
+  <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"ngc"</span><span class="err">:</span> <span class="s2">"ngc -p ./tsconfig-aot.json"</span><span class="p">,</span>
+    <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" "</span><span class="p">,</span>
+    <span class="s2">"webpack-dev"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=development &amp;&amp; webpack"</span><span class="p">,</span>
+    <span class="s2">"webpack-production"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=production &amp;&amp; webpack"</span><span class="p">,</span>
+    <span class="s2">"build-dev"</span><span class="err">:</span> <span class="s2">"npm run webpack-dev"</span><span class="p">,</span>
+    <span class="s2">"build-production"</span><span class="err">:</span> <span class="s2">"npm run ngc &amp;&amp; npm run webpack-production"</span><span class="p">,</span>
+    <span class="s2">"watch-webpack-dev"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=development &amp;&amp; webpack --watch --color"</span><span class="p">,</span>
+    <span class="s2">"watch-webpack-production"</span><span class="err">:</span> <span class="s2">"npm run build-production --watch --color"</span><span class="p">,</span>
+    <span class="s2">"publish-for-iis"</span><span class="err">:</span> <span class="s2">"npm run build-production &amp;&amp; dotnet publish -c Release"</span>
+  <span class="p">},</span>
+  <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"@angular/common"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/compiler"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/core"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/forms"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/http"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-browser"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-browser-dynamic"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/router"</span><span class="err">:</span> <span class="s2">"~3.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/upgrade"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"angular-in-memory-web-api"</span><span class="err">:</span> <span class="s2">"0.2.4"</span><span class="p">,</span>
+    <span class="s2">"core-js"</span><span class="err">:</span> <span class="s2">"2.4.1"</span><span class="p">,</span>
+    <span class="s2">"reflect-metadata"</span><span class="err">:</span> <span class="s2">"0.1.9"</span><span class="p">,</span>
+    <span class="s2">"rxjs"</span><span class="err">:</span> <span class="s2">"5.0.3"</span><span class="p">,</span>
+    <span class="s2">"zone.js"</span><span class="err">:</span> <span class="s2">"0.7.5"</span><span class="p">,</span>
+    <span class="s2">"@angular/compiler-cli"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"@angular/platform-server"</span><span class="err">:</span> <span class="s2">"~2.4.7"</span><span class="p">,</span>
+    <span class="s2">"bootstrap"</span><span class="err">:</span> <span class="s2">"^3.3.7"</span><span class="p">,</span>
+    <span class="s2">"ie-shim"</span><span class="err">:</span> <span class="s2">"~0.1.0"</span>
+  <span class="p">},</span>
+  <span class="s2">"devDependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"@types/node"</span><span class="err">:</span> <span class="s2">"7.0.5"</span><span class="p">,</span>
+    <span class="s2">"angular2-template-loader"</span><span class="err">:</span> <span class="s2">"^0.6.0"</span><span class="p">,</span>
+    <span class="s2">"angular-router-loader"</span><span class="err">:</span> <span class="s2">"^0.5.0"</span><span class="p">,</span>
+    <span class="s2">"awesome-typescript-loader"</span><span class="err">:</span> <span class="s2">"3.0.4"</span><span class="p">,</span>
+    <span class="s2">"clean-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^0.1.15"</span><span class="p">,</span>
+    <span class="s2">"concurrently"</span><span class="err">:</span> <span class="s2">"^3.1.0"</span><span class="p">,</span>
+    <span class="s2">"copy-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^4.0.1"</span><span class="p">,</span>
+    <span class="s2">"css-loader"</span><span class="err">:</span> <span class="s2">"^0.26.1"</span><span class="p">,</span>
+    <span class="s2">"file-loader"</span><span class="err">:</span> <span class="s2">"^0.9.0"</span><span class="p">,</span>
+    <span class="s2">"html-webpack-plugin"</span><span class="err">:</span> <span class="s2">"^2.26.0"</span><span class="p">,</span>
+    <span class="s2">"jquery"</span><span class="err">:</span> <span class="s2">"^2.2.0"</span><span class="p">,</span>
+    <span class="s2">"json-loader"</span><span class="err">:</span> <span class="s2">"^0.5.4"</span><span class="p">,</span>
+    <span class="s2">"node-sass"</span><span class="err">:</span> <span class="s2">"^4.3.0"</span><span class="p">,</span>
+    <span class="s2">"raw-loader"</span><span class="err">:</span> <span class="s2">"^0.5.1"</span><span class="p">,</span>
+    <span class="s2">"rimraf"</span><span class="err">:</span> <span class="s2">"^2.5.4"</span><span class="p">,</span>
+    <span class="s2">"sass-loader"</span><span class="err">:</span> <span class="s2">"^4.1.1"</span><span class="p">,</span>
+    <span class="s2">"source-map-loader"</span><span class="err">:</span> <span class="s2">"^0.1.6"</span><span class="p">,</span>
+    <span class="s2">"style-loader"</span><span class="err">:</span> <span class="s2">"^0.13.1"</span><span class="p">,</span>
+    <span class="s2">"ts-helpers"</span><span class="err">:</span> <span class="s2">"^1.1.2"</span><span class="p">,</span>
+    <span class="s2">"tslint"</span><span class="err">:</span> <span class="s2">"^4.3.1"</span><span class="p">,</span>
+    <span class="s2">"tslint-loader"</span><span class="err">:</span> <span class="s2">"^3.3.0"</span><span class="p">,</span>
+    <span class="s2">"typescript"</span><span class="err">:</span> <span class="s2">"2.0.3"</span><span class="p">,</span>
+    <span class="s2">"url-loader"</span><span class="err">:</span> <span class="s2">"^0.5.7"</span><span class="p">,</span>
+    <span class="s2">"webpack"</span><span class="err">:</span> <span class="s2">"^2.2.1"</span><span class="p">,</span>
+    <span class="s2">"webpack-dev-server"</span><span class="err">:</span> <span class="s2">"2.2.1"</span>
+  <span class="p">},</span>
+  <span class="s2">"-vs-binding"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"ProjectOpened"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"watch-webpack-dev"</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>tsconfig configuration</strong></p>
+
+<p>The types are configured in this file, so typings are no longer required.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"compilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"target"</span><span class="err">:</span> <span class="s2">"es5"</span><span class="p">,</span>
+    <span class="s2">"module"</span><span class="err">:</span> <span class="s2">"es2015"</span><span class="p">,</span>
+    <span class="s2">"moduleResolution"</span><span class="err">:</span> <span class="s2">"node"</span><span class="p">,</span>
+    <span class="s2">"sourceMap"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"emitDecoratorMetadata"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"experimentalDecorators"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"removeComments"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"noImplicitAny"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"skipLibCheck"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"lib"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"es2015"</span><span class="p">,</span>
+      <span class="s2">"dom"</span>
+    <span class="p">],</span>
+    <span class="s2">"types"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"node"</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">"files"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="s2">"angularApp/app/app.module.ts"</span><span class="p">,</span>
+    <span class="s2">"angularApp/app/about/about.module.ts"</span><span class="p">,</span>
+    <span class="s2">"angularApp/main.ts"</span>
+  <span class="p">],</span>
+  <span class="s2">"awesomeTypescriptLoaderOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"useWebpackText"</span><span class="err">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="s2">"compileOnSave"</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"buildOnSave"</span><span class="err">:</span> <span class="kc">false</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="webpack-build">Webpack build</h2>
+
+<p>The Webpack development build <em>&gt;webpack -d</em> just uses the source files and creates outputs for development. The production build copies everything required for the client application to the wwwroot folder, and uglifies the js files. The <em>webpack -d –watch</em> can be used to automatically build the dist files if a source file is changed.</p>
+
+<p>The Webpack config file was created using the excellent github repository <a href="https://github.com/preboot/angular2-webpack">https://github.com/preboot/angular2-webpack</a>. Thanks for this. Small changes were made to this, such as the process.env.NODE_ENV and Webpack uses different source and output folders to match the ASP.NET Core project. If you decide to use two different projects, one for server, and one for client,  preboot or angular-cli, or both together would be a good choice for the client application.</p>
+
+<p><strong>webpack.config.js</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c1">/// &lt;binding ProjectOpened='Run - Development' /&gt;</span>
+
+<span class="kd">var</span> <span class="nx">environment</span> <span class="o">=</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span> <span class="o">||</span> <span class="s2">"development"</span><span class="p">).</span><span class="nx">trim</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">environment</span> <span class="o">===</span> <span class="s2">"development"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.dev.js'</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.prod.js'</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><strong>webpack.dev.js</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CopyWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'copy-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">helpers</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.helpers'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'@@@@@@@@@ USING DEVELOPMENT @@@@@@@@@@@@@@@'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="na">devtool</span><span class="p">:</span> <span class="s1">'source-map'</span><span class="p">,</span>
+    <span class="na">performance</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">hints</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./angularApp/polyfills.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./angularApp/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./angularApp/main.ts'</span>
+    <span class="p">},</span>
+
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/wwwroot/'</span><span class="p">,</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'dist/[name].bundle.js'</span><span class="p">,</span>
+        <span class="na">chunkFilename</span><span class="p">:</span> <span class="s1">'dist/[id].chunk.js'</span><span class="p">,</span>
+        <span class="na">publicPath</span><span class="p">:</span> <span class="s1">'/'</span>
+    <span class="p">},</span>
+
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.scss'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">contentBase</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'/wwwroot/'</span><span class="p">),</span>
+        <span class="na">watchOptions</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">aggregateTimeout</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
+            <span class="na">poll</span><span class="p">:</span> <span class="mi">1000</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">'awesome-typescript-loader'</span><span class="p">,</span>
+                    <span class="s1">'angular-router-loader'</span><span class="p">,</span>
+                    <span class="s1">'angular2-template-loader'</span><span class="p">,</span>
+                    <span class="s1">'source-map-loader'</span><span class="p">,</span>
+                    <span class="s1">'tslint-loader'</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpg|gif|woff|woff2|ttf|svg|eot</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=assets/[name]-[hash:6].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/favicon.ico$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=/[name].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'style-loader!css-loader'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+                <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw-loader'</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="na">exprContextCritical</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span> <span class="p">}),</span>
+
+        <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">'./wwwroot/dist'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/assets'</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.html'</span><span class="p">,</span>
+            <span class="na">inject</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'angularApp/index.html'</span>
+        <span class="p">}),</span>
+
+        <span class="k">new</span> <span class="nx">CopyWebpackPlugin</span><span class="p">([</span>
+            <span class="p">{</span> <span class="na">from</span><span class="p">:</span> <span class="s1">'./angularApp/images/*.*'</span><span class="p">,</span> <span class="na">to</span><span class="p">:</span> <span class="s1">'assets/'</span><span class="p">,</span> <span class="na">flatten</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+        <span class="p">])</span>
+    <span class="p">]</span>
+
+<span class="p">};</span></code></pre></figure>
+
+<p><strong>webpack.prod.js</strong></p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CopyWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'copy-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">helpers</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./webpack.helpers'</span><span class="p">);</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'@@@@@@@@@ USING PRODUCTION @@@@@@@@@@@@@@@'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./angularApp/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./angularApp/polyfills.ts'</span><span class="p">,</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./angularApp/main-aot.ts'</span> <span class="c1">// AoT compilation</span>
+    <span class="p">},</span>
+
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">path</span><span class="p">:</span> <span class="s1">'./wwwroot/'</span><span class="p">,</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'dist/[name].[hash].bundle.js'</span><span class="p">,</span>
+        <span class="na">chunkFilename</span><span class="p">:</span> <span class="s1">'dist/[id].[hash].chunk.js'</span><span class="p">,</span>
+        <span class="na">publicPath</span><span class="p">:</span> <span class="s1">'/'</span>
+    <span class="p">},</span>
+
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.json'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.scss'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">stats</span><span class="p">:</span> <span class="s1">'minimal'</span><span class="p">,</span>
+        <span class="na">outputPath</span><span class="p">:</span> <span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'wwwroot/'</span><span class="p">)</span>
+    <span class="p">},</span>
+
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+                    <span class="s1">'awesome-typescript-loader'</span><span class="p">,</span>
+                    <span class="s1">'angular-router-loader?aot=true&amp;genDir=aot/'</span>
+                <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpg|gif|woff|woff2|ttf|svg|eot</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=assets/[name]-[hash:6].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/favicon.ico$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file-loader?name=/[name].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'style-loader!css-loader'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+                <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span><span class="s1">'style-loader'</span><span class="p">,</span> <span class="s1">'css-loader'</span><span class="p">,</span> <span class="s1">'sass-loader'</span><span class="p">]</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw-loader'</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="na">exprContextCritical</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">},</span>
+
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s1">'./wwwroot/dist'</span><span class="p">,</span>
+                <span class="s1">'./wwwroot/assets'</span>
+            <span class="p">]</span>
+        <span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">NoEmitOnErrorsPlugin</span><span class="p">(),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">UglifyJsPlugin</span><span class="p">({</span>
+            <span class="na">compress</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">warnings</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+                <span class="na">comments</span><span class="p">:</span> <span class="kc">false</span>
+            <span class="p">},</span>
+            <span class="na">sourceMap</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+            <span class="p">}),</span>
+
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">filename</span><span class="p">:</span> <span class="s1">'index.html'</span><span class="p">,</span>
+            <span class="na">inject</span><span class="p">:</span> <span class="s1">'body'</span><span class="p">,</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'angularApp/index.html'</span>
+        <span class="p">}),</span>
+
+        <span class="k">new</span> <span class="nx">CopyWebpackPlugin</span><span class="p">([</span>
+            <span class="p">{</span> <span class="na">from</span><span class="p">:</span> <span class="s1">'./angularApp/images/*.*'</span><span class="p">,</span> <span class="na">to</span><span class="p">:</span> <span class="s1">'assets/'</span><span class="p">,</span> <span class="na">flatten</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+        <span class="p">])</span>
+    <span class="p">]</span>
+<span class="p">};</span></code></pre></figure>
+
+<h2 id="webpack-production-build">Webpack Production build</h2>
+
+<p>The production build has to be run from the command line. At present ngc, the angular compiler, can only be used from the command line.</p>
+
+<p>See also (Using ngc) <a href="http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/">http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/</a></p>
+
+<p>It can be run using npm run build-production which is configured in the package.json.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"build-production": "npm run ngc &amp;&amp; npm run webpack-prodroduction"
+</code></pre>
+</div>
+
+<p>The production build uses tsconfig-aot.json and main-aot.ts as an entry point.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"compilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"target"</span><span class="err">:</span> <span class="s2">"es5"</span><span class="p">,</span>
+    <span class="s2">"module"</span><span class="err">:</span> <span class="s2">"es2015"</span><span class="p">,</span>
+    <span class="s2">"moduleResolution"</span><span class="err">:</span> <span class="s2">"node"</span><span class="p">,</span>
+    <span class="s2">"sourceMap"</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="s2">"emitDecoratorMetadata"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"experimentalDecorators"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"removeComments"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"noImplicitAny"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"suppressImplicitAnyIndexErrors"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"skipLibCheck"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"lib"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"es2015"</span><span class="p">,</span>
+      <span class="s2">"dom"</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">"files"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="s2">"angularApp/app/app.module.ts"</span><span class="p">,</span>
+    <span class="s2">"angularApp/app/modules/about/about.module.ts"</span><span class="p">,</span>
+    <span class="s2">"angularApp/main-aot.ts"</span>
+  <span class="p">],</span>
+  <span class="s2">"angularCompilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"genDir"</span><span class="err">:</span> <span class="s2">"aot"</span><span class="p">,</span>
+    <span class="s2">"skipMetadataEmit"</span><span class="err">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="s2">"compileOnSave"</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">"buildOnSave"</span><span class="err">:</span> <span class="kc">false</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="webpackdevjs">webpack.dev.js</h2>
+
+<p>Lets dive into the webpack.dev.js a bit:</p>
+
+<p>Firstly, all plugins are loaded which are required to process all the js, ts, … files which are included, or used in the project.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">path</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'path'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CopyWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'copy-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span></code></pre></figure>
+
+<p>The npm environment variable NODE_ENV is used to define the type of build, either a development build or a production build. The entries are configured depending on this parameter.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="nx">entry</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="err">:</span> <span class="s1">'./angularApp/main.ts'</span> <span class="c1">// JiT compilation</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>for webpack.prod.js</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="nx">entry</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="err">:</span> <span class="s1">'./angularApp/main-aot.ts'</span> <span class="c1">// AoT compilation</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>The entries provide Webpack with the required information, where to start from, or where to hook in to.</p>
+
+<p>Webpack knows which paths to run and includes the corresponding files and packages.</p>
+
+<p>The “loaders” section and the “modules” section in the configuration provides Webpack with the following information: which files it needs to get and how to read the files. The modules tells Webpack what to do with the files exactly. Like minifying or whatever.</p>
+
+<p>In this project configuration, if a production node parameter is set, different plugins are pushed into the sections because the files should be treated differently.</p>
+
+<h3 id="the-output">The output</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">output</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">path</span><span class="p">:</span> <span class="s2">"./wwwroot/"</span><span class="p">,</span>
+        <span class="nx">filename</span><span class="err">:</span> <span class="s1">'dist/[name].bundle.js'</span><span class="p">,</span>
+		<span class="nx">chunkFilename</span><span class="err">:</span> <span class="s1">'dist/[id].chunk.js'</span><span class="p">,</span>
+        <span class="nx">publicPath</span><span class="err">:</span> <span class="s2">"/"</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>output for production adds a hash:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">output</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">path</span><span class="p">:</span> <span class="s2">"./wwwroot/"</span><span class="p">,</span>
+        <span class="nx">filename</span><span class="err">:</span> <span class="s1">'dist/[name].[hash].bundle.js'</span><span class="p">,</span>
+		<span class="nx">chunkFilename</span><span class="err">:</span> <span class="s1">'dist/[id].[hash].chunk.js'</span><span class="p">,</span>
+        <span class="nx">publicPath</span><span class="err">:</span> <span class="s2">"/"</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>tells webpack where to put the files in the end. You can use like wildcards to use the “name” or an “hash” or something like that.</p>
+
+<h3 id="the-module-loaders">The module loaders</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="err">:</span> <span class="p">{</span>
+        <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
+           <span class="c1">//...loaders here</span>
+        <span class="p">]</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>tell webpack how to react when a certain file extension comes into play. It will then use loaders to handle that file.</p>
+
+<p>The plugins you are providing in the end are necessary to configure how the files should be processed.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">    <span class="nx">plugins</span><span class="err">:</span> <span class="p">[</span>
+        <span class="c1">//...loaders here</span>
+    <span class="p">]</span></code></pre></figure>
+
+<h2 id="angular-indexhtml">Angular index.html</h2>
+
+<p>The index.html contains all the references required for the Angular client. The scripts are added as part of the build and not manually. The developer only needs to use the imports.</p>
+
+<p>Source index.html file in the angularApp/public folder:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;base</span> <span class="na">href=</span><span class="s">"./"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Angular Webpack Template<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"content-type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;my-app&gt;</span>Loading...<span class="nt">&lt;/my-app&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>And the produced build file in the wwwroot folder. The script for the app has been added using Webpack. Hashes are used in a production build for cache busting.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="cp">&lt;!doctype html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;base</span> <span class="na">href=</span><span class="s">"./"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Angular Webpack Template<span class="nt">&lt;/title&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"content-type"</span> <span class="na">content=</span><span class="s">"text/html; charset=utf-8"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1.0"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"css/bootstrap.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span>
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;my-app&gt;</span>Loading...<span class="nt">&lt;/my-app&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/javascript"</span> <span class="na">src=</span><span class="s">"/dist/app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<h2 id="visual-studio-tools">Visual Studio Tools</h2>
+
+<h3 id="npm-custom-task-runner">npm custom Task Runner</h3>
+
+<p>The NPM Task Runner can be used to build  the client SPA application from inside Visual Studio. This task runner can be downloaded from:</p>
+
+<p><a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner">https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner</a></p>
+
+<p>The task runners need to be configured correctly. 
+Go to Tools –&gt; Options –&gt; Projects and Solutions –&gt; External Web Tools.</p>
+
+<p>Check that are options are checked. See:</p>
+
+<p><a href="https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/">https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/</a></p>
+
+<h3 id="npm-scripts">npm scripts</h3>
+
+<p>The npm scripts are used to build, watch the client application as required. The scripts can be run from the command line or the npm task runner.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">"ngc"</span><span class="err">:</span> <span class="s2">"ngc -p ./tsconfig-aot.json"</span><span class="p">,</span>
+<span class="s2">"start"</span><span class="err">:</span> <span class="s2">"concurrently \"webpack-dev-server --hot --inline --port 8080\" \"dotnet run\" "</span><span class="p">,</span>
+<span class="s2">"webpack-dev"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=development&amp;&amp; webpack"</span><span class="p">,</span>
+<span class="s2">"webpack-production"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=production&amp;&amp; webpack"</span><span class="p">,</span>
+<span class="s2">"build-dev"</span><span class="err">:</span> <span class="s2">"npm run webpack-dev"</span><span class="p">,</span>
+<span class="s2">"build-production"</span><span class="err">:</span> <span class="s2">"npm run ngc &amp;&amp; npm run webpack-production"</span><span class="p">,</span>
+<span class="s2">"watch-webpack-dev"</span><span class="err">:</span> <span class="s2">"set NODE_ENV=development&amp;&amp; webpack --watch --color"</span><span class="p">,</span>
+<span class="s2">"watch-webpack-production"</span><span class="err">:</span> <span class="s2">"npm run build-production --watch --color"</span><span class="p">,</span>
+<span class="s2">"publish-for-iis"</span><span class="err">:</span> <span class="s2">"npm run build-production &amp;&amp; dotnet publish -c Release"</span> </code></pre></figure>
+
+<p>The watch-webpack-dev npm script can be automatically be started in Visual Studio by adding the following to the package.json</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">"-vs-binding"</span><span class="err">:</span> <span class="p">{</span> <span class="s2">"ProjectOpened"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"watch-webpack-dev"</span> <span class="p">]</span> <span class="p">}</span></code></pre></figure>
+
+<p><b>Note</b> Webpack task runner cannot be used to build the Angular webpack application as it uses the wrong options and cannot be used to do a production build due to the ngc.</p>
+
+<h3 id="webpack-sass">Webpack SASS</h3>
+
+<p><a href="http://sass-lang.com/">SASS</a> is used to style the SPA application. The SASS files can be built using the SASS. Webpack can build all the styles inline or as an external file, depending on your Webpack config.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nl">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">scss$/</span><span class="p">,</span>
+  <span class="nx">exclude</span><span class="err">:</span> <span class="o">/</span><span class="nx">node_modules</span><span class="o">/</span><span class="p">,</span>
+  <span class="nx">loaders</span><span class="err">:</span> <span class="p">[</span><span class="s2">"style"</span><span class="p">,</span> <span class="s2">"css"</span><span class="p">,</span> <span class="s2">"sass"</span><span class="p">]</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>See: <a href="https://damienbod.com/2016/10/14/using-sass-with-webpack-angular2-and-visual-studio/">https://damienbod.com/2016/10/14/using-sass-with-webpack-angular2-and-visual-studio/</a></p>
+
+<h3 id="webpack-clean">Webpack Clean</h3>
+
+<p><a href="https://github.com/johnagan/clean-webpack-plugin/">clean-webpack-plugin</a> is used to clean up the deployment folder inside the wwwroot. This ensures that the application uses the latest files.</p>
+
+<p>The clean task can be configured as follows:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">CleanWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'clean-webpack-plugin'</span><span class="p">);</span></code></pre></figure>
+
+<p>And used in Webpack.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  <span class="k">new</span> <span class="nx">CleanWebpackPlugin</span><span class="p">([</span><span class="s1">'./wwwroot/dist'</span><span class="p">]),</span></code></pre></figure>
+
+<h2 id="angular-component-files">Angular component files</h2>
+
+<p>Note: require cannot be used because AoT does not work with this.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Thing</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./../../../models/thing'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TestDataService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./../../../services/testDataService'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+    <span class="na">selector</span><span class="p">:</span> <span class="s1">'home-component'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'home.component.html'</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">HomeComponent</span> <span class="k">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="nx">message</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">things</span><span class="err">:</span> <span class="nx">Thing</span><span class="p">[]</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">public</span> <span class="nx">thing</span><span class="err">:</span> <span class="nx">Thing</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Thing</span><span class="p">();</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_dataService</span><span class="err">:</span> <span class="nx">TestDataService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s2">"Things from the ASP.NET Core API"</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getAllThings</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">addThing</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_dataService</span>
+            <span class="p">.</span><span class="nx">Add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">thing</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">getAllThings</span><span class="p">();</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">thing</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Thing</span><span class="p">();</span>
+            <span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">deleteThing</span><span class="p">(</span><span class="na">thing</span><span class="p">:</span> <span class="nx">Thing</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_dataService</span>
+            <span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="nx">thing</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">getAllThings</span><span class="p">();</span>
+            <span class="p">},</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="nx">getAllThings</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_dataService</span>
+            <span class="p">.</span><span class="nx">GetAll</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span>
+            <span class="nx">data</span> <span class="o">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">things</span> <span class="o">=</span> <span class="nx">data</span><span class="p">,</span>
+            <span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">),</span>
+            <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Get all complete'</span><span class="p">)</span>
+            <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="tslint-file">tslint file</h2>
+
+<p><a href="https://github.com/damienbod/AngularWebpackVisualStudio/blob/master/src/AngularWebpackVisualStudio/tslint.json">https://github.com/damienbod/AngularWebpackVisualStudio/blob/master/src/AngularWebpackVisualStudio/tslint.json</a></p>
+
+<h2 id="the-aspnet-core-api">The ASP.NET Core API</h2>
+
+<p>The ASP.NET Core API is quite small and tiny. It just provides a demo CRUD service.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="nn">System.Linq</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Angular2WebpackVisualStudio.Models</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Angular2WebpackVisualStudio.Repositories.Things</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.JsonPatch</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Mvc</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Angular2WebpackVisualStudio.Controller</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"api/[controller]"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">ThingsController</span> <span class="p">:</span> <span class="n">Microsoft</span><span class="p">.</span><span class="n">AspNetCore</span><span class="p">.</span><span class="n">Mvc</span><span class="p">.</span><span class="n">Controller</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IThingsRepository</span> <span class="n">_thingsRepository</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">ThingsController</span><span class="p">(</span><span class="n">IThingsRepository</span> <span class="n">thingsRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_thingsRepository</span> <span class="p">=</span> <span class="n">thingsRepository</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Get</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">());</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Add</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">Thing</span> <span class="n">thing</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">thing</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">Thing</span> <span class="n">newThing</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">thing</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"GetSingleThing"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">newThing</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">newThing</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="nf">HttpPatch</span><span class="p">(</span><span class="s">"{id:int}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">PartiallyUpdate</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">JsonPatchDocument</span><span class="p">&lt;</span><span class="n">Thing</span><span class="p">&gt;</span> <span class="n">patchDoc</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">patchDoc</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">Thing</span> <span class="n">existingEntity</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">existingEntity</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">Thing</span> <span class="n">thing</span> <span class="p">=</span> <span class="n">existingEntity</span><span class="p">;</span>
+            <span class="n">patchDoc</span><span class="p">.</span><span class="nf">ApplyTo</span><span class="p">(</span><span class="n">thing</span><span class="p">,</span> <span class="n">ModelState</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">Thing</span> <span class="n">updatedThing</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">thing</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">updatedThing</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"{id:int}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingleThing"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Single</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Thing</span> <span class="n">thing</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">thing</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">thing</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpDelete</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"{id:int}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Remove</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Thing</span> <span class="n">thing</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">thing</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nf">NoContent</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="p">[</span><span class="n">HttpPut</span><span class="p">]</span>
+        <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"{id:int}"</span><span class="p">)]</span>
+        <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Update</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span><span class="n">Thing</span> <span class="n">thing</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">thingToCheck</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">thingToCheck</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">id</span> <span class="p">!=</span> <span class="n">thing</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="s">"Ids do not match"</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">Thing</span> <span class="n">updatedThing</span> <span class="p">=</span> <span class="n">_thingsRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">id</span><span class="p">,</span> <span class="n">thing</span><span class="p">);</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">updatedThing</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="the-angular-http-service">The Angular Http-Service</h3>
+
+<p>Note that in a normal environment, you should always return the typed classes and never the plain HTTP response like here. This application only has strings to return, and this is enough for the demo.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Thing</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./../models/thing'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Http</span><span class="p">,</span> <span class="nx">Response</span><span class="p">,</span> <span class="nx">Headers</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/http'</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">'rxjs/add/operator/map'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Observable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'rxjs/Observable'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Configuration</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../app.constants'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">TestDataService</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nx">actionUrl</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nx">headers</span><span class="err">:</span> <span class="nx">Headers</span><span class="p">;</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_http</span><span class="err">:</span> <span class="nx">Http</span><span class="p">,</span> <span class="k">private</span> <span class="nx">_configuration</span><span class="err">:</span> <span class="nx">Configuration</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span> <span class="o">=</span> <span class="nx">_configuration</span><span class="p">.</span><span class="nx">Server</span> <span class="o">+</span> <span class="s1">'api/things/'</span><span class="p">;</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Accept'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">GetAll</span> <span class="o">=</span> <span class="p">()</span><span class="err">:</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Thing</span><span class="p">[]</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span><span class="p">).</span><span class="nx">map</span><span class="p">((</span><span class="na">response</span><span class="p">:</span> <span class="nx">Response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Thing</span><span class="p">[]</span><span class="o">&gt;</span><span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">GetSingle</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span> <span class="o">+</span> <span class="nx">id</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">Add</span> <span class="o">=</span> <span class="p">(</span><span class="na">thingToAdd</span><span class="p">:</span> <span class="nx">Thing</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">toAdd</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span> <span class="na">name</span><span class="p">:</span> <span class="nx">thingToAdd</span><span class="p">.</span><span class="nx">name</span> <span class="p">});</span>
+
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span><span class="p">,</span> <span class="nx">toAdd</span><span class="p">,</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span> <span class="p">}).</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">Update</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">,</span> <span class="na">itemToUpdate</span><span class="p">:</span> <span class="kr">any</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_http</span>
+            <span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span> <span class="o">+</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">itemToUpdate</span><span class="p">),</span> <span class="p">{</span> <span class="na">headers</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">headers</span> <span class="p">})</span>
+            <span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">Thing</span><span class="o">&gt;</span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">Delete</span> <span class="o">=</span> <span class="p">(</span><span class="na">id</span><span class="p">:</span> <span class="kr">number</span><span class="p">):</span> <span class="nx">Observable</span><span class="o">&lt;</span><span class="kr">any</span><span class="o">&gt;</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_http</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">actionUrl</span> <span class="o">+</span> <span class="nx">id</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h2 id="notes">Notes</h2>
+
+<p>The Webpack configuration could also build all of the scss and css files to a separate app.css or app.”hash”.css which could be loaded as a single file in the distribution. Some of the vendor js and css could also be loaded directly in the html header using the index.html file and not included in the Webpack build.</p>
+
+<p>If you are building both the client application and the server application in separate projects, you could also consider angular-cli of angular2-webpack for the client application.</p>
+
+<p>Debugging the Angular in Visual Studio with breakpoints is not possible with this setup. The SPA app can be debugged in chrome.</p>
+
+<h2 id="links">Links</h2>
+
+<p><a href="https://github.com/preboot/angular2-webpack">https://github.com/preboot/angular2-webpack</a></p>
+
+<p><a href="https://webpack.github.io/docs/">https://webpack.github.io/docs/</a></p>
+
+<p><a href="https://github.com/jtangelder/sass-loader">https://github.com/jtangelder/sass-loader</a></p>
+
+<p><a href="https://github.com/petehunt/webpack-howto/blob/master/README.md">https://github.com/petehunt/webpack-howto/blob/master/README.md</a></p>
+
+<p><a href="http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/">http://blog.mgechev.com/2016/06/26/tree-shaking-angular2-production-build-rollup-javascript/</a></p>
+
+<p><a href="https://angular.io/docs/ts/latest/guide/webpack.html">https://angular.io/docs/ts/latest/guide/webpack.html</a></p>
+
+<p><a href="http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html">http://blog.thoughtram.io/angular/2016/06/08/component-relative-paths-in-angular-2.html</a></p>
+
+<p><a href="http://sass-lang.com/">http://sass-lang.com/</a></p>
+
+<p><a href="https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner">https://marketplace.visualstudio.com/items?itemName=MadsKristensen.NPMTaskRunner</a></p>
+
+<p><a href="https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/">https://blogs.msdn.microsoft.com/webdev/2015/03/19/customize-external-web-tools-in-visual-studio-2015/</a></p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

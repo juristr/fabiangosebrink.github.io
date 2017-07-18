@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>WebHooks with ASP.NET on Azure - DropBox and GitHub</title>
+	  <link>//blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-10-18T19:50:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/</guid>
+	  <description><![CDATA[
+	     <p>Hi,</p>
+
+<p>in this post I want to show you how to use ASP.NET-WebHooks with an example of DropBox and Github. This app will be hostet on Windows-Azure and we’ll be using Visual Studio 2015.</p>
+
+<p>The code in this example will be available on <a href="https://github.com/FabianGosebrink/ASPNET-WebHooks">GitHub</a>.</p>
+
+<p>You can find a great summary <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">here</a> and <a href="http://www.hanselman.com/blog/IntroducingASPNETWebHooksReceiversWebHooksMadeEasy.aspx">here</a> of what WebHooks exactly are. In short: You can receive updates from Websites and catch them with your own staying always up to date and seeing what is happening to your subscribed websites like Instagram, DropBox, GitHub etc. (We will only cover <a href="https://github.com/">GitHub</a>and <a href="https://www.dropbox.com/">DropBox</a> here)</p>
+
+<p>WebHooks on GitHub: <a href="https://github.com/aspnet/WebHooks">Gogogo!</a></p>
+
+<blockquote>
+  <p>You really should take a look at this repository. Its providing you a nice overview of which services are supported out-of-the-box. That is making the stuff nice and easy.</p>
+</blockquote>
+
+<p>First of all we take the current stable Version of WebAPI 2.2 and create a new project.</p>
+
+<p>After this you can either install the Nuget-Packages for DropBox and GitHub support seperately (<a href="https://www.nuget.org/packages/Microsoft.AspNet.WebHooks.Receivers.Dropbox/1.2.0-beta3a">here</a> and <a href="https://www.nuget.org/packages/Microsoft.AspNet.WebHooks.Receivers.GitHub/1.2.0-beta3a">here</a>), or you can install the extension for Visual Studio which can be found here. (Tools –&gt; Extensions and Updates):</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/11.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>once installed you will be able to add new services like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/21.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" />
+<img src="/assets/articles/wp-content/uploads/2015/10/32.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>But before we do so, lets prepare GitHub and DropBox to send events when something is happening.</p>
+
+<p>How Github is prepared you can see on the posted link above. But once again: <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">here</a></p>
+
+<h3 id="prepare-dropbox-for-webhooks">Prepare DropBox for WebHooks:</h3>
+
+<p>First check this link: <a href="https://www.dropbox.com/developers/apps">Apps for DropBox </a>and create a new app which is responsible for invoking the WebHooks.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/42.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /> I chose the whole DropBox-thing for this example.</p>
+
+<p>After creating this new app we are interested in the details of this app. Click on it and you will ssee something like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/5.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>We are interested in the secret for your app and in the link we define for the target of our WebHooks.</p>
+
+<blockquote>
+  <p>I will take the placeholder “<em>[MyDropBoxAppKey]</em>” as the key for this blogpost. You will have to replace this with your own secret yu get when you click on “show” above.</p>
+</blockquote>
+
+<p>Once we have the secret we can go back to our Visual Studio and select the both WebHook receivers we want to create: GitHub and DropBox.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/6.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>Add your secrets here and click finish:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/7.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>If everything worked fine the extension created everything for you: The handlers, the startup cofnig which can be in addition to your existing config and it updated the Web.config-file with your settings.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/8.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WebHooksExample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WebHookConfig</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Register</span><span class="p">(</span><span class="n">HttpConfiguration</span> <span class="n">config</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">InitializeReceiveGitHubWebHooks</span><span class="p">();</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">InitializeReceiveDropboxWebHooks</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Be sure to call this register method from your app start. In this case I use Owin-Startup class. In your case this can be global.asax etc.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;appSettings&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">"MS_WebHookReceiverSecret_GitHub"</span> <span class="na">value=</span><span class="s">"[MyGitHubKey]"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">"MS_WebHookReceiverSecret_Dropbox"</span> <span class="na">value=</span><span class="s">"[MyDropBoxAppKey]"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/appSettings&gt;</span>
+    ...
+<span class="nt">&lt;/configuration&gt;</span></code></pre></figure>
+
+<p>The handlers itself are self explaining. Note that you are only deriving a class from the the WebHookHandler-Class. You have to decide in the class itself whether this call is the one you want or not.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">DropboxWebHookHandler</span> <span class="p">:</span> <span class="n">WebHookHandler</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="n">Task</span> <span class="nf">ExecuteAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">WebHookHandlerContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// make sure we're only processing the intended type of hook
+</span>            <span class="k">if</span><span class="p">(</span><span class="s">"Dropbox"</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">StringComparison</span><span class="p">.</span><span class="n">CurrentCultureIgnoreCase</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="c1">// todo: replace this placeholder functionality with your own code
+</span>                <span class="kt">string</span> <span class="n">action</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Actions</span><span class="p">.</span><span class="nf">First</span><span class="p">();</span>
+                <span class="n">JObject</span> <span class="n">incoming</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">GetDataOrDefault</span><span class="p">&lt;</span><span class="n">JObject</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+            
+            <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="nf">FromResult</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Once you have done this your app is ready for deploying it to Azure. Deploy it (Right-clikc your project in Visual Studio and deploy) and check the values in the application settings using portal.azure.com:</p>
+
+<p><a href="/assets/articles/wp-content/uploads/2015/10/9.jpg">WebHooks with ASP.NET on Azure - DropBox and GitHub</a></p>
+
+<p>There your two secrets should appear now. If not: Get them in there manually. The keys are
+<code class="highlighter-rouge">MS_WebHookReceiverSecret_GitHub</code>
+and
+<code class="highlighter-rouge">MS_WebHookReceiverSecret_Dropbox</code></p>
+
+<p>Now your app is ready to receive WebHooks. But how do we connect DropBox to fire againt our application? Well, the github case mentioned in the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">link above</a> is valid for dropbox, too! So lets enter the page in the dropbox-app we have been creating a few minutes before:</p>
+
+<p><code class="highlighter-rouge">https://[host]/api/webhooks/incoming/[receiver]</code></p>
+
+<p>is the form. So in our case this is:</p>
+
+<p><code class="highlighter-rouge">https://[host]/api/webhooks/incoming/dropbox</code></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/10.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>After a short check this should be working and get the state “Enabled” from DropBox.</p>
+
+<p>If you now change something in your entire dropbox-space the webhook should be triggered like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/111.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>If you only want to watch a specific part of your dropbox you have to spcify this in your app. Above we selected “Full Dropbox”.</p>
+
+<p>In the WebHookHandler itself you can now do what you want with the POST-request from dropbox. Sending an Email, notify your apge with SignalR etc. Same applies for github. Any change should trigger a webhook and you can work with in on your website in a way you want to.</p>
+
+<p>I hope this helps anybody and happy coding.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>AngularJS with gulp, wiredep and bower</title>
+	  <link>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-30T11:18:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.</p>
+
+<p>I just introduced Gulp in my AngularJSDemoApp on GitHub.</p>
+
+<p>Check it out <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs">here</a>.</p>
+
+<h3 id="angularjs-with-gulp-wiredep-and-bower">AngularJS with gulp wiredep and bower</h3>
+
+<h4 id="gulpjs">gulp.js</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jshint"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jscs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jscs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"del"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-inject'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./gulp.config"</span><span class="p">)();</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"vet"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jscs</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s2">"jshint-stylish"</span><span class="p">,</span> <span class="p">{</span> <span class="na">verbose</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'injectJsIntoIndex'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"vet"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">wiredep</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wiredep'</span><span class="p">).</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">targetIndexHtmlFile</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">sources</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">target</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="nx">sources</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">addRootSlash</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wiredep</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">root</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The gulp task is checking via wiredep all dependencies and is injecting them into the index.html automatically. After this it is passing out the file into the destination.</p>
+
+<h4 id="gulpconfigjs">gulp.config.js</h4>
+
+<p>The gulp-config is seperated:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">srcJSFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"!./node_modules/**/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">targetIndexHtmlFile</span><span class="p">:</span> <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="na">root</span><span class="p">:</span> <span class="s2">"./"</span><span class="p">,</span>
+
+        <span class="na">bower</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">json</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./bower.json"</span><span class="p">),</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="s2">"./libs"</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="s2">"../.."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">bowerJson</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="p">,</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">directory</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">ignorePath</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Just run the corresponding gulp commands to start the default gulp task. Or, if you do not like gulp, just comment in all the files explicitly. That will do it, too :)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-animate/angular-animate.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-bootstrap/ui-bootstrap-tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-loading-bar/build/loading-bar.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-resource/angular-resource.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-route/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-toastr/dist/angular-toastr.tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery/dist/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/bootstrap/dist/js/bootstrap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/lodash/lodash.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endbower --&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/application.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/contactModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/homeModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/Controllers/contactController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Controllers/homeController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Services/peopleServices.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span></code></pre></figure>
+
+<p>Regards and have fun. Happy coding</p>
+
+<p>If you have VS 2013 you can install the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer</a>, which is included in VS 2015 or you just run the commands from the command line being on the level of the gulp.js-file.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>AngularJS NgResource Demo with ASP.NET WebAPI</title>
+	  <link>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-25T11:45:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI querying data as JSON.</p>
+
+<p>Code: <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo">https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo</a></p>
+
+<p>NgResource: <a href="https://docs.AngularJS.org/api/ngResource/service/$resource">https://docs.AngularJS.org/api/ngResource/service/$resource</a></p>
+
+<h4 id="the-application">The application</h4>
+
+<p>The application follows the “normal” way of seperating the data access also on client side into services.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/08/folders.png" alt="AngularJS NgResource Demo with ASP.NET WebAPI" /></p>
+
+<h4 id="preparation">Preparation:</h4>
+
+<p>Before you can use angulars ng resource you have to include it into your application like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'AngularJSDemoApp'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'ngRoute'</span><span class="p">,</span>
+        <span class="s1">'ngAnimate'</span><span class="p">,</span>
+        <span class="s1">'ngResource'</span><span class="p">,</span>
+        <span class="s2">"ui.bootstrap"</span><span class="p">,</span>
+        <span class="s1">'angular-loading-bar'</span><span class="p">,</span>
+        <span class="s2">"toastr"</span><span class="p">,</span>
+
+        <span class="s1">'home.homeModule'</span><span class="p">,</span>
+        <span class="s1">'contact.contactModule'</span>
+    <span class="p">]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">'cfpLoadingBarProvider'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cfpLoadingBarProvider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cfpLoadingBarProvider</span><span class="p">.</span><span class="nx">includeSpinner</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>So here you are providing “ngResource” to your app.</p>
+
+<p>After this you can inject the ngResource service provided by angular into your services:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'home.homeModule'</span><span class="p">).</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"home.services.peopleService"</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">"$resource"</span><span class="p">,</span> 
+            <span class="kd">function</span> <span class="p">(</span><span class="nx">$resource</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s2">"api/home/:id"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s1">'update'</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>The first argument you pass in is the url with the optional id (:id). The ng resource service now can call get create and delete methods ist a rest convenient way.</p>
+
+<p>ngresource is providing you the following methods:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
+  <span class="s1">'get'</span><span class="err">:</span>    <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">},</span>
+  <span class="s1">'save'</span><span class="err">:</span>   <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'POST'</span><span class="p">},</span>
+  <span class="s1">'query'</span><span class="err">:</span>  <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">isArray</span><span class="err">:</span><span class="kc">true</span><span class="p">},</span>
+  <span class="s1">'remove'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">},</span>
+  <span class="s1">'delete'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<h4 id="usage">Usage</h4>
+
+<p>Querying all resources:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+        <span class="nx">vm</span><span class="p">.</span><span class="nx">allPeople</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>Pay attention to the empty object we are passing in. You could add a single id here if you only want to query one single resource.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>In case you want to add a new resource, a person in this case, you can just call the “save” method and pass in the person you want to save:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vm</span><span class="p">.</span><span class="nx">newPerson</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>The service maps the “save”-method to the POST-Action from REST and is executing a POST- call against the API.</p>
+
+<p>Deleting is self explaining:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="k">delete</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">personToDelete</span><span class="p">.</span><span class="nx">Id</span> <span class="p">},</span> 
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// success</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<h4 id="conclusion">Conclusion:</h4>
+
+<p>The ngResource provides a good way to interact with a rest api using very very small code but providing big functionality.</p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How to build a great RESTful Service</title>
+	  <link>//blog/articles/2015/07/20/how-to-build-a-great-restful-service/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-07-20T21:13:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/07/20/how-to-build-a-great-restful-service/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to get you an idea of how to build a great RESTful Service. The idea for this blogpost came after I spent a whole <a href="http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/">post</a> about implementing paging in a web API. Paging is a very important feature a REST API should offer. However, there are a lot more. Here I want to mention a few of them hoping to cover as much as you need to build great API’s ;-)</p>
+
+<p>Before we dive deeper into what an API can do you may think that all this stuff can also be done on the client. But you do not know which kind of client in the future will consume your web API. This can be an intelligent client that can do all the stuff on client side. So why do you have to offer those features then? Because instead of an intelligent client this can also be a “stupid” client which does not support any features at all. And if it only supports simple http-calls it has to use the features you offer with your API. The more you offer, the better it is for those clients. Keep this in your mind during coding your API’s.</p>
+
+<p><strong>Correct status codes</strong></p>
+
+<p><em>Always</em> return the correct status codes in your web API. If you created a database entry, send the HTML-Code for “Created” (201). If something is forbidden send a different status code than for not authenticated and so on.</p>
+
+<p>Modern web API’s are also consumed by applications which live in the internet (and not on a mobile device) like an Asp.Net MVC Application. They all rely on your status codes to get information about what was happening with their request. Moreover, you give them the chance to react to these codes accordingly.</p>
+
+<p>So if you are handling exceptions, not authenticated states etc.: Always get clear information about what was happening to your client with status codes and messages.</p>
+
+<p><strong>Paging</strong></p>
+
+<p>On this point I want to refer to the blogpost I have already written. In addition to this I want to mention that the <em>pagination Header</em> should also be filled up with the link to the next page, the link to the last page, the current page size, the total pages, the current page etc.</p>
+
+<p>Yes, you can solve this in a modern client like the one I did in the blogpost with AngularJS. However, for clients which do not support those features: These links are essential to get paging working! So do include them and thank me later. ;-)</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">paginationHeader</span> <span class="o">=</span> <span class="k">new</span>
+<span class="p">{</span>
+<span class="nx">totalCount</span> <span class="o">=</span> <span class="nx">myItems</span><span class="p">.</span><span class="nx">Count</span><span class="p">(),</span>
+<span class="c1">//other Items here…</span>
+<span class="p">};</span></code></pre></figure>
+
+<p><strong>Datashaping</strong></p>
+
+<p>Datashaping describes the possibility to strip the data you want to send to the client based on what the client was demanding.</p>
+
+<p>If the client only demands the Id, maybe the time point and a description of the objects in a query your API should be able to handle this an only send the requested information.</p>
+
+<p>*Example:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">https</span><span class="err">:</span><span class="c1">//myurl.com/api/test?fields=Id,Description,EntryDate</span></code></pre></figure>
+
+<p>Of course, this should also be possible for child classes that are related to your parent class.</p>
+
+<p>*Example:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">https</span><span class="err">:</span><span class="c1">//myurl.com/api/test?fields=Id,Description,EntryDate,ChildClass.Id,Childclass.Title</span></code></pre></figure>
+
+<p>Yes, I know OData. Moreover, I love it! I really do. Again: Your API <em>must</em> give the client the opportunity to request only the data he wants to have. To achieve this web API should offer the data-shaping feature.</p>
+
+<p>For this feature, I created a Nuget-Package and a Github-repository that can be downloaded and used.</p>
+
+<p><strong>Sorting</strong></p>
+
+<p>The client should also have the possibility to request the items he wants in a special order. Here think of ascending and descending order and this should be possible for every field on the request object the controller was built for. Ascending sort order should be the default while descending can be marked with an minus “-“ in the front of the field to sort after. This is usually a feature which you apply at the very end of your methods. Usually short before returning the data to the client.</p>
+
+<p>Api:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="err">…</span><span class="p">,</span> <span class="kt">string</span> <span class="n">sort</span> <span class="p">=</span> <span class="s">"Id"</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//use the Sort-string
+</span><span class="p">}</span></code></pre></figure>
+
+<p>*Example: ´https://myurl.com/api/test?sort=Added´</p>
+
+<p>Where “Added” is a Property of the receiving DTOs.</p>
+
+<p><strong>Filtered Update</strong></p>
+
+<p>A mostly forgotten HTTP verb in my opinion is the <em>Patch</em> verb that allows partial updates of an object. So sending the update back to the server (like a post/put action) the patch only has the fields to change and the corresponding values included. After this you can apply the new object to the existing one and update the entry in your database.</p>
+
+<p>Example <a href="http://aspnet.codeplex.com/sourcecontrol/latest#Samples/WebApi/DeltaJsonDeserialization/DeltaJsonDeserialization.Server/Controllers/PatchController.cs">here</a> and <a href="http://www.asp.net/web-api/overview/odata-support-in-aspnet-web-api/odata-v4/create-an-odata-v4-endpoint">here</a>.</p>
+
+<p><strong>Https</strong></p>
+
+<p>Finally yet importantly it has to be mentioned to always use https to communicate with your server. All the data you are passing between your API and your clients has to be secure.</p>
+
+<p><strong>Summing-up</strong></p>
+
+<p>In the end building REST-APIs is great. You are very flexible choosing your clients. But always consider giving the client every possible mechanism to get, create, update and delete the data it neds. Thinking about this during the development of a RESTful-API may save you a lot of work later.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET WebAPI Datashaper to strip your json data</title>
+	  <link>//blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-05-30T18:23:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to introduce you the ASP.NET WebAPI Datashaper to strip your json data before sending it back to the client.</p>
+
+<p>The Datashaper gives you the possibility to strip the data you want to send based on the query of the client if you can not use Odata for a reason.</p>
+
+<p><a href="https://github.com/OfferingSolutions/OfferingSolutions-Datashaper">GitHub</a>
+<a href="http://fabian-gosebrink.de/Projects/Datashaper">Project-Page</a>
+<a href="http://www.nuget.org/packages/OfferingSolutions.DataShaper/">NuGet</a></p>
+
+<p><a href="https://github.com/OfferingSolutions/OfferingSolutions-Datashaper-Demo">Demo</a></p>
+
+<p>With this Nuget you can add the fields you want to receive in your request like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">test</span><span class="p">?</span><span class="nx">fields</span><span class="o">=</span><span class="nx">Id</span><span class="p">,</span><span class="nx">Title</span><span class="p">,</span><span class="nb">Date</span></code></pre></figure>
+
+<p>or</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">test</span><span class="p">?</span><span class="nx">fields</span><span class="o">=</span><span class="nx">Id</span><span class="p">,</span><span class="nx">Title</span><span class="p">,</span><span class="nb">Date</span><span class="p">,</span><span class="nx">ChildClasses</span><span class="p">.</span><span class="nx">Description</span><span class="p">,</span><span class="nx">ChildClasses</span><span class="p">.</span><span class="nx">Id</span> <span class="p">...</span></code></pre></figure>
+
+<p>You only have to call</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">Datashaper</span><span class="p">.</span><span class="nf">CreateDataShapedObject</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">listOfFields</span><span class="p">)</span></code></pre></figure>
+
+<p>in the end which is going to apply the list of Properties to your data.</p>
+
+<p>This can be useful if you wnat to display a table of your data with only selected fields. You do not have to have every property from your model onto the client and display it. You only need specific fields which you can strip out with this package.</p>
+
+<p>This is equivalent to the OData “$select”-Query option. But this package gives you the opportunity to get the same behaviour without using OData. But if you are interested you should take a look onto <a href="http://www.odata.org/">Odata</a>, too.</p>
+
+<p>Here is an example</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("myroute")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">string</span> <span class="n">fields</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="c1">//...
+</span>        
+        <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">listOfFields</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">fields</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">listOfFields</span> <span class="p">=</span> <span class="n">fields</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="sc">','</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">MyItems</span><span class="p">&gt;</span> <span class="n">myItems</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="nf">GetMyItems</span><span class="p">();</span>
+
+        <span class="c1">//...
+</span>        
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">myItems</span>
+            <span class="p">.</span><span class="nf">ToList</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Datashaper</span><span class="p">.</span><span class="nf">CreateDataShapedObject</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">listOfFields</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+         <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_1.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_2.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_3.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_4.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p>Regards &amp; HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Find me on GitHub</title>
+	  <link>//blog/articles/2015/04/22/find-me-on-github/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-04-22T17:53:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/04/22/find-me-on-github/</guid>
+	  <description><![CDATA[
+	     <p>I just wanted to mention that you can find me on GitHub from now on. I am available on GitHub with my personal profile.</p>
+
+<p>I want to publish all my repositories I do code like new trials, hands-on-anythings and examples which will kick you off to get started with what the repository is about.</p>
+
+<p>In every talk I do I will always refer to this repo so that the audience can code what I did in the talk right away.</p>
+
+<p>Feel free to do pull requests and contribute on what I coded.</p>
+
+<p><a href="https://github.com/FabianGosebrink">https://github.com/FabianGosebrink</a></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/04/FabianGosebrinkGithub.jpg" alt="Find me on GitHub" /></p>
+
+<p>Sometimes you will find a “_gitAssets”-Folder in my repos which are not for holding anything code specific but they hold pictures or anything used in the readme markdown. Just to ensure the repository is complete I would like to host them directly within the repository.</p>
+
+<p>If anything is not working or not compiling at all please leave me a note because every repository shall be possible to get started right away.</p>
+
+<p>You can also use the normal included git functionalities of issues and so on to report anything which is not working right away.</p>
+
+<p>I will try to include all the required steps into the README.md file which is displayed in the repository itself.</p>
+
+<p>Hopefully it helps anybody for a good start.</p>
+
+<p>Enjoy and HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

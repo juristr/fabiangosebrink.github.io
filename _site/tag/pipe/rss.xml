@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>How to implement a table filter in Angular</title>
+	  <link>//blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-11-21T21:16:00+01:00</pubDate>
+	  <guid>//blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/</guid>
+	  <description><![CDATA[
+	     <p>In this post I want to show you how to implement a table filter in Angular.</p>
+
+<p>Code: <a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/AngularCLI/src/app/food/pipes/filter.pipe.ts">https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/AngularCLI/src/app/food/pipes/filter.pipe.ts</a></p>
+
+<p>A table in your application is maybe one of the most used controls. So is a filter for the table.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/filter-1024x133.jpg" alt="In this post I want to show you how to implement a table filter in Angular2" /></p>
+
+<p>You can achieve this using a pipe:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Pipe</span><span class="p">,</span> <span class="nx">PipeTransform</span><span class="p">,</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Pipe</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'filter'</span>
+<span class="p">})</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">FilterPipe</span> <span class="k">implements</span> <span class="nx">PipeTransform</span> <span class="p">{</span>
+    <span class="nx">transform</span><span class="p">(</span><span class="nx">items</span><span class="err">:</span> <span class="kr">any</span><span class="p">[],</span> <span class="nx">field</span><span class="err">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">value</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span><span class="err">:</span> <span class="kr">any</span><span class="p">[]</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">items</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[];</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">field</span> <span class="o">||</span> <span class="o">!</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nx">items</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nx">items</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">singleItem</span> <span class="o">=&gt;</span> <span class="nx">singleItem</span><span class="p">[</span><span class="nx">field</span><span class="p">].</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">includes</span><span class="p">(</span><span class="nx">value</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">()));</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This pipe takes an array if items and checks if the field which is also a parameter on a single items contains the value the user types. It returns the array of matching items.</p>
+
+<p>The Pipe is available through the name “filter”.</p>
+
+<p>After implementing this the pipe has to be registered on a module to make it available in our application. Could be your application module or if you have one, a shared module. In case of the shared one: Do not forget to export it. ;-)</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FilterPipe</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../pipes/filter.pipe'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// Modules</span>
+        <span class="nx">BrowserModule</span>
+    <span class="p">],</span>
+
+    <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+
+        <span class="c1">// Components &amp;amp; directives</span>
+        <span class="nx">FilterPipe</span>
+    <span class="p">],</span>
+
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// Services</span>
+    <span class="p">],</span>
+
+    <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+        <span class="nx">FilterPipe</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">SharedModule</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+
+<p>AppModule:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="c1">// ...</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SharedModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./modules/shared.module'</span><span class="p">;</span>
+
+<span class="c1">// ...</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+        <span class="nx">SharedModule</span>
+    <span class="p">],</span>
+
+    <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">],</span>
+
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">],</span>
+
+    <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span></code></pre></figure>
+
+<p>In the template you have to add a input to a form to display a field to the user where the searchstring can be typed. After this the pipe has to be applied and the searchstring has to be databound in the template.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span><span class="p">,</span> <span class="nx">Output</span><span class="p">,</span> <span class="nx">EventEmitter</span><span class="p">,</span> <span class="nx">Input</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="c1">// ...</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+    <span class="na">selector</span><span class="p">:</span> <span class="s1">'foodList'</span><span class="p">,</span>
+    <span class="na">templateUrl</span><span class="p">:</span> <span class="s1">'app/components/foodList/foodList.component.html'</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">FoodListComponent</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="nx">foodItem</span><span class="err">:</span> <span class="nx">FoodItem</span><span class="p">;</span>
+    <span class="k">public</span> <span class="nx">searchString</span><span class="err">:</span> <span class="kr">string</span><span class="p">;</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"input-group-addon"</span><span class="nt">&gt;&lt;i</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span><span class="nt">&gt;&lt;/i&gt;&lt;/div&gt;</span>
+            <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">name=</span><span class="s">"searchString"</span> <span class="na">placeholder=</span><span class="s">"Type to search..."</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">searchString</span><span class="err">"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span>
+
+<span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;tr&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Name<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th&gt;</span>Calories<span class="nt">&lt;/th&gt;</span>
+        <span class="nt">&lt;th</span> <span class="na">class=</span><span class="s">"text-right"</span><span class="nt">&gt;</span>Actions<span class="nt">&lt;/th&gt;</span>
+    <span class="nt">&lt;/tr&gt;</span>
+    <span class="nt">&lt;tr</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let food of foods | filter : 'name' : searchString; let i = index"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;td</span> <span class="na">class=</span><span class="s">"text-left"</span><span class="nt">&gt;</span>
+            
+        <span class="nt">&lt;/td&gt;</span>
+        // ...
+    <span class="nt">&lt;/tr&gt;</span>
+<span class="nt">&lt;/table&gt;</span></code></pre></figure>
+
+<p>Now the table is filtered after the field “name” by the string which is typed into the searchString-input.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/searchFilter-1024x316.gif" alt="In this post I want to show you how to implement a table filter in Angular2" /></p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

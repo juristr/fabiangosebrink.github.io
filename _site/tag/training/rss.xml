@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Kurs - Frontend-Entwicklung mit AngularJS</title>
+	  <link>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-05-25T18:30:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost stelle ich meinen Kurs: <em>Frontend-Entwicklung mit AngularJS</em> vor.</p>
+
+<p><img src="/assets/images/Angular_With_Digicomp.png" alt="Angular_With_Digicomp" /></p>
+
+<p>Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht “Nein” gesagt.</p>
+
+<p>Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.</p>
+
+<p><a href="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">Digicomp Kurs</a></p>
+
+<p>In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner <em>Gulp</em> an. <em>NPM</em> ist natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.</p>
+
+<p>Am Ende des Kurses habe ich mir als Ziel gesetzt mit den Teilnehmern ein Review einer kleinen Beispielapplikation zu machen, die all das behandelt, was zuvor im Kurs gelernt und behandelt wurde.</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular">GitHub: Beispielapplikation</a></p>
+
+<p>Zum Schluss können die Teilnehmer Feedback geben und den Kurs bewerten.</p>
+
+<p>Im Feedback wurde der Kurs insgesamt mit 96/100 Punkten bewertet!</p>
+
+<p>“AngularJs-Wissen vom Feinsten”</p>
+
+<p>“Sehr guter Trainer”</p>
+
+<p>“Der Kurs hat viel Spass gemacht”</p>
+
+<p>“Das Wissen wurde ausführlich vermittelt”</p>
+
+<p>“Viel gelernt in zwei Tagen”</p>
+
+<p>Mir hat der Kurs sehr sehr viel Spass gemacht und ich würde mich freuen noch mehr davon zu halten.</p>
+
+<p>Für (An)Fragen über (In-House) Kurse zur modernen Web-Entwicklung: <a href="http://fabian-gosebrink.com/">Kontakt via Homepage</a></p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

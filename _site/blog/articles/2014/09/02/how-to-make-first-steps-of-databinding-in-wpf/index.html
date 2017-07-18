@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>How to make first steps of Databinding in WPF</title>
+     
+    <meta name="description" content="How to make first steps of Databinding in WPF" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="How to make first steps of Databinding in WPF" />
+    
+    
+    
+    <meta property="og:title" content="How to make first steps of Databinding in WPF" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="How to make first steps of Databinding in WPF" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="basics" property="article:tag">
+  
+  <meta content="databinding" property="article:tag">
+  
+  <meta content="tutorial" property="article:tag">
+  
+  <meta content="wpf" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>How to make first steps of Databinding in WPF</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">How to make first steps of Databinding in WPF</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2014-09-02">02 Sep 2014</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/basics'>Basics</a>,
+                       
+                
+                    
+                       <a href='/tag/databinding'>Databinding</a>,
+                       
+                
+                    
+                       <a href='/tag/tutorial'>Tutorial</a>,
+                       
+                
+                    
+                       <a href='/tag/wpf'>Wpf</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blogpost I want to show you how to make first steps of Databinding in WPF.</p>
+
+<p>I often hear or see that people try to start with WPF but they do not start mit MVVM. Because databinding is frightening them. But why? Databinding is one of the biggest advantages you can have to decouple your logic from your view.</p>
+
+<p>With this post I want to give you a short introduction about databinding and how to get set up.</p>
+
+<h3 id="first-things-first-why-mvvm">First things first: Why MVVM?</h3>
+
+<p>In the last time the MV*-Pattern was really getting pushed and was established because it gives you an easy possibility to divide your view form the logic which works underneath. In the web for example AngularJS gives you a lightweight MVVM-Pattern, ASP.NET works with the MVC-Pattern, wich also brings a separation between UI and Logic.</p>
+
+<p>Advantages are:</p>
+
+<ul>
+  <li>
+    <p>Changing the UI without changing the logic: The UI changes more often than the logic. What if green is more “stylish” than the good old “blue”? It has to be changed, but all the things you show stay the same. Just because something looks different you are not showing different information.</p>
+  </li>
+  <li>
+    <p>Testability of the logic: Because logic gets more modular it can be well tested. You do not need to know about your view or how it looks like. The only thing your tests are interested in are the output-information.</p>
+  </li>
+  <li>
+    <p>Better overview: You can not only seperate the UI and the logic, you can also see it in the code. you have no UI-Code in your logic and no logic-code in your UI.</p>
+  </li>
+  <li>
+    <p>Different Teams: Also in SCRUM or whatever you use you can easily divide the work into several parts. UI Designers can only focus on their work, while programmers code (and test) the work completetly different. The touching points are only made because of the DataBinding.</p>
+  </li>
+</ul>
+
+<h3 id="theoretically-what-are-we-doing">Theoretically: What are we doing?</h3>
+
+<p>In Wpf and C# the UI-files are described as *.xaml-files. The viewmodels are normal classes which are *.cs-files. You can connect them via the DataContext-property. This shall point on the ViewModel we are creating for it. (Also described <a title="WPF – Introducing services in the viewmodel (viewmodel as facade)" href="http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/" target="_blank">here</a>)</p>
+
+<p>The code-behind of a window stays empty. No matter what. There are cases to really do some work there but these are very rare!</p>
+
+<h3 id="lets-see-some-code">Lets see some code:</h3>
+
+<p>Well if you only add a xaml-file or open a new wpf project in visual studio you can add a normal textblock to your xaml like this.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"DataBindingGettingStarted.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"350"</span> <span class="na">Width=</span><span class="s">"525"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;TextBlock&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span></code></pre></figure>
+
+<p>Now add a binding to it. Want we want to do is bind the Text-Property of the TextBlock to a value from the viewmodel. Lets prepare our XAML:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Window</span> <span class="na">x:Class=</span><span class="s">"DataBindingGettingStarted.MainWindow"</span>
+        <span class="na">xmlns=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml/presentation"</span>
+        <span class="na">xmlns:x=</span><span class="s">"http://schemas.microsoft.com/winfx/2006/xaml"</span>
+        <span class="na">Title=</span><span class="s">"MainWindow"</span> <span class="na">Height=</span><span class="s">"350"</span> <span class="na">Width=</span><span class="s">"525"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Grid&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding NameToDisplay}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/Grid&gt;</span>
+<span class="nt">&lt;/Window&gt;</span></code></pre></figure>
+
+<p>Now lets do the viewmodel. This is the base for our databinding. Its a normal class. Remember to name it like the view to associate it easier for other developers.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hello World"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Remeber: This is an external class. It has “nothing” to do (yet) with the UI. There is no connection until here. In a project this could look like this:</p>
+
+<p><img src="/assets/articles/2014-09-02/DataBinding1.jpg" alt="How to make first steps of Databinding in WPF" /></p>
+
+<p>The viewmodel offers all data it wants to show to the view (and perhaps some more ;) ). These data are offered with properties.</p>
+
+<blockquote>
+  <p>Note: You can make an interface for the viewmodel to see what exactly is on the view and what is not. To get a besser overview. But internally wpf will take the real implementaion of the viewmodel as datacontext. But for larger view/viewmodels adding an interface can makes sense. Also for testing/mocking etc.</p>
+</blockquote>
+
+<p>You see that the MainWindow.xaml which we edited above and the viewmodel. We just have no connection until here.</p>
+
+<p>In the last part you have to let the view know about its datacontext. This property can be set to nearly every viewmodel but its the source for the view where to get their data from. So the “Text”-Property in XAML gets its value from…what? You can set the datacontext in XAML but I think its easier to set this in the codebehind. <strong><span style="text-decoration: underline;">This is the only thing you should set there!</span></strong></p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">partial</span> <span class="k">class</span> <span class="nc">MainWindow</span> <span class="p">:</span> <span class="n">Window</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">MainWindow</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nf">InitializeComponent</span><span class="p">();</span>
+        <span class="n">DataContext</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">MainViewModel</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And there you go. Now the view does know about the datacontext which is completely seperated. It is offering the information about properties and if you press F5 to run the solution you should see something like this:</p>
+
+<p><img src="/assets/articles/2014-09-02/DataBinding2.jpg" alt="How to make first steps of Databinding in WPF" /></p>
+
+<p>Now what we did is a normal Hello-World-Label. Depending on the UI-container (ItemControls, Comboboxes,…) you can bind whatever you want to the UI.</p>
+
+<p>This is it for the first shot of databinding. But this is only the basic basic ;). But I wanted you to get the point.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<p> </p>
+
+<p>[UPDATE]</p>
+
+<p>I decided to go on and show you how to bind a list of any objects you want. In my example these are hard coded. In your example they can (and should ;) ) come from a service/repository whatever.</p>
+
+<p>First lets expand the viewmodel with a Person-class which has two properties: Name and Age.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">ListOfPersons</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hello World"</span><span class="p">;</span>
+        <span class="n">ListOfPersons</span> <span class="p">=</span> <span class="nf">GetListOfPersons</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="nf">GetListOfPersons</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Person</span> <span class="n">fabianPerson</span> <span class="p">=</span> <span class="nf">GetPerson</span><span class="p">(</span><span class="s">"Fabian"</span><span class="p">,</span> <span class="m">29</span><span class="p">);</span>
+        <span class="n">Person</span> <span class="n">evePerson</span> <span class="p">=</span> <span class="nf">GetPerson</span><span class="p">(</span><span class="s">"Eve"</span><span class="p">,</span> <span class="m">100</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="p">{</span><span class="n">fabianPerson</span><span class="p">,</span> <span class="n">evePerson</span><span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="n">Person</span> <span class="nf">GetPerson</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">Person</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Age</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">Person</span><span class="p">(</span><span class="kt">string</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">age</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">Name</span> <span class="p">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="n">Age</span> <span class="p">=</span> <span class="n">age</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So right like the plain name we are offering a list of persons at the viewmodel.</p>
+
+<p>Now that the viewmodel is our Datacontext it can access every property on it. So lets access this in XAML:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;StackPanel&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding NameToDisplay}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+        <span class="nt">&lt;ItemsControl</span> <span class="na">ItemsSource=</span><span class="s">"{Binding ListOfPersons}"</span><span class="nt">&gt;</span>
+            
+        <span class="nt">&lt;/ItemsControl&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>But if you run this you only see the namespace and the name of the classes. Why this? Because the only thing you give to the ItemsControl is the list of persons. From where should it know what to do with it? It just calls the “ToString()”-Extension on “object” and gets the Namespace and the name of the class.</p>
+
+<p><img src="/assets/articles/2014-09-02/List1.jpg" alt="How to make first steps of Databinding in WPF" /></p>
+
+<p>So lets tell the UI how to treat the objects. This can be done with an Itemtemplate.</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Window.Resources&gt;</span>
+    <span class="nt">&lt;DataTemplate</span> <span class="na">x:Key=</span><span class="s">"MyItemTemplate"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;StackPanel</span> <span class="na">Orientation=</span><span class="s">"Horizontal"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">"{Binding Name}"</span><span class="nt">&gt;&lt;/Label&gt;</span>
+            <span class="nt">&lt;Label</span> <span class="na">Content=</span><span class="s">"{Binding Age}"</span><span class="nt">&gt;&lt;/Label&gt;</span>
+        <span class="nt">&lt;/StackPanel&gt;</span>
+    <span class="nt">&lt;/DataTemplate&gt;</span>
+<span class="nt">&lt;/Window.Resources&gt;</span>
+<span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;StackPanel&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding NameToDisplay}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+        <span class="nt">&lt;ItemsControl</span> <span class="na">ItemsSource=</span><span class="s">"{Binding ListOfPersons}"</span> <span class="na">ItemTemplate=</span><span class="s">"{StaticResource MyItemTemplate}"</span><span class="nt">&gt;</span>
+            
+        <span class="nt">&lt;/ItemsControl&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>The Itemtemplate now tells the object how to appear. In my case these are just two labels showing the two properties name and age.</p>
+
+<blockquote>
+  <p><span style="color: #000000;">I dont know why but this is a heavy thing every beginner stumbles upon: The Datacontext of you <strong>view **is what we have set it to: The MainViewModel. Now you give the collection to the ItemsControl and make an **Item</strong>Template for each object in the list. So in the <strong>Item</strong>Template the “datacontext” is the object “Person” itself and NOT the MainViewModel anymore! This is why you can access “Name” and “Age” in the DataTemplate directly. Because every Item (which the <strong>Item</strong>Template is for) is a Person and a Person has got the mentioned properties.</span></p>
+</blockquote>
+
+<p>Great. After telling this let this thing run and see the result:</p>
+
+<p><img src="/assets/articles/2014-09-02/List2.jpg" alt="How to make first steps of Databinding in WPF" /></p>
+
+<p>Have fun</p>
+
+<p>Fabian</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=How to make first steps of Databinding in WPF&amp;url=http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/';
+        //var disqus_url = 'offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/">
+            <section class="post">
+                <h2>WPF Basics II - The INotifyPropertyChanged Interface</h2>
+                <p>> UPDATE > Check the CallMemberName-Possibility [here](http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/) In the first part I told something about...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/08/10/impressions-of-the-first-asp-net-mvc-workshop/">
+            <section class="post">
+                <h2>Impressions of the first ASP.NET MVC workshop</h2>
+                <p>In this blogpost I am doing a small recap to give you impressions of the...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

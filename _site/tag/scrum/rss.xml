@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>User Stories vs Bugs vs Product Backlog Items</title>
+	  <link>//blog/articles/2015/04/01/user-stories-vs-bugs-vs-product-backlog-items/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-04-01T04:00:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/04/01/user-stories-vs-bugs-vs-product-backlog-items/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blog greife ich eine ewig brennende Diskussion auf: User Stories vs Bugs vs Product Backlog Items!</p>
+
+<p>Der Product-Backlog ist eines der wichtigsten Artefakte im Scrum-Prozess und wohl eines der am meisten unterschätzten zugleich.</p>
+
+<p>In ihm sammeln sich alle Ideen, alle Anforderungen und Gedankenblitze, die der Kunde oder auch der Entwickler beim Arbeiten mit einem Produkt haben. Egal ob ausgereift oder fern in der Zukunft: Der Product-Backlog bietet zukünftigen Arbeiten an einem Produkt ein Zuhause.</p>
+
+<blockquote>
+  <p><em>Dieses Zuhause ist ein <strong>lebendes</strong> Artefakt. Durch Refinements werden seine Einträge darin gepflegt und sortiert.</em></p>
+</blockquote>
+
+<p>Oft werde ich Zeuge einer Diskussion, die davon handelt, was der Product-Backlog wirklich beinhaltet? Sind die enthaltenen Einträge ganz naheliegend <em>Product-Backlog-Items</em>? Oder sind es <em>User Stories</em>? Und dürfen Bugs auch eine Rolle spielen, auch wenn sie weder User-Story noch PBI sind?</p>
+
+<p>Für mich beschreibt ein Product-Backlog-Item erstmal einen Eintrag im Product-Backlog. Nicht mehr und nicht weniger. Dies ist etwas, was für das fertige Produkt getan werden muss, aber es ist erstmal keine User-Story und es ist kein Bug o.ä. Schaut man sich den Product-Backlog jedoch näher an, muss man unterscheiden. Allein schon, um alles, was der Eintrag hergeben soll so aussehen zu lassen, dass er möglichst viele Informationen enthält, ohne das „Wie setzen wir es um“ zu beantworten.</p>
+
+<p><strong>User-Stories</strong></p>
+
+<p>Eine User-Story beschreibt ein fehlendes Feature eines Produkts und gibt dem Team Informationen und einen Kontext zu diesem Feature. Die Schreibweise „As a … [someone] want[s] … to …, so that…“ enthält so viele nützliche Dinge, dass das Team …</p>
+
+<ol>
+  <li>… das Problem erkennt</li>
+  <li>… das Verhalten der Software <em>nach</em> dem Problem versteht</li>
+  <li>… die Möglichkeit gibt, eventuell etwas besseres vorzuschlagen</li>
+</ol>
+
+<p>All diese Punkte wären ohne die Formulierung, die im Übrigen nur einen Satz umfasst, in der Kürze nicht möglich. Eine User-Story gibt immer genug Kontext, eine Umgebung, wenn auch nur gedanklich, um das Team in die Situation von jemandem zu versetzen, das Problem zu verstehen und das Zielverhalten zu erkennen. Nur so kann man das Knowhow im Team durch Scrum nutzen und vielleicht eine besser Lösung finden.</p>
+
+<p>Somit gibt es Product-Backlog-Items, die ohne weiteres eine User-Story sein sollten. Eine Formulierung, die der Product-Owner, der Kunde, das Team oder eine Kombination der genannten machen kann (im Review beispielsweise) sollte eine User-Story immer als eine solche erkennbar machen.</p>
+
+<p>Somit: Nicht jedes Product-Backlog-Item ist eine User-Story wert. Aber manche Product-Backlog-Items sind als User-Story formuliert ideale Möglichkeiten die besten Lösungen umzusetzen und das maximale rauszuholen.</p>
+
+<p><strong>Bugs</strong></p>
+
+<p>Meiner Meinung nach gehören Bugs, ohne Wenn und Aber, in den Product-Backlog. Sie gehören geplant. Sie gehören priorisiert. Bugs sind keine User-Stories und Bugs sind keine Product-Backlog-Items. Sie sind natürlich ein Eintrag im Product-Backlog. Aber sie bleiben ein Bug. Trotzdem muss die Frage geklärt werden: „Ist der Bug wichtiger, als die User Story xyz und Product-Backlog-Item abc?“. Woher soll das Team sonst wissen, was es zuerst bearbeiten soll?</p>
+
+<p>Bugs haben meistens eine Menge Informationen. Dazu gehören Schritte zum Nachstellen, aktuelles Verhalten, gewolltes Verhalten, also die Beschreibung des Fehlverhaltens. Im Idealfall noch Infos zum Betriebssystem, Screenshots/Videos und und und. Beim Lesen wird das Team also in die Lage versetzt schon alle möglichen Informationen über den Eintrag zu haben. Zwar in mehr als einem Satz, aber alle Infos sind da. Ein Bug erfüllt also auch hier den Zweck, alles zu wissen, was man wissen muss um den Bug zu beheben. Der Kontext ist vorhanden, es sollten wenig Fragen offen sein.</p>
+
+<p><strong>Product-Backlog-Items</strong></p>
+
+<p>Product-Backlog-Items sind meiner Ansicht nach Sachen, die in sich schon so informativ gereift sind, dass jedes Umformulieren keinen Mehrwert mehr erzeugen würde.</p>
+
+<p>„<em>Reduziere die Ladezeit der Seite xyz beim erstmaligen Laden auf unter eine Sekunde</em>“ wäre ein Kandidat, der keine User-Story verdienen würde. Es ist klar, was gemacht werden muss, der Kontext ergibt sich ebenso. Die Frage „Wie wird es umgesetzt“ bleibt beim Team, die Anforderung ist absolut klar.</p>
+
+<p><strong>Zusammenfassung</strong></p>
+
+<p>Ein Product-Backlog hat von aussen gesehen viele Einträge. Eben Product-Backlog-Items. Diese können User-Stories sein, sie können Bugs sein. Oder eben Product-Backlog-Items bleiben. Man muss unterscheiden. Am Besten im Refinement im Team oder in der Diskussion. Wichtig ist, dass zwischen den verschiedenen Formen unterschieden wird und dass die Information, <em>was</em> getan werden muss, zweifelsohne übermittelt werden ohne die Frage zu beantworten, <em>wie</em> das Item umgesetzt werden soll. Der Kontext für das Team muss gegeben sein. Dies kann und sollte aber auch über Refinements geschehen. Der Product-Backlog ist ein lebendes Artefakt und sollte es durch die dynamik in den Items bleiben und so ein geeignetes Ort für Anforderungen und Wünsche jeder Art bieten. So bleibt er interessant und wird hoffentlich in Zukunft nicht mehr so sehr unterschätzt ;)</p>
+
+<p>Links:</p>
+
+<p><a href="http://programmers.stackexchange.com/questions/102523/pbi-vs-user-story">http://programmers.stackexchange.com/questions/102523/pbi-vs-user-story</a></p>
+
+<p><a href="https://social.msdn.microsoft.com/Forums/vstudio/en-US/f8ec9ec0-95c2-4cfa-8bdb-f9f4220d6698/whats-the-different-between-product-backlog-item-and-user-stories?forum=tfsworkitemtracking">https://social.msdn.microsoft.com/Forums/vstudio/en-US/f8ec9ec0-95c2-4cfa-8bdb-f9f4220d6698/whats-the-different-between-product-backlog-item-and-user-stories?forum=tfsworkitemtracking</a></p>
+
+<p><a href="http://blogs.adobe.com/agile/2012/06/20/does-every-item-in-the-product-backlog-require-a-user-story/">http://blogs.adobe.com/agile/2012/06/20/does-every-item-in-the-product-backlog-require-a-user-story/</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Jeder braucht einen Scrum-Master!</title>
+	  <link>//blog/articles/2015/01/20/jeder-braucht-einen-scrum-master/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-01-20T08:00:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/01/20/jeder-braucht-einen-scrum-master/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost möchte ich mal herausstellen, wie wichtig Scrum-Master sind: Jeder braucht einen Scrum-Master!</p>
+
+<p>Jeden Tag eine gute Tat. Dieses Gefühl abends ins Bett zu steigen und zu wissen: Ich habe etwas Gutes gemacht heute. Leuten helfen zum Beispiel. Bei Fragen zur Seite stehen. Hilfestellung geben. Man hilft ja gern. Warum auch nicht? Man ist ja Scrum-Master. Macht ja auch Spass.</p>
+
+<p><strong>Innerhalb des Teams</strong></p>
+
+<p>Man sorgt dafür, dass SCRUM eingehalten wird und kontrolliert den Prozess. Wird alles Scrum-mässig umgesetzt? Falls Fragen im Team auftreten ist man zur Stelle, kann aus dem Scrum-Guide und Literatur zitieren, begründen und belegen. Man leistet Überzeugungsarbeit und hilft so, das Maximale aus dem Team herauszuholen. Das ist wohl eine der motivierendsten Arbeiten überhaupt: Zusammenarbeit so zu optimieren, dass alles reibungslos funktioniert.</p>
+
+<p>Auch falls es Probleme gibt zeigt man vollen Einsatz und versucht diese zu beseitigen. Und wenn das gemacht wurde, ja dann ist man spätestens wieder direkt bei der guten Tat.</p>
+
+<blockquote>
+  <p><em>Das Team braucht keinen Scrum-Master, wenn es Scrum richtig macht</em></p>
+</blockquote>
+
+<p>„Das Team organisiert sich selbst“ ist wohl eine Überschrift, die Scrum ohne weiteres ebenfalls tragen könnte. Das Team steht für das gerade, was es Ende des Sprints liefert. Das ist wichtig! Und auch gut so! Lass sie mal machen. Das „Wie?“ soll das Team beantworten. Aber was, wenn sie das wirklich mal tun? Liebe Scrum-Master da draussen: Stellt euch mal vor, ihr werdet einfach nicht mehr gebraucht, geschweige denn gefragt! Das Team arbeitet reibungslos zusammen und hat keine Hindernisse. Alles läuft reibungslos, Scrum ist komplett verstanden worden und wird exakter umgesetzt als eine Operation am offenen Herzen. Eine - sagen wir einfach - ungewohnte Vorstellung. Und das ist nicht mal böse gemeint. Dass Scrum schwierig ist, ist allseits bekannt. Und es ist noch kein Meister vom Himmel gefallen.</p>
+
+<p><strong>Ausserhalb des Teams</strong></p>
+
+<p>„Das Team braucht keinen Scrum-Master, wenn es Scrum richtig macht“ habe ich schon so oft gehört und anfangs war ich der Aussage gegenüber skeptisch. Später auch. Zu Recht, wenn man den Gedanken weiter verfolgt. Heisst das, dass, wenn man seinen Job gut macht, man nicht mehr gebraucht wird und ihn somit nicht machen muss? Das wäre ja paradox.</p>
+
+<p>Denkt man den Gedanken fertig, merkt man, dass dieser so nicht stimmt. Oftmals gibt es neben dem Entwicklungs-Team auch einen eifrigen und sehr engagierten Product-Owner, vor dem man das Team manchmal „schützen“ muss. Der Product-Owner muss den Product-Backlog auf dem aktuellsten Stand halten und kann dabei ebenso die Hilfe eines Scrum-Masters benötigen.</p>
+
+<p>Und selbst wenn das Team sich organisieren und der Product-Owner den Product-Backlog pflegen kann, gibt es vielleicht in der Firma noch weitere Teams, die auch auf den Scrum-Zug aufspringen wollen. Diese sollte man, gerade in der Anfangsphase, unterstützen. Wenn die Arbeit gut läuft werden sicher auch ganz schnell andere Vorgesetze aufmerksam, die es zu unterrichten gilt. All das gehört zum Scrum-Master-Sein hinzu. Diese Aufgaben werden recht schnell vergessen, wenn man über den Scrum-Master redet.</p>
+
+<p>Völlig unabhängig welcher Teil nun beraten wird: Beispielsweise der Product-Owner beim Anordnen der Backlog-Items, das Team bei allgemeinen Scrum-Fragen oder Aussenstehende, denen gesagt werden muss, wie ihr Input dem Team und dem Wert des Produkts am meisten bringt: Der Scrum-Master-Posten verlangt eine Rundumsicht. 360 Grad, die man, sofern es möglich ist, immer im Blick haben sollte.</p>
+
+<p>Wenn ein Scrum-Master sich nicht mit dem Team beschäftigt, ist er manchmal auch mit gleichgesinnten zu finden. Der Austausch mit anderen Scrum-Mastern ist absolut wichtig und sinnvoll. Welche Methoden kommen an, warum kommen sie an? Welche sind eher schlechter geeignet, wofür? Wer hat was ausprobiert und gute oder schlechte Erfahrungen gemacht? All das sind Fragen, die direkt im Scrum nicht erwähnt werden. Aber dem Team, und damit meine ich das komplette Scrum-Team, zugutekommen. So kann Neues in den nächsten Sprint einfliessen oder zumindest in der Retrospektive besprochen werden. Das ist wichtig, sogar essentiell. Denn das ist Scrum.</p>
+
+<p><strong>Zusammenfassung</strong></p>
+
+<p>Scrum-Master helfen dem Team. Das ist soweit klar. Und sie machen ihre Arbeit gut, wenn das Team reibungslos funktioniert. Aber Scrum-Master sein ist so viel mehr als nur dem Team zu helfen. Es gibt noch so viele andere Faktoren im Scrum-Prozess, die eine Produktivitätssteigerung ausmachen können. Es geht auch darum ein gemeinsames Verständnis innerhalb einer Organisation zu schaffen, das das Produkt in den Mittelpunkt rückt. Das ist auch ein Fokus des Scrum-Masters. Und das hört beim Entwicklungs-Team noch lange nicht auf…</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>SCRUM - Wege zu einer erfolgreichen Retrospektive</title>
+	  <link>//blog/articles/2014/12/04/scrum-wege-zu-einer-erfolgreichen-retrospektive/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-12-04T07:05:00+01:00</pubDate>
+	  <guid>//blog/articles/2014/12/04/scrum-wege-zu-einer-erfolgreichen-retrospektive/</guid>
+	  <description><![CDATA[
+	     <p>Die Retrospektive sollte immer am Ende des Sprints stattfinden und der Ort sein, an dem die Weichen gestellt werden für den nächsten Sprint. Nicht, was den Inhalt des Sprints angeht, also die Frage beantwortet wird, <em>was</em> gemacht werden soll, sondern <em>wie</em> man es besser tun kann.</p>
+
+<p>Hierbei spielt eine grosse Rolle ob die Leute aktiv dabei sind, ob sie also daran interessiert sind sich und ihren Prozess zu verbessern. Die Motivation ist hierbei sehr entscheidend.</p>
+
+<p>Die Retrospektive ist mit dem DailyStandup-Meeting eines der wichtigsten Meetings im Sprint. Sie sollte unbedingt ernstgenommen werden. Ausschliesslich in diesem Meeting können Sachen verändert, verbessert oder ausprobiert werden. Das Team braucht ein offenes Ohr. Für alle Anliegen, die hervorgebracht werden.</p>
+
+<blockquote>
+  <p><em>Tipp: Falls das Team eher introvertiert ist, gelangen Sie über die Frage „Was lief denn gut in dem Sprint“ ganz einfach in die Diskussion, was schlecht lief.</em></p>
+</blockquote>
+
+<h4 id="sollte-der-product-owner-dabei-sein"><strong>Sollte der Product Owner dabei sein?</strong></h4>
+
+<p>Das Team sollte sich zusammenfinden und Schwachstellen suchen, falls diese nicht während des Sprints schon herausgekommen sind und versuchen diese zu beseitigen. Ob der Product Owner (PO) dabei anwesend sein muss sollte individuell pro Team entschieden werden. Ich habe schon Meinungen gehört, dass der PO nicht dabei sein sollte, damit das Team ungestört reden kann. Dies heisst jedoch nur, dass das Team mit anwesendem PO nicht reden könnte, was die Beziehung des Teams zum PO in Frage stellt. Ausserdem kann der PO auch abschliessend, also nachdem alle Team-Argumente vorgebracht sind, wertvollen Input in die Retro bringen und eventuell dabei helfen die Dinge zu verbessern, die in der Retro hochgekommen sind. Somit will ich dort nicht zu einem eindeutigen Schluss kommen. Sinnvoll kann beides sein. Und falls die Retro einmal mit bzw. ohne PO gemacht wurde, heisst das ja nicht, dass es ewig so bleiben muss. Man kann es ja verändern. Ein Hoch auf die Retrospektive!</p>
+
+<h4 id="anstze-fr-eine-erfolgreiche-retro"><strong>Ansätze für eine erfolgreiche Retro</strong></h4>
+
+<p><strong>Stand Up!</strong></p>
+
+<p>Lassen Sie das Team stehen (nicht im Regen). Es sollte jedoch nicht sitzen. Leute sind aktiver, wenn sie stehen. Falls sie also Aktivität fordern und fördern wollen, bitten Sie jeden, der an der Retrospektive teilnehmen will, aufzustehen.</p>
+
+<p><strong>Write Down!</strong></p>
+
+<p>Benutzen Sie etwas zum Aufschreiben. Ein Flipchart. Ein grosses Blatt Papier auf dem Tisch. Rote Karten (schlecht), grüne Karten (gut). Wichtig: Jeder sollte hierbei etwas zu schreiben in der Hand haben.</p>
+
+<p><strong>Take Time:</strong></p>
+
+<p>Nehmen Sie sich Zeit! Es gibt nichts Schlimmeres als eine gehetzte Retrospektive. Zeit um Sachen aufzuschreiben. Zeit, um Sachen auszuwählen. Zeit, zu diskutieren. Planen Sie für die Retro mit ruhigem Gewissen gute 60 Minuten ein. Wenn es mehr wird ist das erstmal positiv, nicht negativ. Man kann sich am Ende immer noch auf 2-3 Themen begrenzen, die es zu behandeln gilt.</p>
+
+<p><strong>Allseits bekannt: Die Technik ist entscheidend!</strong></p>
+
+<p>Mit verschiedenen Techniken lassen sich abweichende Ergebnisse erzielen. Somit probieren Sie aus, welche der Folgenden Ihnen am besten passt:</p>
+
+<p><em>Achtung: Die gezeigten Techniken hier sind nur ein Bruchteil derer, die es für erfolgreiche Retrospektiven gilt. Die Beispiele sollen jedoch zeigen, wie Facettenreich solch ein Meeting gestaltet werden kann.</em></p>
+
+<p><strong>Das Karten-Prinzip:</strong></p>
+
+<p>Jeder Teilnehmer schreibt einen Punkt auf eine Karte, der ihm gut bzw. weniger gut gefallen hat. Hierbei gibt es viele Karten, jeder Teilnehmer kann so viel schreiben wie er möchte. In der Zeit kann der Scrum-Master eine Wand präparieren, die eine Skala zeigt. Diese hat beispielsweise die Form eines langen Dreiecks. Auf der einen Seite dicker (gut) auf der anderen Seite dünner (schlecht).</p>
+
+<p><img src="/assets/articles/2014-12-04/RetroGoodBad.jpg" alt="SCRUM - Wege zu einer erfolgreichen Retrospektive" /></p>
+
+<p>Wenn die Teammitglieder fertig sind heften sie die Zettel an die Wand bis keine beschriebenen Zettel mehr auf dem Tisch liegen. Danach wird das Ergebnis betrachtet und diskutiert. Natürlich im Stehen. Hierbei spielt nicht nur eine Rolle, warum der Zettel wo hängt, sondern auch, was drauf steht. Also Inhalt, und Ort sind von Nutzen. Wenn Sie einen Schritt weiter gehen wollen, können sie die Höhe, also die y-Achse, noch als Priorität definieren. Dann legen die Team-Mitglieder neben der Sache selber, der Einordnung in „Gut“ und „Schlecht“ auch noch die Priorität (wichtig/nicht so wichtig) fest.</p>
+
+<p><strong>MKL-Prinzip:</strong></p>
+
+<p>MKL steht demnach für die drei Statuswerte „<em>More</em>“, „<em>Keep</em>“ und „<em>Less</em>“. Die Methode ähnelt dem Karten-Prinzip. Hierbei sind die Grenzen zu „gut“ und „schlecht“ jedoch klar abgegrenzt.</p>
+
+<p>Bereiten Sie ein Flipchart oder eine Magnetwand (oder oder oder…) vor und zeichnen Sie drei Spalten „More“, „Keep“ und „Less“. Lassen Sie das Team bewaffnet mit jeweils einem Stift pro Person an die Wand treten (Jeder einen Stift ist hierbei sehr wichtig. So hat niemand die Möglichkeit zu sagen „ich kann nichts schreiben, ich hab ja den Stift nicht“). Nun soll jeder aufschreiben was gut war an diesem Sprint bzw. was noch verstärkt gemacht werden soll („More“). Neutral bzw. ausreichend ist, was in der Spalte „Keep“ eingetragen wird, und „Less“ sollte sich mit Sachen füllen, die man im nächsten Sprint weniger finden will.</p>
+
+<p><strong>Rory Cubes:</strong></p>
+
+<p>lIlya Pavlichenko stellt im Scrum.org-Blog eine weitere Methode vor, wie man Retrospektiven gestalten kann. Hierbei greift er auf Spielwürfel zurück.</p>
+
+<p>Zu finden ist das Ganze hier: <a href="http://blog.scrum.org/rory-cubes-for-sprint-retrospective/">http://blog.scrum.org/rory-cubes-for-sprint-retrospective/</a></p>
+
+<p><strong>Briefe:</strong></p>
+
+<p>Eine weitere Möglichkeit ist, dem Sprint Briefe schreiben zu lassen. Was auf den ersten Blick völlig albern erscheint, ist auf den zweiten Blick gar nicht mal so abwegig:</p>
+
+<p>Geben Sie jedem Teilnehmer der Retro ein leeres Blatt Papier. Hierauf sollen sie dem Sprint einen Liebes- und einen Hassbrief schreiben. Dies kann auch gern im Team von zwei bis drei Leuten geschehen. Timeboxed auf ca. 15 Minuten können daraus Punkte zur Verbesserung abgeleitet werden und erforderliche Massnahmen ergriffen werden. Ausserdem bringt diese Methode sicher einige Lacher mit sich, die gerade in einem etwas schwierigeren Meeting wie der Retro enorm wichtig sind.</p>
+
+<p><strong><em>Generell: Halten Sie die Ergebnisse fest!</em></strong></p>
+
+<p>Halten Sie das Ergebnis der Retrospektive fest. Nichts ist schlimmer als eine Retro, deren Ergebnis nachher in Luft verpufft. Daher halten Sie das Ergebnis irgendwie fest. Natürlich im Einverständnis aller. Hierbei geht es gar nicht mal um die Form. Foto, Zeichnung, Protokoll. Völlig egal: Hauptsache das Ergebnis steht bei der nächsten Planung zur Verfügung. Besser noch: Hängen Sie das Ergebnis der Retro offen für jeden sichtbar auf, damit das Team daran erinnert wird, was es verbessern wollte. Greifen Sie es in der nächsten Retro wieder auf. Haben sie nach einer Zeit einige Punkte gesammelt und verbessert können sie allein schon mit der Retro eine Reihe von Erfolgen vorweisen. Das bessert die Stimmung und zeigt auch Zweiflern, dass ihr Zweifel unbegründet ist.</p>
+
+<p><em> </em></p>
+
+<p><strong><em>Beschränken Sie sich auf die Punkte, die realistisch sind:</em></strong></p>
+
+<p>Wie wichtig es ist, Ergebnisse gleich während der Retro festzuhalten zeigt auch der folgende Ansatz: Angenommen ihr Team hat etwaige Punkte gefunden, die verbessert werden können: Nehmen Sie nur den Teil davon auf, der zum Umsetzen realistisch ist. Vielleicht die ersten beiden Punkte? Oder immer nur einen? Gerade am Anfang sind die Erfolge leichter zu sehen, wenn kleine Sachen recht einfach umgesetzt werden können. Das Vertrauen in das Meeting wächst und die Skepsis verfliegt langsam.</p>
+
+<p>Aber Achtung: Sie sollten niemals aus einer Retro gehen und nichts zum Verbessern haben. Hand aufs Herz: So gut ist auch Ihr Team nicht, als dass es nichts zu verbessern gäbe ;-)</p>
+
+<p><strong>Das wichtigste zum Schluss:</strong></p>
+
+<p>Seien sie offen für alles. Falls etwas nicht passt, fliegt es raus. Probieren Sie Sachen aus. Natürlich geht es um Verbesserungen. Aber ob es nun wirklich besser oder schlechter geht mit einer Veränderung stellen Sie erst fest, wenn sie es probiert haben. Fordern Sie das Team aktiv auf etwas auszuprobieren. Im schlimmsten Fall fliegt die Veränderung in der nächsten Retro wieder raus. Und selbst dann hat man an Erfahrung gewonnen.</p>
+
+<p><em>Mit diesem Blog habe ich nur einen Bruchteil von Ansätzen gezeigt, die eine Retro schmackhaft und erfolgreich machen können. Es gibt Ansätze wie Sand am Meer. Die Kunst ist, den zu finden, der auf ihr Team passt. Ich hoffe jedoch ich konnte Möglichkeiten aufzeigen, die zeigen, dass eine Retro mehr sein kann, als die Frage, was alles schlecht ist.</em></p>
+
+<p>Gruss Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Unterhaltsame Meetings in SCRUM</title>
+	  <link>//blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-09-18T19:00:00+02:00</pubDate>
+	  <guid>//blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/</guid>
+	  <description><![CDATA[
+	     <p>SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn man jedoch SCRUM in einer Firma einführt oder praktiziert sehen die Entwickler sehr schnell den angeblichen Nachteil dieser doch recht positiven Eigenschaften: Es gibt, zumindest am Anfang, sehr viele Meetings.</p>
+
+<p>Entwickler mögen meist keine Meetings. Meetings halten sie von der Arbeit ab. Das ist keine Vermutung meinerseits, das sage ich aus persönlicher Erfahrung. Es gibt das Daily-Standup, es gibt das Grooming, wenn es nicht als Prozess angesehen wird, und es gibt das Planungsmeeting, was oftmals sehr lange dauern kann. Ist man nun vor Ort um SCRUM einzuführen oder sogar SCRUM-Master und “leitet” die Meetings liegt es an einer guten Moderation, einer guten Vorbereitung und viel Geschick ein angenehmes Meeting zu gestalten.</p>
+
+<p>Im Folgenden möchte ich Tipps erläutern, die solche Meetings zwar nicht aus der Welt schaffen aber sie zumindest anders oder “saftiger” machen können. Ob (erfolgreich) getestet oder nur als Gedankenanstoss: Ich hoffe die folgenden Punkte bieten eine gute Grundlage zum Nachmachen und zum darauf aufbauen.</p>
+
+<blockquote>
+  <p>SCRUM ist keine One-Man-Show</p>
+</blockquote>
+
+<h3 id="was-lange-whrt">Was lange währt…</h3>
+
+<p>…wird irgendwann gut: SCRUM braucht Zeit. Geben Sie den Teilnehmern diese. Gerade wenn SCRUM neu ist, ist die Skepsis noch Herr in allen Meetings. Diese werden die Teilnehmer los. Aber es muss von den Teilnehmern selber kommen. Somit: Leisten Sie Überzeugungsarbeit und erläutern Sie, warum das Team Meeting xyz nutzen sollte. Die Menschen über die Logik und den Sinn abzuholen bringt oft mehr als sie in ein Meeting zu “zwingen”. SCRUM ist ein Team-Ding. Kein SCRUM-Master oder Product-Owner-Ding, keine One-Man-Show.</p>
+
+<h3 id="timeboxing">Timeboxing</h3>
+
+<p>Meetings gehören in Timeboxen. Das ist kein genereller Ansatz aber gerade bei der Einführung ist dies wichtig. Sie können bei der Einführung eine Empfehlung der Dauer aussprechen. (Hierfür können Sie auch gern den Scrum-Guide zu Rate ziehen). Aber die Entscheidung, wie lang ein Meeting gehalten werden sollte, kann das Team in einer Abstimmung fällen (Mehrheit entscheidet). Dies ist flexibel und kann nach jedem Sprint gerne geändert werden. Wichtig hierbei ist es, die Timebox genau einzuhalten. So bemerkt das Team a) dass Sie daran sind, ihren Arbeitsworkflow zu organisieren und b) dass die Zeit eventuell zu kurz ist. Das macht das Meeting für das Team angenehmer und wird mehr akzeptiert. Ausserdem wird die Notwendigkeit nach einem längeren Meeting deutlich und das Team übernimmt die Initiative dies umzusetzen.</p>
+
+<p>Beispiel: Das Grooming wird als Meeting eingeführt und das Team ist anfangs skeptisch. Nach einem Vorschlag das Grooming „nur“ 60 Minuten abzuhalten willigten alle ein. Natürlich ist dies zu wenig für einen langen Sprint. Dies wird deutlich wenn das Meeting penibel nach 60 Minuten zum Ende gebracht wird. Aber wenn das Meeting richtig genutzt (vorbereiten!) und durchgeführt wird (alle Teilnehmer anwesend, etc.), wird der Nutzen schnell klar. In einer folgenden Retro kam auf, dass das Grooming viel zu kurz ist: Das Team bespricht die Lösung und einigt sich selbstständig auf ein zwei Stunden dauerndes Meeting. Somit wurde der Sinn erkannt und die Initiative, das Meeting abzuhalten und den Product-Backlog zu pflegen, kam vom Team aus.</p>
+
+<blockquote>
+  <p>Ist die Familienpizza viel zu gross für den Sprint, muss sie eventuell aufgeteilt werden</p>
+</blockquote>
+
+<h3 id="abwechslung">Abwechslung</h3>
+
+<p>Bringen Sie Abwechslung in die Meetings. Es gibt recht viele Meetings, die SCRUM mit sich bringt. bei kürzeren Sprints wirken diese noch mehr, auch wenn die Meetings dann natürlich kürzer sind.</p>
+
+<p>Die Präsentation, wenn Sie eine haben, muss nicht immer dieselbe sein. Verändern Sie ihre Folien optisch. Inhaltlich sollte die Agenda jedoch schon einen geregelten Ablauf haben. Eine gewisse Routine gibt auch Sicherheit. Aber wieso nicht mal eine Retrospektive bei einem Kaffee? Im Stehen? Eventuell in der Cafeteria. Leute sind aktiver wenn sie nicht sitzen. Sie können auch nicht in ihren Monitor schauen wenn sie stehen. Wieso nicht Plus- und Minuspunkte eines Sprints auf Karten schreiben und an die Wand pinnen? Schieben Sie mal die Tische beiseite, schaffen Sie Raum. Nutzen Sie die komplette Wand um Plus und Minus anzuprangern. So haben Sie auf x Metern Wand auf einmal neben Plus und Minus als “schwarz” und “weiss” auf einmal “eher schwarz und eher weiss”. Das facht eine Konversation respektive eine Diskussion an. Und nichts ist schlimmer als eine Retro, die totgeschwiegen wird. Ist ihr Team träge und verunsichert: Stellen Sie die Frage, was gut war, statt, was schlecht war. “Was sollten wir NOCH besser machen?”. So kommt man leicht in die Diskussion die auch Dinge anspricht, die nicht so gut gelaufen sind.</p>
+
+<p>Backlog-Items schätzen ist ebenfalls langweilig: Wieso die Grösse von Items nicht mit Pizzaschachteln darstellen? XS, S, M, L, XL? Ist die Familienpizza viel zu gross für den Sprint, muss sie eventuell aufgeteilt werden. Sie werden sich wundern wie lange solche Assoziationen hängenbleiben!</p>
+
+<p>Ein Planungsmeeting dauert meistens sehr lange: Wieso nicht mit einem Rätsel starten? Länder erkennen, Personen erkennen, vielleicht ein Wer-Wird-Millionär in einer SCRUM-Edition? Hierbei bringt man sich natürlich in die Lage, dass bei der 1000 und 32000 CHF-Frage Süssigkeiten oder entsprechendes herausgegeben werden muss ;).</p>
+
+<p>Das Daily-Standup-Meeting ist ein Meeting im Stehen: Investieren sie in ein billiges Mikrophon und machen sie eine Moderation draus. Derjenige, der spricht, muss in das Mikro sprechen. Das stärkt das Team und ist ausserdem lustig. Zumindest für die anderen ;)</p>
+
+<blockquote>
+  <p>Das Team organisiert sich selbst</p>
+</blockquote>
+
+<h3 id="ergebnisse">Ergebnisse</h3>
+
+<p>Schreiben Sie Ergebnisse auf. Aber lassen Sie es jemanden anderes machen als den Moderator selbst. Beispielsweise auf ein Flipchart. Nach dem Meeting ein Foto von dem Flipchart an alle Teilnehmer gesendet und schon haben sie ein Protokoll, das für alle gleich ist. Will es keiner machen: Machen sie ein Spiel draus: Der letzte, der in das Meeting kommt, ist der Protokollant. Hierbei auch keine Scheu vor Vorgesetzten: Kein Chef bricht sich einen Zacken aus der Krone den Stift zu schwingen und was auf das Papier zu bringen. Zumal sowieso alles, was festgehalten wird, besprochen werden sollte.</p>
+
+<h3 id="das-team-organisiert-sich-selbst">Das Team organisiert sich selbst</h3>
+
+<p>Das Team steht bei SCRUM im Mittelpunkt. Es wird so gearbeitet, wie das Team sich organisiert. Wenn das Team beim Daily-Standup mit einem Witz starten will, dann machen sie es. Einen Sprint lang. Dann wird geschaut, ob die Änderungen den gewünschten Effekt bringen. Findet das Team es gut: behalten Sie es bei!</p>
+
+<h3 id="zusammenfassung">Zusammenfassung</h3>
+
+<p>SCRUM-Meetings müssen nicht langweilig sein. Man kann solche Meetings durchaus “saftig” und abwechslungsreich gestalten. Wenn SCRUM dem Team Spass macht, ist es wesentlich einfach Offenheit, Transparenz und Fortschritt zu sehen, zu messen und damit zu arbeiten. Natürlich sollte neben aller Abwechslung das Sprint-Ziel verfolgt werden um es am Ende des Sprints möglichst zu Erfüllen. Jedoch kann man, mit den richtigen Mitteln, Teams für SCRUM begeistern. Ich hoffe mit den genannten Beispielen konnte ich einige Denkanstösse geben.</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Why I like SCRUM - Tips which may help you</title>
+	  <link>//blog/articles/2014/06/03/why-i-like-scrum-tips-which-may-help-you/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-06-03T19:12:40+02:00</pubDate>
+	  <guid>//blog/articles/2014/06/03/why-i-like-scrum-tips-which-may-help-you/</guid>
+	  <description><![CDATA[
+	     <p>Hi, in this post I want to tell you why I like SCRUM - Tips which may help you</p>
+
+<p><img src="/assets/articles/2014-06-03/08570960-945a-48e4-980d-ef95447107ea.png" alt="Why I like SCRUM - Tips which may help you" /></p>
+
+<p>After I started to be interested in agile management processes, SCRUM took nearly all of my attention and I often hear that people do not understand it or do not know how to get along with it. If your company wants to work with SCRUM you should get an idea of it and learn it. If you do so, this seems quite all right here and you can stop reading. But if you have any doubts about it please read further. If you are not into it and asking yourself the question “Why should I get along with this thing? Processes come and go. It will pass. With or without me”: Read this post. I will try to give you tips for your SCRUM experience and tell you why I like SCRUM. No, let me push this: I love it. There you go:</p>
+
+<p><strong>Reason 1: Teamwork</strong></p>
+
+<p>I like teamwork. I really do. You often hear the question: “Are you a team player?” maybe in a job interview and how fast you are telling “Yes!” Without knowing in which team you perhaps will come and without knowing with which people and characters you will work together in the future. But beside of that in general: Your team will always have so many different characters no matter how long you are into this team. They will come and go. You will have many types in your team and to deal with this is strenuous but also interesting and fascinating.</p>
+
+<p>If your team does SCRUM it’s very important they stand together as a team. Which means: Everybody could overtake the work of another one if he will drop out for a specific reason. It’s not like “Everybody can do everyone’s work at 100 percent”! But every team-member has to have the <strong>will</strong> to do work of his neighbor and save the SCRUM -sprint and reduce the risk of not missing the sprint-goal. The work is of course groomed and defined, so that everybody could do it in more or less time ;).</p>
+
+<p>Teamwork also means being interested in work which you did not care about before SCRUM. Concrete in your everyday SCRUM-work: Do pair programming with perhaps one experienced and one not experienced guy. Do show interests: “Can we do this together?” “Can you give me a briefing about what you did exactly to solve this problem?” This is sharing of knowledge, this shows how much interested you are (or you should be) and in the end this makes a great team working perfectly together. So doing teamwork is one of the greatest things about SCRUM. But if you want to introduce it you have to have absolutely everybody behind you who has to work with it. SCRUMis team-oriented. So the team has to be convinced that this is a good thing. And this mostly is the hardest part.</p>
+
+<p><strong>Reason 2: Transparency</strong></p>
+
+<p>Transparency is one of the three pillars SCRUM is built on. Transparency in its perfection would mean: Everybody knows what you are doing every minute on your 8 or 9-hour-working-day. Well this is not realistic. I mean: No matter how interested the others are it would drive you nuts if anyone would know about every single step you do or, otherwise, you would have to tell everyone about every step you do. But let’s be egoistic (just for a moment). What transparency means for the team is not a treasure. But think about yourself. Be transparent to yourself first: What have you done yesterday? What are you going to do today? And which plans do you have for the next day/days? This is a way to give structure to your work. Of course: Planned user stories can be the framework of this during a sprint. But while being more detailed you have to answer yourself the questions and you will definitely have a plan and a structure about what to do. And with this it is absolutely no problem telling the others. If everyone is doing this (besides getting all info into the team etc.) your transparency will come right along while you are planning your work for yourself. The daily-standup is one place for this: Be transparent there! So with a daily meeting and a transparency you know always where your product is standing. No surprises. No work behind your back. If every team member is following transparency there should be less unforeseen issues during your sprint period.</p>
+
+<p><strong>Reason 3: The improvement</strong></p>
+
+<p>This is what makes SCRUM a process. The never ending will to improve everything you work on. On every retrospective in the end of the sprint you ask yourself the question: “What was wrong” and I personally felt the bad mood which comes with this question. Yeah, it is important to ask this question. For sure it is. But as important as this question is: “What went well this sprint?” And normally this is a question which is much easier to ask (and to answer). So figuring out what went wrong is a goal of the retro, but getting the facts that are doing well is a much easier way to get into this discussion. So: Ask this before you want to explain the bad points. Also here we come to a mentioned point. People who do not care about SCRUM will not have the will to get better. And this has to be there at 100% to get a good improvement. The team is the only part which has to do the work. They know best how to improve things. If they do not want to get better, they only did not understand the advantages of how work could be. Maybe you could collect them at this point.</p>
+
+<p><strong>Reason 4: Problems</strong></p>
+
+<p>SCRUM shows you problems: Let’s see the process as a whole concept for this point. Introducing SCRUM is done fast. You have sprints, you have your Product-Backlog-Items or user stories etc., you work is organized, your team is organizing itself and so on.</p>
+
+<p>But what the process really shows you are problems! It shows you where you have delays, where information are not where they should be etc. Let me clarify this: This is a good thing! You have a process which points you in the right direction. This is not bad, you should see it like “It can’t get easier to improve!”</p>
+
+<p>If you use SCRUM as a whole without changing much of it SCRUM will show you your problems, your pain points. And SCRUM is useless if you have the opinion to change SCRUM just to hide or get rid of this pain points. This hurts sometimes! “Why do we have problems there? This worked well for years!” Well: Did it? You are planning your work right now and have an overview, you know where your product is and you have an interested team which does teamwork. And the paint point which came up worked well? For years? Ask yourself: Wasn’t this only a problem everybody learned to get along with? For years?</p>
+
+<p>I think this is one of the best points SCRUM does for you. You are adapting a process and this process comes to you and shows you where your problems are. (For this knowledge you would normally pay a lot of money ;))</p>
+
+<p>So: Do NOT get rid of pain points just by working around them, accepting them “as is” and telling everybody that this worked for years. Let SCRUM show you which things to solve. Give the process and yourself time to really figure out what the problem is. Maybe this takes 5, 10 or more sprints! But do not change main points of SCRUM and with this hide your problems. You would do SCRUM in the front and your old process in the back.</p>
+
+<p><strong>Reason 5: Priorities</strong></p>
+
+<p>Work is broken down in product-backlog-items or user stories and tasks. Whatever: You are working on things which have a priority. No matter what exactly this value is (0-100, 0-10, etc.) as a developer you have a picture what is more or less important. What does the customer want to see? Where do we have problems? What should we make better? This is also a kind of transparency which comes along automatically: You see which focus your stakeholders have on the software! Of course this can be discussed. But you can see it because of the priorities the PBIs are tagged with. This also helps you to manage your work.</p>
+
+<p>Well, these are only five reasons I mentioned here. I could go further and further. But I can tell you: try it out! With every pros and cons you see in the beginning. Solve the problems, see the advantages of organizing your work agile, your software agile, to have priorities and so on. I am absolutely sure in the end you will love it and after a time you can give yourself more than only reasons why you love SCRUM as much as I do.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

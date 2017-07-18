@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>Writing custom validators in Angular</title>
+     
+    <meta name="description" content="Writing custom validators in Angular" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="Writing custom validators in Angular" />
+    
+    
+    
+    <meta property="og:title" content="Writing custom validators in Angular" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="Writing custom validators in Angular" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="angular" property="article:tag">
+  
+  <meta content="customvalidation" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>Writing custom validators in Angular</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">Writing custom validators in Angular</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2016-05-10">10 May 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/angular'>Angular</a>,
+                       
+                
+                    
+                       <a href='/tag/customvalidation'>Customvalidation</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    6 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blogpost I want to show you how you are writing custom validators in Angular.</p>
+
+<p><a href="https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators">https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators</a></p>
+
+<blockquote>
+  <p>Updated to new Syntax</p>
+</blockquote>
+
+<p>When dealing with forms in Angular you can use the build-in validators like: required, minLength or maxLength, pattern… . Sooner or later you need a custom validator fulfilling a special validation.</p>
+
+<p>Let’s have a form first:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">f=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"calories"</span><span class="nt">&gt;</span>Calories<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calories"</span> <span class="na">placeholder=</span><span class="s">"Calories"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">foodItem</span><span class="err">.</span><span class="na">calories</span><span class="err">"</span>
+             <span class="na">name=</span><span class="s">"calories"</span><span class="nt">&gt;</span>
+   
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">AddOrUpdateFood</span><span class="err">()"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">f</span><span class="err">?.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>We see a form which has a variable “f” representing the form with which we can ask for the current state. We also have an input control in which we can add a number - calories in this case.</p>
+
+<blockquote>
+  <p>I know that we could change the type of the input to number but in this post we want to check if whether the things the user typed are number or not.</p>
+</blockquote>
+
+<p>So lets write a validator which exactly checks for that:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Directive</span><span class="p">,</span> <span class="nx">forwardRef</span><span class="p">,</span> <span class="nx">Attribute</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Validator</span><span class="p">,</span> <span class="nx">FormControl</span><span class="p">,</span> <span class="nx">NG_VALIDATORS</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/forms'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Directive</span><span class="p">({</span>
+    <span class="na">selector</span><span class="p">:</span> <span class="s1">'[isNumber][formControlName],[isNumber][formControl],[isNumber][ngModel]'</span><span class="p">,</span>
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span> <span class="na">provide</span><span class="p">:</span> <span class="nx">NG_VALIDATORS</span><span class="p">,</span> <span class="na">useExisting</span><span class="p">:</span> <span class="nx">forwardRef</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">IsNumberValidator</span><span class="p">),</span> <span class="na">multi</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">IsNumberValidator</span> <span class="k">implements</span> <span class="nx">Validator</span> <span class="p">{</span>
+
+    <span class="nx">validate</span><span class="p">(</span><span class="nx">c</span><span class="err">:</span> <span class="nx">FormControl</span><span class="p">)</span><span class="err">:</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span><span class="err">:</span> <span class="kr">string</span><span class="p">]</span><span class="err">:</span> <span class="kr">any</span> <span class="p">}</span> <span class="p">{</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nb">isNaN</span><span class="p">(</span><span class="o">+</span><span class="nx">c</span><span class="p">.</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+            <span class="c1">// console.log(c.value + " is not a number");</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="na">isNumber</span><span class="p">:</span>
+                <span class="p">{</span>
+                    <span class="na">valid</span><span class="p">:</span> <span class="kc">false</span>
+                <span class="p">}</span>
+            <span class="p">};</span>
+        <span class="p">}</span>
+
+        <span class="c1">// console.log(c.value + " is a number");</span>
+        <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This validator is named “IsNumberValidator” and has a function with a FormControl as a parameter. After the imports we define a directive here and adding the selectors we want. The “providers” let us extend the build-in NG_VALIDATORS and add our new validator. The class implements the validator class with the “validate”-Method which takes a FormControl and returns null if everything is okay and not null if the validation fails.</p>
+
+<p>Before we can use it in our form we have to include it in our module. I built a shared module which I include in my app.module.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">NgModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">BrowserModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/platform-browser'</span><span class="p">;</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">IsNumberValidator</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../validators/isNumber.validator'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">IsInRangeValidator</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../validators/isInRange.validator'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// Modules</span>
+        <span class="nx">BrowserModule</span>
+    <span class="p">],</span>
+
+    <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+
+        <span class="c1">// Components &amp;amp; directives</span>
+
+        <span class="nx">IsNumberValidator</span><span class="p">,</span>
+         <span class="nx">IsInRangeValidator</span>
+    <span class="p">],</span>
+
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// Services</span>
+    <span class="p">],</span>
+
+    <span class="na">exports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="nx">IsNumberValidator</span><span class="p">,</span>
+        <span class="nx">IsInRangeValidator</span>
+    <span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">SharedModule</span> <span class="p">{</span> <span class="p">}</span> </code></pre></figure>
+
+<p>and in our app.module:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="c1">// ...</span>
+
+<span class="k">import</span> <span class="p">{</span> <span class="nx">SharedModule</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./modules/shared.module'</span><span class="p">;</span>
+
+
+<span class="err">@</span><span class="nx">NgModule</span><span class="p">({</span>
+    <span class="na">imports</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+        <span class="nx">SharedModule</span>
+    <span class="p">],</span>
+
+    <span class="na">declarations</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">],</span>
+
+    <span class="na">providers</span><span class="p">:</span> <span class="p">[</span>
+        <span class="c1">// ...</span>
+    <span class="p">],</span>
+
+    <span class="na">bootstrap</span><span class="p">:</span> <span class="p">[</span><span class="nx">AppComponent</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">AppModule</span> <span class="p">{</span> <span class="p">}</span> </code></pre></figure>
+
+<p>We can use it in the form like</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">f=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"calories"</span><span class="nt">&gt;</span>Calories<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calories"</span> <span class="na">placeholder=</span><span class="s">"Calories"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">foodItem</span><span class="err">.</span><span class="na">calories</span><span class="err">"</span>
+            <span class="na">isNumber</span> <span class="na">name=</span><span class="s">"calories"</span><span class="nt">&gt;</span>
+   
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">AddOrUpdateFood</span><span class="err">()"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">f</span><span class="err">?.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span> </code></pre></figure>
+
+<p>Here we add the validator to the input field of our form. It is only a directive so we can treat it this way like we did with every directive before.</p>
+
+<p>So now the validator directive fires everytime a key is hit. We can now add a</p>
+
+<p><code class="highlighter-rouge">... #calories="ngModel" ...</code></p>
+
+<p>to the form and check if the variable we introduced is valid with</p>
+
+<p><code class="highlighter-rouge">... calories.valid ...</code></p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">f=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"calories"</span><span class="nt">&gt;</span>Calories<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calories"</span> <span class="na">placeholder=</span><span class="s">"Calories"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">foodItem</span><span class="err">.</span><span class="na">calories</span><span class="err">"</span>
+            <span class="na">isNumber</span> <span class="na">name=</span><span class="s">"calories"</span> <span class="err">#</span><span class="na">calories=</span><span class="s">"ngModel"</span><span class="nt">&gt;</span>
+   
+    <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"!calories.valid"</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span><span class="nt">&gt;</span>
+            Field is not valid
+        <span class="nt">&lt;/div&gt;</span>
+   
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">AddOrUpdateFood</span><span class="err">()"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">f</span><span class="err">?.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span> </code></pre></figure>
+
+<p>But it would be nice to show <em>specific</em> error messages to the users and not only if the filed is valid or not. Combining the variable with the dirty-check and our validator-naming we can show the user messages exactly to what was going wrong in the form.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">f=</span><span class="s">"ngForm"</span> <span class="na">novalidate</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"calories"</span><span class="nt">&gt;</span>Calories<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calories"</span> <span class="na">placeholder=</span><span class="s">"Calories"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">currentFood</span><span class="err">.</span><span class="na">calories</span><span class="err">"</span> <span class="na">required</span>
+            <span class="na">isNumber</span> <span class="na">name=</span><span class="s">"calories"</span> <span class="err">#</span><span class="na">calories=</span><span class="s">"ngModel"</span><span class="nt">&gt;</span> 
+            
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"calories.errors?.required &amp;amp;&amp;amp; (calories?.dirty &amp;amp;&amp;amp; !f.submitted)"</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span><span class="nt">&gt;</span>
+            *
+        <span class="nt">&lt;/div&gt;</span>
+
+        <span class="nt">&lt;div</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"calories.errors?.isNumber &amp;amp;&amp;amp; (calories?.dirty &amp;amp;&amp;amp; !f.submitted)"</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span><span class="nt">&gt;</span>
+            Please enter a number in a valid range
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">(</span><span class="na">click</span><span class="err">)="</span><span class="na">AddOrUpdateFood</span><span class="err">()"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">f</span><span class="err">?.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>And that’s basically it.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/05/Angular2CustomValidators.jpg" alt="Angular2CustomValidators" /></p>
+
+<p>HTH</p>
+
+<p>Regards
+<a href="https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators">https://github.com/OfferingSolutions/Offering-Solutions-Angular-Course/tree/master/Angular-Course/09_Forms/end/app/validators</a></p>
+
+<p><a href="http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html">http://blog.thoughtram.io/angular/2016/03/14/custom-validators-in-angular-2.html</a></p>
+
+<p>Thanks to <a href="http://www.gutsch-online.de/">Jürgen Gutsch</a> for doing a review of this blogpost.</p>
+
+<p>Fabian</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Writing custom validators in Angular&amp;url=http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/';
+        //var disqus_url = 'offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/">
+            <section class="post">
+                <h2>How you can organise gulp in your applications</h2>
+                <p>In this blogpost I want to show one possibility of organising your gulp tasks in...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/">
+            <section class="post">
+                <h2>Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2</h2>
+                <p>In the last blogpostI lost a few words about the REST-API the FoodChooser is talking...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

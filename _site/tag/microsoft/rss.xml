@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Speaking at the Microsoft TechDays 2017</title>
+	  <link>//blog/articles/2017/01/02/speaking-at-the-microsoft-techdays-2017/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-01-02T10:08:00+01:00</pubDate>
+	  <guid>//blog/articles/2017/01/02/speaking-at-the-microsoft-techdays-2017/</guid>
+	  <description><![CDATA[
+	     <p>I am very proud to announce that I will be speaking at the Microsoft TechDays 2017 about Angular and ASP.NET Core.</p>
+
+<p>This is the second time I am attending to the Microsoft TechDays. The last time was 2016 and it was a blast - I really enjoyed it.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2017/01/C0Q_kTCUcAABfwL-1024x536.jpg" alt="Speaking at the Microsoft TechDays 2017" /></p>
+
+<p>In my session which is placed as the last one at the second day, I will get you introduced to ASP.NET Core and how to use it. We will look at general facts around ASP.NET Core as well as the Startup-File, Middlewares and of course an ASP.NET Core WebAPI and the implementation of the HTTP-Verbs.</p>
+
+<p>In the second part of my session we will take a look at Angular and one possible way to use components with stateful and stateless design. We will cover the differences between those and find out what One-Way-Dataflow is and how it will help us getting our application cleaner and well structured.</p>
+
+<p>I will prepare an demo application to show all this concepts and techniques in action. We will use Visual Studio Code as this is still a scary thing for many developers due to the fact that it is not Visual Studio itself.</p>
+
+<p>The talk will be in german.</p>
+
+<p>Well, I will do the best I can to give you guys a show, to entertain you and to give you some technical inspiration and a view on this new stuff. I really hope to see you there.</p>
+
+<p>See you</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Moving from Microsoft Lumia 950 to OnePlus 3</title>
+	  <link>//blog/articles/2016/10/15/moving-from-microsoft-lumia-950-to-oneplus-3/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-10-15T16:19:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/10/15/moving-from-microsoft-lumia-950-to-oneplus-3/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to share the experience I made moving from Microsoft Lumia 950 to OnePlus 3.</p>
+
+<h3 id="prologue">Prologue</h3>
+
+<p>Let me clarify that first: I have always been a WP &amp; Lumia-Lover. I had Windows Phones right from the start and never had another phone ever before. So for me it was clear to also jump to the newest one, the 950, and I was sure to love it. But I changed my mind because of several reasons. Let me explain them to you and of course explain you my experiences with my newest phone, the OnePlus3, here.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6520.jpg" alt="dsc_6520" /></p>
+
+<h3 id="the-first-doubts">The first doubts</h3>
+
+<p>As I have been to a huge festival this year there was the possibility to create your timeschedule with all the different artists you wanted to see via your mobile phone. Which was great because you could easily pick your favourites and see where they were playing, for how long etc.</p>
+
+<p>This was done via app and this app was not available for windows mobile. This was kind of the last drop where I realized: How can it be that I always have to draw the short straw with my phone?</p>
+
+<p>I have had this feelings almost everytime you could do something really easy via your mobile phone. Well, as a Windows user you could not. And even if there was an app for this it was not well implemented.</p>
+
+<p>Don’t get me wrong: I could do almost everything I wanted with my phone. Through the normal websites you can do a lot of stuff without an app, the rest of the things you wanted to do were not really necessary or you could not even do them because your phone was not able to. And this last this was really offending me more and more.</p>
+
+<p>Another story: I was in a project at a customers place and they were discussing about getting their angular application to mobile via cordova and stuff. They wanted to participate from my knowledge so I was consulting them and joined the discussion. As I said that you are able to build for every platform their eyes really got bigger and bigger and they were really interested. As I started naming all the platforms and mentioned “Windows Mobile” they suddenly interrupted me and said “Nobody cares about Windows Mobile”. This was not to offend me. It was just said in the room like a statement. Standing there. I was quiet for a little time and went on.</p>
+
+<p>But this showed me that also customers do not care about Windows Mobile.</p>
+
+<p>Another one of the many problems was that the first move to a “one windows on all devices” was kind of shaky on the phone. Yes the 950 has power, a great display etc. but it was not stable and normal apps you wanted to use acted not stable. Also there have been no updates very often.</p>
+
+<p>So all of this and a lot stories more (like the percentage of people using it is decreasing and decreasing etc.) brought me to the fact that I had to switch phones. Period.</p>
+
+<p>Well and here is my first confession: I was lying to you. Right in your face because I have not ever had <em>only</em> Windows Phones and Lumias. There was a short period (about two weeks) where I had a really small and not powerful and cheap Android Phone. And I hated it. I could not do anything with it.</p>
+
+<p>But I wanted to give another OS a chance without spending tons of money on it. An iPhone is interesting for sure. But its very expensive and for the “first try” after switching platform? Pheew, thats a lot of money.</p>
+
+<p>Then I came to the OnePlus3. Which is still at 399 EUR which IS a lot of money but this is way cheaper than the iPhone and it has got great specs.</p>
+
+<p><a href="https://oneplus.net/at/3/specs">https://oneplus.net/at/3/specs</a></p>
+
+<p>After a short talk with a friend of mine who already has the phone (<a href="https://schwabencode.com/">Benjamin Abt / Schwabencode</a>) I ordered the OnePlus 3 over their store online.</p>
+
+<blockquote>
+  <p>I had to order to Germany because I am living in Switzerland where the OnePlus-Team did not ship at that point of time. Don’t know if this has changed.</p>
+</blockquote>
+
+<p>It arrived and the first impression was good. It was not overwhelming and not bad. Again: Do not get me wrong, the phone looked awesome! But so did the Lumia 950. There was no “WOW WHAT A PHONE”-Moment there. The 950 set the standard very very high especially looking at the outward appearance.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6517.jpg" alt="dsc_6517" /></p>
+
+<p>I booted it and began to invest in how to get my complete Microsoft environment onto Android. My first walking steps if you want.</p>
+
+<p>It turned out that this was not a big deal because Microsoft has alsmost everything you need available for Android. So this was okay. And as I started to work with the phone I realised: Wow, it is freaking fast!!!</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6521-1024x683.jpg" alt="dsc_6521" /></p>
+
+<h3 id="speed">Speed</h3>
+
+<p>The speed of the phone was really one of the first things that made me stunning. That was awesome! And I thought the Lumia 950 was fast. Well sure it is but the OnePlus3 is faster. Apps are open almost immediatelly. The fingerprint-sensor is also very fast (I read that it is one of the fastest on the market, not sure if this is true, got no comparison…the 950 does not have one ;)</p>
+
+<p>So the speed was one thing which was very impressive. But I can not say that it is Android itself or the Hardware. But in the end I do not care about what it actually is: Its fast and that is what counts.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6524-1024x683.jpg" alt="dsc_6524" /></p>
+
+<h3 id="apps">Apps</h3>
+
+<p>This paragraph now might put a smile on every not-windows-phone-user. But I began to explore and enjoy apps on my mobile device. Which was, like I mentioned, not unfamiliar to me because the 950 HAD Apps (against all rumours there are no apps for the Lumia), but not that many and not that useful ones. I can now have a look into my bank account, I can use a better twitter app, skype, slack, outlook, news-apps, parkkingcard for the place I am living…all this can done via app now. Before most of those apps I use now where not build for windows mobile. And I did not know what I missed because all of the Microsft apps are still there.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6518.jpg" alt="dsc_6518" /></p>
+
+<h3 id="internet-data">Internet Data</h3>
+
+<p>Another thing I noticed was the data usage of the OnePlus3 or better: of the apps. I have a volume contract of 1 GB per month. Which is totally fine for me but should not be less than 1 GB. And I use Twitter very often. On my windows Mobile device the app was consuming a lot (!) of my monthly volume. I do not know why and I am not 100% sure to blame the Twitter app for WM for that. But with the OnePlus3 my monthly data usage decreased a lot. If I have the real reason for this I will let you know.</p>
+
+<h3 id="hardware">Hardware</h3>
+
+<p>The hardware is also pretty great on both devices. But the OP3 has aluminium which just looks a bit nicer and it has got this notification slider on the side where I can choose which notifications shall come through by only slide this button up and down. This was really impressive. Also the fingerprint sensor I mentioned is cool.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6519.jpg" alt="dsc_6519" /></p>
+
+<h3 id="what-i-miss">What I miss…</h3>
+
+<p>Well, not everything is better with the new phone. So of course there are some things I really miss. First of all: the life tiles. Damn they are great. My OnePlus 3 has a frozen desktop. Not much interaction on it. With the Lumia 950 I felt the phone was more interacting with me even when I did not use it directly. Tiles were turning showing me some data which could be interesting for me. That was great, I miss that a bit.</p>
+
+<p>Second thing which I miss is the camera. As a windows mobile user I was used to the good camera the devices had since…ever. And here the same thing: I did not know how good it was because I did not have a possibility to compare. The camera on the OP3 is absolutely good and is fulfilling all my needs. But it does not have got the quality of the 950 camera. I miss this camera a little bit, too.</p>
+
+<p>The next thing I do not miss directly but it shows me that from my last experience with android the OS developed a lot but is still not perfect. Or are this the apps? I dont know. But sometimes thee is a setting which is suddenly turned off instead on, sometimes things are a little weird. Outlook mails do not show my trash folder anymore but I can empty it. Such kind of things. Not heavy stuff. Maybe I can fix it with a new installation…I will do that when I have time ;)</p>
+
+<p>Also the mentioned camera is a little bit prominent on the back of the phone. I do not care a lot because a friend of mine is sewing me bags for my phone everytime I got a new one so it is covered a little bit, but the Microsoft Lumia solved this problem a little better.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/10/DSC_6522.jpg" alt="dsc_6522" /></p>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<p>I will not go back to a Windows Mobile Phone for a long time. I really enjoy having my new OnePlus 3 because finally I can do everything I want with it and it is fast as hell. But I will never forget my Lumia. I will put it in my closet - keeping it and not throwing it away. And I will think of it everytime I think of a mobile phone because I hope the Windows Mobile OS gets better and better and perhaps one day I will get my Lumia out again enjoying it as much as I enjoy the OP3 in the meantime…</p>
+
+<p>Best regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Microsoft TechDays 2016</title>
+	  <link>//blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-02-20T11:30:00+01:00</pubDate>
+	  <guid>//blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/</guid>
+	  <description><![CDATA[
+	     <p><a href="https://www.microsoft.com/de-ch/events/techdays">TechDays 2016 Baden</a></p>
+
+<p>===== UPDATE======</p>
+
+<p>I just got the feedback from Microsoft and my talk was rated with 4.5 in Content and 4.6 in Speaker Performance. This means it was rated as the best Talk at the TechDays. Im really happy to read that so thanks to everybody who was in the audience :)</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/02/Feedback.jpg" alt="Feedback" /></p>
+
+<p>Hope to see you again on some events.</p>
+
+<p>Greetings</p>
+
+<p>Fabian</p>
+
+<p>=================</p>
+
+<p>I am so happy to announce that I will speak on the TechDays 2016 in Baden for the first time! I never expected Microsoft to ask me about doing a presentation at this event but they did :) And so I got a slot in the afternoon of the 1st of March. I know this is the last slot of the day and also the end of the TechDays this year but I will do my very best to give you a great technical and entertaining fade-out of this event.</p>
+
+<p>The talks is about Web development with Angular2 in combination with SignalR and we will have a demo working on ASP.NET Core 1.0. I will hold it in german.</p>
+
+<blockquote>
+  <p>I know the title shows “ASP.NET 5” but the ASP.NET-Team did the renaming just after I gave Microsoft my title. I will mention that in my talk but just to know: We will of course work with ASP.NET Core 1.0</p>
+</blockquote>
+
+<p><a href="http://damienbod.com/">DamienBod</a> (many thanks to him at this place) and we will take a look at some pitfalls I discovered and how to avoid them.</p>
+
+<p>Hope to see you there! Looking forward to this!</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Zu Gast beim MVP Global Summit bei Microsoft</title>
+	  <link>//blog/articles/2015/11/04/zu-gast-beim-mvp-global-summit-bei-microsoft/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-11-04T17:36:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/11/04/zu-gast-beim-mvp-global-summit-bei-microsoft/</guid>
+	  <description><![CDATA[
+	     <p>Hi,</p>
+
+<p>heute ist Halbzeit. Die Hälfte ist vorbei und ich hab gedacht, dass dies ein guter Zeitpunkt ist um mal das erste Fazit von meinem ersten MVP Global Summit zu ziehen.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/IMG-20151104-WA0001.jpg" alt="Zu Gast beim MVP Global Summit bei Microsoft" /></p>
+
+<p>Was ich hier im Global Summit erleben und erfahren darf hätte ich mir so niemals ausgemalt. Der Flug war sehr lang, aber das Event ist es mehr als Wert.</p>
+
+<p>Es gibt sehr viele Sessions, die während der Woche parallel laufen. Aufgrund seiner Expertise (bei mir vormals <em>“ASP.NET/IIS”</em>, jetzt <em>“Visual Studio &amp; Development Categories”</em>) wird man Sessions zugeteilt die über die 5 Tage gehen, kann den Plan aber verändern.</p>
+
+<p>So entstehen den ganzen Tag von 0800 Uhr morgens bis 1700 Uhr Nachmittags Vorträge über die verschiedensten Themen rund um seine Expertise.</p>
+
+<p>Ich darf über die Inhalte wirklich nichts sagen, manche Sachen sind aber auf Channel 9 oder auf https://live.asp.net/ verfügbar.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Listening to <a href="https://twitter.com/bradlygreen">@bradlygreen</a> from <a href="https://twitter.com/Google">@google</a> talk about <a href="https://twitter.com/angularjs">@angularjs</a> to the <a href="https://twitter.com/aspnet">@aspnet</a> MVPs on <a href="https://twitter.com/Microsoft">@Microsoft</a> campus <a href="https://t.co/YwzRdHKgDi">pic.twitter.com/YwzRdHKgDi</a></p>&mdash; Scott Hanselman (@shanselman) <a href="https://twitter.com/shanselman/status/661659280995520513">November 3, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Fakt ist, man bekommt die Chance mit Leuten zu reden, die nicht nur <strong>mit</strong> den Technologien arbeiten, die wir Entwickler jeden Tag verwenden, sondern man bekommt die Leute zu Gesicht, die genau diese Technologien entwickeln. Und sie halten Präsentationen und sind verfügbar für Smalltalk oder technische Diskussionen. Das fängt bei Asp.Net Entwicklern an und hört bei (zumindest mir) sehr bekannten Pluralsight-Autoren lange nicht auf.</p>
+
+<blockquote>
+  <p>Ich habe mit Scott Hanselman, John Papa, Jeremy Likness, Damian Edwards … geredet und sitze mit ihnen in Sessions…jeder Speaker und Entwickler weiss, dass das nicht alltäglich ist und man sowas einfach aufsaugen muss.</p>
+</blockquote>
+
+<p>Dies ist natürlich phänomenal, da man diese Gelegenheit nicht allzu oft bekommt ;-)</p>
+
+<p>Der Abend ist ebenfalls meist mit organisierten Parties gefüllt, bei denen man nochmal Gelegenheit hat die Leute kennenzulernen. Das Ganze unterstützt durch ein kühles Bier rundet die Sache natürlich sehr gut ab.</p>
+
+<p>Jetzt müssen wir nur noch hoffen, dass die Lufthansa am Samstag nicht streikt. ;-) Ansonsten bleiben Benjamin Abt  und ich halt noch ein bisschen hier.</p>
+
+<p>Alles in allem ist das Event bisher ein absolutes Highlight und man kann nur alles dafür tun nächstes Jahr wieder dabei zu sein.</p>
+
+<p>Gruss</p>
+
+<p> </p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Meine ersten Tage mit dem Surface Pro 3</title>
+	  <link>//blog/articles/2015/07/01/meine-ersten-tage-mit-dem-surface-3/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-07-01T06:00:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/07/01/meine-ersten-tage-mit-dem-surface-3/</guid>
+	  <description><![CDATA[
+	     <p>Nun ist es endlich da. Das Surface der dritten Generation. Ich habe mich ja schon drauf gefreut aber wenn es dann da ist, ist es natürlich nochmal was ganz anderes. Man hört ja so viel, man liest noch mehr und am Ende schimpfen alle auf die Kacheln. Mir völlig unverständlich, aber trotzdem habe ich gedacht, dass ich das Surface mal einem Review unterziehen kann. Die Ergebnisse davon will ich in diesem Beitrag beschreiben.</p>
+
+<blockquote>
+  <p><em>Achtung: Ich werde in dem Beitrag immer wieder Vergleiche zu einem Surface RT der ersten Generation anschlagen. Einfach weil ich SurfaceRT-Besitzer der ersten Stunde bin. Dass das schwer vergleichbar ist, ist mir bewusst. Dennoch sind manche Unterschiede und Parallelen erwähnenswert.</em></p>
+</blockquote>
+
+<p><a href="https://de.wikipedia.org/wiki/Microsoft_Surface#Surface_RT">Wikipedia Surface RT</a></p>
+
+<h2 id="grundlegendes">Grundlegendes</h2>
+
+<p>In meinem „Test“ habe ich ein Surface Pro 3 - 128 GB mit einem Intel i5 und 4GB RAM vorliegen
+<a href="http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-Pro-3/productID.300223100?WT.mc_id=SurfaceBG=Surface-Pro-3">Surface Pro 3 im MSStore</a>
+Dazu ein Type-Cover:
+<a href="http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-3-Type-Cover/productID.314948500">TypeCover im MSStore</a>
+und einen Stift zum Bedienen:
+<a href="http://www.microsoftstore.com/store/mseea/de_CH/pdp/Surface-Stift/productID.314951700">Stift im MSStore</a></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/03.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/01.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/02.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/13.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<h2 id="usserliche-erscheinung-und-haptik">Äusserliche Erscheinung und Haptik</h2>
+
+<p>Das Surface soll ja nicht nur gute Leistung bringen, sondern ebenso gut in der Hand liegen, sich gut anfühlen, gut verarbeitet sein und dazu noch gut aussehen. Soweit die Theorie.</p>
+
+<p>Das Gerät wurde in einer gut verpackten Hülle geliefert und wackelte nicht in der Verpackung sondern war passförmig in eine dafür vorgesehene Mulde eingelassen. Das Surface selber fasst sich absolut gut an und scheint gut verarbeitet. Es gibt keine scharfen Kanten, wackelnde Knöpfe oder ähnliches. Selbst die ausklappbare Halterung, die das Surface stehen lässt, klappert nicht und liegt gut an dem Gerät an. Dazu aber später mehr.</p>
+
+<p>Als erstes fällt mir der Lüftungsschlitz positiv auf, der um das halbe Surface gezogen ist. In meinen Augen eine sehr dezente, fast sogar hübsche, Lösung für das „Lüftungsproblem“ bei Tablets.</p>
+
+<p>Als zweites fallen mir die dezent verarbeiteten Kameras an der Front- sowie der Rückseite des Geräts auf. Diese merkt man kaum beim darüber fühlen mit dem Finger und sie sind gut in das Gerät verarbeitet. An der Front verschwinden sie sogar unter der Oberfläche, so dass man sie gar nicht spürt. Beide haben 5 Megapixel, was mir im praktischen Betrieb nicht so wichtig ist. Denn alles, was ich damit machen würde, wäre skypen. Und dafür reicht es allemal. Auch wenn ich das Surface mag renne ich nicht damit rum und mache Urlaubsbilder direkt mit dem Tablet ;)</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/12.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<p>Die Touchoberfläche hat zwei kleine circa 3 cm lange Schlitze, die als Lautsprecher dienen. Sie sind zwischen der Oberfläche und dem Rahmen platziert. So dezent, dass sie mir erst gar nicht aufgefallen sind. Hier muss man aufpassen, dass das gerade während des mobilen Gebrauchs kein Dreckfänger wird. Allerdings hätte ich keinen Vorschlag dies besser zu verarbeiten. Meine „Kritik“ ist somit nicht sehr konstruktiv. Angegeben sind die Lautsprecher mit „Dolby-Sound“. Ich weiss nicht, ob Microsoft hier extra den Begriff „Dolby-Surround“ ausgelassen hat oder ob der Hersteller dies damit ausdrücken wollte. Wie dem auch sei: Ich bin Musik-Affin und mir ist von vornerein klar, dass die Lautsprecher keine Standboxen ersetzen können. Jeder Dolby-Surround wäre nur ansatzweise zu erahnen. Die Lautsprecher erweisen sich aber beim Musikhören als gut und nicht zu schwach auf der Brust. Selbst bei basslastigen Stücken vibriert nichts. Klangfülle ist kaum vorhanden, was aber bei solchen Lautsprechern aufgrund der Grösse etc. auch nicht zu erwarten war.</p>
+
+<p>Das Surface hat einen Standfuss hinten, den man stufenlos einstellen kann. Dieser wirkt in keiner Position klapprig oder „schwach auf den Beinen“. Im Gegenteil: Ich bin überrascht wie massiv das Gerät egal in welcher Lage steht. Wozu natürlich die tiefste Einstellung ist bleibt wohl Microsoft vorbehalten. Die einzige Gefahr, die man dann hat, ist, dass man die Halterung abbricht. Aber auf so ein teures Gerät sollte man eben aufpassen ;-) Draufsetzen war da noch nie eine gute Idee.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/09.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/08.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/07.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<p>Verglichen mit dem SurfaceRT ist das Gerät ein wenig grösser, was es aber auch sein darf. Ich empfinde das als sehr angenehm. Die Grösse des Displays ist keinesfalls zu gross für ein Tablet. Es ist minimal schwerer (Angaben laut Microsoft: Surface RT: 680 Gramm, Surface 3 Pro: 800 Gramm) was ich aber laut Gefühl eher als gleichschwer angegeben hätte. Das beeindruckt mich, denn für die Grösse des Surface 3 Pro wirkt das Gerät sehr leicht. Zum Mitnehmen und in der Tasche rumtragen absolut perfekt.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/19.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/22.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/18.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /> 
+<img src="/assets/articles/wp-content/uploads/2015/06/17.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/16.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<p>Der mitgelieferte Stift ist gerade so schwer, dass man das Gefühl hat, etwas in der Hand zu haben. Es wirkt nicht wie billiges Plastik. Der Stift hat auf etwa einem Drittel der Länge zwei Knöpfe übereinander angebracht, die für meinen Geschmack zu viel Spiel haben. Sie lassen sich in ihrer Fassung minimal hin- und herschieben. Das ist nicht schlimm, geht aber sicher besser.</p>
+
+<p>Der Stift hat gerade Kanten, liegt aber gut in der Hand, was zum grossen Teil dem Gewicht zuzuschreiben ist.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/24.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/21.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<p>Das Type Cover ist dünner als seine Vorgänger und hat auf der Unterseite einen feinen Filzüberzug. Ich finde das sehr praktisch, da ich so die Wahl habe das Tablet auf die Metalloberfläche oder auf eine weiche Fläche zu legen. Dies war jedoch schon beim Touch Cover beim Surface RT nicht anders. Das anfügen und ablösen des Covers vom Tablet geht mit der Magnet-Lösung einwandfrei.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/15.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/14.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<p>Man kann das Cover so anbringen, dass zwischen der Stellfläche des Tablets und der Tastatur ein Hohlraum ist. Entgegen meinen Erwartungen wippt die Tastatur jedoch nicht mit sondern bietet genau den gleichen Druckpunkt als ob sie auf einem normalen Untergrund platziert wäre. Das überrascht mich wieder sehr positiv.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/20.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<h2 id="display">Display</h2>
+
+<p>Das Display ist absolut überzeugend in allen Belangen. Es ist gross genug, dass alles wichtige angezeigt werden kann und mit der Auflösung von 2160x1440 bei 12 Zoll ein echter „Hingucker“. Die Helligkeit lässt sich sehr granular einstellen und man kann auch draussen damit arbeiten. Man muss festhalten, dass das Surface ein 4:3-Display mitbringt und 16:9-Formate wie Serien oder Filme einen schwarzen Rand oben und unten nach sich ziehen. Das ist nicht weiter schlimm, man sieht es jedoch.</p>
+
+<h2 id="akkulaufzeit">Akkulaufzeit</h2>
+
+<p>Die Akkulaufzeit ist mit 9 (!) Stunden angegeben. Das mag vielleicht auch realistisch sein, wenn man es fast gar nicht nutzt. Die Nutzung ist hier der entscheidende Faktor. In meinem normalen Gebrauch, was Surfen, Schreiben, YouTube mit Sound und „herumspielen“ mit dem Betriebssystem umfasst, hielt der Akku ca. sechs Stunden, was ein absolut akzeptabler Wert ist. Auffallend ist, dass das Gerät recht warm wird im oberen rechten Bereich. Das stört nicht, ob das nun Akku oder WLAN-Modul ist, habe ich nicht weiter überprüft.</p>
+
+<h2 id="bedienung">Bedienung</h2>
+
+<p>Über die Bedienung will ich nicht allzu viele Worte verlieren, denn sie fügt sich nahtlos in die Windows 8 Bedienung, die man schon kennt. Den Stift zu benutzen ist kein Hindernis. Im Gegenteil: Mit ihm lassen sich Ordner, Dateien und sonstiges sehr gut aus- und anwählen. Wohl auch durch den Prozessor reagiert das Surface sehr schnell und, zu meiner Überraschung, bootet es auch in Sekundenschnelle. Dies war ich von meinem Surface RT anders gewohnt. Dort hat das Booten erheblich länger gedauert.</p>
+
+<p>Der Windows-Button ist gegenüber dem SurfaceRT von der unten mittigen Position an den rechten Rand gewandert. Das ist für mich erstmal ungewohnt, erweist sich als durchaus praktisch, denn wenn das Surface hingestellt wird ist der Button rechts um ein Vielfaches angenehmer zu erreichen als der Button am unteren Rand.</p>
+
+<p>Die Programme wie Browser, Word, Excel etc. starten so, wie man das von einem normalen Desktop-PC erwarten würde. Hier merkt man keinen Unterschied. Durch den Slogan, dass das Gerät einen Laptop durchaus ersetzen kann und soll, erwarte ich dies jedoch auch. Alles andere wäre eine Enttäuschung.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/05.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/11.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/06.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" />
+<img src="/assets/articles/wp-content/uploads/2015/06/04.jpg" alt="Meine ersten Tage mit dem Surface Pro 3" /></p>
+
+<h2 id="fazit">Fazit</h2>
+
+<p>Ich habe das Surface drei nun ein paar Tage im Einsatz und ich bin absolut positiv überrascht. Natürlich ist der Sprung von einem SurfaceRT zu einem Pro 3 Gerät riesig, dennoch enttäuscht mich das Gerät in keinerlei Hinsicht. Es ist handlich wie ein Tablet mit einer Leistung, die wenige Wünsche offen lässt und sieht noch gut aus dabei. Das hat jedoch auch seinen Preis.</p>
+
+<p>Die Frage, ob es meinen Laptop ersetzen kann, muss ich klar positiv beantworten. Ich traue dem Gerät das absolut zu. Ob es in Kombination mit einer Dockingstation meinen Desktop-PC ersetzen kann? Meinen geliebten mühsam selbst zusammengebauten Desktop PC? Ich würde es gerne ausprobieren! Das heisst aber auch, dass ich dem Surface in der Ausstattung diese Hürde absolut zutraue! Ein Super-Gerät, welches Spass macht und ich nur schweren Herzens wieder hergeben würde.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Microsoft TechTalk in Wallisellen</title>
+	  <link>//blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-04-19T17:52:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/</guid>
+	  <description><![CDATA[
+	     <p>Hallo zusammen, in diesem Blog will ich kurz den Microsoft TechTalk in Wallisellen zusammenfassen.</p>
+
+<p>Am 19.03.2015 waren Hans Peter Bornhauser und ich Guestspeaker beim Microsoft Techtalk in Wallisellen. Dass Ereignis war mit mehr als 100 Leuten komplett ausverkauft und drehte sich innerhalb von 3 Vorträgen rund um das Thema ASP.NET und Azure.</p>
+
+<p>Hans Peter stellte in einer 50-minütigen Session ASP.NET vNext vor. Mit praktischen Beispielen zeigte er, was alles auf Entwickler zukommt mit dem neuen ASP.NET vNext und Visual Studio 2015. Neben dem Zusammenschluss von WebAPI und Mvc-Controllern und dem Wegfallen der web.config ist hierbei sicher das Live-Editieren interessant, bei dem Änderungen in Dateien ohne Rebuild direkt in den Browser übernommen werden.</p>
+
+<p>Ich habe in einer vierzig-minütigen Session (wieso hatte ich nur 40?) ASP.NET WebApi mit AngularJS vorgestellt. AngularJS ist ein Single-Page-Application-Framework aus dem Hause Google. Clientseitige Programmierung ist nicht neu. Clientseitige Programmierung mit Struktur, mit Ordnung und Architektur jedoch schon. Javascript war vor Angular “Vogelwild” oder von Versuchen geprägt, dies zu ändern. Aus mittlerweile vielen Frameworks hat sich Angular herauskristallisiert und sich als State-of-the-Art etabliert. Out of the Box bringt Angular Features wie Dependency-Injection, Two-Way Databinding, SoC, Ui-Templating etc. mit.</p>
+
+<p>Somit ist es möglich, verteilte Applikationen mit einer API als Backend zu erstellen. Im Frontend kann ein Client mit Angular zum Einsatz kommen. Richtig implementiert lassen sich hieraus IOS/Android und Windows-Phone Implementierungen erstellen. Alles mit einer Code-Basis.</p>
+
+<p>Mit SignalR dreht man sprichwörtlich den Spiess um: Was, wenn der Server dem Client initiativ mal etwas mitteilen möchte? Das kann er tun. Mit SignalR kann der Server dem Client Push-Notifications senden. Das geht auch in einem WPF-Client!</p>
+
+<p>Die Beispiele zu meinem Teil findet ihr auf GitHub:</p>
+
+<p><a href="https://github.com/FabianGosebrink">https://github.com/FabianGosebrink</a></p>
+
+<p>Von unserer Seite aus ist zu sagen, dass der Vortrag sowie die anschliessende Diskussion sehr sehr viel Spass gemacht hat. Die Reaktionen waren sehr positiv. Vielen dank an alle Beteiligten und Zuhörer.</p>
+
+<p>Nächste Station ist der TechTalk am 23. April 2015 in Basel. Wir freuen uns!!!</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

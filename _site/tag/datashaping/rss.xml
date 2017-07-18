@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>ASP.NET WebAPI Datashaper to strip your json data</title>
+	  <link>//blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-05-30T18:23:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to introduce you the ASP.NET WebAPI Datashaper to strip your json data before sending it back to the client.</p>
+
+<p>The Datashaper gives you the possibility to strip the data you want to send based on the query of the client if you can not use Odata for a reason.</p>
+
+<p><a href="https://github.com/OfferingSolutions/OfferingSolutions-Datashaper">GitHub</a>
+<a href="http://fabian-gosebrink.de/Projects/Datashaper">Project-Page</a>
+<a href="http://www.nuget.org/packages/OfferingSolutions.DataShaper/">NuGet</a></p>
+
+<p><a href="https://github.com/OfferingSolutions/OfferingSolutions-Datashaper-Demo">Demo</a></p>
+
+<p>With this Nuget you can add the fields you want to receive in your request like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">test</span><span class="p">?</span><span class="nx">fields</span><span class="o">=</span><span class="nx">Id</span><span class="p">,</span><span class="nx">Title</span><span class="p">,</span><span class="nb">Date</span></code></pre></figure>
+
+<p>or</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">GET</span> <span class="o">/</span><span class="nx">api</span><span class="o">/</span><span class="nx">test</span><span class="p">?</span><span class="nx">fields</span><span class="o">=</span><span class="nx">Id</span><span class="p">,</span><span class="nx">Title</span><span class="p">,</span><span class="nb">Date</span><span class="p">,</span><span class="nx">ChildClasses</span><span class="p">.</span><span class="nx">Description</span><span class="p">,</span><span class="nx">ChildClasses</span><span class="p">.</span><span class="nx">Id</span> <span class="p">...</span></code></pre></figure>
+
+<p>You only have to call</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">Datashaper</span><span class="p">.</span><span class="nf">CreateDataShapedObject</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">listOfFields</span><span class="p">)</span></code></pre></figure>
+
+<p>in the end which is going to apply the list of Properties to your data.</p>
+
+<p>This can be useful if you wnat to display a table of your data with only selected fields. You do not have to have every property from your model onto the client and display it. You only need specific fields which you can strip out with this package.</p>
+
+<p>This is equivalent to the OData “$select”-Query option. But this package gives you the opportunity to get the same behaviour without using OData. But if you are interested you should take a look onto <a href="http://www.odata.org/">Odata</a>, too.</p>
+
+<p>Here is an example</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("myroute")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">string</span> <span class="n">fields</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="c1">//...
+</span>        
+        <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">listOfFields</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">fields</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">listOfFields</span> <span class="p">=</span> <span class="n">fields</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="sc">','</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">MyItems</span><span class="p">&gt;</span> <span class="n">myItems</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="nf">GetMyItems</span><span class="p">();</span>
+
+        <span class="c1">//...
+</span>        
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">myItems</span>
+            <span class="p">.</span><span class="nf">ToList</span><span class="p">()</span>
+            <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Datashaper</span><span class="p">.</span><span class="nf">CreateDataShapedObject</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">listOfFields</span><span class="p">));</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+         <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_1.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_2.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_3.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/datashaper_4.png" alt="ASP.NET WebAPI Datashaper to strip your json data" /></p>
+
+<p>Regards &amp; HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

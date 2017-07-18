@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Neue Angular-Kurstermine angekündigt</title>
+	  <link>//blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-08-17T19:14:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost möchte ich bekanntgeben, dass <a href="https://www.digicomp.ch/">Digicomp</a> neue Kurstermine angekündigt hat, die ich als Trainer betreuen und durchführen darf :) . Die Kurse finden in Bern statt, je nach Teilnehmern auch in Basel und Zürich.</p>
+
+<p><a href="http://offering.solutions/assets/images/Angular_With_Digicomp.png" target="_blank" rel="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs"><img src="/assets/articles/assets/images/Angular_With_Digicomp.png" alt="Neue Angular-Kurstermine angekündigt" /></a></p>
+
+<p><a href="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">Zu den Kursterminen</a></p>
+
+<p>Zu Beginn werde ich wie beim letzten Mal die Erwartungen der Teilnehmer abholen, eventuell habt ihr ja Punkte, die euch unter den Nägeln brennen. Im Laufe des Kurses werde ich versuchen alle Punkte zu klären, dass euch möglichst gut geholfen werden kann.</p>
+
+<p>Wir werden in dem Kurs erstmal die Javascript-Basics anschauen um danach die Grundlagen von AngularJS zu lernen. Dabei schauen wir uns natürlich Module, Factories, Services, HTTP-Kommunikation etc. an. Alles, was drumherung passiert (npm, etc.) ist natürlich auch mit dabei.</p>
+
+<p>Am Ende schliessen wir den Kurs mit dem Testing und einem Review einer Beispielapplikation ab, so dass man neben den Hands-On-Übungen, die es nach jedem Kapitel gibt, auch mal das “Grosse Ganze” sieht und ein Gefühl bekommt, wie AngularJS sich in einer etwas grösseren Umgebung präsentiert.</p>
+
+<p>Der Kurs beinhaltet also (nicht nur)</p>
+
+<ul>
+  <li>Einführung in das Ökosystem der modernen JavaScript-Entwicklung</li>
+  <li>Build-Tools, Automatisiertes Testing, Dependency-Management …</li>
+  <li>Wichtige Konzepte der JavaScript Entwicklung</li>
+  <li>Closures, Prototypal Inheritance, Constructor Functions, Promises, Module Pattern, Client-Side MVC</li>
+  <li>Realisierung von dynamischen UIs mit AngularJS</li>
+  <li>Directives, Controllers, Modules, Expressions und Filters</li>
+  <li>Angular Services und Backend-Anbindung</li>
+  <li>Angular Routing</li>
+  <li>Custom Directives</li>
+  <li>Build-Automatisierung und Testing</li>
+</ul>
+
+<p>Bis es soweit ist werde ich meine Angular-Unterlagen auf den neuesten Stand bringen um den Kursteilnehmern natürlich die neusten Features präsentieren zu können.</p>
+
+<p>Wie beim letzten Kurs lege ich Wert darauf, dass der Kurs von den Teilnehmer mitgestaltet wird indem Fragen mitgebracht werden. Wir werden Zeit für Fragen haben, schliesslich ist der Kurs für euch und nicht für mich :-).</p>
+
+<p>Also: Fragen aufschreiben, mitbringen und stellen.</p>
+
+<p>Jetzt registrieren, ich freue mich auf euer Kommen!</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Kurs - Frontend-Entwicklung mit AngularJS</title>
+	  <link>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-05-25T18:30:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost stelle ich meinen Kurs: <em>Frontend-Entwicklung mit AngularJS</em> vor.</p>
+
+<p><img src="/assets/images/Angular_With_Digicomp.png" alt="Angular_With_Digicomp" /></p>
+
+<p>Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht “Nein” gesagt.</p>
+
+<p>Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.</p>
+
+<p><a href="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">Digicomp Kurs</a></p>
+
+<p>In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner <em>Gulp</em> an. <em>NPM</em> ist natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.</p>
+
+<p>Am Ende des Kurses habe ich mir als Ziel gesetzt mit den Teilnehmern ein Review einer kleinen Beispielapplikation zu machen, die all das behandelt, was zuvor im Kurs gelernt und behandelt wurde.</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular">GitHub: Beispielapplikation</a></p>
+
+<p>Zum Schluss können die Teilnehmer Feedback geben und den Kurs bewerten.</p>
+
+<p>Im Feedback wurde der Kurs insgesamt mit 96/100 Punkten bewertet!</p>
+
+<p>“AngularJs-Wissen vom Feinsten”</p>
+
+<p>“Sehr guter Trainer”</p>
+
+<p>“Der Kurs hat viel Spass gemacht”</p>
+
+<p>“Das Wissen wurde ausführlich vermittelt”</p>
+
+<p>“Viel gelernt in zwei Tagen”</p>
+
+<p>Mir hat der Kurs sehr sehr viel Spass gemacht und ich würde mich freuen noch mehr davon zu halten.</p>
+
+<p>Für (An)Fragen über (In-House) Kurse zur modernen Web-Entwicklung: <a href="http://fabian-gosebrink.com/">Kontakt via Homepage</a></p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Getting started with Visual Studio Code, AngularJS and Typescript</title>
+	  <link>//blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-12-03T14:17:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/</guid>
+	  <description><![CDATA[
+	     <p>This time I want to show you how getting started with Visual Studio Code, AngularJS and Typescript.</p>
+
+<p>Before we start: A new Typescript version was announced!! You can see whats new <a href="https://github.com/Microsoft/TypeScript/wiki/roadmap">here</a> and further information <a href="http://www.typescriptlang.org/">here</a>.</p>
+
+<p>I always wanted to get to know Typescript and see the advantages of it compared to the “normal” javascript and so I just took my plain old sample application and tried to build it up with Typescript. I have to say: Typescript in combination with Visual Studio Code is absolutely awesome! I loved it.</p>
+
+<h2 id="getting-started">Getting Started:</h2>
+
+<p>Fist of all you need to install npm/nodejs from the installers <a href="https://nodejs.org/en/">here </a>if you are running a windows machine.</p>
+
+<p>if you have npm installed you can install typescript with the command</p>
+
+<p><code class="highlighter-rouge">npm install -g typescript</code></p>
+
+<p>which will install typescript globally. With this installed you can run the typescript compiler “tsc” and compile typescript.</p>
+
+<p>With</p>
+
+<p><code class="highlighter-rouge">npm install tsd -g</code></p>
+
+<p>You can install the <a href="http://definitelytyped.org/tsd/">TypeScript Definition manager for DefinitelyTyped</a> to get the strong typed advantages from Typescript going.</p>
+
+<p>In Visual Studio Code the first file you need when working with Typescript is the “tsconfig.json” which sets the basic behaviour of your typescript compiler.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s2">"compilerOptions"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"target"</span><span class="err">:</span> <span class="s2">"ES5"</span>
+    <span class="p">},</span>
+    <span class="s2">"exclude"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"node_modules"</span><span class="p">,</span>
+        <span class="s2">"wwwroot"</span>
+    <span class="p">]</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The “compilerOptions” tell typescript in which language the typescript code should be compiled. The exclude-block, you guessed it, excluded several folders from being checked by the compiler.</p>
+
+<p>Now you can write and compile Typescript files. :-)</p>
+
+<p>In Visual Studio Code if you now press the CRTL-SHIFT-B-Buttons you should trigger Visual Studio Code to compile your written files. If you create a taskrunner Visual Studio Code generates a .vscode-folder with a “tasks.json” in it.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/tyepscript01.jpg" alt="Getting started with Visual Studio Code, AngularJS and Typescript" /></p>
+
+<p>See that the “args” is not containing any files explicitly. That triggers the taskrunner to compile the whole code. Not only several files.</p>
+
+<p>If you now type Typescript-code in a *.ts file, save it and compile you will see a progress running in vs code for a short time. After this your file should be compiled into Typescript and appear in Visual Studio Code since Visual Studio Code is file based.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/tyepscript02.jpg" alt="Getting started with Visual Studio Code, AngularJS and Typescript" />
+<img src="/assets/articles/wp-content/uploads/2015/12/tyepscript03.jpg" alt="Getting started with Visual Studio Code, AngularJS and Typescript" /></p>
+
+<blockquote>
+  <p>If you do NOT see any compiled js/ts-files checking your typescript version is always a good hint.</p>
+</blockquote>
+
+<h3 id="adding-angularjs-files">Adding AngularJs-Files</h3>
+
+<p>If you want to get also started with AngularJs (and have installed the tsd like mentioned above) you can go to the root of your application, open the console and simply type</p>
+
+<p><code class="highlighter-rouge">tsd install angular --resolve --save</code></p>
+
+<p>which causes the Typescript Definition Manager (tsd) to install the *.d.ts files for AngularJs. The resolve parameter resolves all dependencies angular has (like jQuery in this case).</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/tyepscript04.jpg" alt="Getting started with Visual Studio Code, Angular and Typescript" /></p>
+
+<p>As you can see the typings-folder was generated with a “tsd.d.ts” file which holds the references and a tsd.json on the root of the application which holds all installed plugins for our project. This gets updated every time you install a new typescript.d-reference.</p>
+
+<p>Thats it. You can now go ahead and implement Typescript with Visual Studio Code.</p>
+
+<p>Check out the github repository of this code <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-Typescript">here</a>.</p>
+
+<p>Hope this helps.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Talk bei den Microsoft Evolution Days in Zürich</title>
+	  <link>//blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-11-12T21:42:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/</guid>
+	  <description><![CDATA[
+	     <p>Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen <span id="snippet_meta" class="desc" contenteditable="true">Talk bei den Microsoft Evolution Days in Zürich</span> über AngularJs &amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei <a href="http://digiblog.s3-eu-central-1.amazonaws.com/app/1446644382/30_agularjs-und-rest_fabian-gosebrink.pdf">Digicomp</a>. Alle Beispiele gibts auch auf <a href="https://github.com/FabianGosebrink">Github</a>.</p>
+
+<blockquote>
+  <p>Mein erster Vortrag als MVP :-)</p>
+</blockquote>
+
+<p>Früher hatten die Evolution Days keinen Developer-Track. Dieses Jahr war aber einer dabei und ich bin froh, dass ich eingeladen wurde. Zusammen mit <a href="https://twitter.com/mallibone">Mark Allibone</a> und Hanspeter Bornhauser habe ich einen von insgesamt 5 Vorträgen im Developertrack gehalten.</p>
+
+<p>Das komplette Programm gibts <a href="https://www.digicomp.ch/media/misc/MicrosoftEvolutionDay-2015-DigicompZuerich-29.10.pdf">hier</a>.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">.<a href="https://twitter.com/FabianGosebrink">@FabianGosebrink</a> about <a href="https://twitter.com/hashtag/angular?src=hash">#angular</a> and <a href="https://twitter.com/hashtag/webapi?src=hash">#webapi</a> at the <a href="https://twitter.com/hashtag/msevolutionday?src=hash">#msevolutionday</a> from <a href="https://twitter.com/DigicompCH">@digicompch</a> /cc <a href="https://twitter.com/Noser_Eng">@Noser_Eng</a> <a href="https://t.co/T73OdWRuiB">pic.twitter.com/T73OdWRuiB</a></p>&mdash; Mark Allibone (@mallibone) <a href="https://twitter.com/mallibone/status/659736379954495488">October 29, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Natürlich bedanke ich mich bei Digicomp und Microsoft, dass ich auf dem Event reden durfte. Es hat Spass gemacht. Gerne wieder :-)</p>
+
+<p>Hier ein Auszug aus den Folien:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie12.png" alt="Folie12" /></p>
+
+<p>Ich denke es ist wichtig klarzustellen, dass “REST” nicht gleich “WebAPI” ist. REST ist eine Form, die ein Web-Service erfüllen kann. ASP.NET WebAPI ist eine Technologie, mit der man solche Services umsetzen kann. Das ist ein fundamentaler Unterschied.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie13.png" alt="Folie13" /></p>
+
+<p>Hier beschreibe ich eine klassische REST-API. Das PATCH-Attribut habe ich auf der nächsten Folie. Es ging also nicht vergessen. Jeder Link stellt eine eindeutige Aktion dar. Alle CRUDOperationen sind durch diese Links für eine Entität abgedeckt.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie30.png" alt="Folie30" /></p>
+
+<p>Diese Folie beschreibt wohl das, was AngularJS so mächtig macht. Das Framework bietet einen clientseitige Architektur mit Javascript (oder Typescript), die es ermöglicht komplexe Web-Apllikationen zu bauen.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie41.png" alt="Folie41" />
+<img src="/assets/articles/wp-content/uploads/2015/11/Folie44.png" alt="Folie44" /></p>
+
+<p>“$scope” ist wohl das Wort, was bei vielen ein Erleichtern auslöst. Es entspricht etwa dem ViewModel, welches man schon von anderen Applikationsarten kennt. Hierauf kann man im AngularJS Funktionen und Werte definieren, die man dann von der View aus via DataBinding konsumieren kann.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie59.png" alt="Folie59" /></p>
+
+<p>Bis dahin</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>AngularJS with gulp, wiredep and bower</title>
+	  <link>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-30T11:18:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.</p>
+
+<p>I just introduced Gulp in my AngularJSDemoApp on GitHub.</p>
+
+<p>Check it out <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs">here</a>.</p>
+
+<h3 id="angularjs-with-gulp-wiredep-and-bower">AngularJS with gulp wiredep and bower</h3>
+
+<h4 id="gulpjs">gulp.js</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jshint"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jscs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jscs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"del"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-inject'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./gulp.config"</span><span class="p">)();</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"vet"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jscs</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s2">"jshint-stylish"</span><span class="p">,</span> <span class="p">{</span> <span class="na">verbose</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'injectJsIntoIndex'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"vet"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">wiredep</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wiredep'</span><span class="p">).</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">targetIndexHtmlFile</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">sources</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">target</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="nx">sources</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">addRootSlash</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wiredep</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">root</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The gulp task is checking via wiredep all dependencies and is injecting them into the index.html automatically. After this it is passing out the file into the destination.</p>
+
+<h4 id="gulpconfigjs">gulp.config.js</h4>
+
+<p>The gulp-config is seperated:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">srcJSFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"!./node_modules/**/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">targetIndexHtmlFile</span><span class="p">:</span> <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="na">root</span><span class="p">:</span> <span class="s2">"./"</span><span class="p">,</span>
+
+        <span class="na">bower</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">json</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./bower.json"</span><span class="p">),</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="s2">"./libs"</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="s2">"../.."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">bowerJson</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="p">,</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">directory</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">ignorePath</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Just run the corresponding gulp commands to start the default gulp task. Or, if you do not like gulp, just comment in all the files explicitly. That will do it, too :)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-animate/angular-animate.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-bootstrap/ui-bootstrap-tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-loading-bar/build/loading-bar.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-resource/angular-resource.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-route/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-toastr/dist/angular-toastr.tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery/dist/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/bootstrap/dist/js/bootstrap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/lodash/lodash.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endbower --&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/application.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/contactModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/homeModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/Controllers/contactController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Controllers/homeController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Services/peopleServices.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span></code></pre></figure>
+
+<p>Regards and have fun. Happy coding</p>
+
+<p>If you have VS 2013 you can install the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer</a>, which is included in VS 2015 or you just run the commands from the command line being on the level of the gulp.js-file.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>AngularJS NgResource Demo with ASP.NET WebAPI</title>
+	  <link>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-25T11:45:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI querying data as JSON.</p>
+
+<p>Code: <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo">https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo</a></p>
+
+<p>NgResource: <a href="https://docs.AngularJS.org/api/ngResource/service/$resource">https://docs.AngularJS.org/api/ngResource/service/$resource</a></p>
+
+<h4 id="the-application">The application</h4>
+
+<p>The application follows the “normal” way of seperating the data access also on client side into services.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/08/folders.png" alt="AngularJS NgResource Demo with ASP.NET WebAPI" /></p>
+
+<h4 id="preparation">Preparation:</h4>
+
+<p>Before you can use angulars ng resource you have to include it into your application like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'AngularJSDemoApp'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'ngRoute'</span><span class="p">,</span>
+        <span class="s1">'ngAnimate'</span><span class="p">,</span>
+        <span class="s1">'ngResource'</span><span class="p">,</span>
+        <span class="s2">"ui.bootstrap"</span><span class="p">,</span>
+        <span class="s1">'angular-loading-bar'</span><span class="p">,</span>
+        <span class="s2">"toastr"</span><span class="p">,</span>
+
+        <span class="s1">'home.homeModule'</span><span class="p">,</span>
+        <span class="s1">'contact.contactModule'</span>
+    <span class="p">]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">'cfpLoadingBarProvider'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cfpLoadingBarProvider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cfpLoadingBarProvider</span><span class="p">.</span><span class="nx">includeSpinner</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>So here you are providing “ngResource” to your app.</p>
+
+<p>After this you can inject the ngResource service provided by angular into your services:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'home.homeModule'</span><span class="p">).</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"home.services.peopleService"</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">"$resource"</span><span class="p">,</span> 
+            <span class="kd">function</span> <span class="p">(</span><span class="nx">$resource</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s2">"api/home/:id"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s1">'update'</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>The first argument you pass in is the url with the optional id (:id). The ng resource service now can call get create and delete methods ist a rest convenient way.</p>
+
+<p>ngresource is providing you the following methods:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
+  <span class="s1">'get'</span><span class="err">:</span>    <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">},</span>
+  <span class="s1">'save'</span><span class="err">:</span>   <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'POST'</span><span class="p">},</span>
+  <span class="s1">'query'</span><span class="err">:</span>  <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">isArray</span><span class="err">:</span><span class="kc">true</span><span class="p">},</span>
+  <span class="s1">'remove'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">},</span>
+  <span class="s1">'delete'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<h4 id="usage">Usage</h4>
+
+<p>Querying all resources:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+        <span class="nx">vm</span><span class="p">.</span><span class="nx">allPeople</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>Pay attention to the empty object we are passing in. You could add a single id here if you only want to query one single resource.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>In case you want to add a new resource, a person in this case, you can just call the “save” method and pass in the person you want to save:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vm</span><span class="p">.</span><span class="nx">newPerson</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>The service maps the “save”-method to the POST-Action from REST and is executing a POST- call against the API.</p>
+
+<p>Deleting is self explaining:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="k">delete</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">personToDelete</span><span class="p">.</span><span class="nx">Id</span> <span class="p">},</span> 
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// success</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<h4 id="conclusion">Conclusion:</h4>
+
+<p>The ngResource provides a good way to interact with a rest api using very very small code but providing big functionality.</p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Paging in einer ASP.Net WebAPI und AngularJS</title>
+	  <link>//blog/articles/2015/06/09/paging-in-einer-asp-net-webapi-und-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-06-09T12:14:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/06/09/paging-in-einer-asp-net-webapi-und-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost will ich zeigen, wie man paging in einer ASP.Net WebAPI und AngularJS realisieren kann.</p>
+
+<p>Eine gute API sollte mehrere Features anbieten. Eins davon ist Paging. In diesem Beispiel zeige ich Paging mit AngularJS und wie man es auf dem Client konsumieren kann.</p>
+
+<p>Als erstes sollte man dem Client anbieten per Parameter nur eine bestimmte Anzahl von Einträgen abzurufen.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("myRoute")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span>
+<span class="p">{</span>
+     <span class="c1">//...
+</span><span class="p">}</span></code></pre></figure>
+
+<p>Man definiert ein Start und eine Anzahl von Items, die abgerufen werden. Per default weisen wir hier zehn Items zu (Range 0-10).</p>
+
+<p>Somit geben wir als Ergebnis per LINQ nur die Anzahl der Items zurück, die der Client angefordert hat.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("schedules")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">MyItem</span><span class="p">&gt;</span> <span class="n">myItems</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="nf">getMyItems</span><span class="p">();</span>
+
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">myItems</span>
+            <span class="p">.</span><span class="nf">Skip</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Das Problem an der Stelle ist nun, dass der Client wissen muss, wieviele Items es insgesamt gibt, damit er die richtige Anzahl der Seiten darstellen kann.</p>
+
+<p>Um dem Client die komplette Anzahl der Items mitzuteilen erweitern wir den ResponseHeader um Informationen.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("schedules")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">int</span> <span class="n">start</span> <span class="p">=</span> <span class="m">0</span><span class="p">,</span> <span class="kt">int</span> <span class="n">count</span> <span class="p">=</span> <span class="m">10</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">MyItem</span><span class="p">&gt;</span> <span class="n">myItems</span> <span class="p">=</span> <span class="n">_repository</span><span class="p">.</span><span class="nf">getMyItems</span><span class="p">();</span>
+    
+        <span class="kt">var</span> <span class="n">paginationHeader</span> <span class="p">=</span> <span class="k">new</span>
+        <span class="p">{</span>
+            <span class="n">totalCount</span> <span class="p">=</span> <span class="n">myItems</span><span class="p">.</span><span class="nf">Count</span><span class="p">(),</span>
+        <span class="p">};</span>
+
+        <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"X-Pagination"</span><span class="p">,</span>
+           <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">SerializeObject</span><span class="p">(</span><span class="n">paginationHeader</span><span class="p">));</span>
+
+        <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">myItems</span>
+            <span class="p">.</span><span class="nf">Skip</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+            <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Im Response-Header steht nun die Anzahl der kompletten Items:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/1.png" alt="Paging in einer ASP.Net WebAPI und AngularJS" /></p>
+
+<p>Diese brauchen wir dann nur noch im Client parsen bzw. lesen.</p>
+
+<p>Ich benutze die Pagination-Komponente der <a href="https://angular-ui.github.io/bootstrap/#/pagination">Bootstrap-Direktiven</a>.</p>
+
+<p>Html:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;pagination</span> 
+<span class="na">ng-show=</span><span class="s">"totalItems &gt; maximalItemsPerPage"</span> 
+<span class="na">items-per-page=</span><span class="s">"maximalItemsPerPage"</span> 
+<span class="na">total-items=</span><span class="s">"totalItems"</span> 
+<span class="na">ng-model=</span><span class="s">"currentPage"</span> 
+<span class="na">ng-change=</span><span class="s">"pageChanged()"</span><span class="nt">&gt;&lt;/pagination&gt;</span></code></pre></figure>
+
+<p>Hierbei wird die Leiste zum navigieren nur angezeigt, wenn die Anzahl der Items grösser ist als die, die maximal auf einer Seite angezeigt werden sollen.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">myModule</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'myController'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'$scope'</span><span class="p">,</span> <span class="s2">"myRepository"</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">myRepository</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">currentPage</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">maximalItemsPerPage</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+    <span class="kd">var</span> <span class="nx">getMyItems</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">myRepository</span><span class="p">.</span><span class="nx">getAllItems</span><span class="p">(</span><span class="nx">start</span><span class="p">,</span> <span class="nx">count</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+                <span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">//Success</span>
+                    <span class="kd">var</span> <span class="nx">totalPagesObject</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">headers</span><span class="p">()[</span><span class="s1">'x-pagination'</span><span class="p">]);</span>
+                    <span class="nx">$scope</span><span class="p">.</span><span class="nx">totalItems</span> <span class="o">=</span> <span class="nx">totalPagesObject</span><span class="p">.</span><span class="nx">totalCount</span><span class="p">;</span>
+                <span class="p">},</span>
+                <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                    <span class="c1">//Error</span>
+                <span class="p">});</span>
+        <span class="p">};</span>
+
+        <span class="c1">//...</span>
+     
+        <span class="nx">$scope</span><span class="p">.</span><span class="nx">pageChanged</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Page changed to: '</span> <span class="o">+</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">currentPage</span><span class="p">);</span>
+            <span class="nx">getMyItems</span> <span class="p">((</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">currentPage</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">maximalItemsPerPage</span><span class="p">,</span> <span class="nx">$scope</span><span class="p">.</span><span class="nx">maximalItemsPerPage</span><span class="p">);</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">]);</span></code></pre></figure>
+
+<p>Hier werden die Standardwerte gesetzt und beim erfolgreichen Abrufen der Items wird der Header ausgelesen und die Variable “totalItems” gesetzt, auf die dann gebunden wird.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/06/2.png" alt="Paging in einer ASP.Net WebAPI und AngularJS" /></p>
+
+<p>Grüsse</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme</title>
+	  <link>//blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-05-01T17:35:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost möchte ich zeigen, wie wichtig eine API heutzutage ist. Frei nach dem Motto: Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme</p>
+
+<p>In der heutigen Zeit ist es absolut unabdingbar eine Software, die man für internen oder externen Gebrauch schreibt, auf mehreren Wegen verfügbar bzw. konsumierbar zu machen. Wichtig sind hierbei sicherlich Desktop-PCs, Smartphones und Tablets.</p>
+
+<p>Völlig unabhängig der eingesetzten Technologie (ASP.NET WebAPI, AngularJS, Xamarin, ASP.NET MVC, etc.) möchte ich mit diesem Blog einen Schritt zurückgehen und den Blick auf die Architektur lenken, die moderne Software-Lösungen voranbringen können. Hierbei werde ich zwar auch Technologien als Beispiel erwähnen, diese sind aber nur als Beispiel zu betrachten. Die Lösungen in dieser Hinsicht sind sicherlich vielfältiger als das hier geschriebene.</p>
+
+<h3 id="die-ganze-welt-schreibt-apis"><em>Die ganze Welt schreibt Apis</em></h3>
+
+<p>Trotz dem gemeinsamen Fakt, dass vom Kunden maximale Verfügbarkeit gefordert wird, sind Lösungen in diesem Bereich sehr individuell anzusehen. Kunde A braucht eine Lösung in einer bestimmten Richtung, für Kunde B ist wiederum etwas anderes interessant, etc.</p>
+
+<p>Was viele gemeinsam haben ist jedoch, dass sie Daten aus einer bestimmten Quelle beziehen und ablegen und auf dem anderen Ende anzeigen müssen. Hierbei verwendet man heutzutage REST-APIs. Auf einer Entwicklerkonferenz habe ich ein Zitat aufgeschnappt, was mich nicht mehr loslässt:</p>
+
+<blockquote>
+  <p>„Die ganze Welt schreibt APIs“</p>
+</blockquote>
+
+<p>Egal mit welcher Lösung man auf die Datensenke zugreift, also welche Anwendung der Kunde wünscht, ist es doch das Beste, man hat ein einheitliche Schnittstelle, gegen die man implementieren kann, die alle Operationen zur Verfügung stellt, die der Kunde braucht. Hierbei rede ich nicht nur von Daten, die abgerufen und abgelegt werden können. Hierbei geht es auch um Sortierungen, Paging, Datashaping, Autorisierung, Authentifizierung und und und. Moderne APIs stellen so etwas standardmässig zur Verfügung. Je nachdem ob der Client dies benutzen muss oder nicht: Die Funktionalität sollte auf jeden Fall implementiert sein. Wer weiss schon, welcher Client mit meiner Api kommuniziert? Die API sollte auf einem einheitlichen Standard basieren. Hier bietet sich der Standard an, der sich seit Jahren durchgesetzt hat: REST. Die API kann Http-Calls interpretieren und wie gewünscht auch mit einer entsprechenden Inhalt antworten.</p>
+
+<p>Nehmen wir als Beispiel den Kurznachrichtendienst Twitter. Twitter ist ein Unternehmen, das moderne Architekturen implementiert, fördert und lebt. Es gibt unendlich viele Twitter Clients für nahezu jede (!) Plattform. Diese kommunizieren alle gegen die Twitter API, die ein und dieselbe Funktionalität zur Verfügung stellt. Es kann REST-Calls interpretieren und ist somit in jede Richtung offen.</p>
+
+<p>Die Implementierung der API, auch im Twitter-Fall, erfolgt nach den Regeln von HTML. Das REST-Prinzip stellt hierbei alle Funktionen zur Verfügung, die ich brauche und ist ein Standard, den alle Endsysteme ausnahmslos sprechen. Ob Android, MVC, iOS, Windows: HTML bzw. die HTML-Verben sind Sprach, System und Plattformunabhängig.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/1.png" alt="1" /></p>
+
+<p>Somit ist eine modern entwickelte API das A und O einer modernen Architektur. Cloud-Systeme wie Microsofts Azure machen es einfacher denn je solche Systeme zu hosten. Um eine standardisierte Sprache zwischen den Clients und der API einzusetzen hat sich JSON durchgesetzt und hält auch in modernen Technologien (ASP.NET 5, Bower, …) auch als Konfigurationsmodell Einzug.</p>
+
+<p>Vor dem Hintergrund ist nun die einzige Anforderung an einen Client nur noch, dass er online http-Calls absetzen kann. Clientseitiges Caching sorgt hingegen dafür, dass die Applikation auch offline benutzt werden kann. Synchronisierungen finden natürlich nur im Online-Zustand statt. Aber wer ist denn heutzutage schon lange offline ;-)</p>
+
+<p>Die Clients könne vielfältig und in verschiedenen Sprachen entwickelt worden sein.</p>
+
+<p><em>Web: Asp.Net MVC, JavaScript (bspw. AngularJS)</em>
+<em>Mobile: Xamarin, Native, AngularJS</em>
+<em>Desktop: WPF, AngularJS (Node WebKit)</em></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/2.png" alt="2" /></p>
+
+<p>Eine REST-Api kann also, unabhängig vom Client, Daten und Datenoperationen zur Verfügung stellen. Sie sollte heutzutage mehr bieten als nur GET und POST-Methoden, sondern auch Paging, Sorting, Datashaping etc. unterstützen um wirklich eine flexible und fähige API zu bieten. Mit solch einer REST-API im Hintergrund können für den Kunden individuelle Lösungen entwickelt werden, die alle letztendlich die gleiche Datensenke konsumieren.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How to modularize your angular application</title>
+	  <link>//blog/articles/2015/03/17/how-to-modularize-your-angular-application/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-03-17T04:43:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/03/17/how-to-modularize-your-angular-application/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you a way on how to modularize your angular application in a way I did it so far. Enjoy reading :)</p>
+
+<p>Due to the fact that angular.js gets more and more important you are forced to think about a nice architecture to develop easy. Especially if you develop in mulitple teams.</p>
+
+<p>Well one of the killer features for me in angular is its modularization. Even when you are starting an app you realize that the whole app is nothing else than a module.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'TestApp'</span><span class="p">,</span>
+    <span class="p">[</span>
+       <span class="c1">//...</span>
+    <span class="p">]);</span></code></pre></figure>
+
+<p>Now we could add all our services, and controllers to our defined app. Which would make them all accessable. Behind the scenes angularJS uses dependency injection to offer us our parts of our software and these services are singletons, so they are accessable everywhere out of the box.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/02/Folie30.jpg" alt="Folie30" /></p>
+
+<p>But this is not a nice architecture and we are not using modularization. You do not have an overview of you application when you are using at your application.js file. You are using angularJS to build architectures, so lets do so!</p>
+
+<p>Go and build a folder for every Module you want to create:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/02/Folders.png" alt="Folders" /></p>
+
+<p>And register your services on these modules.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">homeModule</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'home.homeModule'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngRoute'</span><span class="p">]);</span>
+
+<span class="nx">homeModule</span><span class="p">.</span><span class="nx">config</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">$routeProvider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$routeProvider</span>
+        <span class="p">.</span><span class="nx">when</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">controller</span><span class="p">:</span> <span class="s2">"home.controllers.homeController"</span><span class="p">,</span>
+            <span class="na">templateUrl</span><span class="p">:</span> <span class="s2">"/app/Home/Templates/overview.html"</span>
+        <span class="p">})</span>
+        <span class="p">.</span><span class="nx">otherwise</span><span class="p">({</span> <span class="na">redirectTo</span><span class="p">:</span> <span class="s2">"/"</span> <span class="p">});</span>
+<span class="p">});</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="nx">homeModule</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'home.controllers.homeController'</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">'$scope'</span><span class="p">,</span> <span class="s1">'home.services.peopleService'</span><span class="p">,</span> <span class="s1">'toaster'</span><span class="p">,</span> <span class="s1">'cfpLoadingBar'</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">peopleService</span><span class="p">,</span> <span class="nx">toaster</span><span class="p">,</span> <span class="nx">cfpLoadingBar</span><span class="p">)</span> <span class="p">{</span>
+
+       <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">]);</span></code></pre></figure>
+
+<p>Then you have to load your modules in your app like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'TestApp'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'ngRoute'</span><span class="p">,</span>
+        <span class="s1">'ngResource'</span><span class="p">,</span>
+        <span class="s1">'toaster'</span><span class="p">,</span>
+        <span class="s1">'chieffancypants.loadingBar'</span><span class="p">,</span>
+
+        <span class="s1">'home.homeModule'</span><span class="p">,</span>
+        <span class="s1">'contact.contactModule'</span>
+    <span class="p">]);</span></code></pre></figure>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/02/Folie31.jpg" alt="How to modularize your angular application" /></p>
+
+<p>With this you have your application divided in modules and you can add or remove the modules as you want with no effort. You can also easily see which modules your application is based on.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How to work with the q promise syntax in AngularJS</title>
+	  <link>//blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-03-01T03:27:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you how to work with the q promise syntax in AngularJS</p>
+
+<h4 id="the-thensuccesserror-syntax">The “Then(success/error)”-Syntax</h4>
+
+<p>If you are developing with <strong>angularJs</strong> you have to work with promises angular gives to you. Its the syntax you have when you can react with a “then(success/error)” on it. And if you work with this syntax you will notice that its very mighty because it is one very clean way to react to your server responses or whatever in case of an error. So the “then(success/error)”-syntax is giving you error handling out of the box. You get the promise and react on it in case of a good or an error result.</p>
+
+<p>Very cool, hm?</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/here/goes/my/Api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Success</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+          <span class="p">});</span></code></pre></figure>
+
+<h4 id="structure-which-tiers-that-have-no-clue">Structure which tiers that have no clue!</h4>
+
+<p>Working client-side also needs structure and architecture to get to all these files and their responsibilities. This means: Giving your application modularity, making several single responsibilities to your controller, perhaps modal-controllers and working with repositories (which are also called “<em>services” or “</em>dataservices” or whatever. I use to call the repositories because on the client side its where i get the data from. I will handle this in a special blog post by the time.</p>
+
+<p>The thing is: We have different levels ob abstraction and the “then(success/error)” syntax can be used once. Once we received a promise, we can react in a positive or a negative way on it. And thats it. Our tier calling a method which uses the promise has no idea id the success was good or not. because it was already resolved.</p>
+
+<p>An example:</p>
+
+<p>Repository:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/here/goes/my/Api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Success</span>
+              <span class="k">return</span> <span class="s2">"good"</span><span class="p">;</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+              <span class="k">return</span> <span class="s2">"bad"</span><span class="p">;</span>
+          <span class="p">});</span></code></pre></figure>
+
+<p>and your controller could be like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">loadMyData</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">myRepository</span><span class="p">.</span><span class="nx">getSomeData</span><span class="p">(</span><span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">==</span> <span class="s2">"good"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//Success</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">==</span> <span class="s2">"bad"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//Error</span>
+            <span class="p">}</span>
+        <span class="p">};</span></code></pre></figure>
+
+<p>So the controller does not have an idea about the promise anymore. It only has the variables to work with. And this is ugly. In fact: We are losing our promise as soon as we return something else. Here this is in the repository (or (data)service)</p>
+
+<h4 id="the-solution">The solution</h4>
+
+<p>The solutions for this brings us the q-syntax. With this syntax we are able to keep our promise to the upcoming layers. So we are calling our webAPI, angular gives us a promise via the http-syntax (seen above). And we do not reject hardcoded data, but we keep the promise and make it returning either good or bad depending on which case it has.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"myRepository"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"$http"</span><span class="p">,</span> <span class="s2">"$q"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$q</span><span class="p">)</span> <span class="p">{</span> 
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">_getMyData</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+
+        <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"here/goes/my/api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Successful</span>
+              <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+              <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+          <span class="p">});</span>
+
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So the $q-sign gives us the possibility to access our promise and store it in a variable called “deferred” here. And in case of an error, we keep this promise alive, resolving it positively and on top of that we are passing our data in it which shall be available to whoever is going to resolve this promise from the outside. This is what “deferred.resolve(result);” does. But in case of an error we reject the promise. So again: We are keeping it, but we are telling the caller “This promise was not resolved positive”. In the last line we are returning our promise.</p>
+
+<p>The advantage now is that an outside caller can react on it with the same syntax he already knows, the “then(success/error)”-thing. Because this function shown above returns a normal promise!</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getMyData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myRepository</span><span class="p">.</span><span class="nx">getMyData</span><span class="p">(...)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// success</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">myResultData</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="c1">//error</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">errorMessage</span> <span class="o">=</span> <span class="s2">"Bad bad bad"</span><span class="p">;</span>
+            <span class="p">});</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>So this is way better than the error handling with any strings or bools or whatever.</p>
+
+<p>Hope you enjoyed reading.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

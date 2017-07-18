@@ -1,0 +1,808 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Get started with ASP.NET Core and Entity Framework 6</title>
+	  <link>//blog/articles/2015/12/13/get-started-with-asp-net-core-and-entity-framework-6/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-12-13T20:20:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/12/13/get-started-with-asp-net-core-and-entity-framework-6/</guid>
+	  <description><![CDATA[
+	     <p>Hey,</p>
+
+<p>today I want to show you how to get started with ASP.NET 5 and Entity Framework 6.</p>
+
+<p>If you start with the new templates for ASP.NET 5 you will notice in a short time that examples are going the EF 7 way. But if you want to stay at Entity Framework 6 as long as 7 is not in a final release or just to move from an older version step by step you can follow this instructions here. In this blog post I want to show you how to include a database with a connectionstring saved in a json file with the new ASP.NET Core.</p>
+
+<blockquote>
+  <p>Note: At the time of this post ASP.NET was at RC1 status. There might be changes until its completely an final released. However: If you want to dive into new functionalities: Keep reading.</p>
+</blockquote>
+
+<h2 id="get-started-with-aspnet-core-and-entity-framework-6-">Get started with ASP.NET Core and Entity Framework 6 :</h2>
+
+<p>First of all you need to start an new project with the new ASP.NET like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example.jpg" alt="Ef6Example" /></p>
+
+<p>This will create you a new nearly empty solution following the new standards with all configs in *.json files and so on.</p>
+
+<blockquote>
+  <p>This example is only made fot the full version of the .net-Framework. So the core version will not be supported with this example.</p>
+</blockquote>
+
+<p>The first step we a re going to do is adding the dependency of the Entity Framework to our solution via the project.json file. For this only put the line</p>
+
+<p><code class="highlighter-rouge">"EntityFramework": "6.1.3"</code></p>
+
+<p>at the end of you dependencies section like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example_02.jpg" alt="Ef6Example_02" /></p>
+
+<p>This will get Visual Studio 2015 to update your dependencies including the Entity Framework.</p>
+
+<p>Now you can create a new class named like your Context. in this case this will be “MyEf6EntityFrameworkContext”.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example_03.jpg" alt="Ef6Example_03" /></p>
+
+<p>Be sure to use the “base”-functionality, because we will need it when passing the connectionstring to the context reading it out of the *.json file.</p>
+
+<p>Back in our Startup.cs-File we are including a file called “appsettings.json”. Lets go and add our Connectionstring to this file:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example_04.jpg" alt="Ef6Example_04" /></p>
+
+<p>This should look quite familiar because of the connectionstring you knew from the web.config in the previous asp.net-versions.</p>
+
+<h2 id="what-we-did-so-far">What we did so far:</h2>
+
+<p>At this point we added the connectionstring to the config file we will consume in the startup.cs and we created a databasecontext like we know it which will provide us any data in the future.</p>
+
+<h2 id="go-ahead">Go ahead!</h2>
+
+<p>Next thing we have to do is getting the config and our databasecontext married :-)</p>
+
+<p>This can be done putting a single line in our “Startup.cs”-File.</p>
+
+<p>Just add</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">MyEf6EntityFrameworkContext</span><span class="p">&gt;((</span><span class="n">s</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MyEf6EntityFrameworkContext</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"Data:Ef6ExampleConnectionString"</span><span class="p">]));</span></code></pre></figure>
+
+<p>in the method “ConfigureServices” in your Startup.cs.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add framework services.
+</span>    <span class="n">services</span><span class="p">.</span><span class="nf">AddMvc</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">MyEf6EntityFrameworkContext</span><span class="p">&gt;((</span><span class="n">s</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MyEf6EntityFrameworkContext</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"Data:Ef6ExampleConnectionString"</span><span class="p">]));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This line will read the configuration and get the connection-string out of it and use it for establishing the connection. pay attention to the scoped adding. This is because the context should be generated for every single request. You can grab an overview of all lifestyles here, even it’s a bit outdated: <a href="http://blogs.msdn.com/b/webdev/archive/2014/06/17/dependency-injection-in-asp-net-vnext.aspx">Dependency Injection in ASP.NET vNext</a></p>
+
+<h2 id="the-model">The Model</h2>
+
+<p>You can now go ahead and install my <a href="https://github.com/OfferingSolutions/OfferingSolutions-RepositoryPattern-UnitOfWork">Unit of Work</a> via nuget and create a repository like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">interface</span> <span class="n">IExampleRepository</span> <span class="p">:</span> <span class="n">IRepositoryContext</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">&gt;</span>
+    <span class="p">{</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">ExampleRepository</span> <span class="p">:</span> <span class="n">RepositoryContextImpl</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">&gt;,</span> <span class="n">IExampleRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">ExampleRepository</span><span class="p">(</span><span class="n">MyEf6EntityFrameworkContext</span> <span class="n">databaseContext</span><span class="p">)</span> <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">databaseContext</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With a model like this (for example):</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyModel</span>
+    <span class="p">{</span>
+        <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Meanwhile I also added <a href="https://github.com/AutoMapper/AutoMapper/wiki/Getting-started">Automappers</a> and a ViewModel to map between those two:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MyModelViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now we have to bring it to the build in DI in ASP.NET:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// Add framework services.
+</span>    <span class="n">services</span><span class="p">.</span><span class="nf">AddMvc</span><span class="p">();</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">IExampleRepository</span><span class="p">,</span> <span class="n">ExampleRepository</span><span class="p">&gt;();</span>
+    <span class="n">services</span><span class="p">.</span><span class="n">AddScoped</span><span class="p">&lt;</span><span class="n">MyEf6EntityFrameworkContext</span><span class="p">&gt;((</span><span class="n">s</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MyEf6EntityFrameworkContext</span><span class="p">(</span><span class="n">Configuration</span><span class="p">[</span><span class="s">"Data:Ef6ExampleConnectionString"</span><span class="p">]));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>and the automapping:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Mapper</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">config</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">config</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">,</span> <span class="n">MyModelViewModel</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+    <span class="p">});</span>
+
+    <span class="c1">//...
+</span><span class="p">}</span></code></pre></figure>
+
+<p>In the end you only have to build up a controller which gives and takes the values as your API:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Route("api/[controller]</span><span class="s">")]
+</span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyModelController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IExampleRepository</span> <span class="n">_exampleRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">MyModelController</span><span class="p">(</span><span class="n">IExampleRepository</span> <span class="n">exampleRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_exampleRepository</span> <span class="p">=</span> <span class="n">exampleRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// GET: api/mymodel
+</span>    <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">""</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetAll"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Get</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">List</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">&gt;</span> <span class="n">MyModels</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">JsonResult</span><span class="p">(</span><span class="n">MyModels</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">MyModelViewModel</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//Do something with the exception
+</span>            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpStatusCodeResult</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">InternalServerError</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// GET api/values/5
+</span>    <span class="p">[</span><span class="nf">HttpGet</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingle"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Get</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">MyModel</span> <span class="n">MyModel</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">MyModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpNotFoundResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpOkObjectResult</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">MyModelViewModel</span><span class="p">&gt;(</span><span class="n">MyModel</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//Do something with the exception
+</span>            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpStatusCodeResult</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">InternalServerError</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// POST api/values
+</span>    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Post</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span><span class="n">MyModelViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">BadRequestResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">MyModel</span> <span class="n">item</span> <span class="p">=</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">MyModel</span><span class="p">&gt;(</span><span class="n">viewModel</span><span class="p">);</span>
+
+            <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">CreatedAtRouteResult</span><span class="p">(</span><span class="s">"GetSingle"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">controller</span> <span class="p">=</span> <span class="s">"MyModel"</span><span class="p">,</span> <span class="n">id</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">item</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//Do something with the exception
+</span>            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpStatusCodeResult</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">InternalServerError</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// PUT api/values/5
+</span>    <span class="p">[</span><span class="nf">HttpPut</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Put</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span><span class="n">MyModelViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">BadRequestResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">MyModel</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpNotFoundResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">singleById</span><span class="p">.</span><span class="n">Name</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">Name</span><span class="p">;</span>
+
+            <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">singleById</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpOkObjectResult</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">MyModelViewModel</span><span class="p">&gt;(</span><span class="n">singleById</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">BadRequestResult</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//Do something with the exception
+</span>            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpStatusCodeResult</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">InternalServerError</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// DELETE api/values/5
+</span>    <span class="p">[</span><span class="nf">HttpDelete</span><span class="p">(</span><span class="s">"{id}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IActionResult</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">MyModel</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpNotFoundResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_exampleRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nf">NoContentResult</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="k">new</span> <span class="nf">BadRequestResult</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">//Do something with the exception
+</span>            <span class="k">return</span> <span class="k">new</span> <span class="nf">HttpStatusCodeResult</span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">InternalServerError</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Thats it. If you now going to use the DatabaseContext it will create the database for you with the new ASP.NET 5 RC1.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example_05.jpg" alt="Ef6Example_05" /></p>
+
+<p>You can now go ahead and add an item with e.g. postman:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/12/Ef6Example_06.jpg" alt="Ef6Example_06" /></p>
+
+<p>and it will be stored in the database:</p>
+
+<p><a href="https://github.com/FabianGosebrink/Asp.Net5WithEntityFramework6">Github</a></p>
+
+<p>Hope this helps</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET Unit Of Work with Entity Framework</title>
+	  <link>//blog/articles/2015/12/09/asp-net-unit-of-work-with-entity-framework/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-12-09T21:37:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/12/09/asp-net-unit-of-work-with-entity-framework/</guid>
+	  <description><![CDATA[
+	     <p>I just implemented a solution for the ASP.NET Unit Of Work with Entity Framework (see <a href="http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/">this</a> post) and put all this into a NuGet-Package. And finally: Here it is!</p>
+
+<h3 id="code">Code</h3>
+
+<p>Nuget: <a href="https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/">UnitOfWork by Offering.Solutions</a></p>
+
+<p>Github: <a href="https://github.com/OfferingSolutions/OfferingSolutions-RepositoryPattern-UnitOfWork">OfferingSolutions UnitOfWork with Entity Framework</a></p>
+
+<p>This blogpost has a sample-solution attached. Feel free to look into it. But before you do let me explain this package a bit. It will use the UnitOfWork, you will be able to use GenericRepositories and Customrepositories and everything is cached so that if you use the repositories in one using they only have to be created once.</p>
+
+<p>I wont go into details about the sense of the UnitOfWork-thing but I want to give you code-examples how you can start with this in just a few minutes of your time.</p>
+
+<p>If you want to work with the UnitOfWork in this NuGet-Package you will have two different possibilities:</p>
+
+<ol>
+  <li>Use generic repositories</li>
+  <li>Extend the generic repositories to use your own functions additional to the given CRUD-operations</li>
+</ol>
+
+<p>I want to handle both cases in this post:</p>
+
+<p>Lets start:</p>
+
+<p>First of all you have to install the NuGet-Package. It will add you the needed dll you can work with.</p>
+
+<h3 id="use-generic-repositories">1) Use generic repositories</h3>
+
+<p>The common case is that you have a DatabaseContext and DbSets of you entities stored in it. After adding the package you can use the OsUnitOfWorkContext as follows</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="p">(</span><span class="n">IOsUnitOfWorkContext</span> <span class="n">unitOfWorkContext</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">OsUnitOfWorkContext</span><span class="p">(</span><span class="k">new</span> <span class="nf">DatabaseContext</span><span class="p">()))</span>
+<span class="p">{</span>
+    <span class="n">Person</span> <span class="n">person</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Person</span><span class="p">()</span> <span class="p">{</span> <span class="n">Age</span> <span class="p">=</span> <span class="m">28</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"Fabian"</span> <span class="p">};</span>
+
+    <span class="c1">//Adding a new Entity, for example "Person"
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+
+    <span class="c1">//Savechanges
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+    <span class="c1">//or...
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">SaveASync</span><span class="p">();</span>
+
+    <span class="c1">// Get all Persons
+</span>    <span class="n">List</span> <span class="n">allPersons</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">().</span><span class="nf">ToList</span><span class="p">();</span>
+
+    <span class="c1">// Get all Persons with the age of 35
+</span>    <span class="n">List</span> <span class="n">allPersonsOnAge35</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Age</span> <span class="p">==</span> <span class="m">35</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+
+    <span class="c1">// Get all Persons with the age of 35 ordered by Name
+</span>    <span class="n">List</span> <span class="n">allPersonsOnAge35Ordered</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Age</span> <span class="p">==</span> <span class="m">35</span><span class="p">,</span> <span class="n">orderBy</span><span class="p">:</span> <span class="n">q</span> <span class="p">=&gt;</span> <span class="n">q</span><span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">d</span> <span class="p">=&gt;</span> <span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">)).</span><span class="nf">ToList</span><span class="p">();</span>
+
+    <span class="c1">// Get all Persons with the age of 35 ordered by Name and include its properties
+</span>    <span class="n">List</span> <span class="n">allPersonsOnAge35OrderedAndWithThings</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span>
+        <span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Age</span> <span class="p">==</span> <span class="m">35</span><span class="p">,</span>
+        <span class="n">orderBy</span><span class="p">:</span> <span class="n">q</span> <span class="p">=&gt;</span> <span class="n">q</span><span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">d</span> <span class="p">=&gt;</span> <span class="n">d</span><span class="p">.</span><span class="n">Name</span><span class="p">),</span>
+        <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Things"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+
+    <span class="c1">// Get all Persons and include its properties
+</span>    <span class="n">List</span> <span class="n">allPersonsWithThings</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span><span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Things"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+
+    <span class="c1">// Find a single Person with a specific name
+</span>    <span class="n">Person</span> <span class="n">findBy</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">"Fabian"</span><span class="p">);</span>
+
+    <span class="c1">// Find a single Person with a specific name and include its siblings
+</span>    <span class="n">Person</span> <span class="n">findByWithThings</span> <span class="p">=</span> <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Name</span> <span class="p">==</span> <span class="s">"Fabian"</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Things"</span><span class="p">);</span>
+
+    <span class="c1">// Find a person by id 
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="m">6</span><span class="p">);</span>
+
+    <span class="c1">//Update an existing person
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+
+    <span class="c1">//Add or Update a Person
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">AddOrUpdate</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+
+    <span class="c1">//Deleting a Person by Id or by entity
+</span>    <span class="c1">//unitOfWorkContext.Delete(person.Id);
+</span>    <span class="n">unitOfWorkContext</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">person</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="use-extended-repositories">2) Use extended repositories</h3>
+
+<p>If you want the normal repository to extend a bit with your own functions this is also possible. Everything you have to do is writing your own repository. You can even overwrite the normal CRUD-Methods to do whateer you like in there.</p>
+
+<p>Attention to inherit it from the “IRepositoryContext<YourEntity>" respectively the "RepositoryContextImpl<YourEntity>". The code should look like this:</YourEntity></YourEntity></p>
+
+<p>Interface:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">interface</span> <span class="n">IPersonRepository</span> <span class="p">:</span> <span class="n">IRepositoryContext</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="nf">MyNewFunction</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Implementation:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">PersonRepository</span> <span class="p">:</span> <span class="n">RepositoryContextImpl</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;,</span> <span class="n">IPersonRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">PersonRepository</span><span class="p">(</span><span class="n">DbContext</span> <span class="n">dbContext</span><span class="p">)</span>
+        <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">dbContext</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">MyNewFunction</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">//Do Something
+</span>    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You can then use it with</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="p">(</span><span class="n">IPersonRepository</span> <span class="n">personRepository</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PersonRepository</span><span class="p">(</span><span class="k">new</span> <span class="nf">DatabaseContext</span><span class="p">()))</span>
+<span class="p">{</span>
+    <span class="n">personRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">Person</span><span class="p">());</span>
+    <span class="n">personRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">persons</span> <span class="p">=</span> <span class="n">personRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">();</span>
+    <span class="n">personRepository</span><span class="p">.</span><span class="nf">MyNewFunction</span><span class="p">(</span><span class="m">6</span><span class="p">);</span>
+    <span class="c1">//...
+</span><span class="p">}</span></code></pre></figure>
+
+<p>With this you can build your own repositories and they are build up modular and are replacable in an easy way.</p>
+
+<p>Thats it. I think this is nice and smooth. I hope you can get along with it. Have fun.</p>
+
+<p>See <a href="http://www.asp.net/mvc/tutorials/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application" target="_blank">here</a> and <a href="http://codereview.stackexchange.com/questions/31822/unit-of-work-and-repository-design-pattern-implementation" target="_blank">here </a>for inspiration.</p>
+
+<p>See also <a title="ASP.NET MVC Architecture (Part III): Generic Repositories and UnitOfWork" href="http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/" target="_blank">here </a>for another related BlogEntry (when this Nuget was not released so far ;) )</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<p>Download <a href="/assets/articles/wp-content/uploads/2014/08/OfferingSolutions.UnitOfWork.Sample.0.6.1.zip">OfferingSolutions.UnitOfWork.Sample.0.6.1</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET - Clientseitige Webarchitekturen mit AngularJS</title>
+	  <link>//blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-11-02T07:05:00+01:00</pubDate>
+	  <guid>//blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>ASP.NET MVC hat, wie der Name schon sagt, die MVC-Struktur auf dem Server etabliert und es ist somit möglich saubere Architekturen auf dem Server zu erstellen.</p>
+
+<p>Mehr und mehr geht die Richtung jedoch hin zu Mobile-First-Implementierungen. Hierbei spielt der Client, dabei meine ich die Tatsache, <em>dass</em> es ein Client ist, nicht welche Art von Client (Handy, Tablet etc.), eine immer grössere Rolle.</p>
+
+<p>Wir tragen heute Rechner in unseren Hosentaschen, die stärker sind als die Desktop-Rechner vor 5 Jahren und man findet Rechenpower sehr viel schneller als zu damaliger Zeit. Tablets, Handys, Phablets und und und sind internetfähig und die Seiten müssen mobile Ansichten einfach in den Fokus stellen. MediaQueries tun ihre Arbeit, aber moderne WebApplikationen müssen auch fähig sein, dem Benutzer die Usability einer mobilen App zu geben. Die Arbeit findet also auf dem Client, statt auf dem Server, statt. Aufgrund der Leistung ist dies ohne Probleme möglich. Aber je mehr Arbeit auf dem Client getan werden muss, desto mehr muss auch bei dem Erstellen der Appltikation clientseitig implementiert werden. Dies geht nur mit einer testbaren und wartbaren Struktur und Architektur.</p>
+
+<p>AngularJS bietet neben der Implementierung mit Javascript auch noch die Möglichkeit eine Clientseitige geordnete Architektur, im MV*-Stil aufzuziehen, um auch grössere Anforderungen an Webseiten geordnet abzubilden.</p>
+
+<p>Durch die Tatsache, dass Angular uns Dependency-Injection out-of-the-box mitliefert gewinnen wir schon eine sehr lose Kopplung der einzelnen Module, die sich sehr schön und passend zusammensetzen lassen.</p>
+
+<p>Im Folgenden möchte ich eine beispielhafte Architektur aufzeigen und erläutern. Diese ist nicht in Stein gemeisselt, ist aber sicher ein guter Anfang für Projekte.</p>
+
+<p>Die Struktur bzw Architektur der Client-Applikation liegt in einem Verzeichnis „app“ im root-Verzeichnis der Anwendung.</p>
+
+<p><img src="/assets/articles/2014-11-02/01.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>In ihr enthalten ist ein Ordner für Bilder und Scripts, einer für Styles (css-Dateien) und für die Views. Der Skript-Ordner beinhaltet die eigentliche Applikation:</p>
+
+<p><img src="/assets/articles/2014-11-02/adasdasdasd.jpg" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Hier kann man auch schon die clientseitige Architektur bzw. deren Ansatz erkennen: der controllers-Folder bildet den „Namespace“ für Controller ab, der die gleiche Rolle spielt wie in ASP.NET-Anwendungen auch: Er nimmt die Anfragen vom UI entgegen und verarbeitet diese. Dazu arbeitet er mit dem Viewmodel, dass in Angular „$scope“ getauft wurde.</p>
+
+<p>Die Services bieten eine Abstrahierung von etwaigen Aufgaben. Hier können Business-Services weggekapselt werden, die ihre eigenständigen Aufgaben haben. Auch Repositories sind denkbar. Auch in einem eigenen Namespace, wenn dies gewünscht ist. Durch die Dependency-Injection wäre das Aufteilen in verschiedene Klassen und Namespaces kein Problem.</p>
+
+<p>App.js bietet uns den Start unserer Anwendung. Hier wird die App erstellt und einer Variable zugewiesen, auf der die Controller, Services etc. in Zukunft registriert werden.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">firstApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'firstApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngRoute'</span><span class="p">,</span> <span class="s1">'ngResource'</span><span class="p">,</span> <span class="s1">'ui.bootstrap'</span><span class="p">]);</span></code></pre></figure>
+
+<p>Welche Module hier noch hinzugefügt wurden ist im Moment völlig irrelevant. Wichtig ist die Variable „firstApp“, die uns noch weiter begegnen wird im Laufe dieses Blogposts.</p>
+
+<p>Die Controller bieten nun die Möglichkeit, direkt mit dem Viewmodel zu arbeiten. Er setzt alle Properties auf dem Viewmodel und bietet der View genau, und nur genau das, was sie zum Anzeigen braucht. Man kann (und sollte) beispielsweise auch Methoden auf dem Scope registrieren, die der Benutzer mit einem Klick ausführen kann. Der Scope bietet der View alles, was sie zum Funktionieren braucht.</p>
+
+<p>Der Controller versorgt den Scope und empfängt seinerseits Daten aus einem Repository, einem Service etc. Die Datenquelle kann beliebig sein, eben auch eine REST-Schnittstelle. Hierbei würde wiederum ASP.NET WebAPI zum Zuge kommen können.</p>
+
+<p><img src="/assets/articles/2014-11-02/10.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Die Controller bei der Beispiel-Todo-App im Anhang befinden sich in einem seperaten Namespace „controllers“, die Services dazu in einem Namespace „services“.</p>
+
+<p><img src="/assets/articles/2014-11-02/03.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Hierbei kommen die oben genannten Aufgaben zum Tragen.</p>
+
+<p>Der Todo-Service beispielsweise bietet die Funktionen zum Abrufen, Löschen und Hinzufügen an:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">firstApp</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'todoService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">var</span> <span class="nx">todoService</span> <span class="o">=</span> <span class="p">{};</span>
+    
+    <span class="kd">var</span> <span class="nx">urlPrefix</span> <span class="o">=</span> <span class="s1">'/api/Todo/'</span><span class="p">;</span>
+    
+    <span class="kd">var</span> <span class="nx">_addTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todoName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Name</span><span class="p">:</span> <span class="nx">todoName</span> <span class="p">};</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'AddTodoItem'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_deleteTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'RemoveTodoItem'</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_getTodoItems</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'GetAllTodoItems'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//console.log(results);</span>
+            <span class="k">return</span> <span class="nx">results</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">getTodoItems</span> <span class="o">=</span> <span class="nx">_getTodoItems</span><span class="p">;</span>
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">addTodo</span> <span class="o">=</span> <span class="nx">_addTodo</span><span class="p">;</span>
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">deleteTodo</span> <span class="o">=</span> <span class="nx">_deleteTodo</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="nx">todoService</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Dependency Injection zur Verfügung, die es möglich macht, den Service im Controller zu injecten. Der Controller kann nun die Methoden in Anspruch nehmen.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">firstApp</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'todoController'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">todoService</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">var</span> <span class="nx">_addTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">TodoItem</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+            <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+            <span class="p">},</span>
+            <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">"Error occured"</span><span class="p">);</span>
+            <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_deleteTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+            <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_getTodoItemAndSetOnScope</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">getTodoItems</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">todoItems</span> <span class="o">=</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+    
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">TodoItem</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">AddTodo</span> <span class="o">=</span> <span class="nx">_addTodo</span><span class="p">;</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">DeleteTodo</span> <span class="o">=</span> <span class="nx">_deleteTodo</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Er setzt die Informationen auf dem scope und gibt diese zurück an die View. Diese bekommt per</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">ng</span><span class="o">-</span><span class="nx">controller</span><span class="o">=</span><span class="s2">"todoController"</span></code></pre></figure>
+
+<p>den Controller mitgeteilt und kann so das konsumieren, was der Controller auf dem Scope setzt. Beispielsweise:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"> <span class="o">&lt;</span><span class="nx">tbody</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">"item in todoItems"</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>Hierbei ist „todoItems“ eine Liste aller vorhandenen Items.</p>
+
+<p>Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die Action direkt mit. Das ist aber nur eine Vorliebe meinerseits. Dies muss nicht so gelöst werden. Es kann auch mit Attributen der ActionName verändert werden, so dass dies „on-the-fly“ passiert.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WebApiConfig</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Register</span><span class="p">(</span><span class="n">HttpConfiguration</span> <span class="n">config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Web API configuration and services
+</span>        <span class="n">config</span><span class="p">.</span><span class="n">Formatters</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+        <span class="n">config</span><span class="p">.</span><span class="n">Formatters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">JsonMediaTypeFormatter</span><span class="p">());</span>
+
+        <span class="c1">// Web API routes
+</span>        <span class="n">config</span><span class="p">.</span><span class="nf">MapHttpAttributeRoutes</span><span class="p">();</span>
+
+        <span class="n">config</span><span class="p">.</span><span class="n">Routes</span><span class="p">.</span><span class="nf">MapHttpRoute</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s">"DefaultApi"</span><span class="p">,</span>
+            <span class="n">routeTemplate</span><span class="p">:</span> <span class="s">"api/{controller}/{action}/{id}"</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">RouteParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine richtige Konfiguration des MSSQL-Servers voraussetzt.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">TodoController</span> <span class="p">:</span> <span class="n">ApiController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ITodoRepository</span> <span class="n">_todoRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">TodoController</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_todoRepository</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TodoRepositoryImpl</span><span class="p">(</span><span class="k">new</span> <span class="nf">DatabaseContext</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">AddTodoItem</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">todoItem</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">todoItem</span><span class="p">.</span><span class="n">Added</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+            <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">todoItem</span><span class="p">);</span>
+            <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span> <span class="nf">GetAllTodoItems</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">RemoveTodoItem</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">todoItem</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TodoItem</span> <span class="n">findSingle</span> <span class="p">=</span> <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">FindSingle</span><span class="p">(</span><span class="n">todoItem</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">findSingle</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">todoItem</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+                <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Und das dazugehörige Repository:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">AngularJsTemplate.Repositories.TodoRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ITodoRepository</span> <span class="p">:</span> <span class="n">IRepositoryContext</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span>
+    <span class="p">{</span>
+            
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">AngularJsTemplate.Repositories.TodoRepository.Impl</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoRepositoryImpl</span> <span class="p">:</span> <span class="n">RepositoryContextImpl</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;,</span> <span class="n">ITodoRepository</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">TodoRepositoryImpl</span><span class="p">(</span><span class="n">DbContext</span> <span class="n">databaseContext</span><span class="p">)</span> 
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">databaseContext</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Benutzt wurde hier mein Repository und UnitOfWork-Paket, was auch auf <a href="http://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/" target="_blank">NuGet </a>zu finden ist.</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+<p><img src="/assets/articles/2014-11-02/AngularJsTemplate.zip" alt="AngularJsTemplate" /></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Code-First with Entity Framework n:m relationship with additional information</title>
+	  <link>//blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-04-06T19:18:15+02:00</pubDate>
+	  <guid>//blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you a way to realize code First with Entity Framework n:m relationship with additional information.</p>
+
+<p>a few days ago I faced the problem of having a normal N:M Relationship in EF with additional information in the table which keeps the two entities together.</p>
+
+<p>Well, without having these additional information this is easy:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>EF is now going to make the right decisions for you while creating the database. A third table is created (due to EF-magic) and shows you the right relation-table. Great things so far. But what if you want to have more information on the relation table which EF created for you? Well, the answer ist easy: EF is not able to do this without your help.</p>
+
+<p>You have to create a third entity representing the relationship you want. I will now show how and I will show the right Fluent-Configuration to map the Keys etc. in a correct way. (Entities should not know what their fields are used for. So things like [Key], … have to be avoided! This is why you have Fluent-API!)</p>
+
+<p><a title="Code First Relationships Fluent API" href="http://msdn.microsoft.com/en-us/data/hh134698.aspx" target="_blank">Code First Relationships Fluent API</a></p>
+
+<p><a title="Configuring/Mapping Properties and Types with the Fluent API" href="http://msdn.microsoft.com/en-us/data/jj591617.aspx" target="_blank">Configuring/Mapping Properties and Types with the Fluent API</a></p>
+
+<p>So first, please create your third entity:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Groups2Users</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">GroupId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">User</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">Group</span> <span class="n">Group</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">MyAdditionalInformationType</span> <span class="n">MyAdditionalInformation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>and extend your existing entities like the following:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Right now, you have made the three entities. Now, we have to wire everything together:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">DataBaseContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">DataBaseContext</span><span class="p">()</span>
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="s">"MyConnectionString"</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">DbModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">().</span><span class="nf">HasKey</span><span class="p">(</span><span class="n">q</span> <span class="p">=&gt;</span> <span class="k">new</span>
+                                        <span class="p">{</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">GroupId</span><span class="p">,</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">UserId</span>
+                                        <span class="p">});</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Group</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">GroupId</span><span class="p">);</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">User</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">UserId</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>When you now run your application with the right code-first configuration your database should hold those 3 three tables.</p>
+
+<p>Note: Now you have to think exactly about what you want to do (Well you should do this always while coding 😉 ). Adding a new group has to get another entry in the Group-Table. but adding or deleting users are only reached by editing the Groups2Users-Table. (Perhaps you should spend this table an own repository 😉 ).</p>
+
+<p>When you for example want to have all Groups of a user just call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">UserId</span> <span class="p">==</span> <span class="n">userId</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Group"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span></code></pre></figure>
+
+<p>Adding a new group would be like</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Groups2Users</span> <span class="n">groups2Users</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Groups2Users</span>
+<span class="p">{</span>
+    <span class="n">Group</span> <span class="p">=</span> <span class="c1">//Define your group here or above,
+</span>    <span class="n">User</span> <span class="p">=</span> <span class="c1">//your user here,
+</span>    <span class="n">MyAdditionalInformation</span> <span class="p">=</span> <span class="n">myAdditionalInformation</span> 
+<span class="p">};</span>
+
+<span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">groups2Users</span><span class="p">);</span></code></pre></figure>
+
+<p>Hope this helps,</p>
+
+<p>Regards</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

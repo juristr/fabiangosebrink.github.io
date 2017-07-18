@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Working with Angular Template Forms</title>
+	  <link>//blog/articles/2017/01/14/working-with-angular-2-template-forms/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-01-14T13:49:00+01:00</pubDate>
+	  <guid>//blog/articles/2017/01/14/working-with-angular-2-template-forms/</guid>
+	  <description><![CDATA[
+	     <p>In this blog I want explain and show you how to work with Angular’s template driven forms.</p>
+
+<h3 id="the-problem">The Problem</h3>
+
+<p>I was recently giving an Angular course to awesome people and I noticed that working with Angular forms seems to be one of the most complicated things in Angular.</p>
+
+<h3 id="the-situation">The Situation</h3>
+
+<p>We will start with a simple Angular application which has a structure like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── app.component.ts
+├── app.component.html
+├── form.component.ts
+├── form.component.html
+├── app.module.ts
+└── main.ts
+index.html
+systemjs.config.js
+tsconfig.json
+tslint.json
+styles.css
+package.json
+</code></pre>
+</div>
+
+<p>this is an easy way to start with Angular and template forms.</p>
+
+<blockquote>
+  <p>I did not mention files like favicon etc. They do not really impact our work here</p>
+</blockquote>
+
+<p>Now lets got create a simple form. For this I will grab bootstraps most simple form just to get a nice look and feel.</p>
+
+<p><a href="http://getbootstrap.com/css/#forms">Bootstraps Forms</a></p>
+
+<p>Now we add the bootstrap cdn to our <code class="highlighter-rouge">index.html</code>.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;head&gt;</span>
+  <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></figure>
+
+<p>Out app.component.html simply looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;h1&gt;</span>{{title}}<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;form-component&gt;&lt;/form-component&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="introducing-the-form">Introducing the Form</h3>
+
+<p>We remove the checkbox and the file upload from the copied form from bootstrap just for clarity and add the form template to our form component. Further we want to handle a simple Name for understanding. Lets modify the template to only work with a name.</p>
+
+<p>So our <code class="highlighter-rouge">form.component.html</code> looks like this now:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputName"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>So what we did here so far is nothing Angular related! We just added simple HTML-Form things.</p>
+
+<p>We will now go ahead and make this thing an Angular form.</p>
+
+<h3 id="add-angular-to-the-form">Add Angular to the form</h3>
+
+<h4 id="the-model">The model</h4>
+
+<p>We will use a normal customer to deal with the form. Also nothing spectecular here, we just add a class representing this customer:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">export</span> <span class="kr">class</span> <span class="nx">Customer</span> <span class="p">{</span>
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">public</span> <span class="nx">name</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>and we place it in a special folder called <code class="highlighter-rouge">models</code></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── models
+    └──  customer.model.ts
+├── app.component.ts
+├── app.component.html
+├── form.component.ts
+├── form.component.html
+├── app.module.ts
+└── main.ts
+index.html
+systemjs.config.js
+tsconfig.json
+tslint.json
+styles.css
+package.json
+</code></pre>
+</div>
+
+<p>Then we can make a new model in the components constructor like this</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">export</span> <span class="kr">class</span> <span class="nx">FormComponent</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">title</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s1">'Template Forms'</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nx">model</span><span class="err">:</span> <span class="nx">Customer</span><span class="p">;</span>
+
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">(</span><span class="s1">'Fabian'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h4 id="adding-the-binding-to-the-model-with-ngmodel">Adding the binding to the model with ngModel</h4>
+
+<p>Next thing is to add the binding to the inputs in our forms. And here is the first time we marry Angular with our html.</p>
+
+<p>We take the <code class="highlighter-rouge">ngModel</code>-directive to tell the field “Hey, this thing I give you here is important for you form. Please, my little form, take care of it”</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--...--&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"name"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="na">ngModel</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--...--&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>Now this input is marked with the <code class="highlighter-rouge">ngModel</code>-directive. But what is that good for?</p>
+
+<p>Before we go on clarify that can also take care of something Angular prepared for us. What we want to do now is asking our form about its state. What is the state of our form currently and when the user types something in? We can not access our form yet, because we do not have a name to ask for. So let’s introduce one!</p>
+
+<p>We can do this by adding a variable in the template with the “#”-Sign and tagging the form with the <code class="highlighter-rouge">ngForm</code>-directive Angular prepared for us.</p>
+
+<p>This means:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form&gt;</span></code></pre></figure>
+
+<p>becomes to</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>We have introduced a variable and assign the complete form to it. Angular introduced this <code class="highlighter-rouge">ngForm</code> for us in the background, we are only catching it up and take a variable to make it accessible. Now we are able to ask the form for its state! This variable is called a template reference variable.</p>
+
+<p>What we want is to see the state of our form. We achieve that by adding the ngModel-directive, by giving the form a variable we can access it and one last piece is missing. If we use ngModel in an form control, we also have to tell the Angular form how it should be accessed. So we need a name. Lets introduce a name that this control can be registered onto the form under that name.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--...--&gt;</span>
+     <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="na">ngModel</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--...--&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>With those three things we can ask the form about its state with</p>
+
+<p><code class="highlighter-rouge"> myform.value </code></p>
+
+<p>like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;p&gt;</span> {{ myform.value | json }} <span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputName"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="na">ngModel</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>The ngModel directive is forcing Angular to persist the state of the form to the form object. So we read it with</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{{</span> <span class="nx">myform</span><span class="p">.</span><span class="nx">value</span> <span class="o">|</span> <span class="nx">json</span> <span class="p">}}</span></code></pre></figure>
+
+<p>But further to that it is doing nothing. We got our state only persisted to the form. We want to interact with our model, right?</p>
+
+<p>Therefore we have to intruduce some kind of databinding. As we know that databinding is working with () and/or [] we have no databinding going on here so far.</p>
+
+<p>We could do the property binding like this</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"> <span class="nt">&lt;input</span> <span class="err">...</span> <span class="err">[</span><span class="na">ngModel</span><span class="err">]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Then Angular would take this ngModel directive and connect it to a property on our component called “model.name”.</p>
+
+<blockquote>
+  <p>Remember we created a model on our component with its constructor</p>
+</blockquote>
+
+<p>When the initial value is set from the component the value would be reflected into the input field. But this is only one way binding! When the value in the input changes it would not be reflected into the model. The form would change its state but the model know nothing about it.</p>
+
+<p>To get the model also changed when the user types something in we have to introduce two way binding like this:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"> <span class="nt">&lt;input</span> <span class="err">...</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>So the forms state would now reflect the changes into the forms state <em>and</em> into the model we want to work with when submitting. In addition to that the initial state is set because we create a model on the constructor.</p>
+
+<h4 id="further-steps-with-the-form">Further steps with the form</h4>
+
+<p>We can use the forms template reference variable also to check some properties on the form.</p>
+
+<blockquote>
+  <p>The template reference variable offers us a form-property which we can check</p>
+</blockquote>
+
+<p>We can check the following states on the form :</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="c">&lt;!--</span> <span class="k">if</span> <span class="nx">user</span> <span class="nx">touched</span> <span class="nx">every</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">form</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">touched</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="k">if</span> <span class="nx">every</span> <span class="nx">field</span> <span class="nx">of</span> <span class="nx">the</span> <span class="nx">form</span> <span class="nx">is</span> <span class="nx">not</span> <span class="nx">touched</span> <span class="nx">yet</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">untouched</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nx">field</span> <span class="nx">has</span> <span class="nx">not</span> <span class="nx">been</span> <span class="nx">changed</span> <span class="nx">value</span> <span class="nx">since</span> <span class="nx">it</span> <span class="nx">is</span> <span class="nx">displayed</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">pristine</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nx">user</span> <span class="nx">changed</span> <span class="nx">the</span> <span class="nx">value</span> <span class="nx">since</span> <span class="nx">it</span> <span class="nx">is</span> <span class="nx">displayed</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">dirty</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nx">form</span> <span class="nx">is</span> <span class="nx">valid</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">valid</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nx">form</span> <span class="nx">is</span> <span class="nx">invalid</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{{</span><span class="nx">myform</span><span class="p">.</span><span class="nx">form</span><span class="p">.</span><span class="nx">invalid</span><span class="p">}}</span><span class="o">&lt;</span><span class="sr">/p&gt;</span></code></pre></figure>
+
+<p>Lets face the “valid” and “invalid” for a second. We can apply a normal HTML <code class="highlighter-rouge">required</code> attribute at one control just to have a reason why a form should be valid or invalid.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputName"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">required</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>So we can go ahead and for example disable the submit button and show a message when the form is not valid.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputName"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">required</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;span</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"!myform.form.valid"</span><span class="nt">&gt;</span>Check your form<span class="nt">&lt;/span&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">myform</span><span class="err">.</span><span class="na">form</span><span class="err">.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>So this gives us the possibility to ask the form for some variables Angular gives us.</p>
+
+<p>We can also do this whole template variable thing on a control itself and ask the simple control for its state instead of the whole form. The same properties which are valid for the form apply also on the control. Therefore we have to grab our ngModel-directive again and assign it to a template variable to make the control, or better: the model assigned to this control, accessible.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"> <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">required</span> <span class="err">#</span><span class="na">name=</span><span class="s">"ngModel"</span><span class="nt">&gt;</span></code></pre></figure>
+
+<p>Now we can ask for the state of this control in the same way like the form:</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputName"</span><span class="nt">&gt;</span>Name<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"text"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputName"</span> <span class="na">placeholder=</span><span class="s">"Name"</span> <span class="err">[(</span><span class="na">ngModel</span><span class="err">)]="</span><span class="na">model</span><span class="err">.</span><span class="na">name</span><span class="err">"</span> <span class="na">name=</span><span class="s">"name"</span> <span class="na">required</span> <span class="err">#</span><span class="na">name=</span><span class="s">"ngModel"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;span</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"!name.valid"</span><span class="nt">&gt;</span>name is invalid<span class="nt">&lt;/span&gt;</span>
+
+    <span class="nt">&lt;span</span> <span class="err">*</span><span class="na">ngIf=</span><span class="s">"!myform.form.valid"</span><span class="nt">&gt;</span>Check your form<span class="nt">&lt;/span&gt;</span>
+
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="err">[</span><span class="na">disabled</span><span class="err">]="!</span><span class="na">myform</span><span class="err">.</span><span class="na">form</span><span class="err">.</span><span class="na">valid</span><span class="err">"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<h4 id="submitting-the-form">Submitting the Form</h4>
+
+<p>Our button at the end of the form is currently set to submit the form. But we do not catch the submitting so far. So lets do that.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h4&gt;</span>Form Value<span class="nt">&lt;/h4&gt;</span>
+
+<span class="nt">&lt;p&gt;</span>{{myform.value | json}}<span class="nt">&lt;/p&gt;</span>
+
+<span class="nt">&lt;form</span> <span class="err">#</span><span class="na">myform=</span><span class="s">"ngForm"</span> <span class="err">(</span><span class="na">ngSubmit</span><span class="err">)="</span><span class="na">alertMyFormModel</span><span class="err">()"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputEmail1"</span><span class="nt">&gt;</span>Email address<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"email"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputEmail1"</span> <span class="na">placeholder=</span><span class="s">"Email"</span> <span class="na">ngModel</span> <span class="na">name=</span><span class="s">"email"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label</span> <span class="na">for=</span><span class="s">"exampleInputPassword1"</span><span class="nt">&gt;</span>Password<span class="nt">&lt;/label&gt;</span>
+        <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"password"</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"exampleInputPassword1"</span> <span class="na">placeholder=</span><span class="s">"Password"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"submit"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Submit<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></figure>
+
+<p>We introduced the ngSubmit-directive and assigned it a function we have to implement on our component.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">export</span> <span class="kr">class</span> <span class="nx">FormComponent</span> <span class="p">{</span>
+  <span class="k">public</span> <span class="nx">title</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="s1">'Template Forms'</span><span class="p">;</span>
+  <span class="k">public</span> <span class="nx">model</span><span class="err">:</span> <span class="nx">Customer</span><span class="p">;</span>
+
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">model</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Customer</span><span class="p">(</span><span class="s1">'Fabian'</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="k">public</span> <span class="nx">alertMyFormModel</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">model</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If you now click the button the form gets submitted and you should see the model in a json string in an alert box.</p>
+
+<p>I hope I could clarify some things about Angulars template driven forms.</p>
+
+<p>Best regards</p>
+
+<p>Fabian</p>
+
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

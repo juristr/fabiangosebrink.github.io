@@ -1,0 +1,872 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>WebAPI with ASP.NET Core 1.0 and ASP.NET</title>
+	  <link>//blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-09-02T17:04:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/</guid>
+	  <description><![CDATA[
+	     <p>I just released two sample APIs on Github: WebAPI with ASP.NET Core 1.0 and ASP.NET</p>
+
+<p>One of them is done with the “old” approach but heads in the direction of my understanding of a modern WebAPI using OData and having DTOs instead of delivering the plain entitites down to the client.</p>
+
+<p>I will cover the most important information now:</p>
+
+<p>The get method includes odata and is restricting the page-size to 50 to prevent anyone from getting <em>all</em> entries which can cause problems. I also added a paginationheader to enable paging and give the information included in the header “X-Pagination” value. Here you can add more stuff like link to the next page, link ot the previous page etc.</p>
+
+<p>I am also using mapper to get a DataTransferObject (DTO) to send it to the client instead of my plain “entity”.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[HttpGet]</span>
+<span class="na">[EnableQuery(PageSize = 50)]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">var</span> <span class="n">paginationHeader</span> <span class="p">=</span> <span class="k">new</span>
+    <span class="p">{</span>
+        <span class="n">totalCount</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="n">Count</span>
+        <span class="c1">// Add more headers here if you want...
+</span>    <span class="p">};</span>
+
+    <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">AppendHeader</span><span class="p">(</span><span class="s">"X-Pagination"</span><span class="p">,</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">SerializeObject</span><span class="p">(</span><span class="n">paginationHeader</span><span class="p">));</span>
+
+    <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">_houseMapper</span><span class="p">.</span><span class="nf">MapToDto</span><span class="p">(</span><span class="n">x</span><span class="p">)));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The only important thing to mention about the Create-Method is that we are returning a CreatedAtRoute-Actionresult. This causes, that we have a link to the created resource in the header so we can either redirect on the client directly to it, provide the link to the user or work with it in another way.
+Also take care about sending back the Modelstate in case of an invalid dto.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[HttpPost]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Create</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">HouseDto</span> <span class="n">houseDto</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">houseDto</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">HouseEntity</span> <span class="n">houseEntity</span> <span class="p">=</span> <span class="n">_houseMapper</span><span class="p">.</span><span class="nf">MapToEntity</span><span class="p">(</span><span class="n">houseDto</span><span class="p">);</span>
+
+    <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">houseEntity</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"DefaultApi"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">houseEntity</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">_houseMapper</span><span class="p">.</span><span class="nf">MapToDto</span><span class="p">(</span><span class="n">houseEntity</span><span class="p">));</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Mostly forgotten: The Http-Patch-Verb. Its receiving a generic Delta-Object which can be applied to an existing entity and then can be updated.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[HttpPatch]</span>
+<span class="na">[Route("{id:int}")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Patch</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">,</span> <span class="n">Delta</span><span class="p">&lt;</span><span class="n">HouseDto</span><span class="p">&gt;</span> <span class="n">houseDto</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">houseDto</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">HouseEntity</span> <span class="n">houseEntityToUpdate</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">FirstOrDefault</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">houseEntityToUpdate</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">HouseDto</span> <span class="n">existingHouse</span> <span class="p">=</span> <span class="n">_houseMapper</span><span class="p">.</span><span class="nf">MapToDto</span><span class="p">(</span><span class="n">houseEntityToUpdate</span><span class="p">);</span>
+    <span class="n">houseDto</span><span class="p">.</span><span class="nf">Patch</span><span class="p">(</span><span class="n">existingHouse</span><span class="p">);</span>
+
+    <span class="kt">int</span> <span class="n">index</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">FindIndex</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+    <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">=</span> <span class="n">_houseMapper</span><span class="p">.</span><span class="nf">MapToEntity</span><span class="p">(</span><span class="n">existingHouse</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">existingHouse</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And last but not least the delete-method. See the fact that one has to return a nocontent (204) which tells the client that the delete was successful.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[HttpDelete]</span>
+<span class="na">[Route("{id:int}")]</span>
+<span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">HouseEntity</span> <span class="n">houseEntityToDelete</span> <span class="p">=</span> <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">FirstOrDefault</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">houseEntityToDelete</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="n">Singleton</span><span class="p">.</span><span class="n">Instance</span><span class="p">.</span><span class="n">Houses</span><span class="p">.</span><span class="nf">Remove</span><span class="p">(</span><span class="n">houseEntityToDelete</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NoContent</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You can find it here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-Sample">https://github.com/FabianGosebrink/ASPNET-WebAPI-Sample</a></p>
+
+<p>It supports the GET/POST/PUT/PATCH/DELETE, so the normal CRUD-Approach. OData is included.</p>
+
+<p>The ASP.NET Core-approach is present in another repository.
+<a href="https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample">https://github.com/FabianGosebrink/ASPNET-Core-WebAPI-Sample</a></p>
+
+<p>Comment if you have suggestions to make these examples better! Let me know.</p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET - Clientseitige Webarchitekturen mit AngularJS</title>
+	  <link>//blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-11-02T07:05:00+01:00</pubDate>
+	  <guid>//blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>ASP.NET MVC hat, wie der Name schon sagt, die MVC-Struktur auf dem Server etabliert und es ist somit möglich saubere Architekturen auf dem Server zu erstellen.</p>
+
+<p>Mehr und mehr geht die Richtung jedoch hin zu Mobile-First-Implementierungen. Hierbei spielt der Client, dabei meine ich die Tatsache, <em>dass</em> es ein Client ist, nicht welche Art von Client (Handy, Tablet etc.), eine immer grössere Rolle.</p>
+
+<p>Wir tragen heute Rechner in unseren Hosentaschen, die stärker sind als die Desktop-Rechner vor 5 Jahren und man findet Rechenpower sehr viel schneller als zu damaliger Zeit. Tablets, Handys, Phablets und und und sind internetfähig und die Seiten müssen mobile Ansichten einfach in den Fokus stellen. MediaQueries tun ihre Arbeit, aber moderne WebApplikationen müssen auch fähig sein, dem Benutzer die Usability einer mobilen App zu geben. Die Arbeit findet also auf dem Client, statt auf dem Server, statt. Aufgrund der Leistung ist dies ohne Probleme möglich. Aber je mehr Arbeit auf dem Client getan werden muss, desto mehr muss auch bei dem Erstellen der Appltikation clientseitig implementiert werden. Dies geht nur mit einer testbaren und wartbaren Struktur und Architektur.</p>
+
+<p>AngularJS bietet neben der Implementierung mit Javascript auch noch die Möglichkeit eine Clientseitige geordnete Architektur, im MV*-Stil aufzuziehen, um auch grössere Anforderungen an Webseiten geordnet abzubilden.</p>
+
+<p>Durch die Tatsache, dass Angular uns Dependency-Injection out-of-the-box mitliefert gewinnen wir schon eine sehr lose Kopplung der einzelnen Module, die sich sehr schön und passend zusammensetzen lassen.</p>
+
+<p>Im Folgenden möchte ich eine beispielhafte Architektur aufzeigen und erläutern. Diese ist nicht in Stein gemeisselt, ist aber sicher ein guter Anfang für Projekte.</p>
+
+<p>Die Struktur bzw Architektur der Client-Applikation liegt in einem Verzeichnis „app“ im root-Verzeichnis der Anwendung.</p>
+
+<p><img src="/assets/articles/2014-11-02/01.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>In ihr enthalten ist ein Ordner für Bilder und Scripts, einer für Styles (css-Dateien) und für die Views. Der Skript-Ordner beinhaltet die eigentliche Applikation:</p>
+
+<p><img src="/assets/articles/2014-11-02/adasdasdasd.jpg" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Hier kann man auch schon die clientseitige Architektur bzw. deren Ansatz erkennen: der controllers-Folder bildet den „Namespace“ für Controller ab, der die gleiche Rolle spielt wie in ASP.NET-Anwendungen auch: Er nimmt die Anfragen vom UI entgegen und verarbeitet diese. Dazu arbeitet er mit dem Viewmodel, dass in Angular „$scope“ getauft wurde.</p>
+
+<p>Die Services bieten eine Abstrahierung von etwaigen Aufgaben. Hier können Business-Services weggekapselt werden, die ihre eigenständigen Aufgaben haben. Auch Repositories sind denkbar. Auch in einem eigenen Namespace, wenn dies gewünscht ist. Durch die Dependency-Injection wäre das Aufteilen in verschiedene Klassen und Namespaces kein Problem.</p>
+
+<p>App.js bietet uns den Start unserer Anwendung. Hier wird die App erstellt und einer Variable zugewiesen, auf der die Controller, Services etc. in Zukunft registriert werden.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">firstApp</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'firstApp'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'ngRoute'</span><span class="p">,</span> <span class="s1">'ngResource'</span><span class="p">,</span> <span class="s1">'ui.bootstrap'</span><span class="p">]);</span></code></pre></figure>
+
+<p>Welche Module hier noch hinzugefügt wurden ist im Moment völlig irrelevant. Wichtig ist die Variable „firstApp“, die uns noch weiter begegnen wird im Laufe dieses Blogposts.</p>
+
+<p>Die Controller bieten nun die Möglichkeit, direkt mit dem Viewmodel zu arbeiten. Er setzt alle Properties auf dem Viewmodel und bietet der View genau, und nur genau das, was sie zum Anzeigen braucht. Man kann (und sollte) beispielsweise auch Methoden auf dem Scope registrieren, die der Benutzer mit einem Klick ausführen kann. Der Scope bietet der View alles, was sie zum Funktionieren braucht.</p>
+
+<p>Der Controller versorgt den Scope und empfängt seinerseits Daten aus einem Repository, einem Service etc. Die Datenquelle kann beliebig sein, eben auch eine REST-Schnittstelle. Hierbei würde wiederum ASP.NET WebAPI zum Zuge kommen können.</p>
+
+<p><img src="/assets/articles/2014-11-02/10.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Die Controller bei der Beispiel-Todo-App im Anhang befinden sich in einem seperaten Namespace „controllers“, die Services dazu in einem Namespace „services“.</p>
+
+<p><img src="/assets/articles/2014-11-02/03.png" alt="ASP.NET - Clientseitige Webarchitekturen mit AngularJS" /></p>
+
+<p>Hierbei kommen die oben genannten Aufgaben zum Tragen.</p>
+
+<p>Der Todo-Service beispielsweise bietet die Funktionen zum Abrufen, Löschen und Hinzufügen an:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="s1">'use strict'</span><span class="p">;</span>
+<span class="nx">firstApp</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s1">'todoService'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">var</span> <span class="nx">todoService</span> <span class="o">=</span> <span class="p">{};</span>
+    
+    <span class="kd">var</span> <span class="nx">urlPrefix</span> <span class="o">=</span> <span class="s1">'/api/Todo/'</span><span class="p">;</span>
+    
+    <span class="kd">var</span> <span class="nx">_addTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">todoName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span> <span class="na">Name</span><span class="p">:</span> <span class="nx">todoName</span> <span class="p">};</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'AddTodoItem'</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_deleteTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'RemoveTodoItem'</span><span class="p">,</span> <span class="nx">item</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_getTodoItems</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">urlPrefix</span> <span class="o">+</span> <span class="s1">'GetAllTodoItems'</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//console.log(results);</span>
+            <span class="k">return</span> <span class="nx">results</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+    
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">getTodoItems</span> <span class="o">=</span> <span class="nx">_getTodoItems</span><span class="p">;</span>
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">addTodo</span> <span class="o">=</span> <span class="nx">_addTodo</span><span class="p">;</span>
+    <span class="nx">todoService</span><span class="p">.</span><span class="nx">deleteTodo</span> <span class="o">=</span> <span class="nx">_deleteTodo</span><span class="p">;</span>
+    
+    <span class="k">return</span> <span class="nx">todoService</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Durch die Registrierung auf der App-Variable „firstApp“ steht nun die Dependency Injection zur Verfügung, die es möglich macht, den Service im Controller zu injecten. Der Controller kann nun die Methoden in Anspruch nehmen.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">firstApp</span><span class="p">.</span><span class="nx">controller</span><span class="p">(</span><span class="s1">'todoController'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$scope</span><span class="p">,</span> <span class="nx">todoService</span><span class="p">)</span> <span class="p">{</span>
+    
+    <span class="kd">var</span> <span class="nx">_addTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">addTodo</span><span class="p">(</span><span class="nx">$scope</span><span class="p">.</span><span class="nx">TodoItem</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
+            <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+            <span class="p">},</span>
+            <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s2">"Error occured"</span><span class="p">);</span>
+            <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_deleteTodo</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">deleteTodo</span><span class="p">(</span><span class="nx">item</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+            <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="kd">var</span> <span class="nx">_getTodoItemAndSetOnScope</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">todoService</span><span class="p">.</span><span class="nx">getTodoItems</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">$scope</span><span class="p">.</span><span class="nx">todoItems</span> <span class="o">=</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">};</span>
+    
+    <span class="nx">_getTodoItemAndSetOnScope</span><span class="p">();</span>
+    
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">TodoItem</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">AddTodo</span> <span class="o">=</span> <span class="nx">_addTodo</span><span class="p">;</span>
+    <span class="nx">$scope</span><span class="p">.</span><span class="nx">DeleteTodo</span> <span class="o">=</span> <span class="nx">_deleteTodo</span><span class="p">;</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Er setzt die Informationen auf dem scope und gibt diese zurück an die View. Diese bekommt per</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">ng</span><span class="o">-</span><span class="nx">controller</span><span class="o">=</span><span class="s2">"todoController"</span></code></pre></figure>
+
+<p>den Controller mitgeteilt und kann so das konsumieren, was der Controller auf dem Scope setzt. Beispielsweise:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"> <span class="o">&lt;</span><span class="nx">tbody</span> <span class="nx">ng</span><span class="o">-</span><span class="nx">repeat</span><span class="o">=</span><span class="s2">"item in todoItems"</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>Hierbei ist „todoItems“ eine Liste aller vorhandenen Items.</p>
+
+<p>Die Serverseitige WebAPI lässt sich kurz beschreiben. Hierbei gebe ich gern die Action direkt mit. Das ist aber nur eine Vorliebe meinerseits. Dies muss nicht so gelöst werden. Es kann auch mit Attributen der ActionName verändert werden, so dass dies „on-the-fly“ passiert.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WebApiConfig</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Register</span><span class="p">(</span><span class="n">HttpConfiguration</span> <span class="n">config</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// Web API configuration and services
+</span>        <span class="n">config</span><span class="p">.</span><span class="n">Formatters</span><span class="p">.</span><span class="nf">Clear</span><span class="p">();</span>
+        <span class="n">config</span><span class="p">.</span><span class="n">Formatters</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">new</span> <span class="nf">JsonMediaTypeFormatter</span><span class="p">());</span>
+
+        <span class="c1">// Web API routes
+</span>        <span class="n">config</span><span class="p">.</span><span class="nf">MapHttpAttributeRoutes</span><span class="p">();</span>
+
+        <span class="n">config</span><span class="p">.</span><span class="n">Routes</span><span class="p">.</span><span class="nf">MapHttpRoute</span><span class="p">(</span>
+            <span class="n">name</span><span class="p">:</span> <span class="s">"DefaultApi"</span><span class="p">,</span>
+            <span class="n">routeTemplate</span><span class="p">:</span> <span class="s">"api/{controller}/{action}/{id}"</span><span class="p">,</span>
+            <span class="n">defaults</span><span class="p">:</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">RouteParameter</span><span class="p">.</span><span class="n">Optional</span> <span class="p">}</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Gearbeitet wird in der Beispiel-Solution mit dem Code-First-Ansatz, der eine richtige Konfiguration des MSSQL-Servers voraussetzt.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">TodoController</span> <span class="p">:</span> <span class="n">ApiController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">ITodoRepository</span> <span class="n">_todoRepository</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">TodoController</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_todoRepository</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">TodoRepositoryImpl</span><span class="p">(</span><span class="k">new</span> <span class="nf">DatabaseContext</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">AddTodoItem</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">todoItem</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">todoItem</span><span class="p">.</span><span class="n">Added</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+            <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">todoItem</span><span class="p">);</span>
+            <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="k">public</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span> <span class="nf">GetAllTodoItems</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">RemoveTodoItem</span><span class="p">(</span><span class="n">TodoItem</span> <span class="n">todoItem</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">using</span> <span class="p">(</span><span class="n">_todoRepository</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">TodoItem</span> <span class="n">findSingle</span> <span class="p">=</span> <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">FindSingle</span><span class="p">(</span><span class="n">todoItem</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">findSingle</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">todoItem</span><span class="p">.</span><span class="n">Id</span><span class="p">);</span>
+                <span class="n">_todoRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Und das dazugehörige Repository:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">AngularJsTemplate.Repositories.TodoRepository</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">interface</span> <span class="n">ITodoRepository</span> <span class="p">:</span> <span class="n">IRepositoryContext</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;</span>
+    <span class="p">{</span>
+            
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">AngularJsTemplate.Repositories.TodoRepository.Impl</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">TodoRepositoryImpl</span> <span class="p">:</span> <span class="n">RepositoryContextImpl</span><span class="p">&lt;</span><span class="n">TodoItem</span><span class="p">&gt;,</span> <span class="n">ITodoRepository</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">TodoRepositoryImpl</span><span class="p">(</span><span class="n">DbContext</span> <span class="n">databaseContext</span><span class="p">)</span> 
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="n">databaseContext</span><span class="p">)</span>
+        <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Benutzt wurde hier mein Repository und UnitOfWork-Paket, was auch auf <a href="http://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure/" target="_blank">NuGet </a>zu finden ist.</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+<p><img src="/assets/articles/2014-11-02/AngularJsTemplate.zip" alt="AngularJsTemplate" /></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>ASP.NET MVC - Generic Repositories and UnitOfWork</title>
+	  <link>//blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-07-01T08:00:00+02:00</pubDate>
+	  <guid>//blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/</guid>
+	  <description><![CDATA[
+	     <p>This is the third and the last blogpost regarding ASP.NET MVC Architecture.</p>
+
+<h3 id="nugetpackage">NugetPackage</h3>
+
+<p><a href="https://www.nuget.org/packages/OfferingSolutions.UnitOfWork.Structure">NugetPackage</a></p>
+
+<h3 id="previous-posts">Previous Posts</h3>
+
+<p><a href="http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/">ASP.NET MVC Architecture (Part I): Structurize your project with areas and services in ASP.NET MVC</a></p>
+
+<p><a href="http://offering.solutions/blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/">ASP.NET MVC Architecture (Part II): Creating a business logic in ASP.NET MVC</a></p>
+
+<h3 id="lets-go">Lets go</h3>
+
+<p>In the first two posts I handled UI things, how to organize your areas (controller-services) and I showed a possibility to create your business-logic regarding area-Services and business-services. In this post I want to show you (like in thousand other blogs before ;) ) the Unit-Of-Work-Pattern in use with generic repositories (<a href="http://msdn.microsoft.com/en-us/library/ff649690.aspx">repository-pattern</a>). This makes the trilogy of the architecture posts complete (for this time. Maybe there will be others in the future ;) )</p>
+
+<p>First things first: What is the repository-pattern? Well, if you built up your application the right way you should have several objects which should be persisted in the database. This can be Users, Projects, or whatever your applications wants to deal with.</p>
+
+<p>For each of these objects you need the normal CRUD-operations. And when you implemented these operations the second and third time, at the latest, you can see that these methods are always the same. Adding an object, getting a single object, getting all objects, updating an object and deleting an object. Period. This is basically all you need.</p>
+
+<p>If you need more operations, or you have to deal with many of these mentioned above sequential you can build a service for this. Read part I and II for handling this ;)</p>
+
+<p>So these operations are always the same. So it would be nice if we could do like a class, with an interface, which offers us there operations, no matter which type we are going to use.</p>
+
+<p>And exactly this is what this generic repositories are for.</p>
+
+<p>But what is the Unit-Of-Work (UoW) and why another Unit-Of-Work-Abstraction?</p>
+
+<p>If you already dealed with the Entity-Framework (EF) you have used the UoW-Pattern all the time. The repository-pattern, too. And so you have already seen how it works: The UoW is tracking all your changes, gathering them together to get every information and changes on the database you need and sending them altogether into the database when you have finished your request. Like the DatabaseContext does. So the UoW with the repositories represents an abstraction of your database and it “reminds” all your changes.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">DataBaseContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="nf">DataBaseContext</span><span class="p">()</span>
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="s">"MyConnectionString"</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">User</span><span class="p">&gt;</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DbSet</span><span class="p">&lt;</span><span class="n">Project</span><span class="p">&gt;</span> <span class="n">Projects</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">// Your entities here...
+</span><span class="p">}</span></code></pre></figure>
+
+<p><em>Note: “Projects” is a normal DTO which is used for dealing with the Entity Framework. Could look like this</em></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Project</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">EntryDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">LastChangedDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>You should have a normal DatabaseContext with all your entities on it and your model-creating-stuff using the FluentAPI.
+Nothing new until here. I am always hiding things in namespaces, so in my root-folder I am creating a “Repositories”-Folder which is hiding all my Repo-stuff.</p>
+
+<p><img src="/assets/articles/2014-07-01/11.png" alt="ASP.NET MVC - Generic Repositories and UnitOfWork" /></p>
+
+<p>Let’s go into this in detail:
+For offering the same operations on every entity we have we need something like a base-class (with interface) which offers us everything we can do with an object (CRUD with a little bit more. Let’s call it CRUD+ ;) ).</p>
+
+<p><em>Note: I just looked into the web and found a good solution for this generic-things</em></p>
+
+<p><a href="http://codereview.stackexchange.com/questions/31822/unit-of-work-and-repository-design-pattern-implementation" target="_blank">StackExchange</a></p>
+
+<p><a href="http://www.ASP.NET/mvc/tutorials/getting-started-with-ef-5-using-mvc-4/implementing-the-repository-and-unit-of-work-patterns-in-an-asp-net-mvc-application" target="_blank">ASP.NET MVC - Generic Repositories - UoW</a></p>
+
+<p>So I combined them and just put in a little effort then.</p>
+
+<p>This is the RepositoryBase. With its interface IRepositoryBase.</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">interface</span> <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+    <span class="err">{</span>
+        <span class="nc">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="nf">GetAll</span><span class="p">(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;&gt;</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+                       <span class="n">Func</span><span class="p">&lt;</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">IOrderedEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+                       <span class="kt">string</span> <span class="n">includeProperties</span> <span class="p">=</span> <span class="s">""</span><span class="p">);</span>
+
+        <span class="n">T</span> <span class="nf">FindSingle</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+
+        <span class="n">T</span> <span class="nf">FindBy</span><span class="p">(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;&gt;</span> <span class="n">predicate</span><span class="p">,</span> <span class="kt">string</span> <span class="n">includeProperties</span> <span class="p">=</span> <span class="s">""</span><span class="p">);</span>
+
+        <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">T</span> <span class="n">toAdd</span><span class="p">);</span>
+
+        <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">T</span> <span class="n">toUpdate</span><span class="p">);</span>
+
+        <span class="k">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">);</span>
+
+        <span class="k">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">T</span> <span class="n">entity</span><span class="p">);</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">RepositoryBaseImpl</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="p">:</span> <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+    <span class="err">{</span>
+        <span class="nc">private</span> <span class="k">readonly</span> <span class="n">DataBaseContext</span> <span class="n">_dataBaseContext</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">RepositoryBaseImpl</span><span class="p">(</span><span class="n">DataBaseContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_dataBaseContext</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="nf">IsNotNull</span><span class="p">(</span><span class="s">"context"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="nf">GetAll</span><span class="p">(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;&gt;</span> <span class="n">filter</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+            <span class="n">Func</span><span class="p">&lt;</span><span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;,</span> <span class="n">IOrderedEnumerable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">orderBy</span> <span class="p">=</span> <span class="k">null</span><span class="p">,</span>
+            <span class="kt">string</span> <span class="n">includeProperties</span> <span class="p">=</span> <span class="s">""</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">query</span> <span class="p">=</span> <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">filter</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">query</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">filter</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">includeProperty</span> <span class="k">in</span> <span class="n">includeProperties</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> <span class="sc">','</span> <span class="p">},</span> <span class="n">StringSplitOptions</span><span class="p">.</span><span class="n">RemoveEmptyEntries</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">query</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">includeProperty</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">orderBy</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">orderBy</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">query</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">T</span> <span class="nf">FindSingle</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;().</span><span class="nf">Find</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">T</span> <span class="nf">FindBy</span><span class="p">(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="kt">bool</span><span class="p">&gt;&gt;</span> <span class="n">predicate</span><span class="p">,</span> <span class="kt">string</span> <span class="n">includeProperties</span> <span class="p">=</span> <span class="s">""</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">query</span> <span class="p">=</span> <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+            <span class="k">foreach</span> <span class="p">(</span><span class="kt">string</span> <span class="n">includeProperty</span> <span class="k">in</span> <span class="n">includeProperties</span><span class="p">.</span><span class="nf">Split</span><span class="p">(</span><span class="k">new</span> <span class="kt">char</span><span class="p">[]</span> <span class="p">{</span> <span class="sc">','</span> <span class="p">},</span> <span class="n">StringSplitOptions</span><span class="p">.</span><span class="n">RemoveEmptyEntries</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="n">query</span> <span class="p">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">Include</span><span class="p">(</span><span class="n">includeProperty</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">query</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">predicate</span><span class="p">).</span><span class="nf">FirstOrDefault</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Add</span><span class="p">(</span><span class="n">T</span> <span class="n">toAdd</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;().</span><span class="nf">Add</span><span class="p">(</span><span class="n">toAdd</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Update</span><span class="p">(</span><span class="n">T</span> <span class="n">toUpdate</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_dataBaseContext</span><span class="p">.</span><span class="nf">Entry</span><span class="p">(</span><span class="n">toUpdate</span><span class="p">).</span><span class="n">State</span> <span class="p">=</span> <span class="n">EntityState</span><span class="p">.</span><span class="n">Modified</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">T</span> <span class="n">entity</span> <span class="p">=</span> <span class="nf">FindSingle</span><span class="p">(</span><span class="n">id</span><span class="p">);</span>
+            <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;().</span><span class="nf">Remove</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="k">void</span> <span class="nf">Delete</span><span class="p">(</span><span class="n">T</span> <span class="n">entity</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">_dataBaseContext</span><span class="p">.</span><span class="n">Set</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;().</span><span class="nf">Remove</span><span class="p">(</span><span class="n">entity</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>So here right in the beginning we see the heart of the thing we want to take a look at with this blogpost.
+In this generic repository we are able to perform every operation we want with an object, while being able to include some child-properties, to find all, to find a single entry (with the find-method which will eventually not force a direct query), to get a single entry with a query etc.
+But let’s put this interface into a more flexible context. I added, like shown in the links above, a repository-provider which is caching the repositories and creating them with a factory (factory-pattern).</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">internal</span> <span class="k">interface</span> <span class="n">IRepositoryProvider</span>
+    <span class="p">{</span>
+        <span class="n">DataBaseContext</span> <span class="n">DbContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetGenericRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span><span class="err">;</span>
+
+        <span class="nc">T</span> <span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">factory</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span><span class="err">;</span>
+    <span class="err">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">internal</span> <span class="k">class</span> <span class="nc">RepositoryProviderImpl</span> <span class="p">:</span> <span class="n">IRepositoryProvider</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="n">DataBaseContext</span> <span class="n">DbContext</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">Factory</span> <span class="n">_factory</span><span class="p">;</span>
+        <span class="k">protected</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">Repositories</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">private</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">RepositoryProviderImpl</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_factory</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Factory</span><span class="p">();</span>
+            <span class="n">Repositories</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetGenericRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">repositoryFactoryForEntityTypeDelegate</span> <span class="p">=</span> <span class="n">_factory</span><span class="p">.</span><span class="n">GetRepositoryFactoryForEntityType</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+            <span class="k">return</span> <span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;(</span><span class="n">repositoryFactoryForEntityTypeDelegate</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">T</span> <span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">factory</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">object</span> <span class="n">repository</span><span class="p">;</span>
+            <span class="n">Repositories</span><span class="p">.</span><span class="nf">TryGetValue</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="k">out</span> <span class="n">repository</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">repository</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="n">repository</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">CreateRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">factory</span><span class="p">,</span> <span class="n">DbContext</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">T</span> <span class="n">CreateRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">factory</span><span class="p">,</span> <span class="n">DataBaseContext</span> <span class="n">dbContext</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">repositoryFactory</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">factory</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">repositoryFactory</span> <span class="p">=</span> <span class="n">factory</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">repositoryFactory</span> <span class="p">=</span> <span class="n">_factory</span><span class="p">.</span><span class="n">GetRepositoryFactoryFromCache</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">repositoryFactory</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">NotSupportedException</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">).</span><span class="n">FullName</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="n">T</span> <span class="n">repository</span> <span class="p">=</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span><span class="nf">repositoryFactory</span><span class="p">(</span><span class="n">dbContext</span><span class="p">);</span>
+            <span class="n">Repositories</span><span class="p">[</span><span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">)]</span> <span class="p">=</span> <span class="n">repository</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">repository</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    </code></pre></figure>
+
+<h3 id="factory">Factory:</h3>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">internal</span> <span class="k">class</span> <span class="nc">Factory</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;&gt;</span> <span class="n">_factoryCache</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Factory</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_factoryCache</span> <span class="p">=</span> <span class="nf">GetFactories</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">GetRepositoryFactoryForEntityType</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+            <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">factory</span> <span class="p">=</span> <span class="n">GetRepositoryFactoryFromCache</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">factory</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">factory</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">DefaultEntityRepositoryFactory</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">GetRepositoryFactoryFromCache</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span>
+        <span class="p">{</span>
+            <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">factory</span><span class="p">;</span>
+            <span class="n">_factoryCache</span><span class="p">.</span><span class="nf">TryGetValue</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="k">out</span> <span class="n">factory</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">factory</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">IDictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;&gt;</span> <span class="nf">GetFactories</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;&gt;</span> <span class="n">dic</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="n">Type</span><span class="p">,</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;&gt;();</span>
+            <span class="n">dic</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">IMembershipRepository</span><span class="p">),</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="nf">MembershipRepositoryImpl</span><span class="p">(</span><span class="n">context</span><span class="p">));</span>
+            <span class="c1">//Add Extended and Custom Repositories here
+</span>            <span class="k">return</span> <span class="n">dic</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">Func</span><span class="p">&lt;</span><span class="n">DataBaseContext</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">DefaultEntityRepositoryFactory</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">return</span> <span class="n">dbContext</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">RepositoryBaseImpl</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">dbContext</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>So the factory is creating all the repositories you want to have including caching them. While creating it checks the cache first and if not available it creates a new one (RepositoryProviderImpl).</p>
+
+<p><em>I will go into this later, but while looking into this code: Not every Repository has to follow the CRUD-Things in the repository-base like shown above.</em> You can also build up extended repositories and custom ones you complete implemented on your own way.</p>
+
+<p>So at this point you have implemented the repository for each entity and you are able to give these things to the outside world through your provider who creates the repositories as implemented.
+Now you need a UnitOfWork to use in your application to access these repositories and use them. This could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">interface</span> <span class="n">IUnitOfWork</span> <span class="p">:</span> <span class="n">IDisposable</span>
+    <span class="p">{</span>
+        <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">Project</span><span class="p">&gt;</span> <span class="n">ProjectRepository</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="n">IMembershipRepository</span> <span class="n">MembershipRepository</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="kt">int</span> <span class="nf">Save</span><span class="p">();</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">UnitOfWorkImpl</span> <span class="p">:</span> <span class="n">IUnitOfWork</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">DataBaseContext</span> <span class="n">_context</span><span class="p">;</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">IRepositoryProvider</span> <span class="n">_repositoryProvider</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">UnitOfWorkImpl</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_context</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">DataBaseContext</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">_repositoryProvider</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">_repositoryProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">RepositoryProviderImpl</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">_repositoryProvider</span><span class="p">.</span><span class="n">DbContext</span> <span class="p">=</span> <span class="n">_context</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">Project</span><span class="p">&gt;</span> <span class="n">ProjectRepository</span>
+        <span class="p">{</span>
+            <span class="k">get</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">GetGenericRepository</span><span class="p">&lt;</span><span class="n">Project</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">IMembershipRepository</span> <span class="n">MembershipRepository</span>
+        <span class="p">{</span>
+            <span class="k">get</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">IMembershipRepository</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">int</span> <span class="nf">Save</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">_context</span><span class="p">.</span><span class="nf">SaveChanges</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">void</span> <span class="nf">Dispose</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_context</span><span class="p">.</span><span class="nf">Dispose</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">IRepositoryBase</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;</span> <span class="n">GetGenericRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">return</span> <span class="n">_repositoryProvider</span><span class="p">.</span><span class="n">GetGenericRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="n">T</span> <span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;()</span> <span class="k">where</span> <span class="n">T</span> <span class="p">:</span> <span class="k">class</span>
+        <span class="err">{</span>
+            <span class="nc">return</span> <span class="n">_repositoryProvider</span><span class="p">.</span><span class="n">GetCustomRepository</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;();</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p><em>Notice the IDisposable-Interface which the implementation of the UoW is implementing. This is why you can use it with a “using” in the end.</em></p>
+
+<p>The <code class="highlighter-rouge">GetGenericRepository()</code> can be used if you would like to have standard CRUD-Functions on your entity. This should be the case in like 80% of your use-cases.
+The <code class="highlighter-rouge">GetCustomRepository()</code> can give you back the custom repository which you have implemented because you want to have like other functions or for any other reason. You just have to implement its interface and offer it through the UoW-Interface.
+You can also do extended interfaces, if you want to extend the CRUD-Methods because they are not enough.</p>
+
+<p><img src="/assets/articles/2014-07-01/21.png" alt="ASP.NET MVC - Generic Repositories and UnitOfWork" /></p>
+
+<p>Just let the repository-interface inherit from your repositorybase-interface and the class from the repositorybase-implementation. Because the methods are virtual you can override them or just add new functions.
+You can provide it again with the normal UoW-Interface:</p>
+
+<p><img src="/assets/articles/2014-07-01/31.png" alt="ASP.NET MVC - Generic Repositories and UnitOfWork" /></p>
+
+<p>Now you have a generic repository which you can user for every entity. Its extendable with very few steps and you are also free if you want to use own repositories.
+Wrapped in namespaces this it how it could look to you:</p>
+
+<p><img src="/assets/articles/2014-07-01/41.png" alt="ASP.NET MVC - Generic Repositories and UnitOfWork" /></p>
+
+<p>You can use it now from the outside with</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="p">(</span><span class="n">IUnitOfWork</span> <span class="n">unitOfWork</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">UnitOfWorkImpl</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">unitOfWork</span><span class="p">.</span><span class="n">MembershipRepository</span><span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And you are done :)
+If you want to add new repositories you just have to extend your UoW-interface and add your new entities to your databaseContext.</p>
+
+<p><em>Note:
+If you are using Ninject to inject your stuff and for IoC you can simply make your UnitOfWork present in the NinjectWebCommon.cs as InRequestScope. So it is injected once per request and you can Use DI</em></p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">RegisterServices</span><span class="p">(</span><span class="n">IKernel</span> <span class="n">kernel</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">kernel</span><span class="p">.</span><span class="nf">Bind</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">IUnitOfWork</span><span class="p">)).</span><span class="nf">To</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">UnitOfWorkImpl</span><span class="p">)).</span><span class="nf">InRequestScope</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">private</span> <span class="k">readonly</span> <span class="n">IUnitOfWork</span> <span class="n">_unitOfWork</span><span class="p">;</span>
+      
+<span class="k">public</span> <span class="nf">MyCtor</span><span class="p">(</span><span class="n">IUnitOfWork</span> <span class="n">unitOfWork</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">_unitOfWork</span> <span class="p">=</span> <span class="n">unitOfWork</span><span class="p">.</span><span class="nf">IsNotNull</span><span class="p">(</span><span class="s">"unitOfWork"</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">using</span> <span class="p">(</span><span class="n">_unitOfWork</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">unitOfWork</span><span class="p">.</span><span class="n">MembershipRepository</span><span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>I hope I could give you a view into the UoW-Thing with generic repositories. But, like I said in the beginning, I only gathered information and put them together in one scope. And, of course, this is only one of soooo many articles in the web concerning UnitOfWork and Generic-Repos.</p>
+
+<p>But I hope you liked reading it ;)</p>
+
+<p>This is the last part of the architecture-posts in ASP.NET MVC. This was planned as a trilogy and here it is.</p>
+
+<p>Thanks for reading</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h4 id="links">Links</h4>
+<p><a href="http://msdn.microsoft.com/en-US/data/ef">Entity Framework</a></p>
+
+<p><a href="http://thedatafarm.com/data-access/agile-entity-framework-4-repository-part-1-model-and-poco-classes/">Agile Entity Framework 4 Repository: Part 1- Model and POCO Classes</a></p>
+
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Creating a business logic in ASP.NET MVC</title>
+	  <link>//blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-06-10T18:00:13+02:00</pubDate>
+	  <guid>//blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/</guid>
+	  <description><![CDATA[
+	     <p>In this bogpost I want to show you one possible way creating a business logic in ASP.NET MVC.</p>
+
+<p>Okay, referring to my last <a href="http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/" target="_blank">blogpost </a>I want to take you one step further and extend the older post a little bit. In the last post we saw how to build up areas and to get them clean, with separated concerns and nice looking, testable etc.</p>
+
+<p>But this is worth nothing if the rest you have is not well separated and you have a big mess there. That’s why I want to give you the second part (which is a bit shorter) to present you one way to create a business-tier.</p>
+
+<p>Well, the problem we face is that we have to access our data. We have to have any way of communication between our UI and the database. The first blogpost was touching the UI (remember? Areas and their friends…). The third one will touch the repositories (generic) and the UnitOfWork-Stuff and so on. Why don’t we just access the data from the Controllerservice (through the UnitOfWork) and were done?</p>
+
+<p>The answer is: Yeah we could. But sometimes some database queries are a little bit more complex. You have to have this object A with B in it to get C, the user has to be there first and so on. If you would write this now in the Controller service (mentioned in the <a href="http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/" target="_blank">blogpost </a>before) this would work, but would generate a lot of code and in the best case you would end up with a lot of functions, which are named after what they are doing but still getting the class very big and difficult to handle. Also testing would be difficult. You would have a lot of private functions to test. If you have only one class this should be a step to think about what you are doing! If you are writing a private function so “mighty” that it should be tested in 95% you are hurting the single-responsibility-principle and the separation of concerns, too. So what you are writing should be an own class, with its own tests and its own public and private functions. With a class name which describes, what its doing and functions which describe exactly, what they do.</p>
+
+<p>Another reason is: Sometimes (as mentioned in <a title="Code-First with EF and N:M Relationship with more information in your relation-table" href="http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/" target="_blank">this </a>post) you have a third entity (EntityC) to connect two other entities in your application (let’s call the EntityA and EntityB). This is an N:M-Relationship. And you should access these entities only through the EntityC one, including those you want to have (EntityA, EntityB or both). These queries could, even with the Entity-Framework, be very cryptic and you better have a class which does the queries for you. This is not like a general rule. This only makes sense, when you have these entities. But to stay clean and testable, you can have every query wrapped in a service…why not? 😉</p>
+
+<p>Further you probably want to give your controller-service functions which have a sorting logic or anything like that, etc. he can just call them and he does not care about the implementation.</p>
+
+<p>So these are only three reasons why you should work with services behind your controller service.</p>
+
+<p><strong>Area Services</strong></p>
+
+<p>These services are written in another tier, the “logic-tier” or “business-tier”; call it like you want to.</p>
+
+<p><span style="color: #808080;">Note: In the Screenshots I have only one project in the solution and I am separating the tiers only in namespaces. You can, of course, introduce different projects in the solution to get the concerns separated for each project. Well you should do this…would be better 😉 But for this post, it’s about the idea behind it. If you got this, I won a lot!</span></p>
+
+<p>Concrete example: You have a service which is giving you Chart-Data to display a chart in your view. You should have one service for this which is only build to work with and give you this data. Mostly you want this data to be generated out of anything in the database. This is perfect for a service. And because this service interacts directly with any area (you can inject the interface of the service wherever you want in you controller-services) I call them “AreaServices”.</p>
+
+<p><span style="color: #808080;">Note. How to get along with DotNet Highcharts I am describing <a title="How to include DotNet.HighCharts in ASP.NET MVC with ViewModels" href="http://offering.solutions/blog/articles/2014/05/09/how-to-include-dotnet-highcharts-in-asp-net-mvc-with-viewmodels/" target="_blank"><span style="color: #808080;">here</span></a>.</span></p>
+
+<p><img src="/assets/articles/2014-06-10/42abe410-8ef5-44a4-9794-ab531b8b3751.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p>Here you see an area service called “ChartService” which is, when you collapse the whole thing, only visible to the outside through his interface (information hiding, I mentioned this in part I of this article here). His <em>Impl</em>-namespace contains the direct implementation. Everything which is connected to this service also takes place in this namespace, as long as it’s only needed there. In this case we have a special factory which creates the chart (interface/impl) and a very “stupid” container class “ChartData” which summarizes the data for a chart.</p>
+
+<p>Note: this could be any worker service for you. I just choose this one because its doing some work and looking for data in the database. So you have both things covered.</p>
+
+<p>Let’s see some code:</p>
+
+<p><img src="/assets/articles/2014-06-10/eeb62a78-705e-44eb-a404-07fbaa25cbb1.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p><img src="/assets/articles/2014-06-10/065fd0da-6b2b-4515-9521-7ae6c58e434c.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p>You see that this service knows the factory and just calls it after he collects the data from the database.</p>
+
+<p><span style="color: #993300;">Attention: You do NOT have to use a using here in your UnitOfWork. The using of the UnitOfWork is ONLY used in a controller service, because this is the main entry point for a lot of database-requests and as I mentioned in part one of this, Ninject is only injecting one instance for you per request. One controller service call represents one request from a client. So put the using there and you are safe to have the same instance over all services the request touches. This is why you can inject it here.</span></p>
+
+<p>The point is: You are having a tier which is calling the database, collecting information and doing something with it. To get to the example I mentioned before you could have a EntityCService, where you can have all nice methods on it which the controller service can call and here you are gathering the information with EntityC having EntitiesB and A on it and so on. All this is hidden here inside this service.</p>
+
+<p>Conclusion so far: Sometimes you have a lot of work to do with some database data or your requests are a little bit more complex. So do separate this in services which can be called from your areas/controller-services. This is the first part of the middle-tier.</p>
+
+<p><img src="/assets/articles/2014-06-10/cfe740e3-d82b-4dd4-9aa6-c6442e0a29f5.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p><strong>Business services</strong></p>
+
+<p>Another type of services? Oh come on! Well, what we touched was a type of service which interacts with the database and is very strongly connected to the application. But what about services which are…</p>
+
+<ul>
+  <li>…not that connected to the application</li>
+  <li>…could possibly stand alone (as a module)</li>
+  <li>…are doing work which is not interacting with the database or at least not writing into it</li>
+</ul>
+
+<p>Lets do another kind of service and call them <em>business services</em>. Examples for these business services are maybe a pdf-generator which generates you a pdf of data which is given to him. Or an email service which is sending emails from your application to the user. Or a calculator who is only feed with data and calculating some values.</p>
+
+<p>These “worker services” are doing some work which stands a little bit beside the normal CRUD-operations you normally have in a web application.</p>
+
+<p><img src="/assets/articles/2014-06-10/579ec6cf-55e4-43c4-98d3-44927c68a9c3.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p>In this example you see two services which represent classical business services and are only worker-bees producing an outcome of something you give them. Here you can have a little, but normally you have no database-contact. If you have this, this is only reading data. Never writing something into it.</p>
+
+<p>On the screenshot you also see the namespaces “Impl” which hides the implementation and the interface which is representing the service.</p>
+
+<p>So we are extending our logic-layer with the business services and have now area services and business services in it.</p>
+
+<p><img src="/assets/articles/2014-06-10/ef98f768-1b25-4196-a477-9e9e7f15d424.png" alt="ASP.NET MVC - Creating a business logic" /></p>
+
+<p>Of course these services can and should be provided in different projects to have several dlls. But with this, every layer should have an api-project to represent it and this api-dll should be referenced from the projects which needs it.</p>
+
+<p>Unfortunately this was it for this time. In the next part I will touch the generic repositories with the UnitOfWork.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

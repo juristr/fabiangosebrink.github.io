@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>Moving your Angular application from SystemJS to Webpack</title>
+     
+    <meta name="description" content="Moving your Angular application from SystemJS to Webpack" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="Moving your Angular application from SystemJS to Webpack" />
+    
+    
+    
+    <meta property="og:title" content="Moving your Angular application from SystemJS to Webpack" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="Moving your Angular application from SystemJS to Webpack" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="angular" property="article:tag">
+  
+  <meta content="systemjs" property="article:tag">
+  
+  <meta content="webpack" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>Moving your Angular application from SystemJS to Webpack</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">Moving your Angular application from SystemJS to Webpack</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2017-02-26">26 Feb 2017</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/angular'>Angular</a>,
+                       
+                
+                    
+                       <a href='/tag/systemjs'>Systemjs</a>,
+                       
+                
+                    
+                       <a href='/tag/webpack'>Webpack</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blogpost I want to show you how you can move from an existing Angular application using systemjs to an application with webpack.</p>
+
+<p>Imagine the following application.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+└── main.ts
+...
+systemjs.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Because we want to get away from systemjs here we will first introduce a webpack.config.js which holds your configuration and which can handle all you files and stuff.</p>
+
+<p>But before we do please install webpack and the webpack-dev-server first:</p>
+
+<p><code class="highlighter-rouge">npm install webpack-dev-server webpack --save-dev</code></p>
+
+<p>So now we can add a webpack.config.js. This is the file webpack is searching per default.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js // &lt;---
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Of course you have to modify the config that it fits to your application. A structure of this could be useful:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Here all your entry points from </span>
+        <span class="c1">// your application are mentioned</span>
+    <span class="p">},</span>
+
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="c1">// Here we can specify the output</span>
+    <span class="p">},</span>
+
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="c1">// mention the extensions webpack should take care of</span>
+    <span class="p">},</span>
+
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">rules</span><span class="p">:</span> <span class="p">[</span>
+            <span class="c1">// tell webpack HOW to react when a file is included in your application</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+		<span class="c1">// finetune the behaviour of specific plugins</span>
+    <span class="p">]</span>
+<span class="p">};</span> </code></pre></figure>
+
+<p>You can see an example here <a href="https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.dev.js">webpack.dev.js</a></p>
+
+<h2 id="adding-polyfills">Adding Polyfills</h2>
+
+<p>To have your Angular application ready for handling polyfills you have to introduce another file <code class="highlighter-rouge">polyfills.ts</code> where you import all polyfills your application needs.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts // &lt;---
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>The file could look like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'ie-shim'</span><span class="p">;</span> <span class="c1">// Internet Explorer 9 support.</span>
+
+<span class="kr">import</span> <span class="s1">'core-js/es6/symbol'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/object'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/function'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-int'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/parse-float'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/number'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/math'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/string'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/date'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/array'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/regexp'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-map'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/weak-set'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/typed'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es6/reflect'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'core-js/es7/reflect'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'zone.js/dist/zone'</span><span class="p">;</span></code></pre></figure>
+
+<blockquote>
+  <p>Notice that when you import things you also have to install them via npm which also should be reflected in you package.json</p>
+</blockquote>
+
+<h2 id="adding-third-party-dependencies">Adding Third-Party dependencies</h2>
+
+<p>If you have to include external libs like jquery or bootstrap you can manage them in a seperate file called <code class="highlighter-rouge">vendor.ts</code>. After installing them via npm you can consume them here:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts
+├── vendor.ts // &lt;---
+└── main.ts
+...
+systemjs.config.js
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<p>Which could look like this</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'jquery/dist/jquery'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/js/bootstrap'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="s1">'bootstrap/dist/css/bootstrap.css'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'../css/custom.css'</span><span class="p">;</span>
+
+<span class="c1">// import everything else here!!!</span></code></pre></figure>
+
+<blockquote>
+  <p>You should include all your custom files here</p>
+</blockquote>
+
+<h2 id="delete-systemjsconfigjs">Delete systemjs.config.js</h2>
+
+<p>You can now delete the systemjs.config.js because you do not need it anymore.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+├── // modules, components and so on
+├── app.component.ts
+├── app.component.html
+├── app.module.ts
+├── polyfills.ts
+├── vendor.ts
+└── main.ts
+...
+webpack.config.js
+tsconfig.json
+tslint.json
+...
+</code></pre>
+</div>
+
+<h2 id="entrypoints">Entrypoints</h2>
+
+<p>Note that you now have three entrypoint for your application: <code class="highlighter-rouge">main.ts</code>, <code class="highlighter-rouge">vendor.ts</code> and <code class="highlighter-rouge">polyfills.ts</code>. Due to the fact that webpack is reading all you files and going through all imports importing what is included you have the possibility to:</p>
+
+<p>give your webpack config all three entrypoint like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+    <span class="p">},</span></code></pre></figure>
+
+<p>or you import the two files in you main.ts like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="s1">'./polyfills'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="s1">'./vendor'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">platformBrowserDynamic</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'@angular/platform-browser-dynamic'</span><span class="p">;</span>
+
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">AppModule</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'./app.module'</span><span class="p">;</span>
+
+<span class="nx">platformBrowserDynamic</span><span class="p">().</span><span class="nx">bootstrapModule</span><span class="p">(</span><span class="nx">AppModule</span><span class="p">);</span></code></pre></figure>
+
+<p>and in your webpack.config.ts you only need one entrypoint then:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span>
+    <span class="p">},</span></code></pre></figure>
+
+<h2 id="asking-for-the-environment-devprod">Asking for the environment (dev/prod)</h2>
+
+<p>We will set the environment from the outside later. To consume it in your application we can simply ask for a variable like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">env</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">env</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">require</span><span class="p">(</span><span class="err">`</span><span class="p">.</span><span class="o">/</span><span class="nx">webpack</span><span class="p">.</span><span class="nx">$</span><span class="p">{</span><span class="nx">env</span><span class="p">}.</span><span class="nx">js</span><span class="err">`</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With this you can apply multiple ways of generating your output based on the given environment asking for the variable “NODE_ENV” which we will set up later in our scripts.</p>
+
+<p>You can see an example here <a href="https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.config.js">webpack.config.js</a></p>
+
+<h2 id="triggering-it-from-the-npm-scripts">Triggering it from the npm scripts</h2>
+
+<p>Now that we introduced webpack we can add the commands to our package.json like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="c1">//...</span>
+    <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"start"</span><span class="err">:</span> <span class="s2">"tsc &amp;&amp; webpack-dev-server --open"</span><span class="p">,</span>
+        <span class="c1">// other scripts</span>
+        <span class="s2">"build:dev"</span><span class="err">:</span> <span class="s2">"webpack --env=dev --progress --profile --colors"</span><span class="p">,</span>
+        <span class="s2">"build:dist"</span><span class="err">:</span> <span class="s2">"webpack --env=prod --progress --profile --colors"</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="c1">//...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Here we are setting the environment variable accordingly and start webpack with the <code class="highlighter-rouge">webpack</code> command</p>
+
+<p>When you run <code class="highlighter-rouge">npm start</code> and have the correct configuration in your webpack &amp; package.json a browser should open up displaying your page while reloading if you change something.</p>
+
+<p>Feel free to comment if I missed something.</p>
+
+<p>Hope this helps and happy coding.</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Moving your Angular application from SystemJS to Webpack&amp;url=http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/';
+        //var disqus_url = 'offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2017/04/02/announcing-the-dotnetday-2017/">
+            <section class="post">
+                <h2>Announcing the .NET Day 2017</h2>
+                <p>I am very happy to announce the .NET Day 2017 in Switzerland! In this blogpost...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/">
+            <section class="post">
+                <h2>Automatically reload typed configuration in ASP.NET Core</h2>
+                <p>In this article I want to explore IOptionsSnapshot and show how to work with IOptionsSnapshot...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

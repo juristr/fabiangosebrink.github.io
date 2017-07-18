@@ -1,0 +1,1168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Offering Solutions - Articles</title>
+    <description>Articles about Angular &amp; ASP.NET</description>
+    <link>
+    http://offering.solutions</link>
+    
+      
+      <item>
+        <title>Lessons I learnt from organising a conference</title>
+        
+          <description>&lt;p&gt;It has been quiet here for a while… :-)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 18 Jul 2017 19:55:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/07/18/things-i-learned-from-organising-a-conference/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/07/18/things-i-learned-from-organising-a-conference/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Announcing the .NET Day 2017</title>
+        
+          <description>&lt;p&gt;I am very happy to announce the .NET Day 2017 in Switzerland! In this blogpost I want to give you a small background information on this, how this idea came up and about the current status.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 02 Apr 2017 19:12:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/04/02/announcing-the-dotnetday-2017/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/04/02/announcing-the-dotnetday-2017/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Moving your Angular application from SystemJS to Webpack</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how you can move from an existing Angular application using systemjs to an application with webpack.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 26 Feb 2017 16:46:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Automatically reload typed configuration in ASP.NET Core</title>
+        
+          <description>&lt;p&gt;In this article I want to explore IOptionsSnapshot and show how to work with IOptionsSnapshot in ASP.NET Core 1.1.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 17 Feb 2017 22:31:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to get Ahead Of Time compilation enabled with lazy loading in combination with webpack 2.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 08 Feb 2017 16:42:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>The difference between AddMvc() and AddMvcCore()</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you difference between the ASP.NET Core methods &lt;code class=&quot;highlighter-rouge&quot;&gt;AddMvc()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;AddMvcCore()&lt;/code&gt; when working with ASP.NET Core.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 07 Feb 2017 20:49:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/02/07/difference-between-addmvc-addmvcore/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/02/07/difference-between-addmvc-addmvcore/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Working with Angular Template Forms</title>
+        
+          <description>&lt;p&gt;In this blog I want explain and show you how to work with Angular’s template driven forms.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 14 Jan 2017 13:49:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/01/14/working-with-angular-2-template-forms/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/01/14/working-with-angular-2-template-forms/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Speaking at the Microsoft TechDays 2017</title>
+        
+          <description>&lt;p&gt;I am very proud to announce that I will be speaking at the Microsoft TechDays 2017 about Angular and ASP.NET Core.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 02 Jan 2017 10:08:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2017/01/02/speaking-at-the-microsoft-techdays-2017/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2017/01/02/speaking-at-the-microsoft-techdays-2017/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How I started recording my first Video training</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to describe how I started recording my first Video training and tell you about the experiences I made during the recording.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 29 Nov 2016 14:07:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/11/29/how-i-started-recording-my-first-video-training/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/11/29/how-i-started-recording-my-first-video-training/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to implement a table filter in Angular</title>
+        
+          <description>&lt;p&gt;In this post I want to show you how to implement a table filter in Angular.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 21 Nov 2016 21:16:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Build and debug a WebAPI with the Dotnet CLI and VSCode</title>
+        
+          <description>&lt;p&gt;In this blog I want to show you how to build and debug a WebAPI with the Dotnet CLI and VSCode.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 02 Nov 2016 09:30:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to debug an Angular application with Chrome and VS Code</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to debug an Angular application with Chrome and VS Code.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 16 Oct 2016 17:50:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/10/16/how-to-debug-an-angular-application-with-chrome-and-vs-code/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/10/16/how-to-debug-an-angular-application-with-chrome-and-vs-code/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Moving from Microsoft Lumia 950 to OnePlus 3</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to share the experience I made moving from Microsoft Lumia 950 to OnePlus 3.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 15 Oct 2016 16:19:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/10/15/moving-from-microsoft-lumia-950-to-oneplus-3/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/10/15/moving-from-microsoft-lumia-950-to-oneplus-3/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to set up Angular and Webpack in Visual Studio with ASP.NET Core</title>
+        
+          <description>&lt;p&gt;With this blogpost I want to show an example of how to set up Angular and Webpack in Visual Studio with ASP.NET Core ready for dev and production builds.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 27 Aug 2016 16:58:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Neue Angular-Kurstermine angekündigt</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost möchte ich bekanntgeben, dass &lt;a href=&quot;https://www.digicomp.ch/&quot;&gt;Digicomp&lt;/a&gt; neue Kurstermine angekündigt hat, die ich als Trainer betreuen und durchführen darf :) . Die Kurse finden in Bern statt, je nach Teilnehmern auch in Basel und Zürich.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 17 Aug 2016 19:14:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to create an ASP.NET Core WebAPI</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to create an ASP.NET Core WebAPI. We will use a custom mapper (you could use AutoMapper for this instead, a repository which is a singleton in this blog here and we will use the normal CRUD operations to Create, Read, Update and Delete in the “database” here.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 29 Jul 2016 18:31:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/07/29/how-to-create-an-asp-net-core-webapi/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/07/29/how-to-create-an-asp-net-core-webapi/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Kooperation von MyCSharp.de und der BASTA!</title>
+        
+          <description>&lt;p&gt;Ich freue mich wieder sehr anzukündigen, dass es erneut zu einer Kooperation von MyCSharp.de und der BASTA! gekommen ist. Die zweite dieses Jahr :)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 20 Jul 2016 18:05:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/07/20/kooperation-von-mycsharp-de-und-der-basta/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/07/20/kooperation-von-mycsharp-de-und-der-basta/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET Core 1.0 with Entity Framework Core</title>
+        
+          <description>&lt;p&gt;In this repository I want to show the first steps with Entity Framework Core and ASP.NET Core 1.0.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 03 Jul 2016 22:32:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Cross Platform Builds with Angular, Gulp and Webpack</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show how to create Cross Platform Builds with Angular, Gulp and Webpack&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 17 Jun 2016 19:09:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET Core and Angular with Webpack and Visual Studio</title>
+        
+          <description>&lt;p&gt;This article shows how to use ASP.NET Core and Angular with webpack and Visual Studio. Both the client and the server side of the application is implemented inside one ASP.NET Core project which makes it easier to deploy.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 12 Jun 2016 22:10:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Kurs - Frontend-Entwicklung mit AngularJS</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost stelle ich meinen Kurs: &lt;em&gt;Frontend-Entwicklung mit AngularJS&lt;/em&gt; vor.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 25 May 2016 18:30:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How you can organise gulp in your applications</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show one possibility of organising your gulp tasks in a way that you as a developer can find them quickly and print them to the console in an ordered way.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 16 May 2016 08:30:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Writing custom validators in Angular</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how you are writing custom validators in Angular.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 10 May 2016 17:42:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 2</title>
+        
+          <description>&lt;p&gt;In the last &lt;a href=&quot;http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/&quot;&gt;blogpost&lt;/a&gt;I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure &amp;amp; Cordova, Cross Platform – My Private Hackathon Part 2.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 26 Apr 2016 10:05:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 1</title>
+        
+          <description>&lt;p&gt;&lt;img src=&quot;/assets/articles/wp-content/uploads/2016/04/foodchooser.jpg&quot; alt=&quot;foodchooser&quot; /&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 19 Apr 2016 17:34:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Microsoft TechDays 2016</title>
+        
+          <description>&lt;p&gt;&lt;a href=&quot;https://www.microsoft.com/de-ch/events/techdays&quot;&gt;TechDays 2016 Baden&lt;/a&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 20 Feb 2016 11:30:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Consuming a REST API with Angular Http-Service in Typescript</title>
+        
+          <description>&lt;p&gt;&lt;strong&gt;Updated to new syntax&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 01 Feb 2016 12:23:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/02/01/consuming-a-rest-api-with-angular-http-service-in-typescript/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/02/01/consuming-a-rest-api-with-angular-http-service-in-typescript/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Angular and ASP.NET Core Starter</title>
+        
+          <description>&lt;p&gt;With this bIog I want to give you an Angular and ASP.NET Core Starter.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 25 Jan 2016 19:47:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2016/01/25/angular-2-asp-net-core-starter/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2016/01/25/angular-2-asp-net-core-starter/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Get started with ASP.NET Core and Entity Framework 6</title>
+        
+          <description>&lt;p&gt;Hey,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 13 Dec 2015 20:20:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/12/13/get-started-with-asp-net-core-and-entity-framework-6/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/12/13/get-started-with-asp-net-core-and-entity-framework-6/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET Unit Of Work with Entity Framework</title>
+        
+          <description>&lt;p&gt;I just implemented a solution for the ASP.NET Unit Of Work with Entity Framework (see &lt;a href=&quot;http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/&quot;&gt;this&lt;/a&gt; post) and put all this into a NuGet-Package. And finally: Here it is!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 09 Dec 2015 21:37:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/12/09/asp-net-unit-of-work-with-entity-framework/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/12/09/asp-net-unit-of-work-with-entity-framework/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Getting started with Visual Studio Code, AngularJS and Typescript</title>
+        
+          <description>&lt;p&gt;This time I want to show you how getting started with Visual Studio Code, AngularJS and Typescript.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 03 Dec 2015 14:17:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to use tag helpers in ASP.NET MVC</title>
+        
+          <description>&lt;p&gt;Hey,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 16 Nov 2015 20:18:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Talk bei den Microsoft Evolution Days in Zürich</title>
+        
+          <description>&lt;p&gt;Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen &lt;span id=&quot;snippet_meta&quot; class=&quot;desc&quot; contenteditable=&quot;true&quot;&gt;Talk bei den Microsoft Evolution Days in Zürich&lt;/span&gt; über AngularJs &amp;amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei &lt;a href=&quot;http://digiblog.s3-eu-central-1.amazonaws.com/app/1446644382/30_agularjs-und-rest_fabian-gosebrink.pdf&quot;&gt;Digicomp&lt;/a&gt;. Alle Beispiele gibts auch auf &lt;a href=&quot;https://github.com/FabianGosebrink&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 12 Nov 2015 21:42:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Zu Gast beim MVP Global Summit bei Microsoft</title>
+        
+          <description>&lt;p&gt;Hi,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 04 Nov 2015 17:36:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/11/04/zu-gast-beim-mvp-global-summit-bei-microsoft/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/11/04/zu-gast-beim-mvp-global-summit-bei-microsoft/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>WebHooks with ASP.NET on Azure - DropBox and GitHub</title>
+        
+          <description>&lt;p&gt;Hi,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 18 Oct 2015 19:50:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Token Authentication with Claims and ASP.NET WebAPI</title>
+        
+          <description>&lt;p&gt;In this post I would like to show you the most simple example about TToken Authentication with Claims and ASP.NET WebAPI.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 03 Oct 2015 14:20:52 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/10/03/token-authentication-with-claims-and-asp-net-webapi/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/10/03/token-authentication-with-claims-and-asp-net-webapi/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>WebAPI with ASP.NET Core 1.0 and ASP.NET</title>
+        
+          <description>&lt;p&gt;I just released two sample APIs on Github: WebAPI with ASP.NET Core 1.0 and ASP.NET&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 02 Sep 2015 17:04:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>AngularJS with gulp, wiredep and bower</title>
+        
+          <description>&lt;p&gt;With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 30 Aug 2015 11:18:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>AngularJS NgResource Demo with ASP.NET WebAPI</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI querying data as JSON.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 25 Aug 2015 11:45:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to build a great RESTful Service</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to get you an idea of how to build a great RESTful Service. The idea for this blogpost came after I spent a whole &lt;a href=&quot;http://blog.noser.com/implementieren-von-paging-in-einer-asp-net-webapi-mitangularjs/&quot;&gt;post&lt;/a&gt; about implementing paging in a web API. Paging is a very important feature a REST API should offer. However, there are a lot more. Here I want to mention a few of them hoping to cover as much as you need to build great API’s ;-)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 20 Jul 2015 21:13:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/07/20/how-to-build-a-great-restful-service/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/07/20/how-to-build-a-great-restful-service/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Meine ersten Tage mit dem Surface Pro 3</title>
+        
+          <description>&lt;p&gt;Nun ist es endlich da. Das Surface der dritten Generation. Ich habe mich ja schon drauf gefreut aber wenn es dann da ist, ist es natürlich nochmal was ganz anderes. Man hört ja so viel, man liest noch mehr und am Ende schimpfen alle auf die Kacheln. Mir völlig unverständlich, aber trotzdem habe ich gedacht, dass ich das Surface mal einem Review unterziehen kann. Die Ergebnisse davon will ich in diesem Beitrag beschreiben.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 01 Jul 2015 06:00:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/07/01/meine-ersten-tage-mit-dem-surface-3/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/07/01/meine-ersten-tage-mit-dem-surface-3/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Paging in einer ASP.Net WebAPI und AngularJS</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost will ich zeigen, wie man paging in einer ASP.Net WebAPI und AngularJS realisieren kann.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 09 Jun 2015 12:14:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/06/09/paging-in-einer-asp-net-webapi-und-angularjs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/06/09/paging-in-einer-asp-net-webapi-und-angularjs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET WebAPI Datashaper to strip your json data</title>
+        
+          <description>&lt;p&gt;With this blogpost I want to introduce you the ASP.NET WebAPI Datashaper to strip your json data before sending it back to the client.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 30 May 2015 18:23:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost möchte ich zeigen, wie wichtig eine API heutzutage ist. Frei nach dem Motto: Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 01 May 2015 17:35:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>MyCSharp.de - Kooperation mit der Basta!</title>
+        
+          <description>&lt;p&gt;MyCSharp.de - Kooperation mit der Basta!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 24 Apr 2015 17:30:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/04/24/mycsharp-de-kooperation-mit-der-basta/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/04/24/mycsharp-de-kooperation-mit-der-basta/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Find me on GitHub</title>
+        
+          <description>&lt;p&gt;I just wanted to mention that you can find me on GitHub from now on. I am available on GitHub with my personal profile.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 22 Apr 2015 17:53:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/04/22/find-me-on-github/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/04/22/find-me-on-github/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Microsoft TechTalk in Wallisellen</title>
+        
+          <description>&lt;p&gt;Hallo zusammen, in diesem Blog will ich kurz den Microsoft TechTalk in Wallisellen zusammenfassen.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 19 Apr 2015 17:52:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>User Stories vs Bugs vs Product Backlog Items</title>
+        
+          <description>&lt;p&gt;In diesem Blog greife ich eine ewig brennende Diskussion auf: User Stories vs Bugs vs Product Backlog Items!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 01 Apr 2015 04:00:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/04/01/user-stories-vs-bugs-vs-product-backlog-items/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/04/01/user-stories-vs-bugs-vs-product-backlog-items/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to modularize your angular application</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you a way on how to modularize your angular application in a way I did it so far. Enjoy reading :)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 17 Mar 2015 04:43:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/03/17/how-to-modularize-your-angular-application/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/03/17/how-to-modularize-your-angular-application/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET Helpers by Offering Solutions</title>
+        
+          <description>&lt;p&gt;I just released a new version of the ASP.NET Helpers by Offering Solutions:&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 04 Mar 2015 21:08:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/03/04/asp-net-helpers-by-offering-solutions/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/03/04/asp-net-helpers-by-offering-solutions/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to work with the q promise syntax in AngularJS</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to work with the q promise syntax in AngularJS&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 01 Mar 2015 03:27:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>WPF CallMemberName for INotifyPropertyChanged</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to use WPF CallMemberName for INotifyPropertyChanged.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 08 Feb 2015 23:08:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Jeder braucht einen Scrum-Master!</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost möchte ich mal herausstellen, wie wichtig Scrum-Master sind: Jeder braucht einen Scrum-Master!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 20 Jan 2015 08:00:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2015/01/20/jeder-braucht-einen-scrum-master/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2015/01/20/jeder-braucht-einen-scrum-master/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>SCRUM - Wege zu einer erfolgreichen Retrospektive</title>
+        
+          <description>&lt;p&gt;Die Retrospektive sollte immer am Ende des Sprints stattfinden und der Ort sein, an dem die Weichen gestellt werden für den nächsten Sprint. Nicht, was den Inhalt des Sprints angeht, also die Frage beantwortet wird, &lt;em&gt;was&lt;/em&gt; gemacht werden soll, sondern &lt;em&gt;wie&lt;/em&gt; man es besser tun kann.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 04 Dec 2014 07:05:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/12/04/scrum-wege-zu-einer-erfolgreichen-retrospektive/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/12/04/scrum-wege-zu-einer-erfolgreichen-retrospektive/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET - Clientseitige Webarchitekturen mit AngularJS</title>
+        
+          <description>&lt;p&gt;ASP.NET MVC hat, wie der Name schon sagt, die MVC-Struktur auf dem Server etabliert und es ist somit möglich saubere Architekturen auf dem Server zu erstellen.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 02 Nov 2014 07:05:00 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Mach das Handy aus! Wie man maximal produktiv sein kann</title>
+        
+          <description>&lt;p&gt;So gut das Handy im Alltag auch sein kann, es gibt durchaus Momente, in denen es stört: Kino, Konversationen, etc.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 13 Oct 2014 19:32:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/10/13/mach-das-handy-aus-wie-man-maximal-produktiv-sein-kann/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/10/13/mach-das-handy-aus-wie-man-maximal-produktiv-sein-kann/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET Repository Pattern und Unit of Work</title>
+        
+          <description>&lt;p&gt;In diesem Blogpost möcht ich das ASP.NET Repository Pattern and Unit of Work vorstellen. In einem Informationssystem (z.B. Webapplikation) hat man normalerweise immer dasselbe Problem: Irgendwie muss man Daten persistieren und von der Oberfläche im Browser in die Datenbank hin- und wieder zurückschieben. Und dies findet man beinahe bei jedem Objekt (Person, Artikel, Blogeintrage, etc.). Vor allem fällt nach einer Zeit auf, dass die Operationen immer dieselben sind: &lt;strong&gt;C&lt;/strong&gt;reate/&lt;strong&gt;R&lt;/strong&gt;ead/&lt;strong&gt;U&lt;/strong&gt;pdate und &lt;strong&gt;D&lt;/strong&gt;elete geben sich die Klinke in die Hand. Dies sind die sogenannten CRUD-Operationen.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 06 Oct 2014 20:39:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/10/06/asp-net-repository-pattern-und-unit-of-work/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/10/06/asp-net-repository-pattern-und-unit-of-work/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Correct implementation of Commands in WPF</title>
+        
+          <description>&lt;p&gt;In this blogost I want to show you the IMHO correct implementation of Commands in WPF. Feel free to discuss :)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 01 Oct 2014 17:32:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/10/01/correct-implementation-of-commands-in-wpf/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/10/01/correct-implementation-of-commands-in-wpf/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Unterhaltsame Meetings in SCRUM</title>
+        
+          <description>&lt;p&gt;SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn man jedoch SCRUM in einer Firma einführt oder praktiziert sehen die Entwickler sehr schnell den angeblichen Nachteil dieser doch recht positiven Eigenschaften: Es gibt, zumindest am Anfang, sehr viele Meetings.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 18 Sep 2014 19:00:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>WPF Basics II - The INotifyPropertyChanged Interface</title>
+        
+          <description>&lt;blockquote&gt;
+  &lt;p&gt;UPDATE
+Check the CallMemberName-Possibility &lt;a href=&quot;http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+</description>
+        
+        <pubDate>Sun, 14 Sep 2014 19:41:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to make first steps of Databinding in WPF</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to make first steps of Databinding in WPF.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 02 Sep 2014 03:24:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Impressions of the first ASP.NET MVC workshop</title>
+        
+          <description>&lt;p&gt;In this blogpost I am doing a small recap to give you impressions of the first ASP.NET MVC workshop.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 10 Aug 2014 16:38:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/08/10/impressions-of-the-first-asp-net-mvc-workshop/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/08/10/impressions-of-the-first-asp-net-mvc-workshop/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Clean your viewmodel in WPF and create a facade</title>
+        
+          <description>&lt;p&gt;In this post I want to show you how to Clean your viewmodel in WPF and create a facade.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 03 Jul 2014 17:51:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Chat with Node.js, socket.io, AngularJS, flashing title and loading bar</title>
+        
+          <description>&lt;p&gt;Regarding to &lt;a href=&quot;http://blog.noser.com/node-js-chat-server/&quot;&gt;this&lt;/a&gt; post I want to show you how you can set up a chat with Node.js, socket.io, Angular.js, flashing title and loading bar. We will take a look into the lightweight architecture angular is giving you and how to set up the services and controllers the right way. Additionally we will use the loading-bar-module to give the user information about what his message is doing after sending it and we will flash the homepage title if a new message arrives. The communication is done with socket-io.js and we use jQuery for the basic javascript-things. Enjoy!&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Thu, 03 Jul 2014 11:54:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/07/03/chat-with-node-js-socket-io-angular-js-flashing-title-and-loading-bar/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/07/03/chat-with-node-js-socket-io-angular-js-flashing-title-and-loading-bar/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>ASP.NET MVC - Generic Repositories and UnitOfWork</title>
+        
+          <description>&lt;p&gt;This is the third and the last blogpost regarding ASP.NET MVC Architecture.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 01 Jul 2014 08:00:00 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Creating a business logic in ASP.NET MVC</title>
+        
+          <description>&lt;p&gt;In this bogpost I want to show you one possible way creating a business logic in ASP.NET MVC.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 10 Jun 2014 18:00:13 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>WPF crashes with &quot;OutOfMemoryException&quot; when loading PNGs in Windows 8.1</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you the solution for an error I had today which I spent a lot of time on solving it. it was the case that WPF crashes with OutOfMemoryException when loading PNGs.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 04 Jun 2014 18:05:34 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/06/04/wpf-crashes-with-outofmemoryexception-when-loading-pngs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/06/04/wpf-crashes-with-outofmemoryexception-when-loading-pngs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Why I like SCRUM - Tips which may help you</title>
+        
+          <description>&lt;p&gt;Hi, in this post I want to tell you why I like SCRUM - Tips which may help you&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 03 Jun 2014 19:12:40 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/06/03/why-i-like-scrum-tips-which-may-help-you/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/06/03/why-i-like-scrum-tips-which-may-help-you/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Structurize your project with areas and services in ASP.NET MVC</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you one possible way to structurize your project with areas and services in ASP.NET MVC.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 01 Jun 2014 08:39:56 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to include DotNet.HighCharts in ASP.NET MVC with ViewModels</title>
+        
+          <description>&lt;p&gt;Hey,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Fri, 09 May 2014 16:41:01 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/05/09/how-to-include-dotnet-highcharts-in-asp-net-mvc-with-viewmodels/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/05/09/how-to-include-dotnet-highcharts-in-asp-net-mvc-with-viewmodels/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Deleting a Team Project on Visual Studio Team Services</title>
+        
+          <description>&lt;p&gt;In this bogpost I want to show you one possibility of deleting a Team Project on Visual Studio Team Services.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 14 Apr 2014 08:37:53 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/04/14/deleting-a-team-project-on-visual-studio-team-services/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/04/14/deleting-a-team-project-on-visual-studio-team-services/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Code-First with Entity Framework n:m relationship with additional information</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you a way to realize code First with Entity Framework n:m relationship with additional information.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 06 Apr 2014 19:18:15 +0200</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to avoid ViewBag and ViewData in ASP.NET MVC</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you How to avoid ViewBag and ViewData in ASP.NET MVC.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 08 Mar 2014 14:24:01 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Lightweight architecture with AngularJS</title>
+        
+          <description>&lt;p&gt;During the last past days I have been to a conference in Germany and brought back several interesting things I want to share with you this time. (Here I have to say that my hotel did not have a spa. So everybody who wanted to get the latest hotel and spa tips is wrong here…so in case stop reading)&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 05 Mar 2014 18:17:51 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/03/05/lightweight-architecture-with-angularjs/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/03/05/lightweight-architecture-with-angularjs/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>How to install Ninject in ASP.NET WebAPI</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show you how to install Ninject in ASP.NET WebAPI. Using Dependency-Injection is one of the most important things when implementing software. Code is much more testable and you have clearly ordered dependencies and an overview of what you injected where etc.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Tue, 04 Mar 2014 18:57:23 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/03/04/install-ninject-asp-net-webapi/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/03/04/install-ninject-asp-net-webapi/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Using the Crypto-Namespace to Generate Salts and Compare Passwords</title>
+        
+          <description>&lt;p&gt;In this blogpost I want to show how to use the Crypto-Namespace to Generate Salts and Compare Passwords&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 03 Mar 2014 22:02:40 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/03/03/using-crypto-namespace-to-generate-salts-and-compare-passwords/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/03/03/using-crypto-namespace-to-generate-salts-and-compare-passwords/"</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>Configure ASP.NET WebAPI to send data as JSON</title>
+        
+          <description>&lt;p&gt;Hey,&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Wed, 26 Feb 2014 20:51:54 +0100</pubDate>
+        <link>
+        http://offering.solutions/blog/articles/2014/02/26/configure-asp-net-webapi-to-send-data-as-json/"</link>
+        <guid isPermaLink="true">http://offering.solutions/blog/articles/2014/02/26/configure-asp-net-webapi-to-send-data-as-json/"</guid>
+      </item>
+      
+    
+  </channel>
+</rss>

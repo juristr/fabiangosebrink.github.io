@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Neue Angular-Kurstermine angekündigt</title>
+	  <link>//blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-08-17T19:14:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost möchte ich bekanntgeben, dass <a href="https://www.digicomp.ch/">Digicomp</a> neue Kurstermine angekündigt hat, die ich als Trainer betreuen und durchführen darf :) . Die Kurse finden in Bern statt, je nach Teilnehmern auch in Basel und Zürich.</p>
+
+<p><a href="http://offering.solutions/assets/images/Angular_With_Digicomp.png" target="_blank" rel="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs"><img src="/assets/articles/assets/images/Angular_With_Digicomp.png" alt="Neue Angular-Kurstermine angekündigt" /></a></p>
+
+<p><a href="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">Zu den Kursterminen</a></p>
+
+<p>Zu Beginn werde ich wie beim letzten Mal die Erwartungen der Teilnehmer abholen, eventuell habt ihr ja Punkte, die euch unter den Nägeln brennen. Im Laufe des Kurses werde ich versuchen alle Punkte zu klären, dass euch möglichst gut geholfen werden kann.</p>
+
+<p>Wir werden in dem Kurs erstmal die Javascript-Basics anschauen um danach die Grundlagen von AngularJS zu lernen. Dabei schauen wir uns natürlich Module, Factories, Services, HTTP-Kommunikation etc. an. Alles, was drumherung passiert (npm, etc.) ist natürlich auch mit dabei.</p>
+
+<p>Am Ende schliessen wir den Kurs mit dem Testing und einem Review einer Beispielapplikation ab, so dass man neben den Hands-On-Übungen, die es nach jedem Kapitel gibt, auch mal das “Grosse Ganze” sieht und ein Gefühl bekommt, wie AngularJS sich in einer etwas grösseren Umgebung präsentiert.</p>
+
+<p>Der Kurs beinhaltet also (nicht nur)</p>
+
+<ul>
+  <li>Einführung in das Ökosystem der modernen JavaScript-Entwicklung</li>
+  <li>Build-Tools, Automatisiertes Testing, Dependency-Management …</li>
+  <li>Wichtige Konzepte der JavaScript Entwicklung</li>
+  <li>Closures, Prototypal Inheritance, Constructor Functions, Promises, Module Pattern, Client-Side MVC</li>
+  <li>Realisierung von dynamischen UIs mit AngularJS</li>
+  <li>Directives, Controllers, Modules, Expressions und Filters</li>
+  <li>Angular Services und Backend-Anbindung</li>
+  <li>Angular Routing</li>
+  <li>Custom Directives</li>
+  <li>Build-Automatisierung und Testing</li>
+</ul>
+
+<p>Bis es soweit ist werde ich meine Angular-Unterlagen auf den neuesten Stand bringen um den Kursteilnehmern natürlich die neusten Features präsentieren zu können.</p>
+
+<p>Wie beim letzten Kurs lege ich Wert darauf, dass der Kurs von den Teilnehmer mitgestaltet wird indem Fragen mitgebracht werden. Wir werden Zeit für Fragen haben, schliesslich ist der Kurs für euch und nicht für mich :-).</p>
+
+<p>Also: Fragen aufschreiben, mitbringen und stellen.</p>
+
+<p>Jetzt registrieren, ich freue mich auf euer Kommen!</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

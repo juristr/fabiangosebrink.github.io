@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>AngularJS with gulp, wiredep and bower</title>
+     
+    <meta name="description" content="AngularJS with gulp, wiredep and bower" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="AngularJS with gulp, wiredep and bower" />
+    
+    
+    
+    <meta property="og:title" content="AngularJS with gulp, wiredep and bower" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="AngularJS with gulp, wiredep and bower" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="angularjs" property="article:tag">
+  
+  <meta content="bower" property="article:tag">
+  
+  <meta content="github" property="article:tag">
+  
+  <meta content="gulp" property="article:tag">
+  
+  <meta content="wiredep" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>AngularJS with gulp, wiredep and bower</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">AngularJS with gulp, wiredep and bower</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2015-08-30">30 Aug 2015</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/angularjs'>Angularjs</a>,
+                       
+                
+                    
+                       <a href='/tag/bower'>Bower</a>,
+                       
+                
+                    
+                       <a href='/tag/github'>Github</a>,
+                       
+                
+                    
+                       <a href='/tag/gulp'>Gulp</a>,
+                       
+                
+                    
+                       <a href='/tag/wiredep'>Wiredep</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    3 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.</p>
+
+<p>I just introduced Gulp in my AngularJSDemoApp on GitHub.</p>
+
+<p>Check it out <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs">here</a>.</p>
+
+<h3 id="angularjs-with-gulp-wiredep-and-bower">AngularJS with gulp wiredep and bower</h3>
+
+<h4 id="gulpjs">gulp.js</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jshint"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jscs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jscs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"del"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-inject'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./gulp.config"</span><span class="p">)();</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"vet"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jscs</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s2">"jshint-stylish"</span><span class="p">,</span> <span class="p">{</span> <span class="na">verbose</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'injectJsIntoIndex'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"vet"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">wiredep</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wiredep'</span><span class="p">).</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">targetIndexHtmlFile</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">sources</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">target</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="nx">sources</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">addRootSlash</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wiredep</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">root</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The gulp task is checking via wiredep all dependencies and is injecting them into the index.html automatically. After this it is passing out the file into the destination.</p>
+
+<h4 id="gulpconfigjs">gulp.config.js</h4>
+
+<p>The gulp-config is seperated:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">srcJSFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"!./node_modules/**/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">targetIndexHtmlFile</span><span class="p">:</span> <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="na">root</span><span class="p">:</span> <span class="s2">"./"</span><span class="p">,</span>
+
+        <span class="na">bower</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">json</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./bower.json"</span><span class="p">),</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="s2">"./libs"</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="s2">"../.."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">bowerJson</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="p">,</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">directory</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">ignorePath</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Just run the corresponding gulp commands to start the default gulp task. Or, if you do not like gulp, just comment in all the files explicitly. That will do it, too :)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-animate/angular-animate.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-bootstrap/ui-bootstrap-tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-loading-bar/build/loading-bar.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-resource/angular-resource.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-route/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-toastr/dist/angular-toastr.tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery/dist/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/bootstrap/dist/js/bootstrap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/lodash/lodash.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endbower --&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/application.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/contactModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/homeModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/Controllers/contactController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Controllers/homeController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Services/peopleServices.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span></code></pre></figure>
+
+<p>Regards and have fun. Happy coding</p>
+
+<p>If you have VS 2013 you can install the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer</a>, which is included in VS 2015 or you just run the commands from the command line being on the level of the gulp.js-file.</p>
+
+<p>Fabian</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=AngularJS with gulp, wiredep and bower&amp;url=http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/';
+        //var disqus_url = 'offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/">
+            <section class="post">
+                <h2>WebAPI with ASP.NET Core 1.0 and ASP.NET</h2>
+                <p>I just released two sample APIs on Github: WebAPI with ASP.NET Core 1.0 and ASP.NET One...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/">
+            <section class="post">
+                <h2>AngularJS NgResource Demo with ASP.NET WebAPI</h2>
+                <p>In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

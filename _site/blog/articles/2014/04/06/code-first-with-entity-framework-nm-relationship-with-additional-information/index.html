@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>Code-First with Entity Framework n:m relationship with additional information</title>
+     
+    <meta name="description" content="Code-First with Entity Framework n:m relationship with additional information" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="Code-First with Entity Framework n:m relationship with additional information" />
+    
+    
+    
+    <meta property="og:title" content="Code-First with Entity Framework n:m relationship with additional information" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="Code-First with Entity Framework n:m relationship with additional information" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="aspnet" property="article:tag">
+  
+  <meta content="codefirst" property="article:tag">
+  
+  <meta content="ef" property="article:tag">
+  
+  <meta content="entityframework" property="article:tag">
+  
+  <meta content="fluentapi" property="article:tag">
+  
+  <meta content="relationships" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>Code-First with Entity Framework n:m relationship with additional information</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">Code-First with Entity Framework n:m relationship with additional information</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2014-04-06">06 Apr 2014</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/aspnet'>Aspnet</a>,
+                       
+                
+                    
+                       <a href='/tag/codefirst'>Codefirst</a>,
+                       
+                
+                    
+                       <a href='/tag/ef'>Ef</a>,
+                       
+                
+                    
+                       <a href='/tag/entityframework'>Entityframework</a>,
+                       
+                
+                    
+                       <a href='/tag/fluentapi'>Fluentapi</a>,
+                       
+                
+                    
+                       <a href='/tag/relationships'>Relationships</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blogpost I want to show you a way to realize code First with Entity Framework n:m relationship with additional information.</p>
+
+<p>a few days ago I faced the problem of having a normal N:M Relationship in EF with additional information in the table which keeps the two entities together.</p>
+
+<p>Well, without having these additional information this is easy:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>EF is now going to make the right decisions for you while creating the database. A third table is created (due to EF-magic) and shows you the right relation-table. Great things so far. But what if you want to have more information on the relation table which EF created for you? Well, the answer ist easy: EF is not able to do this without your help.</p>
+
+<p>You have to create a third entity representing the relationship you want. I will now show how and I will show the right Fluent-Configuration to map the Keys etc. in a correct way. (Entities should not know what their fields are used for. So things like [Key], … have to be avoided! This is why you have Fluent-API!)</p>
+
+<p><a title="Code First Relationships Fluent API" href="http://msdn.microsoft.com/en-us/data/hh134698.aspx" target="_blank">Code First Relationships Fluent API</a></p>
+
+<p><a title="Configuring/Mapping Properties and Types with the Fluent API" href="http://msdn.microsoft.com/en-us/data/jj591617.aspx" target="_blank">Configuring/Mapping Properties and Types with the Fluent API</a></p>
+
+<p>So first, please create your third entity:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Groups2Users</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">GroupId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">User</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">Group</span> <span class="n">Group</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">MyAdditionalInformationType</span> <span class="n">MyAdditionalInformation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>and extend your existing entities like the following:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Right now, you have made the three entities. Now, we have to wire everything together:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">DataBaseContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">DataBaseContext</span><span class="p">()</span>
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="s">"MyConnectionString"</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">DbModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">().</span><span class="nf">HasKey</span><span class="p">(</span><span class="n">q</span> <span class="p">=&gt;</span> <span class="k">new</span>
+                                        <span class="p">{</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">GroupId</span><span class="p">,</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">UserId</span>
+                                        <span class="p">});</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Group</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">GroupId</span><span class="p">);</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">User</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">UserId</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>When you now run your application with the right code-first configuration your database should hold those 3 three tables.</p>
+
+<p>Note: Now you have to think exactly about what you want to do (Well you should do this always while coding 😉 ). Adding a new group has to get another entry in the Group-Table. but adding or deleting users are only reached by editing the Groups2Users-Table. (Perhaps you should spend this table an own repository 😉 ).</p>
+
+<p>When you for example want to have all Groups of a user just call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">UserId</span> <span class="p">==</span> <span class="n">userId</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Group"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span></code></pre></figure>
+
+<p>Adding a new group would be like</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Groups2Users</span> <span class="n">groups2Users</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Groups2Users</span>
+<span class="p">{</span>
+    <span class="n">Group</span> <span class="p">=</span> <span class="c1">//Define your group here or above,
+</span>    <span class="n">User</span> <span class="p">=</span> <span class="c1">//your user here,
+</span>    <span class="n">MyAdditionalInformation</span> <span class="p">=</span> <span class="n">myAdditionalInformation</span> 
+<span class="p">};</span>
+
+<span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">groups2Users</span><span class="p">);</span></code></pre></figure>
+
+<p>Hope this helps,</p>
+
+<p>Regards</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Code-First with Entity Framework n:m relationship with additional information&amp;url=http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/';
+        //var disqus_url = 'offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/04/14/deleting-a-team-project-on-visual-studio-team-services/">
+            <section class="post">
+                <h2>Deleting a Team Project on Visual Studio Team Services</h2>
+                <p>In this bogpost I want to show you one possibility of deleting a Team Project on...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/">
+            <section class="post">
+                <h2>How to avoid ViewBag and ViewData in ASP.NET MVC</h2>
+                <p>In this blogpost I want to show you How to avoid ViewBag and ViewData in ASP.NET...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

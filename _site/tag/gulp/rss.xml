@@ -1,0 +1,1423 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Cross Platform Builds with Angular, Gulp and Webpack</title>
+	  <link>//blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-06-17T19:09:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show how to create Cross Platform Builds with Angular, Gulp and Webpack</p>
+
+<p><a href="https://webpack.github.io/" title="Webpack">Webpack</a></p>
+
+<p><a href="http://gulpjs.com/" title="Gulp">Gulp</a></p>
+
+<p><a href="http://angular.io/" title="Angular2">Angular</a></p>
+
+<p>Code can be found here: <a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<h3 id="setting-up-the-folder-structure">Setting up the folder structure</h3>
+
+<p>The folder structure is very important but also one of the most discussed in the internet I think ;). Mine looks like the following:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/folderStructure.png" alt="Angular2 webpack" /></p>
+
+<p>Whereas “app” contains my Angular 2 application and the other files and folders speak for theirselves.</p>
+
+<h2 id="the-goal">The goal</h2>
+
+<p>The sense of this blogpost is now to get a build with webpack AND gulp combined to have the same cross platform functionality we are used from a “gulp-only” build.</p>
+
+<h3 id="the-past">The past</h3>
+
+<p>In the past the problem with Angular 2 and gulp was the bundling and the minification of the application. Gulp works with streams and files whereas angular 2 is build with related components which are imported and then used. We can not concat every file anymore in the correct order and minify it to distribute an application.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>The solution (or at least one of them) is webpack. Webpack is slightly different from gulp, where it can resolve the dependencies and use your “import” and “require” statements to see when which file is used and has to be included.</p>
+
+<h2 id="the-files">The files</h2>
+
+<p>Now I want to show you the files which can make this whole thing possible. See the “gulptasks”-folder to divide the responsibilities of building each target platform.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/gulpFiles.png" alt="angular2 webpack" /></p>
+
+<h3 id="webpackconfigjs">webpack.config.js</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ExtractTextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'extract-text-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span>
+    <span class="p">},</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'ts'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'html'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpe</span><span class="se">?</span><span class="sr">g|gif|svg|woff|woff2|ttf|eot|ico</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file?name=fonts/[name].[hash].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">(</span><span class="s1">'style'</span><span class="p">,</span> <span class="s1">'css?sourceMap'</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">include</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw'</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'[name].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./index.html'</span>
+        <span class="p">})</span>
+    <span class="p">],</span>
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">stats</span><span class="p">:</span> <span class="s1">'minimal'</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>This file is plain simple:</p>
+
+<p>First we tell webpack that we have three entry-points (three files to start) in our application which are “app”, “vendor” and “polyfills”</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">entry</span><span class="err">:</span> <span class="p">{</span>
+<span class="s1">'polyfills'</span><span class="err">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+<span class="s1">'vendor'</span><span class="err">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+<span class="s1">'app'</span><span class="err">:</span> <span class="s1">'./app/main.ts'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>Then we tell webpack which files to look for…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">resolve</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>…how the js-files should be named on output…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">output</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>… and in the modules part we define how to treat the several file types.</p>
+
+<p>The plugins section then sticks together every operation we do with the files. So this is normal webpack as you can see in several repositories as well.</p>
+
+<p>But how to deal with gulp? Well…there is an npm package…;) It’s called <code class="highlighter-rouge">webpack-stream</code> and allows us to do tasks like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'web-compile-with-webpack'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'./app/main.js'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">webpack</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'../webpack.config.js'</span><span class="p">)))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">"../.temp/webapp/"</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>So if we trigger this gulp-tasks our application is build an bundles and so on and will be copied to the specified folder with gulp.</p>
+
+<p>After we did this we can go ahead like normal.</p>
+
+<p>Because we also have a dev-server from webpack in the repository above we will have a index.html fully loaded to execute everything. The gulp-html-comments make sure that everything in between those comments gets overwritten when we inject sources with gulp.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>FoodChooser Angular 2<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- inject:css --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"vendor.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"app.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="c">&lt;!-- 3. Display the application --&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;foodChooser-app&gt;</span>Loading...<span class="nt">&lt;/foodChooser-app&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"polyfills.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"vendor.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>The complete tasks for the web solution are:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:web:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'web-clean-temp-folder'</span><span class="p">,</span>        <span class="c1">// cleans the temp folder</span>
+        <span class="s1">'web-compile-with-webpack'</span><span class="p">,</span>     <span class="c1">// compiles the sources with webpack</span>
+        <span class="s1">'web-copy-index-to-webapp-temp-folder'</span><span class="p">,</span>     <span class="c1">// copies the index.html to the temp folder</span>
+        <span class="s1">'web-inject-in-html'</span><span class="p">,</span>        <span class="c1">// injects the webpack-output into the index.html with gulp</span>
+        <span class="s1">'web-clean-dist-folder'</span><span class="p">,</span>    <span class="c1">// clean the dist folder first...</span>
+        <span class="s1">'web-copy-to-dist'</span><span class="p">,</span> <span class="c1">// copy it</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>After we run this the index.html looks quite the same:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">FoodChooser</span> <span class="nx">Angular</span> <span class="mi">2</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"viewport"</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"width=device-width, initial-scale=1"</span><span class="o">&gt;</span>
+
+    <span class="c">&lt;!--</span> <span class="nx">inject</span><span class="err">:</span><span class="nx">css</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"vendor.bundle.css"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"app.bundle.css"</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="mi">3</span><span class="p">.</span> <span class="nx">Display</span> <span class="nx">the</span> <span class="nx">application</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">foodChooser</span><span class="o">-</span><span class="nx">app</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/foodChooser-app</span><span class="err">&gt;
+</span>
+
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"cordova.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nl">inject</span><span class="p">:</span><span class="nx">js</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"polyfills.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"vendor.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"app.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html&gt;</span></code></pre></figure>
+
+<p>But this time the sources got injected. See the dist folder here:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/dist.png" alt="dist" /></p>
+
+<p>With this approach we can go ahead as usual when building electron or cordova-things with gulp.</p>
+
+<p>See the required steps fo r e.g. a cordova-build here:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:electron:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'electron-clean-temp'</span><span class="p">,</span>
+        <span class="s1">'electron-compile-with-webpack'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-index-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-inject-in-html'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-assets-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-build-win'</span><span class="p">,</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>the only difference here is that we have to copy assets for electron into the temp folder. The whole procedure before is like we know it from the web solution.</p>
+
+<p>I hope this helps to get out confusion and reduces the complexity of the topic “Cross platform”.</p>
+
+<p>HTH</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h1 id="links">Links</h1>
+
+<p><a href="https://angular.io/docs/ts/latest/guide/webpack.html">https://angular.io/docs/ts/latest/guide/webpack.html</a></p>
+
+<p><a href="https://webpack.github.io/docs/usage-with-gulp.html">https://webpack.github.io/docs/usage-with-gulp.html</a></p>
+
+<p><a href="https://www.npmjs.com/package/webpack-stream">https://www.npmjs.com/package/webpack-stream</a></p>
+
+<p><a href="https://github.com/shama/webpack-stream">https://github.com/shama/webpack-stream</a></p>
+
+<p><a href="https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/">https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How you can organise gulp in your applications</title>
+	  <link>//blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-05-16T08:30:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show one possibility of organising your gulp tasks in a way that you as a developer can find them quickly and print them to the console in an ordered way.</p>
+
+<blockquote>
+  <p>I have taken all these examples from my cross platform examples on <a href="https://github.com/FabianGosebrink?tab=repositories">GitHub</a>. Especially from <a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">Foodchooser</a>.</p>
+</blockquote>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>No matter what you do with web development today you will have to have a task runner when it comes to distribute to a customer at the latest.</p>
+
+<p>Gulp is one task runner which it makes easy to fulfill all then tasks like concatination and uglify-things we actually need to reduce request and optimize our performance etc.</p>
+
+<p>But we as developers have also different tasks to face: We want a web application in dev-mode for our development environment. But we also want to have a distribution-ready environment for our staging and test environments etc.</p>
+
+<p>When you are heading towards cross platfrom development this thing is even more important. Because your outputs differ from a webpage only with an additional executable (electron) and mobile apps for your phones.</p>
+
+<h2 id="organising-your-files">Organising your files</h2>
+
+<h3 id="gulp-and-its-config">Gulp and its config</h3>
+
+<p>I think the best practice here is to seperate gulp itself on the one hand and the paths to the files and folders on the other in different files.</p>
+
+<p>The <code class="highlighter-rouge">gulpfile.js</code> only contains the tasks whereas a file named like <code class="highlighter-rouge">gulp.config.js</code> is containing all your files, (temp-)paths, … .</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/05/gulpAndConfigFile.png" alt="How you can organise gulp in your applications" title="gulptask folder" /></p>
+
+<p>You can include your config file in the gulpfile like this:</p>
+
+<p><code class="highlighter-rouge">var buildConfig = require('./gulp.config');</code></p>
+
+<p>If the files are on the same level.</p>
+
+<p>The <code class="highlighter-rouge">gulp.config.js</code> can look like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">general</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">appName</span><span class="p">:</span> <span class="s2">"FoodChooserAppAngular2"</span><span class="p">,</span>
+        <span class="na">rootFolder</span><span class="p">:</span> <span class="s2">"app/"</span><span class="p">,</span>
+        <span class="na">indexHtml</span><span class="p">:</span> <span class="s2">"./index.html"</span>
+    <span class="p">},</span>
+    <span class="na">sources</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">sourceFolder</span><span class="p">:</span> <span class="s2">"src/"</span><span class="p">,</span>
+        <span class="na">allAppJsFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/**/*.js"</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="na">allAppHtmlFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/**/*.html"</span>
+        <span class="p">],</span>
+        <span class="na">allVendorJsFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./js/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">allAppCssFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./node_modules/bootstrap/dist/css/bootstrap.min.css"</span><span class="p">,</span>
+            <span class="s2">"./css/*.css"</span>
+        <span class="p">],</span>
+        <span class="na">allAppImgFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./img/*.*"</span><span class="p">,</span>
+            <span class="s2">"./img/windows/*.*"</span>
+        <span class="p">],</span>
+        <span class="na">vendorScripts</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"node_modules/zone.js/dist/zone.js"</span><span class="p">,</span>
+            <span class="s2">"node_modules/reflect-metadata/Reflect.js"</span><span class="p">,</span>
+            <span class="s2">"node_modules/systemjs/dist/system.src.js"</span><span class="p">,</span>
+            <span class="s2">"node_modules/jquery/dist/jquery.js"</span><span class="p">,</span>
+            <span class="s2">"node_modules/bootstrap/dist/js/bootstrap.js"</span>
+        <span class="p">],</span>
+        <span class="c1">// ...</span>
+    <span class="p">},</span>
+    <span class="c1">// ...</span>
+    <span class="na">targets</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">webAppOutputPath</span><span class="p">:</span> <span class="s2">"../.dist/webapp/"</span><span class="p">,</span>
+        <span class="na">electronOutputPath</span><span class="p">:</span> <span class="s2">"../.dist/electron/"</span><span class="p">,</span>
+        <span class="na">cordovaOutputPath</span><span class="p">:</span> <span class="s2">"../.dist/cordova/"</span><span class="p">,</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>It is only containing all the files, paths and general information you want to use.</p>
+
+<p>The gulp-file itself is now only containing the tasks and is consuming the config file.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'web-copy-index-to-webapp-folder'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">buildConfig</span><span class="p">.</span><span class="nx">general</span><span class="p">.</span><span class="nx">indexHtml</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">buildConfig</span><span class="p">.</span><span class="nx">targets</span><span class="p">.</span><span class="nx">webAppOutputPath</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>This makes the gulp tasks more generic.</p>
+
+<h3 id="tasks-in-folders">Tasks in folders</h3>
+
+<p>I’ve seen many ways how people organise the gulp tasks but it turned out for me it was the best way to have a folder called “gulpTasks” (or similar) where I put all my gulptasks in. I’ve seen this on many other repositories and also on conferences etc. It’s always good to have a folder encapsulating all your gulpTasks like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/05/folderGulpTasks.png" alt="alt text" title="gulptask folder" /></p>
+
+<p>Here I seperate all the different systems I want to have an output for.</p>
+
+<p>But that also means, that the task seen above is moving to the <code class="highlighter-rouge">web.js</code> file.</p>
+
+<p>How do I build up the “architecture” for my gulp-tasks now?</p>
+
+<h2 id="manage-your-tasks">Manage your tasks</h2>
+
+<p>Well we have to go one step back before clarifying how to solve this:</p>
+
+<p>Getting an app ready for distribution or even for development purposes is more than one task. Although I know the task-dependency-system in gulp where all the dependent tasks are executed in parallel before the called task is going to run I think it’s easier to run the things in sequence. It’s easier to read and easier to maintain IMHO.</p>
+
+<p>Therefore you need to install a <code class="highlighter-rouge">run-sequence</code>-plugin available <a href="https://www.npmjs.com/package/run-sequence">here</a>. With this you can divide your tasks and seperate the responsibilities in your web gulpfile (e.g.) like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">runSeq</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'run-sequence'</span><span class="p">);</span>
+
+ <span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:web:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'web-clean-webapp'</span><span class="p">,</span>
+        <span class="s1">'web-copy-index-to-webapp-folder'</span><span class="p">,</span>
+        <span class="s1">'web-copy-images-to-webapp-folder'</span><span class="p">,</span>
+        <span class="s1">'web-copy-css-to-webapp-folder'</span><span class="p">,</span>
+        <span class="s1">'web-concat-uglify-and-copy-vendor-scripts'</span><span class="p">,</span>
+        <span class="c1">// all the other tasks</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>I think this is a very good and clear documentation of what is done if I call the main task.</p>
+
+<blockquote>
+  <p>As a tip: I do also use this for “debugging” when something is going wrong. I can easily comment out the single tasks and the which one is causing trouble</p>
+</blockquote>
+
+<p>What we also did in this step is: We defined a <em>main task</em>! This task can be referenced and executed from the main gulp file.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/web'</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:all'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'build:web:prod'</span><span class="p">,</span>
+        <span class="c1">// maybe other main build tasks</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>You can repeat that for all your files and main tasks.</p>
+
+<blockquote>
+  <p>I recommend to have 2 main tasks per file at the maximum: Dev and Prod.</p>
+</blockquote>
+
+<p>So here we are building a small architecture and get some order in our tasks-, file- and folder-structure.</p>
+
+<h3 id="the-default-tasks">The default tasks</h3>
+
+<p>Often I see that the default task is executing logic. It does something. And when the default task is doing something it’s most likely something like a main task. Like “build-all” or something?</p>
+
+<p>Let’s picture the situation you cloned a repository and you just want to get started. Thats all you want to do. First step: “Let me see what you have got for me”.</p>
+
+<p>If you run <code class="highlighter-rouge">gulp</code> which executes the default task and something starts to run and I as a developer have NO IDEA what exactly runs there - that scares me.</p>
+
+<p>Wouldn’t it be better to have a kind of more defensive behaviour? This is why I prefer to list all the tasks the repo offers to the delevoper. And the developer can then decide which one he wants to execute.</p>
+
+<p>But with this option I mentioned above we have <strong>many</strong> small tasks which can be executed.</p>
+
+<p>This is why I do name the tasks in a special way:</p>
+
+<p>All main tasks are divided with a “:”, all child tasks with “-“.</p>
+
+<p>For the task-listing feature there is also an npm package available <a href="https://www.npmjs.com/package/gulp-task-listing">here</a>.</p>
+
+<p>“gulp-task-listing - Adds the ability to provide a task listing for your gulpfile”</p>
+
+<p>You can define filters to define which one is a main task and which one is a child task.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">taskListing</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-task-listing'</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'help'</span><span class="p">,</span> <span class="nx">taskListing</span><span class="p">.</span><span class="nx">withFilters</span><span class="p">(</span><span class="sr">/-/</span><span class="p">));</span></code></pre></figure>
+
+<p>Everything we need to do now is to point the default task on this help task to list all the tasks:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">taskListing</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-task-listing'</span><span class="p">);</span>
+<span class="c1">//...</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'help'</span><span class="p">]);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'help'</span><span class="p">,</span> <span class="nx">taskListing</span><span class="p">.</span><span class="nx">withFilters</span><span class="p">(</span><span class="sr">/-/</span><span class="p">));</span></code></pre></figure>
+
+<p>Which brings the following output:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/05/gulpTasks.png" alt="tasks output" title="gulp task output" /></p>
+
+<h2 id="further-steps">Further steps</h2>
+
+<h3 id="commonjs">common.js</h3>
+
+<p>One possibility would be going along and define some “main”-tasks and be more generic which can be executed from the <code class="highlighter-rouge">web.js</code> and other files. Like a <code class="highlighter-rouge">common.js</code> containing generic tasks like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">copySourcesTo</span><span class="p">(</span><span class="nx">targetFolder</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">getSourceFiles</span><span class="p">(</span><span class="nx">buildConfig</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">folder</span><span class="p">),</span> <span class="p">{</span>
+        <span class="na">base</span><span class="p">:</span> <span class="nx">buildConfig</span><span class="p">.</span><span class="nx">source</span><span class="p">.</span><span class="nx">folder</span>
+    <span class="p">})</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">targetFolder</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">copyFromTo</span><span class="p">(</span><span class="nx">sourceFolder</span><span class="p">,</span> <span class="nx">targetFolder</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">path</span><span class="p">.</span><span class="nx">join</span><span class="p">(</span><span class="nx">sourceFolder</span><span class="p">,</span> <span class="s1">'**'</span><span class="p">,</span> <span class="s1">'*.*'</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">targetFolder</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">cleanTemp</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">del</span><span class="p">(</span><span class="nx">buildConfig</span><span class="p">.</span><span class="nx">targets</span><span class="p">.</span><span class="nx">tempFolder</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="nx">done</span><span class="p">();</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+<span class="c1">//...</span></code></pre></figure>
+
+<p>For tasks which are all the same in every step. Perhaps this can be useful</p>
+
+<blockquote>
+  <p>I did this in this repository <a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">here</a></p>
+</blockquote>
+
+<h3 id="prefixes">Prefixes</h3>
+
+<p>You could also prefix your private tasks with a “[private]-…” tag or something to clearify in the task overview that this task should be private.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>I hope with this post I could give you a small idea of how to treat your gulp files and tasks in order. Keep them seperated and let them have single tasks to do. I think with this you can keep also a big system organised.</p>
+
+<h2 id="links">Links</h2>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2/">https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-Angular2</a></p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-XPlatform-Example">https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-XPlatform-Example</a></p>
+
+<p><a href="https://www.npmjs.com/package/run-sequence">https://www.npmjs.com/package/run-sequence</a></p>
+
+<p><a href="https://www.npmjs.com/package/gulp-task-listing">https://www.npmjs.com/package/gulp-task-listing</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2</title>
+	  <link>//blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-04-26T10:05:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/</guid>
+	  <description><![CDATA[
+	     <p>In the last <a href="http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/">blogpost</a>I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 2.</p>
+
+<p>Well I started coding an AngularJs 1.x Client with Typecript which is available here</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS">https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS</a></p>
+
+<p>Of course I could not stop looking and digging into Angular. So I wrote this client too which is available here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<p>Inside this blog I want to loose a few words about how I wrote them what the pitfalls were and how I came up with this solution.</p>
+
+<blockquote>
+  <p>I will only show Angular2 examples here because it’s the only client which is still maintained</p>
+</blockquote>
+
+<h3 id="architecture">Architecture</h3>
+
+<p>The application is divieded into several components with its child components. Due to the fact that the application is not that big at all there is no huge hierarchy.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/04/SiteMap.png" alt="Angular 2, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform" /></p>
+
+<p>So the only interesting thing is the Food-Component which has two child Components “FoodForm” and “FoodList”.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<span class="err">   </span> <span class="na">selector</span><span class="p">:</span> <span class="s1">'food-component'</span><span class="p">,</span>
+<span class="err">   </span> <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">ROUTER_DIRECTIVES</span><span class="p">,</span> <span class="nx">CORE_DIRECTIVES</span><span class="p">,</span> <span class="nx">FoodListComponent</span><span class="p">,</span> <span class="nx">FoodListFormComponent</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">FoodDataService</span><span class="p">,</span> <span class="nx">FoodListDataService</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">template</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./food.component.html'</span><span class="p">)</span>
+<span class="p">})</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Page Content --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Introduction Row --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"page-header"</span><span class="nt">&gt;</span>Foodlists
+                    <span class="nt">&lt;small&gt;</span>See all your food lists<span class="nt">&lt;/small&gt;</span>
+                <span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;foodListForm-component&gt;&lt;/foodListForm-component&gt;</span>
+    <span class="nt">&lt;foodlists-component&gt;&lt;/foodlists-component&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>The list component itself is not containing the details-view but redirecting to it while iterating through all the foodItems:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CORE_DIRECTIVES</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">RouteConfig</span><span class="p">,</span> <span class="nx">ROUTER_DIRECTIVES</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router-deprecated'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodDataService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../shared/services/food.dataService'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodListDataService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../shared/services/foodList.dataService'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodList</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../models/FoodList'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NeedsAuthentication</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../decorators/needsAuthentication'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<span class="err">   </span> <span class="na">selector</span><span class="p">:</span> <span class="s1">'foodlists-component'</span><span class="p">,</span>
+<span class="err">   </span> <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">ROUTER_DIRECTIVES</span><span class="p">,</span> <span class="nx">CORE_DIRECTIVES</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">template</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./foodlists.component.html'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="err">@</span><span class="nx">NeedsAuthentication</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">FoodListComponent</span> <span class="k">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+    <span class="nl">allLists</span><span class="p">:</span> <span class="nx">FoodList</span><span class="p">[];</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_foodListDataService</span><span class="err">:</span> <span class="nx">FoodListDataService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_foodListDataService</span><span class="p">.</span><span class="nx">foodListAdded</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">foodList</span><span class="err">:</span> <span class="nx">FoodList</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getAllLists</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getAllLists</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="nx">getAllLists</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_foodListDataService</span>
+            <span class="p">.</span><span class="nx">GetAllLists</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="na">response</span><span class="p">:</span> <span class="nx">FoodList</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">allLists</span> <span class="o">=</span> <span class="nx">response</span><span class="p">;</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+            <span class="p">},</span> <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">errorMessage</span> <span class="o">=</span> <span class="nx">error</span><span class="p">;</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>and the template</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Team Members Row --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"page-header"</span><span class="nt">&gt;</span>Your Lists  <span class="nt">&lt;small&gt;&lt;/small&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let item of allLists; let i=index"</span> <span class="err">[</span><span class="na">routerLink</span><span class="err">]="['/</span><span class="na">FoodListDetails</span><span class="err">',</span> <span class="err">{</span><span class="na">id:</span> <span class="na">item</span><span class="err">.</span><span class="na">Id</span><span class="err">}]"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a “CurrentUserService” to save this token in the storage and read it again.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StorageService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./storage.service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">CurrentUserService</span> <span class="p">{</span>
+
+<span class="err">   </span> <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_storageService</span><span class="err">:</span> <span class="nx">StorageService</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="err">   </span> <span class="p">}</span>
+
+<span class="err">   </span> <span class="k">public</span> <span class="nx">get</span> <span class="nx">token</span><span class="p">()</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_storageService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">);</span>
+
+<span class="err">       </span> <span class="k">return</span> <span class="nx">token</span><span class="p">;</span>
+<span class="err">   </span> <span class="p">}</span>
+
+<span class="err">   </span> <span class="k">public</span> <span class="nx">set</span> <span class="nx">token</span><span class="p">(</span><span class="nx">token</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="k">this</span><span class="p">.</span><span class="nx">_storageService</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">,</span> <span class="nx">token</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With this I can read if the user is authenticated in a very basic way.</p>
+
+<p>Further I took a decorator to hook into the creation of components to check if the user is authenticated or not. If not the decorator will redirect to the login page:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="nx">Router</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router-deprecated'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Injector</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">appInjector</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../shared/services/appInjector'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StorageService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../shared/services/storage.service'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">NeedsAuthentication</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="err">   </span> <span class="k">return</span> <span class="nx">CanActivate</span><span class="p">((</span><span class="na">to</span><span class="p">:</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="na">from</span><span class="p">:</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="nx">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'/'</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">injector</span><span class="p">:</span> <span class="nx">Injector</span> <span class="o">=</span> <span class="nx">appInjector</span><span class="p">();</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">router</span><span class="p">:</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Router</span><span class="p">);</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">storageService</span><span class="p">:</span> <span class="nx">StorageService</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">StorageService</span><span class="p">);</span>
+
+<span class="err">       </span> <span class="k">if</span> <span class="p">(</span><span class="nx">storageService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">))</span> <span class="p">{</span>
+<span class="err">           </span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="err">       </span> <span class="p">}</span>
+
+<span class="err">       </span> <span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">'/Login'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">target</span> <span class="p">}]);</span>
+
+<span class="err">       </span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="err">   </span> <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With every request I have to prepare the header which I do in a wrapped Http service.</p>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts</a></p>
+
+<p>Sneak peek:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">private</span> <span class="nx">prepareOptions</span><span class="p">(</span><span class="nx">options</span><span class="err">:</span> <span class="nx">RequestOptionsArgs</span><span class="p">)</span><span class="err">:</span> <span class="nx">RequestOptionsArgs</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">token</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_currentUserService</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+
+    <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Authorization'</span><span class="p">,</span> <span class="s1">'Bearer '</span> <span class="o">+</span> <span class="nx">token</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+    <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Accept'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So I check the headers, append a token if available, set the content-type and accept-properties and give the options back to use it in the REST-Call.</p>
+
+<h3 id="cross-platform-with-gulp">Cross Platform with Gulp</h3>
+
+<p>To give this whole thing a go as an exe and as an app on mobile devices I used cordova and electron with gulp as a taskrunner.</p>
+
+<p>I seperated all the files in the tasks for “electron”, “cordova” and “web”. In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types “gulp” without a specific command.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">buildConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./gulp.config'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'help'</span><span class="p">]);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'help'</span><span class="p">,</span> <span class="nx">taskListing</span><span class="p">.</span><span class="nx">withFilters</span><span class="p">(</span><span class="sr">/-/</span><span class="p">));</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/web'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/electron'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/cordova'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:all'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'build:web:prod'</span><span class="p">,</span>
+        <span class="s1">'build:electron:prod'</span><span class="p">,</span>
+        <span class="s1">'build:apps'</span><span class="p">,</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>For example here is the electron gulp file, which turns this application into an exe</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:electron:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">   </span> <span class="nx">runSeq</span><span class="p">(</span>
+<span class="err">       </span> <span class="s1">'electron-clean-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-compile-with-webpack'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-copy-index-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-inject-in-html'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-copy-assets-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-build-win'</span><span class="p">,</span>
+<span class="err">       </span> <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>For cordova</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:apps'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">   </span> <span class="nx">runSeq</span><span class="p">(</span>
+<span class="err">       </span> <span class="s1">'cordova-clean-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-config-to-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-winstore-to-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-index-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-images-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-compile-with-webpack'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-inject-in-html'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-build-windows'</span><span class="p">,</span>
+<span class="err">       </span> <span class="c1">//  'cordova-build-android',</span>
+<span class="err">       </span> <span class="s1">'cordova-clean-dist'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-to-dist'</span><span class="p">,</span>
+<span class="err">       </span> <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="conclusion">Conclusion:</h3>
+
+<p>I hope with this blog posts I gave you an idea and an introduction in what you can achieve with javascript and ASP.NET WebAPI. Having all the tools like Cordova, gulp. you can build real cross-platform applications.</p>
+
+<p>Hope you liked reading it as i liked making it :)</p>
+
+<p>HTH</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h3 id="links">Links</h3>
+
+<p><a href="http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html">http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html</a></p>
+
+<p><a href="https://github.com/thinktecture/boardz-cross-platform-sample">https://github.com/thinktecture/boardz-cross-platform-sample</a></p>
+
+<p><a href="https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/">https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 1</title>
+	  <link>//blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-04-19T17:34:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/</guid>
+	  <description><![CDATA[
+	     <p><img src="/assets/articles/wp-content/uploads/2016/04/foodchooser.jpg" alt="foodchooser" /></p>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>I had a few free hours and was curious and wanted to know what you can achieve in 9 hours of coding. Due to the fact that I am very into ASP.NET development with Angular I coded a small application which is based on ASP.NET Web API, AngularJs/Angular2 with Typescript &amp; co. So the question is: How far will I go in 9 hours? This is my private Hackathon!!</p>
+
+<h3 id="code">Code</h3>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<h3 id="goal---the-foodchooser">Goal - The FoodChooser</h3>
+
+<p>When I am not coding I love to stand in the kitchen but I do always have the problem of know knowing what I should cook. I know there are tons of cooking websites out there with a lot of inspiration but my problem is not getting a recipe for the meals but instead I got no idea what to search for. So my idea was to develop a small application where I can manage my food ideas without recipes. Because everybody is doing the meals the way they want to because every taste is different. However: A small application where I can manage my food should be the application I wanted to write: The FoodChooser</p>
+
+<h3 id="backlog-for-first-version">Backlog for first Version</h3>
+
+<p>So I wanted to make it basically usable for everyone. So I need a user account or a login for users. The users should add their food items, update and delete them. This is handled the best way in categories or lists. So the users should also create, add, update and delete those lists. The idea is getting random food immediately when getting onto the page without a user account. But every mentioned managing feature should only be available when logged in. But perhaps not every user wants his food items to be public. So users have to switch between publish and unpublishing their food. If you want to get random food only from a list of food items there should also be a button available for this. Because its your food and you don’t care about public or not: You just want to have a random item out of your food list.</p>
+
+<p>In the end it should also be available for mobile devices. So I need a responsive design which concentrates on the things I need. Basic things. Because I am really not a UI-designer. ;-)</p>
+
+<p>To keep a long story short:</p>
+
+<ol>
+  <li>Login/Logout</li>
+  <li>CRUD: Food Items</li>
+  <li>CRUD: Food Lists</li>
+  <li>Getting random food from public foods</li>
+  <li>Getting random food from a single list</li>
+  <li>Un/Publishing food items</li>
+  <li>Responsive and easy design also for mobile devices</li>
+</ol>
+
+<h3 id="technologies--tools">Technologies &amp; Tools</h3>
+
+<p>The backlog mentioned above are leading to the technologies and tools I wanted to use to get a kick-start. Because ASP.NET 5 is not released yet I used WebAPI 2.2 for this. On client side I wanted to use Typescript with Angular and all tools which are connected to this. This whole thing should be hosted on azure in the end.</p>
+
+<ol>
+  <li>ASP.NET WebAPI with Bearer-Token-Identity and OWIN</li>
+  <li>Typescript</li>
+  <li>AngularJs and Angular2 Clients</li>
+  <li>Automapper</li>
+  <li>Bootstrap</li>
+  <li>Azure</li>
+</ol>
+
+<p>My tools would be Visual Studio 2015 and Visual Studio Code.</p>
+
+<p>So my timebox was 9 hours. Not a minute more. I know some of the technologies mentioned but not by 100%. Well, lets start coding and learning something!</p>
+
+<h3 id="the-viewmodels">The (View)Models</h3>
+
+<p>We have CRUD operations for food items, and food lists. And we are going to map them with Automapper. So we need ViewModels for every model.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodItem</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ItemName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">FoodList</span> <span class="n">FoodList</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">FoodListId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsPublic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodList</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">Foods</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodItemViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ItemName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Rating</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">FoodListId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsPublic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodListViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">Foods</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>in the OWIN-Configuration we can go ahead and initialize the mappings:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"> 
+<span class="n">Mapper</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">mapper</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">,</span> <span class="n">FoodItemViewModel</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+    <span class="n">mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">,</span> <span class="n">FoodListViewModel</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Of course you need to add Automapper to your project which I did via <a href="https://www.nuget.org/packages/AutoMapper/4.1.1">Nuget</a>.</p>
+
+<h3 id="the-api">The API</h3>
+
+<p>I mostly start coding server-side.</p>
+
+<p>So the API has to handle FoodItems and FoodLists. Two Models, two controllers.
+Beside the whole authorization features this is basically it. The API is quite small but I think it clarifies the principle.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="na">[Authorize]</span>
+<span class="na">[RoutePrefix("api")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodsController</span> <span class="p">:</span> <span class="n">BaseController</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">MaxPageSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodRepository</span> <span class="n">_foodRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodListRepository</span> <span class="n">_foodListRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IRandomNumberGenerator</span> <span class="n">_randomNumberGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">FoodsController</span><span class="p">(</span><span class="n">IFoodRepository</span> <span class="n">foodRepository</span><span class="p">,</span> <span class="n">IFoodListRepository</span> <span class="n">foodListRepository</span><span class="p">,</span>
+        <span class="n">IRandomNumberGenerator</span> <span class="n">randomNumberGenerator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_foodRepository</span> <span class="p">=</span> <span class="n">foodRepository</span><span class="p">;</span>
+        <span class="n">_foodListRepository</span> <span class="p">=</span> <span class="n">foodListRepository</span><span class="p">;</span>
+        <span class="n">_randomNumberGenerator</span> <span class="p">=</span> <span class="n">randomNumberGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}/foods"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetFoodsFromList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">foodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">foodList</span><span class="p">.</span><span class="n">Foods</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{listId:int}/food/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingleFood"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetSingleFood</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="kt">int</span><span class="p">?</span> <span class="n">listId</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodItem</span> <span class="n">foodItem</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">listId</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">foodItem</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">foodItemId</span> <span class="p">&amp;&amp;</span> <span class="n">x</span><span class="p">.</span><span class="n">FoodList</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">listId</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span>
+                    <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"FoodList"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">foodItem</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="s">"FoodList"</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">foodItem</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">foodItem</span><span class="p">.</span><span class="n">FoodList</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">foodItem</span><span class="p">.</span><span class="n">FoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">foodItem</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">AllowAnonymous</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/getrandomfood"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetRandomFood</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+
+            <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">foodItems</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">IsPublic</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"FoodList"</span><span class="p">).</span><span class="nf">AsEnumerable</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">foodItems</span><span class="p">.</span><span class="nf">Any</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">enumerable</span> <span class="p">=</span> <span class="n">foodItems</span> <span class="k">as</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="p">??</span> <span class="n">foodItems</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+            <span class="n">FoodItem</span> <span class="n">elementAt</span> <span class="p">=</span> <span class="n">enumerable</span><span class="p">.</span><span class="nf">ElementAt</span><span class="p">(</span><span class="n">_randomNumberGenerator</span><span class="p">.</span><span class="nf">GetRandomNumber</span><span class="p">(</span><span class="n">enumerable</span><span class="p">.</span><span class="nf">Count</span><span class="p">()));</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">elementAt</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">elementAt</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">AddFoodToList</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span><span class="n">FoodItemViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">FoodListId</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+            <span class="n">FoodItem</span> <span class="n">item</span> <span class="p">=</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;(</span><span class="n">viewModel</span><span class="p">);</span>
+            <span class="n">item</span><span class="p">.</span><span class="n">Created</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+            <span class="n">singleFoodList</span><span class="p">.</span><span class="n">Foods</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">singleFoodList</span><span class="p">);</span>
+
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"GetSingleFood"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">foodItemId</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">item</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPut</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">UpdateFoodInList</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span><span class="n">FoodItemViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+
+            <span class="n">FoodItem</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">singleById</span><span class="p">.</span><span class="n">ItemName</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">ItemName</span><span class="p">;</span>
+            <span class="n">singleById</span><span class="p">.</span><span class="n">IsPublic</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">IsPublic</span><span class="p">;</span>
+
+            <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">singleById</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">singleById</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpDelete</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">DeleteFoodFromList</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodItem</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NoContent</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="foodlistcontroller">FoodListController:</h3>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="na">[Authorize]</span>
+<span class="na">[RoutePrefix("api")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodListsController</span> <span class="p">:</span> <span class="n">BaseController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodListRepository</span> <span class="n">_foodListRepository</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">MaxPageSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">FoodListsController</span><span class="p">(</span><span class="n">IFoodListRepository</span> <span class="n">foodListRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_foodListRepository</span> <span class="p">=</span> <span class="n">foodListRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetAllLists</span><span class="p">(</span><span class="kt">int</span> <span class="n">page</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pageSize</span> <span class="p">=</span> <span class="n">MaxPageSize</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pageSize</span> <span class="p">&gt;</span> <span class="n">MaxPageSize</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">pageSize</span> <span class="p">=</span> <span class="n">MaxPageSize</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">&gt;</span> <span class="n">foodLists</span> <span class="p">=</span> <span class="n">_foodListRepository</span>
+                <span class="p">.</span><span class="nf">GetAll</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">UserId</span> <span class="p">==</span> <span class="n">CurrentUserId</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">paginationHeader</span> <span class="p">=</span> <span class="k">new</span>
+            <span class="p">{</span>
+                <span class="n">totalCount</span> <span class="p">=</span> <span class="n">foodLists</span><span class="p">.</span><span class="nf">Count</span><span class="p">()</span>
+                <span class="c1">// Add more headers here if you want...
+</span>                <span class="c1">// Link to next and previous page etc.
+</span>                <span class="c1">// Also see OData-Options for this
+</span>            <span class="p">};</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">foodLists</span>
+                <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">Skip</span><span class="p">(</span><span class="n">pageSize</span> <span class="p">*</span> <span class="p">(</span><span class="n">page</span> <span class="p">-</span> <span class="m">1</span><span class="p">))</span>
+                <span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">pageSize</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+            <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">AppendHeader</span><span class="p">(</span><span class="s">"X-Pagination"</span><span class="p">,</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">SerializeObject</span><span class="p">(</span><span class="n">paginationHeader</span><span class="p">));</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodListViewModel</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingleList"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetSingleList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodListViewModel</span><span class="p">&gt;(</span><span class="n">singleFoodList</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">AddList</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">FoodListViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">FoodList</span> <span class="n">item</span> <span class="p">=</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">&gt;(</span><span class="n">viewModel</span><span class="p">);</span>
+            <span class="n">item</span><span class="p">.</span><span class="n">UserId</span> <span class="p">=</span> <span class="n">CurrentUserId</span><span class="p">;</span>
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"GetSingleList"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">item</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpDelete</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">DeleteList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">singleFoodList</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NoContent</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Next we will do the clients</p>
+
+<h3 id="the-clients">The Clients</h3>
+
+<p>Concerning the clients I was torn between Angular 1.x with Typescript in Visual Studio and Angular 2. Because I could not make a descision whats better I made both. (You can find them in two different approaches in two different GitHub Repositories)</p>
+
+<p>The first approach was the Visual Studio approach with making everything inside VS to be able to make this “right-click –&gt; Publish”-thing in the end.</p>
+
+<p>The advantage of this is that you can maintain everything from VS like the API, the client code etc. But with this approach you do not have the sexy client- and serverside code separated. We are developing a RESTApi to develop client and server separate. You can handle the client like you want and modify it without touching the server. This is why I tried Angular2 in the second approach making a “client” and “server” folder where the client contains all *.ts, *.js and other files and the server contains (the same) REST API we build.</p>
+
+<blockquote>
+  <p>The GitHub repos are both full functional examples with these different approaches. Choose the one you want. Both do not rely on each other.</p>
+</blockquote>
+
+<p>So we are building two clients. At this point I could not go for 9 hours anymore, so I build up one client during these 9 hours of coding and build the other one afterwards. Because it’s fun :)</p>
+
+<p>I will describe the clients in other blog posts after this one…</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>AngularJS with gulp, wiredep and bower</title>
+	  <link>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-30T11:18:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.</p>
+
+<p>I just introduced Gulp in my AngularJSDemoApp on GitHub.</p>
+
+<p>Check it out <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs">here</a>.</p>
+
+<h3 id="angularjs-with-gulp-wiredep-and-bower">AngularJS with gulp wiredep and bower</h3>
+
+<h4 id="gulpjs">gulp.js</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jshint"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jscs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jscs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"del"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-inject'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./gulp.config"</span><span class="p">)();</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"vet"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jscs</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s2">"jshint-stylish"</span><span class="p">,</span> <span class="p">{</span> <span class="na">verbose</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'injectJsIntoIndex'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"vet"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">wiredep</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wiredep'</span><span class="p">).</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">targetIndexHtmlFile</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">sources</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">target</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="nx">sources</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">addRootSlash</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wiredep</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">root</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The gulp task is checking via wiredep all dependencies and is injecting them into the index.html automatically. After this it is passing out the file into the destination.</p>
+
+<h4 id="gulpconfigjs">gulp.config.js</h4>
+
+<p>The gulp-config is seperated:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">srcJSFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"!./node_modules/**/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">targetIndexHtmlFile</span><span class="p">:</span> <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="na">root</span><span class="p">:</span> <span class="s2">"./"</span><span class="p">,</span>
+
+        <span class="na">bower</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">json</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./bower.json"</span><span class="p">),</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="s2">"./libs"</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="s2">"../.."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">bowerJson</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="p">,</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">directory</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">ignorePath</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Just run the corresponding gulp commands to start the default gulp task. Or, if you do not like gulp, just comment in all the files explicitly. That will do it, too :)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-animate/angular-animate.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-bootstrap/ui-bootstrap-tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-loading-bar/build/loading-bar.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-resource/angular-resource.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-route/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-toastr/dist/angular-toastr.tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery/dist/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/bootstrap/dist/js/bootstrap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/lodash/lodash.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endbower --&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/application.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/contactModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/homeModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/Controllers/contactController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Controllers/homeController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Services/peopleServices.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span></code></pre></figure>
+
+<p>Regards and have fun. Happy coding</p>
+
+<p>If you have VS 2013 you can install the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer</a>, which is included in VS 2015 or you just run the commands from the command line being on the level of the gulp.js-file.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

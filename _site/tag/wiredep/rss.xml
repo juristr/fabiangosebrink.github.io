@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>AngularJS with gulp, wiredep and bower</title>
+	  <link>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-30T11:18:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/</guid>
+	  <description><![CDATA[
+	     <p>With this blogpost I want to show you how to use AngularJS with gulp, wiredep and bower to provide the files to an angular application.</p>
+
+<p>I just introduced Gulp in my AngularJSDemoApp on GitHub.</p>
+
+<p>Check it out <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs">here</a>.</p>
+
+<h3 id="angularjs-with-gulp-wiredep-and-bower">AngularJS with gulp wiredep and bower</h3>
+
+<h4 id="gulpjs">gulp.js</h4>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">gulp</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jshint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jshint"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">jscs</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"gulp-jscs"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">del</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"del"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">inject</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'gulp-inject'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./gulp.config"</span><span class="p">)();</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s2">"vet"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jscs</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">())</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">jshint</span><span class="p">.</span><span class="nx">reporter</span><span class="p">(</span><span class="s2">"jshint-stylish"</span><span class="p">,</span> <span class="p">{</span> <span class="na">verbose</span><span class="p">:</span> <span class="kc">true</span> <span class="p">}));</span>
+<span class="p">});</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'injectJsIntoIndex'</span><span class="p">,</span> <span class="p">[</span><span class="s2">"vet"</span><span class="p">],</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">wiredep</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'wiredep'</span><span class="p">).</span><span class="nx">stream</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span><span class="p">();</span>
+
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">targetIndexHtmlFile</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">sources</span> <span class="o">=</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">srcJSFiles</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">target</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">inject</span><span class="p">(</span><span class="nx">sources</span><span class="p">,</span> <span class="p">{</span>
+            <span class="na">addRootSlash</span><span class="p">:</span> <span class="kc">false</span>
+        <span class="p">}))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">wiredep</span><span class="p">(</span><span class="nx">options</span><span class="p">))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="nx">config</span><span class="p">.</span><span class="nx">root</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>The gulp task is checking via wiredep all dependencies and is injecting them into the index.html automatically. After this it is passing out the file into the destination.</p>
+
+<h4 id="gulpconfigjs">gulp.config.js</h4>
+
+<p>The gulp-config is seperated:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+    <span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="na">srcJSFiles</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s2">"./app/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"./app/*/*/*.js"</span><span class="p">,</span>
+            <span class="s2">"!./node_modules/**/*.js"</span>
+        <span class="p">],</span>
+        <span class="na">targetIndexHtmlFile</span><span class="p">:</span> <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="na">root</span><span class="p">:</span> <span class="s2">"./"</span><span class="p">,</span>
+
+        <span class="na">bower</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">json</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"./bower.json"</span><span class="p">),</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="s2">"./libs"</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="s2">"../.."</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="nx">config</span><span class="p">.</span><span class="nx">getWiredepDefaultOptions</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+        <span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="na">bowerJson</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">json</span><span class="p">,</span>
+            <span class="na">directory</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">directory</span><span class="p">,</span>
+            <span class="na">ignorePath</span><span class="p">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">bower</span><span class="p">.</span><span class="nx">ignorePath</span>
+        <span class="p">};</span>
+
+        <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+    <span class="p">};</span>
+
+    <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>Just run the corresponding gulp commands to start the default gulp task. Or, if you do not like gulp, just comment in all the files explicitly. That will do it, too :)</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular/angular.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-animate/angular-animate.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-bootstrap/ui-bootstrap-tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-loading-bar/build/loading-bar.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-resource/angular-resource.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-route/angular-route.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/angular-toastr/dist/angular-toastr.tpls.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/jquery/dist/jquery.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/bootstrap/dist/js/bootstrap.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"libs/lodash/lodash.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endbower --&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/application.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/contactModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/homeModule.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Contact/Controllers/contactController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Controllers/homeController.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app/Home/Services/peopleServices.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span></code></pre></figure>
+
+<p>Regards and have fun. Happy coding</p>
+
+<p>If you have VS 2013 you can install the <a href="https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708">Task Runner Explorer</a>, which is included in VS 2015 or you just run the commands from the command line being on the level of the gulp.js-file.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

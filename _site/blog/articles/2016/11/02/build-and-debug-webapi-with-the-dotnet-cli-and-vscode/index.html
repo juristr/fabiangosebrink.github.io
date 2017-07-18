@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>Build and debug a WebAPI with the Dotnet CLI and VSCode</title>
+     
+    <meta name="description" content="Build and debug a WebAPI with the Dotnet CLI and VSCode" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="Build and debug a WebAPI with the Dotnet CLI and VSCode" />
+    
+    
+    
+    <meta property="og:title" content="Build and debug a WebAPI with the Dotnet CLI and VSCode" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="Build and debug a WebAPI with the Dotnet CLI and VSCode" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="aspnet" property="article:tag">
+  
+  <meta content="dotnet" property="article:tag">
+  
+  <meta content="cli" property="article:tag">
+  
+  <meta content="webapi" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>Build and debug a WebAPI with the Dotnet CLI and VSCode</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">Build and debug a WebAPI with the Dotnet CLI and VSCode</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2016-11-02">02 Nov 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/aspnet'>Aspnet</a>,
+                       
+                
+                    
+                       <a href='/tag/dotnet'>Dotnet</a>,
+                       
+                
+                    
+                       <a href='/tag/cli'>Cli</a>,
+                       
+                
+                    
+                       <a href='/tag/webapi'>Webapi</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    5 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blog I want to show you how to build and debug a WebAPI with the Dotnet CLI and VSCode.</p>
+
+<p>Code is here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI">https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI</a></p>
+
+<h3 id="why-should-we-do-a-webapi-with-vscode-and-the-dotnet-cli">Why should we do a WebAPI with VSCode and the DotNet CLI?</h3>
+
+<p>If you are building websites nowadays you have a lot of tools and a lot of technologies to handle. On Serverside this is a little bit easier but there you have a couple of technologies to face, too. In the past this was strongly connected to the operating system you were running on. With the dotnet CLI and Visual Studio Code you can build, run and debug APIs which are cross platform and so not bound to your (windows) system anymore.</p>
+
+<h3 id="get-started">Get started</h3>
+
+<p>First you have to download the dotnet CLI</p>
+
+<p><a href="https://github.com/dotnet/cli">https://github.com/dotnet/cli</a></p>
+
+<p>You can check if the CLI is running correctly by typing “dotnet” into your cmd. Something like this should appear:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_01.jpg" alt="buildawebapiwithvscodeandthedotnetcli_01" />&lt;/a&gt;</p>
+
+<p>Now we can type “code .” to start Visual Studio Code and add some content.</p>
+
+<p>Modify the project.json to this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"dependencies"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"Microsoft.NETCore.App"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"version"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="err">:</span> <span class="s2">"platform"</span>
+    <span class="p">},</span>
+    <span class="s2">"Microsoft.AspNetCore.Diagnostics"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.IISIntegration"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.Kestrel"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Logging.Console"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.AspNetCore.Mvc"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Automapper"</span><span class="err">:</span> <span class="s2">"5.1.1"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Configuration.FileExtensions"</span><span class="err">:</span> <span class="s2">"1.0.0"</span><span class="p">,</span>
+    <span class="s2">"Microsoft.Extensions.Configuration.Json"</span><span class="err">:</span> <span class="s2">"1.0.0"</span>
+  <span class="p">},</span>
+  <span class="s2">"tools"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"Microsoft.AspNetCore.Server.IISIntegration.Tools"</span><span class="err">:</span> <span class="s2">"1.0.0-preview2-final"</span>
+  <span class="p">},</span>
+  <span class="s2">"frameworks"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"netcoreapp1.0"</span><span class="err">:</span> <span class="p">{}</span>
+  <span class="p">},</span>
+  <span class="s2">"buildOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"emitEntryPoint"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"preserveCompilationContext"</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">"debugType"</span><span class="err">:</span> <span class="s2">"portable"</span>
+  <span class="p">},</span>
+  <span class="s2">"runtimeOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"configProperties"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"System.GC.Server"</span><span class="err">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"publishOptions"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"include"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"wwwroot"</span><span class="p">,</span>
+      <span class="s2">"web.config"</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">"scripts"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"postpublish"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="s2">"dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>and add the Startup.cs like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Builder</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.DependencyInjection</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.Extensions.Logging</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">AspNetWebapiCore</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Startup</span>
+    <span class="p">{</span>
+        <span class="c1">// This method gets called by the runtime. Use this method to add services to the container.
+</span>        <span class="c1">// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
+</span>        <span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">services</span><span class="p">.</span><span class="nf">AddOptions</span><span class="p">();</span>
+
+            <span class="n">services</span><span class="p">.</span><span class="nf">AddCors</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+            <span class="p">{</span>
+                <span class="n">options</span><span class="p">.</span><span class="nf">AddPolicy</span><span class="p">(</span><span class="s">"AllowAllOrigins"</span><span class="p">,</span>
+                    <span class="n">builder</span> <span class="p">=&gt;</span>
+                    <span class="p">{</span>
+                        <span class="n">builder</span>
+                            <span class="p">.</span><span class="nf">AllowAnyOrigin</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nf">AllowAnyHeader</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nf">AllowAnyMethod</span><span class="p">();</span>
+                    <span class="p">});</span>
+            <span class="p">});</span>
+
+            <span class="n">services</span><span class="p">.</span><span class="nf">AddMvc</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+</span>        <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">loggerFactory</span><span class="p">.</span><span class="nf">AddConsole</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="nf">IsDevelopment</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="n">app</span><span class="p">.</span><span class="nf">UseDeveloperExceptionPage</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseCors</span><span class="p">(</span><span class="s">"AllowAllOrigins"</span><span class="p">);</span>
+
+            <span class="n">app</span><span class="p">.</span><span class="nf">UseMvc</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Now modify the program.cs like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">using</span> <span class="nn">System.IO</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Microsoft.AspNetCore.Hosting</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">AspNetWebapiCore</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">WebHostBuilder</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">UseKestrel</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">UseContentRoot</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="nf">GetCurrentDirectory</span><span class="p">())</span>
+                <span class="p">.</span><span class="nf">UseIISIntegration</span><span class="p">()</span>
+                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
+                <span class="p">.</span><span class="nf">Build</span><span class="p">();</span>
+
+            <span class="n">host</span><span class="p">.</span><span class="nf">Run</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>If you now type “dotnet restore” and “dotnet run” your api starts.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_02.jpg" alt="buildawebapiwithvscodeandthedotnetcli_02" /></p>
+
+<p>That was easy, right?</p>
+
+<blockquote>
+  <p>The ASP.NET Core WebAPI runs now. All we do now is adding content, but the main environment for the ASP.NET Core WebAPI is running at this point. :)</p>
+</blockquote>
+
+<p>Lets add some content.</p>
+
+<p>Add the folders and files:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_03.jpg" alt="buildawebapiwithvscodeandthedotnetcli_03" /></p>
+
+<p>The repository can be found here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI">https://github.com/FabianGosebrink/ASPNETCore-WebAPI-With-VSCode-Dotnet-CLI</a></p>
+
+<p>Please add the showed files to your project, you can copy them from the repo.</p>
+
+<p>Do not forget to modify your Startup.cs like this: Adding the repositry to the IoC-Container and adding the Automapper mapping:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...
+</span>    <span class="n">services</span><span class="p">.</span><span class="n">AddSingleton</span><span class="p">&lt;</span><span class="n">IFoodRepository</span><span class="p">,</span> <span class="n">FoodRepository</span><span class="p">&gt;();</span>
+    <span class="c1">// ...
+</span><span class="p">}</span></code></pre></figure>
+
+<p>and</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">,</span> <span class="n">IHostingEnvironment</span> <span class="n">env</span><span class="p">,</span> <span class="n">ILoggerFactory</span> <span class="n">loggerFactory</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// ...
+</span>    <span class="n">AutoMapper</span><span class="p">.</span><span class="n">Mapper</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">mapper</span> <span class="p">=&gt;</span>
+    <span class="p">{</span>
+        <span class="n">mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">,</span> <span class="n">FoodDto</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+    <span class="p">});</span>
+    <span class="c1">// ...
+</span><span class="p">}</span></code></pre></figure>
+
+<p>If you now type “dotnet build” it should build everyting. The warnings are because of we ware doing nothing with the exception variable. You should handle them anyhow in a real world project.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_04.jpg" alt="Build and debug WebAPI with the Dotnet CLI and VSCode" /></p>
+
+<p>If you now do “dotnet run” on your console, your webapi starts up and you can use it:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_05-1024x555.jpg" alt="Build and debug WebAPI with the Dotnet CLI and VSCode" /></p>
+
+<h3 id="debugging">Debugging</h3>
+
+<p>We can now also debug the webapi with vscode. Therefore you only have to cancel the running process first and then hit the start button in the debug tab from vscode:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_06-1024x555.jpg" alt="Build and debug a WebAPI with the Dotnet CLI and VSCode" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_07-1024x553.jpg" alt="Build and debug a WebAPI with the Dotnet CLI and VSCode" /></p>
+
+<p>So this is it. You now have built a ASP.NET WebAPI only with the dotnet cli and Visual Studio Code (vscode)</p>
+
+<p>Hope this helps anybody</p>
+
+<p>BR</p>
+
+<p>Fabian</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Build and debug a WebAPI with the Dotnet CLI and VSCode&amp;url=http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/';
+        //var disqus_url = 'offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/">
+            <section class="post">
+                <h2>How to implement a table filter in Angular</h2>
+                <p>In this post I want to show you how to implement a table filter in...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/10/16/how-to-debug-an-angular-application-with-chrome-and-vs-code/">
+            <section class="post">
+                <h2>How to debug an Angular application with Chrome and VS Code</h2>
+                <p>In this blogpost I want to show you how to debug an Angular application with...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

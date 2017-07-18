@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>AngularJS NgResource Demo with ASP.NET WebAPI</title>
+	  <link>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-08-25T11:45:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show a simple AngularJS NgResource Demo with ASP.NET WebAPI querying data as JSON.</p>
+
+<p>Code: <a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo">https://github.com/FabianGosebrink/ASPNET-WebAPI-AngularJs-NgResource-Demo</a></p>
+
+<p>NgResource: <a href="https://docs.AngularJS.org/api/ngResource/service/$resource">https://docs.AngularJS.org/api/ngResource/service/$resource</a></p>
+
+<h4 id="the-application">The application</h4>
+
+<p>The application follows the “normal” way of seperating the data access also on client side into services.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/08/folders.png" alt="AngularJS NgResource Demo with ASP.NET WebAPI" /></p>
+
+<h4 id="preparation">Preparation:</h4>
+
+<p>Before you can use angulars ng resource you have to include it into your application like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'AngularJSDemoApp'</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s1">'ngRoute'</span><span class="p">,</span>
+        <span class="s1">'ngAnimate'</span><span class="p">,</span>
+        <span class="s1">'ngResource'</span><span class="p">,</span>
+        <span class="s2">"ui.bootstrap"</span><span class="p">,</span>
+        <span class="s1">'angular-loading-bar'</span><span class="p">,</span>
+        <span class="s2">"toastr"</span><span class="p">,</span>
+
+        <span class="s1">'home.homeModule'</span><span class="p">,</span>
+        <span class="s1">'contact.contactModule'</span>
+    <span class="p">]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">'cfpLoadingBarProvider'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">cfpLoadingBarProvider</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">cfpLoadingBarProvider</span><span class="p">.</span><span class="nx">includeSpinner</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>So here you are providing “ngResource” to your app.</p>
+
+<p>After this you can inject the ngResource service provided by angular into your services:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s2">"use strict"</span><span class="p">;</span>
+    <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">'home.homeModule'</span><span class="p">).</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"home.services.peopleService"</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="s2">"$resource"</span><span class="p">,</span> 
+            <span class="kd">function</span> <span class="p">(</span><span class="nx">$resource</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">$resource</span><span class="p">(</span><span class="s2">"api/home/:id"</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span>
+                <span class="p">{</span>
+                    <span class="s1">'update'</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="na">method</span><span class="p">:</span> <span class="s1">'PUT'</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">]);</span>
+<span class="p">}());</span></code></pre></figure>
+
+<p>The first argument you pass in is the url with the optional id (:id). The ng resource service now can call get create and delete methods ist a rest convenient way.</p>
+
+<p>ngresource is providing you the following methods:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span> 
+  <span class="s1">'get'</span><span class="err">:</span>    <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">},</span>
+  <span class="s1">'save'</span><span class="err">:</span>   <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'POST'</span><span class="p">},</span>
+  <span class="s1">'query'</span><span class="err">:</span>  <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">isArray</span><span class="err">:</span><span class="kc">true</span><span class="p">},</span>
+  <span class="s1">'remove'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">},</span>
+  <span class="s1">'delete'</span><span class="err">:</span> <span class="p">{</span><span class="nl">method</span><span class="p">:</span><span class="s1">'DELETE'</span><span class="p">}</span> 
+<span class="p">};</span></code></pre></figure>
+
+<h4 id="usage">Usage</h4>
+
+<p>Querying all resources:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+        <span class="nx">vm</span><span class="p">.</span><span class="nx">allPeople</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>Pay attention to the empty object we are passing in. You could add a single id here if you only want to query one single resource.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">query</span><span class="p">({</span><span class="na">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>In case you want to add a new resource, a person in this case, you can just call the “save” method and pass in the person you want to save:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">vm</span><span class="p">.</span><span class="nx">newPerson</span><span class="p">,</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Success</span>
+    <span class="p">},</span>
+    <span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<p>The service maps the “save”-method to the POST-Action from REST and is executing a POST- call against the API.</p>
+
+<p>Deleting is self explaining:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">peopleService</span><span class="p">.</span><span class="k">delete</span><span class="p">({</span> <span class="na">id</span><span class="p">:</span> <span class="nx">personToDelete</span><span class="p">.</span><span class="nx">Id</span> <span class="p">},</span> 
+    <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// success</span>
+    <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//Error</span>
+    <span class="p">});</span></code></pre></figure>
+
+<h4 id="conclusion">Conclusion:</h4>
+
+<p>The ngResource provides a good way to interact with a rest api using very very small code but providing big functionality.</p>
+
+<p>HTH</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

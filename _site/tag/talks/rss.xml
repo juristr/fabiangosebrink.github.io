@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>How I started recording my first Video training</title>
+	  <link>//blog/articles/2016/11/29/how-i-started-recording-my-first-video-training/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-11-29T14:07:00+01:00</pubDate>
+	  <guid>//blog/articles/2016/11/29/how-i-started-recording-my-first-video-training/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to describe how I started recording my first Video training and tell you about the experiences I made during the recording.</p>
+
+<p><a href="https://channel9.msdn.com/Blogs/MVP-VisualStudio-Dev/Erstellen-einer-WebAPI-mit-ASPNET-Core">https://channel9.msdn.com/Blogs/MVP-VisualStudio-Dev/Erstellen-einer-WebAPI-mit-ASPNET-Core</a></p>
+
+<h3 id="why">Why?</h3>
+
+<p>I had this “recording a video”-thing in my mind for a long time. But never had the equipment and the software to do it. So it was more a “Yes, I can get this video recording thing going sometime”. But a few weeks ago I went along and bought a microphone giving me a bit better quality than the microphone on an USB-Logitech-Webcam. ;) I think this is another way of getting knowledge in the community beside blogging and doing talks. It is not better or worse - it is just a different way. And I wanted to try it. If I fail I take the experience with me and if I would try the next time I have some experience to rely on :)</p>
+
+<h3 id="get-going">Get going…</h3>
+
+<p>So…I first bought a microphone. I went for this one:</p>
+
+<p><a href="https://www.digitec.ch/de/s1/product/rode-nt-usb-mono-mikrofon-3450705">https://www.digitec.ch/de/s1/product/rode-nt-usb-mono-mikrofon-3450705</a></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/IMG_20161015_141224_01-1024x576.jpg" alt="img_20161015_141224_01" /></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/IMG_20161015_141515-e1480155685781-1024x576.jpg" alt="img_20161015_141515" /></p>
+
+<p>The installation (on a windows 10 computer) was easy. Plugged in USB and it was recognized by my computer immediately.</p>
+
+<p>Next thing was to get Camtasia as a screen recording software. I downloaded it and used it without having seen a screen recording software ever. Like I said: This was the beginning - I never got in touch with this kind of doing tutorials. But Camtasia is massive but also very easy to use.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/IMG_20161018_115456-1024x576.jpg" alt="img_20161018_115456" /></p>
+
+<p>You should give it a try. Even if you do not have Camtasia experience you can get started in just a few steps.</p>
+
+<h3 id="you-are-going-to-hate-yourself">You are going to hate yourself</h3>
+
+<p>After I took a session I replayed it and heard my voice for the first time recorded by a better microphone. If you do so: be prepared. I thought I was but as I heard my voice I knew: I was not. I hate my voice. How can people listen to me with such a horrible voice? That is incredible! But you can not change that. So I kept going. People are used to your voice. They don’t know you in sounding different. So this is okay. It has to be. You got nothing else to offer regarding to your own sound of your voice. ;-)</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/IMG_20161015_150039-1024x576.jpg" alt="How I started recording my first Video training" /></p>
+
+<h3 id="technique-of-recording">Technique of recording</h3>
+
+<p>The first steps I took were horrible and I immediately deleted every recording which had a mistake in it. And I recognized that the longer I tried to get a part of the recording correct the harder I failed. There comes the point where you are that concentrated on getting one single word correct, where you are that focused, that you do not think of all other parts in the block of recording and then these ones are failing. “Is that really that hard” I thought? It is! But there are ways to get around this a little better.</p>
+
+<p>At the MVP Summit I had a nice chat to Deborah Kurata which is in my opinion one of the best recording teachers I have ever seen (or heard). She gave me the tip that if I have made a mistake while recording: keep silence for a bit and get going! Do not stop and delete the recording. I knew that this was one way of doing it before but I did not know how to cut things with Camtasia and how granular I could cut video and audio with Camtasia. But she gave me that tip and I tried it. I had to get into this cutting-audio-and-video-thing with Camtasia but I got is very fast because it is really easy with that software. So I tried that and I was a lot faster. So thank you for the tip Deborah. ;)</p>
+
+<p>Okay, I got that going…but there was still a lot of cutting. After a time I realized I had to big blocks to record. So I made the blocks to record smaller which has a few other advantages: You dont have to cut THAT much, you can keep focused on the thing you want to tell in this particular block and you will get a better structure in your video.</p>
+
+<p>But with a that cutting and block-stuff: When you do a mistake on talking: Make sure that when you start recording again your screen looks exactly the same as at the beginning. Even the mouse should have the position to where you started. If it does not and you watch it afterwards the mouse will “jump” which is very difficult for the people to follow.</p>
+
+<h3 id="record-your-picture--or-not">Record your picture … or not?</h3>
+
+<p>In the beginning I was impressed that Camstasia could handle the two video inputs (webcam and screen) and put the picture of my webcam on the recording in the end. That was a nice feature. But I started to get rid of it because of several reasons: the people should see my whole desktop, my voice was enough for the people to handle and I wanted the people not to be distracted from the screen. There was the focus. Not my voice, not my face, it was the screen, the coding I do. So I did not want to spend a single inch of my desktop to picture me.</p>
+
+<h3 id="still-a-loooong-way-to-go">Still a loooong way to go…</h3>
+
+<p>With all the experience I made recording a video this whole thing is a lot of work. It takes a lot if time and I am sure I will make a lot more experiences in the future when it comes to record a video. It takes massive time to prepare a video, record it and work on it when you finished the recording. I dont know how the others feel but I have the feeling I recorded this video about 5 times in a whole to get the output I got now. And I think it is far away from being perfect. But I think with the time you can learn from others, from your own experience and do some things better right from the start. But I am also sure that other problems will appear then.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/11/IMG_20161020_103819-1024x576.jpg" alt="How I started recording my first Video training" /></p>
+
+<h3 id="the-result">The result</h3>
+
+<p>I published the result on Channel 9. I made this video in german because I was told having german content is more important right now than having english content due to the fact that there is a lot of english content in the moment on the topic ASP.NET. And although it was a lot of work doing this recording the video was so much fun!!! I loved it. All this cutting, speaking, recording etc. I loved doing it and enjoyed every second.</p>
+
+<p>Well…in the end it is a video. The result of heavy work which was so much fun that I can not describe it. Still: I dont like the sound of my voice :) But I hope that this video will help others to get started with ASP.NET and Visual Studio 2015. I hope that I can reach others and make them as enthusiastic to the topic as I am. This is one way more to give the community something back.</p>
+
+<p>I really hope you like it.</p>
+
+<p><a href="https://channel9.msdn.com/Blogs/MVP-VisualStudio-Dev/Erstellen-einer-WebAPI-mit-ASPNET-Core">https://channel9.msdn.com/Blogs/MVP-VisualStudio-Dev/Erstellen-einer-WebAPI-mit-ASPNET-Core</a></p>
+
+<p>Best regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Kurs - Frontend-Entwicklung mit AngularJS</title>
+	  <link>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-05-25T18:30:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost stelle ich meinen Kurs: <em>Frontend-Entwicklung mit AngularJS</em> vor.</p>
+
+<p><img src="/assets/images/Angular_With_Digicomp.png" alt="Angular_With_Digicomp" /></p>
+
+<p>Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht “Nein” gesagt.</p>
+
+<p>Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.</p>
+
+<p><a href="https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs">Digicomp Kurs</a></p>
+
+<p>In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner <em>Gulp</em> an. <em>NPM</em> ist natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.</p>
+
+<p>Am Ende des Kurses habe ich mir als Ziel gesetzt mit den Teilnehmern ein Review einer kleinen Beispielapplikation zu machen, die all das behandelt, was zuvor im Kurs gelernt und behandelt wurde.</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular">GitHub: Beispielapplikation</a></p>
+
+<p>Zum Schluss können die Teilnehmer Feedback geben und den Kurs bewerten.</p>
+
+<p>Im Feedback wurde der Kurs insgesamt mit 96/100 Punkten bewertet!</p>
+
+<p>“AngularJs-Wissen vom Feinsten”</p>
+
+<p>“Sehr guter Trainer”</p>
+
+<p>“Der Kurs hat viel Spass gemacht”</p>
+
+<p>“Das Wissen wurde ausführlich vermittelt”</p>
+
+<p>“Viel gelernt in zwei Tagen”</p>
+
+<p>Mir hat der Kurs sehr sehr viel Spass gemacht und ich würde mich freuen noch mehr davon zu halten.</p>
+
+<p>Für (An)Fragen über (In-House) Kurse zur modernen Web-Entwicklung: <a href="http://fabian-gosebrink.com/">Kontakt via Homepage</a></p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Microsoft TechDays 2016</title>
+	  <link>//blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-02-20T11:30:00+01:00</pubDate>
+	  <guid>//blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/</guid>
+	  <description><![CDATA[
+	     <p><a href="https://www.microsoft.com/de-ch/events/techdays">TechDays 2016 Baden</a></p>
+
+<p>===== UPDATE======</p>
+
+<p>I just got the feedback from Microsoft and my talk was rated with 4.5 in Content and 4.6 in Speaker Performance. This means it was rated as the best Talk at the TechDays. Im really happy to read that so thanks to everybody who was in the audience :)</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/02/Feedback.jpg" alt="Feedback" /></p>
+
+<p>Hope to see you again on some events.</p>
+
+<p>Greetings</p>
+
+<p>Fabian</p>
+
+<p>=================</p>
+
+<p>I am so happy to announce that I will speak on the TechDays 2016 in Baden for the first time! I never expected Microsoft to ask me about doing a presentation at this event but they did :) And so I got a slot in the afternoon of the 1st of March. I know this is the last slot of the day and also the end of the TechDays this year but I will do my very best to give you a great technical and entertaining fade-out of this event.</p>
+
+<p>The talks is about Web development with Angular2 in combination with SignalR and we will have a demo working on ASP.NET Core 1.0. I will hold it in german.</p>
+
+<blockquote>
+  <p>I know the title shows “ASP.NET 5” but the ASP.NET-Team did the renaming just after I gave Microsoft my title. I will mention that in my talk but just to know: We will of course work with ASP.NET Core 1.0</p>
+</blockquote>
+
+<p><a href="http://damienbod.com/">DamienBod</a> (many thanks to him at this place) and we will take a look at some pitfalls I discovered and how to avoid them.</p>
+
+<p>Hope to see you there! Looking forward to this!</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Talk bei den Microsoft Evolution Days in Zürich</title>
+	  <link>//blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-11-12T21:42:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/</guid>
+	  <description><![CDATA[
+	     <p>Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen <span id="snippet_meta" class="desc" contenteditable="true">Talk bei den Microsoft Evolution Days in Zürich</span> über AngularJs &amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei <a href="http://digiblog.s3-eu-central-1.amazonaws.com/app/1446644382/30_agularjs-und-rest_fabian-gosebrink.pdf">Digicomp</a>. Alle Beispiele gibts auch auf <a href="https://github.com/FabianGosebrink">Github</a>.</p>
+
+<blockquote>
+  <p>Mein erster Vortrag als MVP :-)</p>
+</blockquote>
+
+<p>Früher hatten die Evolution Days keinen Developer-Track. Dieses Jahr war aber einer dabei und ich bin froh, dass ich eingeladen wurde. Zusammen mit <a href="https://twitter.com/mallibone">Mark Allibone</a> und Hanspeter Bornhauser habe ich einen von insgesamt 5 Vorträgen im Developertrack gehalten.</p>
+
+<p>Das komplette Programm gibts <a href="https://www.digicomp.ch/media/misc/MicrosoftEvolutionDay-2015-DigicompZuerich-29.10.pdf">hier</a>.</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">.<a href="https://twitter.com/FabianGosebrink">@FabianGosebrink</a> about <a href="https://twitter.com/hashtag/angular?src=hash">#angular</a> and <a href="https://twitter.com/hashtag/webapi?src=hash">#webapi</a> at the <a href="https://twitter.com/hashtag/msevolutionday?src=hash">#msevolutionday</a> from <a href="https://twitter.com/DigicompCH">@digicompch</a> /cc <a href="https://twitter.com/Noser_Eng">@Noser_Eng</a> <a href="https://t.co/T73OdWRuiB">pic.twitter.com/T73OdWRuiB</a></p>&mdash; Mark Allibone (@mallibone) <a href="https://twitter.com/mallibone/status/659736379954495488">October 29, 2015</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Natürlich bedanke ich mich bei Digicomp und Microsoft, dass ich auf dem Event reden durfte. Es hat Spass gemacht. Gerne wieder :-)</p>
+
+<p>Hier ein Auszug aus den Folien:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie12.png" alt="Folie12" /></p>
+
+<p>Ich denke es ist wichtig klarzustellen, dass “REST” nicht gleich “WebAPI” ist. REST ist eine Form, die ein Web-Service erfüllen kann. ASP.NET WebAPI ist eine Technologie, mit der man solche Services umsetzen kann. Das ist ein fundamentaler Unterschied.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie13.png" alt="Folie13" /></p>
+
+<p>Hier beschreibe ich eine klassische REST-API. Das PATCH-Attribut habe ich auf der nächsten Folie. Es ging also nicht vergessen. Jeder Link stellt eine eindeutige Aktion dar. Alle CRUDOperationen sind durch diese Links für eine Entität abgedeckt.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie30.png" alt="Folie30" /></p>
+
+<p>Diese Folie beschreibt wohl das, was AngularJS so mächtig macht. Das Framework bietet einen clientseitige Architektur mit Javascript (oder Typescript), die es ermöglicht komplexe Web-Apllikationen zu bauen.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie41.png" alt="Folie41" />
+<img src="/assets/articles/wp-content/uploads/2015/11/Folie44.png" alt="Folie44" /></p>
+
+<p>“$scope” ist wohl das Wort, was bei vielen ein Erleichtern auslöst. Es entspricht etwa dem ViewModel, welches man schon von anderen Applikationsarten kennt. Hierauf kann man im AngularJS Funktionen und Werte definieren, die man dann von der View aus via DataBinding konsumieren kann.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/Folie59.png" alt="Folie59" /></p>
+
+<p>Bis dahin</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Microsoft TechTalk in Wallisellen</title>
+	  <link>//blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-04-19T17:52:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/</guid>
+	  <description><![CDATA[
+	     <p>Hallo zusammen, in diesem Blog will ich kurz den Microsoft TechTalk in Wallisellen zusammenfassen.</p>
+
+<p>Am 19.03.2015 waren Hans Peter Bornhauser und ich Guestspeaker beim Microsoft Techtalk in Wallisellen. Dass Ereignis war mit mehr als 100 Leuten komplett ausverkauft und drehte sich innerhalb von 3 Vorträgen rund um das Thema ASP.NET und Azure.</p>
+
+<p>Hans Peter stellte in einer 50-minütigen Session ASP.NET vNext vor. Mit praktischen Beispielen zeigte er, was alles auf Entwickler zukommt mit dem neuen ASP.NET vNext und Visual Studio 2015. Neben dem Zusammenschluss von WebAPI und Mvc-Controllern und dem Wegfallen der web.config ist hierbei sicher das Live-Editieren interessant, bei dem Änderungen in Dateien ohne Rebuild direkt in den Browser übernommen werden.</p>
+
+<p>Ich habe in einer vierzig-minütigen Session (wieso hatte ich nur 40?) ASP.NET WebApi mit AngularJS vorgestellt. AngularJS ist ein Single-Page-Application-Framework aus dem Hause Google. Clientseitige Programmierung ist nicht neu. Clientseitige Programmierung mit Struktur, mit Ordnung und Architektur jedoch schon. Javascript war vor Angular “Vogelwild” oder von Versuchen geprägt, dies zu ändern. Aus mittlerweile vielen Frameworks hat sich Angular herauskristallisiert und sich als State-of-the-Art etabliert. Out of the Box bringt Angular Features wie Dependency-Injection, Two-Way Databinding, SoC, Ui-Templating etc. mit.</p>
+
+<p>Somit ist es möglich, verteilte Applikationen mit einer API als Backend zu erstellen. Im Frontend kann ein Client mit Angular zum Einsatz kommen. Richtig implementiert lassen sich hieraus IOS/Android und Windows-Phone Implementierungen erstellen. Alles mit einer Code-Basis.</p>
+
+<p>Mit SignalR dreht man sprichwörtlich den Spiess um: Was, wenn der Server dem Client initiativ mal etwas mitteilen möchte? Das kann er tun. Mit SignalR kann der Server dem Client Push-Notifications senden. Das geht auch in einem WPF-Client!</p>
+
+<p>Die Beispiele zu meinem Teil findet ihr auf GitHub:</p>
+
+<p><a href="https://github.com/FabianGosebrink">https://github.com/FabianGosebrink</a></p>
+
+<p>Von unserer Seite aus ist zu sagen, dass der Vortrag sowie die anschliessende Diskussion sehr sehr viel Spass gemacht hat. Die Reaktionen waren sehr positiv. Vielen dank an alle Beteiligten und Zuhörer.</p>
+
+<p>Nächste Station ist der TechTalk am 23. April 2015 in Basel. Wir freuen uns!!!</p>
+
+<p>Gruss</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

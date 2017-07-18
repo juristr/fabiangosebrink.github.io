@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>Cross Platform Builds with Angular, Gulp and Webpack</title>
+     
+    <meta name="description" content="Cross Platform Builds with Angular, Gulp and Webpack" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="Cross Platform Builds with Angular, Gulp and Webpack" />
+    
+    
+    
+    <meta property="og:title" content="Cross Platform Builds with Angular, Gulp and Webpack" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="Cross Platform Builds with Angular, Gulp and Webpack" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="angular" property="article:tag">
+  
+  <meta content="gulp" property="article:tag">
+  
+  <meta content="webpack" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>Cross Platform Builds with Angular, Gulp and Webpack</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">Cross Platform Builds with Angular, Gulp and Webpack</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2016-06-17">17 Jun 2016</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/angular'>Angular</a>,
+                       
+                
+                    
+                       <a href='/tag/gulp'>Gulp</a>,
+                       
+                
+                    
+                       <a href='/tag/webpack'>Webpack</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>In this blogpost I want to show how to create Cross Platform Builds with Angular, Gulp and Webpack</p>
+
+<p><a href="https://webpack.github.io/" title="Webpack">Webpack</a></p>
+
+<p><a href="http://gulpjs.com/" title="Gulp">Gulp</a></p>
+
+<p><a href="http://angular.io/" title="Angular2">Angular</a></p>
+
+<p>Code can be found here: <a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<h3 id="setting-up-the-folder-structure">Setting up the folder structure</h3>
+
+<p>The folder structure is very important but also one of the most discussed in the internet I think ;). Mine looks like the following:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/folderStructure.png" alt="Angular2 webpack" /></p>
+
+<p>Whereas “app” contains my Angular 2 application and the other files and folders speak for theirselves.</p>
+
+<h2 id="the-goal">The goal</h2>
+
+<p>The sense of this blogpost is now to get a build with webpack AND gulp combined to have the same cross platform functionality we are used from a “gulp-only” build.</p>
+
+<h3 id="the-past">The past</h3>
+
+<p>In the past the problem with Angular 2 and gulp was the bundling and the minification of the application. Gulp works with streams and files whereas angular 2 is build with related components which are imported and then used. We can not concat every file anymore in the correct order and minify it to distribute an application.</p>
+
+<h3 id="the-solution">The solution</h3>
+
+<p>The solution (or at least one of them) is webpack. Webpack is slightly different from gulp, where it can resolve the dependencies and use your “import” and “require” statements to see when which file is used and has to be included.</p>
+
+<h2 id="the-files">The files</h2>
+
+<p>Now I want to show you the files which can make this whole thing possible. See the “gulptasks”-folder to divide the responsibilities of building each target platform.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/gulpFiles.png" alt="angular2 webpack" /></p>
+
+<h3 id="webpackconfigjs">webpack.config.js</h3>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">ExtractTextPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'extract-text-webpack-plugin'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">webpack</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'webpack'</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">HtmlWebpackPlugin</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'html-webpack-plugin'</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">entry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s1">'polyfills'</span><span class="p">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+        <span class="s1">'vendor'</span><span class="p">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+        <span class="s1">'app'</span><span class="p">:</span> <span class="s1">'./app/main.ts'</span>
+    <span class="p">},</span>
+    <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+    <span class="p">},</span>
+    <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">loaders</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">ts$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'ts'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">html$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'html'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.(</span><span class="sr">png|jpe</span><span class="se">?</span><span class="sr">g|gif|svg|woff|woff2|ttf|eot|ico</span><span class="se">)</span><span class="sr">$/</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'file?name=fonts/[name].[hash].[ext]'</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">exclude</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="nx">ExtractTextPlugin</span><span class="p">.</span><span class="nx">extract</span><span class="p">(</span><span class="s1">'style'</span><span class="p">,</span> <span class="s1">'css?sourceMap'</span><span class="p">)</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">css$/</span><span class="p">,</span>
+                <span class="na">include</span><span class="p">:</span> <span class="s1">'./app'</span><span class="p">,</span>
+                <span class="na">loader</span><span class="p">:</span> <span class="s1">'raw'</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="k">new</span> <span class="nx">ExtractTextPlugin</span><span class="p">(</span><span class="s1">'[name].bundle.css'</span><span class="p">),</span>
+        <span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">optimize</span><span class="p">.</span><span class="nx">CommonsChunkPlugin</span><span class="p">({</span>
+            <span class="na">name</span><span class="p">:</span> <span class="p">[</span><span class="s1">'app'</span><span class="p">,</span> <span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'polyfills'</span><span class="p">]</span>
+        <span class="p">}),</span>
+        <span class="k">new</span> <span class="nx">HtmlWebpackPlugin</span><span class="p">({</span>
+            <span class="na">template</span><span class="p">:</span> <span class="s1">'./index.html'</span>
+        <span class="p">})</span>
+    <span class="p">],</span>
+    <span class="na">devServer</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">historyApiFallback</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="na">stats</span><span class="p">:</span> <span class="s1">'minimal'</span>
+    <span class="p">}</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>This file is plain simple:</p>
+
+<p>First we tell webpack that we have three entry-points (three files to start) in our application which are “app”, “vendor” and “polyfills”</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">entry</span><span class="err">:</span> <span class="p">{</span>
+<span class="s1">'polyfills'</span><span class="err">:</span> <span class="s1">'./app/polyfills.ts'</span><span class="p">,</span>
+<span class="s1">'vendor'</span><span class="err">:</span> <span class="s1">'./app/vendor.ts'</span><span class="p">,</span>
+<span class="s1">'app'</span><span class="err">:</span> <span class="s1">'./app/main.ts'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>Then we tell webpack which files to look for…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">resolve</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">''</span><span class="p">,</span> <span class="s1">'.ts'</span><span class="p">,</span> <span class="s1">'.js'</span><span class="p">,</span> <span class="s1">'.css'</span><span class="p">,</span> <span class="s1">'.html'</span><span class="p">]</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>…how the js-files should be named on output…</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">output</span><span class="err">:</span> <span class="p">{</span>
+<span class="nl">filename</span><span class="p">:</span> <span class="s1">'[name].bundle.js'</span>
+<span class="p">},</span></code></pre></figure>
+
+<p>… and in the modules part we define how to treat the several file types.</p>
+
+<p>The plugins section then sticks together every operation we do with the files. So this is normal webpack as you can see in several repositories as well.</p>
+
+<p>But how to deal with gulp? Well…there is an npm package…;) It’s called <code class="highlighter-rouge">webpack-stream</code> and allows us to do tasks like this:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'web-compile-with-webpack'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">gulp</span><span class="p">.</span><span class="nx">src</span><span class="p">(</span><span class="s1">'./app/main.js'</span><span class="p">)</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">webpack</span><span class="p">(</span><span class="nx">require</span><span class="p">(</span><span class="s1">'../webpack.config.js'</span><span class="p">)))</span>
+        <span class="p">.</span><span class="nx">pipe</span><span class="p">(</span><span class="nx">gulp</span><span class="p">.</span><span class="nx">dest</span><span class="p">(</span><span class="s2">"../.temp/webapp/"</span><span class="p">));</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>So if we trigger this gulp-tasks our application is build an bundles and so on and will be copied to the specified folder with gulp.</p>
+
+<p>After we did this we can go ahead like normal.</p>
+
+<p>Because we also have a dev-server from webpack in the repository above we will have a index.html fully loaded to execute everything. The gulp-html-comments make sure that everything in between those comments gets overwritten when we inject sources with gulp.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;html&gt;</span>
+
+<span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>FoodChooser Angular 2<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- inject:css --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"vendor.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="na">href=</span><span class="s">"app.bundle.css"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;/head&gt;</span>
+
+<span class="c">&lt;!-- 3. Display the application --&gt;</span>
+
+<span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;foodChooser-app&gt;</span>Loading...<span class="nt">&lt;/foodChooser-app&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"cordova.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="c">&lt;!-- inject:js --&gt;</span>
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"polyfills.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"vendor.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+<span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"app.bundle.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="c">&lt;!-- endinject --&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;/html&gt;</span></code></pre></figure>
+
+<p>The complete tasks for the web solution are:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:web:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'web-clean-temp-folder'</span><span class="p">,</span>        <span class="c1">// cleans the temp folder</span>
+        <span class="s1">'web-compile-with-webpack'</span><span class="p">,</span>     <span class="c1">// compiles the sources with webpack</span>
+        <span class="s1">'web-copy-index-to-webapp-temp-folder'</span><span class="p">,</span>     <span class="c1">// copies the index.html to the temp folder</span>
+        <span class="s1">'web-inject-in-html'</span><span class="p">,</span>        <span class="c1">// injects the webpack-output into the index.html with gulp</span>
+        <span class="s1">'web-clean-dist-folder'</span><span class="p">,</span>    <span class="c1">// clean the dist folder first...</span>
+        <span class="s1">'web-copy-to-dist'</span><span class="p">,</span> <span class="c1">// copy it</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>After we run this the index.html looks quite the same:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="o">&lt;</span><span class="nx">html</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">title</span><span class="o">&gt;</span><span class="nx">FoodChooser</span> <span class="nx">Angular</span> <span class="mi">2</span><span class="o">&lt;</span><span class="sr">/title</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">meta</span> <span class="nx">name</span><span class="o">=</span><span class="s2">"viewport"</span> <span class="nx">content</span><span class="o">=</span><span class="s2">"width=device-width, initial-scale=1"</span><span class="o">&gt;</span>
+
+    <span class="c">&lt;!--</span> <span class="nx">inject</span><span class="err">:</span><span class="nx">css</span> <span class="o">--&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"vendor.bundle.css"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">link</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">"stylesheet"</span> <span class="nx">href</span><span class="o">=</span><span class="s2">"app.bundle.css"</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="sr">/head</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="mi">3</span><span class="p">.</span> <span class="nx">Display</span> <span class="nx">the</span> <span class="nx">application</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">body</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">foodChooser</span><span class="o">-</span><span class="nx">app</span><span class="o">&gt;</span><span class="nx">Loading</span><span class="p">...</span><span class="o">&lt;</span><span class="sr">/foodChooser-app</span><span class="err">&gt;
+</span>
+
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"cordova.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span>
+<span class="c">&lt;!--</span> <span class="nl">inject</span><span class="p">:</span><span class="nx">js</span> <span class="o">--&gt;</span>
+<span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"polyfills.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"vendor.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="s2">"app.bundle.js"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="c">&lt;!--</span> <span class="nx">endinject</span> <span class="o">--&gt;</span>
+
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+    <span class="c">&lt;!--</span> <span class="nx">Toggle</span> <span class="nx">Hamburger</span> <span class="nx">Menu</span> <span class="nx">on</span> <span class="nx">mobile</span> <span class="o">--&gt;</span>
+    <span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span><span class="s1">'.navbar-collapse.in'</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">is</span><span class="p">(</span><span class="s1">'a'</span><span class="p">)</span> <span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span><span class="o">&amp;</span><span class="nx">amp</span><span class="p">;</span> <span class="nx">$</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">'class'</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">'dropdown-toggle'</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">collapse</span><span class="p">(</span><span class="s1">'hide'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/body</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/html&gt;</span></code></pre></figure>
+
+<p>But this time the sources got injected. See the dist folder here:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/06/dist.png" alt="dist" /></p>
+
+<p>With this approach we can go ahead as usual when building electron or cordova-things with gulp.</p>
+
+<p>See the required steps fo r e.g. a cordova-build here:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:electron:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'electron-clean-temp'</span><span class="p">,</span>
+        <span class="s1">'electron-compile-with-webpack'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-index-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-inject-in-html'</span><span class="p">,</span>
+        <span class="s1">'electron-copy-assets-to-temp-folder'</span><span class="p">,</span>
+        <span class="s1">'electron-build-win'</span><span class="p">,</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>the only difference here is that we have to copy assets for electron into the temp folder. The whole procedure before is like we know it from the web solution.</p>
+
+<p>I hope this helps to get out confusion and reduces the complexity of the topic “Cross platform”.</p>
+
+<p>HTH</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h1 id="links">Links</h1>
+
+<p><a href="https://angular.io/docs/ts/latest/guide/webpack.html">https://angular.io/docs/ts/latest/guide/webpack.html</a></p>
+
+<p><a href="https://webpack.github.io/docs/usage-with-gulp.html">https://webpack.github.io/docs/usage-with-gulp.html</a></p>
+
+<p><a href="https://www.npmjs.com/package/webpack-stream">https://www.npmjs.com/package/webpack-stream</a></p>
+
+<p><a href="https://github.com/shama/webpack-stream">https://github.com/shama/webpack-stream</a></p>
+
+<p><a href="https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/">https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/</a></p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=Cross Platform Builds with Angular, Gulp and Webpack&amp;url=http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/';
+        //var disqus_url = 'offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/">
+            <section class="post">
+                <h2>ASP.NET Core 1.0 with Entity Framework Core</h2>
+                <p>In this repository I want to show the first steps with Entity Framework Core and...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/">
+            <section class="post">
+                <h2>ASP.NET Core and Angular with Webpack and Visual Studio</h2>
+                <p>This article shows how to use ASP.NET Core and Angular with webpack and Visual Studio....</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

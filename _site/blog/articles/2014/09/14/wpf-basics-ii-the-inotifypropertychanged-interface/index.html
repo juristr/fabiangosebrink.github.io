@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>WPF Basics II - The INotifyPropertyChanged Interface</title>
+     
+    <meta name="description" content="WPF Basics II - The INotifyPropertyChanged Interface" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="WPF Basics II - The INotifyPropertyChanged Interface" />
+    
+    
+    
+    <meta property="og:title" content="WPF Basics II - The INotifyPropertyChanged Interface" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="WPF Basics II - The INotifyPropertyChanged Interface" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="basics" property="article:tag">
+  
+  <meta content="databinding" property="article:tag">
+  
+  <meta content="tutorial" property="article:tag">
+  
+  <meta content="wpf" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>WPF Basics II - The INotifyPropertyChanged Interface</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">WPF Basics II - The INotifyPropertyChanged Interface</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2014-09-14">14 Sep 2014</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/basics'>Basics</a>,
+                       
+                
+                    
+                       <a href='/tag/databinding'>Databinding</a>,
+                       
+                
+                    
+                       <a href='/tag/tutorial'>Tutorial</a>,
+                       
+                
+                    
+                       <a href='/tag/wpf'>Wpf</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    8 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <blockquote>
+  <p>UPDATE
+Check the CallMemberName-Possibility <a href="http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/">here</a></p>
+</blockquote>
+
+<p>In the first part I told something about the databinding <a href="http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/">here</a>. The second part should be something about refreshing the data at the UI. We said that the UI only knows the datacontext and its properties. So far so god. It is binding them at startup and we’re done so far.</p>
+
+<p>Just to calm down the ones who expect a solution: Can be found in the third article <a href="http://offering.solutions/blog/articles/2014/10/01/correct-implementation-of-commands-in-wpf/">here</a></p>
+
+<p>But what if the data underneath is changing. What if a service or anything else has new data and want to tell the UI “Hey there, I have something new!”</p>
+
+<p>Therefore the binding has to be “refreshed” and we have the INotifyPropertyChanged-Interface to get this job done.</p>
+
+<p>Lets take our code from before and give it a timer which sets the name we want to display after 3 seconds:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;StackPanel&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding NameToDisplay}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="n">Timer</span> <span class="n">_timer</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_timer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Timer</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Elapsed</span> <span class="p">+=</span> <span class="n">timer_Elapsed</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">timer_Elapsed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ElapsedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hallelujah"</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<blockquote>
+  <p> ”Hallelujah” is always my testword because im pretty sure it occurs nowhere else in a solution ;) So if you see this, its mine</p>
+</blockquote>
+
+<p>So, if you debug this you will see that the timer gets into the timer_elapsed-function and sets the name but the UI does not change. So lets implement a way to refresh the UI! Only implement the INotifyPropertyChanged-interface:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">readonly</span> <span class="n">Timer</span> <span class="n">_timer</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_timer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Timer</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Elapsed</span> <span class="p">+=</span> <span class="n">timer_Elapsed</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">timer_Elapsed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ElapsedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hallelujah"</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">PropertyChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">PropertyChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PropertyChangedEventArgs</span><span class="p">(</span><span class="s">"NameToDisplay"</span><span class="p">));</span>
+        <span class="p">}</span>
+        
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So everthing we do is throwing the event that something has changed with the name of the property as a string. If you let this run you will see that the UI refreshes and after 3 seconds the “hallelujah” is displayed. But this has some disadvantages:</p>
+
+<ul>
+  <li>We are throwing the event in the timer_elapsed. So only when <strong>this</strong> is done the property is refreshed</li>
+  <li>We are having the name of the property as a string in it. So renaming the property will mostly NOT rename the string. (Magic String). And the refresh does not work again.</li>
+  <li>Refreshing the UI is a base function. It should be outsourced in like a base file or something.</li>
+</ul>
+
+<p>Lets tune this:</p>
+
+<ol>
+  <li>First we will make a namespace for this (I love namespaces) called “Common” and make a basefile in there.</li>
+  <li>We will make this function generic expecting a lambda-Expression to erase the magic string</li>
+  <li>We will call the refreshing thing in the setter of the property itself. Then its getting refreshed everytime someone in the code sets it.</li>
+</ol>
+
+<p><img src="/assets/articles/2014-09-14/INotify_I.jpg" alt="WPF Basics II - The INotifyPropertyChanged Interface" /></p>
+
+<p>which looks like:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyPropertyChangedBase</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">OnPropertyChanged</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">propertyExpression</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MemberExpression</span> <span class="n">memberExpr</span> <span class="p">=</span> <span class="n">propertyExpression</span><span class="p">.</span><span class="n">Body</span> <span class="k">as</span> <span class="n">MemberExpression</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">memberExpr</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"Wrong PropertyExpression"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">PropertyChangedEventHandler</span> <span class="n">handler</span> <span class="p">=</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">handler</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">handler</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">memberExpr</span><span class="p">.</span><span class="n">Member</span><span class="p">.</span><span class="n">Name</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This is taking the member and throwing the event for us on this member. That was Point 1 and 2. Let it be (three)!</p>
+
+<p>We do inherit from the just created class and can access the event with the lambda-expression, which is more generic:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span> <span class="p">:</span> <span class="n">NotifyPropertyChangedBase</span>
+<span class="p">{</span>
+    <span class="k">readonly</span> <span class="n">Timer</span> <span class="n">_timer</span><span class="p">;</span>
+    <span class="k">private</span> <span class="kt">string</span> <span class="n">_nameToDisplay</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span>
+    <span class="p">{</span>
+        <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_nameToDisplay</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">set</span>
+        <span class="p">{</span>
+            <span class="n">_nameToDisplay</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+            <span class="nf">OnPropertyChanged</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">NameToDisplay</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">_timer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Timer</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Elapsed</span> <span class="p">+=</span> <span class="n">timer_Elapsed</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">void</span> <span class="nf">timer_Elapsed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ElapsedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hallelujah"</span><span class="p">;</span>
+        <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Remeber: In the elapsed-method we are setting the property (not the private variable) directly that the setter is called and the event is thrown.</p>
+
+<blockquote>
+  <p>This is not the only way to implement this. This can be done in several ways. But for beginners this should do the trick.</p>
+</blockquote>
+
+<p>Run it, it will show you the text after three seconds.</p>
+
+<p>If you want to, read further how you can get this cleaner with services and erase the NotifyPropertyChangedBase from the viewmodel.</p>
+
+<p>Lets tune this a little bit: The viewmodel does a lot of work. It does not have to do this, so lets extract this a bit and make it more clean.</p>
+
+<p>First we do a NameProvider, which gives us the name. In my case again with a timer to see the UI changing. Normally this could be a service or something else without a timer. Could be anything which triggers the UI to change (not only) after a piece of work.</p>
+
+<p><img src="/assets/articles/2014-09-14/INotify_II.jpg" alt="WPF Basics II - The INotifyPropertyChanged Interface" /></p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">NameProviderImpl</span> <span class="p">:</span> <span class="n">NotifyPropertyChangedBase</span><span class="p">,</span> <span class="n">INameProvider</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="k">readonly</span> <span class="n">Timer</span> <span class="n">_timer</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">_nameToDisplay</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span>
+        <span class="p">{</span>
+            <span class="k">get</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="n">_nameToDisplay</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">private</span> <span class="k">set</span>
+            <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">_nameToDisplay</span> <span class="p">==</span> <span class="k">value</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">return</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="n">_nameToDisplay</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+                <span class="nf">OnPropertyChanged</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="n">NameToDisplay</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="nf">NameProviderImpl</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="n">_timer</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Timer</span><span class="p">(</span><span class="m">3000</span><span class="p">);</span>
+            <span class="n">_timer</span><span class="p">.</span><span class="n">Elapsed</span> <span class="p">+=</span> <span class="n">timer_Elapsed</span><span class="p">;</span>
+            <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">void</span> <span class="nf">timer_Elapsed</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">ElapsedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">NameToDisplay</span> <span class="p">=</span> <span class="s">"Hallelujah"</span><span class="p">;</span>
+            <span class="n">_timer</span><span class="p">.</span><span class="n">Enabled</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">interface</span> <span class="n">INameProvider</span>
+<span class="p">{</span>
+    <span class="kt">string</span> <span class="n">NameToDisplay</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Everything we did here is moving the timer-logic into a provider and offering the property through an interface to the outside.</p>
+
+<p>Our viewmodel now has nearly no logic anymore:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">MainViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">INameProvider</span> <span class="n">NameProvider</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">MainViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">NameProvider</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">NameProviderImpl</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>This principle I am also describing <a href="http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/">here</a>.</p>
+
+<p>Now we have to change the binding a bit. Because now the viewmodel is giving us the property to bind not directly but onto another property “NameProvider”. So the Binding looks like this:</p>
+
+<figure class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Grid&gt;</span>
+    <span class="nt">&lt;StackPanel&gt;</span>
+        <span class="nt">&lt;TextBlock</span> <span class="na">Text=</span><span class="s">"{Binding NameProvider.NameToDisplay}"</span><span class="nt">&gt;&lt;/TextBlock&gt;</span>
+    <span class="nt">&lt;/StackPanel&gt;</span>
+<span class="nt">&lt;/Grid&gt;</span></code></pre></figure>
+
+<p>Run this and you will see the result stays the same: After three seconds our string is displayed.</p>
+
+<p><img src="/assets/articles/2014-09-14/INotify_III.jpg" alt="WPF Basics II - The INotifyPropertyChanged Interface" /></p>
+
+<p>So what we did now is: Getting our Viewmodel nice and clean. It gives us an overview of services and providers which the UI can use. It does not inherit from NotifyPropertyChangedBase. You saw how flexible databinding is. Not only with strings but you can bind also lists of objects etc.</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=WPF Basics II - The INotifyPropertyChanged Interface&amp;url=http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/';
+        //var disqus_url = 'offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/">
+            <section class="post">
+                <h2>Unterhaltsame Meetings in SCRUM</h2>
+                <p>SCRUM legt viel Wert auf Kommunikation, Transparenz und Austausch. Dies bringt enorm viele Vorteile. Wenn...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/">
+            <section class="post">
+                <h2>How to make first steps of Databinding in WPF</h2>
+                <p>In this blogpost I want to show you how to make first steps of Databinding in...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

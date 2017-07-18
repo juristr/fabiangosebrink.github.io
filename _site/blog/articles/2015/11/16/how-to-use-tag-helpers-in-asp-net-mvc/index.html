@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- [[! Document Settings ]] -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- [[! Page Meta ]] -->
+    
+    <title>How to use tag helpers in ASP.NET MVC</title>
+     
+    <meta name="description" content="How to use tag helpers in ASP.NET MVC" /> 
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+
+    <!-- [[! Styles'n'Scripts ]] -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400"
+    />
+    <link rel="stylesheet" type="text/css" href="/assets/css/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- [[! Ghost outputs important style and meta data with this tag ]] -->
+        <link rel="canonical" href="/" />
+    <meta name="referrer" content="origin" />
+
+     
+    <meta property="og:site_name" content="How to use tag helpers in ASP.NET MVC" />
+    
+    
+    
+    <meta property="og:title" content="How to use tag helpers in ASP.NET MVC" />
+    
+
+    
+     <meta property="og:url" content="http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/" />
+    
+    
+
+    <meta property="og:type" content="article" />
+
+    <meta property="og:description" content="Articles about Angular & ASP.NET" />
+   
+    <meta property="og:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+     
+    <meta property="twitter:title" content="How to use tag helpers in ASP.NET MVC" />
+    
+    <meta name="twitter:description" content="Articles about Angular & ASP.NET" />
+
+    
+     <meta property="twitter:url" content="http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/" />
+    
+    <meta name="twitter:site" content="@FabianGosebrink" />
+    <meta name="twitter:image" content="http://offering.solutions/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg" />
+
+
+  
+  <meta content="blog" property="article:section">
+  
+
+
+  
+  <meta content="aspnet" property="article:tag">
+  
+  <meta content="mvc" property="article:tag">
+  
+  <meta content="taghelpers" property="article:tag">
+  
+
+
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Website",
+    "publisher": "Offering Solutions",
+    "url": "/",
+    "image": "/assets/images/background.jpg",
+    "description": "Articles about Angular & ASP.NET"
+}
+    </script>
+
+    <meta name="generator" content="Jekyll 3.0.0" />
+    <link rel="alternate" type="application/rss+xml" title="Offering Solutions" href="/feed.xml" />
+
+
+</head>
+
+<body class="home-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        <li class="nav-home " role="presentation"><a href="/">Home</a></li>
+        <li class="nav-author " role="presentation"><a href="/author">Author</a></li>
+        <li class="nav-courses " role="presentation"><a href="http://offering.solutions">Back to OS</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="/feed.xml">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        <!-- [[! Everything else gets inserted here ]] -->
+        <!-- < default -->
+
+<!-- The comment above "< default" means - insert everything in this file into -->
+    <!-- the [body] of the default.hbs template, which contains our header/footer. -->
+
+<!-- Everything inside the #post tags pulls data from the post -->
+<!-- #post -->
+
+<header class="main-header post-head " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg) ">
+	
+    <nav class="main-nav  overlay  clearfix">
+        <a class="blog-logo" href="/"><img src="/assets/images/logo_small.png" alt="Blog Logo" /></a>
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+	
+	
+	    <!--   
+			<div align="center">
+				<h1>How to use tag helpers in ASP.NET MVC</h1>
+			</div>
+      -->
+	
+</header>
+
+<main class="content" role="main">
+
+    <article class="post tag-speeches">
+
+        <header class="post-header">
+            <h1 class="post-title">How to use tag helpers in ASP.NET MVC</h1>
+            <section class="post-meta">
+            <!-- <a href='/'>Fabian Gosebrink</a> -->
+            <time class="post-date" datetime="2015-11-16">16 Nov 2015</time>
+                <!-- [[tags prefix=" on "]] -->
+                 
+                on 
+                
+                    
+                       <a href='/tag/aspnet'>Aspnet</a>,
+                       
+                
+                    
+                       <a href='/tag/mvc'>Mvc</a>,
+                       
+                
+                    
+                       <a href='/tag/taghelpers'>Taghelpers</a>
+                       
+                
+                 - 
+                <span class="reading-time" title="Estimated read time">
+  
+  
+    2 mins read
+  
+</span>
+            </section>
+        </header>
+
+        <section class="post-content">
+
+            <br/>
+            <p>Hey,</p>
+
+<p>in this post I want to show you how to use tag helpers in ASP.NET.</p>
+
+<p>First of all: What are the tag helpers good for?</p>
+
+<p>If you are coding your links in your MVC-Views with normal strings its really hard to refactor or correct them in case you rename your routing, controller or your action. So you need a kind of generic approach to do this.</p>
+
+<p>Razor in previous versions had this</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">Url</span><span class="p">.</span><span class="nf">Action</span><span class="p">(</span><span class="s">"MyAction"</span><span class="p">,</span> <span class="s">"MyController"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="s">"123"</span> <span class="p">})</span></code></pre></figure>
+
+<p>which returned an url like <code class="highlighter-rouge">MyController/MyAction/123</code></p>
+
+<p>ASP.NET is now introducing a new more readable way to achieve the same result called TagHelpers.</p>
+
+<blockquote>
+  <p>If you are using the normal Template from Visual Studio ASP-NET TagHelpers are already included! However, I will mention the necessary steps anyway.</p>
+</blockquote>
+
+<p>Getting started:</p>
+
+<p>First make sure you included a reference to the tag helpers in your project.json</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/TagHelpers_1.png" alt="TagHelpers_1" /></p>
+
+<p>And Because tag helpers do not throw an exception if you use them and they do not work you should also include a _ViewImports.cshtml which is responsible to load all extra functionality to your views. You can simply add it via the context menu Add –&gt; New Item.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/11/TagHelpers_2.png" alt="TagHelpers_2" />
+<img src="/assets/articles/wp-content/uploads/2015/11/TagHelpers_3.png" alt="TagHelpers_3" /></p>
+
+<p>Now all the cshtml files are able to handle ASP.NET-TagHelpers which get easily in your html like this:</p>
+
+<p><code class="highlighter-rouge">&lt;li&gt;&lt;a asp-controller="Home" asp-action="Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></p>
+
+<p>which is rendered to</p>
+
+<p><code class="highlighter-rouge">&lt;li&gt;&lt;a href="/Home/Contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;</code></p>
+
+<p>That is great because you do not have to use a non-html-syntax anymore and it it easier to understand and to read.</p>
+
+<p>You can also write forms in this Html-Tag-Helper-Syntax which is really nice to understand</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;form asp-controller="Home" asp-action="SendData" method="post" class="form-horizontal" role="form"&gt;
+    &lt;div asp-validation-summary="ValidationSummary.All" class="text-danger"&gt;&lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label asp-for="Name" class="col-md-2 control-label"&gt;&lt;/label&gt;
+        &lt;div class="col-md-10"&gt;
+            &lt;input asp-for="Name" class="form-control" /&gt;
+            &lt;span asp-validation-for="Name" class="text-danger"&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label asp-for="Age" class="col-md-2 control-label"&gt;&lt;/label&gt;
+        &lt;div class="col-md-10"&gt;
+            &lt;input asp-for="Age" class="form-control" /&gt;
+            &lt;span asp-validation-for="Age" class="text-danger"&gt;&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="form-group"&gt;
+        &lt;div class="col-md-offset-2 col-md-10"&gt;
+            &lt;button type="submit" class="btn btn-default"&gt;Send person&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+</div>
+
+<p>instead of using the “ugly” @-like Sytax before.</p>
+
+<p>Hope to make you curious about tag helpers. Go and use them in your next ASP.NET-Project :)</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+
+        </section>
+
+        <footer class="post-footer">
+
+            <!-- Everything inside the #author tags pulls data from the author -->
+            <!-- #author-->
+
+            
+            <figure class="author-image">
+                <a class="img" href="/author/" style="background-image: url(/assets/images/profile.jpg)"><span class="hidden">Fabian Gosebrink's Picture</span></a>
+            </figure>
+            
+
+            <section class="author">
+                <h4><a href="/author/">Fabian Gosebrink</a></h4>
+                
+                
+                    <p> Developing Software, Speaking & Teaching about ASP.NET & Angular</p>
+                
+                <div class="author-meta">
+                    <span class="author-location icon-location"> St. Gallen, Switzerland</span> 
+                    <span class="author-link icon-link"><a href="http://fabian-gosebrink.com"> http://fabian-gosebrink.com</a></span> 
+                </div>
+            </section>
+
+            <!-- /author  -->
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="http://twitter.com/share?text=How to use tag helpers in ASP.NET MVC&amp;url=http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+            
+            <!-- Add Disqus Comments -->
+            
+                <div id="disqus_thread"></div>
+<script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'offeringsolutions'; // required: replace example with your forum shortname
+        var disqus_identifier = '/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/';
+        var disqus_url = 'http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/';
+        //var disqus_url = 'offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/';
+ 
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+
+            
+            
+        </footer>
+
+    </article>
+
+</main>
+
+<aside class="read-next">
+
+    <!-- [[! next_post ]] -->
+    
+        <a class="read-next-story " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/">
+            <section class="post">
+                <h2>Getting started with Visual Studio Code, AngularJS and Typescript</h2>
+                <p>This time I want to show you how getting started with Visual Studio Code, AngularJS...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /next_post ]] -->
+    <!-- [[! prev_post ]] -->
+    
+        <a class="read-next-story prev " style="background-image: url(/assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg)" href="/blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/">
+            <section class="post">
+                <h2>Talk bei den Microsoft Evolution Days in Zürich</h2>
+                <p>Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die...</p>
+            </section>
+        </a>
+    
+    <!-- [[! /prev_post ]] -->
+</aside>
+
+<!-- /post -->
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="/">Offering Solutions</a> &copy; 2017</section>
+            <section class="social-centered">&copy; Fabian Gosebrink
+                <a class="social-icon" href="https://www.linkedin.com/in/fabian-gosebrink-71023a88"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/FabianGosebrink"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://github.com/OfferingSolutions"><i class="fa fa-github" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://mvp.microsoft.com/en-us/PublicProfile/5001666?fullName=Fabian%20%20Gosebrink"><i class="fa fa-windows" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://www.xing.com/profile/Fabian_Gosebrink"><i class="fa fa-xing" aria-hidden="true"></i></a>
+                <a class="social-icon" href="https://twitter.com/FabianGosebrink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+            </section>
+        </footer>
+    </div>
+    <!-- [[! Ghost outputs important scripts and data with this tag ]] -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- [[! The main JavaScript file for Casper ]] -->
+    <script type="text/javascript" src="/assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    <script type="text/javascript" src="/assets/js/jekyll-search.js"></script>
+
+    <script>
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: '/search.json',
+        })
+    </script>
+
+    <!-- Add Google Analytics  -->
+        <!-- Google Analytics Tracking code -->
+     <script>
+	    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	    ga('create', 'UA-91830658-1', 'auto');
+	    ga('send', 'pageview');
+
+     </script>
+</body>
+
+</html>

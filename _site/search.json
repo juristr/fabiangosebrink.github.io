@@ -1,0 +1,619 @@
+[
+  
+    {
+      "title"    : "Lessons I learnt from organising a conference",
+      "category" : "",
+      "tags"     : "angular, azure, conference, angular, dotnet",
+      "url"      : "http://offering.solutions/blog/articles/2017/07/18/things-i-learned-from-organising-a-conference/",
+      "date"     : "2017-07-18 19:55:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Announcing the .NET Day 2017",
+      "category" : "",
+      "tags"     : "angular, azure, conference",
+      "url"      : "http://offering.solutions/blog/articles/2017/04/02/announcing-the-dotnetday-2017/",
+      "date"     : "2017-04-02 19:12:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Moving your Angular application from SystemJS to Webpack",
+      "category" : "",
+      "tags"     : "angular, systemjs, webpack",
+      "url"      : "http://offering.solutions/blog/articles/2017/02/26/moving-from-systemjs-to-webpack-angular-2/",
+      "date"     : "2017-02-26 16:46:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Automatically reload typed configuration in ASP.NET Core",
+      "category" : "",
+      "tags"     : "ioptionssnapshot, aspnetcore",
+      "url"      : "http://offering.solutions/blog/articles/2017/02/17/automatically-reload-typed-configuration-in-asp-net-core/",
+      "date"     : "2017-02-17 22:31:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Angular Ahead Of Time (AoT) compilation, lazy loading and treeshaking with webpack",
+      "category" : "",
+      "tags"     : "angular, webpack, lazyloading, treeshaking, aot",
+      "url"      : "http://offering.solutions/blog/articles/2017/02/08/angular-2-ahead-of-time-aot-compilation-lazy-loading-treeshaking-webpack/",
+      "date"     : "2017-02-08 16:42:00 +0100"
+    } ,
+  
+    {
+      "title"    : "The difference between AddMvc() and AddMvcCore()",
+      "category" : "",
+      "tags"     : "aspnet, aspnetcore",
+      "url"      : "http://offering.solutions/blog/articles/2017/02/07/difference-between-addmvc-addmvcore/",
+      "date"     : "2017-02-07 20:49:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Working with Angular Template Forms",
+      "category" : "",
+      "tags"     : "angular, forms, templatedriven",
+      "url"      : "http://offering.solutions/blog/articles/2017/01/14/working-with-angular-2-template-forms/",
+      "date"     : "2017-01-14 13:49:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Speaking at the Microsoft TechDays 2017",
+      "category" : "",
+      "tags"     : "microsoft, speaking, techdays",
+      "url"      : "http://offering.solutions/blog/articles/2017/01/02/speaking-at-the-microsoft-techdays-2017/",
+      "date"     : "2017-01-02 10:08:00 +0100"
+    } ,
+  
+    {
+      "title"    : "How I started recording my first Video training",
+      "category" : "",
+      "tags"     : "channel9, microphone, recording, screenrecording, talks, speaking",
+      "url"      : "http://offering.solutions/blog/articles/2016/11/29/how-i-started-recording-my-first-video-training/",
+      "date"     : "2016-11-29 14:07:00 +0100"
+    } ,
+  
+    {
+      "title"    : "How to implement a table filter in Angular",
+      "category" : "",
+      "tags"     : "angular, filter, pipe, tablefilter, typescript",
+      "url"      : "http://offering.solutions/blog/articles/2016/11/21/how-to-implement-a-table-filter-in-angular-2/",
+      "date"     : "2016-11-21 21:16:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Build and debug a WebAPI with the Dotnet CLI and VSCode",
+      "category" : "",
+      "tags"     : "aspnet, dotnet, cli, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2016/11/02/build-and-debug-webapi-with-the-dotnet-cli-and-vscode/",
+      "date"     : "2016-11-02 09:30:00 +0100"
+    } ,
+  
+    {
+      "title"    : "How to debug an Angular application with Chrome and VS Code",
+      "category" : "",
+      "tags"     : "debug, angular, chrome, vscode",
+      "url"      : "http://offering.solutions/blog/articles/2016/10/16/how-to-debug-an-angular-application-with-chrome-and-vs-code/",
+      "date"     : "2016-10-16 17:50:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Moving from Microsoft Lumia 950 to OnePlus 3",
+      "category" : "",
+      "tags"     : "microsoft, lumia, mobile, oneplus, phones",
+      "url"      : "http://offering.solutions/blog/articles/2016/10/15/moving-from-microsoft-lumia-950-to-oneplus-3/",
+      "date"     : "2016-10-15 16:19:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How to set up Angular and Webpack in Visual Studio with ASP.NET Core",
+      "category" : "",
+      "tags"     : "aspnet, aspnetcore, visualstudio, webpack, devserver",
+      "url"      : "http://offering.solutions/blog/articles/2016/08/27/how-to-set-up-angular-2-and-webpack-in-visual-studio-with-asp-net-core/",
+      "date"     : "2016-08-27 16:58:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Neue Angular-Kurstermine angekündigt",
+      "category" : "",
+      "tags"     : "angularjs, courses, digicomp",
+      "url"      : "http://offering.solutions/blog/articles/2016/08/17/neue-angular-kurstermine-angekundigt/",
+      "date"     : "2016-08-17 19:14:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How to create an ASP.NET Core WebAPI",
+      "category" : "",
+      "tags"     : "aspnet, core, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2016/07/29/how-to-create-an-asp-net-core-webapi/",
+      "date"     : "2016-07-29 18:31:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Kooperation von MyCSharp.de und der BASTA!",
+      "category" : "",
+      "tags"     : "basta, mycsharp",
+      "url"      : "http://offering.solutions/blog/articles/2016/07/20/kooperation-von-mycsharp-de-und-der-basta/",
+      "date"     : "2016-07-20 18:05:00 +0200"
+    } ,
+  
+    {
+      "title"    : "ASP.NET Core 1.0 with Entity Framework Core",
+      "category" : "",
+      "tags"     : "aspnet, core, entityframeworkcore",
+      "url"      : "http://offering.solutions/blog/articles/2016/07/03/asp-net-core-with-entity-framework-core/",
+      "date"     : "2016-07-03 22:32:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Cross Platform Builds with Angular, Gulp and Webpack",
+      "category" : "",
+      "tags"     : "angular, gulp, webpack",
+      "url"      : "http://offering.solutions/blog/articles/2016/06/17/cross-platform-builds-with-angular-2-gulp-and-webpack/",
+      "date"     : "2016-06-17 19:09:00 +0200"
+    } ,
+  
+    {
+      "title"    : "ASP.NET Core and Angular with Webpack and Visual Studio",
+      "category" : "",
+      "tags"     : "angular, aspnet, core, webpack",
+      "url"      : "http://offering.solutions/blog/articles/2016/06/12/asp-net-core-angular-2-webpack-visual-studio/",
+      "date"     : "2016-06-12 22:10:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Kurs - Frontend-Entwicklung mit AngularJS",
+      "category" : "",
+      "tags"     : "angularjs, courses, training, speaking, talks",
+      "url"      : "http://offering.solutions/blog/articles/2016/05/25/kurs-frontend-entwicklung-mit-angularjs/",
+      "date"     : "2016-05-25 18:30:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How you can organise gulp in your applications",
+      "category" : "",
+      "tags"     : "gulp, javascript",
+      "url"      : "http://offering.solutions/blog/articles/2016/05/16/how-you-can-organise-gulp-in-your-applications/",
+      "date"     : "2016-05-16 08:30:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Writing custom validators in Angular",
+      "category" : "",
+      "tags"     : "angular, customvalidation",
+      "url"      : "http://offering.solutions/blog/articles/2016/05/10/writing-custom-validators-in-angular-2/",
+      "date"     : "2016-05-10 17:42:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 2",
+      "category" : "",
+      "tags"     : "angular, aspnet, azure, cordova, crossplatform, gulp, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/",
+      "date"     : "2016-04-26 10:05:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 1",
+      "category" : "",
+      "tags"     : "angular, aspnet, azure, cordova, crossplatform, gulp, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/",
+      "date"     : "2016-04-19 17:34:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Microsoft TechDays 2016",
+      "category" : "",
+      "tags"     : "talks, techdays, microsoft, speaking",
+      "url"      : "http://offering.solutions/blog/articles/2016/02/20/talk-on-the-microsoft-techdays-2016-in-baden/",
+      "date"     : "2016-02-20 11:30:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Consuming a REST API with Angular Http-Service in Typescript",
+      "category" : "",
+      "tags"     : "angular, restapi, typescript",
+      "url"      : "http://offering.solutions/blog/articles/2016/02/01/consuming-a-rest-api-with-angular-http-service-in-typescript/",
+      "date"     : "2016-02-01 12:23:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Angular and ASP.NET Core Starter",
+      "category" : "",
+      "tags"     : "angular, aspnet, core, vscode",
+      "url"      : "http://offering.solutions/blog/articles/2016/01/25/angular-2-asp-net-core-starter/",
+      "date"     : "2016-01-25 19:47:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Get started with ASP.NET Core and Entity Framework 6",
+      "category" : "",
+      "tags"     : "aspnet, mvc, automapper, codefirst, database, context, entityframework, json, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2015/12/13/get-started-with-asp-net-core-and-entity-framework-6/",
+      "date"     : "2015-12-13 20:20:00 +0100"
+    } ,
+  
+    {
+      "title"    : "ASP.NET Unit Of Work with Entity Framework",
+      "category" : "",
+      "tags"     : "entityframework, nuget, unitofwork, aspnet",
+      "url"      : "http://offering.solutions/blog/articles/2015/12/09/asp-net-unit-of-work-with-entity-framework/",
+      "date"     : "2015-12-09 21:37:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Getting started with Visual Studio Code, AngularJS and Typescript",
+      "category" : "",
+      "tags"     : "angularjs, typescript, vscode",
+      "url"      : "http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/",
+      "date"     : "2015-12-03 14:17:00 +0100"
+    } ,
+  
+    {
+      "title"    : "How to use tag helpers in ASP.NET MVC",
+      "category" : "",
+      "tags"     : "aspnet, mvc, taghelpers",
+      "url"      : "http://offering.solutions/blog/articles/2015/11/16/how-to-use-tag-helpers-in-asp-net-mvc/",
+      "date"     : "2015-11-16 20:18:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Talk bei den Microsoft Evolution Days in Zürich",
+      "category" : "",
+      "tags"     : "angularjs, restapi, talks, speaking",
+      "url"      : "http://offering.solutions/blog/articles/2015/11/12/talk-bei-den-microsoft-evolution-days-in-zurich/",
+      "date"     : "2015-11-12 21:42:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Zu Gast beim MVP Global Summit bei Microsoft",
+      "category" : "",
+      "tags"     : "global, mvp, summit, microsoft",
+      "url"      : "http://offering.solutions/blog/articles/2015/11/04/zu-gast-beim-mvp-global-summit-bei-microsoft/",
+      "date"     : "2015-11-04 17:36:00 +0100"
+    } ,
+  
+    {
+      "title"    : "WebHooks with ASP.NET on Azure - DropBox and GitHub",
+      "category" : "",
+      "tags"     : "aspnet, azure, dropbox, github, visualstudio, webhooks",
+      "url"      : "http://offering.solutions/blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/",
+      "date"     : "2015-10-18 19:50:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Token Authentication with Claims and ASP.NET WebAPI",
+      "category" : "",
+      "tags"     : "aspnet, authentication, authorization, claims, oauthprovider, roles",
+      "url"      : "http://offering.solutions/blog/articles/2015/10/03/token-authentication-with-claims-and-asp-net-webapi/",
+      "date"     : "2015-10-03 14:20:52 +0200"
+    } ,
+  
+    {
+      "title"    : "WebAPI with ASP.NET Core 1.0 and ASP.NET",
+      "category" : "",
+      "tags"     : "aspnet, web, architecture, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2015/09/02/webapi-with-asp-net-core-1-0-and-asp-net/",
+      "date"     : "2015-09-02 17:04:00 +0200"
+    } ,
+  
+    {
+      "title"    : "AngularJS with gulp, wiredep and bower",
+      "category" : "",
+      "tags"     : "angularjs, bower, github, gulp, wiredep",
+      "url"      : "http://offering.solutions/blog/articles/2015/08/30/angularjs-with-gulp-wiredep-and-bower/",
+      "date"     : "2015-08-30 11:18:00 +0200"
+    } ,
+  
+    {
+      "title"    : "AngularJS NgResource Demo with ASP.NET WebAPI",
+      "category" : "",
+      "tags"     : "angularjs, github, json, ngresource, webapi, aspnet",
+      "url"      : "http://offering.solutions/blog/articles/2015/08/25/angularjs-ngresource-demo-with-asp-net-webapi/",
+      "date"     : "2015-08-25 11:45:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How to build a great RESTful Service",
+      "category" : "",
+      "tags"     : "github, restapi, webapi, aspnet",
+      "url"      : "http://offering.solutions/blog/articles/2015/07/20/how-to-build-a-great-restful-service/",
+      "date"     : "2015-07-20 21:13:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Meine ersten Tage mit dem Surface Pro 3",
+      "category" : "",
+      "tags"     : "microsoft, surface3, pro",
+      "url"      : "http://offering.solutions/blog/articles/2015/07/01/meine-ersten-tage-mit-dem-surface-3/",
+      "date"     : "2015-07-01 06:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Paging in einer ASP.Net WebAPI und AngularJS",
+      "category" : "",
+      "tags"     : "angularjs, aspnet",
+      "url"      : "http://offering.solutions/blog/articles/2015/06/09/paging-in-einer-asp-net-webapi-und-angularjs/",
+      "date"     : "2015-06-09 12:14:00 +0200"
+    } ,
+  
+    {
+      "title"    : "ASP.NET WebAPI Datashaper to strip your json data",
+      "category" : "",
+      "tags"     : "datashaping, github, restapi, webapi",
+      "url"      : "http://offering.solutions/blog/articles/2015/05/30/asp-net-webapi-datashaper-to-strip-your-json-data/",
+      "date"     : "2015-05-30 18:23:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme",
+      "category" : "",
+      "tags"     : "angularjs, architecture, aspnet, development, spa",
+      "url"      : "http://offering.solutions/blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/",
+      "date"     : "2015-05-01 17:35:00 +0200"
+    } ,
+  
+    {
+      "title"    : "MyCSharp.de - Kooperation mit der Basta!",
+      "category" : "",
+      "tags"     : "basta, mycsharp",
+      "url"      : "http://offering.solutions/blog/articles/2015/04/24/mycsharp-de-kooperation-mit-der-basta/",
+      "date"     : "2015-04-24 17:30:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Find me on GitHub",
+      "category" : "",
+      "tags"     : "github",
+      "url"      : "http://offering.solutions/blog/articles/2015/04/22/find-me-on-github/",
+      "date"     : "2015-04-22 17:53:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Microsoft TechTalk in Wallisellen",
+      "category" : "",
+      "tags"     : "microsoft, techtalk, wallisellen, talks, speaking",
+      "url"      : "http://offering.solutions/blog/articles/2015/04/19/microsoft-techtalk-in-wallisellen/",
+      "date"     : "2015-04-19 17:52:00 +0200"
+    } ,
+  
+    {
+      "title"    : "User Stories vs Bugs vs Product Backlog Items",
+      "category" : "",
+      "tags"     : "bug, productbacklog, item, scrum, userstory",
+      "url"      : "http://offering.solutions/blog/articles/2015/04/01/user-stories-vs-bugs-vs-product-backlog-items/",
+      "date"     : "2015-04-01 04:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How to modularize your angular application",
+      "category" : "",
+      "tags"     : "angularjs, modules",
+      "url"      : "http://offering.solutions/blog/articles/2015/03/17/how-to-modularize-your-angular-application/",
+      "date"     : "2015-03-17 04:43:00 +0100"
+    } ,
+  
+    {
+      "title"    : "ASP.NET Helpers by Offering Solutions",
+      "category" : "",
+      "tags"     : "mvchelper, nuget, submitmodel, viewmodel",
+      "url"      : "http://offering.solutions/blog/articles/2015/03/04/asp-net-helpers-by-offering-solutions/",
+      "date"     : "2015-03-04 21:08:00 +0100"
+    } ,
+  
+    {
+      "title"    : "How to work with the q promise syntax in AngularJS",
+      "category" : "",
+      "tags"     : "angularjs, architecture, promises, spa",
+      "url"      : "http://offering.solutions/blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/",
+      "date"     : "2015-03-01 03:27:00 +0100"
+    } ,
+  
+    {
+      "title"    : "WPF CallMemberName for INotifyPropertyChanged",
+      "category" : "",
+      "tags"     : "callMemberName, inotifypropertychanged, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/",
+      "date"     : "2015-02-08 23:08:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Jeder braucht einen Scrum-Master!",
+      "category" : "",
+      "tags"     : "scrum, master",
+      "url"      : "http://offering.solutions/blog/articles/2015/01/20/jeder-braucht-einen-scrum-master/",
+      "date"     : "2015-01-20 08:00:00 +0100"
+    } ,
+  
+    {
+      "title"    : "SCRUM - Wege zu einer erfolgreichen Retrospektive",
+      "category" : "",
+      "tags"     : "retrospektive, scrum",
+      "url"      : "http://offering.solutions/blog/articles/2014/12/04/scrum-wege-zu-einer-erfolgreichen-retrospektive/",
+      "date"     : "2014-12-04 07:05:00 +0100"
+    } ,
+  
+    {
+      "title"    : "ASP.NET - Clientseitige Webarchitekturen mit AngularJS",
+      "category" : "",
+      "tags"     : "angularjs, entityframework, solution, web, architecture",
+      "url"      : "http://offering.solutions/blog/articles/2014/11/02/asp-net-clientseitige-webarchitekturen-mit-angularjs/",
+      "date"     : "2014-11-02 07:05:00 +0100"
+    } ,
+  
+    {
+      "title"    : "Mach das Handy aus! Wie man maximal produktiv sein kann",
+      "category" : "",
+      "tags"     : "life",
+      "url"      : "http://offering.solutions/blog/articles/2014/10/13/mach-das-handy-aus-wie-man-maximal-produktiv-sein-kann/",
+      "date"     : "2014-10-13 19:32:00 +0200"
+    } ,
+  
+    {
+      "title"    : "ASP.NET Repository Pattern und Unit of Work",
+      "category" : "",
+      "tags"     : "aspnet, unitofwork",
+      "url"      : "http://offering.solutions/blog/articles/2014/10/06/asp-net-repository-pattern-und-unit-of-work/",
+      "date"     : "2014-10-06 20:39:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Correct implementation of Commands in WPF",
+      "category" : "",
+      "tags"     : "architecture, commands, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2014/10/01/correct-implementation-of-commands-in-wpf/",
+      "date"     : "2014-10-01 17:32:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Unterhaltsame Meetings in SCRUM",
+      "category" : "",
+      "tags"     : "agile, development, scrum, team, teamwork",
+      "url"      : "http://offering.solutions/blog/articles/2014/09/18/unterhaltsame-meetings-in-scrum/",
+      "date"     : "2014-09-18 19:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "WPF Basics II - The INotifyPropertyChanged Interface",
+      "category" : "",
+      "tags"     : "basics, databinding, tutorial, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/",
+      "date"     : "2014-09-14 19:41:00 +0200"
+    } ,
+  
+    {
+      "title"    : "How to make first steps of Databinding in WPF",
+      "category" : "",
+      "tags"     : "basics, databinding, tutorial, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2014/09/02/how-to-make-first-steps-of-databinding-in-wpf/",
+      "date"     : "2014-09-02 03:24:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Impressions of the first ASP.NET MVC workshop",
+      "category" : "",
+      "tags"     : "aspnet, workshop",
+      "url"      : "http://offering.solutions/blog/articles/2014/08/10/impressions-of-the-first-asp-net-mvc-workshop/",
+      "date"     : "2014-08-10 16:38:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Clean your viewmodel in WPF and create a facade",
+      "category" : "",
+      "tags"     : "architecture, databinding, facade, inotifypropertychanged, pattern, provider, services, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2014/07/03/clean-your-viewmodel-in-wpf-and-create-a-facade/",
+      "date"     : "2014-07-03 17:51:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Chat with Node.js, socket.io, AngularJS, flashing title and loading bar",
+      "category" : "",
+      "tags"     : "angularjs, nodejs, socketio",
+      "url"      : "http://offering.solutions/blog/articles/2014/07/03/chat-with-node-js-socket-io-angular-js-flashing-title-and-loading-bar/",
+      "date"     : "2014-07-03 11:54:00 +0200"
+    } ,
+  
+    {
+      "title"    : "ASP.NET MVC - Generic Repositories and UnitOfWork",
+      "category" : "",
+      "tags"     : "aspnet, mvc, web, architecture",
+      "url"      : "http://offering.solutions/blog/articles/2014/07/01/asp-net-mvc-generic-repositories-and-unitofwork/",
+      "date"     : "2014-07-01 08:00:00 +0200"
+    } ,
+  
+    {
+      "title"    : "Creating a business logic in ASP.NET MVC",
+      "category" : "",
+      "tags"     : "aspnet, mvc, web, architecture",
+      "url"      : "http://offering.solutions/blog/articles/2014/06/10/creating-a-business-logic-in-asp-net-mvc/",
+      "date"     : "2014-06-10 18:00:13 +0200"
+    } ,
+  
+    {
+      "title"    : "WPF crashes with &quot;OutOfMemoryException&quot; when loading PNGs in Windows 8.1",
+      "category" : "",
+      "tags"     : "exception, images, outofmemory, pictures, windows, wpf",
+      "url"      : "http://offering.solutions/blog/articles/2014/06/04/wpf-crashes-with-outofmemoryexception-when-loading-pngs/",
+      "date"     : "2014-06-04 18:05:34 +0200"
+    } ,
+  
+    {
+      "title"    : "Why I like SCRUM - Tips which may help you",
+      "category" : "",
+      "tags"     : "agile, development, management, planning, process, retrospective, scrum, software, tips",
+      "url"      : "http://offering.solutions/blog/articles/2014/06/03/why-i-like-scrum-tips-which-may-help-you/",
+      "date"     : "2014-06-03 19:12:40 +0200"
+    } ,
+  
+    {
+      "title"    : "Structurize your project with areas and services in ASP.NET MVC",
+      "category" : "",
+      "tags"     : "areas, aspnet, mvc, controllerservice, services",
+      "url"      : "http://offering.solutions/blog/articles/2014/06/01/structurize-your-project-with-areas-and-services-in-asp-net-mvc/",
+      "date"     : "2014-06-01 08:39:56 +0200"
+    } ,
+  
+    {
+      "title"    : "How to include DotNet.HighCharts in ASP.NET MVC with ViewModels",
+      "category" : "",
+      "tags"     : "aspnet, charts, highcharts, mvc, viewmodel",
+      "url"      : "http://offering.solutions/blog/articles/2014/05/09/how-to-include-dotnet-highcharts-in-asp-net-mvc-with-viewmodels/",
+      "date"     : "2014-05-09 16:41:01 +0200"
+    } ,
+  
+    {
+      "title"    : "Deleting a Team Project on Visual Studio Team Services",
+      "category" : "",
+      "tags"     : "tfs, visualstudio",
+      "url"      : "http://offering.solutions/blog/articles/2014/04/14/deleting-a-team-project-on-visual-studio-team-services/",
+      "date"     : "2014-04-14 08:37:53 +0200"
+    } ,
+  
+    {
+      "title"    : "Code-First with Entity Framework n:m relationship with additional information",
+      "category" : "",
+      "tags"     : "aspnet, codefirst, ef, entityframework, fluentapi, relationships",
+      "url"      : "http://offering.solutions/blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/",
+      "date"     : "2014-04-06 19:18:15 +0200"
+    } ,
+  
+    {
+      "title"    : "How to avoid ViewBag and ViewData in ASP.NET MVC",
+      "category" : "",
+      "tags"     : "aspnet, mvc, viewbag, viewdata",
+      "url"      : "http://offering.solutions/blog/articles/2014/03/08/how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/",
+      "date"     : "2014-03-08 14:24:01 +0100"
+    } ,
+  
+    {
+      "title"    : "Lightweight architecture with AngularJS",
+      "category" : "",
+      "tags"     : "angularjs, javascript, webarchitecture",
+      "url"      : "http://offering.solutions/blog/articles/2014/03/05/lightweight-architecture-with-angularjs/",
+      "date"     : "2014-03-05 18:17:51 +0100"
+    } ,
+  
+    {
+      "title"    : "How to install Ninject in ASP.NET WebAPI",
+      "category" : "",
+      "tags"     : "aspnet, depdendency, dependencyinjection, injection, mvc, ninject",
+      "url"      : "http://offering.solutions/blog/articles/2014/03/04/install-ninject-asp-net-webapi/",
+      "date"     : "2014-03-04 18:57:23 +0100"
+    } ,
+  
+    {
+      "title"    : "Using the Crypto-Namespace to Generate Salts and Compare Passwords",
+      "category" : "",
+      "tags"     : "aspnet, crypto, hash, salt",
+      "url"      : "http://offering.solutions/blog/articles/2014/03/03/using-crypto-namespace-to-generate-salts-and-compare-passwords/",
+      "date"     : "2014-03-03 22:02:40 +0100"
+    } ,
+  
+    {
+      "title"    : "Configure ASP.NET WebAPI to send data as JSON",
+      "category" : "",
+      "tags"     : "aspnet, configuration, json",
+      "url"      : "http://offering.solutions/blog/articles/2014/02/26/configure-asp-net-webapi-to-send-data-as-json/",
+      "date"     : "2014-02-26 20:51:54 +0100"
+    } 
+  
+]

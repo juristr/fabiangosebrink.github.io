@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme</title>
+	  <link>//blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-05-01T17:35:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/05/01/eine-rest-api-ist-mehr-als-eine-api-moderne-architekturen-fur-verteilte-systeme/</guid>
+	  <description><![CDATA[
+	     <p>In diesem Blogpost möchte ich zeigen, wie wichtig eine API heutzutage ist. Frei nach dem Motto: Eine REST API ist mehr als eine API – Moderne Architekturen für verteilte Systeme</p>
+
+<p>In der heutigen Zeit ist es absolut unabdingbar eine Software, die man für internen oder externen Gebrauch schreibt, auf mehreren Wegen verfügbar bzw. konsumierbar zu machen. Wichtig sind hierbei sicherlich Desktop-PCs, Smartphones und Tablets.</p>
+
+<p>Völlig unabhängig der eingesetzten Technologie (ASP.NET WebAPI, AngularJS, Xamarin, ASP.NET MVC, etc.) möchte ich mit diesem Blog einen Schritt zurückgehen und den Blick auf die Architektur lenken, die moderne Software-Lösungen voranbringen können. Hierbei werde ich zwar auch Technologien als Beispiel erwähnen, diese sind aber nur als Beispiel zu betrachten. Die Lösungen in dieser Hinsicht sind sicherlich vielfältiger als das hier geschriebene.</p>
+
+<h3 id="die-ganze-welt-schreibt-apis"><em>Die ganze Welt schreibt Apis</em></h3>
+
+<p>Trotz dem gemeinsamen Fakt, dass vom Kunden maximale Verfügbarkeit gefordert wird, sind Lösungen in diesem Bereich sehr individuell anzusehen. Kunde A braucht eine Lösung in einer bestimmten Richtung, für Kunde B ist wiederum etwas anderes interessant, etc.</p>
+
+<p>Was viele gemeinsam haben ist jedoch, dass sie Daten aus einer bestimmten Quelle beziehen und ablegen und auf dem anderen Ende anzeigen müssen. Hierbei verwendet man heutzutage REST-APIs. Auf einer Entwicklerkonferenz habe ich ein Zitat aufgeschnappt, was mich nicht mehr loslässt:</p>
+
+<blockquote>
+  <p>„Die ganze Welt schreibt APIs“</p>
+</blockquote>
+
+<p>Egal mit welcher Lösung man auf die Datensenke zugreift, also welche Anwendung der Kunde wünscht, ist es doch das Beste, man hat ein einheitliche Schnittstelle, gegen die man implementieren kann, die alle Operationen zur Verfügung stellt, die der Kunde braucht. Hierbei rede ich nicht nur von Daten, die abgerufen und abgelegt werden können. Hierbei geht es auch um Sortierungen, Paging, Datashaping, Autorisierung, Authentifizierung und und und. Moderne APIs stellen so etwas standardmässig zur Verfügung. Je nachdem ob der Client dies benutzen muss oder nicht: Die Funktionalität sollte auf jeden Fall implementiert sein. Wer weiss schon, welcher Client mit meiner Api kommuniziert? Die API sollte auf einem einheitlichen Standard basieren. Hier bietet sich der Standard an, der sich seit Jahren durchgesetzt hat: REST. Die API kann Http-Calls interpretieren und wie gewünscht auch mit einer entsprechenden Inhalt antworten.</p>
+
+<p>Nehmen wir als Beispiel den Kurznachrichtendienst Twitter. Twitter ist ein Unternehmen, das moderne Architekturen implementiert, fördert und lebt. Es gibt unendlich viele Twitter Clients für nahezu jede (!) Plattform. Diese kommunizieren alle gegen die Twitter API, die ein und dieselbe Funktionalität zur Verfügung stellt. Es kann REST-Calls interpretieren und ist somit in jede Richtung offen.</p>
+
+<p>Die Implementierung der API, auch im Twitter-Fall, erfolgt nach den Regeln von HTML. Das REST-Prinzip stellt hierbei alle Funktionen zur Verfügung, die ich brauche und ist ein Standard, den alle Endsysteme ausnahmslos sprechen. Ob Android, MVC, iOS, Windows: HTML bzw. die HTML-Verben sind Sprach, System und Plattformunabhängig.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/1.png" alt="1" /></p>
+
+<p>Somit ist eine modern entwickelte API das A und O einer modernen Architektur. Cloud-Systeme wie Microsofts Azure machen es einfacher denn je solche Systeme zu hosten. Um eine standardisierte Sprache zwischen den Clients und der API einzusetzen hat sich JSON durchgesetzt und hält auch in modernen Technologien (ASP.NET 5, Bower, …) auch als Konfigurationsmodell Einzug.</p>
+
+<p>Vor dem Hintergrund ist nun die einzige Anforderung an einen Client nur noch, dass er online http-Calls absetzen kann. Clientseitiges Caching sorgt hingegen dafür, dass die Applikation auch offline benutzt werden kann. Synchronisierungen finden natürlich nur im Online-Zustand statt. Aber wer ist denn heutzutage schon lange offline ;-)</p>
+
+<p>Die Clients könne vielfältig und in verschiedenen Sprachen entwickelt worden sein.</p>
+
+<p><em>Web: Asp.Net MVC, JavaScript (bspw. AngularJS)</em>
+<em>Mobile: Xamarin, Native, AngularJS</em>
+<em>Desktop: WPF, AngularJS (Node WebKit)</em></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/05/2.png" alt="2" /></p>
+
+<p>Eine REST-Api kann also, unabhängig vom Client, Daten und Datenoperationen zur Verfügung stellen. Sie sollte heutzutage mehr bieten als nur GET und POST-Methoden, sondern auch Paging, Sorting, Datashaping etc. unterstützen um wirklich eine flexible und fähige API zu bieten. Mit solch einer REST-API im Hintergrund können für den Kunden individuelle Lösungen entwickelt werden, die alle letztendlich die gleiche Datensenke konsumieren.</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>How to work with the q promise syntax in AngularJS</title>
+	  <link>//blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-03-01T03:27:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/03/01/how-to-work-with-the-q-promise-syntax-in-angularjs/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you how to work with the q promise syntax in AngularJS</p>
+
+<h4 id="the-thensuccesserror-syntax">The “Then(success/error)”-Syntax</h4>
+
+<p>If you are developing with <strong>angularJs</strong> you have to work with promises angular gives to you. Its the syntax you have when you can react with a “then(success/error)” on it. And if you work with this syntax you will notice that its very mighty because it is one very clean way to react to your server responses or whatever in case of an error. So the “then(success/error)”-syntax is giving you error handling out of the box. You get the promise and react on it in case of a good or an error result.</p>
+
+<p>Very cool, hm?</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/here/goes/my/Api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Success</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+          <span class="p">});</span></code></pre></figure>
+
+<h4 id="structure-which-tiers-that-have-no-clue">Structure which tiers that have no clue!</h4>
+
+<p>Working client-side also needs structure and architecture to get to all these files and their responsibilities. This means: Giving your application modularity, making several single responsibilities to your controller, perhaps modal-controllers and working with repositories (which are also called “<em>services” or “</em>dataservices” or whatever. I use to call the repositories because on the client side its where i get the data from. I will handle this in a special blog post by the time.</p>
+
+<p>The thing is: We have different levels ob abstraction and the “then(success/error)” syntax can be used once. Once we received a promise, we can react in a positive or a negative way on it. And thats it. Our tier calling a method which uses the promise has no idea id the success was good or not. because it was already resolved.</p>
+
+<p>An example:</p>
+
+<p>Repository:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/here/goes/my/Api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Success</span>
+              <span class="k">return</span> <span class="s2">"good"</span><span class="p">;</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+              <span class="k">return</span> <span class="s2">"bad"</span><span class="p">;</span>
+          <span class="p">});</span></code></pre></figure>
+
+<p>and your controller could be like:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">loadMyData</span><span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">myRepository</span><span class="p">.</span><span class="nx">getSomeData</span><span class="p">(</span><span class="nx">$routeParams</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">==</span> <span class="s2">"good"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//Success</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">result</span> <span class="o">==</span> <span class="s2">"bad"</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">//Error</span>
+            <span class="p">}</span>
+        <span class="p">};</span></code></pre></figure>
+
+<p>So the controller does not have an idea about the promise anymore. It only has the variables to work with. And this is ugly. In fact: We are losing our promise as soon as we return something else. Here this is in the repository (or (data)service)</p>
+
+<h4 id="the-solution">The solution</h4>
+
+<p>The solutions for this brings us the q-syntax. With this syntax we are able to keep our promise to the upcoming layers. So we are calling our webAPI, angular gives us a promise via the http-syntax (seen above). And we do not reject hardcoded data, but we keep the promise and make it returning either good or bad depending on which case it has.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">app</span><span class="p">.</span><span class="nx">factory</span><span class="p">(</span><span class="s2">"myRepository"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"$http"</span><span class="p">,</span> <span class="s2">"$q"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">$http</span><span class="p">,</span> <span class="nx">$q</span><span class="p">)</span> <span class="p">{</span> 
+<span class="p">...</span>
+<span class="kd">var</span> <span class="nx">_getMyData</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$q</span><span class="p">.</span><span class="nx">defer</span><span class="p">();</span>
+
+        <span class="nx">$http</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"here/goes/my/api"</span><span class="p">)</span>
+          <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+              <span class="c1">// Successful</span>
+              <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+          <span class="p">},</span>
+          <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+              <span class="c1">// Error</span>
+              <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+          <span class="p">});</span>
+
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">...</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So the $q-sign gives us the possibility to access our promise and store it in a variable called “deferred” here. And in case of an error, we keep this promise alive, resolving it positively and on top of that we are passing our data in it which shall be available to whoever is going to resolve this promise from the outside. This is what “deferred.resolve(result);” does. But in case of an error we reject the promise. So again: We are keeping it, but we are telling the caller “This promise was not resolved positive”. In the last line we are returning our promise.</p>
+
+<p>The advantage now is that an outside caller can react on it with the same syntax he already knows, the “then(success/error)”-thing. Because this function shown above returns a normal promise!</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getMyData</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">myRepository</span><span class="p">.</span><span class="nx">getMyData</span><span class="p">(...)</span>
+        <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// success</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">myResultData</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+            <span class="p">},</span>
+            <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="c1">//error</span>
+                <span class="nx">$scope</span><span class="p">.</span><span class="nx">errorMessage</span> <span class="o">=</span> <span class="s2">"Bad bad bad"</span><span class="p">;</span>
+            <span class="p">});</span>
+<span class="p">};</span></code></pre></figure>
+
+<p>So this is way better than the error handling with any strings or bools or whatever.</p>
+
+<p>Hope you enjoyed reading.</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

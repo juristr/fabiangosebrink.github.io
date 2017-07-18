@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Token Authentication with Claims and ASP.NET WebAPI</title>
+	  <link>//blog/articles/2015/10/03/token-authentication-with-claims-and-asp-net-webapi/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-10-03T14:20:52+02:00</pubDate>
+	  <guid>//blog/articles/2015/10/03/token-authentication-with-claims-and-asp-net-webapi/</guid>
+	  <description><![CDATA[
+	     <p>In this post I would like to show you the most simple example about TToken Authentication with Claims and ASP.NET WebAPI.</p>
+
+<p>The sense behind this is:</p>
+
+<ol>
+  <li>We ask the Server for a token</li>
+  <li>We receive the token, store it client side and…</li>
+  <li>…send it in the header on every request</li>
+</ol>
+
+<p>The “problem” is that we do want to use all build in things Asp.Net WebAPI provides us. Microsoft serves us everything we need. So lets do this :)</p>
+
+<p>First of all we configure our WebAPI to create a “controller” which is taking our requests. Here is the first unusual thing: The controller we create is kind of a virtual controller. We only provide it as a string.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">OAuthOptions</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OAuthAuthorizationServerOptions</span>
+    <span class="p">{</span>
+        <span class="n">TokenEndpointPath</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PathString</span><span class="p">(</span><span class="s">"/Token"</span><span class="p">),</span>
+        <span class="n">Provider</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ApplicationOAuthProvider</span><span class="p">(),</span>
+        <span class="n">AuthorizeEndpointPath</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">PathString</span><span class="p">(</span><span class="s">"/api/Account/ExternalLogin"</span><span class="p">),</span>
+        <span class="n">AccessTokenExpireTimeSpan</span> <span class="p">=</span> <span class="n">TimeSpan</span><span class="p">.</span><span class="nf">FromDays</span><span class="p">(</span><span class="m">14</span><span class="p">),</span>
+        <span class="c1">//ONLY FOR DEVELOPING: ALLOW INSECURE HTTP!
+</span>        <span class="n">AllowInsecureHttp</span> <span class="p">=</span> <span class="k">true</span>
+    <span class="p">};</span>
+
+<span class="c1">// Enable the application to use bearer tokens to authenticate users
+</span><span class="n">app</span><span class="p">.</span><span class="nf">UseOAuthBearerTokens</span><span class="p">(</span><span class="n">OAuthOptions</span><span class="p">);</span></code></pre></figure>
+
+<p>The “TokenEndpointPath” can be treated like a controller without really having one in your project. You will not find such a class there, so stop looking ;-) Other Properties speak for themselves. Well, now we have to take a look at the ApplicationOAuthProvider, we mentioned in the code, because this is a class which consumes the token request and gives us the token in the end.</p>
+
+<p>Lets have a look at this.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">ApplicationOAuthProvider</span> <span class="p">:</span> <span class="n">OAuthAuthorizationServerProvider</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">ValidateClientAuthentication</span><span class="p">(</span><span class="n">OAuthValidateClientAuthenticationContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">context</span><span class="p">.</span><span class="nf">Validated</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">override</span> <span class="k">async</span> <span class="n">Task</span> <span class="nf">GrantResourceOwnerCredentials</span><span class="p">(</span><span class="n">OAuthGrantResourceOwnerCredentialsContext</span> <span class="n">context</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">context</span><span class="p">.</span><span class="n">OwinContext</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="n">Headers</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"Access-Control-Allow-Origin"</span><span class="p">,</span> <span class="k">new</span><span class="p">[]</span> <span class="p">{</span> <span class="s">"*"</span> <span class="p">});</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">UserName</span> <span class="p">!=</span> <span class="n">context</span><span class="p">.</span><span class="n">Password</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">context</span><span class="p">.</span><span class="nf">SetError</span><span class="p">(</span><span class="s">"invalid_grant"</span><span class="p">,</span> <span class="s">"The user name or password is incorrect."</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kt">var</span> <span class="n">identity</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">ClaimsIdentity</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">Options</span><span class="p">.</span><span class="n">AuthenticationType</span><span class="p">);</span>
+        <span class="n">identity</span><span class="p">.</span><span class="nf">AddClaim</span><span class="p">(</span><span class="k">new</span> <span class="nf">Claim</span><span class="p">(</span><span class="s">"sub"</span><span class="p">,</span> <span class="n">context</span><span class="p">.</span><span class="n">UserName</span><span class="p">));</span>
+        <span class="n">identity</span><span class="p">.</span><span class="nf">AddClaim</span><span class="p">(</span><span class="k">new</span> <span class="nf">Claim</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">Role</span><span class="p">,</span> <span class="s">"user"</span><span class="p">));</span>
+
+        <span class="n">context</span><span class="p">.</span><span class="nf">Validated</span><span class="p">(</span><span class="n">identity</span><span class="p">);</span>
+
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The first line is a CORS-Line. You can get information about CORS looking <a href="http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api">here</a> or <a href="http://enable-cors.org/server_aspnet.html">here</a>.</p>
+
+<p>ATTENTION: I am only comparing username and password here for equality. Normally you yould take your own User-Repository or the Asp.Net-Identity thing.</p>
+
+<p>If everything is alright we can create a new identity and add claims to it.</p>
+
+<p>Thats it! For server side.</p>
+
+<p>But how to consume it?</p>
+
+<p>So we have created the enpoint…lets request it with a POST-Request. (I am using Postman here)</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/1.jpg" alt="1" /></p>
+
+<p>So send a post request to the token enpoint we created. Take a look at the “x-www-form-urlencoded” which is very important! Also see the “grant_type” which is set to “password”. Without this you will not reach the token endpoint. username and password are equal due to the fact we check it for equality in your OAuthProvider we introduced before.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/2.jpg" alt="2" />
+Also check that in the Headers-Section we set the content-type to “application/x-www-form-encoded”. Firing this request reaches the endpoint and is giving us a valid token:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/31.jpg" alt="3" /></p>
+
+<p>There you go. if we now copy this token and send it to a controller we tagged with the [authorize]-Attribute like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Authorize]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ValuesController</span> <span class="p">:</span> <span class="n">ApiController</span>
+<span class="p">{</span>
+    <span class="c1">// GET api/&lt;controller&gt;
+</span>    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ClaimsIdentity</span> <span class="n">claimsIdentity</span> <span class="p">=</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span> <span class="k">as</span> <span class="n">ClaimsIdentity</span><span class="p">;</span>
+
+        <span class="kt">var</span> <span class="n">claims</span> <span class="p">=</span> <span class="n">claimsIdentity</span><span class="p">.</span><span class="n">Claims</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">type</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="k">value</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span> <span class="p">});</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">claims</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/41.jpg" alt="Token Authentication with Claims and ASP.NET WebAPI" /></p>
+
+<p>Note that we added the “Authorization”.Header with the “Bearer” and the token we just received. We can send it and receive the protected resource.</p>
+
+<p>Thats it :)</p>
+
+<p>You can also check the roles you added in the claims by just mentioning the roles in your Autorize-Attribute:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="na">[Authorize(Roles = "user")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">ValuesController</span> <span class="p">:</span> <span class="n">ApiController</span>
+<span class="p">{</span>
+    <span class="c1">// GET api/&lt;controller&gt;
+</span>    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">Get</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">ClaimsIdentity</span> <span class="n">claimsIdentity</span> <span class="p">=</span> <span class="n">User</span><span class="p">.</span><span class="n">Identity</span> <span class="k">as</span> <span class="n">ClaimsIdentity</span><span class="p">;</span>
+
+        <span class="kt">var</span> <span class="n">claims</span> <span class="p">=</span> <span class="n">claimsIdentity</span><span class="p">.</span><span class="n">Claims</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="p">{</span> <span class="n">type</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Type</span><span class="p">,</span> <span class="k">value</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Value</span> <span class="p">});</span>
+
+        <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">claims</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The roles are added via claims in your OAuthProvider.</p>
+
+<p>Hope this helps anybody.</p>
+
+<p>Happy coding :)</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-WebAPI-TokenAuthentication">Github repository here</a></p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

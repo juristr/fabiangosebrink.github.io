@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>ASP.NET Helpers by Offering Solutions</title>
+	  <link>//blog/articles/2015/03/04/asp-net-helpers-by-offering-solutions/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-03-04T21:08:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/03/04/asp-net-helpers-by-offering-solutions/</guid>
+	  <description><![CDATA[
+	     <p>I just released a new version of the ASP.NET Helpers by Offering Solutions:</p>
+
+<p><a href="https://www.nuget.org/packages/OfferingSolutions.AspNetHelpers/">Nuget: AspNetHelpers by Offering Solutions</a></p>
+
+<p>which includes</p>
+
+<ul>
+  <li>ViewModelBase</li>
+  <li>SubmitModelBase</li>
+  <li>ModelValidator (for easier validation)</li>
+</ul>
+
+<p>and features like</p>
+
+<ul>
+  <li>Nullcheck with Exception</li>
+  <li>Nullcheck with returning the type if not null, otherwise exception</li>
+  <li>Return bool value if something is null</li>
+  <li>Checking enumerable if its null or empty</li>
+  <li>Checks if a string is a timespan</li>
+  <li>Checks if a string is an email</li>
+  <li>Converts a string to datetime</li>
+  <li>Converts s tring to timespan</li>
+  <li>Checks a string for null, empty or a given lenght (e.g. for password purposes)</li>
+  <li>Checks if a HttpPostedFile has a specific format</li>
+  <li>Checks if a HttpPostedFile is an image</li>
+  <li>Checks if a string can be converted to double</li>
+  <li>Converts a string to double</li>
+</ul>
+
+<p>Why ViewModels and Submitmodels you can read this <a href="http://blog.noser.com/what-are-submitmodels-and-how-to-use-them/">here</a> and <a href="http://blog.noser.com/why-and-how-to-avoid-viewbag-and-viewdata-in-asp-net-mvc/">here</a></p>
+
+<p>ViewModelBase and SubmitModelBase are two baseclasses for the introduced view- and submitmodels.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">AccountRegisterViewModel</span> <span class="p">:</span> <span class="n">ViewModelBase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="n">AccountRegisterSubmitModel</span> <span class="n">SubmitModel</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nf">AccountRegisterViewModel</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Url</span> <span class="p">=</span> <span class="s">"~/Here/Goes/My/Url.cshtml"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>And you can access InfoMessages, SuccessMessages and  ErrorMessages now from your ViewModel.</p>
+
+<p>In your view you are filling up your submitmodel and sending it again to your Server. There you can now validate it:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="n">AccountRegisterViewModel</span> <span class="nf">RegisterUser</span><span class="p">(</span><span class="n">AccountRegisterSubmitModel</span> <span class="n">submitModel</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">AccountRegisterViewModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="nf">GetAccountRegisterViewMmodel</span><span class="p">(</span><span class="n">submitModel</span><span class="p">);</span>
+
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">_modelValidator</span><span class="p">.</span><span class="nf">IsSubmitModelValid</span><span class="p">(</span><span class="n">viewModel</span><span class="p">,</span> <span class="n">submitModel</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="n">viewModel</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Do some stuff
+</span>    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">ErrorMessages</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"There was an error. Can not register."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">viewModel</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>In this exampe the ModelValidator in the NuGet above is used which you can simply register</p>
+
+<p>with Ninject for example like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="n">kernel</span><span class="p">.</span><span class="nf">Bind</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">IModelValidator</span><span class="p">)).</span><span class="nf">To</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">ModelValidatorImpl</span><span class="p">));</span></code></pre></figure>
+
+<p>If you validate with the validator, your Errormessages are getting automatically filled with those defined in your submitmodel and you can easily return it. Of course you can do it the long way like this:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="n">AccountRegisterViewModel</span> <span class="nf">RegisterUser</span><span class="p">(</span><span class="n">AccountRegisterSubmitModel</span> <span class="n">submitModel</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">AccountRegisterViewModel</span> <span class="n">viewModel</span> <span class="p">=</span> <span class="nf">GetAccountRegisterViewMmodel</span><span class="p">(</span><span class="n">submitModel</span><span class="p">);</span>
+
+    <span class="k">try</span>
+    <span class="p">{</span>
+        <span class="n">ReadOnlyCollection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">errors</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(!</span><span class="n">submitModel</span><span class="p">.</span><span class="nf">IsValid</span><span class="p">(</span><span class="k">out</span> <span class="n">errors</span><span class="p">))</span>
+        <span class="p">{</span>
+            <span class="n">viewModel</span><span class="p">.</span><span class="n">ErrorMessages</span><span class="p">.</span><span class="nf">AddRange</span><span class="p">(</span><span class="n">errors</span><span class="p">);</span>
+            <span class="k">return</span> <span class="n">viewModel</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// Do some stuff
+</span>    <span class="p">}</span>
+    <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">viewModel</span><span class="p">.</span><span class="n">ErrorMessages</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"There was an error. Can not register."</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">viewModel</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p> </p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">//Throws an exception
+</span>    <span class="n">Person</span> <span class="n">person</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+    <span class="n">person</span><span class="p">.</span><span class="nf">CheckIsNull</span><span class="p">();</span>
+
+    <span class="c1">// Throws an exception if null, gives you back the type otherwise --&gt; Good for DI in public methods
+</span>    <span class="n">Person</span> <span class="n">myPerson</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="nf">CheckIsNull</span><span class="p">(</span><span class="s">"Person must not be null"</span><span class="p">);</span>
+
+    <span class="c1">// Is true in this case
+</span>    <span class="kt">bool</span> <span class="n">personIsNull</span> <span class="p">=</span> <span class="n">person</span><span class="p">.</span><span class="nf">IsNull</span><span class="p">();</span>
+
+    <span class="n">person</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">Person</span><span class="p">()</span> <span class="p">{</span><span class="n">Id</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"Fabian"</span><span class="p">};</span>
+    <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;</span> <span class="n">listOfPersons</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="n">Person</span><span class="p">&gt;()</span> <span class="p">{</span><span class="n">person</span><span class="p">};</span>
+
+    <span class="c1">//should be false
+</span>    <span class="kt">bool</span> <span class="n">isNullOrEmpty</span> <span class="p">=</span> <span class="n">listOfPersons</span><span class="p">.</span><span class="nf">IsNullOrEmpty</span><span class="p">();</span>
+
+    <span class="c1">// Checks a string for a valid TimeSpan
+</span>    <span class="kt">string</span> <span class="n">timeSpanToCheck</span> <span class="p">=</span> <span class="s">"11:20"</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">isTimeSpan</span> <span class="p">=</span> <span class="n">timeSpanToCheck</span><span class="p">.</span><span class="nf">IsTimeSpan</span><span class="p">();</span>
+
+    <span class="c1">// Checks if a string is a valid email or not
+</span>    <span class="kt">string</span> <span class="n">email</span> <span class="p">=</span> <span class="s">"dont@ask.me"</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">isEmail</span> <span class="p">=</span> <span class="n">email</span><span class="p">.</span><span class="nf">IsEmail</span><span class="p">();</span>
+
+    <span class="c1">//Converts a string to datetime
+</span>    <span class="kt">string</span> <span class="n">toDateTime</span> <span class="p">=</span> <span class="s">"01.01.2010"</span><span class="p">;</span>
+    <span class="n">DateTime</span> <span class="n">dateTime</span> <span class="p">=</span> <span class="n">toDateTime</span><span class="p">.</span><span class="nf">ToDateTime</span><span class="p">();</span>
+
+    <span class="c1">// COnverts a string to Timespan
+</span>    <span class="n">timeSpanToCheck</span> <span class="p">=</span> <span class="s">"11:20"</span><span class="p">;</span>
+    <span class="n">TimeSpan</span> <span class="n">timeSpan</span> <span class="p">=</span> <span class="n">timeSpanToCheck</span><span class="p">.</span><span class="nf">ToTimeSpan</span><span class="p">();</span>
+
+    <span class="c1">//Cheks, if a password has a specific length or is null or empty
+</span>    <span class="kt">string</span> <span class="n">password</span> <span class="p">=</span> <span class="s">"TheseAreAtLeastEightSigns"</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">isValidPassword</span> <span class="p">=</span> <span class="n">password</span><span class="p">.</span><span class="nf">IsValidPassword</span><span class="p">(</span><span class="m">8</span><span class="p">);</span>
+
+    <span class="c1">// Checks if a file has a given format...
+</span>    <span class="n">HttpPostedFileBase</span> <span class="n">httpPostedFile</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span><span class="c1">//...
+</span>    <span class="kt">bool</span> <span class="n">hasFormat</span> <span class="p">=</span> <span class="n">httpPostedFile</span><span class="p">.</span><span class="nf">HasFormat</span><span class="p">(</span><span class="s">"txt"</span><span class="p">);</span>
+
+    <span class="c1">// ... or wth multiple extensions
+</span>    <span class="n">hasFormat</span> <span class="p">=</span> <span class="n">httpPostedFile</span><span class="p">.</span><span class="nf">HasFormat</span><span class="p">(</span><span class="s">"txt"</span><span class="p">,</span> <span class="s">"pdf"</span><span class="p">);</span>
+
+    <span class="c1">// Checks if a file is an image...
+</span>    <span class="kt">bool</span> <span class="n">isImage</span> <span class="p">=</span> <span class="n">httpPostedFile</span><span class="p">.</span><span class="nf">IsImage</span><span class="p">();</span>
+
+    <span class="c1">// ...also with formats
+</span>    <span class="n">isImage</span> <span class="p">=</span> <span class="n">httpPostedFile</span><span class="p">.</span><span class="nf">IsImage</span><span class="p">(</span><span class="s">"jpg"</span><span class="p">,</span> <span class="s">"gif"</span><span class="p">);</span>
+
+    <span class="c1">//Checks if a value is a double value (separation with . or ,
+</span>    <span class="kt">string</span> <span class="n">doubleToCheck</span> <span class="p">=</span> <span class="s">"3.5"</span><span class="p">;</span>
+    <span class="kt">bool</span> <span class="n">isDouble</span> <span class="p">=</span> <span class="n">doubleToCheck</span><span class="p">.</span><span class="nf">IsDouble</span><span class="p">();</span>
+
+    <span class="c1">//COnverts a string to double
+</span>    <span class="n">doubleToCheck</span> <span class="p">=</span> <span class="s">"3.5"</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">doubleValue</span> <span class="p">=</span> <span class="n">doubleToCheck</span><span class="p">.</span><span class="nf">ToDouble</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So, this is it. Hope you enjoy!</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

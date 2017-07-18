@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Code-First with Entity Framework n:m relationship with additional information</title>
+	  <link>//blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2014-04-06T19:18:15+02:00</pubDate>
+	  <guid>//blog/articles/2014/04/06/code-first-with-entity-framework-nm-relationship-with-additional-information/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you a way to realize code First with Entity Framework n:m relationship with additional information.</p>
+
+<p>a few days ago I faced the problem of having a normal N:M Relationship in EF with additional information in the table which keeps the two entities together.</p>
+
+<p>Well, without having these additional information this is easy:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>EF is now going to make the right decisions for you while creating the database. A third table is created (due to EF-magic) and shows you the right relation-table. Great things so far. But what if you want to have more information on the relation table which EF created for you? Well, the answer ist easy: EF is not able to do this without your help.</p>
+
+<p>You have to create a third entity representing the relationship you want. I will now show how and I will show the right Fluent-Configuration to map the Keys etc. in a correct way. (Entities should not know what their fields are used for. So things like [Key], … have to be avoided! This is why you have Fluent-API!)</p>
+
+<p><a title="Code First Relationships Fluent API" href="http://msdn.microsoft.com/en-us/data/hh134698.aspx" target="_blank">Code First Relationships Fluent API</a></p>
+
+<p><a title="Configuring/Mapping Properties and Types with the Fluent API" href="http://msdn.microsoft.com/en-us/data/jj591617.aspx" target="_blank">Configuring/Mapping Properties and Types with the Fluent API</a></p>
+
+<p>So first, please create your third entity:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Groups2Users</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">GroupId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">User</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="k">virtual</span> <span class="n">Group</span> <span class="n">Group</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">MyAdditionalInformationType</span> <span class="n">MyAdditionalInformation</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>and extend your existing entities like the following:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">User</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Username</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">Group</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="c1">//... everything else
+</span>        <span class="k">public</span> <span class="k">virtual</span> <span class="n">ICollection</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Right now, you have made the three entities. Now, we have to wire everything together:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="k">public</span> <span class="k">class</span> <span class="nc">DataBaseContext</span> <span class="p">:</span> <span class="n">DbContext</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="nf">DataBaseContext</span><span class="p">()</span>
+            <span class="p">:</span> <span class="k">base</span><span class="p">(</span><span class="s">"MyConnectionString"</span><span class="p">)</span>
+        <span class="p">{</span>
+
+        <span class="p">}</span>
+
+        <span class="k">protected</span> <span class="k">override</span> <span class="k">void</span> <span class="nf">OnModelCreating</span><span class="p">(</span><span class="n">DbModelBuilder</span> <span class="n">modelBuilder</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">().</span><span class="nf">HasKey</span><span class="p">(</span><span class="n">q</span> <span class="p">=&gt;</span> <span class="k">new</span>
+                                        <span class="p">{</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">GroupId</span><span class="p">,</span>
+                                            <span class="n">q</span><span class="p">.</span><span class="n">UserId</span>
+                                        <span class="p">});</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Group</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">GroupId</span><span class="p">);</span>
+
+            <span class="n">modelBuilder</span><span class="p">.</span><span class="nf">Entity</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">HasRequired</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">User</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">WithMany</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">HasForeignKey</span><span class="p">(</span><span class="n">t</span> <span class="p">=&gt;</span> <span class="n">t</span><span class="p">.</span><span class="n">UserId</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">User</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+        <span class="k">public</span> <span class="n">DbSet</span> <span class="n">Groups2Users</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>When you now run your application with the right code-first configuration your database should hold those 3 three tables.</p>
+
+<p>Note: Now you have to think exactly about what you want to do (Well you should do this always while coding 😉 ). Adding a new group has to get another entry in the Group-Table. but adding or deleting users are only reached by editing the Groups2Users-Table. (Perhaps you should spend this table an own repository 😉 ).</p>
+
+<p>When you for example want to have all Groups of a user just call:</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">UserId</span> <span class="p">==</span> <span class="n">userId</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"Group"</span><span class="p">).</span><span class="nf">ToList</span><span class="p">();</span></code></pre></figure>
+
+<p>Adding a new group would be like</p>
+
+<figure class="highlight"><pre><code class="language-csharp" data-lang="csharp"><span class="n">Groups2Users</span> <span class="n">groups2Users</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Groups2Users</span>
+<span class="p">{</span>
+    <span class="n">Group</span> <span class="p">=</span> <span class="c1">//Define your group here or above,
+</span>    <span class="n">User</span> <span class="p">=</span> <span class="c1">//your user here,
+</span>    <span class="n">MyAdditionalInformation</span> <span class="p">=</span> <span class="n">myAdditionalInformation</span> 
+<span class="p">};</span>
+
+<span class="n">context</span><span class="p">.</span><span class="n">Groups2Users</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">groups2Users</span><span class="p">);</span></code></pre></figure>
+
+<p>Hope this helps,</p>
+
+<p>Regards</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

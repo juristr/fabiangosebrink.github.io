@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>WPF CallMemberName for INotifyPropertyChanged</title>
+	  <link>//blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-02-08T23:08:00+01:00</pubDate>
+	  <guid>//blog/articles/2015/02/08/wpf-callmembername-for-inotifypropertychanged/</guid>
+	  <description><![CDATA[
+	     <p>In this blogpost I want to show you how to use WPF CallMemberName for INotifyPropertyChanged.</p>
+
+<p>Regarding to this blogpost <a href="http://offering.solutions/blog/articles/2014/09/14/wpf-basics-ii-the-inotifypropertychanged-interface/">here</a> I showed up how to implement the INotifyPropertyChanged.</p>
+
+<p>Well with .Net-Framework 4.5 a new solution came up to make it even more simple:</p>
+
+<p>Instead of the “old” (but working) base-class</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyPropertyChangedBase</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">virtual</span> <span class="k">void</span> <span class="n">OnPropertyChanged</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;(</span><span class="n">Expression</span><span class="p">&lt;</span><span class="n">Func</span><span class="p">&lt;</span><span class="n">T</span><span class="p">&gt;&gt;</span> <span class="n">propertyExpression</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">MemberExpression</span> <span class="n">memberExpr</span> <span class="p">=</span> <span class="n">propertyExpression</span><span class="p">.</span><span class="n">Body</span> <span class="k">as</span> <span class="n">MemberExpression</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">memberExpr</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="s">"propertyExpression should represent access to a member"</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="n">PropertyChangedEventHandler</span> <span class="n">handler</span> <span class="p">=</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">handler</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">handler</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">memberExpr</span><span class="p">.</span><span class="n">Member</span><span class="p">.</span><span class="n">Name</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The OnPropertyChanged can be replaced with:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">NotifyPropertyChangedBase</span> <span class="p">:</span> <span class="n">INotifyPropertyChanged</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">event</span> <span class="n">PropertyChangedEventHandler</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">void</span> <span class="nf">NotifyPropertyChanged</span><span class="p">([</span><span class="n">CallerMemberName</span><span class="p">]</span> <span class="kt">string</span> <span class="n">propertyName</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">PropertyChangedEventHandler</span> <span class="n">propChanged</span> <span class="p">=</span> <span class="n">PropertyChanged</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">propChanged</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="nf">propChanged</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="k">new</span> <span class="nf">PropertyChangedEventArgs</span><span class="p">(</span><span class="n">propertyName</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>The CallMemberName-Attribute is automatically set to the PropertyName which calls it. So the usage in the ViewModel (or whereever you throw the event) is now a simple:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="kt">string</span> <span class="n">NameToDisplay</span>
+<span class="p">{</span>
+    <span class="k">get</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="n">_nameToDisplay</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">set</span>
+    <span class="p">{</span>
+        <span class="n">_nameToDisplay</span> <span class="p">=</span> <span class="k">value</span><span class="p">;</span>
+        <span class="nf">NotifyPropertyChanged</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>See: You do not need to give a func. instead you are only calling the method whithout any paramters.</p>
+
+<p>Solution with a command-implementation can be found here: <a href="/assets/articles/wp-content/uploads/2015/02/DataBindingGettingStarted.zip">DataBindingGettingStarted</a></p>
+
+<p>Happy coding!</p>
+
+<p>Regards</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>

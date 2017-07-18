@@ -1,0 +1,1040 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+   
+      <title>http://fabian-gosebrink.com</title>
+   
+   <link>http://offering.solutions</link>
+   <description>Articles about Angular & ASP.NET</description>
+   <language>en-us</language>
+   <managingEditor> Fabian Gosebrink</managingEditor>
+   <atom:link href="rss" rel="self" type="application/rss+xml" />
+   
+	<item>
+	  <title>Lessons I learnt from organising a conference</title>
+	  <link>//blog/articles/2017/07/18/things-i-learned-from-organising-a-conference/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-07-18T19:55:00+02:00</pubDate>
+	  <guid>//blog/articles/2017/07/18/things-i-learned-from-organising-a-conference/</guid>
+	  <description><![CDATA[
+	     <p>It has been quiet here for a while… :-)</p>
+
+<p>You may have noticed that I organised my first conference <a href="http://dotnetday.ch/">.NET Day</a> about two months ago. Well, that is not true. The organisation itself took place long before that but the event took place approximately two months ago. With this distance of time I want to gather up what I learned from organising this event, what I take with me and what will influence the next conference if I will do this again some time :-)</p>
+
+<p>I needed some time to really figure out all the thoughts &amp; things which were going on and break them down to the following points. If you made similar experiences or want to add new ones feel free to comment :)</p>
+
+<h2 id="be-prepared-and-have-a-plan-b">Be prepared and have a plan B</h2>
+
+<p>On the event you are planning, things will happen you never thought of. This can be good or bad things, but you will <em>not</em> be prepared of them. So what you can do is starting early (!) and thinking of any possible situation which may happen. (You can’t, but more on this later :-) This can be that a speaker is not coming because the night before he got sick or something, a microphone does not work, the food can not be served etc. You should always think of those things and play with that thought in your head. “What am I doing if xyz happens?” is the question you have to ask for youself. Have backup speakers. Have saved the telephone numbers of all pizza delivery services in your area to be prepared if food can not be served. Have a car there which you can use to get something which you not have thought of etc. If you re-think your event over and over again you will possibly come to a point where you can say to yourself that you are prepared for every single thing which can happen. (Which you can’t, but you did your best here :)</p>
+
+<p>So make that a little easier and taking this thought of being prepared further we can take a look at the next point…</p>
+
+<h2 id="change-the-perspective-to-an-attendee">Change the perspective to an attendee</h2>
+
+<p>…changing the perspective to an attendee. Image you are walking into the venue, what do you expect? Getting your ticket scanned? Getting a lanyard? Seeing the organiser? Just think of where do you would like to sit, what would be cool in the breakes? Is there something you would say “If there would be xyz, that’d be cool!”. If you attended to other conferences before and you can clone some ideas: Cool! If you were missing something on other conference: Try to add it to our conference. Its your attendees who give feedback &amp; do tweet about it. So you have to do everything they feel comfortable. From the selection of talks, topics over the venue, how you treat them etc.</p>
+
+<h2 id="ask-for-help">Ask for help</h2>
+
+<p>You noticed something, didn’t you? Thats massive work. Well until here we did not organise anything so far. All that were thoughts! But you need another input. Ask your friends, your family if idea xyz is cool. “Would you like it if …?”, “What do you think of xyz?”. Also tell them if you arranged something. Not to get compliments on how good you are but to trigger their thouoghts a bit. “Hey I have just organised thisandthat” - “Cool, but did you think of thatandthis, too then?” - Boom! You got your input.</p>
+
+<p>Further ask a friend to help you out. There are so much things to do which are completely separated and can be done by another one. If you organise a conference at some point you have to …</p>
+
+<h2 id="talk-to-each-other-and-delegate">Talk to each other and delegate</h2>
+
+<p>… delegate! We took OneNote for that which was completely fine. Just to keep each other up to date, if the emails to the speakers were sent out, which speaker said yes/no/maybe. Which topic by whom, which sponsors do we have, mail proposals for review etc. Delegate something, divide the work by two or more and give exact advises. “Can you please write a draft mail for the sponsors to do this and that”. Maybe you can organise via SCRUM or Kanban. Feel free to do that as you want, but split up the work. It is getting easier then.</p>
+
+<h2 id="dont-do-a-talk-when-you-organise-the-conference">Don’t do a talk when you organise the conference</h2>
+
+<p>I did that mistake. I really thought a long time about “Shall I speak or not?”. In the end I thought my topics were interesting and so I spoke at the event I organised. This was a mistake if I look back. And the reason for that was that I was not focussing on my talk. You are so distracted by anything what is going on that you can not focus on your talk. I did not get into this tunnel completely giving everything I have in this 45 minutes. (I even thought about so much things the night before the event, that I forgot that I only had 45 minutes and practices for 60 instead!!!) I only have been at the talk at like 70% or something. And it went bad. I forgot to show demos, forgot a cable to show something with my mobile phone, my timing was bad, I moved the slides too fast etc.</p>
+
+<p>So stay focused. Either on talking or on doing the things around it…but for me both is not working.</p>
+
+<h2 id="start-early">Start early</h2>
+
+<p>With all the things in mind: You can not start too early with that. Even if other people youre talking to tell you “We still have time”: Try to organise everything sooner than later. If you just ask people about their opinion maybe you notice things you haven’t thought of. And these are things you have to organise. So start early with you preparations. Maybe there is no “Too early” at all :-)</p>
+
+<h2 id="during-the-conference-observe--listen-">During the conference: Observe &amp; Listen !!!</h2>
+
+<p>Maybe this is the most important point. Listen to feedback. It won’t go perfect the first time you organise a conference and people will tell you. And that is okay. Take it as a chance to get better. How was the food? How was the venue? Take a look at the attendees during the talks and during the brakes. Do not only talk with people you know. Ask them about one thing specifically. “How do you like …?”, “Are you satisfied with …”, “Is it okay that thingandthat is like …”. In addition to that provide a possibility for feedback. We used google forms for that. We always asked about ratings and if the rating was not the best there was the possibility to add “Why is it not rated with 5 stars? What can we do better next time?” and we got great feedback!</p>
+
+<h2 id="enjoy-the-moment">Enjoy the moment</h2>
+
+<p>Last but not least: Enjoy the moment. I was sitting in the conference very excited and tried to have everything under control as a friend and attendee said “Don’t worry. It will work. Lean back and enjoy the conference”. When I look back now that was one of the greatest advices that day.</p>
+
+<p>Thank you and once again thanks to all attendees. You made this day very special and I had a great birthday that day :-)</p>
+
+<p>BR</p>
+
+<p>Fabian</p>
+
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Announcing the .NET Day 2017</title>
+	  <link>//blog/articles/2017/04/02/announcing-the-dotnetday-2017/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2017-04-02T19:12:00+02:00</pubDate>
+	  <guid>//blog/articles/2017/04/02/announcing-the-dotnetday-2017/</guid>
+	  <description><![CDATA[
+	     <p>I am very happy to announce the .NET Day 2017 in Switzerland! In this blogpost I want to give you a small background information on this, how this idea came up and about the current status.</p>
+
+<h3 id="the-beginning">The beginning</h3>
+
+<p>The idea of this conference day came into my mind in the middle of 2016. I love conferences. I think that a developer has to stay updated on his well known topics as well as be open to new topics and has to keep on learning over and over again. If he wants to stay open and focused on the same time he has to take a look whats new, what is established and learn from others. If you listen to a talk on a conference, on a usergroup or whereever: You get an idea of if you are interested in this topic or not. You see if you want to dig deeper or not. In a very short amount of time. And if you already know: you can see whats new, other perspectives and so on. This is worth a lot.</p>
+
+<p>In addition to that Microsoft came up with a lot of new stuff during the last time. And I think beside the awesome TechDays in Switzerland there should be another paltform to spread this knowledge. But I did not want to make a commercial conference. This thing should be community driven. The focus is on spreading knowledge. The new stuff.</p>
+
+<p>After a few thoughts and conversations the idea grew and I fixed a name and a date and I could go ahead organising speakers.</p>
+
+<blockquote>
+  <p>To mention this: I never organsied a conference before. I had no idea what to be done, no idea how to start with that thing. But Microsoft helped me a lot with this. They offered the room and helped me where they could as well as forcing me to take care about stuff with “Do it as you like”.</p>
+</blockquote>
+
+<p>After a while I realized that I could not do this on my own. So I asked my friend Manuel Meyer for help. He immediately said yes and there we are:</p>
+
+<h3 id="how-it-grew">How it grew</h3>
+
+<p>Through a great community and platforms like papercall.io we started a call for paper to get the speakers and the talks. IMHO we got a great agenda and speakers now (which I am not telling because I am part of it. I really do not count myself to the top speakers we have there. I am more than proud to be in between this international known names to who every single one I am looking up to).</p>
+
+<p>After a while we got the agenda fixed and also Manuels and my shared OneNote grew and grew ;-).</p>
+
+<p>We walked further and organsied sponsors. Some emails went out never getting any response back. But some of them came back loving the idea and they wanted to support us with the bigger one of the sponsoring packages. Great! So this grew, too.</p>
+
+<h3 id="the-event">The Event</h3>
+
+<p>The .NET Day takes place in Wallisellen at the Microsoft Office. It is focussing on the latest topics like Azure, the .NET Standard or ASP.NET Core and Angular.</p>
+
+<p>You can see the website here <a href="http://dotnetday.ch/">.NET Day Switzerland</a>.</p>
+
+<p>We only have one day, one track as we wanted to start small and see if the feedback is good. If so: Perhaps we will do this again! If the feedback is bad then we at least tried to do this and hopefully had a good day. We will analyse it and see what we can make better the mext time if there is a next time then.</p>
+
+<h3 id="current-status">Current status</h3>
+
+<p>Right now we are still searching for sponsors. The more sponsors we have the more we can do about merchandising such as shirts, lanyards etc. Focus is on paying the food for everyone. On the other side we “sold” all tickets. It is really sold out. I would have never thought that.</p>
+
+<p>I think it is all prepared for a good day.</p>
+
+<h3 id="things-to-say-more-important-than-anything-else">Things to say more important than anything else</h3>
+
+<p>T H A N K S to everybody who was involved in this so far. Thank you Manuel, I could not have done this that far without you, thanks to all speakers and everyone I had to reject because the agenda was full, thank you for every retweet, for every email, every phone call! You are amazing. We will try to give everything back making this day a great great conference.</p>
+
+<p>See you soon.</p>
+
+<p>Fabian</p>
+
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 2</title>
+	  <link>//blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-04-26T10:05:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/04/26/angular-asp-net-webapi-azure-cordova-cross-platform-my-private-hackathon-part-2/</guid>
+	  <description><![CDATA[
+	     <p>In the last <a href="http://offering.solutions/blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/">blogpost</a>I lost a few words about the REST-API the FoodChooser is talking to. In this blog I want to talk about the clients I developed. This is: Angular, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform – My Private Hackathon Part 2.</p>
+
+<p>Well I started coding an AngularJs 1.x Client with Typecript which is available here</p>
+
+<p><a href="https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS">https://github.com/FabianGosebrink/ASPNET-Foodchooser-Cross-Platform-AngularJS</a></p>
+
+<p>Of course I could not stop looking and digging into Angular. So I wrote this client too which is available here:</p>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<p>Inside this blog I want to loose a few words about how I wrote them what the pitfalls were and how I came up with this solution.</p>
+
+<blockquote>
+  <p>I will only show Angular2 examples here because it’s the only client which is still maintained</p>
+</blockquote>
+
+<h3 id="architecture">Architecture</h3>
+
+<p>The application is divieded into several components with its child components. Due to the fact that the application is not that big at all there is no huge hierarchy.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2016/04/SiteMap.png" alt="Angular 2, ASP.NET WebAPI, Azure &amp; Cordova, Cross Platform" /></p>
+
+<p>So the only interesting thing is the Food-Component which has two child Components “FoodForm” and “FoodList”.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<span class="err">   </span> <span class="na">selector</span><span class="p">:</span> <span class="s1">'food-component'</span><span class="p">,</span>
+<span class="err">   </span> <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">ROUTER_DIRECTIVES</span><span class="p">,</span> <span class="nx">CORE_DIRECTIVES</span><span class="p">,</span> <span class="nx">FoodListComponent</span><span class="p">,</span> <span class="nx">FoodListFormComponent</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">providers</span><span class="p">:</span> <span class="p">[</span><span class="nx">FoodDataService</span><span class="p">,</span> <span class="nx">FoodListDataService</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">template</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./food.component.html'</span><span class="p">)</span>
+<span class="p">})</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Page Content --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- Introduction Row --&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;h1</span> <span class="na">class=</span><span class="s">"page-header"</span><span class="nt">&gt;</span>Foodlists
+                    <span class="nt">&lt;small&gt;</span>See all your food lists<span class="nt">&lt;/small&gt;</span>
+                <span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;foodListForm-component&gt;&lt;/foodListForm-component&gt;</span>
+    <span class="nt">&lt;foodlists-component&gt;&lt;/foodlists-component&gt;</span>
+
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<p>The list component itself is not containing the details-view but redirecting to it while iterating through all the foodItems:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">OnInit</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">CORE_DIRECTIVES</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/common'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">RouteConfig</span><span class="p">,</span> <span class="nx">ROUTER_DIRECTIVES</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router-deprecated'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodDataService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../shared/services/food.dataService'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodListDataService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../shared/services/foodList.dataService'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">FoodList</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../models/FoodList'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">NeedsAuthentication</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../../decorators/needsAuthentication'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Component</span><span class="p">({</span>
+<span class="err">   </span> <span class="na">selector</span><span class="p">:</span> <span class="s1">'foodlists-component'</span><span class="p">,</span>
+<span class="err">   </span> <span class="na">directives</span><span class="p">:</span> <span class="p">[</span><span class="nx">ROUTER_DIRECTIVES</span><span class="p">,</span> <span class="nx">CORE_DIRECTIVES</span><span class="p">],</span>
+<span class="err">   </span> <span class="na">template</span><span class="p">:</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./foodlists.component.html'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="err">@</span><span class="nx">NeedsAuthentication</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">FoodListComponent</span> <span class="k">implements</span> <span class="nx">OnInit</span> <span class="p">{</span>
+
+    <span class="nl">allLists</span><span class="p">:</span> <span class="nx">FoodList</span><span class="p">[];</span>
+
+    <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_foodListDataService</span><span class="err">:</span> <span class="nx">FoodListDataService</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">_foodListDataService</span><span class="p">.</span><span class="nx">foodListAdded</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="nx">foodList</span><span class="err">:</span> <span class="nx">FoodList</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">getAllLists</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">ngOnInit</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">getAllLists</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="nx">getAllLists</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_foodListDataService</span>
+            <span class="p">.</span><span class="nx">GetAllLists</span><span class="p">()</span>
+            <span class="p">.</span><span class="nx">subscribe</span><span class="p">((</span><span class="na">response</span><span class="p">:</span> <span class="nx">FoodList</span><span class="p">[])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">allLists</span> <span class="o">=</span> <span class="nx">response</span><span class="p">;</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+            <span class="p">},</span> <span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">errorMessage</span> <span class="o">=</span> <span class="nx">error</span><span class="p">;</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>and the template</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="c">&lt;!-- Team Members Row --&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"page-header"</span><span class="nt">&gt;</span>Your Lists  <span class="nt">&lt;small&gt;&lt;/small&gt;&lt;/h2&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-lg-12"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-group"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;a</span> <span class="err">*</span><span class="na">ngFor=</span><span class="s">"let item of allLists; let i=index"</span> <span class="err">[</span><span class="na">routerLink</span><span class="err">]="['/</span><span class="na">FoodListDetails</span><span class="err">',</span> <span class="err">{</span><span class="na">id:</span> <span class="na">item</span><span class="err">.</span><span class="na">Id</span><span class="err">}]"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"list-group-item"</span><span class="nt">&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;/a&gt;</span>
+        <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></figure>
+
+<h3 id="authentication">Authentication</h3>
+
+<p>The WebAPI is providing a token endpoint to get tokens from after the login process. I do use a “CurrentUserService” to save this token in the storage and read it again.</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">Injectable</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StorageService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./storage.service'</span><span class="p">;</span>
+
+<span class="err">@</span><span class="nx">Injectable</span><span class="p">()</span>
+<span class="k">export</span> <span class="kr">class</span> <span class="nx">CurrentUserService</span> <span class="p">{</span>
+
+<span class="err">   </span> <span class="kd">constructor</span><span class="p">(</span><span class="k">private</span> <span class="nx">_storageService</span><span class="err">:</span> <span class="nx">StorageService</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="err">   </span> <span class="p">}</span>
+
+<span class="err">   </span> <span class="k">public</span> <span class="nx">get</span> <span class="nx">token</span><span class="p">()</span><span class="err">:</span> <span class="kr">string</span> <span class="p">{</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="nx">token</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_storageService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">);</span>
+
+<span class="err">       </span> <span class="k">return</span> <span class="nx">token</span><span class="p">;</span>
+<span class="err">   </span> <span class="p">}</span>
+
+<span class="err">   </span> <span class="k">public</span> <span class="nx">set</span> <span class="nx">token</span><span class="p">(</span><span class="nx">token</span><span class="err">:</span> <span class="kr">string</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">       </span> <span class="k">this</span><span class="p">.</span><span class="nx">_storageService</span><span class="p">.</span><span class="nx">setItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">,</span> <span class="nx">token</span><span class="p">);</span>
+<span class="err">   </span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With this I can read if the user is authenticated in a very basic way.</p>
+
+<p>Further I took a decorator to hook into the creation of components to check if the user is authenticated or not. If not the decorator will redirect to the login page:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">import</span> <span class="p">{</span> <span class="nx">CanActivate</span><span class="p">,</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="nx">Router</span><span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/router-deprecated'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Injector</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'@angular/core'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">appInjector</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../shared/services/appInjector'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">StorageService</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'../shared/services/storage.service'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">NeedsAuthentication</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="err">   </span> <span class="k">return</span> <span class="nx">CanActivate</span><span class="p">((</span><span class="na">to</span><span class="p">:</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="na">from</span><span class="p">:</span> <span class="nx">ComponentInstruction</span><span class="p">,</span> <span class="nx">target</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'/'</span><span class="p">])</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">injector</span><span class="p">:</span> <span class="nx">Injector</span> <span class="o">=</span> <span class="nx">appInjector</span><span class="p">();</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">router</span><span class="p">:</span> <span class="nx">Router</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">Router</span><span class="p">);</span>
+<span class="err">       </span> <span class="kd">let</span> <span class="na">storageService</span><span class="p">:</span> <span class="nx">StorageService</span> <span class="o">=</span> <span class="nx">injector</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="nx">StorageService</span><span class="p">);</span>
+
+<span class="err">       </span> <span class="k">if</span> <span class="p">(</span><span class="nx">storageService</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">'auth'</span><span class="p">))</span> <span class="p">{</span>
+<span class="err">           </span> <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="err">       </span> <span class="p">}</span>
+
+<span class="err">       </span> <span class="nx">router</span><span class="p">.</span><span class="nx">navigate</span><span class="p">([</span><span class="s1">'/Login'</span><span class="p">,</span> <span class="p">{</span> <span class="nx">target</span> <span class="p">}]);</span>
+
+<span class="err">       </span> <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="err">   </span> <span class="p">});</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>With every request I have to prepare the header which I do in a wrapped Http service.</p>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/blob/0903dd96b731416a6e2f96ab30f21456f1efd9a0/Client/app/core/services/httpWrapper.service.ts</a></p>
+
+<p>Sneak peek:</p>
+
+<figure class="highlight"><pre><code class="language-ts" data-lang="ts"><span class="k">private</span> <span class="nx">prepareOptions</span><span class="p">(</span><span class="nx">options</span><span class="err">:</span> <span class="nx">RequestOptionsArgs</span><span class="p">)</span><span class="err">:</span> <span class="nx">RequestOptionsArgs</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">token</span><span class="err">:</span> <span class="kr">string</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_currentUserService</span><span class="p">.</span><span class="nx">token</span><span class="p">;</span>
+
+    <span class="nx">options</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">||</span> <span class="p">{};</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Headers</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">token</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Authorization'</span><span class="p">,</span> <span class="s1">'Bearer '</span> <span class="o">+</span> <span class="nx">token</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+    <span class="nx">options</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s1">'Accept'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="nx">options</span><span class="p">;</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>So I check the headers, append a token if available, set the content-type and accept-properties and give the options back to use it in the REST-Call.</p>
+
+<h3 id="cross-platform-with-gulp">Cross Platform with Gulp</h3>
+
+<p>To give this whole thing a go as an exe and as an app on mobile devices I used cordova and electron with gulp as a taskrunner.</p>
+
+<p>I seperated all the files in the tasks for “electron”, “cordova” and “web”. In the main gulp file I am just gathering all the information and point the default task only to list all available tasks to _not- start something the developer does not know when he only types “gulp” without a specific command.</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">buildConfig</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./gulp.config'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'default'</span><span class="p">,</span> <span class="p">[</span><span class="s1">'help'</span><span class="p">]);</span>
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'help'</span><span class="p">,</span> <span class="nx">taskListing</span><span class="p">.</span><span class="nx">withFilters</span><span class="p">(</span><span class="sr">/-/</span><span class="p">));</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/web'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/electron'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="s1">'./gulpTasks/cordova'</span><span class="p">);</span>
+
+<span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:all'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">runSeq</span><span class="p">(</span>
+        <span class="s1">'build:web:prod'</span><span class="p">,</span>
+        <span class="s1">'build:electron:prod'</span><span class="p">,</span>
+        <span class="s1">'build:apps'</span><span class="p">,</span>
+        <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>For example here is the electron gulp file, which turns this application into an exe</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:electron:prod'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">   </span> <span class="nx">runSeq</span><span class="p">(</span>
+<span class="err">       </span> <span class="s1">'electron-clean-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-compile-with-webpack'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-copy-index-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-inject-in-html'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-copy-assets-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'electron-build-win'</span><span class="p">,</span>
+<span class="err">       </span> <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>For cordova</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">gulp</span><span class="p">.</span><span class="nx">task</span><span class="p">(</span><span class="s1">'build:apps'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">done</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">   </span> <span class="nx">runSeq</span><span class="p">(</span>
+<span class="err">       </span> <span class="s1">'cordova-clean-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-config-to-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-winstore-to-temp'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-index-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-images-to-temp-folder'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-compile-with-webpack'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-inject-in-html'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-build-windows'</span><span class="p">,</span>
+<span class="err">       </span> <span class="c1">//  'cordova-build-android',</span>
+<span class="err">       </span> <span class="s1">'cordova-clean-dist'</span><span class="p">,</span>
+<span class="err">       </span> <span class="s1">'cordova-copy-to-dist'</span><span class="p">,</span>
+<span class="err">       </span> <span class="nx">done</span><span class="p">);</span>
+<span class="p">});</span></code></pre></figure>
+
+<h3 id="conclusion">Conclusion:</h3>
+
+<p>I hope with this blog posts I gave you an idea and an introduction in what you can achieve with javascript and ASP.NET WebAPI. Having all the tools like Cordova, gulp. you can build real cross-platform applications.</p>
+
+<p>Hope you liked reading it as i liked making it :)</p>
+
+<p>HTH</p>
+
+<p>Regards</p>
+
+<p>Fabian</p>
+
+<h3 id="links">Links</h3>
+
+<p><a href="http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html">http://blog.thoughtram.io/angular/2015/05/03/the-difference-between-annotations-and-decorators.html</a></p>
+
+<p><a href="https://github.com/thinktecture/boardz-cross-platform-sample">https://github.com/thinktecture/boardz-cross-platform-sample</a></p>
+
+<p><a href="https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/">https://www.xplatform.rocks/2016/02/14/angular2-and-electron-the-definitive-guide/</a></p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>Angular, ASP.NET WebAPI, Azure & Cordova, Cross Platform – My Private Hackathon Part 1</title>
+	  <link>//blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2016-04-19T17:34:00+02:00</pubDate>
+	  <guid>//blog/articles/2016/04/19/angular-asp-net-webapi-azure-cordova-cross-platform-2/</guid>
+	  <description><![CDATA[
+	     <p><img src="/assets/articles/wp-content/uploads/2016/04/foodchooser.jpg" alt="foodchooser" /></p>
+
+<h3 id="motivation">Motivation</h3>
+
+<p>I had a few free hours and was curious and wanted to know what you can achieve in 9 hours of coding. Due to the fact that I am very into ASP.NET development with Angular I coded a small application which is based on ASP.NET Web API, AngularJs/Angular2 with Typescript &amp; co. So the question is: How far will I go in 9 hours? This is my private Hackathon!!</p>
+
+<h3 id="code">Code</h3>
+
+<p><a href="https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform">https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform</a></p>
+
+<h3 id="goal---the-foodchooser">Goal - The FoodChooser</h3>
+
+<p>When I am not coding I love to stand in the kitchen but I do always have the problem of know knowing what I should cook. I know there are tons of cooking websites out there with a lot of inspiration but my problem is not getting a recipe for the meals but instead I got no idea what to search for. So my idea was to develop a small application where I can manage my food ideas without recipes. Because everybody is doing the meals the way they want to because every taste is different. However: A small application where I can manage my food should be the application I wanted to write: The FoodChooser</p>
+
+<h3 id="backlog-for-first-version">Backlog for first Version</h3>
+
+<p>So I wanted to make it basically usable for everyone. So I need a user account or a login for users. The users should add their food items, update and delete them. This is handled the best way in categories or lists. So the users should also create, add, update and delete those lists. The idea is getting random food immediately when getting onto the page without a user account. But every mentioned managing feature should only be available when logged in. But perhaps not every user wants his food items to be public. So users have to switch between publish and unpublishing their food. If you want to get random food only from a list of food items there should also be a button available for this. Because its your food and you don’t care about public or not: You just want to have a random item out of your food list.</p>
+
+<p>In the end it should also be available for mobile devices. So I need a responsive design which concentrates on the things I need. Basic things. Because I am really not a UI-designer. ;-)</p>
+
+<p>To keep a long story short:</p>
+
+<ol>
+  <li>Login/Logout</li>
+  <li>CRUD: Food Items</li>
+  <li>CRUD: Food Lists</li>
+  <li>Getting random food from public foods</li>
+  <li>Getting random food from a single list</li>
+  <li>Un/Publishing food items</li>
+  <li>Responsive and easy design also for mobile devices</li>
+</ol>
+
+<h3 id="technologies--tools">Technologies &amp; Tools</h3>
+
+<p>The backlog mentioned above are leading to the technologies and tools I wanted to use to get a kick-start. Because ASP.NET 5 is not released yet I used WebAPI 2.2 for this. On client side I wanted to use Typescript with Angular and all tools which are connected to this. This whole thing should be hosted on azure in the end.</p>
+
+<ol>
+  <li>ASP.NET WebAPI with Bearer-Token-Identity and OWIN</li>
+  <li>Typescript</li>
+  <li>AngularJs and Angular2 Clients</li>
+  <li>Automapper</li>
+  <li>Bootstrap</li>
+  <li>Azure</li>
+</ol>
+
+<p>My tools would be Visual Studio 2015 and Visual Studio Code.</p>
+
+<p>So my timebox was 9 hours. Not a minute more. I know some of the technologies mentioned but not by 100%. Well, lets start coding and learning something!</p>
+
+<h3 id="the-viewmodels">The (View)Models</h3>
+
+<p>We have CRUD operations for food items, and food lists. And we are going to map them with Automapper. So we need ViewModels for every model.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodItem</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">Key</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ItemName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">FoodList</span> <span class="n">FoodList</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">FoodListId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsPublic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodList</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">Foods</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">FoodItemViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">ItemName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Rating</span><span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">FoodListId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Created</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="n">IsPublic</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodListViewModel</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">Id</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">Name</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="n">UserId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">ICollection</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">Foods</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>in the OWIN-Configuration we can go ahead and initialize the mappings:</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"> 
+<span class="n">Mapper</span><span class="p">.</span><span class="nf">Initialize</span><span class="p">(</span><span class="n">mapper</span> <span class="p">=&gt;</span>
+<span class="p">{</span>
+    <span class="n">mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">,</span> <span class="n">FoodItemViewModel</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+    <span class="n">mapper</span><span class="p">.</span><span class="n">CreateMap</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">,</span> <span class="n">FoodListViewModel</span><span class="p">&gt;().</span><span class="nf">ReverseMap</span><span class="p">();</span>
+<span class="p">});</span></code></pre></figure>
+
+<p>Of course you need to add Automapper to your project which I did via <a href="https://www.nuget.org/packages/AutoMapper/4.1.1">Nuget</a>.</p>
+
+<h3 id="the-api">The API</h3>
+
+<p>I mostly start coding server-side.</p>
+
+<p>So the API has to handle FoodItems and FoodLists. Two Models, two controllers.
+Beside the whole authorization features this is basically it. The API is quite small but I think it clarifies the principle.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="na">[Authorize]</span>
+<span class="na">[RoutePrefix("api")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodsController</span> <span class="p">:</span> <span class="n">BaseController</span>
+<span class="p">{</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">MaxPageSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodRepository</span> <span class="n">_foodRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodListRepository</span> <span class="n">_foodListRepository</span><span class="p">;</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IRandomNumberGenerator</span> <span class="n">_randomNumberGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">FoodsController</span><span class="p">(</span><span class="n">IFoodRepository</span> <span class="n">foodRepository</span><span class="p">,</span> <span class="n">IFoodListRepository</span> <span class="n">foodListRepository</span><span class="p">,</span>
+        <span class="n">IRandomNumberGenerator</span> <span class="n">randomNumberGenerator</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_foodRepository</span> <span class="p">=</span> <span class="n">foodRepository</span><span class="p">;</span>
+        <span class="n">_foodListRepository</span> <span class="p">=</span> <span class="n">foodListRepository</span><span class="p">;</span>
+        <span class="n">_randomNumberGenerator</span> <span class="p">=</span> <span class="n">randomNumberGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}/foods"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetFoodsFromList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">foodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">foodList</span><span class="p">.</span><span class="n">Foods</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{listId:int}/food/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingleFood"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetSingleFood</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="kt">int</span><span class="p">?</span> <span class="n">listId</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodItem</span> <span class="n">foodItem</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">listId</span><span class="p">.</span><span class="n">HasValue</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">foodItem</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">foodItemId</span> <span class="p">&amp;&amp;</span> <span class="n">x</span><span class="p">.</span><span class="n">FoodList</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">listId</span><span class="p">.</span><span class="n">Value</span><span class="p">,</span>
+                    <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"FoodList"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span>
+            <span class="p">{</span>
+                <span class="n">foodItem</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="s">"FoodList"</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">foodItem</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">foodItem</span><span class="p">.</span><span class="n">FoodList</span> <span class="p">==</span> <span class="k">null</span> <span class="p">||</span> <span class="n">foodItem</span><span class="p">.</span><span class="n">FoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">foodItem</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">AllowAnonymous</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/getrandomfood"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetRandomFood</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+
+            <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">foodItems</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetAll</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">IsPublic</span><span class="p">,</span> <span class="n">includeProperties</span><span class="p">:</span> <span class="s">"FoodList"</span><span class="p">).</span><span class="nf">AsEnumerable</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">foodItems</span><span class="p">.</span><span class="nf">Any</span><span class="p">())</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="n">enumerable</span> <span class="p">=</span> <span class="n">foodItems</span> <span class="k">as</span> <span class="n">IList</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;</span> <span class="p">??</span> <span class="n">foodItems</span><span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+            <span class="n">FoodItem</span> <span class="n">elementAt</span> <span class="p">=</span> <span class="n">enumerable</span><span class="p">.</span><span class="nf">ElementAt</span><span class="p">(</span><span class="n">_randomNumberGenerator</span><span class="p">.</span><span class="nf">GetRandomNumber</span><span class="p">(</span><span class="n">enumerable</span><span class="p">.</span><span class="nf">Count</span><span class="p">()));</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">elementAt</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">elementAt</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">AddFoodToList</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span><span class="n">FoodItemViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">FoodListId</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+            <span class="n">FoodItem</span> <span class="n">item</span> <span class="p">=</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItem</span><span class="p">&gt;(</span><span class="n">viewModel</span><span class="p">);</span>
+            <span class="n">item</span><span class="p">.</span><span class="n">Created</span> <span class="p">=</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+            <span class="n">singleFoodList</span><span class="p">.</span><span class="n">Foods</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">singleFoodList</span><span class="p">);</span>
+
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"GetSingleFood"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">foodItemId</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">item</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPut</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">UpdateFoodInList</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">,</span> <span class="p">[</span><span class="n">FromBody</span><span class="p">]</span><span class="n">FoodItemViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+
+            <span class="n">FoodItem</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">singleById</span><span class="p">.</span><span class="n">ItemName</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">ItemName</span><span class="p">;</span>
+            <span class="n">singleById</span><span class="p">.</span><span class="n">IsPublic</span> <span class="p">=</span> <span class="n">viewModel</span><span class="p">.</span><span class="n">IsPublic</span><span class="p">;</span>
+
+            <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Update</span><span class="p">(</span><span class="n">singleById</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodItemViewModel</span><span class="p">&gt;(</span><span class="n">singleById</span><span class="p">));</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpDelete</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foods/{foodItemId:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">DeleteFoodFromList</span><span class="p">(</span><span class="kt">int</span> <span class="n">foodItemId</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodItem</span> <span class="n">singleById</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">GetSingleById</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleById</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">foodItemId</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NoContent</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<h3 id="foodlistcontroller">FoodListController:</h3>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs">   
+<span class="na">[Authorize]</span>
+<span class="na">[RoutePrefix("api")]</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">FoodListsController</span> <span class="p">:</span> <span class="n">BaseController</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="k">readonly</span> <span class="n">IFoodListRepository</span> <span class="n">_foodListRepository</span><span class="p">;</span>
+    <span class="k">const</span> <span class="kt">int</span> <span class="n">MaxPageSize</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">FoodListsController</span><span class="p">(</span><span class="n">IFoodListRepository</span> <span class="n">foodListRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">_foodListRepository</span> <span class="p">=</span> <span class="n">foodListRepository</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetAllLists</span><span class="p">(</span><span class="kt">int</span> <span class="n">page</span> <span class="p">=</span> <span class="m">1</span><span class="p">,</span> <span class="kt">int</span> <span class="n">pageSize</span> <span class="p">=</span> <span class="n">MaxPageSize</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">pageSize</span> <span class="p">&gt;</span> <span class="n">MaxPageSize</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="n">pageSize</span> <span class="p">=</span> <span class="n">MaxPageSize</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">IQueryable</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">&gt;</span> <span class="n">foodLists</span> <span class="p">=</span> <span class="n">_foodListRepository</span>
+                <span class="p">.</span><span class="nf">GetAll</span><span class="p">()</span>
+                <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">UserId</span> <span class="p">==</span> <span class="n">CurrentUserId</span><span class="p">);</span>
+
+            <span class="kt">var</span> <span class="n">paginationHeader</span> <span class="p">=</span> <span class="k">new</span>
+            <span class="p">{</span>
+                <span class="n">totalCount</span> <span class="p">=</span> <span class="n">foodLists</span><span class="p">.</span><span class="nf">Count</span><span class="p">()</span>
+                <span class="c1">// Add more headers here if you want...
+</span>                <span class="c1">// Link to next and previous page etc.
+</span>                <span class="c1">// Also see OData-Options for this
+</span>            <span class="p">};</span>
+
+            <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="n">foodLists</span>
+                <span class="p">.</span><span class="nf">OrderBy</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">Skip</span><span class="p">(</span><span class="n">pageSize</span> <span class="p">*</span> <span class="p">(</span><span class="n">page</span> <span class="p">-</span> <span class="m">1</span><span class="p">))</span>
+                <span class="p">.</span><span class="nf">Take</span><span class="p">(</span><span class="n">pageSize</span><span class="p">)</span>
+                <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+            <span class="n">HttpContext</span><span class="p">.</span><span class="n">Current</span><span class="p">.</span><span class="n">Response</span><span class="p">.</span><span class="nf">AppendHeader</span><span class="p">(</span><span class="s">"X-Pagination"</span><span class="p">,</span> <span class="n">JsonConvert</span><span class="p">.</span><span class="nf">SerializeObject</span><span class="p">(</span><span class="n">paginationHeader</span><span class="p">));</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodListViewModel</span><span class="p">&gt;(</span><span class="n">x</span><span class="p">)));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpGet</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}"</span><span class="p">,</span> <span class="n">Name</span> <span class="p">=</span> <span class="s">"GetSingleList"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">GetSingleList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">Ok</span><span class="p">(</span><span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodListViewModel</span><span class="p">&gt;(</span><span class="n">singleFoodList</span><span class="p">));</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpPost</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">AddList</span><span class="p">([</span><span class="n">FromBody</span><span class="p">]</span> <span class="n">FoodListViewModel</span> <span class="n">viewModel</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">viewModel</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(!</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">(</span><span class="n">ModelState</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">FoodList</span> <span class="n">item</span> <span class="p">=</span> <span class="n">Mapper</span><span class="p">.</span><span class="n">Map</span><span class="p">&lt;</span><span class="n">FoodList</span><span class="p">&gt;(</span><span class="n">viewModel</span><span class="p">);</span>
+            <span class="n">item</span><span class="p">.</span><span class="n">UserId</span> <span class="p">=</span> <span class="n">CurrentUserId</span><span class="p">;</span>
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="n">item</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">CreatedAtRoute</span><span class="p">(</span><span class="s">"GetSingleList"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">id</span> <span class="p">=</span> <span class="n">item</span><span class="p">.</span><span class="n">Id</span> <span class="p">},</span> <span class="n">item</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">HttpDelete</span><span class="p">]</span>
+    <span class="p">[</span><span class="nf">Route</span><span class="p">(</span><span class="s">"foodlists/{id:int}"</span><span class="p">)]</span>
+    <span class="k">public</span> <span class="n">IHttpActionResult</span> <span class="nf">DeleteList</span><span class="p">(</span><span class="kt">int</span> <span class="n">id</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">try</span>
+        <span class="p">{</span>
+            <span class="n">FoodList</span> <span class="n">singleFoodList</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">GetSingle</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Id</span> <span class="p">==</span> <span class="n">id</span><span class="p">,</span> <span class="s">"Foods"</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">NotFound</span><span class="p">();</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">singleFoodList</span><span class="p">.</span><span class="n">UserId</span> <span class="p">!=</span> <span class="n">CurrentUserId</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">Forbidden</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Delete</span><span class="p">(</span><span class="n">singleFoodList</span><span class="p">);</span>
+            <span class="kt">int</span> <span class="n">save</span> <span class="p">=</span> <span class="n">_foodListRepository</span><span class="p">.</span><span class="nf">Save</span><span class="p">();</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">save</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">return</span> <span class="nf">StatusCode</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="n">NoContent</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nf">BadRequest</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">exception</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">return</span> <span class="nf">InternalServerError</span><span class="p">(</span><span class="n">exception</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Next we will do the clients</p>
+
+<h3 id="the-clients">The Clients</h3>
+
+<p>Concerning the clients I was torn between Angular 1.x with Typescript in Visual Studio and Angular 2. Because I could not make a descision whats better I made both. (You can find them in two different approaches in two different GitHub Repositories)</p>
+
+<p>The first approach was the Visual Studio approach with making everything inside VS to be able to make this “right-click –&gt; Publish”-thing in the end.</p>
+
+<p>The advantage of this is that you can maintain everything from VS like the API, the client code etc. But with this approach you do not have the sexy client- and serverside code separated. We are developing a RESTApi to develop client and server separate. You can handle the client like you want and modify it without touching the server. This is why I tried Angular2 in the second approach making a “client” and “server” folder where the client contains all *.ts, *.js and other files and the server contains (the same) REST API we build.</p>
+
+<blockquote>
+  <p>The GitHub repos are both full functional examples with these different approaches. Choose the one you want. Both do not rely on each other.</p>
+</blockquote>
+
+<p>So we are building two clients. At this point I could not go for 9 hours anymore, so I build up one client during these 9 hours of coding and build the other one afterwards. Because it’s fun :)</p>
+
+<p>I will describe the clients in other blog posts after this one…</p>
+
+	  ]]></description>
+	</item>
+
+	<item>
+	  <title>WebHooks with ASP.NET on Azure - DropBox and GitHub</title>
+	  <link>//blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/</link>
+	  <author>Fabian Gosebrink</author>
+	  <pubDate>2015-10-18T19:50:00+02:00</pubDate>
+	  <guid>//blog/articles/2015/10/18/webhooks-with-asp-net-on-azure-dropbox-and-github/</guid>
+	  <description><![CDATA[
+	     <p>Hi,</p>
+
+<p>in this post I want to show you how to use ASP.NET-WebHooks with an example of DropBox and Github. This app will be hostet on Windows-Azure and we’ll be using Visual Studio 2015.</p>
+
+<p>The code in this example will be available on <a href="https://github.com/FabianGosebrink/ASPNET-WebHooks">GitHub</a>.</p>
+
+<p>You can find a great summary <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">here</a> and <a href="http://www.hanselman.com/blog/IntroducingASPNETWebHooksReceiversWebHooksMadeEasy.aspx">here</a> of what WebHooks exactly are. In short: You can receive updates from Websites and catch them with your own staying always up to date and seeing what is happening to your subscribed websites like Instagram, DropBox, GitHub etc. (We will only cover <a href="https://github.com/">GitHub</a>and <a href="https://www.dropbox.com/">DropBox</a> here)</p>
+
+<p>WebHooks on GitHub: <a href="https://github.com/aspnet/WebHooks">Gogogo!</a></p>
+
+<blockquote>
+  <p>You really should take a look at this repository. Its providing you a nice overview of which services are supported out-of-the-box. That is making the stuff nice and easy.</p>
+</blockquote>
+
+<p>First of all we take the current stable Version of WebAPI 2.2 and create a new project.</p>
+
+<p>After this you can either install the Nuget-Packages for DropBox and GitHub support seperately (<a href="https://www.nuget.org/packages/Microsoft.AspNet.WebHooks.Receivers.Dropbox/1.2.0-beta3a">here</a> and <a href="https://www.nuget.org/packages/Microsoft.AspNet.WebHooks.Receivers.GitHub/1.2.0-beta3a">here</a>), or you can install the extension for Visual Studio which can be found here. (Tools –&gt; Extensions and Updates):</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/11.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>once installed you will be able to add new services like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/21.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" />
+<img src="/assets/articles/wp-content/uploads/2015/10/32.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>But before we do so, lets prepare GitHub and DropBox to send events when something is happening.</p>
+
+<p>How Github is prepared you can see on the posted link above. But once again: <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">here</a></p>
+
+<h3 id="prepare-dropbox-for-webhooks">Prepare DropBox for WebHooks:</h3>
+
+<p>First check this link: <a href="https://www.dropbox.com/developers/apps">Apps for DropBox </a>and create a new app which is responsible for invoking the WebHooks.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/42.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /> I chose the whole DropBox-thing for this example.</p>
+
+<p>After creating this new app we are interested in the details of this app. Click on it and you will ssee something like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/5.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>We are interested in the secret for your app and in the link we define for the target of our WebHooks.</p>
+
+<blockquote>
+  <p>I will take the placeholder “<em>[MyDropBoxAppKey]</em>” as the key for this blogpost. You will have to replace this with your own secret yu get when you click on “show” above.</p>
+</blockquote>
+
+<p>Once we have the secret we can go back to our Visual Studio and select the both WebHook receivers we want to create: GitHub and DropBox.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/6.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>Add your secrets here and click finish:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/7.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>If everything worked fine the extension created everything for you: The handlers, the startup cofnig which can be in addition to your existing config and it updated the Web.config-file with your settings.</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/8.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">namespace</span> <span class="nn">WebHooksExample</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">class</span> <span class="nc">WebHookConfig</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Register</span><span class="p">(</span><span class="n">HttpConfiguration</span> <span class="n">config</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">InitializeReceiveGitHubWebHooks</span><span class="p">();</span>
+            <span class="n">config</span><span class="p">.</span><span class="nf">InitializeReceiveDropboxWebHooks</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Be sure to call this register method from your app start. In this case I use Owin-Startup class. In your case this can be global.asax etc.</p>
+
+<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;configuration&gt;</span>
+    <span class="nt">&lt;appSettings&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">"MS_WebHookReceiverSecret_GitHub"</span> <span class="na">value=</span><span class="s">"[MyGitHubKey]"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">key=</span><span class="s">"MS_WebHookReceiverSecret_Dropbox"</span> <span class="na">value=</span><span class="s">"[MyDropBoxAppKey]"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/appSettings&gt;</span>
+    ...
+<span class="nt">&lt;/configuration&gt;</span></code></pre></figure>
+
+<p>The handlers itself are self explaining. Note that you are only deriving a class from the the WebHookHandler-Class. You have to decide in the class itself whether this call is the one you want or not.</p>
+
+<figure class="highlight"><pre><code class="language-cs" data-lang="cs"><span class="k">public</span> <span class="k">class</span> <span class="nc">DropboxWebHookHandler</span> <span class="p">:</span> <span class="n">WebHookHandler</span>
+    <span class="p">{</span>
+        <span class="k">public</span> <span class="k">override</span> <span class="n">Task</span> <span class="nf">ExecuteAsync</span><span class="p">(</span><span class="kt">string</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">WebHookHandlerContext</span> <span class="n">context</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="c1">// make sure we're only processing the intended type of hook
+</span>            <span class="k">if</span><span class="p">(</span><span class="s">"Dropbox"</span><span class="p">.</span><span class="nf">Equals</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">System</span><span class="p">.</span><span class="n">StringComparison</span><span class="p">.</span><span class="n">CurrentCultureIgnoreCase</span><span class="p">))</span>
+            <span class="p">{</span>
+                <span class="c1">// todo: replace this placeholder functionality with your own code
+</span>                <span class="kt">string</span> <span class="n">action</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">Actions</span><span class="p">.</span><span class="nf">First</span><span class="p">();</span>
+                <span class="n">JObject</span> <span class="n">incoming</span> <span class="p">=</span> <span class="n">context</span><span class="p">.</span><span class="n">GetDataOrDefault</span><span class="p">&lt;</span><span class="n">JObject</span><span class="p">&gt;();</span>
+            <span class="p">}</span>
+            
+            <span class="k">return</span> <span class="n">Task</span><span class="p">.</span><span class="nf">FromResult</span><span class="p">(</span><span class="k">true</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Once you have done this your app is ready for deploying it to Azure. Deploy it (Right-clikc your project in Visual Studio and deploy) and check the values in the application settings using portal.azure.com:</p>
+
+<p><a href="/assets/articles/wp-content/uploads/2015/10/9.jpg">WebHooks with ASP.NET on Azure - DropBox and GitHub</a></p>
+
+<p>There your two secrets should appear now. If not: Get them in there manually. The keys are
+<code class="highlighter-rouge">MS_WebHookReceiverSecret_GitHub</code>
+and
+<code class="highlighter-rouge">MS_WebHookReceiverSecret_Dropbox</code></p>
+
+<p>Now your app is ready to receive WebHooks. But how do we connect DropBox to fire againt our application? Well, the github case mentioned in the <a href="http://blogs.msdn.com/b/webdev/archive/2015/09/04/introducing-microsoft-asp-net-webhooks-preview.aspx">link above</a> is valid for dropbox, too! So lets enter the page in the dropbox-app we have been creating a few minutes before:</p>
+
+<p><code class="highlighter-rouge">https://[host]/api/webhooks/incoming/[receiver]</code></p>
+
+<p>is the form. So in our case this is:</p>
+
+<p><code class="highlighter-rouge">https://[host]/api/webhooks/incoming/dropbox</code></p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/10.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>After a short check this should be working and get the state “Enabled” from DropBox.</p>
+
+<p>If you now change something in your entire dropbox-space the webhook should be triggered like this:</p>
+
+<p><img src="/assets/articles/wp-content/uploads/2015/10/111.jpg" alt="WebHooks with ASP.NET on Azure - DropBox and GitHub" /></p>
+
+<p>If you only want to watch a specific part of your dropbox you have to spcify this in your app. Above we selected “Full Dropbox”.</p>
+
+<p>In the WebHookHandler itself you can now do what you want with the POST-request from dropbox. Sending an Email, notify your apge with SignalR etc. Same applies for github. Any change should trigger a webhook and you can work with in on your website in a way you want to.</p>
+
+<p>I hope this helps anybody and happy coding.</p>
+
+<p>Fabian</p>
+
+	  ]]></description>
+	</item>
+
+
+</channel>
+</rss>
