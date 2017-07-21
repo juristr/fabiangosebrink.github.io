@@ -235,26 +235,26 @@ import { Observable } from 'rxjs/Observable';
 import { CurrentUserService } from '../services/currentUser.service';
 
 @Injectable()
-export class HttpWrapperService {
+export class MyDataService {
     constructor(private http: HttpClient, private currentUserService: CurrentUserService) { }
 
-    get<T>(url: string, headers?: HttpHeaders | null): Observable<T> {
+    get<T>(url: string): Observable<T> {
         return this.http.get<T>(url);
     }
 
-    post<T>(url: string, body: string, headers?: HttpHeaders | null): Observable<T> {
+    post<T>(url: string, body: string): Observable<T> {
         return this.http.post<T>(url, body);
     }
 
-    put<T>(url: string, body: string, headers?: HttpHeaders | null): Observable<T> {
+    put<T>(url: string, body: string): Observable<T> {
         return this.http.put<T>(url, body);
     }
 
-    delete<T>(url: string, headers?: HttpHeaders | null): Observable<T> {
+    delete<T>(url: string): Observable<T> {
         return this.http.delete<T>(url);
     }
 
-    patch<T>(url: string, body: string, headers?: HttpHeaders | null): Observable<T> {
+    patch<T>(url: string, body: string): Observable<T> {
         return this.http.patch<T>(url, body);
     }
 }
