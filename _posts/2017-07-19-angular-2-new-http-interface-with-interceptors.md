@@ -1,5 +1,5 @@
 ---
-title: Exploring the new angular HTTP interface and interceptors
+title: Angular - New HTTP interface with interceptors
 date: 2017-07-19 19:55
 author: Fabian Gosebrink
 layout: post
@@ -28,7 +28,7 @@ to
 
 ``` import { HttpClientModule } from '@angular/common/http'; ```
 
-```
+{% highlight js %}
 // ...
 import { HttpClientModule } from '@angular/common/http';
 // ...
@@ -48,7 +48,7 @@ import { HttpClientModule } from '@angular/common/http';
 })
 
 export class HomeModule { }
-```
+{% endhighlight %}
 
 ## Dependency Injection // Constructors
 
@@ -69,28 +69,29 @@ constructor(private http: HttpClient) { }
 ## Methods // HTTP Verbs
 
 We can use the HTTP methods around GET, POST etc. in a new way. The `.json()` is not necessary anymore. JSON is now assumed as a standard. So that means, we can get rid of the first `.map((response: Response) => <MyType>response.json())` method. In addition to that the method now are generic which means that they can take the type directly and you do not need to cast it anymore. So from
-```
+
+{% highlight js %}
 public get(): Observable<MyType> => {
     return this.http.get(url)
         .map((response: Response) => <MyType>response.json());
 }
-```
+{% endhighlight %}
 
 to
 
-```
+{% highlight js %}
 get<T>(url: string): Observable<T> {
     return this.http.get<T>(url);
 }
-```
+{% endhighlight %}
 
 or for a post request its pretty much straight forward as well
 
-```
+{% highlight js %}
 post<T>(url: string, body: string): Observable<T> {
     return this.http.post<T>(url, body);
 }
-```
+{% endhighlight %}
 
 ## Headers
 
@@ -98,7 +99,7 @@ To apply headers we can simply add another parameter to the get function passing
 
 So
 
-```
+{% highlight js %}
 get<T>(url: string): Observable<T> {
     return this.http.get<T>(url);
 }
@@ -106,11 +107,11 @@ get<T>(url: string): Observable<T> {
 post<T>(url: string, body: string): Observable<T> {
     return this.http.post<T>(url, body);
 }
-```
+{% endhighlight %}
 
 becomes to
 
-```
+{% highlight js %}
 get<T>(url: string, headers?: HttpHeaders | null): Observable<T> {
     const expandedHeaders = this.prepareHeader(headers);
     return this.http.get<T>(url, expandedHeaders);
@@ -133,7 +134,7 @@ private prepareHeader(headers: HttpHeaders | null): object {
         headers
     }
 }
-```
+{% endhighlight %}
 
 Be aware that setting a new header _returns_ the new header object instead of manipulation your existing one. Its immutable.
 
@@ -143,7 +144,7 @@ From AngularJS we know HTTP interceptors as a great and very mighty way to obser
 
 Let us add an interceptor which is just logging the requests. This is just a class tagged with the `@Injectable` decorator implementing and interface `HttpInterceptor`. It gets passed an `HttpHeader` which provides us the `handle(...)` method to not cancel the request but just hook 'between' the application and the outgoing or incoming request. So we have to give the request further to be handled from the enxt interceptor (chaining) or the backend.
 
-```
+{% highlight js %}
 import { Injectable} from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
 
@@ -154,11 +155,11 @@ export class MyFirstInterceptor implements HttpInterceptor {
         return next.handle(req);
     }
 }
-```
+{% endhighlight %}
 
 and of course we have ot reigster it on the module
 
-```
+{% highlight js %}
 providers: [
     // ...
     {
@@ -166,11 +167,11 @@ providers: [
         useClass: MyFirstInterceptor,
         multi: true,
     }]
-```
+{% endhighlight %}
 
 If we just log this one we get a result like this
 
-```
+{% highlight js %}
 {
 	"url": "http://blabla",
 	"body": null,
@@ -191,11 +192,11 @@ If we just log this one we get a result like this
 	},
 	"urlWithParams": "http://blablawithparams"
 }
-```
+{% endhighlight %}
 
 Now we can tweak the interceptor to add the headers accordingly and add the authentication token if the user has one.
 
-```
+{% highlight js %}
 @Injectable()
 export class MyFirstInterceptor implements HttpInterceptor {
 
@@ -211,8 +212,11 @@ export class MyFirstInterceptor implements HttpInterceptor {
             req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
         }
 
-        // if this is a login-request the header is alreadz set to x/www/formurl/encoded. 
-        // so if we already have a content-type, do not set it, but if we don't have one, set it to default --> json
+        // if this is a login-request the header is 
+        // already set to x/www/formurl/encoded. 
+        // so if we already have a content-type, do not 
+        // set it, but if we don't have one, set it to 
+        // default --> json
         if (!req.headers.has('Content-Type')) {
             req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
         }
@@ -222,11 +226,11 @@ export class MyFirstInterceptor implements HttpInterceptor {
         return next.handle(req);
     }
 }
-```
+{% endhighlight %}
 
 With this we can get rid of the method in the class above and we dont need to call the method `private prepareHeader(headers: HttpHeaders | null): object` to prepare the headers. So the final result could be like:
 
-```
+{% highlight js %}
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -283,7 +287,7 @@ export class MyFirstInterceptor implements HttpInterceptor {
     }
 }
 
-```
+{% endhighlight %}
 
 I hope with this I got you a basic understanding of the new neat HTTP api from Angular. I like it a lot and this code looks nicer and cleaner that way.
 
