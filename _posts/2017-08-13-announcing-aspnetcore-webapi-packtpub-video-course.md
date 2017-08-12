@@ -25,44 +25,39 @@ With ASP.NET Core you can build cross platform web apis which I am describing in
 
 ### Section 1: Basics
 
-* Exploring the REST principles
-* Getting to know ASP.NET Core
-* Exploring the dotnet Command Line Interface & start the application
-* Summary
- 
+* The Course Overview
+* Exploring the REST Principles
+* Getting to Know ASP.NET Core
+* Exploring the .NET Command-line Interface
+
 ### Section 2: Exploring ASP.NET Core
- 
-* Creating a new ASP.NET Core project using Visual Studio 2017
+
+* Creating a New ASP.NET Core Project Using Visual Studio 2017
 * What is Middleware in ASP.NET Core?
 * Exploring the Configuration of ASP.NET
-* Working with different environments
-* Summary
- 
+* Working with Different Environments in ASP.NET Core
+
 ### Section 3: Building the First Endpoint with ASP.NET Core
 
-* Creating the Data Storage with Entity Framework Core
-* Creating the first Endpoint with Routing
-* Adding and updating data
-* Partial updating and deleting data
-* Summary
- 
+* Creating Data Storage with the Entity Framework Core
+* Creating the First Endpoint
+* Adding and Updating Data
+* Partially Updating and Deleting Data
+
 ### Section 4: ASP.NET Core WebAPI – The next steps
 
-* Using formatters & content negotiation
-* Using validation in your API
-* Adding Logging to your API
-* Adding a Documentation for your API
-* Implement paging, sorting & filtering 
-* Supporting different versions of your API
-* Enable Token Authentication on your API (theoretical)
-* Summary
- 
+* Formatters and Content Negotiation
+* Enable Logging
+* Validation
+* Introducing API Documentation
+* Adding Paging, Sorting, and Filtering
+* Versioning Your API
+* Authentication
+
 ### Section 5: Deploying Web API
 
-* Deploying your WebAPI on Azure through Visual Studio
-* Deploying your WebAPI to a Docker Container
-* Summary
- 
+* Deploying Your WebAPI on Azure through Visual Studio
+* Deploying Your WebAPI to a Docker Container
 
 ## Thanks
 
