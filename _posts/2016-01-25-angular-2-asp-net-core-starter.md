@@ -3,7 +3,7 @@ title: Angular and ASP.NET Core Starter
 date: 2016-01-25 19:47
 author: Fabian Gosebrink
 layout: post
-tags: angular aspnet core vscode
+tags: angular aspnetcore vscode
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

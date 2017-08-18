@@ -3,7 +3,7 @@ title: How to set up Angular and Webpack in Visual Studio with ASP.NET Core
 date: 2016-08-27 16:58
 author: Fabian Gosebrink
 layout: post
-tags: aspnet aspnetcore visualstudio webpack devserver
+tags: aspnetcore visualstudio webpack devserver
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

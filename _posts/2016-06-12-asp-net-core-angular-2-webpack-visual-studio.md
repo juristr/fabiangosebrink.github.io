@@ -3,7 +3,7 @@ title: ASP.NET Core and Angular with Webpack and Visual Studio
 date: 2016-06-12 22:10
 author: Fabian Gosebrink
 layout: post
-tags: angular aspnet core webpack
+tags: angular aspnetcore webpack
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
