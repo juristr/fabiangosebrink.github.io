@@ -27,7 +27,7 @@ Find the code here:
 
 ### The new project
 
-Select “File" --> "New Project”
+Select "File" --> "New Project”
 
 ![How to set up Angular 2 and Webpack in Visual Studio with ASP.NET Core]({{site.baseurl}}assets/articles/wp-content/uploads/2016/08/Clipboard01.jpg)
 

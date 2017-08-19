@@ -70,18 +70,18 @@ First lets build some entities we want to send to the client and back. We will c
 
 {% highlight cs %}
 public class HouseDto
-    {
-        public int Id { get; set; }
+{
+    public int Id { get; set; }
 
-        [Required, MinLength(3)]
-        public string Street { get; set; }
+    [Required, MinLength(3)]
+    public string Street { get; set; }
 
-        [Required, MinLength(3)]
-        public string City { get; set; }
+    [Required, MinLength(3)]
+    public string City { get; set; }
 
-        [Required]
-        [DataType(DataType.PostalCode)]
-        public int ZipCode { get; set; }
+    [Required]
+    [DataType(DataType.PostalCode)]
+    public int ZipCode { get; set; }
 }
 {% endhighlight %}
 
