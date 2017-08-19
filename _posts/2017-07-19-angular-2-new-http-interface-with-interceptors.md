@@ -131,7 +131,7 @@ private prepareHeader(headers: HttpHeaders | null): object {
     headers = headers.set('Accept', 'application/json');
 
     return {
-        headers
+        headers: headers
     }
 }
 {% endhighlight %}
