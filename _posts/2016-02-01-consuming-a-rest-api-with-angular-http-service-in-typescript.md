@@ -22,7 +22,7 @@ Hey,
 
 with this blog pot I want to show you how to create a dataservice to consume (not only) an ASP.NET REST API with the angular http module.
 
-In my recent blog post [Getting started with Visual Studio Code, AngularJS and Typescript](http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/) I have already mentioned how to start and to install the complete angular2 environment with corresponding tools.
+In my recent blog post [Getting started with Visual Studio Code, AngularJS and Typescript](http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/) I have already mentioned how to start and to install the complete angular environment with corresponding tools.
 
 Now I want to show you an example dataservice to call your favourite API.
 

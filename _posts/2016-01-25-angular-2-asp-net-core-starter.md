@@ -276,7 +276,7 @@ Angular is served via npm. To get Angular we have to add a package.json to the r
 }
 {% endhighlight %}
 
-or just type "npm init" to answer all questions and get an project.json file generated.
+or just type "npm init" to answer all questions and get an package.json file generated.
 
 After this you can install Angular and all other dependencies via "npm install" or Visual Studio will do this for you automatically. Just just have to wait a few seconds. It will add a node_modules folder to your root application and copy all files, also the *.d.ts-files you need to develop with typescript.
 
