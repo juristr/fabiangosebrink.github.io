@@ -285,10 +285,6 @@ gulp.task('build:electron:prod', function (done) {
 
 the only difference here is that we have to copy assets for electron into the temp folder. The whole procedure before is like we know it from the web solution.
 
-Find the gulp-tasks here:
-
-[https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/tree/master/Client/gulpTasks](https://github.com/FabianGosebrink/Foodchooser-ASPNET-Angular-Cross-Platform/tree/master/Client/gulpTasks)
-
 I hope this helps to get out confusion and reduces the complexity of the topic "Cross platform".
 
 HTH

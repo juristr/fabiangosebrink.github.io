@@ -3,7 +3,7 @@ title: Get started with ASP.NET Core and Entity Framework 6
 date: 2015-12-13 20:20
 author: Fabian Gosebrink
 layout: post
-tags: aspnet mvc automapper codefirst database context entityframework json webapi
+tags: aspnetcore mvc automapper codefirst database context entityframework json webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -122,6 +122,8 @@ public class MyModelViewModel
 }
 {% endhighlight %}
 
+Please add another models for update and create with the properties you want to expose. Don't forget the mapping.
+
 Now we have to bring it to the build in DI in ASP.NET:
 
 {% highlight cs %}
@@ -142,6 +144,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
     Mapper.Initialize(config =>
     {
         config.CreateMap<MyModel, MyModelViewModel>().ReverseMap();
+        // other mappings
     });
 
     //...
@@ -152,7 +155,7 @@ In the end you only have to build up a controller which gives and takes the valu
 
 {% highlight cs %}
 [Route("api/[controller]")]
-public class MyModelController
+public class MyModelController : Controller
 {
     private readonly IExampleRepository _exampleRepository;
 
@@ -165,135 +168,110 @@ public class MyModelController
     [HttpGet("", Name = "GetAll")]
     public IActionResult Get()
     {
-        try
-        {
-            List<MyModel> MyModels = _exampleRepository.GetAll().ToList();
-            return new JsonResult(MyModels.Select(x => Mapper.Map<MyModelViewModel>(x)));
-        }
-        catch (Exception)
-        {
-            //Do something with the exception
-            return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
-        }
+        List<MyModel> MyModels = _exampleRepository.GetAll().ToList();
+        return Ok(MyModels.Select(x => Mapper.Map<MyModelViewModel>(x)));
     }
 
     // GET api/values/5
     [HttpGet("{id}", Name = "GetSingle")]
     public IActionResult Get(int id)
     {
-        try
-        {
-            MyModel MyModel = _exampleRepository.GetSingleById(id);
+        MyModel MyModel = _exampleRepository.GetSingleById(id);
 
-            if (MyModel == null)
-            {
-                return new HttpNotFoundResult();
-            }
-
-            return new HttpOkObjectResult(Mapper.Map<MyModelViewModel>(MyModel));
-        }
-        catch (Exception ex)
+        if (MyModel == null)
         {
-            //Do something with the exception
-            return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            return NotFound();
         }
+
+        return Ok(Mapper.Map<MyModelViewModel>(MyModel));
     }
 
     // POST api/values
     [HttpPost]
-    public IActionResult Post([FromBody]MyModelViewModel viewModel)
+    public IActionResult Post([FromBody]MyModelCreateViewModel viewModel)
     {
-        try
+        if (viewModel == null)
         {
-            if (viewModel == null)
-            {
-                return new BadRequestResult();
-            }
-
-            MyModel item = Mapper.Map<MyModel>(viewModel);
-
-            _exampleRepository.Add(item);
-            int save = _exampleRepository.Save();
-
-            return new CreatedAtRouteResult("GetSingle", new { controller = "MyModel", id = item.Id }, item);
+            return BadRequest();
         }
-        catch (Exception exception)
+
+        if (!ModelState.IsValid)
         {
-            //Do something with the exception
-            return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            return BadRequest(ModelState);
         }
+
+        MyModel toAdd = Mapper.Map<MyModel>(viewModel);
+
+        _exampleRepository.Add(toAdd);
+
+        if (!_exampleRepository.Save())
+        {
+            throw new Exception("Creating an item failed on save.");
+        }
+
+        MyModel newItem = _exampleRepository.GetSingle(toAdd.Id);
+
+        return CreatedAtRoute("GetSingle", new { id = toAdd.Id },
+            Mapper.Map<MyModelViewModel>(toAdd));
     }
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]MyModelViewModel viewModel)
+    public IActionResult Put(int id, [FromBody]MyModelUpdateViewModel updateViewModel)
     {
-        try
+        if (updateViewModel == null)
         {
-            if (viewModel == null)
-            {
-                return new BadRequestResult();
-            }
-
-            MyModel singleById = _exampleRepository.GetSingleById(id);
-
-            if (singleById == null)
-            {
-                return new HttpNotFoundResult();
-            }
-
-            singleById.Name = viewModel.Name;
-
-            _exampleRepository.Update(singleById);
-            int save = _exampleRepository.Save();
-
-            if (save > 0)
-            {
-                return new HttpOkObjectResult(Mapper.Map<MyModelViewModel>(singleById));
-            }
-
-            return new BadRequestResult();
+            return BadRequest();
         }
-        catch (Exception exception)
+
+        var existingItem = _exampleRepository.GetSingle(id);
+
+        if (existingItem == null)
         {
-            //Do something with the exception
-            return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            return NotFound();
         }
+
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState);
+        }
+
+        Mapper.Map(updateViewModel, existingItem);
+
+        _exampleRepository.Update(id, existingItem);
+
+        if (!_exampleRepository.Save())
+        {
+            throw new Exception("Updating a item failed on save.");
+        }
+
+        return Ok(Mapper.Map<MyModelViewModel>(existingItem));
     }
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        try
+        MyModel singleItem = _exampleRepository.GetSingle(id);
+
+        if (MyModel == null)
         {
-            MyModel singleById = _exampleRepository.GetSingleById(id);
-
-            if (singleById == null)
-            {
-                return new HttpNotFoundResult();
-            }
-
-            _exampleRepository.Delete(id);
-            int save = _exampleRepository.Save();
-
-            if (save > 0)
-            {
-                return new NoContentResult();
-            }
-
-            return new BadRequestResult();
+            return NotFound();
         }
-        catch (Exception exception)
+
+        _exampleRepository.Delete(id);
+
+        if (!_exampleRepository.Save())
         {
-            //Do something with the exception
-            return new HttpStatusCodeResult((int)HttpStatusCode.InternalServerError);
+            throw new Exception("Deleting a item failed on save.");
         }
+
+        return NoContent();
     }
 }
 {% endhighlight %}
 
-Thats it. If you now going to use the DatabaseContext it will create the database for you with the new ASP.NET 5 RC1.
+Thats it. If you now going to use the DatabaseContext it will create the database for you with the new ASP.NET Core.
 
 ![Ef6Example_05]({{site.baseurl}}assets/articles/wp-content/uploads/2015/12/Ef6Example_05.jpg)
 

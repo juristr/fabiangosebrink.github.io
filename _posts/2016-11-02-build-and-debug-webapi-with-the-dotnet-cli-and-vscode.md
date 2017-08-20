@@ -3,7 +3,7 @@ title: Build and debug a WebAPI with the Dotnet CLI and VSCode
 date: 2016-11-02 09:30
 author: Fabian Gosebrink
 layout: post
-tags: aspnet dotnet cli webapi
+tags: aspnetcore dotnet cli webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -34,68 +34,60 @@ You can check if the CLI is running correctly by typing "dotnet" into your cmd. 
 
 Now we can type "code ." to start Visual Studio Code and add some content.
 
-Modify the project.json to this:
+Modify the dotnetcliwebapi.csproj to this:
 
-{% highlight js %}
-{
-  "dependencies": {
-    "Microsoft.NETCore.App": {
-      "version": "1.0.0",
-      "type": "platform"
-    },
-    "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-    "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
-    "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
-    "Microsoft.Extensions.Logging.Console": "1.0.0",
-    "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Automapper": "5.1.1",
-    "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
-    "Microsoft.Extensions.Configuration.Json": "1.0.0"
-  },
-  "tools": {
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-  },
-  "frameworks": {
-    "netcoreapp1.0": {}
-  },
-  "buildOptions": {
-    "emitEntryPoint": true,
-    "preserveCompilationContext": true,
-    "debugType": "portable"
-  },
-  "runtimeOptions": {
-    "configProperties": {
-      "System.GC.Server": true
-    }
-  },
-  "publishOptions": {
-    "include": [
-      "wwwroot",
-      "web.config"
-    ]
-  },
-  "scripts": {
-    "postpublish": [
-      "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%"
-    ]
-  }
-}
+{% highlight html %}
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Automapper" Version="6.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>
 {% endhighlight %}
 
 and add the Startup.cs like this:
 
 {% highlight cs %}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DotnetcliWebApi.Dtos;
+using DotnetcliWebApi.Entities;
+using DotnetcliWebApi.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json.Serialization;
 
-namespace AspNetWebapiCore
+namespace DotnetcliWebApi
 {
     public class Startup
     {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
         // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
@@ -112,7 +104,9 @@ namespace AspNetWebapiCore
                     });
             });
 
-            services.AddMvc();
+            services.AddSingleton<IFoodRepository, FoodRepository>();
+            services.AddMvcCore()
+                .AddJsonFormatters(options => options.ContractResolver = new CamelCasePropertyNamesContractResolver());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -126,7 +120,12 @@ namespace AspNetWebapiCore
             }
 
             app.UseCors("AllowAllOrigins");
-
+            AutoMapper.Mapper.Initialize(mapper =>
+                      {
+                          mapper.CreateMap<FoodItem, FoodItemDto>().ReverseMap();
+                          mapper.CreateMap<FoodItem, FoodUpdateDto>().ReverseMap();
+                          mapper.CreateMap<FoodItem, FoodCreateDto>().ReverseMap();
+                      });
             app.UseMvc();
         }
     }
@@ -136,29 +135,33 @@ namespace AspNetWebapiCore
 Now modify the program.cs like this:
 
 {% highlight cs %}
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace AspNetWebapiCore
+namespace DotnetcliWebApi
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+            BuildWebHost(args).Run();
+        }
+
+        public static IWebHost BuildWebHost(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
                 .Build();
-
-            host.Run();
-        }
     }
 }
 {% endhighlight %}
 
-If you now type "dotnet restore" and "dotnet run" your api starts.
+If you now type "dotnet run" your api starts.
 
 ![buildawebapiwithvscodeandthedotnetcli_02]({{site.baseurl}}assets/articles/wp-content/uploads/2016/11/BuildaWebAPIwithVSCodeandtheDotNetCLI_02.jpg)
 
@@ -202,8 +205,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
     // ...
 }
 {% endhighlight %}
-
-
 
 If you now type "dotnet build" it should build everyting. The warnings are because of we ware doing nothing with the exception variable. You should handle them anyhow in a real world project.
 

@@ -16,7 +16,7 @@ In this blogpost I want to show you how to get Ahead Of Time compilation enabled
 
 ### Code 
 
-[Github - ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
+[Github - ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master)
 
 ### The Router
 
@@ -254,4 +254,4 @@ Fabian
 
 [Ahead of time compilation - Angular.io](https://angular.io/docs/ts/latest/cookbook/aot-compiler.html)
 
-[ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
+[ASPNET-ASPNETCore-AngularJS-Angular](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master)

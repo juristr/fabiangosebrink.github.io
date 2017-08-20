@@ -12,13 +12,17 @@ disqus: true
 categories: articles
 ---
 
-**Updated to new syntax**
+### Updates
+
+19.08.2017 - Updated to ASP.NET Core 2.0 & new HttpClientModule
+
+### Blogpost
 
 Hey,
 
-with this blog pot I want to show you how to create a Dataservice to consume (not only) an ASP.NET REST API with the angular2 http module.
+with this blog pot I want to show you how to create a dataservice to consume (not only) an ASP.NET REST API with the angular http module.
 
-In my recent blog post [Getting started with Visual Studio Code, AngularJS and Typescript](http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/) I have already mentioned how to start and to install the complete angular2 environment with corresponding tools.
+In my recent blog post [Getting started with Visual Studio Code, AngularJS and Typescript](http://offering.solutions/blog/articles/2015/12/03/getting-started-with-visual-studio-code-angularjs-and-typescript/) I have already mentioned how to start and to install the complete angular environment with corresponding tools.
 
 Now I want to show you an example dataservice to call your favourite API.
 
@@ -26,21 +30,20 @@ Now I want to show you an example dataservice to call your favourite API.
 
 Its always a good thing if you have your configuration seperated stored anywhere in your application. I always go for a file like "app.constants.ts" where I store all my values. If anything changes there, like a version of the api which is stored in the url or the endpoint/server whatever, I can do those changes immediatelly at one point.
 
-
 {% highlight ts %}
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Configuration {
-    public Server: string = 'http://localhost:5000/';
-    public ApiUrl: string = 'api/';
+    public Server = 'http://localhost:5000/';
+    public ApiUrl = 'api/';
     public ServerWithApiUrl = this.Server + this.ApiUrl;
 }
 {% endhighlight %}
 
 Notice the injectable attribute to generate the metadata to make the service available through DI in other modules.
 
->You can read more about DI in Angular in this blog post [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
+> You can read more about DI in Angular in this blog post [Dependency Injection in Angular](http://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
 
 Now we have this going we can generate our service:
 
@@ -49,109 +52,124 @@ Now we have this going we can generate our service:
 First of all you have to create a module which only contains a service which is only responsible for calling an API with a specific endpoint.
 
 {% highlight ts %}
+import 'rxjs/add/operator/map';
+
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
-import 'rxjs/add/operator/map'
 import { Observable } from 'rxjs/Observable';
-import { MyTypedItem } from '../models/MyTypedItem';
-import { Configuration } from '../app.constants';
+
+import { Configuration } from '../../app.constants';
 
 @Injectable()
 export class DataService {
 
     private actionUrl: string;
-    private headers: Headers;
 
-    constructor(private _http: Http, private _configuration: Configuration) {
-
-        this.actionUrl = _configuration.ServerWithApiUrl + 'myItem/';
-
-        this.headers = new Headers();
-        this.headers.append('Content-Type', 'application/json');
-        this.headers.append('Accept', 'application/json');
+    constructor(private http: HttpClient, private _configuration: Configuration) {
+        this.actionUrl = _configuration.ServerWithApiUrl + 'values/';
     }
 
-    public GetAll = (): Observable<MyTypedItem[]> => {
-        return this._http.get(this.actionUrl)
-            .map((response: Response) => <MyTypedItem[]>response.json())
-            .catch(this.handleError);
+    public getAll<T>(): Observable<T> {
+        return this.http.get<T>(this.actionUrl);
     }
 
-    public GetSingle = (id: number): Observable<MyTypedItem> => {
-        return this._http.get(this.actionUrl + id)
-            .map((response: Response) => <MyTypedItem>response.json())
-            .catch(this.handleError);
+    public getSingle<T>(id: number): Observable<T> {
+        return this.http.get<T>(this.actionUrl + id);
     }
 
-    public Add = (itemName: string): Observable<MyTypedItem> => {
-        let toAdd = JSON.stringify({ ItemName: itemName });
+    public add<T>(itemName: string): Observable<T> {
+        const toAdd = JSON.stringify({ ItemName: itemName });
 
-        return this._http.post(this.actionUrl, toAdd, { headers: this.headers })
-            .map((response: Response) => <MyTypedItem>response.json())
-            .catch(this.handleError);
+        return this.http.post<T>(this.actionUrl, toAdd);
     }
 
-    public Update = (id: number, itemToUpdate: MyTypedItem): Observable<MyTypedItem> => {
-        return this._http.put(this.actionUrl + id, JSON.stringify(itemToUpdate), { headers: this.headers })
-            .map((response: Response) => <MyTypedItem>response.json())
-            .catch(this.handleError);
+    public update<T>(id: number, itemToUpdate: any): Observable<T> {
+        return this.http
+            .put<T>(this.actionUrl + id, JSON.stringify(itemToUpdate));
     }
 
-    public Delete = (id: number): Observable<Response> => {
-        return this._http.delete(this.actionUrl + id)
-            .catch(this.handleError);
+    public delete<T>(id: number): Observable<T> {
+        return this.http.delete<T>(this.actionUrl + id);
     }
+}
 
-    private handleError(error: Response) {
-        console.error(error);
-        return Observable.throw(error.json().error || 'Server error');
+
+@Injectable()
+export class CustomInterceptor implements HttpInterceptor {
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if (!req.headers.has('Content-Type')) {
+            req = req.clone({ headers: req.headers.set('Content-Type', 'application/json') });
+        }
+
+        req = req.clone({ headers: req.headers.set('Accept', 'application/json') });
+        console.log(JSON.stringify(req.headers));
+        return next.handle(req);
     }
 }
 {% endhighlight %}
 
-This dataservice gets the configuration we just did and the HTTP-Service via DI. We included it over the new module-loading-syntax. Also notice the typed items we included and the configuration we have to pull in to make it available.
+This dataservice gets the configuration we just did and the HTTP-Service via DI. We included it over the new module-loading-syntax.
 
-It is also important to tell the http-calls which header to use. "Application/Json" in this case.
+It is also important to tell the http-calls which header to use. "Application/Json" in this case. We are doing this via an interceptor and the new HttpClientModule.
 
 Now you can include, inject and use this service to make http-calls to your API like this:
 
 {% highlight ts %}
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../services/dataService';
-import { MyTypedItem } from '../models/MyTypedItem ';
+import { ToasterService } from 'angular2-toaster/angular2-toaster';
+import { SlimLoadingBarService } from 'ng2-slim-loading-bar';
+
+import { DataService } from '../../shared/services/dataService';
 
 @Component({
-    selector: 'my-item-component',
-    providers: [DataService],
-    templateUrl: 'app/myItem/myItem.component.html'
+    selector: 'app-home-component',
+    templateUrl: './home.component.html'
 })
 
-export class MyItemComponent implements OnInit {
-    public myItems: MyTypedItem [];
+export class HomeComponent implements OnInit {
 
-    constructor(private _dataService: DataService) { }
+    public message: string;
+    public values: any[];
+
+    constructor(
+        private _dataService: DataService,
+        private _toasterService: ToasterService,
+        private _slimLoadingBarService: SlimLoadingBarService) {
+        this.message = 'Hello from HomeComponent constructor';
+    }
 
     ngOnInit() {
-        this.getAllItems();
-    }
-    
-    //...
+        this._slimLoadingBarService.start();
 
-    private getAllItems(): void {
         this._dataService
-            .GetAll()
-            .subscribe((data:MyTypedItem[]) => this.myItems = data,
-                error => console.log(error),
-                () => console.log('Get all Items complete'));
+            .getAll<any[]>()
+            .subscribe((data: any[]) => this.values = data,
+            error => () => {
+                this._toasterService.pop('error', 'Damn', 'Something went wrong...');
+            },
+            () => {
+                this._toasterService.pop('success', 'Complete', 'Getting all values complete');
+                this._slimLoadingBarService.complete();
+            });
     }
 }
+
 {% endhighlight %}
 
-I think this should be basically it. Pay attention to the typed answer you get from the service
+I think this should be basically it. Pay attention to the (normally) typed answer you get from the service
 
-```(response:MyTypedItem[]) =>```
+```(data: any[]) =>```
 
-and to the subsribe after calling the "GetAll"-Method from the service.
+should be in your application
+
+{% highlight ts %}
+ this._dataService
+            .getAll<MyTypedItem[]>()
+            .subscribe((data: MyTypedItem[]) => this.values = data,
+{% endhighlight %}
+
+and to the subscribe after calling the "GetAll"-Method from the service.
 
 Hope you enjoyed it and a lot more: I hope this helps.
 
@@ -161,14 +179,13 @@ Fabian
 
 ### GitHub:
 
-[Angular ASP.NET CORE Template With SignalR](https://github.com/FabianGosebrink/ASPNETCore-Angular-SignalR-Typescript)
+[Angular // Webpack // ASP.NET CORE WebAPI Starter Template](https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate)
 
 or
 
-[https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-AngularJS-Angular/tree/master/Angular-Client-Webpack)
+[https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master/AngularCLI](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/tree/master/AngularCLI)
 
 ### Links:
-
 [https://auth0.com/blog/2015/05/14/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/](https://auth0.com/blog/2015/05/14/creating-your-first-real-world-angular-2-app-from-authentication-to-calling-an-api-and-everything-in-between/)
 
 [https://auth0.com/blog/2015/10/15/angular-2-series-part-3-using-http/](https://auth0.com/blog/2015/10/15/angular-2-series-part-3-using-http/)

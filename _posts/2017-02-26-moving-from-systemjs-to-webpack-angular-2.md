@@ -83,7 +83,7 @@ module.exports = {
 }; 
 {% endhighlight %}
 
-You can see an example here [webpack.dev.js](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/Angular-Client-Webpack/webpack.dev.js)
+You can see an example here [webpack.dev.js](https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.dev.js)
 
 ## Adding Polyfills
 
@@ -231,18 +231,15 @@ module.exports = {
 We will set the environment from the outside later. To consume it in your application we can simply ask for a variable like this:
 
 {% highlight js %}
-var environment = (process.env.NODE_ENV || "development").trim();
-
-if (environment === "development") {
-    // ...
-} else {
-    // ...
+module.exports = function (env) {
+    console.log(env);
+    return require(`./webpack.${env}.js`);
 }
 {% endhighlight %}
 
 With this you can apply multiple ways of generating your output based on the given environment asking for the variable "NODE_ENV" which we will set up later in our scripts.
 
-You can see an example here [webpack.config.js](https://github.com/FabianGosebrink/ASPNET-ASPNETCore-Angular-Webpack/blob/master/Angular-Client-Webpack/webpack.config.js)
+You can see an example here [webpack.config.js](https://github.com/FabianGosebrink/ASPNETCore-Angular-Webpack-StarterTemplate/blob/master/src/ASPNETCoreAngularWebpackStarter/webpack.config.js)
 
 ## Triggering it from the npm scripts
 
@@ -254,8 +251,8 @@ Now that we introduced webpack we can add the commands to our package.json like 
     "scripts": {
         "start": "tsc && webpack-dev-server --open",
         // other scripts
-        "webpack-dev": "set NODE_ENV=development && webpack",
-        "webpack-prod": "npm run ngc && set NODE_ENV=production && webpack"
+        "build:dev": "webpack --env=dev --progress --profile --colors",
+        "build:dist": "webpack --env=prod --progress --profile --colors",
     },
     //...
 }

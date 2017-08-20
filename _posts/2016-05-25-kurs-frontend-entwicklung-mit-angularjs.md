@@ -14,13 +14,13 @@ categories: articles
 
 In diesem Blogpost stelle ich meinen Kurs: *Frontend-Entwicklung mit AngularJS* vor.
 
-![Angular_With_Digicomp]({{site.baseurl}}assets/articles/wp-content/uploads/2016/05/Angular_With_Digicomp.png)
+![Angular_With_Digicomp]({{site.baseurl}}assets/images/Angular_With_Digicomp.png)
 
 Anfang dieses Jahres kam Digicomp auf mich zu und hat mich gefragt ob ich neben meinen Talks auch mal einen Kurs geben möchte. Natürlich habe ich nicht "Nein" gesagt.
 
 Ich began Unterlagen zu schreiben und am 19. und 20.05. hielt ich einen AngularJs Kurs zum ersten Mal.
 
-[Digicomp Kurs](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/web-und-mobile-app-entwicklung/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs)
+[Digicomp Kurs](https://www.digicomp.ch/weiterbildung/softwareentwicklungs-trainings/webentwicklung/javascript-kurse-und-workshops/frontend-entwicklung-mit-angularjs)
 
 In dem Kurs werden Controller und Databinding behandelt genauso wie Expressions, Filter, Direktiven, Events, Services, Forms und Validation, Routing und das Testing. Dazu schauen wir uns Builds mit dem Task-Runner *Gulp* an. *NPM* ist natürlich auch mit dabei. Jedes Kapitel bekommt ein eigenes Hands-On, damit die Kursteilnehmer das gelernte auch anwenden können.
 

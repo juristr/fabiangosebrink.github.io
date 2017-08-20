@@ -12,7 +12,7 @@ disqus: true
 categories: articles
 ---
 
-Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen <span id="snippet_meta" class="desc" contenteditable="true">Talk bei den Microsoft Evolution Days in Zürich</span> über AngularJs &amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei [Digicomp](http://news.digicomp.ch/de/2015/11/10/microsoft-evolution-day-2015-rueckblick-und-slides-zum-download/). Oder direkt [hier](http://static.news.digicomp.ch/1447166270/track-development.zip). Alle Beispiele gibts auch auf [Github](https://github.com/FabianGosebrink).
+Am 29. Oktober hielt ich einen Talk bei den Microsoft Evolution Days in Zürich, die Digicomp ausgerichtet hat. Ich habe einen <span id="snippet_meta" class="desc" contenteditable="true">Talk bei den Microsoft Evolution Days in Zürich</span> über AngularJs &amp; REST mit einer ASP.NET WebAPI gehalten. Die Folien gibts direkt bei [Digicomp](http://digiblog.s3-eu-central-1.amazonaws.com/app/1446644382/30_agularjs-und-rest_fabian-gosebrink.pdf). Alle Beispiele gibts auch auf [Github](https://github.com/FabianGosebrink).
 
 >Mein erster Vortrag als MVP :-)
 

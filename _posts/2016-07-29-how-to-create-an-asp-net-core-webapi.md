@@ -3,7 +3,7 @@ title: How to create an ASP.NET Core WebAPI
 date: 2016-07-29 18:31
 author: Fabian Gosebrink
 layout: post
-tags: aspnet core webapi
+tags: aspnetcore webapi
 logo: 'assets/images/logo_small.png'
 navigation: True
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -70,18 +70,18 @@ First lets build some entities we want to send to the client and back. We will c
 
 {% highlight cs %}
 public class HouseDto
-    {
-        public int Id { get; set; }
+{
+    public int Id { get; set; }
 
-        [Required, MinLength(3)]
-        public string Street { get; set; }
+    [Required, MinLength(3)]
+    public string Street { get; set; }
 
-        [Required, MinLength(3)]
-        public string City { get; set; }
+    [Required, MinLength(3)]
+    public string City { get; set; }
 
-        [Required]
-        [DataType(DataType.PostalCode)]
-        public int ZipCode { get; set; }
+    [Required]
+    [DataType(DataType.PostalCode)]
+    public int ZipCode { get; set; }
 }
 {% endhighlight %}
 
