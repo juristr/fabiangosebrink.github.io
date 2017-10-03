@@ -116,7 +116,7 @@ Lets do a single test with the `it(...)` like we know it first.
 Next step is to consume the service and fire up a request like we would do it normally. Keep in mind that we are not using the real `HttpClient` but a mock of that provided by angular.
 
 {% highlight js %}
-  it('should get the correct star wars character', () => {
+  it('should get the data successful', () => {
     service.getSingle(1).subscribe((data: any) => {
       expect(data.name).toBe('Luke Skywalker');
     });
@@ -134,7 +134,7 @@ So now we can tell the httpMock what kind of request we expect and toward which 
       expect(data.name).toBe('Luke Skywalker');
     });
 
-    const req = httpMock.expectOne(`https://swapi.co/api/people/1`, 'call to api');
+    const req = httpMock.expectOne(`http://replace.with.api/anything/1`, 'call to api');
     expect(req.request.method).toBe('GET');
   });
 });
@@ -153,7 +153,7 @@ Last thing is to "fire" the request with its data we really expect. So in this c
       expect(data.name).toBe('Luke Skywalker');
     });
 
-    const req = httpMock.expectOne(`https://swapi.co/api/people/1`, 'call to api');
+    const req = httpMock.expectOne(`http://replace.with.api/anything/1`, 'call to api');
     expect(req.request.method).toBe('GET');
 
     req.flush({
