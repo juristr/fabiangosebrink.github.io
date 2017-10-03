@@ -1,9 +1,9 @@
 ---
 title: Testing an Angular Http Service
-date: 2017-10-03 18:12
+date: 2017-10-02 18:12
 author: Fabian Gosebrink
 layout: post
-tags: offering solutions 
+tags: angular httpclient
 logo: 'assets/images/logo_small.png'
 navigation: true
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
@@ -18,7 +18,7 @@ In this blogpost I want to show you how you can test the new HttpClient introduc
 
 Lets take this service as a reference
 
-```javascript
+{% highlight js %}
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -45,7 +45,7 @@ export class CustomHttpService {
   }
 }
 
-```
+{% endhighlight %}
 
 Here we are injecting the httpClient and using it firing a http request to an api.
 
@@ -53,7 +53,7 @@ Here we are injecting the httpClient and using it firing a http request to an ap
 
 At first we have to include the `HttpClientTestingModule` and our `CustomHttpService` in our testbed like so:
 
-```javascript
+{% highlight js %}
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
@@ -71,11 +71,11 @@ describe('CustomHttpService', () => {
   });
 });
 
-```
+{% endhighlight %}
 
 The next step is to hold the `CustomHttpService` itself and the `HttpTestingController` to mock http calls. We need this later on. Modify your sources like this:
 
-```javascript
+{% highlight js %}
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
@@ -98,8 +98,7 @@ describe('CustomHttpService', () => {
     httpMock = TestBed.get(HttpTestingController);
   });
 });
-
-```
+{% endhighlight %}
 
 Notice that we store the service and the httpmock in variables we can access in every test and gets instanciated every time before a test runs `beforEach(...)`
 
@@ -107,29 +106,29 @@ Notice that we store the service and the httpmock in variables we can access in 
 
 Lets do a single test with the `it(...)` like we know it first.
 
-```javascript
+{% highlight js %}
   it('should get the data successful', () => {
      // test goes here
   });
 });
-```
+{% endhighlight %}
 
 Next step is to consume the service and fire up a request like we would do it normally. Keep in mind that we are not using the real `HttpClient` but a mock of that provided by angular.
 
-```javascript
+{% highlight js %}
   it('should get the correct star wars character', () => {
     service.getSingle(1).subscribe((data: any) => {
       expect(data.name).toBe('Luke Skywalker');
     });
   });
 });
-```
+{% endhighlight %}
 
 Here we are also expecting the correct (but faked) result: A property `name` with the value `Luke Skywalker`. 
 
 So now we can tell the httpMock what kind of request we expect and toward which URL. We can do this like this:
 
-```javascript
+{% highlight js %}
   it('should get the correct star wars character', () => {
     service.getSingle(1).subscribe((data: any) => {
       expect(data.name).toBe('Luke Skywalker');
@@ -139,7 +138,8 @@ So now we can tell the httpMock what kind of request we expect and toward which 
     expect(req.request.method).toBe('GET');
   });
 });
-```
+{% endhighlight %}
+
 > Notice that the url has to be the same as the url in the service. 
 
 So we are expecting a call to this API and we consider it as a GET request.
@@ -147,7 +147,7 @@ So we are expecting a call to this API and we consider it as a GET request.
 Last thing is to "fire" the request with its data we really expect. So in this case we give a sample object with a property "name" and the value "Luke Skywalker" as expected.
 
 
-```javascript
+{% highlight js %}
   it('should get the correct star wars character', () => {
     service.getSingle(1).subscribe((data: any) => {
       expect(data.name).toBe('Luke Skywalker');
@@ -163,7 +163,7 @@ Last thing is to "fire" the request with its data we really expect. So in this c
     httpMock.verify();
   });
 });
-```
+{% endhighlight %}
 
 With the `httpMock.verify();` we verify that there are not outstanding http calls.
 
@@ -171,7 +171,7 @@ Thats it for the GET request. We can fire up the other (POST/PUT/DELETE) request
 
 Lets do this:
 
-```javascript
+{% highlight js %}
 it('should post the correct data', () => {
   service.post<any>({ firstname: 'firstname' }).subscribe((data: any) => {
     expect(data.firstname).toBe('firstname');
@@ -214,8 +214,7 @@ it('should delete the correct data', () => {
 
   httpMock.verify();
 });
-
-```
+{% endhighlight %}
 
 You can see that the structure of the tests is the same.
 
