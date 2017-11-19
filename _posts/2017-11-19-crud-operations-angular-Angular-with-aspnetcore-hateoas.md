@@ -22,7 +22,7 @@ I just played around a little bit with this in the last time and maybe you can g
 
 ## Code
 
-You can find the code here: https://github.com/FabianGosebrink/...
+You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angular-Material-HATEOAS-Paging](https://github.com/FabianGosebrink/ASPNETCore-Angular-Material-HATEOAS-Paging)
 
 ## Overview
 
@@ -499,8 +499,8 @@ Fabian
 
 ## <a name="links">Links</a>
 
-https://github.com/nbarbettini/BeautifulRestApi
+[https://github.com/nbarbettini/BeautifulRestApi](https://github.com/nbarbettini/BeautifulRestApi)
 
-https://sookocheff.com/post/api/on-choosing-a-hypermedia-format/
+[https://sookocheff.com/post/api/on-choosing-a-hypermedia-format/](https://sookocheff.com/post/api/on-choosing-a-hypermedia-format/)
 
-http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
+[http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven](http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven)
