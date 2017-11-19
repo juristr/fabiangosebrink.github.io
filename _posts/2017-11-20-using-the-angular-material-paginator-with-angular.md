@@ -1,0 +1,220 @@
+---
+title: Using the Angular Material Paginator with Angular
+date: 2017-10-11 18:12
+author: Fabian Gosebrink
+layout: post
+tags: aspnetcore angular material hateoas
+logo: 'assets/images/logo_small.png'
+navigation: true
+cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'
+subclass: 'post tag-speeches'
+disqus: true
+categories: articles
+---
+
+In this blogpost I want to show you how to use Angular Material with Angular to use a table with paging which is driven by an ASP.NET Core WebAPI.
+
+## Code
+
+You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angular-Material-HATEOAS-Paging](https://github.com/FabianGosebrink/ASPNETCore-Angular-Material-HATEOAS-Paging)
+
+## Overview
+
+
+## <a name="getstarted">Get started</a>
+
+With the Angular Material Table and its Pagination Module it is quite easy to set up paging in a beautiful way so that you can use it on client side and show only a specific amount of entries to your users. What we _not_ want to do is loading _all_ items from the backend in the first place just to get the paging going and then display only a specific amount. Instead we want to load only what we need and display that. If the user clicks on the "next page"-button the items should be loaded and displayed.
+
+## <a name="thebackend">The Backend</a>
+
+The backend is an ASP.NET Core WebAPI which sends out the data as json. With it, every entry contains the specific links and also all links contain the paging links to the next page, previous page etc, altough we do not need them in this example because we already have some logic in Angular Material implemented. If you would not use Angular Material or another "intelligent" UI piece giving you a paging logic piece you could use the links to make it all by yourself.
+
+### Customer Controller
+
+{% highlight js %}
+
+[Route("api/[controller]")]
+public class CustomersController : Controller
+{
+	[HttpGet(Name = nameof(GetAll))]
+	public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
+	{
+		List<Customer> allCustomers = _customerRepository
+			.GetAll(queryParameters)
+			.ToList();
+
+		var allItemCount = _customerRepository.Count();
+
+		var paginationMetadata = new
+		{
+			totalCount = allItemCount,
+			pageSize = queryParameters.PageCount,
+			currentPage = queryParameters.Page,
+			totalPages = queryParameters.GetTotalPages(allItemCount)
+		};
+
+		Response.Headers
+			.Add("X-Pagination", 
+				JsonConvert.SerializeObject(paginationMetadata));
+
+		var links = CreateLinksForCollection(queryParameters, allItemCount);
+
+		var toReturn = allCustomers.Select(x => ExpandSingleItem(x));
+
+		return Ok(new
+		{
+			value = toReturn,
+			links = links
+		});
+	}
+}
+
+{% endhighlight %}
+
+We are sending back the information about the paging with HATEOAS but also with a header to read it with Angular later. Especially the totalcount is interesting for the client. You could also send this back with the JSON response. 
+
+{% highlight js %}
+
+var paginationMetadata = new
+{
+    totalCount = allItemCount,
+    // ...
+};
+
+Response.Headers
+    .Add("X-Pagination", 
+        JsonConvert.SerializeObject(paginationMetadata));
+
+{% endhighlight %}
+
+If you do send it back via the header be sure to expand the headers in CORS that they can be read on client side.
+
+{% highlight js %}
+
+services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder => builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .WithExposedHeaders("X-Pagination"));
+});
+
+{% endhighlight %}
+
+There is also a parameter which can be passed to the `GetAll` method: `QueryParameters`. 
+
+{% highlight js %}
+
+public class QueryParameters
+{
+    private const int maxPageCount = 50;
+    public int Page { get; set; } = 1;
+
+    private int _pageCount = maxPageCount;
+    public int PageCount
+    {
+        get { return _pageCount; }
+        set { _pageCount = (value > maxPageCount) ? maxPageCount : value; }
+    }
+    
+    public string Query { get; set; }
+
+    public string OrderBy { get; set; } = "Name";
+}
+
+{% endhighlight %}
+
+The modelbinder from ASP.NET Core can map the parameters in the request to this object and you can start using them:
+
+`http://localhost:5000/api/customers?pagecount=10&page=1&orderby=Name` is a valid request then which gives us the possibility to grab only the range of items we want to.
+
+## The Frontend
+
+### The services
+
+To collect all the information about the pagination stuff I created a pagination service.
+
+{% highlight js %}
+
+@Injectable()
+export class PaginationService {
+    private paginationModel: PaginationModel;
+
+    get page(): number {
+        return this.paginationModel.pageIndex;
+    }
+
+    get selectItemsPerPage(): number[] {
+        return this.paginationModel.selectItemsPerPage;
+    }
+
+    get pageCount(): number {
+        return this.paginationModel.pageSize;
+    }
+
+    constructor() {
+        this.paginationModel = new PaginationModel();
+    }
+
+    change(pageEvent: PageEvent) {
+        this.paginationModel.pageIndex = pageEvent.pageIndex + 1;
+        this.paginationModel.pageSize = pageEvent.pageSize;
+        this.paginationModel.allItemsLength = pageEvent.length;
+    }
+}
+
+{% endhighlight %}
+
+We are exposing three properties here which can be changed through the "change()" method. The method takes a `pageEvent` as parameter which comes from the Angular Material Paginator. There every information about the current paging state is stored. We are passing this thing around to get the information about our state of paging having kind of an abstraction of the PageEvent of Angular Material.
+
+{% highlight js %}
+
+@Injectable()
+export class HttpBaseService {
+
+    private headers = new HttpHeaders();
+    private endpoint = `http://localhost:5000/api/customers/`;
+
+    constructor(
+        private httpClient: HttpClient,
+        private paginationService: PaginationService) {
+
+        this.headers = this.headers.set('Content-Type', 'application/json');
+        this.headers = this.headers.set('Accept', 'application/json');
+    }
+
+    getAll<T>() {
+        const mergedUrl = `${this.endpoint}` +
+            `?page=${this.paginationService.page}&pageCount=${this.paginationService.pageCount}`;
+
+        return this.httpClient.get<T>(mergedUrl, { observe: 'response' });
+    }
+
+    getSingle<T>(id: number) {
+        return this.httpClient.get<T>(`${this.endpoint}${id}`);
+    }
+
+    add<T>(toAdd: T) {
+        return this.httpClient.post<T>(this.endpoint, toAdd, { headers: this.headers });
+    }
+
+    update<T>(url: string, toUpdate: T) {
+        return this.httpClient.put<T>(url,
+            toUpdate,
+            { headers: this.headers });
+    }
+
+    delete(url: string) {
+        return this.httpClient.delete(url);
+    }
+}
+
+{% endhighlight %}
+
+We are injecting the `PaginationService` and consume its values to create the url sending the request to.
+
+In the `ListComponent` we are now using the 
+
+<script src="https://gist.github.com/FabianGosebrink/32129a532cf2fee34f9c7a368697f799.js"></script>
