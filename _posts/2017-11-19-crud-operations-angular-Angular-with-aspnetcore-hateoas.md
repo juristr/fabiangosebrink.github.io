@@ -12,13 +12,13 @@ disqus: true
 categories: articles
 ---
 
-In this blogpost I want to show you how to use CRUD operations in Angular which are driven by an ASP.NET Core WebAPI using HATEOAS to provide several links. 
+This blog post shows how to implement CRUD operations in Angular which are driven by an ASP.NET Core Web API using HATEOAS.
 
-## First things first
+## A quick note
 
-The HATEOAS in this repository does not follow any "standard" like e.g. HAL. But it is enough that you get the idea and an impression how to use it.
+The HATEOAS in this repository does not follow any "standard" like e.g. [HAL](http://stateless.co/hal_specification.html). But it is enough that you get the idea and an impression how to use it.
 
-I just played around a little bit with this in the last time and maybe you can get some inspiration of how to get stuff going with that maybe in your project. This is only one approach. I would love to hear yours in the comments :-)
+I just played around a little bit with this in the last time and maybe you can get some inspiration of how to get stuff going with that in your project. This is only one approach. I would love to hear yours in the comments :-)
 
 ## Code
 
@@ -26,22 +26,27 @@ You can find the code here: https://github.com/FabianGosebrink/...
 
 ## Overview
 
-1. Take me to [The Backend](#thebackend)
+1. [What is HATEOAS](#whatishateoas)
+2. [The Backend](#thebackend)
     1. [Customer Controller](#customercontroller)
     2. [The response](#theresponse)
-2. Take me to [The Frontend](#thefrontend)
+3. [The Frontend](#thefrontend)
     1. [The data services](#thedataservicesfrontend)
     2. [The components](#thecomponents)
-3. Take me to [Links](#links)
+4. [Links](#links)
+
+## <a name="whatishateoas">What is HATEOAS</a>
+
+HATEOAS stands for _hypermedia as the engine of application state_. Through the seperation of client and server HATEOAS provides the possibility to both sides growing and evolving seperately. With HATEOAS the server not only exposes the resouce the client asked for but also the links telling how to navigate through the application. There is no standard for HATEOAS out there yet (maybe some day there will be one) but different ways to do HATEOAS. One of them is [HAL](http://stateless.co/hal_specification.html), [JSON-LD](https://json-ld.org/), etc. A nice blogpost which discusses all the different apporaches can be found in the links.
+
 
 ## <a name="thebackend">The Backend</a>
 
-The backend is an ASP.NET Core WebAPI which sends out the data as json. With it, every entry contains the specific links and also all links contain the paging links to the next page, previous page etc.
+The backend is an ASP.NET Core Web API, which provides the data using JSON. Every HTTP response contains the specific links and also all links containing the paging links to the next page, previous page etc.
 
 ### <a name="customercontroller">Customer Controller</a>
 
 {% highlight js %}
-
 
 [Route("api/[controller]")]
 public class CustomersController : Controller
@@ -49,16 +54,20 @@ public class CustomersController : Controller
 	private readonly ICustomerRepository _customerRepository;
 	private readonly IUrlHelper _urlHelper;
 
-	public CustomersController(IUrlHelper urlHelper, ICustomerRepository customerRepository)
+	public CustomersController(
+		IUrlHelper urlHelper, 
+		ICustomerRepository customerRepository)
 	{
 		_customerRepository = customerRepository;
 		_urlHelper = urlHelper;
 	}
 
 	[HttpGet(Name = nameof(GetAll))]
-	public IActionResult GetAll([FromQuery] QueryParameters queryParameters)
+	public IActionResult GetAll(
+		[FromQuery] QueryParameters queryParameters)
 	{
-		List<Customer> allCustomers = _customerRepository.GetAll(queryParameters).ToList();
+		List<Customer> allCustomers = 
+			_customerRepository.GetAll(queryParameters).ToList();
 
 		var allItemCount = _customerRepository.Count();
 
@@ -170,7 +179,8 @@ public class CustomersController : Controller
 		return Ok(ExpandSingleItem(existingCustomer));
 	}
 
-	private List<LinkDto> CreateLinksForCollection(QueryParameters queryParameters, int totalCount)
+	private List<LinkDto> CreateLinksForCollection(
+		QueryParameters queryParameters, int totalCount)
 	{
 		var links = new List<LinkDto>();
 
@@ -228,7 +238,9 @@ public class CustomersController : Controller
 		var links = GetLinks(customer.Id);
 		CustomerDto item = Mapper.Map<CustomerDto>(customer);
 
-		var resourceToReturn = item.ToDynamic() as IDictionary<string, object>;
+		var resourceToReturn = item.ToDynamic() 
+			as IDictionary<string, object>;
+
 		resourceToReturn.Add("links", links);
 
 		return resourceToReturn;
@@ -328,11 +340,11 @@ Because of the `QueryParameters` we can also fire a requeste like `http://localh
 
 ## <a name="thefrontend">The Frontend</a>
 
-In the frontend we are using a plain angular cli application and the Angular Material model. I created a small application with three modules
+The frontend application is implemented using AngularCLI and Angular Material. The SPA application has 3 modules:
 
-* core
-* customer
-* app
+* core - Provides the base services to the application
+* customer - Has all customer related components such as the list and the details
+* app - the application module
 
 which you can see in the repository. 
 
@@ -379,11 +391,11 @@ export class HttpBaseService {
 
 {% endhighlight %}
 
-The `HttpBaseService` is exposing the http methods towards our application. The interesting part is that the `update` and `delete` methods are getting the complete URL passed as a parameter. We will see where this comes from later. The `add` method is doing a post to the same url as the getall. 
+The `HttpBaseService` is abstracts the HTTP requests for the application. The interesting part is that the `update` and `delete` methods are getting the complete URL passed as a parameter. This will be explained later. The `add` method is doing a post to the same URL as the `getAll` function.
 
 > The url part before the `customer/` can be extracted in a seperate service if you want. This would come from the environment you are running on later.
 
-The spcific `CustomerDataService` then exposes only one method by extending the `HttpBaseService`. It switches around the method type and gets passed as a parameter the choosen method, like doing an Update (PUT), an Add (ADD) or a delete (DELETE).
+The specific `CustomerDataService` then exposes only one method by extending the `HttpBaseService`. It switches around the method type which gets passed as a parameter for the corresponding method, like doing an Update (PUT), an Add (ADD) or a delete (DELETE).
 
 {% highlight js %}
 
@@ -416,7 +428,7 @@ export class CustomerDataService extends HttpBaseService {
 
 ### <a name="thecomponents">The components</a>
 
-If we now want to use this in our component it only has to call the `fireRequest` method with the correct http verb like this:
+To use this in a component, only the `fireRequest` method with the correct HTTP verb needs to be called:
 
 {% highlight js %}
 export class DetailsComponent implements OnInit {
@@ -478,7 +490,7 @@ export class OverviewComponent implements OnInit {
 
 {% endhighlight %}
 
-So you can see that for update, add and delete methods only one method with the correct http verb has to be called. The url comes from the entity (customer in this case) itself which gets served over the endpoint coming with its links.
+So, you can see that for update, add and delete methods only one method with the correct HTTP verb has to be called. The URL comes from the entity (customer in this case) itself which gets served over the endpoint coming with its links.
 
 I hope I could give you inspiration of what you can do with Angular and ASP.NET Core. If you made it that far: Thanks for reading.
 
@@ -488,3 +500,7 @@ Fabian
 ## <a name="links">Links</a>
 
 https://github.com/nbarbettini/BeautifulRestApi
+
+https://sookocheff.com/post/api/on-choosing-a-hypermedia-format/
+
+http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven
