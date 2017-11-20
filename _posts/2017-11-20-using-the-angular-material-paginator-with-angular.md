@@ -242,7 +242,7 @@ and then use it in our view like this:
 
 <script src="https://gist.github.com/FabianGosebrink/32129a532cf2fee34f9c7a368697f799.js"></script>
 
-The `pageSize` and `pageSizeOptions` come from the `PaginationService` which we inject in the underlying component.
+The `pageSize` and `pageSizeOptions` come from the `PaginationService` which we inject in the underlying component. On the `(page)` event we are firing the eventemitter and call the action which is bound to it in the stateful component.
 
 {% highlight js %}
 
@@ -263,5 +263,67 @@ export class ListComponent {
     constructor(public paginationService: PaginationService) { }
 }
 
- 
 {% endhighlight %}
+
+As the `ListComponent` is a stateless service it gets passed all the values it needs when using it on the stateful component `OverviewComponent`
+
+{% highlight html %}
+
+<app-list 
+    [dataSource]="dataSource" 
+    [totalCount]="totalCount"
+    (onDeleteCustomer)="delete($event)"
+    (onPageSwitch)="switchPage($event)"
+    ></app-list>
+
+{% endhighlight %}
+
+{% highlight js %}
+
+export class OverviewComponent implements OnInit {
+
+    dataSource: Customer[];
+    totalCount: number;
+
+    constructor(
+        private customerDataService: CustomerDataService,
+        private paginationService: PaginationService) { }
+
+    ngOnInit(): void {
+        this.getAllCustomers();
+    }
+
+    switchPage(event: PageEvent) {
+        this.paginationService.change(event);
+        this.getAllCustomers();
+    }
+
+    delete(customer: Customer) {
+        this.customerDataService.fireRequest(customer, 'DELETE')
+            .subscribe(() => {
+                this.dataSource = this.dataSource.filter(x => x.id !== customer.id);
+            });
+    }
+
+    getAllCustomers() {
+        this.customerDataService.getAll<Customer[]>()
+            .subscribe((result: any) => {
+                this.totalCount = JSON.parse(result.headers.get('X-Pagination')).totalCount;
+                this.dataSource = result.body.value;
+            });
+    }
+}
+
+{% endhighlight %}
+
+The `switchPage` method is called when the page changes and first sets all the new values in the paginationService and then gets the customers again. Those values are then provided again in the dataservice and consumed there and also in the view where they get displayed correctly.
+
+In the `getAllCustomers` method we are reading the `totalCount` value from the headers. Be sure to read the full response in the dataservice by adding `return this.httpClient.get<T>(mergedUrl, { observe: 'response' });` and exposing the header in the CORS options like shown before in this blogpost.
+
+Thanks for reading
+
+Fabian
+
+## Links
+
+[https://angular.io/guide/http#reading-the-full-response](https://angular.io/guide/http#reading-the-full-response)
