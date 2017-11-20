@@ -3,7 +3,7 @@ title: Using the Angular Material Paginator with Angular
 date: 2017-11-20 18:12
 author: Fabian Gosebrink
 layout: post
-tags: aspnetcore angular material hateoas
+tags: aspnetcore angular material paging
 logo: 'assets/images/logo_small.png'
 navigation: true
 cover: 'assets/images/aerial-view-of-laptop-and-notebook_bw_osc.jpg'

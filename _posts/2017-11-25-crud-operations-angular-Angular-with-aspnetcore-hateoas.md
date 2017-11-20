@@ -1,6 +1,6 @@
 ---
 title: CRUD operations in Angular with ASP.NET Core and HATEOAS
-date: 2017-10-20 09:12
+date: 2017-11-25 09:12
 author: Fabian Gosebrink
 layout: post
 tags: aspnetcore angular material hateoas
