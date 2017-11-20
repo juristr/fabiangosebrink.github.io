@@ -1,6 +1,6 @@
 ---
 title: Using the Angular Material Paginator with Angular
-date: 2017-10-11 18:12
+date: 2017-11-20 18:12
 author: Fabian Gosebrink
 layout: post
 tags: aspnetcore angular material hateoas
@@ -349,3 +349,5 @@ Fabian
 [https://angular.io/guide/http#reading-the-full-response](https://angular.io/guide/http#reading-the-full-response)
 
 [https://material.angular.io/components/paginator/overview](https://material.angular.io/components/paginator/overview)
+
+[https://www.pluralsight.com/courses/asp-dot-net-core-restful-api-building](https://www.pluralsight.com/courses/asp-dot-net-core-restful-api-building)
