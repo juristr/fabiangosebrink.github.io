@@ -20,6 +20,17 @@ You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angul
 
 ## Overview
 
+1. [What is HATEOAS](#getstarted)
+2. [The Backend](#thebackend)
+    1. [Customer Controller](#customercontroller)
+3. [The Frontend](#thefrontend)
+    1. [PaginationService](#paginationservice)
+    2. [HttpBaseService](#httpbaseservice)
+    3. [The Components](#thecomponents)
+    4. [ListComponent](#listcomponent)
+    5. [OverviewComponent](#overviewcomponent)
+4. [Links](#links)
+
 
 ## <a name="getstarted">Get started</a>
 
@@ -29,7 +40,7 @@ With the Angular Material Table and its Pagination Module it is quite easy to se
 
 The backend is an ASP.NET Core WebAPI which sends out the data as json. With it, every entry contains the specific links and also all links contain the paging links to the next page, previous page etc, altough we do not need them in this example because we already have some logic in Angular Material implemented. If you would not use Angular Material or another "intelligent" UI piece giving you a paging logic piece you could use the links to make it all by yourself.
 
-### Customer Controller
+### <a name="customercontroller">Customer Controller</a>
 
 {% highlight js %}
 
@@ -71,7 +82,7 @@ public class CustomersController : Controller
 
 {% endhighlight %}
 
-We are sending back the information about the paging with HATEOAS but also with a header to read it with Angular later. Especially the totalcount is interesting for the client. You could also send this back with the JSON response. 
+We are sending back the information about the paging with HATEOAS but also with a header to read it with Angular later. Especially the `totalcount` is interesting for the client. You could also send this back with the JSON response. 
 
 {% highlight js %}
 
@@ -130,9 +141,11 @@ The modelbinder from ASP.NET Core can map the parameters in the request to this 
 
 `http://localhost:5000/api/customers?pagecount=10&page=1&orderby=Name` is a valid request then which gives us the possibility to grab only the range of items we want to.
 
-## The Frontend
+## <a name="thefrontend">Frontend</a>
 
-### The services
+The frontend is build with Angular and Angular Material. Watch the details below.
+
+### <a name="paginationservice">PaginationService</a>
 
 To collect all the information about the pagination stuff I created a pagination service.
 
@@ -168,6 +181,8 @@ export class PaginationService {
 {% endhighlight %}
 
 We are exposing three properties here which can be changed through the "change()" method. The method takes a `pageEvent` as parameter which comes from the Angular Material Paginator. There every information about the current paging state is stored. We are passing this thing around to get the information about our state of paging having kind of an abstraction of the PageEvent of Angular Material.
+
+### <a name="httpbaseservice">HttpBaseService</a>
 
 {% highlight js %}
 
@@ -215,8 +230,11 @@ export class HttpBaseService {
 
 We are injecting the `PaginationService` and consume its values to create the url sending the request to.
 
-## The Components
+### <a name="thecomponents">The Components</a>
 
+Beside the services the components consume those services and their values. They are reacting on the pageswitch event and are seperated in stateful and stateless components.
+
+### <a name="listcomponent">ListComponent</a>
 In the `ListComponent` we are now using the [paginator](https://material.angular.io/components/paginator/overview) module by including it in our sources like
 
 {% highlight js %}
@@ -266,6 +284,8 @@ export class ListComponent {
 {% endhighlight %}
 
 As the `ListComponent` is a stateless service it gets passed all the values it needs when using it on the stateful component `OverviewComponent`
+
+### <a name="overviewcomponent">OverviewComponent</a>
 
 {% highlight html %}
 
@@ -327,3 +347,5 @@ Fabian
 ## Links
 
 [https://angular.io/guide/http#reading-the-full-response](https://angular.io/guide/http#reading-the-full-response)
+
+[https://material.angular.io/components/paginator/overview](https://material.angular.io/components/paginator/overview)
