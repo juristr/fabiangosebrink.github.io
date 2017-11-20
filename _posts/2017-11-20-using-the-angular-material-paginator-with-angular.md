@@ -215,6 +215,53 @@ export class HttpBaseService {
 
 We are injecting the `PaginationService` and consume its values to create the url sending the request to.
 
-In the `ListComponent` we are now using the 
+## The Components
+
+In the `ListComponent` we are now using the [paginator](https://material.angular.io/components/paginator/overview) module by including it in our sources like
+
+{% highlight js %}
+import {MatPaginatorModule} from '@angular/material/paginator';
+{% endhighlight %}
+
+and 
+
+{% highlight js %}
+
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+@NgModule({
+    imports: [
+        MatPaginatorModule,
+        // ...
+    ]
+})
+
+{% endhighlight %}
+
+and then use it in our view like this:
 
 <script src="https://gist.github.com/FabianGosebrink/32129a532cf2fee34f9c7a368697f799.js"></script>
+
+The `pageSize` and `pageSizeOptions` come from the `PaginationService` which we inject in the underlying component.
+
+{% highlight js %}
+
+export class ListComponent {
+
+    dataSource = new MatTableDataSource<Customer>();
+    displayedColumns = ['id', 'name', 'created', 'actions'];
+
+    @Input('dataSource')
+    set allowDay(value: Customer[]) {
+        this.dataSource = new MatTableDataSource<Customer>(value);
+    }
+
+    @Input() totalCount: number;
+    @Output() onDeleteCustomer = new EventEmitter();
+    @Output() onPageSwitch = new EventEmitter();
+
+    constructor(public paginationService: PaginationService) { }
+}
+
+ 
+{% endhighlight %}
