@@ -1,6 +1,6 @@
 ---
 title: Using the Angular Material Paginator with Angular
-date: 2017-11-20 18:12
+date: 2017-11-20 10:12
 author: Fabian Gosebrink
 layout: post
 tags: aspnetcore angular material paging
@@ -27,6 +27,7 @@ You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angul
     1. [PaginationService](#paginationservice)
     2. [HttpBaseService](#httpbaseservice)
     3. [The Components](#thecomponents)
+    3. [Include in module](#module)
     4. [ListComponent](#listcomponent)
     5. [OverviewComponent](#overviewcomponent)
 4. [Links](#links)
@@ -234,17 +235,10 @@ We are injecting the `PaginationService` and consume its values to create the ur
 
 Beside the services the components consume those services and their values. They are reacting on the pageswitch event and are seperated in stateful and stateless components.
 
-### <a name="listcomponent">ListComponent</a>
-In the `ListComponent` we are now using the [paginator](https://material.angular.io/components/paginator/overview) module by including it in our sources like
+### <a name="module">Include in module</a>
+In the `ListComponent` we are now using the [paginator](https://material.angular.io/components/paginator/overview) module but first we have to include it in our module like this
 
 {% highlight js %}
-import {MatPaginatorModule} from '@angular/material/paginator';
-{% endhighlight %}
-
-and 
-
-{% highlight js %}
-
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
@@ -257,6 +251,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 {% endhighlight %}
 
 and then use it in our view like this:
+
+### <a name="listcomponent">ListComponent</a>
 
 <script src="https://gist.github.com/FabianGosebrink/32129a532cf2fee34f9c7a368697f799.js"></script>
 
