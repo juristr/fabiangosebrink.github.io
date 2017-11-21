@@ -35,11 +35,11 @@ You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angul
 
 ## <a name="getstarted">Get started</a>
 
-With the Angular Material Table and its Pagination Module it is quite easy to set up paging in a beautiful way so that you can use it on client side and show only a specific amount of entries to your users. What we _not_ want to do is loading _all_ items from the backend in the first place just to get the paging going and then display only a specific amount. Instead we want to load only what we need and display that. If the user clicks on the "next page"-button the items should be loaded and displayed.
+With the Angular Material Table and its Pagination Module it is quite easy to set up paging in a beautiful way so that you can use it on client side and only show a specific amount of entries to your users. What we do not want to do, is loading _all_ items from the backend in the first place just to get the paging going and then display only a specific amount. Instead we want to load only what we need and display that. If the user clicks on the "next page"-button the items should be loaded and displayed.
 
 ## <a name="thebackend">The Backend</a>
 
-The backend is an ASP.NET Core WebAPI which sends out the data as json. With it, every entry contains the specific links and also all links contain the paging links to the next page, previous page etc, altough we do not need them in this example because we already have some logic in Angular Material implemented. If you would not use Angular Material or another "intelligent" UI piece giving you a paging logic piece you could use the links to make it all by yourself.
+The backend is an ASP.NET Core WebAPI which sends out the data as JSON. With it, every entry contains the specific links and also all links containing the paging links to the next page, previous page etc, although we do not need them in this example because we already have some implemented logic from Angular Material. If you would not use Angular Material or another "intelligent" UI piece giving you a paging logic, you could use the links to make it all by yourself.
 
 ### <a name="customercontroller">Customer Controller</a>
 
@@ -83,7 +83,7 @@ public class CustomersController : Controller
 
 {% endhighlight %}
 
-We are sending back the information about the paging with HATEOAS but also with a header to read it with Angular later. Especially the `totalcount` is interesting for the client. You could also send this back with the JSON response. 
+We are sending back the information about the paging with HATEOAS but also with a header to read it with Angular later. The `totalcount` is especially interesting for the client. You could also send this back with the JSON response.
 
 {% highlight js %}
 
@@ -99,7 +99,7 @@ Response.Headers
 
 {% endhighlight %}
 
-If you do send it back via the header be sure to expand the headers in CORS that they can be read on client side.
+If you do send it back via the header, be sure to expand the headers in CORS that they can be read on client side.
 
 {% highlight js %}
 
@@ -138,8 +138,7 @@ public class QueryParameters
 
 {% endhighlight %}
 
-The modelbinder from ASP.NET Core can map the parameters in the request to this object and you can start using them:
-
+The modelbinder from ASP.NET Core can map the parameters in the request to this object and you can start using them as follows:
 `http://localhost:5000/api/customers?pagecount=10&page=1&orderby=Name` is a valid request then which gives us the possibility to grab only the range of items we want to.
 
 ## <a name="thefrontend">Frontend</a>
@@ -148,7 +147,7 @@ The frontend is build with Angular and Angular Material. Watch the details below
 
 ### <a name="paginationservice">PaginationService</a>
 
-To collect all the information about the pagination stuff I created a pagination service.
+This service is used to collect all the information about the pagination. We are injecting the PaginationService and consuming its values to create the URL and send the request.
 
 {% highlight js %}
 
@@ -233,9 +232,10 @@ We are injecting the `PaginationService` and consume its values to create the ur
 
 ### <a name="thecomponents">The Components</a>
 
-Beside the services the components consume those services and their values. They are reacting on the pageswitch event and are seperated in stateful and stateless components.
+Beside the services, the components consume those services and the values. They are reacting on the pageswitch event and are separated in stateful and stateless components.
 
 ### <a name="module">Include in module</a>
+
 In the `ListComponent` we are now using the [paginator](https://material.angular.io/components/paginator/overview) module but first we have to include it in our module like this
 
 {% highlight js %}
@@ -332,7 +332,7 @@ export class OverviewComponent implements OnInit {
 
 {% endhighlight %}
 
-The `switchPage` method is called when the page changes and first sets all the new values in the paginationService and then gets the customers again. Those values are then provided again in the dataservice and consumed there and also in the view where they get displayed correctly.
+The `switchPage` method is called when the page changes and first sets all the new values in the paginationService and then gets the customers again. Those values are then provided again in the dataservice, and are consumed there, and also used in the view where they get displayed correctly.
 
 In the `getAllCustomers` method we are reading the `totalCount` value from the headers. Be sure to read the full response in the dataservice by adding `return this.httpClient.get<T>(mergedUrl, { observe: 'response' });` and exposing the header in the CORS options like shown before in this blogpost.
 
