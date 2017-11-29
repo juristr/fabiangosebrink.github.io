@@ -161,4 +161,4 @@ If you now run the solution you can perform CRUD operations for example via post
 
 ## Links
 
-[ASP.NET Core Application to New Database](https://ef.readthedocs.io/en/latest/platforms/aspnetcore/new-db.html)
+[ASP.NET Core Application to New Database](https://docs.microsoft.com/de-de/ef/core/get-started/aspnetcore/new-db)

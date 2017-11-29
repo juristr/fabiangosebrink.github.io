@@ -28,3 +28,4 @@ test/version_tmp
 tmp
 vendor
 .travis.yml
+/node_modules
