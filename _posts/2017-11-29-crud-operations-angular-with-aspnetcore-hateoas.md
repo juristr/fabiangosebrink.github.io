@@ -1,6 +1,6 @@
 ---
 title: CRUD operations in Angular with ASP.NET Core and HATEOAS
-date: 2017-11-25 09:12
+date: 2017-11-29 18:40
 author: Fabian Gosebrink
 layout: post
 tags: aspnetcore angular material hateoas
@@ -37,7 +37,7 @@ You can find the code here: [https://github.com/FabianGosebrink/ASPNETCore-Angul
 
 ## <a name="whatishateoas">What is HATEOAS</a>
 
-HATEOAS stands for _hypermedia as the engine of application state_. Through the seperation of client and server HATEOAS provides the possibility to both sides growing and evolving seperately. With HATEOAS the server not only exposes the resouce the client asked for but also the links telling how to navigate through the application. There is no standard for HATEOAS out there yet (maybe some day there will be one) but different ways to do HATEOAS. One of them is [HAL](http://stateless.co/hal_specification.html), [JSON-LD](https://json-ld.org/), etc. A nice blogpost which discusses all the different apporaches can be found in the links.
+HATEOAS stands for _hypermedia as the engine of application state_. Through the seperation of client and server HATEOAS provides the possibility to both sides growing and evolving seperately. With HATEOAS the server not only exposes the resouce the client asked for but also the links telling how to navigate through the application. There is no standard for HATEOAS out there yet (maybe some day there will be one) but different ways to do HATEOAS. One of them is [HAL](http://stateless.co/hal_specification.html), but there is also [JSON-LD](https://json-ld.org/), etc. A nice blogpost which discusses all the different apporaches can be found in the links.
 
 
 ## <a name="thebackend">The Backend</a>
@@ -395,7 +395,7 @@ The `HttpBaseService` is abstracts the HTTP requests for the application. The in
 
 > The url part before the `customer/` can be extracted in a seperate service if you want. This would come from the environment you are running on later.
 
-The specific `CustomerDataService` then exposes only one method by extending the `HttpBaseService`. It switches around the method type which gets passed as a parameter for the corresponding method, like doing an Update (PUT), an Add (ADD) or a delete (DELETE).
+The specific `CustomerDataService` then exposes only one method by extending the `HttpBaseService`. It switches around the method type which gets passed as a parameter for the corresponding method, like doing an Update (PUT), an Add (ADD) or a Delete (DELETE).
 
 {% highlight js %}
 
@@ -404,7 +404,9 @@ export class CustomerDataService extends HttpBaseService {
 
     fireRequest(customer: Customer, method: string) {
 
-        const links = customer.links.find(x => x.method === method);
+        const links = customer.links
+            ? customer.links.find(x => x.method === method)
+            : null;
 
         switch (method) {
             case 'DELETE': {
