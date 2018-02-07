@@ -1,5 +1,5 @@
 ---
-title: Separating states with forFeature in an Angular application with ngrx
+title: Separating states into modules with ngrx and Angular
 date: 2018-01-25 18:40
 author: Fabian Gosebrink
 layout: post
@@ -12,7 +12,7 @@ disqus: true
 categories: articles
 ---
 
-In this blogpost I want to give you an explanation of the state tree of ngrx if you are working with a state separated in different modules.
+In this blogpost I want to give you an explanation of the state tree of ngrx if you are working with a state and how to separate it into different modules.
 
 ## In this blog
 
@@ -20,11 +20,9 @@ In this blogpost I want to give you an explanation of the state tree of ngrx if 
 2. [Separating state into modules with forFeature(...)](#forFeature)
 3. [Conclusion](#conclusion)
 
-## <a name="forRoot">One state on you whole application with forRoot(...)</a>
-
 If you are building smaller or large angular applications you will sooner or later face the problem to manage the state of your application. It gets influenced by a lot of things around which can be a simple buttons triggering a service - maybe with an http action - which will set your application in a different state.
 
-Lets assume these following actions which could take place in your application: All these are _not_ ngrx-actions as we will get to them later on. We will just write down in pseudecode what is going on in our application.
+## <a name="forRoot">One state on you whole application with forRoot(...)</a>
 
 Lets take an applicationstate for the whole application which is just an object like this
 
@@ -46,7 +44,7 @@ export const initialState: ApplicationState = {
 };
 {% endhighlight %}
 
-A small reducer could manipulate this state like
+A reducer could manipulate this state like
 
 {% highlight js %}
 export function appReducer(state: ApplicationState = initialState, action: Action) : ApplicationState {
@@ -93,9 +91,9 @@ With the
 StoreModule.forRoot({ applicationState: appReducer})
 {% endhighlight %}
 
-`forRoot` statement we are applying the state which is the result of the appReducer on the application level. That means that the whole appliaction knows this state and can react to its changes.
+`forRoot` statement we are applying the state which is the result of the appReducer on the application level. That means that the whole application knows this state and can react to its changes.
 
-The state is now an Object with a property called `applicationState` which has the value the appReducers gives us as an output.
+The state is now an object with a property called `applicationState` which has the value the appReducers gives us as an output.
 
 But if we console.log out
 
@@ -112,7 +110,7 @@ the state we get the following result
 
 So if we log out the initial state we will get back an object with two properties on it. But why is that? Shouldn't it be an object (the one from the `forRoot`) with a property on it called `applicationState`?
 
-Well, the `select` method in the code sample above is literally selecting the property "applicationState" and giving us back the result which is itself a property with two properoties `currentlyLoading` and `customerList` on it.
+Well, the `select` method in the code sample above is literally selecting the property "applicationState" and giving us back the result which is itself an object with two properties `currentlyLoading` and `customerList` on it.
 
 Our state however still is an object like this
 
@@ -137,9 +135,9 @@ Which we could log out with a statement like
 
 ## <a name="forFeature">Separating state into modules with forFeature(...)</a>
 
-So our application state will be influenced my many things we do. We would divide those actions and areas of our application in different modules. Also if you want to keep your application in a structured manner you will separeate it into different modules which provide you more maintainability and overview about what your application is really doing and where you have to search for things like components, maybe pipes, directives etc.
+So our application state will be influenced my many things we do. We would divide those actions and areas of our application into different modules. Also if you want to keep your application in a structured manner you will separeate it into different modules which provide you more maintainability and overview about what your application is really doing and where you have to search for things like components, maybe pipes, directives etc.
 
-You would possibly introduce a module which encapsulate and abstract all your customer related things. So you application _could_ look like this:
+You would possibly introduce a module which encapsulates and abstracts all your customer related things. So you application _could_ look like this:
 
 ```
 app
@@ -179,6 +177,18 @@ Now we can refactor our application state into the properties which are needed o
 
 Ngrx provides a good mechanism for us to apply parts of the state to our main state. We already know the `forRoot()`  method which applies a state on root level. The `forFeature()` method is helping us out merging a state to the root level. So let's try that out: Our AppState is now an empty model (which could have properties however) and the customer store gets the whole properties: 
 
+{% highlight js %}
+interface CustomerState {
+    currentlyLoading: boolean;
+    customerList: any []
+}
+
+export const initialState: CustomerState = {
+  currentlyLoading: false,
+  customerList: []
+};
+{% endhighlight %}
+
 app.module.ts
 
 {% highlight js %}
@@ -192,7 +202,7 @@ export class AppModule {}
 {% endhighlight %}
 
 
-feature.module.ts
+customer.module.ts
 
 {% highlight js %}
 @NgModule({
