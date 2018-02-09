@@ -16,21 +16,21 @@ In this blogpost I want to give you an explanation of the state tree of ngrx if 
 
 ## In this blog
 
-1. [One state on you whole application with forRoot(...)](#forRoot)
+1. [One state for your entire application with forRoot(...)](#forRoot)
 2. [Separating state into modules with forFeature(...)](#forFeature)
 3. [Conclusion](#conclusion)
 
 If you are building smaller or large angular applications you will sooner or later face the problem to manage the state of your application. It gets influenced by a lot of things around which can be a simple buttons triggering a service - maybe with an http action - which will set your application in a different state.
 
-## <a name="forRoot">One state on you whole application with forRoot(...)</a>
+## <a name="forRoot">One state for your entire application with forRoot(...)</a>
 
-Lets take an applicationstate for the whole application which is just an object like this
+Let's take a state object for the whole application:
 
 ```
 { customerList = [], currentlyLoading = false }
 ```
 
-The apps application state interface then looks like
+The app's application state interface then looks like
 
 {% highlight js %}
 interface ApplicationState {
@@ -61,7 +61,7 @@ export function appReducer(state: ApplicationState = initialState, action: Actio
 }
 {% endhighlight %}
 
-which we can use in our whole application like this:
+which we can then use in our as follows:
 
 {% highlight js %}
 @NgModule({
@@ -73,7 +73,7 @@ which we can use in our whole application like this:
 export class AppModule {}
 {% endhighlight %}
 
-So image you have the following angular application structure:
+So imagine you have the following Angular application structure:
 
 ```
 app
@@ -85,17 +85,15 @@ app
 ...
 ```
 
-With the
+With the `forRoot` statement we apply the state which is the result of the appReducer at the application level. Hence, the whole application is aware of it and can react to its changes.
 
 {% highlight js %}
 StoreModule.forRoot({ applicationState: appReducer})
 {% endhighlight %}
 
-`forRoot` statement we are applying the state which is the result of the appReducer on the application level. That means that the whole application knows this state and can react to its changes.
+The state is now an object with a property called `applicationState` containing the value which the appReducers gives us as an output.
 
-The state is now an object with a property called `applicationState` which has the value the appReducers gives us as an output.
-
-But if we console.log out
+However, if we `console.log` it out..
 
 {% highlight js %}
 ngOnInit(): void {
@@ -104,15 +102,15 @@ ngOnInit(): void {
   }
 {% endhighlight %}
 
-the state we get the following result
+..we get the following result
 
 `{currentlyLoading: false, customerList: Array(0)}`
 
-So if we log out the initial state we will get back an object with two properties on it. But why is that? Shouldn't it be an object (the one from the `forRoot`) with a property on it called `applicationState`?
+An object with two properties on it. But why is that? Shouldn't it be an object (like the one from the `forRoot(..)`) with a property on it called `applicationState`?
 
 Well, the `select` method in the code sample above is literally selecting the property "applicationState" and giving us back the result which is itself an object with two properties `currentlyLoading` and `customerList` on it.
 
-Our state however still is an object like this
+Our state however is still an object like this
 
 ```
 {
@@ -123,7 +121,7 @@ Our state however still is an object like this
 }
 ```
 
-Which we could log out with a statement like
+If you want to get the entire state printed out to your console, use a statement such as
 
 {% highlight js %}
  ngOnInit(): void {
@@ -135,9 +133,9 @@ Which we could log out with a statement like
 
 ## <a name="forFeature">Separating state into modules with forFeature(...)</a>
 
-So our application state will be influenced my many things we do. We would divide those actions and areas of our application into different modules. Also if you want to keep your application in a structured manner you will separeate it into different modules which provide you more maintainability and overview about what your application is really doing and where you have to search for things like components, maybe pipes, directives etc.
+So our application state will be influenced my many things we do. We would divide those actions and areas of our application into different modules. This helps keeping everything more maintainable and it's much easier to navigate through the codebase.
 
-You would possibly introduce a module which encapsulates and abstracts all your customer related things. So you application _could_ look like this:
+As a result, you would possibly introduce a module which encapsulates and abstracts all your customer related things. So your application _could_ look like this:
 
 ```
 app
@@ -153,7 +151,7 @@ app
 ...
 ```
 
-So we created a customers folder where we have a place to put all the customer related stuff into. But now it would be an improvement if only the module itself track of its own state as it does this for its routes and so can fulfill the purpose of a completely seperated part of your application. Also concerning the state. 
+So we created a customers folder, where we have a place to put all the customer related stuff into. But now it would be an improvement if only the module itself track of its own state as it does this for its routes and so can fulfill the purpose of a completely seperated part of your application. Also concerning the state.
 
 So we can apply our module state in a seperate module store which would be a seperate folder in the customers folder:
 
@@ -173,9 +171,10 @@ app
 ...
 ```
 
-Now we can refactor our application state into the properties which are needed only on application level and not in a feature module because a feature module takes care of its state on its own. Therefore the feature module get its own state.
+Similary we should handle our state object. The goal is that each feature module contributes it's own little part to the global state.
+Hence, let's refactor our application state accordingly.
 
-Ngrx provides a good mechanism for us to apply parts of the state to our main state. We already know the `forRoot()`  method which applies a state on root level. The `forFeature()` method is helping us out merging a state to the root level. So let's try that out: Our AppState is now an empty model (which could have properties however) and the customer store gets the whole properties: 
+Luckily, Ngrx already provides a good mechanism for us to apply parts of the state to our main state. We already know the `forRoot()`  method which applies a state at the root level. The `forFeature()` method allows to merge a part of the state to the global root-level one. So let's try that out: our AppState is now an empty model (which could have properties however) and the customer store gets the whole properties: 
 
 {% highlight js %}
 interface CustomerState {
@@ -218,9 +217,9 @@ customer.module.ts
 export class CustomerModule {}
 {% endhighlight %}
 
-The customer reducer - customer is just a feature module name here - manipulates the whole customerstate now. As our AppState did exactly that before, we can just move the reducer into the customer feature module and rename all the things.
+The customer reducer - customer is just a feature module name here - manipulates the whole customer state now. As our AppState did exactly that before, we can just move the reducer into the customer feature module and rename all the things.
 
-The interesting part is the `forFeature` method above. Lets take a look at this:
+The interesting part is the `forFeature` method above. Let's take a look at this:
 
 {% highlight js %}
 StoreModule.forFeature('customerFeature', {
@@ -297,7 +296,7 @@ which would be the same result as we subscribe to the state like
 
 ## <a name="conclusion">Conclusion</a>
 
-So with the `forFeature(...)` method you can build your state object exactly that modular like you do it with your whole application. Which makes seperation of concerns and not mixing thins very easy and well structured.
+So with the `forFeature(...)` method you can build your state object exactly as modular as you normally structure your application. That way we can follow the separation of concerns principle and make things easy to follow and nicely structured.
 
 Of course all the `any`s can and probably should be replaced with interfaces to be type safe. ;)
 
